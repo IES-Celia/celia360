@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 17-01-2018 a las 16:26:31
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-01-2018 a las 17:54:08
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -541,6 +543,28 @@ INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `editorial`, `lugar_edicion
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pisos`
+--
+
+CREATE TABLE `pisos` (
+  `piso` int(1) NOT NULL,
+  `url_img` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `pisos`
+--
+
+INSERT INTO `pisos` (`piso`, `url_img`) VALUES
+(0, 'assets/imagenes/sotano.png'),
+(1, 'assets/imagenes/plantabaja.png'),
+(2, 'assets/imagenes/planta1.png'),
+(3, 'assets/imagenes/planta2.png'),
+(4, 'assets/imagenes/tejado.png');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `puntos_mapa`
 --
 
@@ -549,8 +573,81 @@ CREATE TABLE `puntos_mapa` (
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `left` double NOT NULL,
   `top` double NOT NULL,
-  `id_escena` int(11) NOT NULL
+  `id_escena` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `piso` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `puntos_mapa`
+--
+
+INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left`, `top`, `id_escena`, `piso`) VALUES
+(1, 'pspunto1', 59, 62, 'p0p0', 0),
+(2, 'pspunto2', 50, 67.5, 'p0p1', 0),
+(3, 'pspunto3', 50, 73.5, 'p0p2', 0),
+(4, 'pspunto4', 31.5, 73.5, 'p0p3', 0),
+(5, 'pspunto5', 16.5, 48.5, 'p0p4', 0),
+(8, 'pspunto6', 7.5, 88, 'p0p4f2', 0),
+(9, 'pspunto7', 16.5, 48.5, 'p0p5', 0),
+(10, 'pspunto8', 23.5, 61.5, 'p0p1f2', 0),
+(11, 'pspunto9', 41.5, 61, 'p0p1f1', 0),
+(12, 'pspunto10', 0, 50.5, 'p0p5f1', 0),
+(13, 'pspunto11', 0, 46.5, 'p0p5f2', 0),
+(14, 'pspunto12', 25, 26, 'p1p9f2', 0),
+(15, 'p1punto1', 53, 62, 'p1p1', 1),
+(16, 'p1punto2', 48.8, 73.5, 'p1p2', 1),
+(17, 'p1punto3', 34, 73.5, 'p1p3', 1),
+(18, 'p1punto4', 16.5, 73.5, 'p1p4', 1),
+(19, 'p1punto5', 16.5, 50.5, 'p1p5', 1),
+(20, 'p1punto6', 17, 34, 'p1p6', 1),
+(21, 'p1punto7', 34.5, 43.5, 'p1p7', 1),
+(22, 'p1punto8', 50, 53.5, 'p1p8', 1),
+(23, 'p1punto9', 64, 73.5, 'p1p11', 1),
+(24, 'p1punto10', 75, 71.5, 'p1p10', 1),
+(25, 'p1punto11', 25.5, 80.5, 'p1p32f1', 1),
+(26, 'p1punto12', 34.3, 84.5, 'p1p32f2', 1),
+(27, 'p1punto13', 48.8, 86, 'p1p2f1', 1),
+(28, 'p1punto14', 48.8, 91, 'p1p2f2', 1),
+(29, 'p1punto15', 48.8, 96, 'p1p2f3', 1),
+(30, 'p1punto17', 18, 26, 'p1p9', 1),
+(31, 'p1punto18', 25, 30, 'p1p9f1', 1),
+(32, 'p1punto19', 41, 48, 'p1p72', 1),
+(33, 'p1punto20', 80, 72, 'p1p12', 1),
+(34, 'p1punto21', 25.8, 73.5, 'p1p32', 1),
+(35, 'p1punto22', 42, 73.5, 'p1p22', 1),
+(36, 'p2punto1', 53, 62, 'p2p1', 2),
+(37, 'p2punto2', 49, 73.5, 'p2p2', 2),
+(38, 'p2punto3', 34, 73.5, 'p2p3', 2),
+(39, 'p2punto4', 16.5, 73.5, 'p2p4', 2),
+(40, 'p2punto5', 16.5, 53.5, 'p2p5', 2),
+(41, 'p2punto6', 17, 34, 'p2p6', 2),
+(42, 'p2punto7', 24, 37.5, 'p2p7', 2),
+(43, 'p2punto8', 34.5, 43.5, 'p2p72', 2),
+(44, 'p2punto9', 49.5, 53, 'p2p8', 2),
+(45, 'p2punto10', 79, 71.5, 'p2p10', 2),
+(46, 'p2punto11', 49, 86.5, 'p2p2f1', 2),
+(47, 'p2punto12', 42, 86.5, 'p2p2f3', 2),
+(48, 'p2punto13', 64, 86.5, 'p2p2f2', 2),
+(49, 'p3punto1', 50, 62, 'p3p1', 3),
+(50, 'p3punto2', 50, 73, 'p3p2', 3),
+(51, 'p3punto4', 43, 83, 'p3p2f2', 3),
+(52, 'p3punto5', 35, 73, 'p3p3', 3),
+(53, 'p3punto6', 17, 73, 'p3p4', 3),
+(54, 'p3punto8', 8, 78, 'p3p4f2', 3),
+(55, 'p3punto9', 8, 69, 'p3p4f3', 3),
+(56, 'p3punto10', 17, 49, 'p3p5', 3),
+(57, 'p3punto11', 8, 50, 'p3p5f1', 3),
+(58, 'p3punto12', 17, 33, 'p3p6', 3),
+(59, 'p3punto13', 8, 34, 'p3p6f1', 3),
+(60, 'p3punto14', 32, 42, 'p3p7', 3),
+(61, 'p3punto15', 50, 53, 'p3p8', 3),
+(62, 'p3punto17', 75, 72, 'p3p10', 3),
+(63, 'ptpunto0', 58, 62, 'p4p0', 4),
+(64, 'ptpunto1', 79, 74, 'p4p1', 4),
+(65, 'ptpunto2', 6, 85, 'p4p2', 4),
+(66, 'ptpunto3', 6, 15, 'p4p3', 4),
+(67, 'ptpunto4', 94, 61, 'p4p4', 4),
+(68, 'ptpunto5', 94, 91, 'p4p5', 4);
 
 -- --------------------------------------------------------
 
@@ -638,6 +735,20 @@ ALTER TABLE `libros`
   ADD UNIQUE KEY `ISBN` (`ISBN`);
 
 --
+-- Indices de la tabla `pisos`
+--
+ALTER TABLE `pisos`
+  ADD PRIMARY KEY (`piso`),
+  ADD KEY `piso` (`piso`);
+
+--
+-- Indices de la tabla `puntos_mapa`
+--
+ALTER TABLE `puntos_mapa`
+  ADD PRIMARY KEY (`id_punto_mapa`),
+  ADD KEY `piso` (`piso`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -658,31 +769,54 @@ ALTER TABLE `video`
 --
 ALTER TABLE `audio`
   MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
   MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
   MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
 --
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
   MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `puntos_mapa`
+--
+ALTER TABLE `puntos_mapa`
+  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT de la tabla `video`
 --
 ALTER TABLE `video`
   MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `puntos_mapa`
+--
+ALTER TABLE `puntos_mapa`
+  ADD CONSTRAINT `puntos_mapa_ibfk_1` FOREIGN KEY (`piso`) REFERENCES `pisos` (`piso`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
