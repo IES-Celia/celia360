@@ -1,0 +1,60 @@
+body{
+	background: url('../imgs/biblio.jpg');
+}
+table{
+	border-spacing: 0px;
+	border-collapse: collapse;
+	width: 90%;
+	margin: 0 auto;
+	color: white;
+	text-align: center;
+	border-radius: 20px 20px 20px 20px;
+	-moz-border-radius: 20px 20px 20px 20px;
+	-webkit-border-radius: 20px 20px 20px 20px;
+}
+
+tr,td,th{
+	/*background-color:rgba(171,53,27,0.26);*/
+	padding: 5px;  
+}
+.btnborrar{
+	float: left;
+    margin-left: 20px;
+}
+
+.btnenviar{
+	float: right;
+    margin-right: 20px;
+ }
+.file-input {
+	  visibility: hidden;
+	  width: 0;
+	  position: relative;
+	}
+.file-input::before {
+	  content: '+';
+	  display: inline-block;
+	  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+	  border: 1px solid #999;
+	  border-radius: 3px;
+	  padding: 5px 8px;
+	  outline: none;
+	  white-space: nowrap;
+	  -webkit-user-select: none;
+	  cursor: pointer;
+	  text-shadow: 1px 1px #fff;
+	  font-weight: 700;
+	  font-size: 10pt;
+	  visibility: visible;
+	  position: absolute;
+	}
+.file-input:hover::before {
+ 	 border-color: black;
+}
+.file-input:active::before {
+  	 background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+#alex{
+	width: 1200px;
+	max-width: 1200px;
+}

@@ -1,0 +1,172 @@
+
+body{
+	overflow:hidden;	
+}
+
+	
+#bloque{
+	width:990px;
+	height:700px;
+	margin:0 auto;
+	/*transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+	z-index: 1003;
+	display: none;
+		   
+	opacity: 0;
+	-webkit-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+	-moz-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+	-ms-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+	-o-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+	transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);*/
+		    
+}
+#flipbook{
+	width:92%;
+	height:92%;
+	margin:4% auto;
+		
+}
+.hard{
+	background-color:#CCC;
+}
+.pag{
+	background-color:#F0E68C;
+}
+#container{
+	width:1200px;
+	height:675px;
+	margin:0 auto;
+	background: url('../img/biblioteca/DSC_0020.jpg');
+	background-size: 1200px 675px;
+}
+	
+.pag article img{
+	width:94%;
+	height:90%;
+	margin:0% auto;
+	margin-top:2.5%;
+	margin-bottom:2.5%;
+}
+	
+.prev_page{
+	position:fixed;
+	margin-top:300px;
+	margin-left:-75px;
+	padding:10px;
+	background-color:#D8D8D8;
+	border-radius:5px;
+}
+.next_page{
+	position:fixed;
+	margin-left:1015px;
+	margin-top:300px;
+	padding:10px;
+	background-color:#D8D8D8;
+	border-radius:5px;
+}
+	
+.cerrar{
+	color:black;
+	font-size:43px;
+	margin-top:-40px;
+}
+/*.estanteria{
+	background: url(wall-bookshelf.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+	width: 100%;
+    height: 250px;
+    display: block;
+    content: "";
+	
+}
+*/
+.estanteria img{
+	width: 75px;
+    height: 90px;
+    float: left;
+    text-align: center;
+    position: relative;
+	margin-left: 30px;
+	-webkit-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    -moz-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    -ms-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);
+    -o-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    -webkit-transition: -webkit-transform 0.1s;
+    -webkit-transform: translate(0, 0);
+    -moz-transition: -moz-transform 0.1s;
+    -moz-transform: translate(0, 0);
+    -ms-transition: -ms-transform 0.1s;
+    -ms-transform: translate(0, 0);
+    -o-transition: -o-transform 0.1s;
+    -o-transform: translate(0, 0);
+    transition: transform 0.1s;
+    transform: translate(0, 0);
+}
+
+
+/*AQUIIIII*/
+/* Float Shadow */
+.efectBook {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 15px rgba(19, 18, 18, 0);
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.efectBook:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
+  /* W3C */
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform, opacity;
+  transition-property: transform, opacity;
+}
+.efectBook:hover, .efectBook:focus, .efectBook:active {
+  -webkit-transform: translateY(-10px);
+  transform: translateY(-10px);
+  /* move the element up by 5px */
+}
+.efectBook:hover:before, .efectBook:focus:before, .efectBook:active:before {
+  opacity: 1;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+}
+
+
+.fondo{
+	background: url(estanteria-2.jpg);
+	width:100%;
+	height:auto;
+	
+}
+.columna{
+	width:115px;
+	margin-left:50px;
+}
+	
+#tablaadmin{
+	width: 90% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}	
+
+		

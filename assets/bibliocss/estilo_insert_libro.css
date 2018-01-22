@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+
+*{
+	font-family: 'Open Sans', sans-serif;
+}
+#bimba{
+	width:1250px;
+	max-width:1235px;
+	height:auto;
+	background: url('marc.jpeg');
+	margin:0 auto;
+}
+table{
+	border-spacing: 0px;
+	border-collapse: collapse;
+	width: 90%;
+	margin: 0 auto;
+	color: white;
+	text-align: center;
+	border-radius: 20px 20px 20px 20px;
+	-moz-border-radius: 20px 20px 20px 20px;
+	-webkit-border-radius: 20px 20px 20px 20px;
+}
+#cualquiera{
+	width:99%;
+	margin-top: 150px;
+
+}
+tr,td,th{
+	/*background-color:rgba(171,53,27,0.26);*/
+	padding: 5px; 
+}
+.btnBorrar{
+	float: left;
+    margin-left: 20px;
+    margin-top: 4px;
+    background-color: #eee0c5;
+    border: none;
+    padding: 7px;
+}
+
+.btnenviar{
+	float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+    background-color: #eee0c5;
+    border: none;
+    padding: 7px;
+ }
+ .numeroPagina{
+ 	background-color: #fdfdfdad;
+    padding: 10px;
+    margin-top: 0;
+    color:black;
+    font-weight:bold;
+ }
+.file-input {
+	  visibility: hidden;
+	  width: 20px;
+	  position: relative;
+	}
+.file-input::before {
+    content: '+';
+    display: inline-block;
+    background-color: #ffffffab;
+    padding: 1px 12px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 20pt;
+    visibility: visible;
+    position: absolute;
+    color: black;
+    border-radius: 50px;
+	}
+.file-input:hover::before {
+ 	 border-color: black;
+}
+.file-input:active::before {
+  	 background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
