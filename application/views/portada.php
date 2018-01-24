@@ -221,110 +221,42 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
           
           
          <div class="ctrl" id="fullscreen"></div>
-         <div id="mapa" class="cerrado">
+         <div id="mapa" style="width: 614px; height: 350px; top: 280px;" class="cerrado">
+    <?php
+      $indice = 0;
 
-            <!-- sotano -->
-            <div id="sotano" class="piso_cerrado pisos">
-                <div id="pspunto1" class="puntos" style="left: 59%;top: 62%;" onclick="puntosMapa('pspunto1'); viewer.loadScene('p0p0');"></div>
-                <div id="pspunto2" class="puntos" style="left: 50%;top: 67.5%;" onclick="puntosMapa('pspunto2'); viewer.loadScene('p0p1');"></div>
-                <div id="pspunto3" class="puntos" style="left: 50%;top: 73.5%;" onclick="puntosMapa('pspunto3'); viewer.loadScene('p0p2');"></div>
-                <div id="pspunto4" class="puntos" style="left: 31.5%;top: 73.5%;" onclick="puntosMapa('pspunto4'); viewer.loadScene('p0p3');"></div>
-                <div id="pspunto5" class="puntos" style="left: 16.5%;top: 73.5%;" onclick="puntosMapa('pspunto5'); viewer.loadScene('p0p4');"></div>
-                <div id="pspunto6" class="puntos" style="left: 7.5%;top: 88%;" onclick="puntosMapa('pspunto6'); viewer.loadScene('p0p4f2');"></div>
-                <div id="pspunto7" class="puntos" style="left: 16.5%;top: 48.5%;" onclick="puntosMapa('pspunto7'); viewer.loadScene('p0p5');"></div>
-                <div id="pspunto8" class="puntos" style="left: 23.5%;top: 61.5%;" onclick="puntosMapa('pspunto8'); viewer.loadScene('p0p1f2');"></div>
-                <div id="pspunto9" class="puntos" style="left: 41.5%;top: 61%;" onclick="puntosMapa('pspunto9'); viewer.loadScene('p0p1f1');"></div>
-                <div id="pspunto10" class="puntos" style="left: 0%;top: 50.5%;" onclick="puntosMapa('pspunto10'); viewer.loadScene('p0p5f1');"></div>
-                <div id="pspunto11" class="puntos" style="left: 0%;top: 46.5%;" onclick="puntosMapa('pspunto11'); viewer.loadScene('p0p5f2');"></div>
-                <div id="pspunto12" class="puntos" style="left: 25%;top: 26%;" onclick="puntosMapa('pspunto12'); viewer.loadScene('p1p9f2');"></div>
-            </div>  
-            <!-- primer piso -->
-            <div id="primer_piso" class="piso_abierto pisos">
-                <div id="p1punto1" class="puntos" style="left: 53%;top: 62%;" onclick="puntosMapa('p1punto1'); viewer.loadScene('p1p1');"></div>
-                <div id="p1punto2" class="puntos" style="left: 48%;top: 73.5%;" onclick="puntosMapa('p1punto2');  viewer.loadScene('p1p2');"></div>
-                <div id="p1punto3" class="puntos" style="left: 34%;top: 73.5%;" onclick="puntosMapa('p1punto3'); viewer.loadScene('p1p3');"></div>
-                <div id="p1punto4" class="puntos" style="left: 16.5%;top: 73.5%;" onclick="puntosMapa('p1punto4'); viewer.loadScene('p1p4');"></div>
-                <div id="p1punto5" class="puntos" style="left: 16.5%;top: 50.5%;" onclick="puntosMapa('p1punto5');  viewer.loadScene('p1p5');"></div>
-                <div id="p1punto6" class="puntos" style="left: 17%;top: 34%;" onclick="puntosMapa('p1punto6');  viewer.loadScene('p1p6');"></div>
-                <div id="p1punto7" class="puntos" style="left: 34.5%;top: 43.5%;" onclick="puntosMapa('p1punto7'); viewer.loadScene('p1p7');"></div>
-                <div id="p1punto8" class="puntos" style="left: 50%;top: 53.5%;" onclick="puntosMapa('p1punto8');  viewer.loadScene('p1p8');"></div>
-                <div id="p1punto9" class="puntos" style="left: 64%;top: 73.5%;" onclick="puntosMapa('p1punto9');  viewer.loadScene('p1p11');"></div>
-                <div id="p1punto10" class="puntos" style="left: 75%;top: 71.5%;" onclick="puntosMapa('p1punto10');  viewer.loadScene('p1p10');"></div>
-                <div id="p1punto11" class="puntos" style="left: 25.5%;top: 80.5%;" onclick="puntosMapa('p1punto11'); viewer.loadScene('p1p32f1');"></div>
-                <div id="p1punto12" class="puntos" style="left: 34.3%;top: 86.5%;" onclick="puntosMapa('p1punto12');  viewer.loadScene('p1p32f2');"></div>
-                <div id="p1punto13" class="puntos" style="left: 48.5%;top: 86%;" onclick="puntosMapa('p1punto13');  viewer.loadScene('p1p2f1');"></div>
-                <div id="p1punto14" class="puntos" style="left: 48.5%;top: 91%;" onclick="puntosMapa('p1punto14');  viewer.loadScene('p1p2f2');"></div>
-                <div id="p1punto15" class="punto_seleccionado" style="left: 48.5%;top: 96%;" onclick="puntos('p1punto15');  viewer.loadScene('p1p2f3');"></div>
-               <!-- <div id="p1punto16" class="puntos" style="left: 8%;top: 52%;" onclick="puntos('p1punto16');  viewer.loadScene('p1p5f1');"></div>-->
-                <div id="p1punto17" class="puntos" style="left: 18%;top: 26%;" onclick="puntosMapa('p1punto17');  viewer.loadScene('p1p9');"></div>
-                <div id="p1punto18" class="puntos" style="left: 25%;top: 30%;" onclick="puntosMapa('p1punto18');  viewer.loadScene('p1p9f1');"></div>
-                <div id="p1punto19" class="puntos" style="left: 41%;top: 48%;" onclick="puntosMapa('p1punto19');  viewer.loadScene('p1p72');"></div>
-                <div id="p1punto20" class="puntos" style="left: 80%;top: 72%;" onclick="puntosMapa('p1punto20');  viewer.loadScene('p1p12');"></div>
-                <div id="p1punto21" class="puntos" style="left: 25.8%;top: 73.5%;" onclick="puntosMapa('p1punto21');  viewer.loadScene('p1p32');"></div>
-                <div id="p1punto22" class="puntos" style="left: 42%;top: 73.5%;" onclick="puntosMapa('p1punto22');  viewer.loadScene('p1p22');"></div>
-            </div> 
-            <!-- segundo piso -->
-            <div id="segundo_piso" class="piso_cerrado pisos">
-                <div id="p2punto1" class="puntos" style="left: 53%;top: 62%;" onclick="puntosMapa('p2punto1'); viewer.loadScene('p2p1');"></div>
-                <div id="p2punto2" class="puntos" style="left: 49%;top: 73.5%;" onclick="puntosMapa('p2punto2'); viewer.loadScene('p2p2');"></div>
-                <div id="p2punto3" class="puntos" style="left: 34%;top: 73.5%;" onclick="puntosMapa('p2punto3'); viewer.loadScene('p2p3');"></div>
-                <div id="p2punto4" class="puntos" style="left: 16.5%;top: 73.5%;" onclick="puntosMapa('p2punto4');  viewer.loadScene('p2p4');"></div>
-                <div id="p2punto5" class="puntos" style="left: 16.5%;top: 53.5%;" onclick="puntosMapa('p2punto5'); viewer.loadScene('p2p5');"></div>
-                <div id="p2punto6" class="puntos" style="left: 17%;top: 34%;" onclick="puntosMapa('p2punto6'); viewer.loadScene('p2p6');"></div>
-                <div id="p2punto7" class="puntos" style="left: 24%;top: 37.5%;" onclick="puntosMapa('p2punto7');  viewer.loadScene('p2p7');"></div>
-                <div id="p2punto8" class="puntos" style="left: 34.5%;top: 43.5%;" onclick="puntosMapa('p2punto8'); viewer.loadScene('p2p72');"></div>
-                <div id="p2punto9" class="puntos" style="left: 49.5%;top: 53%;" onclick="puntosMapa('p2punto9');  viewer.loadScene('p2p8');"></div>
-                <div id="p2punto10" class="puntos" style="left: 79%;top: 71.5%;" onclick="puntosMapa('p2punto10');  viewer.loadScene('p2p10');"></div>
-                <div id="p2punto11" class="puntos" style="left: 49%;top: 86.5%;" onclick="puntosMapa('p2punto11');  viewer.loadScene('p2p2f1');"></div>
-                <div id="p2punto12" class="puntos" style="left: 42%;top: 86.5%;" onclick="puntosMapa('p2punto12');  viewer.loadScene('p2p2f3');"></div>
-                <div id="p2punto13" class="puntos" style="left: 64%;top: 86.5%;" onclick="puntosMapa('p2punto13');  viewer.loadScene('p2p2f2');"></div>
-                
+       $pisos = array('0' => "sotano", '1' => "primer_piso", "2" => "segundo_piso", "3" => "tercer_piso", "4" => "tejado" );
 
-                
-
-            </div>
-                <!-- tercer piso -->
-            <div id="tercer_piso" class="piso_cerrado pisos">
-                <div id="p3punto1" class="puntos" style="left: 50%;top: 62%;" onclick="puntosMapa('p3punto1'); viewer.loadScene('p3p1')"></div>
-                <div id="p3punto2" class="puntos" style="left: 50%;top: 73%;" onclick="puntosMapa('p3punto2'); viewer.loadScene('p3p2')"></div>
-                <!--<div id="p3punto3" class="puntos" style="left: 55%;top: 83%;" onclick="puntos('p3punto3'); viewer.loadScene('p3p2f1')"></div>-->
-                <div id="p3punto4" class="puntos" style="left: 43%;top: 83%;" onclick="puntosMapa('p3punto4'); viewer.loadScene('p3p2f2')"></div>
-                <div id="p3punto5" class="puntos" style="left: 35%;top: 73%;" onclick="puntosMapa('p3punto5'); viewer.loadScene('p3p3')"></div>
-                <div id="p3punto6" class="puntos" style="left: 17%;top: 73%;" onclick="puntosMapa('p3punto6'); viewer.loadScene('p3p4')"></div>
-               <!--<div id="p3punto7" class="puntos" style="left: 17%;top: 83%;" onclick="puntos('p3punto7'); viewer.loadScene('p3p4f1')"></div>-->
-                <div id="p3punto8" class="puntos" style="left: 8%;top: 78%;" onclick="puntosMapa('p3punto8'); viewer.loadScene('p3p4f2')"></div>
-                <div id="p3punto9" class="puntos" style="left: 8%;top: 69%;" onclick="puntosMapa('p3punto9'); viewer.loadScene('p3p4f3')"></div>
-                <div id="p3punto10" class="puntos" style="left: 17%;top: 49%;" onclick="puntosMapa('p3punto10'); viewer.loadScene('p3p5')"></div>
-                <div id="p3punto11" class="puntos" style="left: 8%;top: 50%;" onclick="puntosMapa('p3punto11'); viewer.loadScene('p3p5f1')"></div>
-                <div id="p3punto12" class="puntos" style="left: 17%;top: 33%;" onclick="puntosMapa('p3punto12'); viewer.loadScene('p3p6')"></div>
-                <div id="p3punto13" class="puntos" style="left: 8%;top: 34%;" onclick="puntosMapa('p3punto13'); viewer.loadScene('p3p6f1')"></div>
-                <div id="p3punto14" class="puntos" style="left: 32%;top: 42%;" onclick="puntosMapa('p3punto14'); viewer.loadScene('p3p7')"></div>
-                <div id="p3punto15" class="puntos" style="left: 50%;top: 53%;" onclick="puntosMapa('p3punto15'); viewer.loadScene('p3p8')"></div>
-                <!--<div id="p3punto16" class="puntos" style="left: 19%;top: 18%;" onclick="puntos('p3punto16'); viewer.loadScene('p3p9')"></div>-->
-                <div id="p3punto17" class="puntos" style="left: 75%;top: 72%;" onclick="puntosMapa('p3punto17'); viewer.loadScene('p3p10')"></div>
-            </div>
-             
-             <div id="tejado" class="piso_cerrado pisos">
-                <div id="ptpunto0" class="puntos" style="left: 58%;top: 62%;" onclick="puntosMapa('ptpunto0'); viewer.loadScene('p4p0')"></div>
-                <div id="ptpunto1" class="puntos" style="left: 79%;top: 74%;" onclick="puntosMapa('ptpunto1'); viewer.loadScene('p4p1')"></div>
-                <div id="ptpunto2" class="puntos" style="left: 6%;top: 85%;" onclick="puntosMapa('ptpunto2'); viewer.loadScene('p4p2')"></div>
-                <div id="ptpunto3" class="puntos" style="left: 6%;top: 15%;" onclick="puntosMapa('ptpunto3'); viewer.loadScene('p4p3')"></div>
-                <div id="ptpunto4" class="puntos" style="left: 94%;top: 61%;" onclick="puntosMapa('ptpunto4'); viewer.loadScene('p4p4')"></div>
-                <div id="ptpunto5" class="puntos" style="left: 94%;top: 91%;" onclick="puntosMapa('ptpunto5'); viewer.loadScene('p4p5')"></div>
-             </div>
-
-         </div>
-         <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));">
-             
-        </div>
-
-        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(10)">
+      foreach ($mapa as $imagen) {
+        if($pisos[$indice]=="primer_piso"){
+          echo "<div id='".$pisos[$indice]."' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+        }else{
+          echo "<div id='".$pisos[$indice]."' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+        }
+        
+          foreach ($puntos as $punto) {
+            if($punto['piso']==$indice){
+              if ($punto['nombre']=='p1punto15') {
+              echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              }else{
+                echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              }
+              
+            }
             
-        </div>
+          }
+        echo "</div>";
+        $indice++;
+      }
+      
+    ?>
 
-        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(-10); this.style">
-            
-        </div>
+  </div>
+  <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));"></div>
+
+        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(10)"></div>
+
+        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(-10); this.style"></div>
          <script type="text/javascript">
            
         
