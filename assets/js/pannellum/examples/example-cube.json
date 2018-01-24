@@ -1,0 +1,34 @@
+{
+    "title": "Jordan Pond",
+    
+    "author": "Matthew Petroff",
+    
+    "preview": "./examplepano-preview.jpg",
+    
+    "type": "cubemap",
+    
+    "cubeMap": [
+        "./examplepanocube0.jpg",
+        "./examplepanocube1.jpg",
+        "./examplepanocube2.jpg",
+        "./examplepanocube3.jpg",
+        "./examplepanocube4.jpg",
+        "./examplepanocube5.jpg"
+    ],
+    
+    "hotSpots": [
+        {
+            "pitch": -12,
+            "yaw": 170,
+            "type": "info",
+            "text": "This is Jordan Pond, located in Acadia National Park."
+        },
+        {
+            "pitch": -10,
+            "yaw": -50,
+            "type": "info",
+            "text": "This is a link.",
+            "URL": "https://github.com/mpetroff/pannellum"
+        }
+    ]
+}
