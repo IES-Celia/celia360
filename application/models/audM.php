@@ -6,7 +6,7 @@
                 $this->load->database();
             }
 
-        public function insertarAud($desc, $tipo){
+        public function insertaraud($desc, $tipo){
             
             $r="";
             
@@ -23,7 +23,7 @@
             return $r;  
         }
     
-        public function buscarAud(){
+        public function buscaraud(){
           
             $sel="select * from audio";
             $res = $this->db->query($sel);
@@ -35,7 +35,7 @@
             return $tabla;
         }
     
-        public function borrarAud($id_aud){
+        public function borraraud($id_aud){
             $s="select url_aud from audio where id_aud='$id_aud'";
             $res=$this->db->query($s);
             $nom = $res->result_array()[0]["url_aud"];
@@ -48,13 +48,13 @@
         return $r;
         }
     
-        public function modificarAud($id){
+        public function modificaraud($id){
             $url=$_REQUEST["url_aud"];
             $desc=$_REQUEST["desc_aud"];
             $tipo=$_REQUEST["tipo_aud"];
-            echo$tipo;
+           
             $url1="audios/".$url.".mp3";
-            //echo"url";echo $url;
+            
             $s="select url_aud from audio where id_aud='$id'";
             $res=$this->db->query($s);
             $n = $res->result_array()[0]["url_aud"];
@@ -65,7 +65,7 @@
         return $r;
         }
     
-        public function buscaridAud($id){
+        public function buscaridaud($id){
            
             $sel="select * from audio where id_aud='$id'";
             $res= $this->db->query($sel);
@@ -77,7 +77,7 @@
         return $tabla;
         }
 
-        public function existeAud($n){
+        public function existeaud($n){
             
             
             $s="select url_aud from audio where url_aud='$n'";

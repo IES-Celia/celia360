@@ -5,62 +5,62 @@
        
        public function __construct() {
            parent::__construct();
-           $this->load->model("AudM");
+           $this->load->model("Audm");
        }
        
      public function index() {
         $this->mostraraudios();
      }
        
-     public function forminsertarAudio(){
+     public function forminsertaraudio(){
         
-        $this->load->view("audio/insertarAudios");
+        $this->load->view("audio/Insertaraudios");
      }
         
-     public function insertarAud(){   
+     public function insertaraud(){   
             $f_def = "audios/".$_FILES["audio"]["name"];
-            $r=$this->AudM->existeAud($f_def);
+            $r=$this->Audm->existeaud($f_def);
             
             if ($r==true){
                 echo"el archivo ya existe en el servidor, intenta cambiarle el nombre antes de subirlo si no quieres qe se sobreescriba";
-                echo"</br><a href='".site_url("audio/forminsertarAudio")."'>insertar</a></br>";
+                echo"</br><a href='".site_url("audio/forminsertaraudio")."'>insertar</a></br>";
                 echo"</br><a href='".site_url("audio/mostraraudios")."'>mostrar</a></br>";
                 echo"</br><a href='".site_url("audio/mostraraudios")."'>renombrar archivo en el servidor</a></br>";
             }else{
             $tipo=$_REQUEST["tipo_aud"];
             $desc=$_REQUEST["desc"];
-            $res=$this->AudM->insertarAud($desc, $tipo);
-            $datos["tabla"]=$this->AudM->buscarAud();
-            $this->load->view("audio/vaudios",$datos);
+            $res=$this->Audm->insertaraud($desc, $tipo);
+            $datos["tabla"]=$this->Aud->buscaraud();
+            $this->load->view("audio/Vaudios",$datos);
         }
         
         
      }
         
         public function mostraraudios(){
-            $datos["tabla"]=$this->AudM->buscarAud();
-            $this->load->view("audio/vaudios",$datos);
+            $datos["tabla"]=$this->Audm->buscaraud();
+            $this->load->view("audio/Vaudios",$datos);
         
         }
         
-        public function borrarAud($id){
-            $this->AudM->borrarAud($id);
-            $datos["tabla"]=$this->AudM->buscarAud();
-            $this->load->view("audio/vaudios",$datos);
+        public function borraraud($id){
+            $this->Audm->borraraud($id);
+            $datos["tabla"]=$this->AudM->buscaraud();
+            $this->load->view("audio/Vaudios",$datos);
         }
         
         public function formmodificarAud($id_aud){
-            $datos["aud"]=$this->AudM->buscaridAud($id_aud);
+            $datos["aud"]=$this->Audm->buscaridaud($id_aud);
             
-            $this->load->view("audio/modificarAudios", $datos);
+            $this->load->view("audio/Modificaraudios", $datos);
         
         }
 
-        public function modificarAud(){
+        public function modificaraud(){
             $id=$_REQUEST["id"];
-            $this->AudM->modificarAud($id);
-            $datos["tabla"]=$this->AudM->buscarAud();
-            $this->load->view("audio/vaudios", $datos);
+            $this->Audm->modificaraud($id);
+            $datos["tabla"]=$this->Audm->buscaraud();
+            $this->load->view("audio/Vaudios", $datos);
         
    }
 
