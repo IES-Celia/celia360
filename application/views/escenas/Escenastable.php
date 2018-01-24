@@ -35,7 +35,7 @@
             <td align='center'>".$escenas['pitch']."</td>
             <td align='center'>".$escenas['yaw']."</td>
             <td align='center'>".$escenas['tipo']."</td>
-            <td align='center'>".$escenas['panorama']."</td>
+            <td align='center'><img src='".$escenas['panorama']."'/></td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> Borrar </a></td>
