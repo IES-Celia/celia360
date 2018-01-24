@@ -21,7 +21,6 @@ class Imagen extends CI_Controller {
         //cargar el modelo
         $this->load->model("Img");
         //acciones para insertar la imagen
-		//método insertar
         $resultado = $this->Img->insertar_imagen();
 
         if ($resultado) {
