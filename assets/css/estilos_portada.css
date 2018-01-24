@@ -1,0 +1,185 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+#portadaca{
+  width: 100%;
+  position:relative;
+  top:-10px;
+  /*display: none;*/
+}
+
+
+
+h1 {
+    font-family:"Lato";
+    font-weight:normal;
+    font-size: 100px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-family:"Lato";
+    font-weight: normal;
+    font-size: 35px;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+h3{
+    font-family: 'Lato', serif;
+    font-size: 30px;
+}
+
+.contenedor_portada{ 
+    margin: 0 auto; width: 960px; 
+}
+
+
+#header_portada {
+    width: 100%;
+    background: url('../imagenes/portada/header-bg2.png');
+    height: 110px;
+    position: absolute;
+    margin-top: 0px;
+    z-index:5
+}
+
+#nav_portada { 
+     float: left;  
+}
+
+#nav_portada img{
+    width: 50px;
+    margin-top: 0px; 
+}
+
+#logo a { 
+    color: #fff; 
+    text-decoration: none; 
+    float: left; 
+    font-size: 45px; 
+    margin-top: 25px; 
+    color: #fff; 
+    font-family:"Lato"; 
+    font-weight: bold; 
+}
+ 
+#nav_portada ul{
+    list-style: none;
+    display: inline;
+    margin: 0 auto;
+}
+
+#nav_portada li{
+    margin-top: 23px;
+    float: left;
+    padding-left: 21px;
+}
+
+#nav_portada img{
+    transition:transform 0.1s ease-out;
+}
+
+#nav_portada img:hover{
+    transform: scale(1.4);
+}
+
+#nav_portada li a { 
+    margin-top: 15px;
+    color: #fff; 
+    opacity:0.9; 
+    font-size: 24px; 
+    text-decoration: none; 
+    font-family: 'Lato'; 
+    display:block;
+    transition:transform 0.1s ease-out;
+}
+
+#nav_portada li a:hover { 
+    color: #fff; 
+    opacity:1; 
+    transform: scale(1.1);
+}
+
+#separador_portada { 
+    background: url('../imagenes/portada/separador.png')no-repeat; 
+    width: 300px; 
+    height: 35px; 
+    margin: 0px auto 27px auto; 
+}
+
+#lazo_portada { 
+    background: url('../imagenes/portada/lazo.png');
+    width: 251px; 
+    height: 48px;
+    margin: 0 auto; 
+    display: block; 
+    position: relative; 
+    transition:transform 0.5s ease-out;
+}
+
+#lazo_portada:hover{
+    background: url('../imagenes/portada/lazo.png');
+    width: 251px; 
+    height: 48px;
+    margin: 0 auto; 
+    display: block; 
+    position: relative; 
+    transform: scale(1.1);
+}
+
+#slider1_portada h2{
+    margin-top: -50px;
+}
+
+#slider1_portada{ 
+    width: 100%; 
+}
+
+#slider1_portada{
+    background-image:url('../imagenes/portada/portada5.jpg') ;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #fff;
+    height: 500px;
+    margin: 0;
+    padding: 300px 0 260px 0;
+    background-size: cover;
+}
+
+#cambio_portada{
+    width: 100%;
+    position:absolute;
+    background-color: rgba(0,0,0,.3);
+    height: 100%;
+}
+
+#libre_portada, #guiada_portada, #destacado_portada{
+    margin: 20% 0  0;
+    width: 100%;
+    position: absolute;
+}
+
+#slider1_portada .contenedor_portada{
+    text-align:center;
+    margin:0 auto;
+	vertical-align: middle;
+}
+
+#elamo_portada { 
+    color: white;
+    background: black; 
+    font-family:"Lato"; 
+    font-size: 14px; 
+    padding: 50px; 
+    text-align: center; 
+}
+
