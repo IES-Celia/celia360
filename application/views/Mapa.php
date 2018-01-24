@@ -57,7 +57,7 @@
 			    margin-bottom: 100px;
 			    z-index: 2;
 			    position: absolute;
-			    background-image: url(<?php echo "'".base_url('assets/imagenes/svg/subirpiso22.svg')."'"?>);
+			    background-image: url(<?php echo "'".site_url('assets/imagenes/svg/subirpiso22.svg')."'"?>);
 			    background-size: 100% 100%;
 			    width: 30px;
 			    height: 30px;
@@ -68,7 +68,7 @@
 			    margin-bottom: 60px;
 			    z-index: 2;
 			    position: absolute;
-			    background-image: url(<?php echo "'".base_url('assets/imagenes/svg/bajarpiso22.svg')."'"?>);
+			    background-image: url(<?php echo "'".site_url('assets/imagenes/svg/bajarpiso22.svg')."'"?>);
 			    background-size: 100% 100%;
 			    width: 30px;
 			    height: 30px;
@@ -78,7 +78,7 @@
 			    margin-bottom: 10px;
 			    z-index: 2;
 			    position: absolute;
-			    background-image: url(<?php echo "'".base_url('assets/imagenes/svg/pinned.svg')."'"?>);
+			    background-image: url(<?php echo "'".site_url('assets/imagenes/svg/pinned.svg')."'"?>);
 			    background-size: 100% 100%;
 			    width: 40px;
 			    height: 40px;
@@ -96,9 +96,9 @@
 
  			foreach ($mapa as $imagen) {
  				if($pisos[$indice]=="primer_piso"){
- 					echo "<div id='".$pisos[$indice]."' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+ 					echo "<div id='".$pisos[$indice]."' class='piso_abierto pisos' style='background-image: url(".site_url($imagen['url_img']).");'>";
  				}else{
- 					echo "<div id='".$pisos[$indice]."' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+ 					echo "<div id='".$pisos[$indice]."' class='piso_cerrado pisos' style='background-image: url(".site_url($imagen['url_img']).");'>"; 
  				}
  				
  					foreach ($puntos as $punto) {
