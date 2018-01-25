@@ -7,24 +7,29 @@
   *                                               
   *************************************************************************/  
 
-        public function ___construct(){
-            parent::___construct();
+        public function __construct(){
+            parent::__construct();
             $this->load->model("UsuarioModel");
         }
 
+        public function index() {
+            $this->showLoginForm();
+        } 
+
+
         public function showLoginForm(){       
         //Muestra la ventana de login
-        $vista->show("usuario/formLogin");
+            $this->load->view("usuario/formLogin");
         }
         public function checkLogin(){
             //Ejecuta el login
                 
-            $resultado = $usuario->login($_REQUEST["user"],$_REQUEST["pass"]);
+            $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
             
              if($resultado ==1){
                 $_SESSION["tipousr"] = 1;
                
-            $this->load->view("usuario/admin",$datos);
+            $this->load->view("usuario/admin");
 
             }else if($resultado ==2){
                 $_SESSION["tipousr"] = 2;
@@ -56,7 +61,7 @@
         public function processRegisterForm(){
         //Formulario de registro de usuarios
          
-            $resultado = $usuario->inserUsu();
+            $resultado = $this->UsuarioModel->inserUsu();
             if ($resultado){
 
                 $datos["mensaje"] = "Usuario creado correctamente";
@@ -69,12 +74,11 @@
      
         }
         
-        public function modificar(){
+        public function modificar($id){
     
         //Abrir la ventana para modificar el usuario
 
-            $id = $_REQUEST["id"];
-            $datos["DatosMod"]=$usuario->buscarUsuId($id);
+            $datos["DatosMod"]=$this->UsuarioModel->buscarUsuId($id);
             $this->load->view("usuario/modUsu",$datos);
 
         }
@@ -82,19 +86,19 @@
         
         //Modificar el usuario
         $id = $_REQUEST["id"];
-        $usuario->alterarUsu($id);
-        $datos["tablaUsuarios"] = $usuario->buscarTodoUsu();
+        $this->UsuarioModel->alterarUsu($id);
+        $datos["tablaUsuarios"] = $this->UsuarioModel->buscarTodoUsu();
         $datos["nombreUsuario"] = "usuario modificado correctamente.";
         $this->load->view("usuario/usuarios",$datos);
 
         }
 
-        public function borrarUsuario(){ 
+        public function borrarUsuario($id){ 
         //Borrar usuario
 
-            $id = $_REQUEST["id"];
-            $usuario->borrarUsu($id);
-            $datos["tablaUsuarios"] = $usuario->buscarTodoUsu();
+    
+            $this->UsuarioModel->borrarUsu($id);
+            $datos["tablaUsuarios"] = $this->UsuarioModel->buscarTodoUsu();
             $datos["nombreUsuario"] = "usuario borrado correctamente.";
             $this->load->view("usuario/usuarios",$datos);
           
@@ -102,13 +106,13 @@
 
         public function usuarios(){
 
-                $datos["tablaUsuarios"]=$usuario->buscarTodoUsu();
-                $this->load->view("usuario/usuarios",$datos);
+            $datos["tablaUsuarios"]=$this->UsuarioModel->buscarTodoUsu();
+            $this->load->view("usuario/usuarios",$datos);
         }
 
         public function mapero(){
 
-                $this->load->view("usuario/mapa");
+                $this->load->view("usuario/mapero");
 
         }
 
