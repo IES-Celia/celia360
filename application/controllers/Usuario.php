@@ -13,15 +13,15 @@
         }
 
         public function index() {
-            $this->showLoginForm();
+            $this->showloginform();
         } 
 
 
-        public function showLoginForm(){       
+        public function showloginForm(){       
         //Muestra la ventana de login
             $this->load->view("usuario/formLogin");
         }
-        public function checkLogin(){
+        public function checklogin(){
             //Ejecuta el login
                 
             $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
@@ -52,13 +52,13 @@
             }
           
         }
-        public function showRegisterForm(){
+        public function showregisterform(){
         //Mostrar el formulario de registro
         $this->load->view("usuario/registerForm");
         }
         
 
-        public function processRegisterForm(){
+        public function processregisterform(){
         //Formulario de registro de usuarios
          
             $resultado = $this->UsuarioModel->inserUsu();
@@ -78,27 +78,27 @@
     
         //Abrir la ventana para modificar el usuario
 
-            $datos["DatosMod"]=$this->UsuarioModel->buscarUsuId($id);
+            $datos["DatosMod"]=$this->UsuarioModel->buscarusuid($id);
             $this->load->view("usuario/modUsu",$datos);
 
         }
-        public function modUsuario(){
+        public function modusuario(){
         
         //Modificar el usuario
         $id = $_REQUEST["id"];
-        $this->UsuarioModel->alterarUsu($id);
-        $datos["tablaUsuarios"] = $this->UsuarioModel->buscarTodoUsu();
+        $this->UsuarioModel->alterarusu($id);
+        $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
         $datos["nombreUsuario"] = "usuario modificado correctamente.";
         $this->load->view("usuario/usuarios",$datos);
 
         }
 
-        public function borrarUsuario($id){ 
+        public function borrarusuario($id){ 
         //Borrar usuario
 
     
-            $this->UsuarioModel->borrarUsu($id);
-            $datos["tablaUsuarios"] = $this->UsuarioModel->buscarTodoUsu();
+            $this->UsuarioModel->borrarusu($id);
+            $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
             $datos["nombreUsuario"] = "usuario borrado correctamente.";
             $this->load->view("usuario/usuarios",$datos);
           
@@ -106,7 +106,7 @@
 
         public function usuarios(){
 
-            $datos["tablaUsuarios"]=$this->UsuarioModel->buscarTodoUsu();
+            $datos["tablaUsuarios"]=$this->UsuarioModel->buscartodousu();
             $this->load->view("usuario/usuarios",$datos);
         }
 

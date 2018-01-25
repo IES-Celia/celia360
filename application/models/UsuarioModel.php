@@ -7,7 +7,7 @@
         ******************************************************************/
     
 
-        public function inserUsu(){
+        public function inserusu(){
         
             $email = $_REQUEST["email"];
             $username = $_REQUEST["username"];
@@ -56,7 +56,7 @@
                 return $resultado;   
         }
 
-        public function buscarUsu($usr,$pass){
+        public function buscarusu($usr,$pass){
           
             $consulta = "SELECT * FROM usuarios where nombre_usuario = '$usr' and password = '$pass'";
             $tabla = $this->db->tabla($consulta);
@@ -64,7 +64,7 @@
             return $tabla;
         }
 
-        public function buscarUsuId($id){
+        public function buscarusuid($id){
           
             $consulta = "SELECT * FROM usuarios WHERE id_usuario = $id";
             $resultado= $this->db->query($consulta);
@@ -77,7 +77,7 @@
 
     }
 
-        public function buscarTodoUsu(){
+        public function buscartodousu(){
            
             $resultado = $this->db->query("SELECT * FROM usuarios");
 
@@ -90,7 +90,7 @@
 
     }
 
-        public function borrarUsu($id){
+        public function borrarusu($id){
           
             $this->db->query("Delete from usuarios where id_usuario = '$id'");
 
@@ -104,7 +104,7 @@
         return $tabla;
     }
 
-        public function alterarUsu($id){
+        public function alterarusu($id){
             $nombre = $_REQUEST["nombre"];
             $apellidos = $_REQUEST["apellidos"];
             $email = $_REQUEST["email"];
