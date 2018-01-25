@@ -61,7 +61,7 @@
              
             <div class="main">
               <div class="slider-nav">
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p0p1f1.jpg");?>" style='height: : 130px; width:130px;' alt="foto0" title="PATIO"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p0p1f1.JPG");?>" style='height: : 130px; width:130px;' alt="foto0" title="PATIO"></div>
                 <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p4p3.JPG");?>" style='height: : 130px; width:130px;' alt="foto1" title="SALON"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p4p2.JPG");?>" style='height: : 130px; width:130px;' alt="foto2" title="COCINA"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p5f2.JPG");?>" style='height: : 130px; width:130px;' alt="foto3" title="GARAJE"></div>
@@ -212,7 +212,7 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
           </div>-->
           
          <div id="myModal" class="modalEscaleras">
-               <button class="plantas"id="p4" onclick="viewer.loadScene('p4p0')"> Tejado</button>
+               <button class="plantas" id="p4" onclick="viewer.loadScene('p4p0')"> Tejado</button>
               <button class="plantas" id="p3" onclick="viewer.loadScene('p3p1'); piso_escalera(3); puntos('p3punto1')"> Segunda planta</button>
               <button class="plantas" id="p2" onclick="viewer.loadScene('p2p1'); piso_escalera(2); puntos('p2punto1')"> Primera planta</button>
               <button class="plantas" id="p1" onclick="viewer.loadScene('p1p1'); piso_escalera(1); puntos('p1punto1')"> Planta Baja</button>
