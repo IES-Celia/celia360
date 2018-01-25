@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", 0);
 class Conversorbd2json extends CI_Controller {
 
   public function index(){
