@@ -237,9 +237,9 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
               if ($punto['nombre']=='p1punto15') {
-              echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }else{
-                echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+                echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }
               
             }
@@ -257,140 +257,6 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
         <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(10)"></div>
 
         <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(-10); this.style"></div>
-         <script type="text/javascript">
-           
-        
-                mapa_responsivo();
-                var piso=1;
-                /*evento de resize*/
-                var id;
-                function variable_piso(x){
-                    piso=x;
-                }
-             
-                $(window).resize(function() {
-                    clearTimeout(id);
-                    alert
-                    id = setTimeout(mapa_responsivo, 100);
-                });
-
-                /*movimiento del mapa y botones*/
-                function mapa_responsivo(){
-                    var distancia_top=window.innerHeight*0.57;
-                    var anchura=window.innerWidth*0.45;
-                    var altura=anchura*0.57;
-                    
-                    document.getElementById("mapa").style.top=window.innerHeight-altura+"px";
-                    document.getElementById("mapa").style.height=altura+"px";
-                    document.getElementById("mapa").style.width=anchura+"px"; 
-                        distancia_top=window.innerHeight*0.92;
-                }
-                
-                function cambiar_piso(opcion){
-                    if (opcion==10) {
-                        if (piso==4) {
-                            // aqui puedes poner algo y saltará cuando intentas pasar más allá del tejado
-                        }else{
-                            piso++;
-                            switch (piso){
-                                case 1:
-                                    document.getElementById("sotano").className="piso_cerrado pisos";
-                                    document.getElementById("primer_piso").className="piso_abierto pisos";
-                                     
-                                    break;
-                                case 2:
-                                    document.getElementById("primer_piso").className="piso_cerrado pisos";
-                                    document.getElementById("segundo_piso").className="piso_abierto pisos";
-                                    
-                                    break;
-                                case 3:
-                                    document.getElementById("segundo_piso").className="piso_cerrado pisos";
-                                    document.getElementById("tercer_piso").className="piso_abierto pisos";
-                                    break;
-                                case 4:
-                                    document.getElementById("tercer_piso").className="piso_cerrado pisos";
-                                    document.getElementById("tejado").className="piso_abierto pisos";
-                                    break;
-                            }
-                          }
-                    }else if (opcion==-10) {
-                        if(piso==0){
-                            // aqui puedes poner algo y saltará cuando intentas pasar más allá del sotano
-                        }else{
-                            piso--;
-                            switch (piso){
-                                case 3:
-                                    document.getElementById("tejado").className="piso_cerrado pisos";
-                                    document.getElementById("tercer_piso").className="piso_abierto pisos";
-                                    break;
-                                case 2:
-                                    document.getElementById("tercer_piso").className="piso_cerrado pisos";
-                                    document.getElementById("segundo_piso").className="piso_abierto pisos";
-                                    
-                                    break;
-                                case 1:
-                                    document.getElementById("segundo_piso").className="piso_cerrado pisos";
-                                    document.getElementById("primer_piso").className="piso_abierto pisos";
-                                    
-                                    break;
-                                case 0:
-                                    document.getElementById("primer_piso").className="piso_cerrado pisos";
-                                    document.getElementById("sotano").className="piso_abierto pisos";
-                                    break;
-                            }
-                        }
-
-                    }else{
-                        switch (piso){
-                                case 4:
-                                
-                                case 3:
-                                    
-                                    break;
-                                case 2:
-                                    
-                                    
-                                    break;
-                                case 1:
-                                    
-                                    
-                                    break;
-                                case 0:
-                                    
-                                    break;
-                            }
-                    }
-                    
-                    
-                    
-                }
-
-                function mover(opcion){               
-                    switch (opcion.className){
-                        case "cerrado":
-                            opcion.className="abierto";
-                            break;
-                        case "abierto":
-                            opcion.className="cerrado";
-                            break;
-                        case "cerrado_boton boton":
-                            if(opcion.id=="subir_piso" || opcion.id=="bajar_piso"){
-                                opcion.style.visibility="visible";
-                            }
-                            opcion.className="abierto_boton boton";
-                            opcion.style.left="46.5%";
-                            break;
-                        case "abierto_boton boton":
-                            if(opcion.id=="subir_piso" || opcion.id=="bajar_piso"){
-                                opcion.style.visibility="hidden";
-                            }
-                            opcion.className="cerrado_boton boton";
-                            opcion.style.left="0.5%";
-                            break;
-                    }
-                    
-                }
-            </script>
         </div>
 
 	</div>
@@ -455,17 +321,7 @@ $( ".menu_slider" ).click(function() {
    //focusOnSelect: true,
  });
       
-      
-$('.slider-nav').on('swipe', function(event, slick, direction){
-  //console.log(direction);
-  //console.log(slick);
-   //console.log(event);
-  
-});
-      //Get current slide 
-      //Add class Hightlight
-      //do this every time when changes
-      //var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+
     
       
 
@@ -513,33 +369,16 @@ $('.slider-nav').on('swipe', function(event, slick, direction){
                  console.log("ERROR444");
                }
             });
-        //json_contenido.scenes["p1p2f3"].panorama = "<?php //echo base_url("assets/imagenes/bajaplanta/p1p2f3.JPG");?>";
-        
-          //return json_contenido;
         }
-   // viewer = pannellum.viewer('panorama', json_contenido );
     
     // 
     // FIN DE CARGA DE JSON PANNELLUM
     //
-  
 
-function puntos(hotspotDiv,identificador){
-            if(identificador=="pspunto12"){
-               piso_escalera(0);
-            }
-            if(identificador=="p1punto18"){
-                piso_escalera(1);
-            }
-            document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
-            document.getElementById(identificador).className="punto_seleccionado";
-            document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
-            document.getElementById(identificador).className="punto_seleccionado";
-            
-        }
+
+
 
    /////////////////////PRUEBAS AJAX////////////////////////////////
-  ///////////////////////////////////////////////////////////////
   function baseDatos(hotspotDiv,args){
     //Al clikear el ojo del salon de actos.
      $(".modal").css("visibility","visible");
@@ -639,36 +478,8 @@ $( ".overlay" ).on( "click", function() {
 $( ".modal__close" ).on( "click", function() {
   $( ".modal" ).css('visibility',"hidden");
 });  
-  ///////////////////////////////////////////////////
-  ///////////////////////////////////////////////////
   
-  
-  /////////////////////////PRUEBAS AJAX////////////////////////////
-  ////////////////////////////////////////////////////////////////
-    
-  /*cambio de mapa con las escaleras*/
-  function piso_escalera(option){
-      switch(option){
-          case 0:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("sotano").className="piso_abierto pisos";
-              break;
-          case 1:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("primer_piso").className="piso_abierto pisos";
-              break;
-          case 2:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("segundo_piso").className="piso_abierto pisos";
-              break;
-          case 3:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("tercer_piso").className="piso_abierto pisos";
-              break;
-             }
-      variable_piso(option);
-  }
-    
+
 function escaleras(){
     nombreEscena = viewer.getScene();
     pisoActual = nombreEscena.substring(0,2);
@@ -700,50 +511,17 @@ function escaleras(){
     viewer.toggleFullscreen();
 });
     
-    ////////////////////
-    // Pruebas Juego////
-   /////////////////////
-   
-   var solucion = [4, 5];
-    var prueba = [0,0];
     
-    function juego1(){
-        alert("Has encontrado la primera pieza, enhorabuena");
-        prueba[0]=4;
-    }
-    
-    function juego2(){
-        alert("Has encontrado la segunda pieza, enhorabuena");
-        prueba[1]=5;
-    }
-    
-    function juego3(){
-        if(prueba[0]==4 && prueba[1]==5){
-            alert("Has encontrado las dos piezas, puedes entrar");
-			viewer.loadScene('premio')
-        }else{
-            alert("algo te falta, sigue buscando");
-        }
-    }
     //Toggle Audio boton.
-    
     $("#botonAudio1").toggle(function()
     {$("#botonAudio").show();},
     function()
     {$("#botonAudio").hide();
     });
    
-  /*//Toggle fullscren icono.
-   $("#fullscreen").toggle(function()
-    {$(".ctrl").css("background-image","url('css/svg/fsnormal.svg')");},
-    function()
-    {$(".ctrl").css("background-image","url('css/svg/fullscreenblanco.svg')");
-    });
-  */
+  
   /////////////PRUEBA AUDIO//////////////////
   //////////////////PARA PUNTOS SENSIBLES.////////////////////////////
-  
-
   
    function musica(hotspotDiv,args){
        $('#musica1').attr("src",args);
@@ -930,14 +708,6 @@ function escaleras(){
   ///////////FIN VISITA GUIADA  
     
 </script>
-
-    <script>
-        function puntosMapa(identificador){
-            
-            document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
-            document.getElementById(identificador).className="punto_seleccionado";
-        }
-    </script> 
       
      <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
      <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
