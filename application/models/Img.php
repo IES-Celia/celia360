@@ -16,8 +16,7 @@ class Img extends CI_Model {
         $imgFile = $_FILES['imagen']['name'];
         $tmp_dir = $_FILES['imagen']['tmp_name'];
 
-
-        $upload_dir = 'imagenes/'; // cargar directorio
+        $upload_dir = 'assets/imagenes/imagenes-hotspots/'; // cargar directorio
         //PATHINFO_EXTENSION  (se devuelve la extensión)
         $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
 		
@@ -89,7 +88,7 @@ class Img extends CI_Model {
             $tmp_dir = $_FILES['imagen']['tmp_name'];
 
             if ($imgFile) {
-                $upload_dir = 'imagenes/'; // cargar directorio
+                $upload_dir = 'assets/imagenes/imagenes-hotspots/'; // cargar directorio
                 //pathinfo — Devuelve información acerca de la ruta de un fichero
                 $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
                
@@ -142,7 +141,7 @@ class Img extends CI_Model {
             $archivo_imagen = $consulta->result_array()[0]["url_imagen"];
 
             //consultar la BD la fila
-            $url_imagen = "imagenes/".$archivo_imagen; // cargar directorio
+            $url_imagen = "assets/imagenes/imagenes-hotspots/".$archivo_imagen; // cargar directorio
             //unlink — Borra un fichero
             unlink($url_imagen);
 
