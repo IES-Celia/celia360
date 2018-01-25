@@ -482,7 +482,7 @@ $('.slider-nav').on('swipe', function(event, slick, direction){
       function visita_libre(nombre){
         
         $.ajax({
-                url: 'index.php/conversorbd2json/'+nombre,
+                url: "<?php echo site_url("conversorbd2json/"); ?>"+nombre,
                 dataType: 'json',
                 success: function(data){
                   console.log(json_contenido);
