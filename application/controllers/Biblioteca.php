@@ -24,28 +24,28 @@ class Biblioteca extends CI_Controller {
 	}
 
 	public function index() {
-		$this->showIntAdmin();
+		$this->showintadmin();
 	}
 
 	
-	public function showIntAdmin()
+	public function showintadmin()
 	{
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
-		$this->load->view("biblioteca/IntAdmin", $datos);
+		$this->load->view("biblioteca/intadmin", $datos);
 	}
 
-	public function showmodificarLibro($id_libro)
+	public function showmodificarlibro($id_libro)
 	{
 		$resultado = $this->bibliotecaModel->get_info_libro($id_libro);
 		$datos["libros"] = $resultado;
-		$this->load->view("biblioteca/modificarLibro", $datos);
+		$this->load->view("biblioteca/modificarlibro", $datos);
 	}
 
 
 
-	public function showInsertLibro()
+	public function showinsertlibro()
 	{		
-		$this->load->view("biblioteca/inserLibro");
+		$this->load->view("biblioteca/inserlibro");
 	}
 
 	public function modifiedLibro($id_libro)
@@ -53,38 +53,38 @@ class Biblioteca extends CI_Controller {
 		$resultado=$this->bibliotecaModel->update($id_libro);
 		if($resultado){
 				$datos["tabla"] = $this->bibliotecaModel->get_info();
-				$this->load->view("biblioteca/IntAdmin",$datos);
+				$this->load->view("biblioteca/intadmin",$datos);
 			}
 	}
 
-	public function deleteLibro($id_libro){
-		$this->bibliotecaModel->deleteLibro($id_libro);
+	public function deletelibro($id_libro){
+		$this->bibliotecaModel->deletelibro($id_libro);
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
-		$this->load->view("Biblioteca/IntAdmin",$datos);
+		$this->load->view("biblioteca/intadmin",$datos);
 	}
 
-	public function insertLibro(){
-		$libro->insertLibro();
+	public function insertlibro(){
+		$libro=$this->bibliotecaModel->insertlibro();
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
-		$this->load->view("IntAdmin",$datos);
+		$this->load->view("biblioteca/intadmin",$datos);
 	}
 
-	public function showInsertImg($id_libro){
-		$datos["tabla"] = $id_libro;
+	public function showinsertimg($id_libro){
+		$datos["idlibro"] = $id_libro;
 		//$datos = $_REQUEST["id_libro"];
-		$this->load->view("Biblioteca/insertImg",$datos);
+		$this->load->view("biblioteca/insertimg",$datos);
 	}
 
-	public function procesarInsertImg(){
+	public function procesarinsertimg(){
 		$id_libro = $_REQUEST["id"];
 		$pag_ant = $_REQUEST["pagina_ant"];
 		$num_pag = $_REQUEST["num_pag"];
 		echo "Voy a renombrar... $id_libro - $pag_ant - $num_pag<br>";
-		$this->bibliotecaModel->renomDir($id_libro,$pag_ant,$num_pag);
+		$this->bibliotecaModel->renomdir($id_libro,$pag_ant,$num_pag);
 		echo "Voy a insertar nueva imagen... $id_libro - $pag_ant<br>";
-		$this->bibliotecaModel->insertarImagen($id_libro, $pag_ant);
-		$datos = $_REQUEST["id"];
-		$this->load->view("insertImg",$datos);
+		$this->bibliotecaModel->insertarimagen($id_libro, $pag_ant);
+		$datos["idlibro"] = $_REQUEST["id"];
+		$this->load->view("biblioteca/insertimg",$datos);
 	}
 
 	public function verLibro($id_libro) {

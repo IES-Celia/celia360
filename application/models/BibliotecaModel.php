@@ -40,16 +40,16 @@
 			$res = $this->db->affected_rows();
 			return $res;
 		}
-		public function deleteLibro($id_libro){
+		public function deletelibro($id_libro){
             $res = $this->db->query("Delete  from libros WHERE id_libro='$id_libro'");
          	
             return $res;
 			
 		}
 		//renombrar imagenes
-		public function renomDir($id_libro,$pag_ant,$num_pag){
-			for($i=$num_pag-2;$i>$pag_ant;$i--){
-				$oldDir="assets/imgs/books/$id_libro/".($i+1).".jpg";
+		public function renomdir($id_libro,$pag_ant,$num_pag){
+			for($i=$num_pag-1;$i>$pag_ant;$i--){
+				$oldDir="assets/imgs/books/$id_libro/".$i.".jpg";
 				$newDir="assets/imgs/books/$id_libro/".($i+1).".jpg";
 				rename($oldDir,$newDir);
 			}
@@ -57,13 +57,13 @@
 
 		//crear carpeta con el siguiente id de la base de datos
 		
-		public function getmaxIDLibro(){
+		public function getmaxidlibro(){
             $tabla = $this->db->query("SELECT MAX(id_libro) from libros");
 
 			return $tabla;
 		}
 
-		public function insertarImagen($id_libro, $pag_ant) {
+		public function insertarimagen($id_libro, $pag_ant) {
 			
 			$target_file = "assets/imgs/books/$id_libro/" . ($pag_ant + 1). ".jpg";
 			$uploadOk = 1;
@@ -77,7 +77,7 @@
 
 		}
 
-		public function insertarImgsLibros($id_libro) {
+		public function insertarimgsLibros($id_libro) {
 			
 
 			$target_file = "imgs/books/$id_libro/jpg";
@@ -95,7 +95,7 @@
 
 		}
 
-		public function insertLibro(){
+		public function insertlibro(){
 			
 
 			$titulo=$_REQUEST["titulo"];
@@ -106,7 +106,7 @@
 			$isbn=$_REQUEST["isbn"];
 			$tipo=$_REQUEST["tipo"];
 
-            $res = $this->db->manipula("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo')");
+            $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo')");
          	
             return $res;
 		}

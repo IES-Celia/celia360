@@ -1,5 +1,9 @@
 body{
 	background: url('../imgs/biblio.jpg');
+
+}
+div{
+	overflow: scroll;
 }
 table{
 	border-spacing: 0px;
