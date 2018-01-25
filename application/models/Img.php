@@ -20,6 +20,10 @@ class Img extends CI_Model {
         $upload_dir = 'imagenes/'; // cargar directorio
         //PATHINFO_EXTENSION  (se devuelve la extensión)
         $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
+		
+		//extensiones de imagen válidas
+		$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // extensiones válidas
+			
         //cambiar el nombre de la imagen de carga
         $userpic = $id_imagen . "." . $imgExt;
 
@@ -28,13 +32,17 @@ class Img extends CI_Model {
         $maxid = $resul->row()->maxid;
         //recoger el resultado y añadirle 1 (que será el nombre de la imagen)
         $nombre = $maxid + 1;
-
-        //cambiar el nombre de la imagen de carga
-        $userpic = $nombre . "." . $imgExt;
-
-        // move_uploaded_file — Mueve un archivo subido a una nueva ubicación.
-        move_uploaded_file($tmp_dir, $upload_dir . $userpic);
-
+	
+		//Permitir formatos de archivo de imagen válidos
+		if(in_array($imgExt, $valid_extensions)){			
+				
+			$userpic = $nombre . "." . "jpg";
+			move_uploaded_file($tmp_dir,$upload_dir.$userpic);	
+		}
+		else{
+			echo "Sólo se permiten archivos JPG, JPEG, PNG y GIF.";		
+		}
+	
         // Insertamos el registro en la base de datos
         $resultado = $this->db->query("insert into imagenes (id_imagen,titulo_imagen,texto_imagen,url_imagen,fecha)
                 values('$id_imagen','$titulo_imagen','$texto_imagen' ,'$userpic','$fecha')");
@@ -47,9 +55,8 @@ class Img extends CI_Model {
 
         //si la 1ªconsulta del (máximo id insertado +1) es distinto de la 2ªconsulta del máximo id insertado
         if ($nombre != $nom) {
-
-            //cambiar el nombre de la imagen de carga
-            $user = $nom . "." . $imgExt;
+			
+			 $user = $nom . "." . "jpg";
             //modifico el nombre en la BD
             $re = $this->db->query("update imagenes set url_imagen='$user' where id_imagen ='$nom'");
 
@@ -85,15 +92,21 @@ class Img extends CI_Model {
                 $upload_dir = 'imagenes/'; // cargar directorio
                 //pathinfo — Devuelve información acerca de la ruta de un fichero
                 $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
-                //********************************
-               // $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-               // if(in_array($imgExt, $valid_extensions))
-                //****************************************
-                //cambiar el nombre de la imagen de carga
-                $userpic = $actualizar_id . "." . $imgExt;
-
-                move_uploaded_file($tmp_dir,$upload_dir . $userpic);
-                $fichero_actualizado = true;
+               
+				//extensiones de imagen válidas
+				$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // extensiones válidas
+	
+				//Permitir formatos de archivo de imagen válidos
+				if(in_array($imgExt, $valid_extensions)){	
+				
+					//cambiar el nombre de la imagen de carga
+					$userpic = $actualizar_id . "." . "jpg";
+					move_uploaded_file($tmp_dir,$upload_dir.$userpic);
+					$fichero_actualizado = true;
+				}
+				else{
+					echo "Sólo se permiten archivos JPG, JPEG, PNG y GIF.";		
+				}
             } else {
                 // si no se seleccionó ninguna imagen, la anterior permanecerá como está.
                 $userpic = $actualizar_url;
