@@ -11,12 +11,11 @@
 		<div id="cualquiera">
 			<?php  
 			
-			$idlibro = $tabla;
 			$directorio = "assets/imgs/books/$idlibro";
 			$arrayPag = scandir($directorio);
 			$num_pag = count($arrayPag)-2;
 			
-			echo" <a href='".site_url("/biblioteca/showIntAdmin")."'>Volver a la interfaz de administracion</a>";
+			echo" <a href='".site_url("/biblioteca/showintadmin")."'>Volver a la interfaz de administracion</a>";
 				echo "<table>";
 					echo "<tr>";
 						for($i = 0;$i<$num_pag;$i++){
@@ -25,7 +24,7 @@
 									echo "<tr>";
 								}
 									echo "<td>";
-									echo "<form action='".site_url("/biblioteca/procesarInsertImg")."' method='post' enctype='multipart/form-data'>";
+									echo "<form action='".site_url("/biblioteca/procesarinsertimg")."' method='post' enctype='multipart/form-data'>";
 									echo "<img src='".base_url("assets/imgs/books/$idlibro/$i.jpg")."' height='200px' width='150px'>".
 											
 												"<input type='hidden' name='id' value='$idlibro'>".

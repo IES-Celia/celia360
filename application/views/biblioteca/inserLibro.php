@@ -40,12 +40,12 @@
 	</head>
 
 <?php // Formulario de registro de libros
-echo" <a href='".site_url("/biblioteca/showIntAdmin")."'>Volver a la interfaz de administracion</a>";
+echo" <a href='".site_url("/biblioteca/showintadmin")."'>Volver a la interfaz de administracion</a>";
 echo"
 
 		<h1>Insertar libro</h1>
 		<div id='caja'>
-			<form action='".base_url("biblioteca/insertLibro")."' method='get'>
+			<form action='".site_url("biblioteca/insertlibro")."' method='get'>
 				<div class='group'>      
 			      <input type='text' name='titulo' required>
 			      <span class='highlight'></span>
@@ -74,7 +74,6 @@ echo"
 			      <input type='date' name='fecha' value='Fecha de Edición'required>
 			      <span class='highlight'></span>
 			      <span class='bar'></span>
-			      <label>Fecha de Edicion</label>
 			    </div>
 				<div class='group'>      
 			      <input type='text' name='isbn' required>
@@ -83,7 +82,7 @@ echo"
 			      <label>I S B N </label>
 			    </div>
 				<div class='group'>      
-			      <input type='text' name='tipo' required>
+			      <input type='text' name='tipo' pattern='[0-1]{1}' min='1' maxlength='1' required>
 			      <span class='highlight'></span>
 			      <span class='bar'></span>
 			      <label>Tipo</label>

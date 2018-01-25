@@ -4,7 +4,7 @@
 
 <meta charset="UTF-8">
 <?php  
-	echo" <a href='".site_url("/biblioteca/showIntAdmin")."'>Volver a la interfaz de administracion</a>";
+	echo" <a href='".site_url("/biblioteca/showintadmin")."'>Volver a la interfaz de administracion</a>";
 	print_r($libros[0]['id_libro']);
 			echo "
 			<h1>Modificar Libro</h1>
