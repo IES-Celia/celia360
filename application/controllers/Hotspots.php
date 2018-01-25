@@ -7,6 +7,9 @@ class Hotspots extends CI_Controller {
         $this->load->model("hotspotsModel");
     }
     
+    public function index(){
+        $this->showHotspotsTable();
+    }
     
     public function showHotspotsTable() {
         $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
