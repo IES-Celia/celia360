@@ -1,7 +1,9 @@
 /////////////////////PAQUILLO/////////////////////////
-
-mapa_responsivo();
-    var piso=1;
+$(document).ready(function($) {
+    mapa_responsivo();
+    
+});
+var piso=1;
 /*evento de resize*/
     var id;
 function variable_piso(x){
