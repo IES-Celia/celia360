@@ -1,4 +1,5 @@
 
+
 <?php
 	if (isset($datos["error"])) {
 		echo "<p style='color:red'>".$datos["error"]."</p>";
@@ -21,8 +22,9 @@ echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
 
     <input type='submit'>
 </form>
+<?php  
+	echo"<a href= '".site_url("Usuario/showRegisterForm")."'> Darse de alta </a>";
+?>
 
-<?php
- echo"<a href= '".site_url("Usuario/showRegisterForm")"'> Quiero darme de alta</a></td>"
- ?>
+
 </div>

@@ -7,17 +7,20 @@ class Hotspots extends CI_Controller {
         $this->load->model("hotspotsModel");
     }
     
+    public function index(){
+        $this->show_hotspots_table();
+    }
     
-    public function showHotspotsTable() {
+    public function show_hotspots_table() {
         $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
         $this->load->view("hotspots/hotspotsTable", $datos);
     }
     
-    public function showinsertHotspot() {
+    public function show_insert_hotspot() {
         $this->load->view("hotspots/InsertHotspot");
     }
     
-    public function processInsertHotspot(){
+    public function process_insert_hotspot(){
         $resultado = $this->hotspotsModel->insertarHotspot();
         if ($resultado == true) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
@@ -31,7 +34,7 @@ class Hotspots extends CI_Controller {
         }
     }
     
-    public function deleteHotspot($id){
+    public function delete_hotspot($id){
 
         $resultado = $this->hotspotsModel->borrarHotspot($id);
         
@@ -48,7 +51,7 @@ class Hotspots extends CI_Controller {
         
     }
     
-    public function showUpdateHotspot($id){
+    public function show_update_hotspot($id){
 
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
         print_r($datos);
@@ -56,7 +59,7 @@ class Hotspots extends CI_Controller {
         $this->load->view("hotspots/UpdateHotspot", $datos);
     }
     
-    public function processUpdateHotspot(){
+    public function process_update_hotspot(){
     
             
             $id = $_REQUEST["id_hotspot"];
