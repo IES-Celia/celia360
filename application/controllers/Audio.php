@@ -6,7 +6,7 @@
        public function __construct() {
            parent::__construct();
            $this->load->model("Audm");
-		   ini_set('display_errors', '1');
+		   ini_set('display_errors', '0');
        }
        
      public function index() {
