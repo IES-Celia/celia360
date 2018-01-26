@@ -8,12 +8,11 @@ if (isset($mensaje)) {
 $du = $lista_imagenes[0];
 ?>
 <h1 id="titulo">Modificar Imagen</h1>
-<!--<a class='insert' href='index.php?accion=listaImagenes'>Volver al listado</a>-->
 
 <a class='insert' href='<?php echo site_url("imagen/lista_imagenes"); ?>'>Volver al listado</a>
+
 <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
 <form class="for" enctype="multipart/form-data"  action='<?php echo site_url("imagen/actualizar_imagen"); ?>' method='post'>
-    <!--<form class="for" enctype="multipart/form-data" action='index.php' method='post'>-->
     <?php
     echo "<input type='hidden' name='id_imagen' value='" . $du['id_imagen'] . "'><br/>";
     echo "T&iacute;tulo:<input type='text' name='titulo_imagen' value='" . $du['titulo_imagen'] . "'><br/>";

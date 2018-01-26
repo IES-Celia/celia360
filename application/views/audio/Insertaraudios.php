@@ -3,7 +3,7 @@
 ?>
 <html>
 <h1>insertar audio</h1>
-<form action='<?php echo site_url("/audio/insertaraud"); ?>' class='for' method='Post' enctype='multipart/form-data' >
+<form action='<?php echo site_url("/audio/insertarAud"); ?>' class='for' method='Post' enctype='multipart/form-data' >
     Descripcion:<input type='text' name='desc'><br/>
 	Inserte audio<input type='file' name ='audio' id='audio'><br/>
 	Tipo<select name="tipo_aud">

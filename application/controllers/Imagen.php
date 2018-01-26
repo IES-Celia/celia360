@@ -11,13 +11,13 @@ class Imagen extends CI_Controller {
     public function index() {
         $this->lista_imagenes();
     }
-//PARA FUNCIONAR HE CAMBIADO LA PRIMERA FUNCIÓN INDEX() Y HE QUITADO LA LIBRERÍA 'input' de autoload.php
     public function formulario_insertar_imagen() {
   
         $this->load->view('imagen/formulario_insertar_imagen');
     }
 
     public function insertar_imagen() {
+		
         //cargar el modelo
         $this->load->model("Img");
         //acciones para insertar la imagen
@@ -47,7 +47,6 @@ class Imagen extends CI_Controller {
 
     public function modificar_imagen($id) {
         
-                                 //$this->load->library("input");  ***********************************
         //cargar el modelo
         $this->load->model("Img");
         //buscar los datos de una imagen concreta
@@ -60,14 +59,13 @@ class Imagen extends CI_Controller {
     public function actualizar_imagen() {
         //cargar el modelo
         $this->load->model("Img");
-        //acciones para modificar los datos de la imagen en la BD
-        //$actualizar_id=$_REQUEST['id_imagen'];
-        $actualizar_titulo = $_REQUEST['titulo_imagen'];
-        $actualizar_texto = $_REQUEST['texto_imagen'];
-        //$actualizar_url = $_REQUEST['url_imagen'];
-        $actualizar_fecha = $_REQUEST['fecha'];
-
-        $actualizar_url = 'imagenes/' . $_REQUEST['titulo_imagen'] . ".jpg";
+		
+		//acciones para modificar los datos de la imagen en la BD
+		$actualizar_titulo = $this->input->post_get('titulo_imagen');
+		$actualizar_texto = $this->input->post_get('texto_imagen');
+		$actualizar_fecha = $this->input->post_get('fecha');
+		
+		$actualizar_url = 'imagenes/' . $this->input->post_get('titulo_imagen') . ".jpg";	
 
         $resultado = $this->Img->modificar_imagen();
         
@@ -80,10 +78,11 @@ class Imagen extends CI_Controller {
     }
 
     public function borrar_imagen($id_imagen) {
+		
         //cargar el modelo
         $this->load->model("Img");
+		
         //acciones para eliminar la imagen en la BD
-
         $resultado = $this->Img->borrar_imagen($id_imagen);
 
         $datos["lista_imagenes"] = $this->Img->buscar_todo();

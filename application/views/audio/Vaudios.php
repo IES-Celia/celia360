@@ -10,6 +10,7 @@ echo"<table align='center' id='cont'><tr>
 ";
 
 foreach ($tabla as $re){
+    
 	echo'<tr id="contenido"><td>'.$re["id_aud"].'</td>';
 	echo'<td>'.$re["url_aud"].'</td>';
 	echo'<td>'.$re["desc_aud"].'</td>';

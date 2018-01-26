@@ -17,7 +17,7 @@
             $foto = $_REQUEST["Foto"];
             $apellido = $_REQUEST["subname"];
         
-            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, email, Nombre, Apellido, Foto, tipo_usuario) VALUES('$username','$pass','$email','$name','$apellido','$foto','$tipo')");
+            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, email, Nombre, Apellido, tipo_usuario) VALUES('$username','$pass','$email','$name','$apellido','$tipo')");
 
         
             return $resultado;       
@@ -85,7 +85,7 @@
           foreach($resultado->result_array() as $fila) {
               $tabla[] = $fila;
           }
-        
+            print_r($tabla);
             return $tabla;
 
     }

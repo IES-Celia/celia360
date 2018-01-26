@@ -9,20 +9,21 @@ class Img extends CI_Model {
 
     public function insertar_imagen() {
 
-        $id_imagen = $_REQUEST['id_imagen'];
-        $titulo_imagen = $_REQUEST['titulo_imagen'];
-        $texto_imagen = $_REQUEST['texto_imagen'];
-        $fecha = $_REQUEST['fecha'];
+		$id_imagen = $this->input->post_get('id_imagen');
+		$titulo_imagen = $this->input->post_get('titulo_imagen');
+		$texto_imagen = $this->input->post_get('texto_imagen');
+		$fecha = $this->input->post_get('fecha');
+
         $imgFile = $_FILES['imagen']['name'];
         $tmp_dir = $_FILES['imagen']['tmp_name'];
 
-
-        $upload_dir = 'imagenes/'; // cargar directorio
+        $upload_dir = 'assets/imagenes/imagenes-hotspots/'; // cargar directorio
+		
         //PATHINFO_EXTENSION  (se devuelve la extensión)
         $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
 		
 		//extensiones de imagen válidas
-		$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // extensiones válidas
+		$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); 
 			
         //cambiar el nombre de la imagen de carga
         $userpic = $id_imagen . "." . $imgExt;
@@ -34,9 +35,11 @@ class Img extends CI_Model {
         $nombre = $maxid + 1;
 	
 		//Permitir formatos de archivo de imagen válidos
-		if(in_array($imgExt, $valid_extensions)){			
-				
+		if(in_array($imgExt, $valid_extensions)){	
+		
+			//cambiar el nombre de la imagen de carga	
 			$userpic = $nombre . "." . "jpg";
+			// move_uploaded_file — Mueve un archivo subido a una nueva ubicación.
 			move_uploaded_file($tmp_dir,$upload_dir.$userpic);	
 		}
 		else{
@@ -56,7 +59,8 @@ class Img extends CI_Model {
         //si la 1ªconsulta del (máximo id insertado +1) es distinto de la 2ªconsulta del máximo id insertado
         if ($nombre != $nom) {
 			
-			 $user = $nom . "." . "jpg";
+			//cambiar el nombre de la imagen de carga
+			$user = $nom . "." . "jpg";
             //modifico el nombre en la BD
             $re = $this->db->query("update imagenes set url_imagen='$user' where id_imagen ='$nom'");
 
@@ -77,19 +81,20 @@ class Img extends CI_Model {
     public function modificar_imagen() {
 
         $fichero_actualizado = false;
-
-        if (isset($_REQUEST['actualizar'])) {
-            $actualizar_id = $_REQUEST['id_imagen'];
-            $actualizar_titulo = $_REQUEST['titulo_imagen'];
-            $actualizar_texto = $_REQUEST['texto_imagen'];
-            $actualizar_url = $_REQUEST['url_imagen'];
-            $actualizar_fecha = $_REQUEST['fecha'];
-
+		
+		if ($this->input->post_get('actualizar')) {	
+	
+			$actualizar_id = $this->input->post_get('id_imagen');
+			$actualizar_titulo = $this->input->post_get('titulo_imagen');
+			$actualizar_texto = $this->input->post_get('texto_imagen');
+			$actualizar_url = $this->input->post_get('url_imagen');
+			$actualizar_fecha = $this->input->post_get('fecha');
             $imgFile = $_FILES['imagen']['name'];
             $tmp_dir = $_FILES['imagen']['tmp_name'];
 
             if ($imgFile) {
-                $upload_dir = 'imagenes/'; // cargar directorio
+                $upload_dir = 'assets/imagenes/imagenes-hotspots/'; // cargar directorio
+				
                 //pathinfo — Devuelve información acerca de la ruta de un fichero
                 $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
                
@@ -101,6 +106,7 @@ class Img extends CI_Model {
 				
 					//cambiar el nombre de la imagen de carga
 					$userpic = $actualizar_id . "." . "jpg";
+					// move_uploaded_file — Mueve un archivo subido a una nueva ubicación.
 					move_uploaded_file($tmp_dir,$upload_dir.$userpic);
 					$fichero_actualizado = true;
 				}
@@ -142,7 +148,7 @@ class Img extends CI_Model {
             $archivo_imagen = $consulta->result_array()[0]["url_imagen"];
 
             //consultar la BD la fila
-            $url_imagen = "imagenes/".$archivo_imagen; // cargar directorio
+            $url_imagen = "assets/imagenes/imagenes-hotspots/".$archivo_imagen; // cargar directorio
             //unlink — Borra un fichero
             unlink($url_imagen);
 

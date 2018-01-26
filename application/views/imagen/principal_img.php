@@ -14,7 +14,10 @@ echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Texto</th><th>Url</th><th>Miniatu
 foreach ($lista_imagenes as $ima) {
     $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
     $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
-    echo "<tr><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" . $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" . base_url("imagenes/" . $ima["url_imagen"]) . "' height='100px'></td><td>" . $ima["fecha"] . "</td>
+    echo "<tr><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" . 
+	      $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" . 
+		  base_url("assets/imagenes/imagenes-hotspots" . $ima["url_imagen"]) . "' height='100px'></td><td>" . 
+		  $ima["fecha"] . "</td>
     	<td><a href='".$url_borrar."'>Borrar</a></td>
     	<td><a href='" . $url_modificar . "'>Modificar</a></td></tr>";
 }

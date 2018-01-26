@@ -8,7 +8,7 @@
 	}
 
 	
-echo "<a href='".site_url("hotspots/showinsertHotspot")."'> Insertar Nuevo HotSpot </a>";
+echo "<a href='".site_url("hotspots/show_insert_hotspot")."'> Insertar Nuevo HotSpot </a>";
 
 echo "<table border='2px solid' align='center'>";
 echo "<tr> 
@@ -44,12 +44,12 @@ foreach ($tablaHotspots as $hotspots){
 	
 	<td align='center'>
     <a href=
-    '".site_url("/hotspots/deleteHotspot/".$hotspots['id_hotspot'])."'
+    '".site_url("/hotspots/delete_hotspot/".$hotspots['id_hotspot'])."'
     >Borrar</a></td>
 	
 	<td align='center'>
 	<a href=	
-    '".site_url("/hotspots/showUpdateHotspot/".$hotspots['id_hotspot'])."'
+    '".site_url("/hotspots/show_update_hotspot/".$hotspots['id_hotspot'])."'
 	> Modificar el Hotspot </a></td></tr>";
 }
 echo "</table>";

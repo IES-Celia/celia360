@@ -17,7 +17,7 @@ class Hotspots extends CI_Controller {
     }
     
     public function show_insert_hotspot() {
-        $this->load->view("hotspots/InsertHotspot");
+        $this->load->view("hotspots/insertHotspot");
     }
     
     public function process_insert_hotspot(){
@@ -56,7 +56,7 @@ class Hotspots extends CI_Controller {
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
         print_r($datos);
     
-        $this->load->view("hotspots/UpdateHotspot", $datos);
+        $this->load->view("hotspots/updateHotspot", $datos);
     }
     
     public function process_update_hotspot(){
