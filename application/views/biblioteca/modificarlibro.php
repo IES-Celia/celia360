@@ -52,6 +52,12 @@
 					      <span class='bar'></span>
 					      <label>Tipo</label>
 					    </div>
+					    <div class='group'>      
+					      <input type='text' name='apaisado' value='".$libros[0]['apaisado']."' required>
+					      <span class='highlight'></span>
+					      <span class='bar'></span>
+					      <label>Apaisado</label>
+					    </div>
 					
 					<input type='submit' class='enviar'>
 				</form>
