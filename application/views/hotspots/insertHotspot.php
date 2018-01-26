@@ -29,7 +29,7 @@ div.centrado {
 <fieldset>
 
 <?php
-echo "<form action='".   site_url("hotspots/processInsertHotspot")   ."' method='get'>";
+echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>";
 ?>
 	Descripción:  <input type='text' name='descripcion'> </br> </br>
 	

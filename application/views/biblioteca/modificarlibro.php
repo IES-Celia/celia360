@@ -41,16 +41,22 @@
 					      <label>Fecha de Edicion</label>
 					    </div>
 						<div class='group'>      
-					      <input type='text' name='ISBN' value='".$libros[0]['ISBN']."' required>
+					      <input type='text' name='ISBN' value='".$libros[0]['ISBN']."' >
 					      <span class='highlight'></span>
 					      <span class='bar'></span>
 					      <label>I S B N </label>
 					    </div>
 						<div class='group'>      
-					      <input type='text' name='tipo' value='".$libros[0]['tipo']."' required>
+					      <input type='text' name='tipo' value='".$libros[0]['tipo']."' pattern='[0-1]{1}' maxlength='1' required>
 					      <span class='highlight'></span>
 					      <span class='bar'></span>
 					      <label>Tipo</label>
+					    </div>
+					    <div class='group'>      
+					      <input type='text' name='apaisado' value='".$libros[0]['apaisado']."' required>
+					      <span class='highlight'></span>
+					      <span class='bar'></span>
+					      <label>Apaisado</label>
 					    </div>
 					
 					<input type='submit' class='enviar'>
