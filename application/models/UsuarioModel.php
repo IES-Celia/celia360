@@ -112,7 +112,7 @@
             $pass = $_REQUEST["pass"];
 
            
-           $this->db->query("Update usuarios set nombre = '$nombre', Email = '$email', nombre_usuario = '$username', Password = '$pass' where id_usuario = '$id'");
+           $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', password = '$pass' where id_usuario = '$id'");
 
             $resultado= $this->db->query("SELECT * FROM usuarios");
 
