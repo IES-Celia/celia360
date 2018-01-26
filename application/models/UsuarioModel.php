@@ -85,7 +85,7 @@
           foreach($resultado->result_array() as $fila) {
               $tabla[] = $fila;
           }
-        
+            print_r($tabla);
             return $tabla;
 
     }
