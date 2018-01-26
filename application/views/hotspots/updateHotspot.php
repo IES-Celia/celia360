@@ -37,7 +37,7 @@ echo "
 
 <fieldset>
 
-<form action=' ".site_url("hotspots/processUpdateHotspot")." ' method='get'>
+<form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
 	Descripción:  <input type='text' value='".$tabla['descripcion']."' name='descripcion'> </br> </br>
 	
