@@ -47,7 +47,7 @@
 					      <label>I S B N </label>
 					    </div>
 						<div class='group'>      
-					      <input type='text' name='tipo' value='".$libros[0]['tipo']."' required>
+					      <input type='text' name='tipo' value='".$libros[0]['tipo']."' pattern='[0-1]{1}' maxlength='1' required>
 					      <span class='highlight'></span>
 					      <span class='bar'></span>
 					      <label>Tipo</label>
