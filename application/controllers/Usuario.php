@@ -89,7 +89,7 @@
         $this->UsuarioModel->alterarusu($id);
         $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
         $datos["nombreUsuario"] = "usuario modificado correctamente.";
-        print_r($datos);
+        
         $this->load->view("usuario/usuarios",$datos);
 
         }

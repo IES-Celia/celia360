@@ -13,7 +13,7 @@ echo "<table border='1' class='tabla' id='cont'>
         <td>Nombre</td>
         <td>Apellido</td>";
         
-print_r($tablaUsuarios);
+
 foreach ($tablaUsuarios as $usu) {
    
     echo "<tr>
