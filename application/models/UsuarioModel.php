@@ -80,12 +80,12 @@
         public function buscartodousu(){
            
             $resultado = $this->db->query("SELECT * FROM usuarios");
-
+           
           $tabla = array();
           foreach($resultado->result_array() as $fila) {
               $tabla[] = $fila;
           }
-            print_r($tabla);
+          
             return $tabla;
 
     }

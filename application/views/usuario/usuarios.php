@@ -20,8 +20,8 @@ foreach ($tablaUsuarios as $usu) {
             <td>".$usu["nombre_usuario"]."</td>
             <td>".$usu["password"]."</td>
             <td>".$usu["email"]."</td>
-            <td>".$usu["Nombre"]."</td>
-            <td>".$usu["Apellido"]."</td>
+            <td>".$usu["nombre"]."</td>
+            <td>".$usu["apellido"]."</td>
             <td>
             <a href='".site_url("./usuario/borrarUsuario/".$usu["id_usuario"])."'>Borrar</a></td>
             <td>
