@@ -28,14 +28,16 @@
 
 		public function insertar() {
 			
-			$name = $_REQUEST{"name"};
+			$name = $_REQUEST["name"];
 			$cod = $_REQUEST{"cod"};
-			$pitch = $_REQUEST{"pitch"};
-			$yaw = $_REQUEST{"yaw"};
-			$panorama = $_REQUEST{"panorama"};
+            
+			$pitch = $_REQUEST["pitch"];
+			$yaw = $_REQUEST["yaw"];
+			
+			$panorama = $_REQUEST["panorama"];
 
 			$insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod','120','$pitch','$yaw','equirectangular','$panorama')";
+                      VALUES('$name','$cod',120,'$pitch','$yaw',equirectangular,'$panorama')";
 
 			$this->db->query($insert);
             
