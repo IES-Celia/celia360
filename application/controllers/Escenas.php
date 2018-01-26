@@ -51,14 +51,14 @@ class escenas extends CI_Controller {
         
     }
     
-    public function showUpdateScene($id){
+    public function showupdatescene($id){
     
         $datos["tabla"]= $this->Modeloescenas->getOne($id);
     
         $this->load->view("escenas/Modificar", $datos);
     }
     
-    public function processUpdateScene($id){
+    public function processupdatescene($id){
     
             
             $resultado = $this->Modeloescenas->update($id);

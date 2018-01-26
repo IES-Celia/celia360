@@ -30,14 +30,12 @@
 			
 			$name = $_REQUEST{"name"};
 			$cod = $_REQUEST{"cod"};
-			$hfov = $_REQUEST{"hfov"};
 			$pitch = $_REQUEST{"pitch"};
 			$yaw = $_REQUEST{"yaw"};
-			$type = $_REQUEST{"type"};
 			$panorama = $_REQUEST{"panorama"};
 
 			$insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod','$hfov','$pitch','$yaw','$type','$panorama')";
+                      VALUES('$name','$cod','120','$pitch','$yaw','equirectangular','$panorama')";
 
 			$this->db->query($insert);
             
