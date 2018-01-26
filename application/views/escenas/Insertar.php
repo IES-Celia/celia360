@@ -13,13 +13,13 @@
 				
 				Codigo de Escena:  <input type='text' name='cod'>  <br/>
 			  
-				hfov:  <input type='text' name='hfov'>  <br/>
+				
 			   
 			    Pitch: <input type='text' name='pitch'>  <br/>
 
 			    Yaw: <input type='text' name='yaw'> <br/>
 			  
-				type: <input type='text' name='type'>  <br/>
+				
 			    
 				panorama:  <input type='text' name='panorama'> <br/>
 			    
