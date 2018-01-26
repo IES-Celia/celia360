@@ -41,7 +41,7 @@
 					      <label>Fecha de Edicion</label>
 					    </div>
 						<div class='group'>      
-					      <input type='text' name='ISBN' value='".$libros[0]['ISBN']."' required>
+					      <input type='text' name='ISBN' value='".$libros[0]['ISBN']."' >
 					      <span class='highlight'></span>
 					      <span class='bar'></span>
 					      <label>I S B N </label>
