@@ -19,7 +19,8 @@
 
         public function showloginForm(){       
         //Muestra la ventana de login
-            $this->load->view("usuario/formLogin");
+            $data["vista"] ="usuario/formLogin"; 
+            $this->load->view('template_admin', $data);
         }
         public function checklogin(){
             //Ejecuta el login
@@ -28,14 +29,15 @@
             
              if($resultado ==1){
                 $_SESSION["tipousr"] = 1;
-               
-            $this->load->view("usuario/admin");
+                    
+                    $data["vista"] = "usuario/admin";
+                    $this->load->view('template_admin', $data);
 
-            }else if($resultado ==2){
+             }else if($resultado ==2){
                 $_SESSION["tipousr"] = 2;
 
-
-           $this->load->view("usuario/mapero",$datos);
+                    $datos["vista"] = "usuario/mapero";
+                    $this->load->view("template_admin",$datos);
                 
 
                 
@@ -43,18 +45,21 @@
                 $_SESSION["tipousr"] = 3;
 
                 $datos["tabla"] = $libro->get_info();
-                $this->load->view("libro/IntAdmin",$datos);
+                $datos["vista"] = "libro/IntAdmin";
+                $this->load->view("template_admin",$datos);
 
             }else{
 
                 $datos["error"] = "Usuario no registrado";
-                $this->load->view("usuario/formLogin",$datos);
+                $datos["vista"] = "usuario/formLogin";
+                $this->load->view('template_admin',$datos);
             }
           
         }
         public function showregisterform(){
         //Mostrar el formulario de registro
-        $this->load->view("usuario/registerForm");
+            $data["vista"] = "usuario/registerForm";
+            $this->load->view('template_admin', $data);
         }
         
 
@@ -65,11 +70,12 @@
             if ($resultado){
 
                 $datos["mensaje"] = "Usuario creado correctamente";
-                $this->load->view("usuario/formLogin", $datos);
+                $datos["vista"] = "usuario/formLogin";
+                $this->load->view('template_admin', $datos);
             }
             else {
-          
-                $this->load->view("usuario/registerForm");
+                $datos["vista"] = "usuario/regiterForm";
+                $this->load->view("template_admin", $datos);
             }
      
         }
@@ -79,7 +85,8 @@
         //Abrir la ventana para modificar el usuario
 
             $datos["DatosMod"]=$this->UsuarioModel->buscarusuid($id);
-            $this->load->view("usuario/modUsu",$datos);
+            $datos["vista"] = "usuario/modUsu";
+            $this->load->view("template_admin",$datos);
 
         }
         public function modusuario(){
@@ -89,8 +96,9 @@
         $this->UsuarioModel->alterarusu($id);
         $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
         $datos["nombreUsuario"] = "usuario modificado correctamente.";
-        
-        $this->load->view("usuario/usuarios",$datos);
+            
+        $datos["vista"] = "usuario/usuarios";        
+        $this->load->view('template_admin',$datos);
 
         }
 
@@ -101,19 +109,22 @@
             $this->UsuarioModel->borrarusu($id);
             $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
             $datos["nombreUsuario"] = "usuario borrado correctamente.";
-            $this->load->view("usuario/usuarios",$datos);
+            $datos["vista"] = "usuario/usuarios";
+            $this->load->view("template_admin",$datos);
           
         }
 
         public function usuarios(){
 
             $datos["tablaUsuarios"]=$this->UsuarioModel->buscartodousu();
-            $this->load->view("usuario/usuarios",$datos);
+            $datos["vista"] = "usuario/usuarios";
+            $this->load->view('template_admin',$datos);
         }
 
         public function mapero(){
-
-                $this->load->view("usuario/mapero");
+            
+            $data["vista"] = "usuario/mapero";
+                $this->load->view('template_admin', $data);
 
         }
 

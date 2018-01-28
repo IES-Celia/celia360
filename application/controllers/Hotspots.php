@@ -1,5 +1,7 @@
 <?php
       
+defined('BASEPATH') OR exit('No se permite el acceso directo al script');
+
 class Hotspots extends CI_Controller {
     
     public function __construct() {
@@ -13,11 +15,13 @@ class Hotspots extends CI_Controller {
     
     public function show_hotspots_table() {
         $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-        $this->load->view("hotspots/hotspotsTable", $datos);
+        $datos["vista"]="hotspots/hotspotsTable";
+        $this->load->view("template_admin", $datos);
     }
     
     public function show_insert_hotspot() {
-        $this->load->view("hotspots/insertHotspot");
+        $data["vista"]="hotspots/insertHotspot";
+        $this->load->view('template_admin', $data);
     }
     
     public function process_insert_hotspot(){
@@ -25,12 +29,14 @@ class Hotspots extends CI_Controller {
         if ($resultado == true) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $this->load->view("hotspots/hotspotsTable", $datos);
+            $datos["vista"]="hotspots/hotspotsTable";
+            $this->load->view('template_admin', $datos);
         }
         else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $this->load->view("hotspots/hotspotsTable", $datos);
+            $datos["vista"]="hotspots/hotspotsTable";
+            $this->load->view('template_admin', $datos);
         }
     }
     
@@ -41,12 +47,14 @@ class Hotspots extends CI_Controller {
         if ($resultado == 1) {
             $datos["mensaje"] = "Hotspot borrado correctamente";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $this->load->view("hotspots/hotspotsTable", $datos);
+            $datos["vista"]="hotspots/hotspotsTable";
+            $this->load->view('template_admin', $datos);
             }
         else {
             $datos["error"] = "Error al borrar el hotspot";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $this->load->view("hotspots/hotspotsTable",$datos);
+            $datos["vista"]="hotspots/hotspotsTable";
+            $this->load->view('template_admin',$datos);
         }
         
     }
@@ -55,8 +63,8 @@ class Hotspots extends CI_Controller {
 
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
         print_r($datos);
-    
-        $this->load->view("hotspots/updateHotspot", $datos);
+        $datos["vista"]="hotspots/updateHotspot";
+        $this->load->view('template_admin', $datos);
     }
     
     public function process_update_hotspot(){
@@ -70,12 +78,14 @@ class Hotspots extends CI_Controller {
             if ($resultado == true) {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
                 $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-                $this->load->view("hotspots/hotspotsTable", $datos);
+                $datos["vista"]="hotspots/hotspotsTable";
+                $this->load->view('template_admin', $datos);
             }
             else {
                 $datos["error"] = "La modificaci&oacute;n ha fallado";
                 $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-                $this->load->view("hotspots/hotspotsTable", $datos);
+                $datos["vista"]="hotspots/hotspotsTable";
+                $this->load->view('template_admin', $datos);
             }
         
     }

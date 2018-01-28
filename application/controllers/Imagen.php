@@ -12,8 +12,8 @@ class Imagen extends CI_Controller {
         $this->lista_imagenes();
     }
     public function formulario_insertar_imagen() {
-  
-        $this->load->view('imagen/formulario_insertar_imagen');
+        $data["vista"]="imagen/formulario_insertar_imagen";
+        $this->load->view('template_admin', $data);
     }
 
     public function insertar_imagen() {
@@ -26,13 +26,15 @@ class Imagen extends CI_Controller {
         if ($resultado) {
             $datos["mensaje"] = "Imagen insertada correctamente";
             $datos["lista_imagenes"] = $this->Img->buscar_todo();
+            $datos["vista"]="imagen/principal_img";
             //cargar la vista
-            $this->load->view('imagen/principal_img', $datos);
+            $this->load->view('template_admin', $datos);
         } else {
             $datos["error"] = "Ha ocurrido un error al insertar el registro";
             $datos["lista_imagenes"] = $this->Img->buscar_todo();
+            $datos["vista"]="imagen/principal_img";
             //cargar la vista
-            $this->load->view('imagen/principal_img', $datos);
+            $this->load->view('template_admin', $datos);
         }
     }
 
@@ -41,8 +43,9 @@ class Imagen extends CI_Controller {
         $this->load->model("Img");
         //acciones para ver el listado de imagenes
         $datos["lista_imagenes"] = $this->Img->buscar_todo();
+        $datos["vista"]="imagen/principal_img";
         //cargar la vista
-        $this->load->view('imagen/principal_img', $datos);
+        $this->load->view('template_admin', $datos);
     }
 
     public function modificar_imagen($id) {
@@ -52,8 +55,9 @@ class Imagen extends CI_Controller {
         //buscar los datos de una imagen concreta
 
         $datos["lista_imagenes"] = $this->Img->buscar_imagen($id);
+        $datos["vista"]="imagen/modificar_imagen";
         //muestra el formulario para modificar los datos
-        $this->load->view('imagen/modificar_imagen', $datos);
+        $this->load->view('template_admin', $datos);
     }
 
     public function actualizar_imagen() {
@@ -74,7 +78,9 @@ class Imagen extends CI_Controller {
             $datos["mensaje"] = "Imagen actualizada con &eacute;xito";
         } else
             $datos["mensaje"] = "Los datos no se han modificado";
-        $this->load->view('imagen/principal_img', $datos);
+        
+        $datos["vista"]="imagen/principal_img";
+        $this->load->view('template_admin', $datos);
     }
 
     public function borrar_imagen($id_imagen) {
@@ -92,6 +98,7 @@ class Imagen extends CI_Controller {
         else
             $datos["mensaje"] = "Error al borrar la imagen";
 
-        $this->load->view("imagen/principal_img", $datos);
+        $datos["vista"]="imagen/principal_img";
+        $this->load->view("template_admin", $datos);
     }
 }

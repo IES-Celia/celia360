@@ -1,5 +1,7 @@
 <?php
 
+defined('BASEPATH') OR exit('No se permite el acceso directo al script');
+
 class escenas extends CI_Controller {
 
     public function __construct() {
@@ -13,11 +15,13 @@ class escenas extends CI_Controller {
     }
     public function showescenas() {
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-        $this->load->view("escenas/Escenastable", $datos);
+        $datos["vista"]="escenas/Escenastable";
+        $this->load->view('template_admin', $datos);
     } 
     
     public function showinsert() {
-        $this->load->view("escenas/Insertar");
+        $data["vista"]="escenas/Insertar";
+        $this->load->view('template_admin', $data);
     }
     
     public function processinsertscene(){
@@ -25,12 +29,14 @@ class escenas extends CI_Controller {
         if ($resultado == true) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-            $this->load->view("escenas/Escenastable", $datos);
+            $datos["vista"]="escenas/Escenastable";
+            $this->load->view('template_admin', $datos);
         }
         else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-            $this->load->view("escenas/Escenastable", $datos);
+            $datos["vista"]="escenas/Escenastable";
+            $this->load->view("template_admin", $datos);
         }
     }
     
@@ -41,12 +47,14 @@ class escenas extends CI_Controller {
         if ($resultado == 1) {
             $datos["mensaje"] = "Escena borrado correctamente";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-            $this->load->view("escenas/Escenastable", $datos);
+            $datos["vista"]="escenas/Escenastable";
+            $this->load->view('template_admin', $datos);
             }
         else {
             $datos["error"] = "Error al borrar la escena";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-            $this->load->view("escenas/Escenastable",$datos);
+            $datos["vista"]="escenas/Escenastable";
+            $this->load->view("template_admin",$datos);
         }
         
     }
@@ -54,8 +62,9 @@ class escenas extends CI_Controller {
     public function showupdatescene($id){
     
         $datos["tabla"]= $this->Modeloescenas->getOne($id);
+        $datos["vista"]="escenas/Modificar";
     
-        $this->load->view("escenas/Modificar", $datos);
+        $this->load->view('template_admin', $datos);
     }
     
     public function processupdatescene($id){
@@ -66,12 +75,14 @@ class escenas extends CI_Controller {
             if ($resultado == true) {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-                $this->load->view("escenas/Escenastable", $datos);
+                $datos["vista"]="escenas/Escenastable";
+                $this->load->view('template_admin', $datos);
             }
             else {
                 $datos["error"] = "La modificaci&oacute;n ha fallado";
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-                $this->load->view("escenas/Escenastable", $datos);
+                $datos["vista"]="escenas/Escenastable";
+                $this->load->view('template_admin', $datos);
             }
         
     }

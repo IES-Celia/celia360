@@ -5,8 +5,6 @@
        
        public function __construct() {
            parent::__construct();
-           $this->load->model("Audm");
-		   ini_set('display_errors', '0');
        }
        
      public function index() {
@@ -14,8 +12,9 @@
      }
        
      public function forminsertaraudio(){
+         $data["vista"]="audio/Insertaraudios";
         
-        $this->load->view("audio/Insertaraudios");
+        $this->load->view("template_admin", $data);
      }
         
      public function insertaraud(){   
@@ -32,7 +31,8 @@
             $desc=$_REQUEST["desc"];
             $res=$this->Audm->insertaraud($desc, $tipo);
             $datos["tabla"]=$this->Aud->buscaraud();
-            $this->load->view("audio/Vaudios",$datos);
+            $datos["vista"]="audio/Vaudios";
+            $this->load->view("template_admin",$datos);
         }
         
         
@@ -40,20 +40,22 @@
         
         public function mostraraudios(){
             $datos["tabla"]=$this->Audm->buscaraud();
-            $this->load->view("audio/Vaudios",$datos);
+            $datos["vista"]="audio/Vaudios";
+            $this->load->view("template_admin",$datos);
         
         }
         
         public function borraraud($id){
             $this->Audm->borraraud($id);
             $datos["tabla"]=$this->AudM->buscaraud();
-            $this->load->view("audio/Vaudios",$datos);
+            $datos["vista"]="audio/Vaudios";
+            $this->load->view("template_admin",$datos);
         }
         
         public function formmodificarAud($id_aud){
             $datos["aud"]=$this->Audm->buscaridaud($id_aud);
-            
-            $this->load->view("audio/Modificaraudios", $datos);
+            $datos["vista"]="audio/Modificaraudios";
+            $this->load->view("template_admin", $datos);
         
         }
 
@@ -61,7 +63,8 @@
             $id=$_REQUEST["id"];
             $this->Audm->modificaraud($id);
             $datos["tabla"]=$this->Audm->buscaraud();
-            $this->load->view("audio/Vaudios", $datos);
+            $datos["vista"]="audio/Vaudios";
+            $this->load->view("template_admin", $datos);
         
    }
 

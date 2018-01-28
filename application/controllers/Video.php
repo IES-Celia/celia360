@@ -14,7 +14,8 @@
 		
 	
     public function frominsertarvideo(){
-		$this->load->view("video/Insertarvideos");	
+        $data["vista"] ="video/Insertarvideos";
+		$this->load->view('template_admin', $data);	
     }
     
    public function insertarvideo(){
@@ -22,31 +23,36 @@
 			$desc=$_REQUEST["desc"];
 			$res=$this->Vidm->insertarvideo($desc, $f_def);
 			$da["tabla"]=$this->Vidm->buscarvideo();
-			$this->load->view("/video/Vvideos",$da);
+            $da["vista"]="video/Vvideos";
+			$this->load->view('template_admin',$da);
    }
    public function mostrarvideo(){
 			$da["tabla"]=$this->Vidm->buscarvideo();
-			$this->load->view("video/Vvideos",$da);
+            $da["vista"]="video/Vvideos";
+			$this->load->view('template_admin',$da);
 		
    }
    public function borrarvideo($id){
 			
 			$this->Vidm->borrarvideo($id);
 			$da["tabla"]=$this->Vidm->buscarvideo();
-			$this->load->view("video/Vvideos",$da);
+            $da["vista"]="video/Vvideos";
+			$this->load->view('template_admin',$da);
    }
 		
    public function formmodificarvideo($id_vid){
 			
 			$da["vid"]=$this->Vidm->buscaridvideo($id_vid);
-			$this->load->view("video/Modificarvideos", $da);
+            $da["vista"]="video/Modificarvideos";
+			$this->load->view('template_admin', $da);
 		
    }
    public function modificarvideo(){
 			$id=$_REQUEST["id"];
 			$this->Vidm->modificarvideo($id);
 			$da["tabla"]=$this->Vidm->buscarvideo();
-			$this->load->view("video/Vvideos", $da);
+            $da["vista"]="video/Vvideos";
+			$this->load->view('template_admin', $da);
 		
    }
         
