@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
     
     <?php 
-
+        error_reporting(5);
             if (!ini_get('display_errors')) {
                 ini_set('display_errors', '0');
             }
