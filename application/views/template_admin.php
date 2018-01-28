@@ -3,3 +3,4 @@
   include("admin_menu.php");
   include($vista.".php");
   include("admin_footer.php");
+?>
