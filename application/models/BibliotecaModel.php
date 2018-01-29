@@ -27,6 +27,7 @@
 			return $tabla;
 		
 		}
+
 		public function update($id_libro){
 			$titulo=$_REQUEST["titulo"];
 			$autor=$_REQUEST["autor"];
@@ -35,8 +36,9 @@
 			$fecha=$_REQUEST["fecha_edicion"];
 			$isbn=$_REQUEST["ISBN"];
 			$tipo=$_REQUEST["tipo"];
+			$apaisado=$_REQUEST["apaisado"];
 
-			$this->db->query("Update libros set titulo='$titulo', autor='$autor',editorial='$editorial',lugar_edicion='$lugar', fecha_edicion='$fecha', ISBN='$isbn', tipo='$tipo' where id_libro='$id_libro'");
+			$this->db->query("Update libros set titulo='$titulo', autor='$autor',editorial='$editorial',lugar_edicion='$lugar', fecha_edicion='$fecha', ISBN='$isbn', tipo='$tipo',apaisado='$apaisado' where id_libro='$id_libro'");
 			$res = $this->db->affected_rows();
 			return $res;
 		}
