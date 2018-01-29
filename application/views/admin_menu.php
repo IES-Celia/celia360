@@ -1,17 +1,23 @@
 <p>
-
-    <a href="<?php echo site_url("imagen");?>">Administrar imágenes</a>
+    <table align="center">
     
-    <a href="<?php echo site_url("audio");?>">Administrar audios</a>
+    <tr>
+        
+    <td><a href="<?php echo site_url("imagen");?>">Administrar imágenes</a></td>
     
-    <a href="<?php echo site_url("video");?>">Administrar vídeos</a>
+    <td><a href="<?php echo site_url("audio");?>">Administrar audios</a></td>
     
-    <a href="<?php echo site_url("escenas");?>">Administrar escenas</a>
+    <td><a href="<?php echo site_url("video");?>">Administrar vídeos</a></td>
     
-    <a href="<?php echo site_url("hotspots");?>">Administrar hotspots</a>
+    <td><a href="<?php echo site_url("escenas");?>">Administrar escenas</a></td>
     
-    <a href="<?php echo site_url("usuario");?>">Administrar usuarios</a>
+    <td><a href="<?php echo site_url("hotspots");?>">Administrar hotspots</a></td>
     
-    <a href="<?php echo site_url("biblioteca");?>">Administrar biblioteca</a>
-
+    <td><a href="<?php echo site_url("usuario");?>">Administrar usuarios</a></td>
+    
+    <td><a href="<?php echo site_url("biblioteca");?>">Administrar biblioteca</a></td>
+    
+    </tr>
+    
+    </table>
 </p>
