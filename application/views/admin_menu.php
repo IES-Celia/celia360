@@ -10,7 +10,7 @@
     
     <a href="<?php echo site_url("hotspots");?>">Administrar hotspots</a>
     
-    <a href="<?php echo site_url("usuarios");?>">Administrar usuarios</a>
+    <a href="<?php echo site_url("usuario");?>">Administrar usuarios</a>
     
     <a href="<?php echo site_url("biblioteca");?>">Administrar biblioteca</a>
 
