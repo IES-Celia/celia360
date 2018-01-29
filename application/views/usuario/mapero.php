@@ -5,7 +5,7 @@ echo "Hola, ".$datos["nombreUsuario"];
 
 echo "<table border='1'>";
     echo "<tr>
-			<td><a href='".site_url("hotspot")."''>Hotspot</a></td>
+			<td><a href='".site_url("hotspots")."''>Hotspots</a></td>
 		</tr>
 		<tr>
 			<td><a href='".site_url("escenas")."'>Escenas</a></td>
