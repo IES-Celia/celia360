@@ -31,7 +31,7 @@
             $tipo=$_REQUEST["tipo_aud"];
             $desc=$_REQUEST["desc"];
             $res=$this->Audm->insertaraud($desc, $tipo);
-            $datos["tabla"]=$this->Aud->buscaraud();
+            $datos["tabla"]=$this->Audm->buscaraud();
             $datos["vista"]="audio/Vaudios";
             $this->load->view("template_admin",$datos);
         }
@@ -48,7 +48,7 @@
         
         public function borraraud($id){
             $this->Audm->borraraud($id);
-            $datos["tabla"]=$this->AudM->buscaraud();
+            $datos["tabla"]=$this->Audm->buscaraud();
             $datos["vista"]="audio/Vaudios";
             $this->load->view("template_admin",$datos);
         }
