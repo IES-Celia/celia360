@@ -35,15 +35,18 @@
             <td align='center'>".$escenas['pitch']."</td>
             <td align='center'>".$escenas['yaw']."</td>
             <td align='center'>".$escenas['tipo']."</td>
-            <td align='center'><img src='".$escenas['panorama']."'/></td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> Borrar </a></td>
             
             <td align='center'>
-            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['id_escena'])."'> Modificar la escena </a></td>";
+            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['id_escena'])."'> Modificar la escena </a></td>
+            </tr>
+            <tr><th colspan='9' align='center'>Panorama</th></tr>
+            <tr>
+            <td colspan='9' align='center'><img src='".$escenas['panorama']."' width='1250' height='470'/></td>
+            </tr>";
 	}
-	echo"</tr>";
 	echo "</table>";
 
 
