@@ -23,15 +23,15 @@ class Conversorbd2json extends CI_Controller {
   }
   
     public function get_json_destacados() {
-    ///
+    
   }
   
     public function get_json_evacuacion() {
-    ///
+    
   }
   
   public function get_json_plataforma() {
-   ///
+   
   }
   
   

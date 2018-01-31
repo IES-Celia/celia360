@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 21-01-2018 a las 17:54:08
--- Versión del servidor: 10.1.28-MariaDB
--- Versión de PHP: 7.1.11
+-- Servidor: localhost:3306
+-- Tiempo de generación: 31-01-2018 a las 12:40:49
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -40,8 +38,7 @@ CREATE TABLE `audio` (
 --
 
 INSERT INTO `audio` (`id_aud`, `url_aud`, `desc_aud`, `tipo_aud`) VALUES
-(2, 'vistas/audio/files/Chinito Ft Chiche - Quieren matarme.mp3', 'Es una de mis canciones favoritas', 'v_guiada'),
-(3, 'vistas/audio/files/one1.m4a', 'weew', 'd-objeto');
+(1, 'audios/Kalimba.mp3', '54', 'v-guiada');
 
 -- --------------------------------------------------------
 
@@ -65,79 +62,76 @@ CREATE TABLE `escenas` (
 --
 
 INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `yaw`, `tipo`, `panorama`) VALUES
-(1, '', 'p2p2', 120, -3, 117, 'equirectangular', 'imagenes/primeraplanta/p2p2.JPG'),
-(2, '', 'p2p2f1', 120, -4, -175, 'equirectangular', 'imagenes/primeraplanta/p2p2f1.JPG'),
-(3, '', 'p2p2f2', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p2f2.JPG'),
-(4, '', 'p2p2f3', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p2f3.JPG'),
-(5, '', 'p2p3', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p3.JPG'),
-(6, '', 'p2p4', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p4.JPG'),
-(7, '', 'p2p4f3', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p4f3.JPG'),
-(8, '', 'p2p4f2', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p4f2.JPG'),
-(9, '', 'p2p4f4', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p4f4.JPG'),
-(10, '', 'p2p5', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p5.JPG'),
-(11, '', 'p2p6', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p6.JPG'),
-(12, '', 'p2p7', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p7.JPG'),
-(13, '', 'p2p72', 120, 0, 5, 'equirectangular', 'imagenes/primeraplanta/p2p72.JPG'),
-(14, '', 'p2p8', 120, 0, 0, 'equirectangular', 'imagenes/primeraplanta/p2p8.JPG'),
-(15, '', 'p2p1', 120, -8, 0, 'equirectangular', 'imagenes/primeraplanta/p2p1.JPG'),
-(16, '', 'p2p10', 120, -8, 0, 'equirectangular', 'imagenes/primeraplanta/p2p10.JPG'),
-(17, '', 'p1p1', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p1.JPG'),
-(18, '', 'p1p2', 120, -44, -8, 'equirectangular', 'imagenes/bajaplanta/p1p2.JPG'),
-(19, '', 'p1p2f1', 120, -8, 181, 'equirectangular', 'imagenes/bajaplanta/p1p2f1.JPG'),
-(20, '', 'p1p2f2', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p2f2.JPG'),
-(21, '', 'p1p2f3', 120, 19, 110, 'equirectangular', 'imagenes/bajaplanta/p1p2f3.JPG'),
-(22, '', 'p1p22', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p22.JPG'),
-(23, '', 'p1p3', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p3.JPG'),
-(24, '', 'p1p32', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p32.JPG'),
-(25, '', 'p1p4', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p4.JPG'),
-(26, '', 'p1p32f1', 120, 0, 5, 'equirectangular', 'imagenes/bajaplanta/p1p32f1.JPG'),
-(27, '', 'p1p32f2', 120, 0, 5, 'equirectangular', 'imagenes/bajaplanta/p1p32f2.JPG'),
-(28, '', 'p1p5', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p5.JPG'),
-(29, '', 'p1p5f1', 120, 22, 60, 'equirectangular', 'imagenes/bajaplanta/p1p5f1.JPG'),
-(30, '', 'p1p6', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p6.JPG'),
-(31, '', 'p1p7', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p7.JPG'),
-(32, '', 'p1p72', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p72.JPG'),
-(33, '', 'p1p8', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p8.JPG'),
-(34, '', 'p1p9', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p9.JPG'),
-(35, '', 'p1p9f1', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p9f1.JPG'),
-(36, '', 'p1p9f2', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p9f2.JPG'),
-(37, '', 'p1p11', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p11.JPG'),
-(38, '', 'p1p10', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p10.JPG'),
-(39, '', 'p1p12', 120, -8, 0, 'equirectangular', 'imagenes/bajaplanta/p1p12.JPG'),
-(40, '', 'p0p0', 120, 190, -20, 'equirectangular', 'imagenes/sotanoplanta/p0p0.JPG'),
-(41, '', 'p0p1', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p1.JPG'),
-(42, '', 'p0p1f1', 120, 172, 15, 'equirectangular', 'imagenes/sotanoplanta/p0p1f1.JPG'),
-(43, '', 'p0p1f2', 120, -8, 0, 'equirectangular', 'imagenes/sotanoplanta/p0p1f2.JPG'),
-(44, '', 'p0p2', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p2.JPG'),
-(45, '', 'p0p3', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p3.JPG'),
-(46, '', 'p0p4', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p4.JPG'),
-(47, '', 'p0p4f2', 120, 11, -9, 'equirectangular', 'imagenes/sotanoplanta/p0p4f2.JPG'),
-(48, '', 'p0p5', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p5.JPG'),
-(49, '', 'p0p5f1', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p5f1.JPG'),
-(50, '', 'p0p5f2', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p5f2.JPG'),
-(51, '', 'p3p1', 120, -8, 0, 'equirectangular', 'imagenes/segundaplanta/p3p1.JPG'),
-(52, '', 'p3p2', 120, -3, 117, 'equirectangular', 'imagenes/segundaplanta/p3p2.JPG'),
-(53, '', 'p3p2f2', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p2f2.JPG'),
-(54, '', 'p3p3', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p3.JPG'),
-(55, '', 'p3p4', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p4.JPG'),
-(56, '', 'p3p4f2', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p4f2.JPG'),
-(57, '', 'p3p4f3', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p4f3.JPG'),
-(58, '', 'p3p5', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p5.JPG'),
-(59, '', 'p3p5f1', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p5f1.JPG'),
-(60, '', 'p3p6', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p6.JPG'),
-(61, '', 'p3p6f1', 120, -19, -181, 'equirectangular', 'imagenes/segundaplanta/p3p6f1.JPG'),
-(62, '', 'p3p7', 120, 0, 5, 'equirectangular', 'imagenes/segundaplanta/p3p7.JPG'),
-(63, '', 'p3p8', 120, 0, 0, 'equirectangular', 'imagenes/segundaplanta/p3p8.JPG'),
-(64, '', 'p3p10', 120, -8, 0, 'equirectangular', 'imagenes/segundaplanta/p3p10.JPG'),
-(65, '', 'p4p0', 120, -8, 0, 'equirectangular', 'imagenes/tejado/p4p0.JPG'),
-(66, '', 'p4p1', 120, -14, 175, 'equirectangular', 'imagenes/tejado/p4p1.JPG'),
-(67, '', 'p4p2', 120, -14, 175, 'equirectangular', 'imagenes/tejado/p4p2.JPG'),
-(68, '', 'p4p3', 120, -86, -2, 'equirectangular', 'imagenes/tejado/p4p3.JPG'),
-(69, '', 'p4p4', 120, -14, 175, 'equirectangular', 'imagenes/tejado/p4p4.JPG'),
-(70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'imagenes/tejado/p4p5.JPG'),
-(71, '', 'pre', 120, 116, 25, 'equirectangular', 'imagenes/premio.png'),
-(72, '', 'p2p2f1', 120, -14, 175, 'equirectangular', 'imagenes/primeraplanta/p2p2f1.JPG'),
-(73, '', 'p0p4f2', 120, -14, 175, 'equirectangular', 'imagenes/sotanoplanta/p0p4f2.JPG');
+(1, '', 'p2p2', 120, -3, 117, 'equirectangular', 'assets/imagenes/escenas/p2p2.JPG'),
+(2, '', 'p2p2f1', 120, -4, -175, 'equirectangular', 'assets/imagenes/escenas/p2p2f1.JPG'),
+(3, '', 'p2p2f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p2f2.JPG'),
+(4, '', 'p2p2f3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p2f3.JPG'),
+(5, '', 'p2p3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p3.JPG'),
+(6, '', 'p2p4', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4.JPG'),
+(7, '', 'p2p4f3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4f3.JPG'),
+(8, '', 'p2p4f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4f2.JPG'),
+(9, '', 'p2p4f4', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4f4.JPG'),
+(10, '', 'p2p5', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p5.JPG'),
+(11, '', 'p2p6', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p6.JPG'),
+(12, '', 'p2p7', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p7.JPG'),
+(13, '', 'p2p72', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p72.JPG'),
+(14, '', 'p2p8', 120, 0, 0, 'equirectangular', 'assets/imagenes/escenas/p2p8.JPG'),
+(15, '', 'p2p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p2p1.JPG'),
+(16, '', 'p2p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p2p10.JPG'),
+(17, '', 'p1p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p1.JPG'),
+(18, '', 'p1p2', 120, -44, -8, 'equirectangular', 'assets/imagenes/escenas/p1p2.JPG'),
+(19, '', 'p1p2f1', 120, -8, 181, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
+(20, '', 'p1p2f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
+(21, '', 'p1p2f3', 120, 19, 110, 'equirectangular', 'assets/imagenes/escenas/p1p2f3.JPG'),
+(22, '', 'p1p22', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p22.JPG'),
+(23, '', 'p1p3', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p3.JPG'),
+(24, '', 'p1p32', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p32.JPG'),
+(25, '', 'p1p4', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p4.JPG'),
+(26, '', 'p1p32f1', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p1p32f1.JPG'),
+(27, '', 'p1p32f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p1p32f2.JPG'),
+(28, '', 'p1p5', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p5.JPG'),
+(29, '', 'p1p5f1', 120, 22, 60, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
+(30, '', 'p1p6', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p6.JPG'),
+(31, '', 'p1p7', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p7.JPG'),
+(32, '', 'p1p72', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p72.JPG'),
+(33, '', 'p1p8', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p8.JPG'),
+(34, '', 'p1p9', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9.JPG'),
+(35, '', 'p1p9f1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9f1.JPG'),
+(36, '', 'p1p9f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9f2.JPG'),
+(37, '', 'p1p11', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p11.JPG'),
+(38, '', 'p1p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p10.JPG'),
+(39, '', 'p1p12', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p12.JPG'),
+(40, '', 'p0p0', 120, 190, -20, 'equirectangular', 'assets/imagenes/escenas/p0p0.JPG'),
+(41, '', 'p0p1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p1.JPG'),
+(42, '', 'p0p1f1', 120, 172, 15, 'equirectangular', 'assets/imagenes/escenas/p0p1f1.JPG'),
+(43, '', 'p0p1f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p0p1f2.JPG'),
+(44, '', 'p0p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p2.JPG'),
+(45, '', 'p0p3', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p3.JPG'),
+(46, '', 'p0p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p4.JPG'),
+(47, '', 'p0p4f2', 120, 11, -9, 'equirectangular', 'assets/imagenes/escenas/p0p4f2.JPG'),
+(48, '', 'p0p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5.JPG'),
+(49, '', 'p0p5f1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5f1.JPG'),
+(50, '', 'p0p5f2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5f2.JPG'),
+(51, '', 'p3p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p3p1.JPG'),
+(52, '', 'p3p2', 120, -3, 117, 'equirectangular', 'assets/imagenes/escenas/p3p2.JPG'),
+(53, '', 'p3p2f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p2f2.JPG'),
+(54, '', 'p3p3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p3.JPG'),
+(55, '', 'p3p4', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p4.JPG'),
+(56, '', 'p3p4f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p4f2.JPG'),
+(57, '', 'p3p4f3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p4f3.JPG'),
+(58, '', 'p3p5', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p5.JPG'),
+(59, '', 'p3p5f1', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p5f1.JPG'),
+(60, '', 'p3p6', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p6.JPG'),
+(61, '', 'p3p6f1', 120, -19, -181, 'equirectangular', 'assets/imagenes/escenas/p3p6f1.JPG'),
+(62, '', 'p3p7', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p3p7.JPG'),
+(63, '', 'p3p8', 120, 0, 0, 'equirectangular', 'assets/imagenes/escenas/p3p8.JPG'),
+(64, '', 'p3p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p3p10.JPG'),
+(65, '', 'p4p0', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p4p0.JPG'),
+(66, '', 'p4p1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p1.JPG'),
+(67, '', 'p4p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p2.JPG'),
+(68, '', 'p4p3', 120, -86, -2, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
+(69, '', 'p4p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p4.JPG'),
+(70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG');
 
 -- --------------------------------------------------------
 
@@ -328,10 +322,10 @@ CREATE TABLE `hotspots` (
 --
 
 INSERT INTO `hotspots` (`id_hotspot`, `descripcion`, `pitch`, `yaw`, `cssClass`, `clickHandlerFunc`, `clickHandlerArgs`, `sceneId`, `targetPitch`, `targetYaw`, `tipo`) VALUES
-(1, '   ', -13, 2, '     custom-hotspot-salto    ', '     puntos     ', '     p2punto3     ', '     p2p3     ', -4, 182, '     scene'),
+(1, '   ', -13, 2, 'custom-hotspot-salto', 'puntos', 'p2punto3', 'p2p3', -4, 182, 'scene'),
 (2, ' ', -16, 126, 'custom-hotspot-salto', 'puntos', 'p2punto1', 'p2p1', 0, 0, 'scene'),
 (3, ' ', -8, -180, 'custom-hotspot-salto', 'puntos', 'p2punto10', 'p2p10', 0, 0, 'scene'),
-(4, ' ', -12, -92, 'custom-hotspot-salto', 'puntos', 'p2punto11', 'p2p2f1', 0, 0, 'scene'),
+(4, '', 0, 0, 'custom-hotspot-salto', 'puntos', 'p2punto11', 'p2p2f1', 0, 0, 'scene'),
 (5, ' ', -10, -83, 'custom-hotspot-salto', 'puntos', 'p2punto2', 'p2p2', 0, -83, 'scene'),
 (6, ' ', -9, 185, 'custom-hotspot-salto', 'puntos', 'p2punto12', 'p2p2f3', -2, -2, 'scene'),
 (7, ' ', -8, 3, 'custom-hotspot-salto', 'puntos', 'p2punto13', 'p2p2f2', -2, 3, 'scene'),
@@ -509,7 +503,8 @@ INSERT INTO `imagenes` (`id_imagen`, `titulo_imagen`, `texto_imagen`, `url_image
 (47, 'El vuelo mágico', 'Obra de Luis Cañadas pintor y escultor de Almería', '47.jpg', '2017-12-30'),
 (48, 'Vírgen María con el niño', 'Cuadro del pintor Abraham Wilemsen', '48.jpg', '2017-12-13'),
 (49, 'La Capilla', 'Detalle la Capilla en el IES Celia Viñas', '49.jpg', '2017-11-07'),
-(51, 'Moctezuma', 'Emperador de Moscú', '51.jpg', '2017-12-13');
+(57, 'prueba sin respuesta', 'jskisisi', '57.jpg', '2018-01-25'),
+(58, 'fkfifiiofoof', 'kgkkgkkg', '58.jpg', '2018-01-18');
 
 -- --------------------------------------------------------
 
@@ -525,20 +520,21 @@ CREATE TABLE `libros` (
   `lugar_edicion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_edicion` date NOT NULL,
   `ISBN` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `tipo` int(2) NOT NULL
+  `tipo` int(2) NOT NULL,
+  `apaisado` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `editorial`, `lugar_edicion`, `fecha_edicion`, `ISBN`, `tipo`) VALUES
-(5, 'Apuntes para una historia del Instituto \"Celia Viñas\" de Almería', 'D.Trino Gómez Ruiz', 'I.E.S Celia Viñas', 'Almería', '2013-10-01', '', 1),
-(6, 'Nacimiento y primeros pasos de un edificio: el I.E.S \"Celia Viñas\"', 'D.José Luis Ruz Márquez', 'I.E.S Celia Viñas', 'Almeria', '2000-10-08', '0', 1),
-(7, 'Gramática elemental de la lengua castellana', 'D.Hilario del Olmo Minguez', '', 'Almería', '1808-05-01', '2', 1),
-(8, 'Sumario de psicología', 'D.Agustín Arredondo García', '', 'Valladolid', '1900-00-00', '46', 1),
-(9, 'El esplendor de Almerï¿½a en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterrï¿½nea, Cajama.', 'Almeria', '2003-12-00', '8495531186', 1),
-(10, 'Exposición y critica de la doctrina transformista', 'Agustin Arredondo', 'D. Mariano Alvares y Robles', 'Almería', '1878-00-00', '7', 1);
+INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `editorial`, `lugar_edicion`, `fecha_edicion`, `ISBN`, `tipo`, `apaisado`) VALUES
+(5, 'Apuntes para una historia del Instituto \"Celia Viñas\" de Almería', 'D.Trino Gómez Ruiz', 'I.E.S Celia Viñas', 'Almería', '2013-10-01', '565989', 1, 0),
+(6, 'Nacimiento y primeros pasos de un edificio: el I.E.S \"Celia Viñas\"', 'D.José Luis Ruz Márquez', 'I.E.S Celia Viñas', 'Almeria', '2000-10-08', '0', 1, 0),
+(7, 'Gramática elemental de la lengua castellana', 'D.Hilario del Olmo Minguez', 'almeria', 'Almería', '1808-05-01', '2', 1, 0),
+(8, 'Sumario de psicología', 'D.Agustín Arredondo García', 'a', 'Valladolid', '2018-01-14', '46', 1, 0),
+(9, 'El esplendor de Almerï¿½a en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterrï¿½nea, Cajama.', 'Almeria', '2018-01-28', '8495531186', 1, 1),
+(10, 'Exposición y critica de la doctrina transformista', 'Agustin Arredondo', 'D. Mariano Alvares y Robles', 'Almería', '2018-01-05', '7', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -658,6 +654,8 @@ INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left`, `top`, `id_escena`
 CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre_usuario` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `apellido` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(256) COLLATE utf8_spanish_ci NOT NULL,
   `tipo_usuario` int(255) NOT NULL
@@ -667,16 +665,15 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `password`, `email`, `tipo_usuario`) VALUES
-(1, 'admin', 'admin', 'admin@iesceliaciclos.org', 0),
-(2, 'entrar', '1234', '', 1),
-(3, 'administrador', '1234', '', 1),
-(6, 'mape', '1234', '', 2),
-(8, 'Alfredo', 'php5', 'alfredo@celia.com', 1),
-(9, 'Fran', 'cisco91', 'Fran_91@celia.com', 1),
-(12, 'hamza', 'ben', 'hamzabenhachmi@gmail.com', 1),
-(14, 'miguel', 'miguel', 'miguelille@hotmail.com', 1),
-(19, 'felix', 'felix', 'ss', 1);
+INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) VALUES
+(1, 'admin', '', '', 'admin', 'admin@iesceliaciclos.org', 0),
+(2, 'entrar', '', '', '1234', '', 1),
+(3, 'administrador', 'Luis', '', '1234', 'pepito@abc.es', 1),
+(8, 'Alfredo', '', '', 'php5', 'alfredo@celia.com', 1),
+(9, 'Fran', '', '', 'cisco91', 'Fran_91@celia.com', 1),
+(12, 'hamza', '', '', 'ben', 'hamzabenhachmi@gmail.com', 1),
+(20, 'Luisito', 'Luis', 'Garcia', '1234', 'pepito@abc.es', 1),
+(21, 'Hulio', 'Julio', 'Benitez', '1234', 'hulio@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -695,8 +692,8 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
-(1, 'https://www.youtube.com/', 'wewewe'),
-(2, 'https://www.youtube.com/', 'hamza');
+(1, 'https://www.youtube.com/', 'w'),
+(2, 'https://www.youtube.com/', 'ole');
 
 --
 -- Índices para tablas volcadas
@@ -720,6 +717,12 @@ ALTER TABLE `escenas`
 --
 ALTER TABLE `escenas_hotspots`
   ADD PRIMARY KEY (`id_escena`,`id_hotspot`);
+
+--
+-- Indices de la tabla `hotspots`
+--
+ALTER TABLE `hotspots`
+  ADD PRIMARY KEY (`id_hotspot`);
 
 --
 -- Indices de la tabla `imagenes`
@@ -768,44 +771,37 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT de la tabla `audio`
 --
 ALTER TABLE `audio`
-  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
   MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
-
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
   MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
 --
 -- AUTO_INCREMENT de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
   MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
-
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `video`
 --
 ALTER TABLE `video`
   MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- Restricciones para tablas volcadas
 --
@@ -815,7 +811,6 @@ ALTER TABLE `video`
 --
 ALTER TABLE `puntos_mapa`
   ADD CONSTRAINT `puntos_mapa_ibfk_1` FOREIGN KEY (`piso`) REFERENCES `pisos` (`piso`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -346,15 +346,13 @@ $( ".menu_slider" ).click(function() {
                         var escenas= data.scenes[i];
                         var enlace= data.scenes[i].panorama;
                         var prueba=enlace.split("/");
-                        console.log(prueba);
-                        if(prueba.length==2)
-                          var cadena = prueba[1].split(".");
-                        else 
-                          var cadena = prueba[2].split(".");
+                        var cadena = prueba[3].split(".");
+                     
                         
                         var nombreEscena = cadena[0];
                         data.scenes[i].panorama = "<?php echo base_url("assets/imagenes/escenas/");?>";
                         data.scenes[i].panorama = data.scenes[i].panorama+nombreEscena+".JPG";
+            
                         $.each(escenas.hotSpots, function(j){
                             escenas.hotSpots[j].clickHandlerFunc= eval(escenas.hotSpots[j].clickHandlerFunc);
                             
