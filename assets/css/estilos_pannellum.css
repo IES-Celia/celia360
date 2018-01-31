@@ -6,8 +6,6 @@
      body {
         margin: 0;
         padding: 0;
-        overflow: hidden;
-        position: fixed;
         cursor: default;
         width: 100%;
         height: 100%;
@@ -808,7 +806,7 @@ display: block;
 #mapa{
     pointer-events:none;
     z-index: 2;
-    position: absolute;
+    position: fixed;
     overflow: visible;
     /*background-color: black;   */
 }
@@ -832,7 +830,7 @@ display: block;
     bottom: 0px;
     margin-bottom: 100px;
     z-index: 2;
-    position: absolute;
+    position: fixed;
     background-image: url("svg/subirPiso22.svg");
     background-size: 100% 100%;
     width: 30px;
@@ -843,7 +841,7 @@ display: block;
     bottom: 0px;
     margin-bottom: 60px;
     z-index: 2;
-    position: absolute;
+    position: fixed;
     background-image: url("svg/bajarpiso22.svg");
     background-size: 100% 100%;
     width: 30px;
@@ -853,7 +851,7 @@ display: block;
     bottom: 0px;
     margin-bottom: 10px;
     z-index: 2;
-    position: absolute;
+    position: fixed;
     background-image: url("svg/pinned.svg");
     background-size: 100% 100%;
     width: 40px;

@@ -49,7 +49,7 @@
 	}
 	echo "</table>";
 ?>
-    <div id="mapa" style="width: 614px; height: 350px; top: 280px;" class="cerrado">
+    <div id="mapa" style="width: 45%; bottom: 10px;" class="cerrado">
 <?php
       $indice = 0;
 

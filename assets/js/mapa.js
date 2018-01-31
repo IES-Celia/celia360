@@ -136,7 +136,7 @@ function mapa_responsivo(){
     var anchura=window.innerWidth*0.45;
     var altura=anchura*0.57;
                     
-    document.getElementById("mapa").style.top=window.innerHeight-altura+"px";
+    document.getElementById("mapa").style.bottom=10+"px";
     document.getElementById("mapa").style.height=altura+"px";
     document.getElementById("mapa").style.width=anchura+"px"; 
     distancia_top=window.innerHeight*0.92;
