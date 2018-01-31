@@ -40,7 +40,7 @@
             <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> Borrar </a></td>
             
             <td align='center'>
-            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['id_escena'])."'> Modificar la escena </a></td>
+            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
             </tr>
             <tr><th colspan='9' align='center'>Panorama</th></tr>
             <tr>
