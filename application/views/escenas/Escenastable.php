@@ -48,6 +48,37 @@
             </tr>";
 	}
 	echo "</table>";
-
-
 ?>
+    <div id="mapa" style="width: 614px; height: 350px; top: 280px;" class="cerrado">
+<?php
+      $indice = 0;
+
+       $pisos = array('0' => "sotano", '1' => "primer_piso", "2" => "segundo_piso", "3" => "tercer_piso", "4" => "tejado" );
+
+      foreach ($mapa as $imagen) {
+        if($pisos[$indice]=="primer_piso"){
+          echo "<div id='".$pisos[$indice]."' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+        }else{
+          echo "<div id='".$pisos[$indice]."' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+        }
+        
+          foreach ($puntos as $punto) {
+            if($punto['piso']==$indice){
+            
+                echo "<a href='".site_url('/escenas/showUpdateScene/'.$punto['id_escena'].'')."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div></a>";
+              
+              
+            }
+            
+          }
+        echo "</div>";
+        $indice++;
+      }
+?>
+</div>
+      <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));"></div>
+
+        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(10)"></div>
+
+        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(-10); this.style"></div>
+        </div>

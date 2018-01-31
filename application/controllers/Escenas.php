@@ -14,8 +14,11 @@ class escenas extends CI_Controller {
         $this->showescenas();
     }
     public function showescenas() {
+        $this->load->model('Mapa','mapa');
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
+        $datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $this->load->view('template_admin', $datos);
     } 
     
