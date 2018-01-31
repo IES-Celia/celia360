@@ -13,9 +13,9 @@
             return $tabla;
 		}
 
-		public function getOne($id) {
+		public function getOne($cod) {
 			
-			$com = $this->db->query("SELECT * FROM escenas where id_escena = '$id'");
+			$com = $this->db->query("SELECT * FROM escenas where cod_escena = '$cod'");
             $tabla = array();
                 foreach($com->result_array() as $fila) {
                     $tabla[] = $fila;
@@ -52,7 +52,7 @@
             return $this->db->affected_rows();
         }
 
-		public function update ($id) {
+		public function update ($cod) {
 			
             $id = $_REQUEST["Id"];
 			$name = $_REQUEST["name"];
@@ -77,7 +77,7 @@
                         tipo = '$type', 
                         panorama = '$panorama' 
                             
-                            WHERE id_escena = '$id'");
+                            WHERE cod_escena = '$cod'");
 			
 			return $this-> db->affected_rows();
 			

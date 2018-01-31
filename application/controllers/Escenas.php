@@ -62,9 +62,9 @@ class escenas extends CI_Controller {
         
     }
     
-    public function showupdatescene($id){
+    public function showupdatescene($cod){
     
-        $datos["tabla"]= $this->Modeloescenas->getOne($id);
+        $datos["tabla"]= $this->Modeloescenas->getOne($cod);
         $datos["vista"]="escenas/Modificar";
     
         $this->load->view('template_admin', $datos);
@@ -73,7 +73,7 @@ class escenas extends CI_Controller {
     public function processupdatescene($id){
     
             
-            $resultado = $this->Modeloescenas->update($id);
+            $resultado = $this->Modeloescenas->update($cod);
             
             if ($resultado == true) {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
