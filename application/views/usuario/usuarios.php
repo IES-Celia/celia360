@@ -22,7 +22,7 @@ foreach ($tablaUsuarios as $usu) {
             <td>".$usu["email"]."</td>
             <td>".$usu["nombre"]."</td>
             <td>".$usu["apellido"]."</td>
-            <td>".$usu["tipo_usuario"]."</td>"
+            <td>".$usu["tipo_usuario"]."</td>
             <td>
             <a href='".site_url("./usuario/borrarUsuario/".$usu["id_usuario"])."'>Borrar</a></td>
             <td>
