@@ -19,7 +19,6 @@
 		  <th> Pitch </th>
 		  <th> Yaw </th>
 		  <th> Tipo </th>
-		  <th> Panorama </th>
 		  <th> Eliminar </th>
 		  <th> Modificar </th>
 		  </tr>";
