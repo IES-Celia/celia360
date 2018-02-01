@@ -20,7 +20,7 @@
         public function showloginForm(){       
         //Muestra la ventana de login
             $data["vista"] ="usuario/formLogin"; 
-            $this->load->view('template_admin', $data);
+            $this->load->view('template_login', $data);
         }
         public function checklogin(){
             //Ejecuta el login
@@ -31,13 +31,13 @@
                 $_SESSION["tipousr"] = 1;
                     
                     $data["vista"] = "usuario/admin";
-                    $this->load->view('template_admin', $data);
+                    $this->load->view('template_login',$data);
 
              }else if($resultado ==2){
                 $_SESSION["tipousr"] = 2;
 
                     $datos["vista"] = "usuario/mapero";
-                    $this->load->view("template_admin",$datos);
+                    $this->load->view('template_login',$datos);
                 
 
                 
@@ -46,20 +46,20 @@
 
                 $datos["tabla"] = $libro->get_info();
                 $datos["vista"] = "libro/IntAdmin";
-                $this->load->view("template_admin",$datos);
+                $this->load->view('template_login',$datos);
 
             }else{
 
                 $datos["error"] = "Usuario no registrado";
                 $datos["vista"] = "usuario/formLogin";
-                $this->load->view('template_admin',$datos);
+                $this->load->view('template_login',$datos);
             }
           
         }
         public function showregisterform(){
         //Mostrar el formulario de registro
             $data["vista"] = "usuario/registerForm";
-            $this->load->view('template_admin', $data);
+            $this->load->view('template_login',$data);
         }
         
 
@@ -71,11 +71,11 @@
 
                 $datos["mensaje"] = "Usuario creado correctamente";
                 $datos["vista"] = "usuario/formLogin";
-                $this->load->view('template_admin', $datos);
+                $this->load->view('template_login', $datos);
             }
             else {
                 $datos["vista"] = "usuario/regiterForm";
-                $this->load->view("template_admin", $datos);
+                $this->load->view("template_login", $datos);
             }
      
         }
