@@ -69,7 +69,7 @@ class Imagen extends CI_Controller {
 		$actualizar_texto = $this->input->post_get('texto_imagen');
 		$actualizar_fecha = $this->input->post_get('fecha');
 		
-		$actualizar_url = 'imagenes/' . $this->input->post_get('titulo_imagen') . ".jpg";	
+		$actualizar_url = 'assets/imagenes/imagenes-hotspots/' . $this->input->post_get('titulo_imagen') . ".jpg";	
 
         $resultado = $this->Img->modificar_imagen();
         
