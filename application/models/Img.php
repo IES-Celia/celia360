@@ -8,71 +8,48 @@ class Img extends CI_Model {
     }
 
     public function insertar_imagen() {
+        $resultado = array();
 
-		$id_imagen = $this->input->post_get('id_imagen');
-		$titulo_imagen = $this->input->post_get('titulo_imagen');
-		$texto_imagen = $this->input->post_get('texto_imagen');
-		$fecha = $this->input->post_get('fecha');
+        $id_imagen = $this->input->post_get('id_imagen');
+        $titulo_imagen = $this->input->post_get('titulo_imagen');
+        $texto_imagen = $this->input->post_get('texto_imagen');
+        $fecha = $this->input->post_get('fecha');
 
-        $imgFile = $_FILES['imagen']['name'];
-        $tmp_dir = $_FILES['imagen']['tmp_name'];
+        //Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
+        $this->db->query("INSERT INTO imagenes(id_imagen) VALUES (0)"); // Es un campo auto_increment, así que ignorará el 0
 
-        $upload_dir = 'assets/imagenes/imagenes-hotspots/'; // cargar directorio
-		
-        //PATHINFO_EXTENSION  (se devuelve la extensión)
-        $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
-		
-		//extensiones de imagen válidas
-		$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); 
-			
-        //cambiar el nombre de la imagen de carga
-        $userpic = $id_imagen . "." . $imgExt;
+        $resul = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes ORDER BY id_imagen DESC LIMIT 1");
+        $id_nuevaimagen = $resul->row()->maxid;
 
-        //Consultar el último id insertado
-        $resul = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes");
-        $maxid = $resul->row()->maxid;
-        //recoger el resultado y añadirle 1 (que será el nombre de la imagen)
-        $nombre = $maxid + 1;
-	
-		//Permitir formatos de archivo de imagen válidos
-		if(in_array($imgExt, $valid_extensions)){	
-		
-			//cambiar el nombre de la imagen de carga	
-			$userpic = $nombre . "." . "jpg";
-			// move_uploaded_file — Mueve un archivo subido a una nueva ubicación.
-			move_uploaded_file($tmp_dir,$upload_dir.$userpic);	
-		}
-		else{
-			echo "Sólo se permiten archivos JPG, JPEG, PNG y GIF.";		
-		}
-	
-        // Insertamos el registro en la base de datos
-        $resultado = $this->db->query("insert into imagenes (id_imagen,titulo_imagen,texto_imagen,url_imagen,fecha)
-                values('$id_imagen','$titulo_imagen','$texto_imagen' ,'$userpic','$fecha')");
+        //cambiar el nombre de la imagen de carga	
+        $userpic = $id_nuevaimagen . "." . "jpg";
 
-        //Consultar el último id insertado
-        $res = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes");
+        $config['upload_path'] = 'assets/imagenes/imagenes-hotspots/';
+        $config['allowed_types'] = 'jpg';
+        $config['file_name'] = $userpic;
 
-        //recoger el resultado
-        $nom = $res->row()->maxid;
+        //cargar la librería
+        $this->load->library('upload', $config);
+        //Realiza la carga según las preferencias que ha establecido.
+        $resultado_subida = $this->upload->do_upload('imagen');
 
-        //si la 1ªconsulta del (máximo id insertado +1) es distinto de la 2ªconsulta del máximo id insertado
-        if ($nombre != $nom) {
-			
-			//cambiar el nombre de la imagen de carga
-			$user = $nom . "." . "jpg";
-            //modifico el nombre en la BD
-            $re = $this->db->query("update imagenes set url_imagen='$user' where id_imagen ='$nom'");
-
-            //cambia el nombre del fichero
-            rename("$upload_dir$userpic", "$upload_dir$user");
-        }   //fin del if
-
-        if ($resultado == 1) {
-
-            $resultado = true;
+        if ($resultado_subida == false) {
+            // ¡¡La subida del fichero ha fallado!!
+            $resultado[0] = false;
+            $resultado[1] = $this->upload->display_errors("<i>", "</i>");
+            // Borramos el registro que habíamos creado vacío (solo con el ID)
+            $this->db->query("DELETE FROM imagenes WHERE id_imagen = '$id_nuevaimagen'");
         } else {
-            $resultado = false;
+            // ¡¡La subida del fichero ha sido un éxito!!
+            //Para devolver un elemento de la matriz: $this->upload->data('client_name'); 
+            //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
+            $imgFile = $this->upload->data('client_name');
+            //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
+            $tmp_dir = $this->upload->data('file_name');
+            // Modificamos el registro en la base de datos
+            $resultado[0] = true;
+            $resultado[1] = $this->db->query("UPDATE imagenes SET titulo_imagen='$titulo_imagen', texto_imagen = '$texto_imagen', 
+                                        url_imagen = '$userpic', fecha = '$fecha' WHERE id_imagen = '$id_nuevaimagen'");
         }
         return $resultado;
     }
@@ -81,42 +58,38 @@ class Img extends CI_Model {
     public function modificar_imagen() {
 
         $fichero_actualizado = false;
-		
-		if ($this->input->post_get('actualizar')) {	
-	
-			$actualizar_id = $this->input->post_get('id_imagen');
-			$actualizar_titulo = $this->input->post_get('titulo_imagen');
-			$actualizar_texto = $this->input->post_get('texto_imagen');
-			$actualizar_url = $this->input->post_get('url_imagen');
-			$actualizar_fecha = $this->input->post_get('fecha');
-            $imgFile = $_FILES['imagen']['name'];
-            $tmp_dir = $_FILES['imagen']['tmp_name'];
 
-            if ($imgFile) {
-                $upload_dir = 'assets/imagenes/imagenes-hotspots/'; // cargar directorio
-				
-                //pathinfo — Devuelve información acerca de la ruta de un fichero
-                $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de imagen
-               
-				//extensiones de imagen válidas
-				$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // extensiones válidas
-	
-				//Permitir formatos de archivo de imagen válidos
-				if(in_array($imgExt, $valid_extensions)){	
-				
-					//cambiar el nombre de la imagen de carga
-					$userpic = $actualizar_id . "." . "jpg";
-					// move_uploaded_file — Mueve un archivo subido a una nueva ubicación.
-					move_uploaded_file($tmp_dir,$upload_dir.$userpic);
-					$fichero_actualizado = true;
-				}
-				else{
-					echo "Sólo se permiten archivos JPG, JPEG, PNG y GIF.";		
-				}
+        if ($this->input->post_get('actualizar')) {
+
+            $actualizar_id = $this->input->post_get('id_imagen');
+            $actualizar_titulo = $this->input->post_get('titulo_imagen');
+            $actualizar_texto = $this->input->post_get('texto_imagen');
+            $actualizar_url = $this->input->post_get('url_imagen');
+            $actualizar_fecha = $this->input->post_get('fecha');
+
+            //cambiar el nombre de la imagen de carga
+            $userpic = $actualizar_id . "." . "jpg";
+
+            $config['upload_path'] = 'assets/imagenes/imagenes-hotspots/';
+            $config['allowed_types'] = 'jpg';
+            $config['file_name'] = $userpic;
+            $config['overwrite'] = TRUE;
+
+            //cargar la librería
+            $this->load->library('upload', $config);
+
+            $resultado_subida = $this->upload->do_upload('imagen');
+
+            if ($resultado_subida) {
+                //cambiar el nombre de la imagen de carga
+                $userpic = $actualizar_id . "." . "jpg";
+                $fichero_actualizado = true;
+                $resultado = true;
             } else {
                 // si no se seleccionó ninguna imagen, la anterior permanecerá como está.
                 $userpic = $actualizar_url;
                 $fichero_actualizado = false;
+                $resultado = false;
             }
 
             $q = "update imagenes set titulo_imagen = '$actualizar_titulo',texto_imagen='$actualizar_texto',
@@ -142,25 +115,25 @@ class Img extends CI_Model {
     //Eliminar imagen
     public function borrar_imagen($id) {
 
-            $miconsulta = "SELECT url_imagen FROM imagenes WHERE id_imagen = '$id'";
+        $miconsulta = "SELECT url_imagen FROM imagenes WHERE id_imagen = '$id'";
 
-            $consulta = $this->db->query($miconsulta);
-            $archivo_imagen = $consulta->result_array()[0]["url_imagen"];
+        $consulta = $this->db->query($miconsulta);
+        $archivo_imagen = $consulta->result_array()[0]["url_imagen"];
 
-            //consultar la BD la fila
-            $url_imagen = "assets/imagenes/imagenes-hotspots/".$archivo_imagen; // cargar directorio
-            //unlink — Borra un fichero
-            unlink($url_imagen);
+        //consultar la BD la fila
+        $url_imagen = "assets/imagenes/imagenes-hotspots/" . $archivo_imagen; // cargar directorio
+        //unlink — Borra un fichero
+        unlink($url_imagen);
 
-            $q = "delete  from imagenes where id_imagen= '$id'";
+        $q = "delete  from imagenes where id_imagen= '$id'";
 
-            $resultado = $this->db->query($q);
+        $resultado = $this->db->query($q);
 
-            if ($resultado != 0) {
-                return true;
-            } else {
-                return false;
-            }
+        if ($resultado != 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Busca una imagen en la BD y devuelve sus datos en un array
@@ -171,4 +144,5 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
+
 }
