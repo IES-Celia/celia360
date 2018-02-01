@@ -18,7 +18,7 @@ echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
     <input type='text' id="user" name='user'><br/>
     
     <label for="pass">Password</label>
-    <input type='text' id="pass" name='pass'><br/>
+    <input type='password' id="pass" name='pass'><br/>
 
     <input type='submit'>
 </form>
