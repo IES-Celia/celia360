@@ -61,16 +61,16 @@
              
             <div class="main">
               <div class="slider-nav">
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p0p1f1.JPG");?>" style='height: : 130px; width:130px;' alt="foto0" title="PATIO"></div>
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p4p3.JPG");?>" style='height: : 130px; width:130px;' alt="foto1" title="SALON"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p4p2.JPG");?>" style='height: : 130px; width:130px;' alt="foto2" title="COCINA"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p5f2.JPG");?>" style='height: : 130px; width:130px;' alt="foto3" title="GARAJE"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p5.JPG");?>" style='height: : 130px; width:130px;' alt="foto4" title="DORMITORIO"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p32f1.JPG");?>" style='height: : 130px; width:130px;' alt="foto5" title="DORMITORIO2"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p3.JPG");?>" style='height: : 130px; width:130px;' alt="foto6" title="TEJADO"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p2p2f1.JPG");?>" style='height: : 130px; width:130px;' alt="foto7" title="BAÑO"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p2.JPG");?>" style='height: : 130px; width:130px;' alt="foto8" title="COMEDOR"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p3p7.JPG");?>" style='height: : 130px; width:130px;' alt="foto9" title="PATIO TRASERO"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p0p1f1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="PATIO"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p4p3.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="SALON"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p4p2.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="COCINA"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p5f2.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="GARAJE"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="DORMITORIO"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p32f1.JPG");?>" style='height:  130px; width:130px;' alt="foto5" title="DORMITORIO2"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p3.JPG");?>" style='height:  130px; width:130px;' alt="foto6" title="TEJADO"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p2p2f1.JPG");?>" style='height:  130px; width:130px;' alt="foto7" title="BAÑO"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p2.JPG");?>" style='height:  130px; width:130px;' alt="foto8" title="COMEDOR"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p3p7.JPG");?>" style='height:  130px; width:130px;' alt="foto9" title="PATIO TRASERO"></div>
               </div>
             </div>
        

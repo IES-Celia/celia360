@@ -15,8 +15,8 @@
 	}
 	
 div.centrado {
-	margin-left=25%;
-	margin-right=25%;
+	margin-left:25%;
+	margin-right:25%;
 	
 }
 
