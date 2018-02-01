@@ -144,5 +144,4 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
-
 }
