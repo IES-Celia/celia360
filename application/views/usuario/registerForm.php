@@ -15,13 +15,6 @@ echo"<form action='".site_url("usuario/processRegisterForm")."' method='get'>";
     <input type='text' name='nombre' id="nombre"><br/>
     <label for="subname">Apellidos</label>
     <input type='text' name='subname' id="subname"><br/>
-    <label for="foto">Foto Perfil</label>
-    <input type='file' name="Foto" id="foto" accept="image/*"><br/>
-    <label for="tipo">Tipo</label>
-    <select name="tipo" id="tipo">
-    		<option value="1">Administrador</option>
-    		<option value="2">Controlador recorrido</option>
-    		<option value="3">Bibliotecario</option>
     </select>
         <br/>
     <input type='submit'>

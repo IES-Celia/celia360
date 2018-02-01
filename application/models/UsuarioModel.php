@@ -12,12 +12,10 @@
             $email = $_REQUEST["email"];
             $username = $_REQUEST["username"];
             $pass = $_REQUEST["pass"];
-            $tipo = $_REQUEST["tipo"];
             $name = $_REQUEST["nombre"];
-            $foto = $_REQUEST["Foto"];
             $apellido = $_REQUEST["subname"];
         
-            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, email, Nombre, Apellido, tipo_usuario) VALUES('$username','$pass','$email','$name','$apellido','$tipo')");
+            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, email, Nombre, Apellido, tipo_usuario) VALUES('$username','$pass','$email','$name','$apellido','0')");
 
         
             return $resultado;       
