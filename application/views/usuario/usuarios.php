@@ -11,7 +11,8 @@ echo "<table border='1' class='tabla' id='cont'>
         <td>Contraseña</td>
         <td>Correo</td>
         <td>Nombre</td>
-        <td>Apellido</td>";
+        <td>Apellido</td>
+        <td>Tipo</td>";
         
 
 foreach ($tablaUsuarios as $usu) {
