@@ -21,7 +21,7 @@ $du = $lista_imagenes[0];
     echo "<br>Fecha:<input type='date' name='fecha'  value='" . $du['fecha'] . "'><br/>";
     echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value='" . $du['url_imagen'] . "'><br/>";
     echo "<input type='hidden' name='url_imagen' value='" . $du['url_imagen'] . "'>";
-    echo "<img width='100px' src='".base_url("imagenes/" . $du['url_imagen']). "'><br><p>" . $du['url_imagen'] . "</p><br>";
+    echo "<img width='100px' src='".base_url("assets/imagenes/imagenes-hotspots/" . $du['url_imagen']). "'><br><p>" . $du['url_imagen'] . "</p><br>";
     ?>   
     <input type='submit' name ='actualizar' value = 'Aceptar'>
 </form>
