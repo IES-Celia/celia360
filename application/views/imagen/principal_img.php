@@ -18,7 +18,7 @@ foreach ($lista_imagenes as $ima) {
 	      $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" . 
 		  base_url("assets/imagenes/imagenes-hotspots" . $ima["url_imagen"]) . "' height='100px'></td><td>" . 
 		  $ima["fecha"] . "</td>
-    	<td><a href='".$url_borrar."'>Borrar</a></td>
+    	<td><a onclick = 'return confirm(\"¿Estás seguro que deseas eliminar el registro\");' href='".$url_borrar."'>Borrar</a></td>
     	<td><a href='" . $url_modificar . "'>Modificar</a></td></tr>";
 }
 echo "</table><br>";
