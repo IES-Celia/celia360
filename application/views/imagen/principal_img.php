@@ -5,6 +5,9 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 if (isset($mensaje)) {
     echo "<p style='color:green'>" . $mensaje . "</p>";
 }
+if (isset($error)) {
+    echo "<p style='color:red'>" . $error . "</p>";
+}
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
 echo "<a class='insert' href='" . site_url("imagen/imagen") . "'>Volver al Men&uacute;</a><br>";
