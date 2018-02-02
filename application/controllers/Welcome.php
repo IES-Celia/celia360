@@ -6,16 +6,12 @@ class Welcome extends CI_Controller {
 
 
 	public function index(){
-		$this->load->model('Mapa','mapa');
 
-		$datos["mapa"] = $this->mapa->cargar_mapa();
-		$datos["puntos"] = $this->mapa->cargar_puntos();
-		$this->load->view('Mapa', $datos);
+		//$datos["vista"] = "p2p3";
+		$this->load->view("jotpoch");
 	}
+    
 
-	public function mapa(){
 
-		
 
-	}
 }
