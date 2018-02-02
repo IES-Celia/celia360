@@ -1,5 +1,4 @@
 <?php
-ini_set("display_errors", 0);
 class Conversorbd2json extends CI_Controller {
 
   public function index(){
@@ -31,7 +30,9 @@ class Conversorbd2json extends CI_Controller {
   }
   
   public function get_json_plataforma() {
-   
+      $this->load->model("conversorjson");
+      $json = $this->conversorjson->get_datos_plataforma();
+      echo $json;
   }
   
   
