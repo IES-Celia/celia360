@@ -29,9 +29,9 @@ class Conversorbd2json extends CI_Controller {
     
   }
   
-  public function get_json_plataforma() {
+  public function get_json_plataforma($escenaInicial) {
       $this->load->model("conversorjson");
-      $json = $this->conversorjson->get_datos_plataforma();
+      $json = $this->conversorjson->get_datos_plataforma($escenaInicial);
       echo $json;
   }
   
