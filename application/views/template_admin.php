@@ -1,3 +1,4 @@
+<?php
 if (!isset($permiso)) $permiso = true;
 
 if($permiso){
