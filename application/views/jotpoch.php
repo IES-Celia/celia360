@@ -22,7 +22,6 @@
 	<div class="contenedor">
 		<div id="panorama">   
          <div id="titulo">MODO INSERCCIÓN DE PUNTOS HOTSPOT</div> 
-            <input id="escena"><button type="button" onclick="recargarJSON()">Enviar</button>
          <div class="ctrl" id="fullscreen"></div>
         </div>
 	</div>
@@ -30,12 +29,11 @@
 <script type="text/javascript">
 
 // meter en json en un string para poder modificarlo   
-function recargarJSON(){
+function recargarJSON(escenaSelect){
    json_contenido='';
    var escena;
-   escenaSeleccionada= document.getElementById("escena").value;
         $.ajax({
-                url: "<?php echo site_url("conversorbd2json/get_json_plataforma"); ?>",
+                url: "<?php echo site_url("conversorbd2json/get_json_plataforma/".$escenaInicial); ?>"
                 dataType: 'json',
                 success: function(data){
                   console.log(json_contenido);
@@ -45,7 +43,6 @@ function recargarJSON(){
                         var prueba=enlace.split("/");
                         var cadena = prueba[7].split(".");
                      
-                        
                         var nombreEscena = cadena[0];
                         data.scenes[i].panorama = "<?php echo base_url("assets/imagenes/escenas/");?>";
                         data.scenes[i].panorama = data.scenes[i].panorama+nombreEscena+".JPG";
@@ -58,8 +55,6 @@ function recargarJSON(){
                     
                  console.log(data);
                  viewer = pannellum.viewer('panorama', data );
-                 alert("Procede a añadir o modificar puntos") 
-                 viewer.loadScene(escenaSeleccionada); 
                 },
                error: function(){
                  console.log("ERROR fallo del ajax rico rico");
