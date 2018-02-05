@@ -24,7 +24,7 @@
         }
         public function checklogin(){
             //Ejecuta el login
-                
+            session_start();
             $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
             
              if($resultado ==1){
