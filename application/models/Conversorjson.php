@@ -127,13 +127,13 @@ class Conversorjson extends CI_Model {
   }
     
     
-    public function get_datos_plataforma() {
+    public function get_datos_plataforma($escenaInicial) {
     $this->load->database();
     $sql = "SELECT * FROM escenas";
     $res = $this->db->query($sql);
     $flagObj=false;
     $flagHot=false;
-    $json = ' {"default": {"firstScene": "p1p2","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "preview22.png","hotSpotDebug": true },  "scenes": {';
+    $json = ' {"default": {"firstScene": '.$escenaInicial.',"sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "preview22.png","hotSpotDebug": true },  "scenes": {';
     foreach ($res->result_array() as $escena) {
         if($flagObj){ // con esta comprobacion pondrá coma entre objetos escenas sin ponerla en el primero
             $json = $json . ',';
