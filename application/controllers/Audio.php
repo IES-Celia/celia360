@@ -6,6 +6,7 @@
        public function __construct() {
            parent::__construct();
            $this->load->model("Audm");
+		   $this->load->model("UsuarioModel");
        }
        
      public function index() {
@@ -13,9 +14,9 @@
      }
        
      public function forminsertaraudio(){
-         $data["vista"]="audio/Insertaraudios";
-        
-        $this->load->view("template_admin", $data);
+        $datos["vista"]="audio/Insertaraudios";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view("template_admin", $datos);
      }
         
      public function insertaraud(){   
@@ -33,6 +34,7 @@
             $res=$this->Audm->insertaraud($desc, $tipo);
             $datos["tabla"]=$this->Audm->buscaraud();
             $datos["vista"]="audio/Vaudios";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
         }
         
@@ -42,6 +44,7 @@
         public function mostraraudios(){
             $datos["tabla"]=$this->Audm->buscaraud();
             $datos["vista"]="audio/Vaudios";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
         
         }
@@ -50,12 +53,14 @@
             $this->Audm->borraraud($id);
             $datos["tabla"]=$this->Audm->buscaraud();
             $datos["vista"]="audio/Vaudios";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
         }
         
         public function formmodificarAud($id_aud){
             $datos["aud"]=$this->Audm->buscaridaud($id_aud);
             $datos["vista"]="audio/Modificaraudios";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
         
         }
@@ -65,6 +70,7 @@
             $this->Audm->modificaraud($id);
             $datos["tabla"]=$this->Audm->buscaraud();
             $datos["vista"]="audio/Vaudios";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
         
    }

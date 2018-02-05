@@ -121,6 +121,25 @@
            
         return $tabla;
     }
+	
+	public function comprueba_permisos($vista){
+        session_start();
+        $tipo = -1;
+        if(isset($_SESSION['tipousr'])){
+            $tipo=$_SESSION['tipousr'];
+        }
+        
+        $dir =  explode("/", $vista);
+        $dir = $dir[0];
+        print_r($dir);
+        if ($tipo == 1 && $dir == "audio" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "video" || $dir == "hotspots") return true;
+        else if ($tipo == 2 && $dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" ) return true;
+        else if ($tipo == 3 && $dir == "biblioteca") return true;
+        else return false;
+        
+        
+        
+    }
 
 }
 
