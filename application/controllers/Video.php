@@ -6,6 +6,7 @@
        public function __construct() {
            parent::__construct();
            $this->load->model("Vidm");
+		   $this->load->model("UsuarioModel");
        }
        
      public function index() {
@@ -15,6 +16,7 @@
 	
     public function frominsertarvideo(){
         $data["vista"] ="video/Insertarvideos";
+		$data["permiso"]=$this->UsuarioModel->comprueba_permisos($data["vista"]);
 		$this->load->view('template_admin', $data);	
     }
     
@@ -24,11 +26,13 @@
 			$res=$this->Vidm->insertarvideo($desc, $f_def);
 			$da["tabla"]=$this->Vidm->buscarvideo();
             $da["vista"]="video/Vvideos";
+			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
 			$this->load->view('template_admin',$da);
    }
    public function mostrarvideo(){
 			$da["tabla"]=$this->Vidm->buscarvideo();
             $da["vista"]="video/Vvideos";
+			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
 			$this->load->view('template_admin',$da);
 		
    }
@@ -37,6 +41,7 @@
 			$this->Vidm->borrarvideo($id);
 			$da["tabla"]=$this->Vidm->buscarvideo();
             $da["vista"]="video/Vvideos";
+			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
 			$this->load->view('template_admin',$da);
    }
 		
@@ -44,6 +49,7 @@
 			
 			$da["vid"]=$this->Vidm->buscaridvideo($id_vid);
             $da["vista"]="video/Modificarvideos";
+			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
 			$this->load->view('template_admin', $da);
 		
    }
@@ -52,6 +58,7 @@
 			$this->Vidm->modificarvideo($id);
 			$da["tabla"]=$this->Vidm->buscarvideo();
             $da["vista"]="video/Vvideos";
+			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
 			$this->load->view('template_admin', $da);
 		
    }
