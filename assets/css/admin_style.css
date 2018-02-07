@@ -316,7 +316,7 @@
     
     .for input[type="submit"]{
    
-        background-color: #2CBBBB;
+        background: linear-gradient(to bottom,#212e5b,blue) ;
         border: 1px solid #27A0A0;
         display: inline-block;
         cursor: pointer;
@@ -325,14 +325,17 @@
         padding: 8px 18px;
         text-decoration: none;
         text-transform: uppercase;
+        transition: 1s;
     }
     .for input[type="button"]:hover, 
     .for input[type="submit"]:hover {
     
-        background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
-        background-color:#34CACA;
+        transform: scale(1.05);
+        box-shadow: 5px 5px 4px 2px rgba(0,0,0,0.75);
     }
-    
+
+
+
     .for{
         text-shadow: 0.5px 0.5px #2CBBBB ;
         text-align: center;
