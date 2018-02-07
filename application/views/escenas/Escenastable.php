@@ -43,8 +43,8 @@
 
 <?php
 
-    echo"<a href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
-	echo "<table border='2px solid' align='center'>";
+    echo"<a class='insert' href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
+	echo "<table border='2px solid' align='center' id='cont'>";
 	echo "<tr> 
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>

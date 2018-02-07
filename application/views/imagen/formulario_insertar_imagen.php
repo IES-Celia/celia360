@@ -31,7 +31,7 @@ if (isset($error)) {
                 </div>
                 <div>
                     <label for="texto_imagen">Texto:</label>
-                    <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen" required></textarea><br>
+                    <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
                 </div>
                 <div>
                     <label for="fecha">Fecha:</label>

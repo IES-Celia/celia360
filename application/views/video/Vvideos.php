@@ -1,6 +1,6 @@
 <?php
 
-echo"<table align='center' border=1><tr>
+echo"<table align='center' border=1 id='cont'><tr>
 <th>id</th>
 <th>URL</th>
 <th>descrepcion</th>
@@ -17,5 +17,5 @@ foreach ($tabla as $re){
 
 	
 }
-echo"<a href='".site_url("Video/frominsertarvideo")."'>insertar</a>";
+echo"<a class='insert' href='".site_url("Video/frominsertarvideo")."'>insertar</a>";
 ?>
