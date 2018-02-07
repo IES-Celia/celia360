@@ -1,10 +1,54 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <script>
+    
+    $(document).ready(function(){
+      $('#open').click(function(){
+        $('.modalita').toggle('slow');
+      });
+      
+      $('.pie-ventana').click(function(){
+        $('.modal').css({display:"none"});
+      });
+
+      $('.efectBook').click(function(){
+        $('.modalita2').toggle('slow');
+          idlibro = $(this).attr("idlibro");
+          $('.modalita2').load('biblioteca/verLibroAjax/'+idlibro);
+      });
+
+      $('#cerrarmodal').click(function(){
+        $('.modalita2').css({display:"none"});
+        $('.modalita').css({display:"block"});
+      });
+
+      $(document).keyup(function(e) {
+          if (e.keyCode == 27) { // escape key maps to keycode `27`
+            $('.modalita2').css({display:"none"});
+          }
+      });
+
+    });
+
+
+
+  </script>
+<style>
+  
+
+</style>
+
+
+
+
+
     <div id="portadaca" style='z-index:100'; >
      <div id="cambio_portada">
          <img id="libre_portada" src="<?php echo base_url("assets/imagenes/portada/portadalibremini2.png");?>">
          <img id="destacado_portada" src="<?php echo base_url("assets/imagenes/portada/portadadestacadamini.png"); ?>">
          <img id="guiada_portada" src="<?php echo base_url("assets/imagenes/portada/portadaguiadamini.png"); ?>">
      </div>
-        
+
         <header id="header_portada">
             <div class="contenedor_portada">
             <nav id="nav_portada">
@@ -13,31 +57,90 @@
                   <li><a id="opcionlibre_portada" onclick='visita_libre("get_json_libre");'>Modo Libre</a></li>
                  <li><a id="opcionguiada_portada" onclick='visita_libre("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
-				 <li><a>Biblioteca</a></li>
+                  <li><a>Biblioteca</a></li>
                  <li><a href="" >Glosario</a></li>
                  <li><a href="" >Creditos</a></li>
              </ul>
             </nav>
             </div>
+
         </header>
         <main>
              <div id="slider1_portada">
                  <div class="contenedor_portada">
                      <h1>Celia Tour</h1>
                      <div id="separador_portada"> </div>
-                     <div id="lazo_portada"></div>
-                    <h2 aling="center">Historia</h2>
+                    <button id="abrir" class="btn">HISTORIA</button>
                  </div> 
              </div> 
+
         </main>
-      <script>
-        
+      
+      
+
+
+
+<!-- VENTANA MODAL PARA SACAR LIBROS HISTORIA -->
+
+    <div class="modalita" >
+      <div class="contenido" style="width:700px;background-color:white;margin:0 auto;margin-top:40px;border-radius:15px;">
+        <div class="cabecera-ventana" style="background-color:white;height:60px;border-radius:15px;">
+          <h1 style="text-align:center;border-bottom:1px solid grey;color:black;font-size:65px;">Biblioteca</h1>
+        </div>
+        <div class="pared" >
+        <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
+         <?php
+
+              $conexdb = new mysqli('localhost','root','','celiatour');
+                  if (!$conexdb) {
+                      die('Error al conectarse a mysql: ' . mysql_error());
+                  }
+
+                  $consult=$conexdb->query("Select id_libro,titulo from libros");
+                                                        
+                  $Arrayportada = $consult->fetch_all(MYSQLI_ASSOC);
+                    echo "<div class='estanteria' >"; 
+                      echo "<div class='nuevecica'  >"   ;    
+                        echo "<table >";  
+                        echo "<tr>";
+
+                        $i = 0;
+                        foreach ($Arrayportada as $ides){
+                          $i++;
+                          //Sacamos las portadas de los libros
+
+                            echo "<td class='columna'>";
+                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+                            echo "</td>";
+                              if ($i%4 == 0)  echo "</tr><tr>";
+                                }
+                                echo "</tr></table>";
+                      echo "</div>";
+                    echo "</div>";
+        ?>
+        </div>
+        </div>
+        <div class="pie-ventana" style="border-top:1px solid grey;border-radius:5px; height:50px;padding:18px;">
+          <a href="#" class="btn-2" style="float:right;">Cerrar</a>
+        </div>
+    </div>
+  </div>
+
+  <!-- VENTANA MODAL PARA SACAR LIBRO -->
+      <div class="modalita2" style="display: none;" >
+      <div class="contenido2" style="width:1000px;background-color:white;margin:0 auto;margin-top:40px;">
+        <div class="cabecera-ventana" style="background-color:white;height:60px;">
+          <h1 style="text-align:center;border-bottom:1px solid black;">Titulo Libro</h1>
+        </div>
+        <div class="cuerpo-ventana" id="cuerpo-ventana" style="margin-top:-100px;margin-bottom:100px; padding: 3%;margin-top: 80px;">
          
-   
-    
-    
-        
-      </script>
+        </div>
+        <div class="pie-ventana23" style="border-top:1px solid black;border-radius:5px; height:50px;padding:18px;">
+          <a href="#" id="cerrarmodal" class="btn-2" style="float:right;">Cerrar</a>
+
+        </div>
+    </div>
+  </div>
         <footer>
             <div id="elamo_portada">Celia Tour 360</div>
         </footer>

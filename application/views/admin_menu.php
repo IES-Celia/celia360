@@ -1,5 +1,5 @@
 <p>
-    <table align="center" border= '2px solid'>
+    <table align="center" border= '2px solid' id="menu">
     
     <tr>
         

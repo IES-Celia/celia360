@@ -6,11 +6,45 @@
 	if (isset($datos["mensaje"])) {
 		echo "<p style='color:blue'>".$datos["mensaje"]."</p>";
 	}
+?>
 
+    <script type="text/javascript">
+                    
+                 $(document).ready(function(){
+                    function mostrar(id)
+                    {
+                        var obj = document.getElementById(id)
+                            obj.style.display= 'block';
+                    }
+                    
+                    function ocultar(id)
+                    {
+                        var obj = document.getElementById(id)
+                            obj.style.display= 'none';
+                    }
+                     
+                    $(".imagenes").click(function(){
+                      var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
+                      $(this).html("<img src='"+enlace+"' width='1250' height='470'>");
+                       
+                        $(this).mouseleave(function(){
+                            $(this).html("Mostrar"); 
+                        });
+                    });
+                 });
+                    
+                
+                    
+                
+                </script>
+                <style>
+                    .oculto {display:none;}
+                </style>
 
+<?php
 
-    echo"<a href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
-	echo "<table border='2px solid' align='center'>";
+    echo"<a class='insert' href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
+	echo "<table border='2px solid' align='center' id='cont'>";
 	echo "<tr> 
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>
@@ -29,7 +63,7 @@
             
             <td align='center'>". $escenas['id_escena']."</td>
             <td align='center'>".$escenas['Nombre']."</td>
-            <td align='center'>".$escenas['cod_escena']."</td>
+            <td align='center' class='cod'>".$escenas['cod_escena']."</td>
             <td align='center'>".$escenas['hfov']." </td>
             <td align='center'>".$escenas['pitch']."</td>
             <td align='center'>".$escenas['yaw']."</td>
@@ -40,10 +74,13 @@
             
             <td align='center'>
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
-            </tr>
-            <tr><th colspan='9' align='center'>Panorama</th></tr>
-            <tr>
-            <td colspan='9' align='center'><img src='".$escenas['panorama']."' width='1250' height='470'/></td>
+            </tr>";
+?>
+            <tr><th colspan='9' align='center' class="imagenes">Mostrar</th></tr>
+<?php
+            echo"<tr>
+            <div id='imagen'>
+            </div>
             </tr>";
 	}
 	echo "</table>";
@@ -64,7 +101,7 @@
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-                echo "<a href='".site_url('welcome/cargar_mapa/'.$punto['id_escena'].'')."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\");'></div></a>";
+                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'')."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\");'></div></a>";
               
               
             }
@@ -80,4 +117,4 @@
         <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(10)"></div>
 
         <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(-10); this.style"></div>
-        </div>
+      

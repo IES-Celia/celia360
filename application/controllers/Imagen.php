@@ -91,16 +91,11 @@ class Imagen extends CI_Controller {
 
         //acciones para eliminar la imagen en la BD
         $resultado = $this->Img->borrar_imagen($id_imagen);
-
-        $datos["lista_imagenes"] = $this->Img->buscar_todo();
-
-        if ($resultado)
-            $datos["mensaje"] = "Imagen borrada con &eacute;xito";
-        else
-            $datos["mensaje"] = "Error al borrar la imagen";
-
-        $datos["vista"] = "imagen/principal_img";
-        $this->load->view("template_admin", $datos);
+        if ($resultado != 0) {
+            echo $id_imagen;
+        } else {
+            echo $resultado;
+        }
     }
 
 }
