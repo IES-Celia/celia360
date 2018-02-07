@@ -26,27 +26,29 @@
 
         public function login($usr,$pass){
 
+
             $pass_encryted = md5($pass);
-          
-            $resultado = $this->db->query("SELECT id_usuario, tipo_usuario FROM usuarios WHERE nombre_usuario = '$usr' and password = '$pass_encryted'");
-          
+
+            $consulta ="SELECT id_usuario, tipo_usuario FROM usuarios WHERE nombre_usuario = '$usr' and password = '$pass_encryted'";
+            
+            $res= $this->db->query($consulta);
+
 
             $tabla = array();
-                foreach($resultado->result_array() as $fila) {
-                    $tabla[] = $fila;
-                }  
-          
-
+                foreach($res->result_array() as $fila) {
+                    $tabla= $fila;
+                }
+  
             if (count($tabla) > 0){
-                    if($tabla[0]["tipo_usuario"]==1){
+                    if($tabla["tipo_usuario"]==1){
                         
                         $resultado = 1;
 
-                    }else if($tabla[0]["tipo_usuario"]==2){
+                    }else if($tabla["tipo_usuario"]==2){
 
                         $resultado = 2;
 
-                    }else if ($tabla[0]["tipo_usuario"]==3){
+                    }else if ($tabla["tipo_usuario"]==3){
 
                         $resultado = 3;
                     }
@@ -61,7 +63,7 @@
         public function buscarusu($usr,$pass){
           
             $consulta = "SELECT * FROM usuarios where nombre_usuario = '$usr' and password = '$pass'";
-            $tabla = $this->db->tabla($consulta);
+            $tabla = $this->db->query($consulta);
        
             return $tabla;
         }

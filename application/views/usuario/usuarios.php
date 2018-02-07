@@ -7,16 +7,17 @@ echo "Hola, ".$datos["nombreUsuario"];
 
 
 
-echo "<table border='1' class='tabla' id='cont'>
+echo "<table border='1' id='cont'>
         <tr>
         <td>Nick</td>
         <td>Contraseña</td>
         <td>Correo</td>
         <td>Nombre</td>
         <td>Apellido</td>
-        <td>Tipo</td>";
+        <td>Tipo</td>
+        <td>Borrar</td>
+        <td>Modificar</td>";
         
-$cont=0;
 foreach ($tablaUsuarios as $usu) {
    
     echo "<tr id='usu".$usu["id_usuario"]."'>

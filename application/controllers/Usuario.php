@@ -25,13 +25,14 @@
         public function checklogin(){
             //Ejecuta el login
             session_start();
+        
             $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
             
              if($resultado ==1){
                 $_SESSION["tipousr"] = 1;
-                    
+                    $data["tablaUsuarios"]= $this->UsuarioModel->buscartodousu(); 
                     $data["vista"] = "usuario/usuarios";
-                    $this->load->view('template_login',$data);
+                    $this->load->view('template_admin',$data);
 
              }else if($resultado ==2){
                 $_SESSION["tipousr"] = 2;
