@@ -5,9 +5,13 @@ class Welcome extends CI_Controller {
 
 
 
-	public function index($escenaInicial){
+	public function index(){
+
+	}
+
+	public function cargar_escena($escenaInicial){
 		$datos["escenaInicial"] = $escenaInicial;
-		$this->load->view("jotpoch", );
+		$this->load->view("jotpoch", $datos);	
 	}
     
     

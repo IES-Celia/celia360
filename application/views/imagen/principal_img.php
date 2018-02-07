@@ -15,9 +15,10 @@ echo "<br><table id='cont' border='1'>";
 echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Texto</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Borrar Imagen</th><th>Modificar Imagen</th></tr>';
 
 foreach ($lista_imagenes as $ima) {
+    $fila = $ima["id_imagen"];
     $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
-    $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
-    echo "<tr><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" . 
+    $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"].$fila;
+    echo "<tr id=".$fila."><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" . 
 	      $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" . 
 		  base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"]) . "' height='100px'></td><td>" . 
 		  $ima["fecha"] . "</td>

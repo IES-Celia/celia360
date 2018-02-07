@@ -133,7 +133,7 @@ class Conversorjson extends CI_Model {
     $res = $this->db->query($sql);
     $flagObj=false;
     $flagHot=false;
-    $json = ' {"default": {"firstScene": '.$escenaInicial.',"sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "preview22.png","hotSpotDebug": true },  "scenes": {';
+    $json = ' {"default": {"firstScene": "'.$escenaInicial.'","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "preview22.png","hotSpotDebug": true },  "scenes": {';
     foreach ($res->result_array() as $escena) {
         if($flagObj){ // con esta comprobacion pondrá coma entre objetos escenas sin ponerla en el primero
             $json = $json . ',';
@@ -146,7 +146,7 @@ class Conversorjson extends CI_Model {
         $json = $json . '"pitch": '.$escena['pitch'].',';  
         $json = $json . '"yaw": '.$escena['yaw'].',';  
         $json = $json . '"type": "equirectangular",';   
-        $json = $json . '"panorama": "'.base_url("assets/imagenes/escenas/".$escena['cod_escena']).'.JPG",'; 
+        $json = $json . '"panorama": "'.base_url("assets/imagenes/escenas/".$escena['cod_escena']).'.JPG",';
         $json = $json . '"hotSpots": ['; // ese $escena[hotspot] no tiene sentido pero está gracioso        
                 
         $sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_escena = ".$escena['id_escena'];
