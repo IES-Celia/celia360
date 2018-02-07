@@ -16,7 +16,7 @@
 <body>
     <div>
         <?php
-            echo "<table>";
+            echo "<table id='contenido'>";
                     echo "<tr>
                             <th>Id</th>
                             <th>Titulo</th>
@@ -73,8 +73,6 @@
                     $(selector).remove();
                 }
             }
-        
-        
     </script>
 
 </div>
