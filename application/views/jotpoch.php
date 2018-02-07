@@ -27,45 +27,49 @@
 	</div>
 	
 <script type="text/javascript">
+$(document).ready(function() {
+  function ayax(){
+    $.ajax({
+        url: '<?php echo base_url("conversorbd2json/get_json_plataforma/".$escenaInicial) ?>',
+        type: 'GET',
+        dataType: 'json',
+    }).done(function(data) {
+        viewer = pannellum.viewer("panorama", data);
+        viewer.loadScene(data.default.firstScene);
 
-// meter en json en un string para poder modificarlo   
-function recargarJSON(escenaSelect){
-   json_contenido='';
-   var escena;
-        $.ajax({
-                url: "<?php echo site_url("conversorbd2json/get_json_plataforma/".$escenaInicial); ?>"
-                dataType: 'json',
-                success: function(data){
-                  console.log(json_contenido);
-                    $.each(data.scenes, function(i){
-                        var escenas= data.scenes[i];
-                        var enlace= data.scenes[i].panorama;
-                        var prueba=enlace.split("/");
-                        var cadena = prueba[7].split(".");
-                     
-                        var nombreEscena = cadena[0];
-                        data.scenes[i].panorama = "<?php echo base_url("assets/imagenes/escenas/");?>";
-                        data.scenes[i].panorama = data.scenes[i].panorama+nombreEscena+".JPG";
-            
-                        $.each(escenas.hotSpots, function(j){
-                            escenas.hotSpots[j].clickHandlerFunc= eval(escenas.hotSpots[j].clickHandlerFunc);
-                            
-                        })
-                    })
-                    
-                 console.log(data);
-                 viewer = pannellum.viewer('panorama', data );
-                },
-               error: function(){
-                 console.log("ERROR fallo del ajax rico rico");
-               }
-            });
+        
+        $.each(data.scenes, function(i){
+          var escenas = data.scenes[i];
+          $.each(escenas.hotSpots, function(j){
+            escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
+          });
+        });
+          
+        
+    }).fail(function() {
+        console.log("error");
+    })
+
+    /*$.ajax({
+      url: "<?php echo base_url("conversorbd2json/get_json_plataforma/p1p4") ?>",
+      dataType: 'json',
+      success: function(data){
+        viewer = pannellum.viewer("panorama", data);
+        viewer.loadScene(data.default.firstScene);
+      },
+      error: function(){
+        console.log("ERROR fallo del ajax rico rico");
+      }
+    });*/
+} 
+        
+        
    /* function cosa(hotspotDiv,args){
         alert(args);
     }
     */
     function modificarHotspot(hotspotDiv, idjotpoch){
-        alert("Abrir la vetana de modificación de jotpoch para el jotpoch "+idjotpoch);
+        alert("Abrir la vetana de modificación de jotpoch para el jotpoch "+idjotpoch+"");
         location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch;
         
         //.site_url("/hotspots/show_update_hotspot/".$hotspots['id_hotspot'])
@@ -76,7 +80,12 @@ function recargarJSON(escenaSelect){
   document.getElementById('fullscreen').addEventListener('click', function(e) {
         viewer.toggleFullscreen();
   });
-}
+  ayax();
+});
+// meter en json en un string para poder modificarlo   
+
+  
 </script>
+<div><p><?php echo base_url("conversorbd2json/get_json_plataforma/".$escenaInicial); ?></p></div>
     </body>
 </html>
