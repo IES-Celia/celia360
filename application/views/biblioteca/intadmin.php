@@ -9,6 +9,8 @@
     <?php echo "<link rel='stylesheet' type='text/css' href='".base_url("assets/bibliocss/adminestilo.css")."' media='screen' />";?>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
+   
+
 
 </head>
 <body>
@@ -32,7 +34,7 @@
                
                 /*echo "<a href='index.php?accion=showinsertlibro'><i class='fa fa-plus' aria-hidden='true'></i><i title='Insertar libro' class='fa fa-book' aria-hidden='true'></i></a>";*/
                 foreach ($tabla as $usu) {
-                    echo "<tr>
+                    echo "<tr id='libro".$usu['id_libro']."'>
                             <td>".$usu["id_libro"]."</td>
                             <td>".$usu["titulo"]."</td>
                             <td>".$usu["autor"]."</td>
@@ -46,15 +48,35 @@
                             <td>
                             <a href='".site_url("/biblioteca/showmodificarlibro/".$usu["id_libro"])."'> <i title='Modificar' class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
                             <td><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i title='Insertar Páginas' class='fa fa-file-image-o' aria-hidden='true'></i></a></td>
-                            <td><a href=".site_url("/biblioteca/deletelibro/".$usu["id_libro"])." onClick='return confirm(\"¿Estás seguro?\")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
+                            <td><a href='#' onClick='borrarlibro(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
                             <td><a href=".site_url("/biblioteca/verLibro/".$usu["id_libro"])."'>Ver libro</a></td>
-
 
                            </tr>";
                 }
                 echo "</table>";
 
     ?>
+     <script >
+            function borrarlibro(id_libro){
+                confirmacion=confirm("¿Estas seguro que desea borrar el libro?");
+
+                if(confirmacion==true)
+                  $.get("<?php echo base_url('biblioteca/deletelibro/');?>"+id_libro,null,respuesta);
+
+            }
+
+            function respuesta(r){
+                if(r==0){
+                    alert("Error");
+                }else{
+                    selector = "#libro"+r;
+                    $(selector).remove();
+                }
+            }
+        
+        
+    </script>
+
 </div>
 
 </body>
