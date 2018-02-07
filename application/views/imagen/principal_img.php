@@ -39,7 +39,7 @@ echo "</table><br>";
             alert("Error al borrar la imagen");
         } else {
             selector = "#imagen-" + r;
-            alert("Imagen borrada con éxito - El selector es: " + selector);
+            alert("Imagen borrada con éxito");
             $(selector).remove();
         }
     }
