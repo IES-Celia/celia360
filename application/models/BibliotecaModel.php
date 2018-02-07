@@ -43,9 +43,9 @@
 			return $res;
 		}
 		public function deletelibro($id_libro){
-            $res = $this->db->query("Delete  from libros WHERE id_libro='$id_libro'");
+            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
          	
-            return $res;
+            return  $this->db->affected_rows();
 			
 		}
 		//renombrar imagenes

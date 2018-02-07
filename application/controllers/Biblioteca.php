@@ -61,11 +61,14 @@ class Biblioteca extends CI_Controller {
 			}
 	}
 
+
 	public function deletelibro($id_libro){
-		$this->bibliotecaModel->deletelibro($id_libro);
-		$datos["tabla"] = $this->bibliotecaModel->get_info();
-        $datos["vista"]="biblioteca/intadmin";
-		$this->load->view('template_admin',$datos);
+		$resultado=$this->bibliotecaModel->deletelibro($id_libro);	
+		if($resultado !=0) 
+			echo $id_libro;
+		else
+			echo $resultado;
+
 	}
 
 	public function insertlibro(){
