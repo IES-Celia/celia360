@@ -35,7 +35,7 @@ echo "
 
 <h1> Formulario para UPDATE Hotspots </h1>
 
-<fieldset>
+<fieldset class='for'>
 
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 

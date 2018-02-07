@@ -10,7 +10,6 @@ if (isset($error)) {
 
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
-echo "<a class='insert' href='" . site_url("imagen/imagen") . "'>Volver al Men&uacute;</a><br>";
 echo "<br><table id='cont' border='1'>";
 echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Texto</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Borrar Imagen</th><th>Modificar Imagen</th></tr>';
 

@@ -10,7 +10,7 @@
 	$con = $tabla[0];
 		
     echo "<h1 align='center'>Modificar escenas</h1>
-			<fieldset>
+			<fieldset class='for'>
 				<form action='".site_url("escenas/processUpdateScene")."' method='get'>
 		
 					Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
