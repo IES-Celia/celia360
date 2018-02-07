@@ -26,7 +26,7 @@ div.centrado {
 <body>
 <h1> Formulario para Insertar Hotspots </h1>
 
-<fieldset>
+<fieldset class="for">
 
 <?php
 echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>";
