@@ -30,7 +30,7 @@
              if($resultado ==1){
                 $_SESSION["tipousr"] = 1;
                     
-                    $data["vista"] = "usuario/admin";
+                    $data["vista"] = "usuario/usuarios";
                     $this->load->view('template_login',$data);
 
              }else if($resultado ==2){
