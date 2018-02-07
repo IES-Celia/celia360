@@ -127,13 +127,8 @@ class Img extends CI_Model {
 
         $q = "delete  from imagenes where id_imagen= '$id'";
 
-        $resultado = $this->db->query($q);
-
-        if ($resultado != 0) {
-            return true;
-        } else {
-            return false;
-        }
+        $this->db->query($q);
+        return $this->db->affected_rows();
     }
 
     // Busca una imagen en la BD y devuelve sus datos en un array

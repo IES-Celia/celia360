@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 //formulario para mostrar la tabla imagenes, con sus datos 
 if (isset($mensaje)) {
@@ -8,6 +7,7 @@ if (isset($mensaje)) {
 if (isset($error)) {
     echo "<p style='color:red'>" . $error . "</p>";
 }
+
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
 echo "<a class='insert' href='" . site_url("imagen/imagen") . "'>Volver al Men&uacute;</a><br>";
@@ -17,12 +17,30 @@ echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Texto</th><th>Url</th><th>Miniatu
 foreach ($lista_imagenes as $ima) {
     $fila = $ima["id_imagen"];
     $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
-    $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"].$fila;
-    echo "<tr id=".$fila."><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" . 
-	      $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" . 
-		  base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"]) . "' height='100px'></td><td>" . 
-		  $ima["fecha"] . "</td>
-    	<td><a onclick = 'return confirm(\"¿Estás seguro que deseas eliminar el registro?\");' href='".$url_borrar."'>Borrar</a></td>
+    $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
+    echo "<tr id='imagen-" . $fila . "'><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" .
+    $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" .
+    base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"]) . "' height='100px'></td><td>" .
+    $ima["fecha"] . "</td>
+    	<td><a class='delete' href='#' onclick='borrar_imagen($fila)'>Borrar</a></td>
     	<td><a href='" . $url_modificar . "'>Modificar</a></td></tr>";
 }
 echo "</table><br>";
+?>
+<script>
+    function borrar_imagen(id_imagen) {
+        if (confirm("¿Estás seguro?")) {
+            $.get("<?php echo site_url('imagen/borrar_imagen/'); ?>" + id_imagen, null, respuesta);
+        }
+    }
+
+    function respuesta(r) {
+        if (r == '0') {
+            alert("Error al borrar la imagen");
+        } else {
+            selector = "#imagen-" + r;
+            alert("Imagen borrada con éxito - El selector es: " + selector);
+            $(selector).remove();
+        }
+    }
+</script>
