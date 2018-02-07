@@ -17,5 +17,6 @@ foreach ($tabla as $re){
 
 	
 }
+echo "</table>";
 echo"<a class='insert' href='".site_url("Video/frominsertarvideo")."'>insertar</a>";
 ?>
