@@ -66,7 +66,7 @@
         public function processregisterform(){
         //Formulario de registro de usuarios
          
-            $resultado = $this->UsuarioModel->inserUsu();
+            $resultado = $this->UsuarioModel->inserusu();
             if ($resultado){
 
                 $datos["mensaje"] = "Usuario creado correctamente";
@@ -102,15 +102,20 @@
 
         }
 
-        public function borrarusuario($id){ 
+        public function borrarusuario($idusu){ 
         //Borrar usuario
 
     
-            $this->UsuarioModel->borrarusu($id);
-            $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
-            $datos["nombreUsuario"] = "usuario borrado correctamente.";
-            $datos["vista"] = "usuario/usuarios";
-            $this->load->view("template_admin",$datos);
+            $resultado = $this->UsuarioModel->borrarusu($idusu);
+            if ($resultado != 0) 
+                echo $idusu;
+            else
+                echo $resultado;
+            //$datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
+            //$datos["nombreUsuario"] = "usuario borrado correctamente.";
+            //$datos["vista"] = "usuario/usuarios";
+            //$this->load->view("template_admin",$datos);
+
           
         }
 

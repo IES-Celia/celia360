@@ -2,7 +2,7 @@
 
 <h1>Registro de usuarios</h1>
 <?php
-echo"<form action='".site_url("usuario/processRegisterForm")."' method='get'>";
+echo"<form action='".site_url("usuario/processregisterform")."' method='get'>";
 ?>
 <div id="caja">
     <label for="username">Nombre de usuario</label>

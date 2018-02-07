@@ -26,11 +26,11 @@
                     $(".imagenes").click(function(){
                       var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
                       $(this).html("<img src='"+enlace+"' width='1250' height='470'>");
-                      
-                    })
-                   // $(".imagenes > img").dblclick(function()[
-                   //     $(this).empty();
-                   // ])
+                       
+                        $(this).mouseleave(function(){
+                            $(this).html("Mostrar"); 
+                        });
+                    });
                  });
                     
                 
