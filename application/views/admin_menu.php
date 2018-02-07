@@ -13,7 +13,7 @@
     
     <td><a href="<?php echo site_url("hotspots");?>">Administrar hotspots</a></td>
     
-    <td><a href="<?php echo site_url("usuario");?>">Administrar usuarios</a></td>
+    <td><a href="<?php echo site_url("usuario/usuarios");?>">Administrar usuarios</a></td>
     
     <td><a href="<?php echo site_url("biblioteca");?>">Administrar biblioteca</a></td>
     

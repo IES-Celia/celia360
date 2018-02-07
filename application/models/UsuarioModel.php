@@ -14,8 +14,10 @@
             $pass = $_REQUEST["pass"];
             $name = $_REQUEST["nombre"];
             $apellido = $_REQUEST["subname"];
+
+            $pass_encryted = md5($pass);
         
-            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, email, Nombre, Apellido, tipo_usuario) VALUES('$username','$pass','$email','$name','$apellido','0')");
+            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','0')");
 
         
             return $resultado;       
@@ -23,8 +25,10 @@
         }
 
         public function login($usr,$pass){
+
+            $pass_encryted = md5($pass);
           
-            $resultado = $this->db->query("SELECT id_usuario, tipo_usuario FROM usuarios WHERE nombre_usuario = '$usr' and password = '$pass'");
+            $resultado = $this->db->query("SELECT id_usuario, tipo_usuario FROM usuarios WHERE nombre_usuario = '$usr' and password = '$pass_encryted'");
           
 
             $tabla = array();
@@ -38,11 +42,11 @@
                         
                         $resultado = 1;
 
-                    }else if($tabla["tipo_usuario"]==2){
+                    }else if($tabla[0]["tipo_usuario"]==2){
 
                         $resultado = 2;
 
-                    }else if ($tabla["tipo_usuario"]==3){
+                    }else if ($tabla[0]["tipo_usuario"]==3){
 
                         $resultado = 3;
                     }
@@ -92,14 +96,8 @@
           
             $this->db->query("Delete from usuarios where id_usuario = '$id'");
 
-            $resultado = $this->db->query("SELECT * FROM usuarios");
-
-            $tabla = array();
-                foreach($resultado->result_array() as $fila) {
-            $tabla[] = $fila;
-          }
-           
-        return $tabla;
+            return $this->db->affected_rows();
+        
     }
 
         public function alterarusu($id){
