@@ -22,6 +22,7 @@ foreach ($tabla as $re){
 	<source src='".base_url($re["url_aud"])."' type='audio/mp3'/>
 	</audio></td></tr>";
 }
+echo "</table>";
 echo"<a class='insert'href='".site_url("audio/forminsertaraudio")."'>Insertar audio</a><br>";
  echo "<a class='insert' href='index.php?accion=mapero'>Volver al Menu</a><br>";
 ?>
