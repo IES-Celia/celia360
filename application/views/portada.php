@@ -8,7 +8,7 @@
       });
       
       $('.pie-ventana').click(function(){
-        $('.modal').css({display:"none"});
+        $('.modalita').css({display:"none"});
       });
 
       $('.efectBook').click(function(){
@@ -70,7 +70,7 @@
                  <div class="contenedor_portada">
                      <h1>Celia Tour</h1>
                      <div id="separador_portada"> </div>
-                    <button id="abrir" class="btn">HISTORIA</button>
+                    <button id="open" class="btn">HISTORIA</button>
                  </div> 
              </div> 
 
@@ -89,35 +89,7 @@
         </div>
         <div class="pared" >
         <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
-         <?php
-
-              $conexdb = new mysqli('localhost','tour360','Celia.2017','celiatour');
-                  if (!$conexdb) {
-                      die('Error al conectarse a mysql: ' . mysql_error());
-                  }
-
-                  $consult=$conexdb->query("Select id_libro,titulo from libros");
-                                                        
-                  $Arrayportada = $consult->fetch_all(MYSQLI_ASSOC);
-                    echo "<div class='estanteria' >"; 
-                      echo "<div class='nuevecica'  >"   ;    
-                        echo "<table >";  
-                        echo "<tr>";
-
-                        $i = 0;
-                        foreach ($Arrayportada as $ides){
-                          $i++;
-                          //Sacamos las portadas de los libros
-
-                            echo "<td class='columna'>";
-                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
-                            echo "</td>";
-                              if ($i%4 == 0)  echo "</tr><tr>";
-                                }
-                                echo "</tr></table>";
-                      echo "</div>";
-                    echo "</div>";
-        ?>
+        
         </div>
         </div>
         <div class="pie-ventana" style="border-top:1px solid grey;border-radius:5px; height:50px;padding:18px;">
@@ -144,7 +116,7 @@
 
 
   <!--FINALIZA BIBLIOTECA -->
-
+  
         <footer>
             <div id="elamo_portada">Celia Tour 360</div>
         </footer>
