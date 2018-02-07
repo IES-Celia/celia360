@@ -12,6 +12,11 @@
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
 
+       
+    <!-- CSS CMS -->
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
+    
     <?php 
         error_reporting(7);
             if (!ini_get('display_errors')) {
