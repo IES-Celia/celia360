@@ -1,5 +1,4 @@
-<!-- BIBLIOTECA -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   
   <script>
     
@@ -34,14 +33,22 @@
 
 
   </script>
-<!-- BIBLIOTECA -->
+<style>
+  
+
+</style>
+
+
+
+
+
     <div id="portadaca" style='z-index:100'; >
      <div id="cambio_portada">
          <img id="libre_portada" src="<?php echo base_url("assets/imagenes/portada/portadalibremini2.png");?>">
          <img id="destacado_portada" src="<?php echo base_url("assets/imagenes/portada/portadadestacadamini.png"); ?>">
          <img id="guiada_portada" src="<?php echo base_url("assets/imagenes/portada/portadaguiadamini.png"); ?>">
      </div>
-        
+
         <header id="header_portada">
             <div class="contenedor_portada">
             <nav id="nav_portada">
@@ -50,12 +57,13 @@
                   <li><a id="opcionlibre_portada" onclick='visita_libre("get_json_libre");'>Modo Libre</a></li>
                  <li><a id="opcionguiada_portada" onclick='visita_libre("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
-				 <li><a>Biblioteca</a></li>
+                  <li><a>Biblioteca</a></li>
                  <li><a href="" >Glosario</a></li>
                  <li><a href="" >Creditos</a></li>
              </ul>
             </nav>
             </div>
+
         </header>
         <main>
              <div id="slider1_portada">
@@ -67,7 +75,12 @@
              </div> 
 
         </main>
-     <!-- VENTANA MODAL PARA SACAR LIBROS HISTORIA -->
+      
+      
+
+
+
+<!-- VENTANA MODAL PARA SACAR LIBROS HISTORIA -->
 
     <div class="modalita" >
       <div class="contenido" style="width:700px;background-color:white;margin:0 auto;margin-top:40px;border-radius:15px;">
