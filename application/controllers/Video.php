@@ -15,51 +15,51 @@
 		
 	
     public function frominsertarvideo(){
-        $data["vista"] ="video/Insertarvideos";
-		$data["permiso"]=$this->UsuarioModel->comprueba_permisos($data["vista"]);
-		$this->load->view('template_admin', $data);	
+        $datos["vista"] ="video/Insertarvideos";
+		$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+		$this->load->view('template_admin', $datos);	
     }
     
    public function insertarvideo(){
 			$f_def =$_REQUEST["video"];
 			$desc=$_REQUEST["desc"];
 			$res=$this->Vidm->insertarvideo($desc, $f_def);
-			$da["tabla"]=$this->Vidm->buscarvideo();
-            $da["vista"]="video/Vvideos";
-			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
-			$this->load->view('template_admin',$da);
+			$datos["tabla"]=$this->Vidm->buscarvideo();
+            $datos["vista"]="video/Vvideos";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view('template_admin',$datos);
    }
    public function mostrarvideo(){
-			$da["tabla"]=$this->Vidm->buscarvideo();
-            $da["vista"]="video/Vvideos";
-			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
-			$this->load->view('template_admin',$da);
+			$datos["tabla"]=$this->Vidm->buscarvideo();
+            $datos["vista"]="video/Vvideos";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view('template_admin',$datos);
 		
    }
    public function borrarvideo($id){
 			
 			$this->Vidm->borrarvideo($id);
-			$da["tabla"]=$this->Vidm->buscarvideo();
-            $da["vista"]="video/Vvideos";
-			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
-			$this->load->view('template_admin',$da);
+			$datos["tabla"]=$this->Vidm->buscarvideo();
+            $datos["vista"]="video/Vvideos";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view('template_admin',$datos);
    }
 		
    public function formmodificarvideo($id_vid){
 			
-			$da["vid"]=$this->Vidm->buscaridvideo($id_vid);
-            $da["vista"]="video/Modificarvideos";
-			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
-			$this->load->view('template_admin', $da);
+			$datos["vid"]=$this->Vidm->buscaridvideo($id_vid);
+            $datos["vista"]="video/Modificarvideos";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view('template_admin', $datos);
 		
    }
    public function modificarvideo(){
 			$id=$_REQUEST["id"];
 			$this->Vidm->modificarvideo($id);
-			$da["tabla"]=$this->Vidm->buscarvideo();
-            $da["vista"]="video/Vvideos";
-			$da["permiso"]=$this->UsuarioModel->comprueba_permisos($da["vista"]);
-			$this->load->view('template_admin', $da);
+			$datos["tabla"]=$this->Vidm->buscarvideo();
+            $datos["vista"]="video/Vvideos";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view('template_admin', $datos);
 		
    }
         

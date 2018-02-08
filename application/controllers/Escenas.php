@@ -7,6 +7,7 @@ class escenas extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("Modeloescenas");
+        $this->load->model("UsuarioModel");
     }
     
     
@@ -19,12 +20,14 @@ class escenas extends CI_Controller {
         $datos["vista"]="escenas/Escenastable";
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     } 
     
     public function showinsert() {
-        $data["vista"]="escenas/Insertar";
-        $this->load->view('template_admin', $data);
+        $datos["vista"]="escenas/Insertar";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('template_admin', $datos);
     }
     
     public function processinsertscene(){
@@ -33,12 +36,14 @@ class escenas extends CI_Controller {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
             $datos["vista"]="escenas/Escenastable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
         }
         else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
             $datos["vista"]="escenas/Escenastable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
         }
     }
@@ -51,12 +56,14 @@ class escenas extends CI_Controller {
             $datos["mensaje"] = "Escena borrado correctamente";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
             $datos["vista"]="escenas/Escenastable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
             }
         else {
             $datos["error"] = "Error al borrar la escena";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
             $datos["vista"]="escenas/Escenastable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
         }
         
@@ -66,7 +73,7 @@ class escenas extends CI_Controller {
     
         $datos["tabla"]= $this->Modeloescenas->getOne($cod);
         $datos["vista"]="escenas/Modificar";
-    
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
     
@@ -79,12 +86,14 @@ class escenas extends CI_Controller {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
                 $datos["vista"]="escenas/Escenastable";
+                $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
             else {
                 $datos["error"] = "La modificaci&oacute;n ha fallado";
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
                 $datos["vista"]="escenas/Escenastable";
+                $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
         

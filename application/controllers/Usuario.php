@@ -24,18 +24,18 @@
         }
         public function checklogin(){
             //Ejecuta el login
-            session_start();
+            $this->load->library('session');
         
             $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
             
              if($resultado ==1){
-                $_SESSION["tipousr"] = 1;
+                $this->session->tipousr = 1;
                     $data["tablaUsuarios"]= $this->UsuarioModel->buscartodousu(); 
                     $data["vista"] = "usuario/usuarios";
                     $this->load->view('template_admin',$data);
 
              }else if($resultado ==2){
-                $_SESSION["tipousr"] = 2;
+                $this->session->tipousr = 2;
 
                     $datos["vista"] = "usuario/mapero";
                     $this->load->view('template_login',$datos);
@@ -43,7 +43,7 @@
 
                 
             }else if($resultado ==3){
-                $_SESSION["tipousr"] = 3;
+                $this->session->tipousr = 3;
 
                 $datos["tabla"] = $libro->get_info();
                 $datos["vista"] = "libro/IntAdmin";
@@ -87,6 +87,7 @@
 
             $datos["DatosMod"]=$this->UsuarioModel->buscarusuid($id);
             $datos["vista"] = "usuario/modUsu";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
 
         }
@@ -98,7 +99,8 @@
         $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
         $datos["nombreUsuario"] = "usuario modificado correctamente.";
             
-        $datos["vista"] = "usuario/usuarios";        
+        $datos["vista"] = "usuario/usuarios";       
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin',$datos);
 
         }
@@ -124,14 +126,21 @@
 
             $datos["tablaUsuarios"]=$this->UsuarioModel->buscartodousu();
             $datos["vista"] = "usuario/usuarios";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin',$datos);
         }
 
         public function mapero(){
             
             $data["vista"] = "usuario/mapero";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $data);
 
+        }
+         public function cerrarSesion() {
+            $this->load->library('session');
+            $this->session->sess_destroy();
+            $this->showloginForm();
         }
 
     }

@@ -123,16 +123,16 @@
     }
 	
 	public function comprueba_permisos($vista){
-        session_start();
-        $tipo = -1;
-        if(isset($_SESSION['tipousr'])){
-            $tipo=$_SESSION['tipousr'];
-        }
+        $this->load->library('session');
+        
+        if ($this->session->tipousr) {
+            $tipo=$this->session->tipousr;
+        }else $tipo = -1;
         
         $dir =  explode("/", $vista);
         $dir = $dir[0];
         print_r($dir);
-        if ($tipo == 1 && $dir == "audio" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "video" || $dir == "hotspots") return true;
+        if ($tipo == 1 && $dir == "audio" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "video" || $dir == "hotspots"|| $dir == "usuario") return true;
         else if ($tipo == 2 && $dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" ) return true;
         else if ($tipo == 3 && $dir == "biblioteca") return true;
         else return false;
