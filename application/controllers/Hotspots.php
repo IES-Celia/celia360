@@ -21,7 +21,9 @@ class Hotspots extends CI_Controller {
         $this->load->view("template_admin", $datos);
     }
     
-    public function show_insert_hotspot() {
+    public function show_insert_hotspot($pitch, $yaw) {
+	  $data["pitch"]= $pitch;
+        $data["yaw"]= $yaw;
         $datos["vista"]="hotspots/insertHotspot";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
