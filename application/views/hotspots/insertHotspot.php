@@ -25,7 +25,7 @@
             sceneId: <input type='text' name='sceneId' value='aqui para seleccionar la imagen, un listado o como se vea'><br>
             targetPitch: <input type='text' name='targetPitch' ><br>
             targetYaw: <input type='text' name='targetYaw'><br>
-
+            Descripción:  <input type='text' name='descripcion'   ><br> 
             <input type='submit' class="button">
         </form>
     </div>
