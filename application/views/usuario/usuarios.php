@@ -1,11 +1,6 @@
 
 
 <?php
-if(isset($datos["nombreUsuario"])){
-echo "Hola, ".$datos["nombreUsuario"];
-}
-
-
 
 echo "<table border='1' id='cont'>
         <tr>

@@ -28,10 +28,14 @@
         public function checklogin(){
             //Ejecuta el login
             $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
+        
             
              if($resultado ==1){
+                   
                     $data["tablaUsuarios"]= $this->UsuarioModel->buscartodousu(); 
                     $data["vista"] = "usuario/usuarios";
+                     $data["permiso"]=$this->UsuarioModel->comprueba_permisos($data["vista"]);
+                     
                     $this->load->view('template_admin',$data);
              }else if($resultado ==2){
                     $datos["vista"] = "usuario/mapero";
@@ -52,8 +56,8 @@
                 $datos["vista"] = "usuario/formLogin";
                 $this->load->view('template_login',$datos);
             }
-          
-        }
+          }
+        
         public function showregisterform(){
         //Mostrar el formulario de registro
             $data["vista"] = "usuario/registerForm";

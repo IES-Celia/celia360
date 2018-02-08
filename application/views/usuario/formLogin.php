@@ -1,11 +1,11 @@
 
 
 <?php
-	if (isset($datos["error"])) {
-		echo "<p style='color:red'>".$datos["error"]."</p>";
+	if (isset($error)) {
+		echo "<p style='color:red'>".$error."</p>";
 	}
-	if (isset($datos["mensaje"])) {
-		echo "<p style='color:green'>".$datos["mensaje"]."</p>";
+	if (isset($mensaje)) {
+		echo "<p style='color:green'>".$mensaje."</p>";
 	}
 
 ?>
