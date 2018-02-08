@@ -89,7 +89,28 @@
         </div>
         <div class="pared" >
         <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
-        
+            <?php
+
+            
+                    echo "<div class='estanteria' >"; 
+                      echo "<div class='nuevecica'  >"   ;    
+                        echo "<table >";  
+                        echo "<tr>";
+
+                        $i = 0;
+                        foreach ($libros as $ides){
+                          $i++;
+                          //Sacamos las portadas de los libros
+
+                            echo "<td class='columna'>";
+                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+                            echo "</td>";
+                              if ($i%4 == 0)  echo "</tr><tr>";
+                                }
+                                echo "</tr></table>";
+                      echo "</div>";
+                    echo "</div>";
+        ?>
         </div>
         </div>
         <div class="pie-ventana" style="border-top:1px solid grey;border-radius:5px; height:50px;padding:18px;">

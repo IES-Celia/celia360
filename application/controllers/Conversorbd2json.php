@@ -3,7 +3,9 @@ class Conversorbd2json extends CI_Controller {
 
   public function index(){
     $this->load->model('Mapa','mapa');
+    $this->load->model('BibliotecaModel', 'biblioteca');
     $datos["vista"] = "portada";
+    $datos["libros"] = $this->biblioteca->get_info();
     $datos["mapa"] = $this->mapa->cargar_mapa();
     $datos["puntos"] = $this->mapa->cargar_puntos();
     $this->load->view("main_template", $datos);
