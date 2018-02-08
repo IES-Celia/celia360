@@ -24,18 +24,18 @@
         }
         public function checklogin(){
             //Ejecuta el login
-            session_start();
+            $this->load->library('session');
         
             $resultado = $this->UsuarioModel->login($_REQUEST["user"],$_REQUEST["pass"]);
             
              if($resultado ==1){
-                $_SESSION["tipousr"] = 1;
+                $this->session->tipousr = 1;
                     $data["tablaUsuarios"]= $this->UsuarioModel->buscartodousu(); 
                     $data["vista"] = "usuario/usuarios";
                     $this->load->view('template_admin',$data);
 
              }else if($resultado ==2){
-                $_SESSION["tipousr"] = 2;
+                $this->session->tipousr = 2;
 
                     $datos["vista"] = "usuario/mapero";
                     $this->load->view('template_login',$datos);
@@ -43,7 +43,7 @@
 
                 
             }else if($resultado ==3){
-                $_SESSION["tipousr"] = 3;
+                $this->session->tipousr = 3;
 
                 $datos["tabla"] = $libro->get_info();
                 $datos["vista"] = "libro/IntAdmin";
