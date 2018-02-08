@@ -123,11 +123,11 @@
     }
 	
 	public function comprueba_permisos($vista){
-        session_start();
-        $tipo = -1;
-        if(isset($_SESSION['tipousr'])){
-            $tipo=$_SESSION['tipousr'];
-        }
+        $this->load->library('session');
+        
+        if ($this->session->tipousr) {
+            $tipo=$this->session->tipousr;
+        }else $tipo = -1;
         
         $dir =  explode("/", $vista);
         $dir = $dir[0];
