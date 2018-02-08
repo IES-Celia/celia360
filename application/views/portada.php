@@ -300,7 +300,7 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
           
           
          <div class="ctrl" id="fullscreen"></div>
-         <div id="mapa" style="width: 614px; height: 350px; top: 280px;" class="cerrado">
+         <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
     <?php
       $indice = 0;
 
@@ -416,36 +416,29 @@ $( ".menu_slider" ).click(function() {
       json_contenido='';
       function visita_libre(nombre){
         
-        $.ajax({
-                url: "<?php echo site_url("conversorbd2json/"); ?>"+nombre,
-                dataType: 'json',
-                success: function(data){
-                  console.log(json_contenido);
-                    $.each(data.scenes, function(i){
-                        var escenas= data.scenes[i];
-                        var enlace= data.scenes[i].panorama;
-                        var prueba=enlace.split("/");
-                        var cadena = prueba[3].split(".");
-                     
-                        
-                        var nombreEscena = cadena[0];
-                        data.scenes[i].panorama = "<?php echo base_url("assets/imagenes/escenas/");?>";
-                        data.scenes[i].panorama = data.scenes[i].panorama+nombreEscena+".JPG";
-            
-                        $.each(escenas.hotSpots, function(j){
-                            escenas.hotSpots[j].clickHandlerFunc= eval(escenas.hotSpots[j].clickHandlerFunc);
-                            
-                        })
-                    })
-                    
-                 console.log(data);
-                 viewer = pannellum.viewer('panorama', data );
 
-                },
-               error: function(){
-                 console.log("ERROR444");
-               }
-            });
+        $.ajax({
+              url: "<?php echo base_url("conversorbd2json/get_json_libre"); ?>",
+              type: 'GET',
+              dataType: 'json',
+            })
+            .done(function(data) {
+              $.each(data.scenes, function(i){
+              var escenas = data.scenes[i];
+               $.each(escenas.hotSpots, function(j){
+                  escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
+                });
+              });
+              viewer = pannellum.viewer("panorama", data);
+              console.log("success");
+            })
+            .fail(function() {
+              console.log("error");
+            })
+
+
+
+        
         }
     
     // 

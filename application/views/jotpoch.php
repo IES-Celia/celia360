@@ -34,17 +34,14 @@ $(document).ready(function() {
         type: 'GET',
         dataType: 'json',
     }).done(function(data) {
-        viewer = pannellum.viewer("panorama", data);
-        viewer.loadScene(data.default.firstScene);
-
-        
+                
         $.each(data.scenes, function(i){
           var escenas = data.scenes[i];
           $.each(escenas.hotSpots, function(j){
             escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
           });
         });
-          
+        viewer = pannellum.viewer("panorama", data);
         
     }).fail(function() {
         console.log("error");
