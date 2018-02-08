@@ -21,6 +21,7 @@ class Biblioteca extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model("bibliotecaModel");
+                $this->load->model("UsuarioModel");
 	}
 
 	public function index() {
@@ -32,6 +33,7 @@ class Biblioteca extends CI_Controller {
 	{
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
         $datos["vista"]="biblioteca/intadmin";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('template_admin', $datos);
 	}
 
@@ -40,6 +42,7 @@ class Biblioteca extends CI_Controller {
 		$resultado = $this->bibliotecaModel->get_info_libro($id_libro);
 		$datos["libros"] = $resultado;
         $datos["vista"]="biblioteca/modificarlibro";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('template_admin', $datos);
 	}
 
@@ -48,6 +51,7 @@ class Biblioteca extends CI_Controller {
 	public function showinsertlibro()
 	{		
         $data["vista"]="biblioteca/inserlibro";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('template_admin', $data);
 	}
 
@@ -57,6 +61,7 @@ class Biblioteca extends CI_Controller {
 		if($resultado){
 				$datos["tabla"] = $this->bibliotecaModel->get_info();
                 $datos["vista"]="biblioteca/intadmin";
+                $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 				$this->load->view('template_admin',$datos);
 			}
 	}
@@ -75,6 +80,7 @@ class Biblioteca extends CI_Controller {
 		$libro=$this->bibliotecaModel->insertlibro();
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
         $datos["vista"] = "biblioteca/intadmin";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin",$datos);
 	}
 
@@ -82,6 +88,7 @@ class Biblioteca extends CI_Controller {
 		$datos["idlibro"] = $id_libro;
 		//$datos = $_REQUEST["id_libro"];
         $datos["vista"] = "biblioteca/insertimg";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin",$datos);
 	}
 
@@ -95,12 +102,14 @@ class Biblioteca extends CI_Controller {
 		$this->bibliotecaModel->insertarimagen($id_libro, $pag_ant);
 		$datos["idlibro"] = $_REQUEST["id"];
         $datos["vista"] = "biblioteca/insertimg";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin",$datos);
 	}
 
 	public function verLibro($id_libro) {
 		$datos["id_libro"] = $id_libro;
         $datos["vista"] = "biblioteca/libro";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin", $datos);
 	}
 
@@ -108,6 +117,7 @@ class Biblioteca extends CI_Controller {
 		$datos["id_libro"] = $id_libro;
 		$datos["tipo_libro"] = $tipo_libro;
         $datos["vista"] ="biblioteca/libro.php";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin", $datos);
 	}
 

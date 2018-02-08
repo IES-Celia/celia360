@@ -6,6 +6,7 @@ class Imagen extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->model("UsuarioModel");
     }
 
     public function index() {
@@ -13,8 +14,9 @@ class Imagen extends CI_Controller {
     }
 
     public function formulario_insertar_imagen() {
-        $data["vista"] = "imagen/formulario_insertar_imagen";
-        $this->load->view('template_admin', $data);
+        $datos["vista"] = "imagen/formulario_insertar_imagen";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('template_admin', $datos);
     }
 
     public function insertar_imagen() {
@@ -28,12 +30,14 @@ class Imagen extends CI_Controller {
             $datos["mensaje"] = "Imagen insertada correctamente";
             $datos["lista_imagenes"] = $this->Img->buscar_todo();
             $datos["vista"] = "imagen/principal_img";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             //cargar la vista
             $this->load->view('template_admin', $datos);
         } else {
             $datos["error"] = "Ha ocurrido un error al insertar el registro";
             $datos["lista_imagenes"] = $this->Img->buscar_todo();
             $datos["vista"] = "imagen/principal_img";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             //cargar la vista
             $this->load->view('template_admin', $datos);
         }
@@ -45,6 +49,7 @@ class Imagen extends CI_Controller {
         //acciones para ver el listado de imagenes
         $datos["lista_imagenes"] = $this->Img->buscar_todo();
         $datos["vista"] = "imagen/principal_img";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         //cargar la vista
         $this->load->view('template_admin', $datos);
     }
@@ -57,6 +62,7 @@ class Imagen extends CI_Controller {
 
         $datos["lista_imagenes"] = $this->Img->buscar_imagen($id);
         $datos["vista"] = "imagen/modificar_imagen";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         //muestra el formulario para modificar los datos
         $this->load->view('template_admin', $datos);
     }
@@ -81,6 +87,7 @@ class Imagen extends CI_Controller {
             $datos["mensaje"] = "Los datos no se han modificado";
 
         $datos["vista"] = "imagen/principal_img";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
 
