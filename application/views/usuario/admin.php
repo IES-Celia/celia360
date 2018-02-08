@@ -4,7 +4,7 @@ if(isset($datos["nombreUsuario"])){
 echo "Hola, ".$datos["nombreUsuario"];
 }
 
-echo "<table border='1' id="menu">";
+echo "<table border='1' id='menu'>";
     echo "<tr>
 			<td><a href= '".site_url("Usuario/usuarios")."'> Usuarios</a></td>
 		</tr>

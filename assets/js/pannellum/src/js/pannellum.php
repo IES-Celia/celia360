@@ -620,14 +620,17 @@ function onDocumentMouseDown(event) {
     // Log pitch / yaw of mouse click when debugging / placing hot spots
     if (config.hotSpotDebug) {
         var coords = mouseEventToCoords(event);
+    var pitch = coords[0];
+    var yaw = coords[1];
          if(event.which == 3){
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
-            alert("muerte");
-        
+            alert("patata");
+ //location.href= "/hotspots/show_update_hotspot/"; 
         if(coso==true)
                 alert("Abrir vista para crear hotspot" + coords[0] +", "+ coords[1] );
+           
+    location.href= "http://localhost/celia360/index.php/hotspots/show_insert_hotspot/"+pitch+"/"+yaw;
 
-        
              }
         console.log('Pitch: ' + coords[0] + ', Yaw: ' + coords[1] + ', Center Pitch: ' + config.pitch + ', Center Yaw: ' + config.yaw + ', HFOV: ' + config.hfov);
     }

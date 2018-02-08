@@ -1,5 +1,5 @@
 <?php
-if (!isset($permiso)) $permiso = true;
+if (!isset($permiso)) $permiso = false;
 
 if($permiso){
   include("admin_header.php");

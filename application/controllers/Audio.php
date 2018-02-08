@@ -6,7 +6,7 @@
        public function __construct() {
            parent::__construct();
            $this->load->model("Audm");
-		   $this->load->model("UsuarioModel");
+           $this->load->model("UsuarioModel");
        }
        
      public function index() {
