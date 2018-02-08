@@ -38,6 +38,7 @@
                 foreach($res->result_array() as $fila) {
                     $tabla= $fila;
                 }
+            print_r($tabla);
   
             if (count($tabla) > 0){
                     if($tabla["tipo_usuario"]==1){

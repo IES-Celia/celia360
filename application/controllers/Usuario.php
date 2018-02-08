@@ -17,11 +17,14 @@
         } 
 
 
-        public function showloginForm(){       
+        public function showloginForm($msj = ""){       
         //Muestra la ventana de login
-            $data["vista"] ="usuario/formLogin"; 
+            $data["vista"] ="usuario/formLogin";
+            $data["mensaje"] = $msj; 
             $this->load->view('template_login', $data);
         }
+
+
         public function checklogin(){
             //Ejecuta el login
             session_start();
@@ -47,6 +50,11 @@
 
                 $datos["tabla"] = $libro->get_info();
                 $datos["vista"] = "libro/IntAdmin";
+                $this->load->view('template_login',$datos);
+
+            }else if($resultado ==0){
+                $datos["error"] = "Usuario sin confirmar";
+                $datos["vista"] = "usuario/formLogin";
                 $this->load->view('template_login',$datos);
 
             }else{

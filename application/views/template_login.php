@@ -1,5 +1,5 @@
 <?php
-  include("admin_header.php");
+  include("login_header.php");
   include($vista.".php");
-  include("admin_footer.php");
+  include("login_footer.php");
 ?>
