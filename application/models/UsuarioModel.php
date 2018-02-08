@@ -29,7 +29,7 @@
 
             $pass_encryted = md5($pass);
 
-            $consulta ="SELECT id_usuario, tipo_usuario FROM usuarios WHERE nombre_usuario = '$usr' and password = '$pass_encryted'";
+            $consulta ="SELECT id_usuario, tipo_usuario, nombre_usuario FROM usuarios WHERE nombre_usuario = '$usr' and password = '$pass_encryted'";
             
             $res= $this->db->query($consulta);
 
@@ -40,6 +40,9 @@
                 }
   
             if (count($tabla) > 0){
+                    $this->session->tipousr = $tabla["tipo_usuario"];
+                    $this->session->nombreusr = $tabla["nombre_usuario"];
+
                     if($tabla["tipo_usuario"]==1){
                         
                         $resultado = 1;
@@ -123,8 +126,6 @@
     }
 	
 	public function comprueba_permisos($vista){
-        $this->load->library('session');
-
         if ($this->session->tipousr) {
             $tipo=$this->session->tipousr;
         }else $tipo = -1;
