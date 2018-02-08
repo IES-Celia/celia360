@@ -87,6 +87,7 @@
 
             $datos["DatosMod"]=$this->UsuarioModel->buscarusuid($id);
             $datos["vista"] = "usuario/modUsu";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
 
         }
@@ -98,7 +99,8 @@
         $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
         $datos["nombreUsuario"] = "usuario modificado correctamente.";
             
-        $datos["vista"] = "usuario/usuarios";        
+        $datos["vista"] = "usuario/usuarios";       
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin',$datos);
 
         }
@@ -124,12 +126,14 @@
 
             $datos["tablaUsuarios"]=$this->UsuarioModel->buscartodousu();
             $datos["vista"] = "usuario/usuarios";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin',$datos);
         }
 
         public function mapero(){
             
             $data["vista"] = "usuario/mapero";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $data);
 
         }
