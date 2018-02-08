@@ -81,7 +81,7 @@
 }
 
 .fondo{
-      background: url(assets/css/prueba.png);
+      background: url(prueba.png);
       width:100%;
       height:650px;
       
@@ -165,3 +165,68 @@
     padding-top: 27%;
 }
 
+
+
+
+	
+#bloque{
+	width:990px;
+	height:700px;
+	margin:0 auto;
+	margin-top:-50px;
+		    
+}
+#flipbook{
+	width:92%;
+	height:92%;
+	margin:4% auto;
+		
+}
+.hard{
+	background-color:#CCC;
+}
+.pag{
+	background-color:#F0E68C;
+}
+
+	
+.pag article img{
+	width:94%;
+	height:90%;
+	margin:0% auto;
+	margin-top:2.5%;
+	margin-bottom:2.5%;
+}
+	
+.prev_page{
+	position:fixed;
+	margin-top:300px;
+	margin-left:-75px;
+	padding:10px;
+	background-color:#D8D8D8;
+	border-radius:5px;
+}
+.next_page{
+	position:fixed;
+	margin-left:1015px;
+	margin-top:300px;
+	padding:10px;
+	background-color:#D8D8D8;
+	border-radius:5px;
+}
+	
+.cerrar{
+	color:black;
+	font-size:43px;
+	margin-top:-40px;
+}
+
+
+
+
+
+#tablaadmin{
+	width: 90% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}	
