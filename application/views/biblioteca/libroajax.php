@@ -30,7 +30,10 @@
 				  $('#flipbook').turn('next');
 				 });
 				 
-			
+			//nuevo
+			 $('.closeBook').click(function(){
+		        $('.modalita2').css({display:"none"});
+		      });	
 				
 			//desaperecer libro
 				/*setTimeout(function() {
@@ -45,6 +48,8 @@
 			
 			<a href="#" class="next_page a"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
 			<a href="#" class="prev_page"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+			<!-- NUEVO -->
+			<a href="#" class="closeBook"><i class="fa fa-times-circle"></i></a>
 			
 			<div id="flipbook" class="animated ">
 				

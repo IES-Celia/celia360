@@ -220,7 +220,13 @@
 	font-size:43px;
 	margin-top:-40px;
 }
-
+.closeBook{
+    position: fixed;
+    margin-left: 1015px;
+    border-radius: 5px;
+    font-size: 30px;
+    color: white;
+}
 
 
 
