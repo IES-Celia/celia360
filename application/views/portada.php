@@ -83,8 +83,8 @@
 <!-- VENTANA MODAL PARA SACAR LIBROS HISTORIA -->
 
     <div class="modalita" >
-      <div class="contenido" style="width:600px;background-color:white;margin:0 auto;margin-top:40px;border-radius:15px;">
-        <div class="cabecera-ventana" style="background-color:white;height:60px;border-radius:15px;">
+      <div class="contenido" style="background:url('assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
+        <div class="cabecera-ventana" style="background:url('assets/css/textura.jpg');height:60px;border-radius:15px;">
           <h1 style="text-align:center;border-bottom:1px solid grey;color:black;font-size:65px;">Biblioteca</h1>
         </div>
         <div class="pared" >
