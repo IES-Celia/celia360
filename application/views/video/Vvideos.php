@@ -5,6 +5,7 @@ echo"<table align='center' border=1 id='cont'><tr>
 <th>URL</th>
 <th>descripcion</th>
 <th>modificar</th>
+<th>ver video</th>
 <th>Eliminar</th></tr>
 ";
 
@@ -13,6 +14,7 @@ foreach ($tabla as $re) {
     echo'<td>' . $re["url_vid"] . '</td>';
     echo'<td>' . $re["desc_vid"] . '</td>';
     echo"<td><a href='" . site_url("video/formmodificarvideo/" . $re["id_vid"]) . "'>modificar</a></td>";
+    echo"<td><a target='_blank' href='". $re["url_vid"] ."'>ver enlace</a></td>";
     echo"<td><a href='" . site_url("video/borrarvideo/" . $re["id_vid"]) . "'>Eliminar</a></td></tr>";
 }
 echo "</table>";

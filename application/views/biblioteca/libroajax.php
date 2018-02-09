@@ -30,14 +30,10 @@
 				  $('#flipbook').turn('next');
 				 });
 				 
-			//capturar teclas derecha e izquierda
-			
-			//zoom
-				$('#flipbook').turn('zoom', 0.5, 0);
-				
-				$('#flipbook').bind('zooming', function(event,  newZoomValue, currentZoomValue) {
-				  alert('New zoom: '+currentZoomValue);
-				});
+			//nuevo
+			 $('.closeBook').click(function(){
+		        $('.modalita2').css({display:"none"});
+		      });	
 				
 			//desaperecer libro
 				/*setTimeout(function() {
@@ -52,6 +48,8 @@
 			
 			<a href="#" class="next_page a"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
 			<a href="#" class="prev_page"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+			<!-- NUEVO -->
+			<a href="#" class="closeBook"><i class="fa fa-times-circle"></i></a>
 			
 			<div id="flipbook" class="animated ">
 				
@@ -62,9 +60,9 @@
 
 					for($i = 0;$i<$num_pag;$i++){
 						if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-							echo"<div class='hard' 'zoom'> <img src='assets/imgs/books/$id_libro/$i.jpg' onmouseover='this.width=600;this.height=800;' onmouseout='this.width=500;this.height=650;' width='500' height='650' alt=''> </div>";
+							echo"<div class='hard'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt=''> </div>";
 						else
-							echo "<div class='pag'> <img src='assets/imgs/books/$id_libro/$i.jpg' onmouseover='this.width=600;this.height=800;' onmouseout='this.width=500;this.height=650;' width='500' height='650' alt='' /> </div>";
+							echo "<div class='pag'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt='' /> </div>";
 					}
 				?>
 				
