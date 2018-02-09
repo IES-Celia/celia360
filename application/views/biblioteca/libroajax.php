@@ -30,14 +30,7 @@
 				  $('#flipbook').turn('next');
 				 });
 				 
-			//capturar teclas derecha e izquierda
 			
-			//zoom
-				$('#flipbook').turn('zoom', 0.5, 0);
-				
-				$('#flipbook').bind('zooming', function(event,  newZoomValue, currentZoomValue) {
-				  alert('New zoom: '+currentZoomValue);
-				});
 				
 			//desaperecer libro
 				/*setTimeout(function() {
@@ -62,9 +55,9 @@
 
 					for($i = 0;$i<$num_pag;$i++){
 						if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-							echo"<div class='hard' 'zoom'> <img src='assets/imgs/books/$id_libro/$i.jpg' onmouseover='this.width=600;this.height=800;' onmouseout='this.width=500;this.height=650;' width='500' height='650' alt=''> </div>";
+							echo"<div class='hard'> <img src='assets/imgs/books/$id_libro/$i.jpg' width='500' height='650' alt=''> </div>";
 						else
-							echo "<div class='pag'> <img src='assets/imgs/books/$id_libro/$i.jpg' onmouseover='this.width=600;this.height=800;' onmouseout='this.width=500;this.height=650;' width='500' height='650' alt='' /> </div>";
+							echo "<div class='pag'> <img src='assets/imgs/books/$id_libro/$i.jpg' width='500' height='650' alt='' /> </div>";
 					}
 				?>
 				

@@ -91,7 +91,7 @@
         <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
             <?php
 
-            
+                    
                     echo "<div class='estanteria' >"; 
                       echo "<div class='nuevecica'  >"   ;    
                         echo "<table >";  
@@ -101,7 +101,7 @@
                         foreach ($libros as $ides){
                           $i++;
                           //Sacamos las portadas de los libros
-
+                          print_r($ides['apaisado']);
                             echo "<td class='columna'>";
                             echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
                             echo "</td>";
