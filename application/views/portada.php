@@ -35,12 +35,11 @@
   </script>
 <style>
   
+tr.torre img {
+    margin-top: 26px ;
+} 
 
 </style>
-
-
-
-
 
     <div id="portadaca" style='z-index:100'; >
      <div id="cambio_portada">
@@ -105,7 +104,7 @@
                             echo "<td class='columna'>";
                             echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
                             echo "</td>";
-                              if ($i%4 == 0)  echo "</tr><tr>";
+                              if ($i%4 == 0)  echo "</tr><tr class='torre'>";
                                 }
                                 echo "</tr></table>";
                       echo "</div>";
