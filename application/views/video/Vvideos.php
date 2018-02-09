@@ -1,6 +1,6 @@
 <?php
 echo"<a class='insert' href='" . site_url("Video/frominsertarvideo") . "'>insertar</a>";
-echo"<table align='center' border=1 id='cont'><tr>
+echo"<table align='center'  id='cont'><tr>
 <th>id</th>
 <th>URL</th>
 <th>descripcion</th>
