@@ -1,7 +1,7 @@
 <?php
 echo"<a class='insert'href='" . site_url("audio/forminsertaraudio") . "'>Insertar audio</a><br>";
 echo"<table align='center' id='cont'><tr>
-<th>id</th>
+<th>ID</th>
 <th>URL</th>
 <th>Descripcion</th>
 <th>Tipo de audio</th>

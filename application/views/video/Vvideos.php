@@ -1,11 +1,11 @@
 <?php
-echo"<a class='insert' href='" . site_url("Video/frominsertarvideo") . "'>insertar</a>";
+echo"<a class='insert' href='" . site_url("Video/frominsertarvideo") . "'>Insertar</a>";
 echo"<table align='center'  id='cont'><tr>
-<th>id</th>
+<th>ID</th>
 <th>URL</th>
-<th>descripcion</th>
-<th>modificar</th>
-<th>ver video</th>
+<th>Descripcion</th>
+<th>Modificar</th>
+<th>Ver video</th>
 <th>Eliminar</th></tr>
 ";
 
@@ -14,7 +14,7 @@ foreach ($tabla as $re) {
     echo'<td>' . $re["url_vid"] . '</td>';
     echo'<td>' . $re["desc_vid"] . '</td>';
     echo"<td><a href='" . site_url("video/formmodificarvideo/" . $re["id_vid"]) . "'>modificar</a></td>";
-    echo"<td><a target='_blank' href='". $re["url_vid"] ."'>ver enlace</a></td>";
+    echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
     echo"<td><a href='" . site_url("video/borrarvideo/" . $re["id_vid"]) . "'>Eliminar</a></td></tr>";
 }
 echo "</table>";
