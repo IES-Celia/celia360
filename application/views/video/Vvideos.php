@@ -1,5 +1,5 @@
 <?php
-
+echo"<a class='insert' href='" . site_url("Video/frominsertarvideo") . "'>insertar</a>";
 echo"<table align='center' border=1 id='cont'><tr>
 <th>id</th>
 <th>URL</th>
@@ -18,5 +18,5 @@ foreach ($tabla as $re) {
     echo"<td><a href='" . site_url("video/borrarvideo/" . $re["id_vid"]) . "'>Eliminar</a></td></tr>";
 }
 echo "</table>";
-echo"<a class='insert' href='" . site_url("Video/frominsertarvideo") . "'>insertar</a>";
+
 ?>

@@ -1,5 +1,5 @@
 <?php
-
+echo"<a class='insert'href='" . site_url("audio/forminsertaraudio") . "'>Insertar audio</a><br>";
 echo"<table align='center' id='cont'><tr>
 <th>id</th>
 <th>URL</th>
@@ -24,6 +24,5 @@ foreach ($tabla as $re) {
 	</audio></td></tr>";
 }
 echo "</table>";
-echo"<a class='insert'href='" . site_url("audio/forminsertaraudio") . "'>Insertar audio</a><br>";
-echo "<a class='insert' href='index.php?accion=mapero'>Volver al Menu</a><br>";
+
 ?>
