@@ -11,26 +11,31 @@
     <script type="text/javascript">
                     
                  $(document).ready(function(){
-                    function mostrar(id)
-                    {
-                        var obj = document.getElementById(id)
-                            obj.style.display= 'block';
-                    }
+                        function mostrar(id)
+                        {
+                            var obj = document.getElementById(id)
+                                obj.style.display= 'block';
+                        }
                     
-                    function ocultar(id)
-                    {
-                        var obj = document.getElementById(id)
-                            obj.style.display= 'none';
-                    }
+                        function ocultar(id)
+                        {
+                            var obj = document.getElementById(id)
+                                obj.style.display= 'none';
+                        }
                      
-                    $(".imagenes").click(function(){
-                      var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
-                      $(this).html("<img src='"+enlace+"' width='1250' height='470'>");
-                       
-                        $(this).mouseleave(function(){
-                            $(this).fadeOut('400').html("Mostrar"); 
-                        });
-                    });
+                            $(".imagenes").click(function(){
+                                
+                                var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
+                                $(this).html("<img src='"+enlace+"' width='1250' height='470'>");
+                            
+                            });
+                    
+                            $(".imagenes").click(function(){
+                    
+                                event.preventDefault();
+                                $(this).html("Mostrar");
+                            
+                            });
                  });
                     
                 
@@ -44,7 +49,7 @@
 <?php
 
     echo"<a class='insert' href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
-	echo "<table border='2px solid' align='center' id='cont'>";
+	echo "<table align='center' id='cont'>";
 	echo "<tr> 
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>
@@ -76,12 +81,8 @@
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' align='center' class="imagenes">Mostrar</th></tr>
+            <tr><th colspan='9' class="imagenes">Mostrar</th></tr>
 <?php
-            echo"<tr>
-            <div id='imagen'>
-            </div>
-            </tr>";
 	}
 	echo "</table>";
 ?>
