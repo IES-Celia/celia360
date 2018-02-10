@@ -28,7 +28,7 @@
                       $(this).html("<img src='"+enlace+"' width='1250' height='470'>");
                        
                         $(this).mouseleave(function(){
-                            $(this).html("Mostrar"); 
+                            $(this).fadeOut('400').html("Mostrar"); 
                         });
                     });
                  });
