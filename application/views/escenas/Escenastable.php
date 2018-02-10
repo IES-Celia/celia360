@@ -30,7 +30,7 @@
                             
                             });
                     
-                            $(".imagenes").click(function(){
+                            $(".imagenes").contextmenu(function(){
                     
                                 event.preventDefault();
                                 $(this).html("Mostrar");
