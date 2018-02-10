@@ -12,9 +12,11 @@
         }
 		
 		
-		public function insertarHotspot() {
-			
-			$descripcion = $_REQUEST["descripcion"];
+		public function insertarHotspotEscena() {
+			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1");
+            
+            echo $res;
+            
 			$pitch = $_REQUEST["pitch"];
 			$yaw = $_REQUEST["yaw"];
 			$cssClass = $_REQUEST["cssClass"];
@@ -25,10 +27,13 @@
 			$targetYaw = $_REQUEST["targetYaw"];
 			$tipo = $_REQUEST["tipo"];
 
-			$insrt = "INSERT INTO hotspots (descripcion,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo)	
-					  VALUES('$descripcion','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";	
+			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) 
+        VALUES($idhotspot','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";	
 			
-			
+			// importante crear tambien la relacion en la tabla escenas_hotspots algo asi:
+            
+           // echo "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ('$idescena','$idhotspot');<br>";
+            
 			$this->db->query($insrt);
             
 			return $this->db->affected_rows();
@@ -36,10 +41,7 @@
         }
 			
         public function borrarHotspot($id) {
-
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
-            
-            
 			return $this->db->affected_rows();
 		}
 			
