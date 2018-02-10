@@ -98,27 +98,27 @@
         $("#formularios").children().hide();
           
         $("#insertarEscena").click(function() {
-            $("#botones").hide();
+            $("#formularios").children().hide();
             $("#puntoEscena").show();
         });
           
         $("#insertarPanel").click(function() {
-            $("#botones").hide();
+            $("#formularios").children().hide();
             $("#puntoPanel").show();
         });
           
         $("#insertarAudio").click(function() {
-            $("#botones").hide();
+            $("#formularios").children().hide();
             $("#puntoAudio").show();
         });
           
         $("#insertarVideo").click(function() {
-            $("#botones").hide();
+            $("#formularios").children().hide();
             $("#puntoVideo").show();
         });
           
         $("#insertarEscaleras").click(function() {
-            $("#botones").hide();
+            $("#formularios").children().hide();
             $("#puntoEscaleras").show();
         });
           
