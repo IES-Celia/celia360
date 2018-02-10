@@ -29,16 +29,15 @@ class Hotspots extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
     
-    public function process_insert_hotspot(){
-        $resultado = $this->hotspotsModel->insertarHotspot();
+    public function process_insert_scene(){
+        $resultado = $this->hotspotsModel->insertarHotspotEscena();
         if ($resultado == true) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
-        }
-        else {
+        }else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
@@ -46,6 +45,7 @@ class Hotspots extends CI_Controller {
             $this->load->view('template_admin', $datos);
         }
     }
+    
     
     public function delete_hotspot($id){
 

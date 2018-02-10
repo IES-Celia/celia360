@@ -12,8 +12,11 @@
         }
 		
 		
-		public function insertarHotspot() {
-			
+		public function insertarHotspotEscena() {
+			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1");
+            
+            echo $res;
+            
 			$descripcion = $_REQUEST["descripcion"];
 			$pitch = $_REQUEST["pitch"];
 			$yaw = $_REQUEST["yaw"];
@@ -25,8 +28,8 @@
 			$targetYaw = $_REQUEST["targetYaw"];
 			$tipo = $_REQUEST["tipo"];
 
-			$insrt = "INSERT INTO hotspots (descripcion,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo)	
-					  VALUES('$descripcion','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";	
+			$insrt = "INSERT INTO hotspots (descripcion,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) 
+        VALUES('$descripcion','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";	
 			
 			
 			$this->db->query($insrt);
@@ -36,10 +39,7 @@
         }
 			
         public function borrarHotspot($id) {
-
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
-            
-            
 			return $this->db->affected_rows();
 		}
 			
