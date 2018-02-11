@@ -160,7 +160,7 @@ display: block;
 
 
 
-.cerrar {
+.cerrar_menu {
   color: white;
   position: absolute;
   top: 10px;
@@ -170,7 +170,7 @@ display: block;
   cursor: default;
 }
 
-.cerrar:hover {
+.cerrar_menu:hover {
   color: crimson;
 }
 

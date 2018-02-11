@@ -240,7 +240,7 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
           <div class="boton_menu"></div>
           
           <div class="overlay_menu" id="nav_menu">
-          <div class="cerrar" onclick="$('#nav_menu').hide();">&times;</div>
+          <div class="cerrar_menu" onclick="$('#nav_menu').hide();">&times;</div>
           <div class="contenido_menu">
             
             <div class="fila1">
@@ -800,6 +800,6 @@ function escaleras(){
     
 </script>
       
-     <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+     <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
      <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
   
