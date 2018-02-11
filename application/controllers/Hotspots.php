@@ -111,7 +111,9 @@ class Hotspots extends CI_Controller {
     $datos["lista_imagenes"] = $this->Img->buscar_todo();
     $datos["id_hotspot"] = 8;
     //Se lo paso a la vista
-    $this->load->view("hotspots/hotspotPanel", $datos);  
+    $datos["vista"]="hotspots/hotspotPanel";
+    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+    $this->load->view('template_admin', $datos); 
   }
   
   public function add_imgs_hotspot(){
