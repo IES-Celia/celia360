@@ -91,5 +91,47 @@
                 return $this->db->affected_rows();
 		
 			}
+      
+      
+       ///////////////////////////ZYGIS - Cosas del CMS/////////////////////////
+      
+      
+      public function insertar_imagenes_hotspot(){
+        
+          $id_hotspot = $_REQUEST["idhs"];
+          //Al ser un array string lo partimos por las comas.
+          $listaArray = $_REQUEST["listaimg"];
+          //$resultado = implode(",",$listaimagenes);
+          $listaimagenes = explode($listaArray,",");
+          
+          foreach ($listaimagenes as $imagen_id){ 
+             $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen)VALUES('$id_hotspot','$imagen_id')";
+             $this->db->query($sql);
+          }
+         return $this->db->affected_rows();
+      }
+        
+        //Aqui deberia deberia ser un parametro pero al no estar funcionando he puesto un numero fijo para hacer pruebas.
+      public function cargar_imagenes_panel(){
+        
+        $id_hotspot = 8;//$_REQUEST["idhs"];
+        //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
+        $res = $this->db->query("
+        SELECT 
+        hotspots.titulo_panel,
+        hotspots.texto_panel,
+        imagenes.* 
+        FROM imagenes 
+        INNER JOIN panel_imagenes 
+        ON panel_imagenes.id_imagen = imagenes.id_imagen
+        INNER JOIN hotspots
+        ON panel_imagenes.id_hotspot = hotspots.id_hotspot
+        WHERE panel_imagenes.id_hotspot='$id_hotspot'");
+        //Array donde guardamos todos los ids de imagenes.
+        $lista_info_imagenes = $res->result_array();
+        echo json_encode($lista_info_imagenes);
+
+      }
+    
         
     }

@@ -101,6 +101,34 @@ class Hotspots extends CI_Controller {
             }
         
     }
+  
+////////////////////////////Zygis - MOVIDAS DEL CMS//////////////////////////
+  
+  public function show_panel_info(){
+    //cargar el modelo
+    $this->load->model("Img");
+    //acciones para ver el listado de imagenes
+    $datos["lista_imagenes"] = $this->Img->buscar_todo();
+    $datos["id_hotspot"] = 8;
+    //Se lo paso a la vista
+    $this->load->view("hotspots/hotspotPanel", $datos);  
+  }
+  
+  public function add_imgs_hotspot(){
+    //Añade las imagenes a la base de datos
+    $resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
+    //TODO: añadir mensaje de la situacion.
+  }
+  
+ public function modify_panel_info($idhs){
+   //TODO:Modificar el panel de informacion
+ }
+  
+ public function load_panel(){
+  //Cargar el panel de informacion en pannellum
+  $resultado = $this->hotspotsModel->cargar_imagenes_panel();
+  //TODO: añadir mensaje de la situacion
+ }
 
 
 }
