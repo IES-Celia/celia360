@@ -14,7 +14,8 @@
       $('.efectBook').click(function(){
         $('.modalita2').toggle('slow');
           idlibro = $(this).attr("idlibro");
-          $('.modalita2').load('biblioteca/verLibroAjax/'+idlibro);
+          apaisado = $(this).attr("apaisado");
+          $('.modalita2').load('biblioteca/verLibroAjax/'+idlibro+'/'+apaisado);
       });
 
       $('#cerrarmodal').click(function(){
@@ -100,9 +101,9 @@ tr.torre img {
                         foreach ($libros as $ides){
                           $i++;
                           //Sacamos las portadas de los libros
-                          //print_r($ides['apaisado']);
+                          
                             echo "<td class='columna'>";
-                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
                             echo "</td>";
                               if ($i%4 == 0)  echo "</tr><tr class='torre'>";
                                 }

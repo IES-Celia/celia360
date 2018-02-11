@@ -115,18 +115,18 @@
 
 
 		//Renombrar archivos de una carpeta
-		public function rename_cont($id_libro){
+		/*public function rename_cont($id_libro){
 			$ruta ="imgs/books/$id_libro";
 			$carpeta = scandir($ruta,SCANDIR_SORT_NONE);
 			$cantidadarchivos=count($carpeta);
 
 			for($i=0;$i<$cantidadarchivos;$i++){
 				print_r($carpeta[$i]);
-				/*$oldDir="imgs/books/$id_libro/".$carpeta[$i].".jpg";
+				$oldDir="imgs/books/$id_libro/".$carpeta[$i].".jpg";
 				$newDir="imgs/books/$id_libro/".$i.".jpg";
-				rename($oldDir,$newDir);*/
+				rename($oldDir,$newDir);
 			}
-		}
+		}*/
 
 	}
 

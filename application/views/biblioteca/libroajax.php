@@ -58,11 +58,20 @@
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
-					for($i = 0;$i<$num_pag;$i++){
-						if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-							echo"<div class='hard'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt=''> </div>";
-						else
-							echo "<div class='pag'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt='' /> </div>";
+					if($apaisado==0){
+						for($i = 0;$i<$num_pag;$i++){
+							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
+								echo"<div class='hard'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt=''> </div>";
+							else
+								echo "<div class='pag'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt='' /> </div>";
+						}
+					}else{
+						for($i = 0;$i<$num_pag;$i++){
+							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
+								echo"<div class='hard'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='800' height='650' alt=''> </div>";
+							else
+								echo "<div class='pag'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='800' height='650' alt='' /> </div>";
+						}
 					}
 				?>
 				
