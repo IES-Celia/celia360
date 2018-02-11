@@ -106,6 +106,11 @@ class Biblioteca extends CI_Controller {
 		$this->load->view("template_admin",$datos);
 	}
 
+	//BORRAR PAGINAS DEL LIBRO
+	public function deletepag($id_libro,$num_pag){
+		$this->bibliotecaModel->deletepaglibro($id_libro,$num_pag);
+	}
+
 	public function verLibro($id_libro) {
 		$datos["id_libro"] = $id_libro;
         $datos["vista"] = "biblioteca/libro";

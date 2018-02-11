@@ -42,12 +42,19 @@
 			$res = $this->db->affected_rows();
 			return $res;
 		}
+
+
+
+
 		public function deletelibro($id_libro){
             $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
          	
             return  $this->db->affected_rows();
 			
 		}
+
+
+
 		//renombrar imagenes
 		public function renomdir($id_libro,$pag_ant,$num_pag){
 			for($i=$num_pag-1;$i>$pag_ant;$i--){
@@ -113,6 +120,14 @@
             return $res;
 		}
 
+
+		//BORRAR PAGINAS DEL LIBRO
+		public function deletepaglibro($id_libro,$num_pag){
+			$filename="imgs/books/$id_libro/$num_pag"+".jpg";
+			$res=unlink($filename);
+
+			return $res;
+		}
 
 		//Renombrar archivos de una carpeta
 		/*public function rename_cont($id_libro){
