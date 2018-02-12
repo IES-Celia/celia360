@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
-  align-content: flex-start
+  align-content: flex-star;
   width: 40%;
   height: 90%;
 }
