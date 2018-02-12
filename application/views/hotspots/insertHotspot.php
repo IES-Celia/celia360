@@ -1,6 +1,35 @@
 <html>
-	<head>
+    <head>
         <title> Insert Hotspot </title>
+        <script src=”https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js”></script>
+        <script src=”https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js”></script>
+        
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+        
+        
+        <script>
+         $(function () {
+                $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    "Cerrar": function () {
+                    $(this).dialog("close");
+                    }
+                }
+                });
+            $("#abrir")
+                .button()
+                .click(function () {
+                    $("#dialog").dialog("option", "width", 600);
+                    $("#dialog").dialog("option", "height", 300);
+                    $("#dialog").dialog("open");
+                });
+            });
+        </script>
+            
     </head>
 <body>
 <h1> Formulario para Insertar Hotspots </h1>
@@ -91,6 +120,14 @@
     </div>
     
 </div>
+ <!--prueba--> 
+        
+        <div id="dialog" title="Dialogo básico">
+            <p>Diálogo básico modal. Puede ser movido, redimensionado y cerrado haciendo clic sobre el botón 'X'.</p>
+        </div>
+        
+        <button id="abrir">Abrir diálogo</button>
+    <!--prueba--> 
     
 
     <script>
