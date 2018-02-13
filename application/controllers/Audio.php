@@ -71,7 +71,40 @@ class Audio extends CI_Controller {
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
     }
+    
+    public function obtenerListaAudiosAjax() {
+        $listaAudios = $this->Audm->buscaraud();
+        $html = '<script>'
+                    . '       function seleccionarAudio(idAudio) {'
+                    . '             document.getElementById("idAudioForm").value = idAudio;'
+                    . '       }'
+                    . '</script>';
+        echo"<table align='center' id='cont' border:1><tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Descripcion</th>
+            <th>Tipo de audio</th>
+            <th>Seleccionar</th>
+            </tr>
+            ";
+        foreach ($listaAudios as $audio) {
+            $fila = $audio["id_aud"];
+                    
+            $html = $html .
+                    '<tr>'
+                    . '<td>' . $audio["id_aud"] . '</td>'
+                    . '<td>' . $audio["url_aud"] . '</td>'
+                    . '<td>' . $audio["desc_aud"]. '</td>'
+                    . '<td>' . $audio["tipo_aud"] . '</td>'
+                    . '<td onClick="seleccionarAudio('.$fila.')"><a href="#">Seleccionar</a></td>'
+                    . '</tr>';          
+        }
+        echo $html; 
+        echo '</table>';
+    }   
 
 }
 
 ?>
+
+
