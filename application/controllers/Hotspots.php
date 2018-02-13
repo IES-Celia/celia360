@@ -21,9 +21,10 @@ class Hotspots extends CI_Controller {
         $this->load->view("template_admin", $datos);
     }
     
-    public function show_insert_hotspot($pitch, $yaw) {
+    public function show_insert_hotspot($pitch, $yaw, $idescena) {
 	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
+        $datos["id_scene"]= $idescena;
         $datos["vista"]="hotspots/insertHotspot";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
@@ -65,7 +66,6 @@ class Hotspots extends CI_Controller {
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin',$datos);
         }
-        
     }
     
     public function show_update_hotspot($id){

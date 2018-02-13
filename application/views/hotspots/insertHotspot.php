@@ -17,8 +17,9 @@
     <div id="puntoEscena"> 
         <?php
         echo "<form action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
-            Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
-            Coordenada Yaw: <input type='text' name='yaw' value=' <?php echo $yaw ?> '><br> 
+            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
+            Coordenada Pitch: <input type='text' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '><br> 
+            Coordenada Yaw: <input type='text' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-salto' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='scene' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='puntos' readonly="readonly"><br> 

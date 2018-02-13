@@ -18,7 +18,7 @@
             //$res = $res->fetch_array()["id_hotspot"];
             $idhotspot = $res+1;
             echo $idhotspot;
-            
+            $id_scene= $_REQUEST["id_scene"];
 			$pitch = $_REQUEST["pitch"];
 			$yaw = $_REQUEST["yaw"];
 			$cssClass = $_REQUEST["cssClass"];
@@ -33,9 +33,20 @@
 			
 			// importante crear tambien la relacion en la tabla escenas_hotspots algo asi:
             
-           // echo "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ('$idescena','$idhotspot');<br>";
+            $cadenaconsulta= "SELECT id_escena FROM escenas WHERE cod_escena='".$id_scene."'";
+            
+            echo $cadenaconsulta;
+            
+            $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+            
+            
+            
+            
+            
+            $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ('$res2','$idhotspot');<br>";
             
 			$this->db->query($insrt);
+            $this->db->query($insrt2);
             
 			return $this->db->affected_rows();
 		

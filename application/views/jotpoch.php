@@ -31,6 +31,7 @@
 	</div>
 	
 <script type="text/javascript">
+    escena_base="";
 $(document).ready(function() {
   function ayax(){
     $.ajax({
@@ -46,7 +47,7 @@ $(document).ready(function() {
           });
         });
         viewer = pannellum.viewer("panorama", data);
-        
+        escena_base = data.default.firstScene;
     }).fail(function() {
         console.log("error");
     })
