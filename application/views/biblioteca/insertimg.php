@@ -14,7 +14,6 @@
 			$directorio = "assets/imgs/books/$idlibro";
 			$arrayPag = scandir($directorio);
 			$num_pag = count($arrayPag)-2;
-			
 			echo" <a href='".site_url("/biblioteca/showintadmin")."'>Volver a la interfaz de administracion</a>";
 				echo "<table>";
 					echo "<tr>";
@@ -32,9 +31,8 @@
 												"<input type='hidden' name='pagina_ant' value='".($i-1)."'>".
 												"<input type='file' class='file-input' name='fichero' accept='image/jpg'  id='input' onchange='handleFiles(this.files)'/>";
 										
-									//echo "<a href='".site_url('/biblioteca/deletepag/$id_libro'."' class='btnBorrar'></a>"; 
-									//echo "<a href='".site_url("/biblioteca/deletepag/".$id_libro."' >Borrar</a>";
-									echo "<a href='".site_url("/biblioteca/deletepag/".$id_libro."/".$num_pag)."' class='btnBorrar'>Borrar</a>";
+									
+									echo "<a href='".site_url("/biblioteca/deletepag/$idlibro/$i/$num_pag")."' class='btnBorrar'>Borrar</a>";
 									echo "<p class='numeroPagina'>$i</p>";
 								echo "</td>";
 

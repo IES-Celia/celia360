@@ -107,8 +107,17 @@ class Biblioteca extends CI_Controller {
 	}
 
 	//BORRAR PAGINAS DEL LIBRO
-	public function deletepag($id_libro,$num_pag){
-		$this->bibliotecaModel->deletepaglibro($id_libro,$num_pag);
+	public function deletepag($id_libro,$num_pag,$cant_pag){
+		$res=$this->bibliotecaModel->deletepaglibro($id_libro,$num_pag,$cant_pag);
+		if($res){
+			$datos["idlibro"] = $id_libro;
+	        $datos["vista"] = "biblioteca/insertimg";
+	        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view("template_admin",$datos);
+		}else{
+			echo "pos no";
+		}
+
 	}
 
 	public function verLibro($id_libro) {
@@ -121,7 +130,6 @@ class Biblioteca extends CI_Controller {
 	public function verLibroAjax($idlibro,$apaisado){
 		$datos["id_libro"] = $idlibro;
 		$datos["apaisado"] = $apaisado;
-		print_r($apaisado);
 		$this->load->view("biblioteca/libroajax", $datos);
 	}
 

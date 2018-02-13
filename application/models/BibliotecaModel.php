@@ -122,10 +122,17 @@
 
 
 		//BORRAR PAGINAS DEL LIBRO
-		public function deletepaglibro($id_libro,$num_pag){
-			$filename="imgs/books/$id_libro/$num_pag"+".jpg";
+		public function deletepaglibro($id_libro,$num_pag,$cant_pag){
+			$filename="assets/imgs/books/$id_libro/$num_pag.jpg";
 			$res=unlink($filename);
 
+			if($res){
+				for($i=$num_pag;$i<$cant_pag;$i++){
+					$oldDir="assets/imgs/books/$id_libro/".($i+1).".jpg";
+					$newDir="assets/imgs/books/$id_libro/".$i.".jpg";
+					rename($oldDir,$newDir);
+				}
+			}
 			return $res;
 		}
 
