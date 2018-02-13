@@ -1,5 +1,5 @@
   
-    .tabla tr{
+    #cont tr{
         transition: 0.5s;
         background-color: grey;
         height: 40px;
@@ -7,20 +7,20 @@
     }
         
    
-    .tabla tr:hover{
+    #cont tr:hover{
         background-color: aqua;
         /*height: 500px;*/
     }
         
-    .tabla tr:active{
+    #cont tr:active{
         background-color: red;
     }
         
-    .tabla tr:last-child{
+    #cont tr:last-child{
         height: 200px;
     }
         
-    .tabla{
+    #cont{
         width:100%;
         float: right;
         border-color: black;
@@ -29,22 +29,22 @@
         box-shadow: 5px 5px 3px 2px rgba(0,0,0,0.7)
     }
     
-    .tabla th{
+    #cont th{
         background:#0047b3;
         color:  white;
         height: 50px;
     }
 
-    .tabla td a{
+    #cont td a{
     color:#002c59;
     }
         
-    .tabla td a:hover{
+    #cont td a:hover{
         color:#001021;
         transform: scale(1.04);
     }
         
-    .tabla td{
+    #cont td{
         background-color:#e5e5e5;
         border: 1px solid black;
     }
