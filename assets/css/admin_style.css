@@ -57,6 +57,9 @@
         text-shadow: rgba(0,0,0,0.4) 3px 5px 1px;
         max-width: 500px;
         transition:0.4s;
+        margin: 0 auto;
+        display: block;
+        
     }
         
     .insert:hover{
