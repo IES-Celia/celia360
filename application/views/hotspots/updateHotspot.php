@@ -63,7 +63,9 @@ echo "
 
 	
 	<input type='submit' class='button'>
-	
+	<a href=
+    '".site_url("/hotspots/delete_hotspot/".$hotspots['id_hotspot'])."'
+    >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
 	
 </form>
 </fieldset>

@@ -16,7 +16,8 @@
 			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
             
             //$res = $res->fetch_array()["id_hotspot"];
-            echo($res);
+            $idhotspot = $res+1;
+            echo $idhotspot;
             
 			$pitch = $_REQUEST["pitch"];
 			$yaw = $_REQUEST["yaw"];
@@ -28,8 +29,7 @@
 			$targetYaw = $_REQUEST["targetYaw"];
 			$tipo = $_REQUEST["tipo"];
 
-			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) 
-        VALUES($idhotspot','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";	
+			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";	
 			
 			// importante crear tambien la relacion en la tabla escenas_hotspots algo asi:
             
