@@ -1,11 +1,7 @@
 <html>
     <head>
         <title> Insert Hotspot </title>
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 5bb2528c3f92eb3494740319d3457f106918e269
     </head>
 <body>
 <h1> Formulario para Insertar Hotspots </h1>
@@ -98,11 +94,6 @@
     </div>
     
 </div>
-<<<<<<< HEAD
-=======
- 
-    
->>>>>>> 5bb2528c3f92eb3494740319d3457f106918e269
 
     <script>
       $( document ).ready(function() {

@@ -625,13 +625,7 @@ function onDocumentMouseDown(event) {
          if(event.which == 3){
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
         if(coso==true)
-                
-             //Este para servidor
-            //location.href= "http://iesceliaciclos.org/celia360/index.php/hotspots/show_insert_hotspot/"+pitch+"/"+yaw;
-
-
-            alert(ruta_base +"/"+pitch+"/"+yaw);
-            location.href= ruta_base +"/"+pitch+"/"+yaw;
+            location.href= ruta_base +""+pitch+"/"+yaw;
         }
         console.log('Pitch: ' + coords[0] + ', Yaw: ' + coords[1] + ', Center Pitch: ' + config.pitch + ', Center Yaw: ' + config.yaw + ', HFOV: ' + config.hfov);
     }

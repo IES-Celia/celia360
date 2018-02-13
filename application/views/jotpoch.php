@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <title>Celia Tour</title>
  <!-- Javascript de pannellum framework -->
-    <script>var ruta_base = "<?php site_url("hotspots/show_insert_hotspot/");?>";</script>
+    <script>
+      ruta_base = "<?php echo site_url("hotspots/show_insert_hotspot/");?>";
+      
+    </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
     <!-- Css de pannellum framework -->
