@@ -13,16 +13,17 @@
 		
 		
 		public function insertarHotspotEscena() {
-			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1");
+			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
             
-            echo $res;
+            //$res = $res->fetch_array()["id_hotspot"];
+            echo($res);
             
 			$pitch = $_REQUEST["pitch"];
 			$yaw = $_REQUEST["yaw"];
 			$cssClass = $_REQUEST["cssClass"];
 			$clickHandlerFunc = $_REQUEST["clickHandlerFunc"];
 			$clickHandlerArgs = $_REQUEST["clickHandlerArgs"];
-			$sceneId = $_REQUEST["sceneId"];
+            $sceneId = $_REQUEST["sceneId"];
 			$targetPitch = $_REQUEST["targetPitch"];
 			$targetYaw = $_REQUEST["targetYaw"];
 			$tipo = $_REQUEST["tipo"];

@@ -14,8 +14,20 @@ class escenas extends CI_Controller {
     public function index(){
         $this->showescenas();
     }
+    
     public function showescenas() {
         $this->load->model('Mapa','mapa');
+        $this->load->library( 'pagination' );
+        $config = array();
+
+            $config[ 'base_url' ]  =  'http://iesceliaciclos.org/celia360/escenas' ; 
+            $config[ 'total_rows' ]  =  200 ; 
+            $config[ 'per_page' ]  =  20 ;
+
+            $this->pagination->initialize( $config );
+
+            echo  $this -> pagination -> create_links ();
+        
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
         $datos["mapa"] = $this->mapa->cargar_mapa();

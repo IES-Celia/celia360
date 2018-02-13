@@ -11,22 +11,11 @@
     <script type="text/javascript">
                     
                  $(document).ready(function(){
-                        function mostrar(id)
-                        {
-                            var obj = document.getElementById(id)
-                                obj.style.display= 'block';
-                        }
-                    
-                        function ocultar(id)
-                        {
-                            var obj = document.getElementById(id)
-                                obj.style.display= 'none';
-                        }
                      
                             $(".imagenes").click(function(){
                                 
                                 var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
-                                $(this).html("<img src='"+enlace+"' width='1250' height='470'>");
+                                $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
                             
                             });
                     
