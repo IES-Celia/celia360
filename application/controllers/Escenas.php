@@ -21,8 +21,8 @@ class escenas extends CI_Controller {
         $config = array();
 
             $config[ 'base_url' ]  =  'http://iesceliaciclos.org/celia360/escenas' ; 
-            $config[ 'total_rows' ]  =  20 ; 
-            $config[ 'per_page' ]  =  5 ;
+            $config[ 'total_rows' ]  =  200 ; 
+            $config[ 'per_page' ]  =  20 ;
 
             $this->pagination->initialize( $config );
 
