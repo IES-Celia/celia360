@@ -11,17 +11,6 @@
     <script type="text/javascript">
                     
                  $(document).ready(function(){
-                        function mostrar(id)
-                        {
-                            var obj = document.getElementById(id)
-                                obj.style.display= 'block';
-                        }
-                    
-                        function ocultar(id)
-                        {
-                            var obj = document.getElementById(id)
-                                obj.style.display= 'none';
-                        }
                      
                             $(".imagenes").click(function(){
                                 
