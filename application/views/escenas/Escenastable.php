@@ -23,7 +23,7 @@
                             $(".imagenes").contextmenu(function(){
                     
                                 event.preventDefault();
-                                $(this).html("<i class='fa fa-eye' style='size:3px;'></i>");
+                                $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
                             
                             });
                  });
@@ -65,13 +65,13 @@
             <td align='center'>".$escenas['tipo']."</td>
             
             <td align='center'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> Borrar </a></td>
+            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash-alt' style='font-size:30px;'></i> </a></td>
             
             <td align='center'>
-            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
+            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' class="imagenes"><i class="fa fa-eye" style="size:3px;"></i></th></tr>
+            <tr><th colspan='9' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
 <?php
 	}
 	echo "</table>";
