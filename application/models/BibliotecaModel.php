@@ -114,8 +114,9 @@
 			$fecha=$_REQUEST["fecha"];
 			$isbn=$_REQUEST["isbn"];
 			$tipo=$_REQUEST["tipo"];
+			$apaisado=$_REQUEST["apaisado"];
 
-            $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo')");
+            $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo,apaisado) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo','$apaisado')");
          	
             return $res;
 		}

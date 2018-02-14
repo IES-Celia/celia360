@@ -50,9 +50,9 @@ class Biblioteca extends CI_Controller {
 
 	public function showinsertlibro()
 	{		
-        $data["vista"]="biblioteca/inserlibro";
+        $datos["vista"]="biblioteca/inserlibro";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-		$this->load->view('template_admin', $data);
+		$this->load->view('template_admin', $datos);
 	}
 
 	public function modifiedLibro($id_libro)
