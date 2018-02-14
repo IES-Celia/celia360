@@ -39,7 +39,7 @@
             $cadenaconsulta= "SELECT id_escena FROM escenas WHERE cod_escena='".$id_scene."'";
             $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
             
-            $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ('$res2','$idhotspot');<br>";
+            $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
             
             $this->db->query($insrt2);
             
