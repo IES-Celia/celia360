@@ -11,15 +11,6 @@
         ?>
 		    	Nombre del lugar:  <input type='text' name='name'> <br/>
 				
-				Codigo de Escena:  <input type='text' name='cod'>  <br/>
-			  
-				
-			   
-			    Pitch: <input type='text' name='pitch'>  <br/>
-
-			    Yaw: <input type='text' name='yaw'> <br/>
-			  
-				
 			    
 				panorama:  <input type='text' name='panorama'> <br/>
 			    
