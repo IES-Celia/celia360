@@ -49,6 +49,8 @@
 			
         public function borrarHotspot($id) {
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
+			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
+
 			return $this->db->affected_rows();
 		}
 			

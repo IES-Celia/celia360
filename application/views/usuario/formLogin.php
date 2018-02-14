@@ -9,22 +9,46 @@
 	}
 
 ?>
+
+<style>
+
+
+    body{
+           background: -moz-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
+           background: -webkit-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
+           background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
+    
+    }
+    
+</style>
+
 <div id="caja">
-<div id="titulo-login"><h1>Login</h1></div>
+    
+       <legend> Login </legend>
+        <fieldset>
+
+            <br>
+            
+    
 <?php
 echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
  ?>   
     <label for="user">Nick</label>
-    <input type='text' id="user" name='user'><br/>
-    
+    <br>
+    <input type='text' id="user" name='user'>
+    <br><br>
     <label for="pass">Password</label>
-    <input type='password' id="pass" name='pass'><br/>
-
+    <br>
+    <input type='password' id="pass" name='pass'>
+    <br><br><br>
     <input type='submit'>
+    
 </form>
+
 <?php  
 	echo"<a href= '".site_url("Usuario/showRegisterForm")."'> Darse de alta </a>";
 ?>
 
+    </fieldset>
 
 </div>

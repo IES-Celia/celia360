@@ -1,0 +1,28 @@
+.pisos{
+	height: 100%;
+	background-size: 100% 100%;
+}
+
+#mapa_escena{
+	height: 100%;
+	width: 100%;
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+    margin: auto;
+}
+.puntos{
+    cursor: pointer;
+    width: 1.5%;
+    height: 3%;
+    border-radius: 50%;
+    background: blue;
+    position: absolute;
+}
+
+#btn-subir-piso, #btn-bajar-piso{
+	top: 20%;
+	z-index: 4;
+	float: right;
+	position: relative;
+}
