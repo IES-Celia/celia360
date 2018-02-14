@@ -10,9 +10,8 @@
 			echo"<form action='".site_url("escenas/processinsertscene")."' method='get'>";
         ?>
 		    	Nombre del lugar:  <input type='text' name='name'> <br/>
-				
-			    
-				panorama:  <input type='text' name='panorama'> <br/>
+        
+				Panorama:  <input type='file' name='panorama' placeholder="Seleccione la escena"> <br/>
 			    
 			    
 				<input type='submit'>
