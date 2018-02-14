@@ -15,11 +15,7 @@
     #cont tr:active{
         background-color: red;
     }
-        
-    #cont tr:last-child{
-        height: 200px;
-    }
-        
+
     #cont{
         width:100%;
         float: right;
@@ -54,7 +50,6 @@
             
         color: black;
         font-size: 35px;
-        text-shadow: rgba(0,0,0,0.4) 3px 5px 1px;
         max-width: 500px;
         transition:0.4s;
         margin: 0 auto;
@@ -64,7 +59,7 @@
         
     .insert:hover{
         color: rgba(48,38,12,1);
-        text-shadow: rgba(0,0,0,0.7) 3px 5px 1px;
+        text-shadow: rgba(0,0,0,0.7) 1px 1px 1px;
     }
         
 
@@ -196,7 +191,6 @@
         font-size:50px;
         cursor:pointer;
         color:black;
-        position: fixed;
         background:transparent;
         margin-top: -8px;
         margin-left: -8px;
@@ -220,12 +214,6 @@
         color: black;
         font-size: 25px;
         max-width: 180px;
-    }
-        
-        
-    .sidenav input:focus{
-        background-color:#302e2e;
-        color:white;
     }
     
     .sidenav input::placeholder{
