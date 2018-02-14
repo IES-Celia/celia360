@@ -23,7 +23,7 @@
                             $(".imagenes").contextmenu(function(){
                     
                                 event.preventDefault();
-                                $(this).html("Mostrar");
+                                $(this).html("<i class="fas fa-eye"></i>");
                             
                             });
                  });
