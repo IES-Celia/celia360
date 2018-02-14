@@ -128,9 +128,6 @@
             $("#puntoEscaleras").show();
         });
           
-        
-          
-          
       });
          
     </script> 
