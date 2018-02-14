@@ -10,7 +10,7 @@
 	
 echo "<a class='insert' href='".site_url("hotspots/show_insert_hotspot")."'> Insertar Nuevo HotSpot </a>";
 
-echo "<table border='2px solid' align='center' id='cont'>";
+echo "<table id='cont'>";
 echo "<tr> 
 	  <th> Id Hotspot </th>
 	  <th> Descripcion </th> 
