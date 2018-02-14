@@ -23,7 +23,7 @@
                             $(".imagenes").contextmenu(function(){
                     
                                 event.preventDefault();
-                                $(this).html("<i class="fas fa-eye"></i>");
+                                $(this).html("<i class='fa fa-eye'></i>");
                             
                             });
                  });
@@ -71,7 +71,7 @@
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' class="imagenes"><i class="fas fa-eye"></i></th></tr>
+            <tr><th colspan='9' class="imagenes"><i class="fa fa-eye"></i></th></tr>
 <?php
 	}
 	echo "</table>";
