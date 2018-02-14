@@ -42,7 +42,7 @@ echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
     <input type='password' id="pass" name='pass'>
     <br><br><br>
     <input type='submit'>
-    
+    <br>
 
 <?php  
 	echo"<a href= '".site_url("Usuario/showRegisterForm")."'> Darse de alta </a>";
