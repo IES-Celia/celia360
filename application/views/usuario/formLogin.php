@@ -43,7 +43,6 @@ echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
     <br><br><br>
     <input type='submit'>
     
-</form>
 
 <?php  
 	echo"<a href= '".site_url("Usuario/showRegisterForm")."'> Darse de alta </a>";
