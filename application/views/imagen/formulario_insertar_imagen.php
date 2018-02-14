@@ -39,7 +39,7 @@ if (isset($error)) {
                 </div>
                 <div>
                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+                    <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
                     <label for="imagen">Imagen:</label>
                     <input type="file" name="imagen"  id="imagen" placeholder="Seleccionar la imagen" required><br />
                 </div>

@@ -50,6 +50,15 @@ class Img extends CI_Model {
             $resultado[0] = true;
             $resultado[1] = $this->db->query("UPDATE imagenes SET titulo_imagen='$titulo_imagen', texto_imagen = '$texto_imagen', 
                                         url_imagen = '$userpic', fecha = '$fecha' WHERE id_imagen = '$id_nuevaimagen'");
+            // Creamos una miniatura de la imagen
+            $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
+            copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
+            $config['maintain_ratio'] = TRUE;
+            $config['width'] = 200;
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
         }
         return $resultado;
     }
@@ -139,4 +148,6 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
+   
+    
 }

@@ -1,3 +1,4 @@
+ <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <?php 
 	if (isset($datos["error"])) {
 			echo "<p style='color:red'>".$datos["error"]."</p>";
@@ -22,7 +23,7 @@
                             $(".imagenes").contextmenu(function(){
                     
                                 event.preventDefault();
-                                $(this).html("Mostrar");
+                                $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
                             
                             });
                  });
@@ -94,13 +95,13 @@
             <td align='center'>".$escenas['tipo']."</td>
             
             <td align='center'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> Borrar </a></td>
+            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash-alt' style='font-size:30px;'></i> </a></td>
             
             <td align='center'>
-            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
+            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' class="imagenes">Mostrar</th></tr>
+            <tr><th colspan='9' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
 <?php
 	}
 	echo "</table>";
