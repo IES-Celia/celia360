@@ -1,3 +1,4 @@
+ <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <?php 
 	if (isset($datos["error"])) {
 			echo "<p style='color:red'>".$datos["error"]."</p>";
@@ -70,7 +71,7 @@
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> Modificar la escena </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' class="imagenes">Mostrar</th></tr>
+            <tr><th colspan='9' class="imagenes"><i class="fas fa-eye"></i></th></tr>
 <?php
 	}
 	echo "</table>";
