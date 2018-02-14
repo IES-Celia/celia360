@@ -73,11 +73,12 @@
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-video' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='video' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs'><br> 
+            clickHandlerArgs: <input type='text' name='clickHandlerArgs' id='idVideoForm'><br> 
 
 
             <input type='submit' class="button">
         </form>
+        <div id="listaVideos">Capa vacia</div>
     </div>
 
     <div id="puntoEscaleras"> 
@@ -119,6 +120,7 @@
          $("#insertarVideo").click(function() {
             $("#formularios").children().hide();
             $("#puntoVideo").show();
+            $("#listaVideos").load("<?php echo site_url("video/obtenerListaVideosAjax");?>");
         });
           
         $("#insertarEscaleras").click(function() {

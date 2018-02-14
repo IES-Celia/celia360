@@ -63,6 +63,35 @@ class Video extends CI_Controller {
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
+    
+    public function obtenerListaVideosAjax() {
+        $listaVideos = $this->Vidm->buscarvideo();
+        $html = '<script>'
+                    . '       function seleccionarVideo(idVideo) {'
+                    . '             document.getElementById("idVideoForm").value = idVideo;'
+                    . '       }'
+                    . '</script>';
+        echo"<table align='center' id='cont' border:1><tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Descripcion</th>
+            <th>Seleccionar</th>
+            </tr>
+            ";
+        foreach ($listaVideos as $video) {
+            $fila = $video["id_vid"];
+                    
+            $html = $html .
+                    '<tr>'
+                    . '<td>' . $video["id_vid"] . '</td>'
+                    . '<td>' . $video["url_vid"] . '</td>'
+                    . '<td>' . $video["desc_vid"]. '</td>'
+                    . '<td onClick="seleccionarVideo('.$fila.')"><a href="#">Seleccionar</a></td>'
+                    . '</tr>';          
+        }
+        echo $html; 
+        echo '</table>';
+    }   
 }
 
 ?>
