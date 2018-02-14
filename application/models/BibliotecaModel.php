@@ -1,4 +1,4 @@
-<?php
+(<?php
 	
 	class BibliotecaModel extends CI_Model {
 
@@ -29,14 +29,16 @@
 		}
 
 		public function update($id_libro){
-			$titulo=$_REQUEST["titulo"];
-			$autor=$_REQUEST["autor"];
-			$editorial=$_REQUEST["editorial"];
-			$lugar=$_REQUEST["lugar_edicion"];
-			$fecha=$_REQUEST["fecha_edicion"];
-			$isbn=$_REQUEST["ISBN"];
-			$tipo=$_REQUEST["tipo"];
-			$apaisado=$_REQUEST["apaisado"];
+			$titulo = $this->input->get_post("titulo");
+			
+			$titulo=$this->input->get_post("titulo");
+			$autor=$this->input->get_post("autor");
+			$editorial=$this->input->get_post("editorial");
+			$lugar=$this->input->get_post("lugar_edicion");
+			$fecha=$this->input->get_post("fecha_edicion");
+			$isbn=$this->input->get_post("ISBN");
+			$tipo=$this->input->get_post("tipo");
+			$apaisado=$this->input->get_post("apaisado");
 
 			$this->db->query("Update libros set titulo='$titulo', autor='$autor',editorial='$editorial',lugar_edicion='$lugar', fecha_edicion='$fecha', ISBN='$isbn', tipo='$tipo',apaisado='$apaisado' where id_libro='$id_libro'");
 			$res = $this->db->affected_rows();
@@ -107,14 +109,14 @@
 		public function insertlibro(){
 			
 
-			$titulo=$_REQUEST["titulo"];
-			$autor=$_REQUEST["autor"];
-			$editorial=$_REQUEST["editorial"];
-			$lugar=$_REQUEST["lugar"];
-			$fecha=$_REQUEST["fecha"];
-			$isbn=$_REQUEST["isbn"];
-			$tipo=$_REQUEST["tipo"];
-			$apaisado=$_REQUEST["apaisado"];
+			$titulo=$this->input->get_post("titulo");
+			$autor=$this->input->get_post("autor");
+			$editorial=$this->input->get_post("editorial");
+			$lugar=$this->input->get_post("lugar");
+			$fecha=$this->input->get_post("fecha");
+			$isbn=$this->input->get_post("isbn");
+			$tipo=$this->input->get_post("tipo");
+			$apaisado=$this->input->get_post("apaisado");
 
             $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo,apaisado) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo','$apaisado')");
          	
