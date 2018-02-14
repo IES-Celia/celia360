@@ -71,7 +71,7 @@ echo"
 			      <label>Lugar de Edición</label>
 			    </div>
 				<div class='group'>      
-			      <input type='date' name='fecha' value='Fecha de Edición'required>
+			      <input type='date' name='fecha' value='Fecha de Edición' required>
 			      <span class='highlight'></span>
 			      <span class='bar'></span>
 			    </div>
@@ -86,6 +86,12 @@ echo"
 			      <span class='highlight'></span>
 			      <span class='bar'></span>
 			      <label>Tipo</label>
+			    </div>
+			    <div class='group'>      
+			      <input type='text' name='apaisado' pattern='[0-1]{1}' min='1' maxlength='1' required>
+			      <span class='highlight'></span>
+			      <span class='bar'></span>
+			      <label>Apaisado</label>
 			    </div>
 
 		    	<input type='file' class='file-input' name='fichero' accept='image/jpg'  id='input' multiple='true' onchange='handleFiles(this.files)'/><br/><br/>

@@ -20,7 +20,7 @@ class escenas extends CI_Controller {
         $this->load->library( 'pagination' );
         $config = array();
 
-            $config[ 'base_url' ]  =  'http://iesceliaciclos.org/celia360/escenas' ; 
+            $config[ 'base_url' ]  =  'http://iesceliaciclos.org/celia360/escenas/showescenas' ; 
             $config[ 'total_rows' ]  =  200 ; 
             $config[ 'per_page' ]  =  20 ;
 

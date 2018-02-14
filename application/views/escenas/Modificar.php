@@ -14,8 +14,6 @@
 				<form action='".site_url("escenas/processUpdateScene")."' method='get'>
 		
 					Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
-					
-					Codigo Escena: <input type='text' name='hfov' value=" . $con['cod_escena'] . "> <br/>
 				
 					hfov: <input type='text' name='hfov' value=" . $con['hfov'] . "> <br/>
 				
