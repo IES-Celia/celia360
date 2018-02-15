@@ -28,8 +28,8 @@ $(window).resize(function() {
 	
 function mapa_responsivo(){
 
-	var anchura= window.innerWidth*0.8
-	var altura=window.innerHeight*0.9
+	var anchura= window.innerWidth*0.7
+	var altura=anchura*0.57
 
 	var pisos = $(".pisos")
 
