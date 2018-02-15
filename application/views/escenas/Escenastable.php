@@ -11,7 +11,6 @@
 
 <script type="text/javascript">
   base_url = "<?php echo base_url();?>";
-  alert(base_url)
   $(document).ready(function(){                   
     $(".imagenes").click(function(){
       var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"

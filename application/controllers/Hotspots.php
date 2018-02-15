@@ -31,6 +31,21 @@ class Hotspots extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
     
+    // de miguel, para que funcione el jotpoch
+    
+    public function update_hotspot_pitchyaw($pitch, $yaw, $idescena, $idhotspot) {
+	    $datos["pitch"]= $pitch;
+        $datos["yaw"]= $yaw;
+        $datos["id_scene"]= $idescena;
+        $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+        $datos["vista"]="escenas/Escenastable";
+        $datos["resultado"] = $this->hotspotsModel->modificarPitchYaw($pitch, $yaw, $idhotspot);
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('template_admin', $datos);
+    }
+    
+    // fin
+    
     public function process_insert_scene(){
         $resultado = $this->hotspotsModel->insertarHotspotEscena();
         if ($resultado == true) {
@@ -70,10 +85,9 @@ class Hotspots extends CI_Controller {
     }
     
     public function show_update_hotspot($id){
-
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
-        print_r($datos);
         $datos["vista"]="hotspots/updateHotspot";
+        $datos["codigo_escena"]=$this->hotspotsModel->cargar_codigo_escena($id);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }

@@ -10,10 +10,15 @@
             }
 			return $tabla;
         }
+        
+    public function __construct() {
+        parent::__construct();
+        $this->load->model("Modeloescenas");
+        $this->load->model("UsuarioModel");
+    }
 		
 		
 		public function insertarHotspotEscena() {
-            
             // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
 			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
             $idhotspot = $res+1;
@@ -46,6 +51,12 @@
 			return $this->db->affected_rows();
 		
         }
+        
+        public function modificarPitchYaw($pitch, $yaw, $idhotspot){
+            echo $pitch.", ". $yaw." y "."$idhotspot";
+        }
+        
+        
 			
         public function borrarHotspot($id) {
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
@@ -60,7 +71,7 @@
             return $res->result_array();
 		}
 			
-			public function modificarHotspot($id){
+		public function modificarHotspot($id){
 				
 				
 			$id_hotspot = $_REQUEST["id_hotspot"];
@@ -179,9 +190,27 @@
       
     //Sacar el id del ultimo hotspot.
     public function ultimo_hotspot(){
-    $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
-    return $res;
-  }
-    
+        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+        return $res;
+    }
+        
+    // saca la escena de un punto... importante por no tener el cod_escena en el hotspot    
+    public function cargar_codigo_escena($idhotspot){
+        $sql ="SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=".$idhotspot;
+        $res = $this->db->query($sql)->result_array()[0]["id_escena"];
+        $sql2="SELECT cod_escena FROM escenas WHERE id_escena=".$res;
+        $res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
+        return $res;
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     }

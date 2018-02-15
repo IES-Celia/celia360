@@ -22,9 +22,9 @@
                 }
 				
 			return $tabla;
-
-		
 		}
+        
+        
 
 		public function insertar() {
 			

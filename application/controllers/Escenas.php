@@ -90,8 +90,6 @@ class escenas extends CI_Controller {
     }
     
     public function processupdatescene($id){
-    
-            
             $resultado = $this->Modeloescenas->update($cod);
             
             if ($resultado == true) {

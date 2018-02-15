@@ -30,7 +30,6 @@ div.centrado {
 <?php
 
 $tabla = $tabla[0];
-
 echo "
 
 <h1> Formulario para UPDATE Hotspots </h1>
@@ -41,10 +40,9 @@ echo "
 
 	Descripción:  <input type='text' value='".$tabla['descripcion']."' name='descripcion'> </br> </br>
 	
-	Coordenada Pitch: <input type='text' value='".$tabla['pitch']."' name='pitch'> </br> </br>
-	
-	Coordenada Yaw: <input type='text' value='".$tabla['yaw']."' name='yaw'> </br> </br>
-	
+	Coordenada Pitch y Yaw:<br> 
+    <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
+    
 	cssClass: <input type='text' value='".$tabla['cssClass']."' name='cssClass'> </br> </br>
 	
 	clickHandlerFunc: <input type='text' value='".$tabla['clickHandlerFunc']."' name='clickHandlerFunc'> </br> </br>
