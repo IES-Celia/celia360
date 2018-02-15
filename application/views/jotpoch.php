@@ -5,8 +5,7 @@
 <title>Celia Tour</title>
  <!-- Javascript de pannellum framework -->
     <script>
-      ruta_base = "<?php echo site_url("hotspots/show_insert_hotspot/");?>";
-      
+      ruta_base = "<?php echo $redireccion_jotpoch; ?>";
     </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
