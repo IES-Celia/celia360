@@ -1,4 +1,4 @@
-(<?php
+<?php
 	
 	class BibliotecaModel extends CI_Model {
 
