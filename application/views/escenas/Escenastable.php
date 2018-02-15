@@ -26,7 +26,17 @@
                                 $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
                             
                             });
-                 });
+                     
+                            function confirmation() {
+                                    if(confirm("Realmente desea eliminar?"))
+                                    {
+                                        return true;
+                                        <?php
+                                        echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])"";
+                                        ?>
+                                    }
+                                        return false;
+                                    });
     </script>
                 <style>
                     .oculto {display:none;}
@@ -95,7 +105,7 @@
             <td align='center'>".$escenas['tipo']."</td>
             
             <td align='center' class='borrar'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash' style='font-size:30px;'></i> </a></td>
+            <i class='fa fa-trash' style='font-size:30px;'></i></td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
