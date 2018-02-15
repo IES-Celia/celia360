@@ -44,6 +44,17 @@ class Hotspots extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
     
+     public function update_escena_pitchyaw($pitch, $yaw, $codescena) {
+	    $datos["pitch"]= $pitch;
+        $datos["yaw"]= $yaw;
+        $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+        $datos["vista"]="escenas/Escenastable";
+        $datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $codescena);
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('template_admin', $datos);
+    }
+    
+    
     // fin
     
     public function process_insert_scene(){

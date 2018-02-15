@@ -56,8 +56,10 @@
             $this->db->query("UPDATE hotspots SET pitch=".$pitch.", yaw=".$yaw." WHERE id_hotspot=".$idhotspot);
         }
         
-        
-			
+        public function modificarPitchYawEscena($pitch, $yaw, $codescena){
+            $this->db->query("UPDATE escenas SET pitch=".$pitch.", yaw=".$yaw." WHERE cod_escena='".$codescena."'");
+        }
+ 
         public function borrarHotspot($id) {
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
 			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
@@ -66,14 +68,11 @@
 		}
 			
 		public function buscarUnHotspot($id) {
-            
             $res = $this->db->query("SELECT * FROM hotspots WHERE id_hotspot='$id' ");
             return $res->result_array();
 		}
 			
 		public function modificarHotspot($id){
-				
-				
 			$id_hotspot = $_REQUEST["id_hotspot"];
 			$descripcion = $_REQUEST["descripcion"];
 			$pitch = $_REQUEST["pitch"];
