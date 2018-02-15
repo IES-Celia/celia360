@@ -53,7 +53,7 @@
         }
         
         public function modificarPitchYaw($pitch, $yaw, $idhotspot){
-            echo $pitch.", ". $yaw." y "."$idhotspot";
+            $this->db->query("UPDATE hotspots SET pitch=".$pitch.", yaw=".$yaw." WHERE id_hotspot=".$idhotspot);
         }
         
         
