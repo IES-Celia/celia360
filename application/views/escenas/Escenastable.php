@@ -11,55 +11,37 @@
 
 <script type="text/javascript">
   base_url = "<?php echo base_url();?>";
-  $(document).ready(function(){                   
-    $(".imagenes").click(function(){
-      var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
-      $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
-    });
+    
+    $(document).ready(function(){                   
+        
+        $(".imagenes").click(function(){
+            var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
+            $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
+        });
                     
 
-    $(".imagenes").contextmenu(function(event){             
-      event.preventDefault();
-      $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
-    });
-
-   /* $(".imagenes").click(function(){
-                                
-                                var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
-                                $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
-                            
-                            });
-                    
-                            $(".imagenes").contextmenu(function(event){
-                    
-                                event.preventDefault();
-                                $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
-                            
-                            });
-                     
-                            function confirmation() {
-                                    if(confirm("Realmente desea eliminar?"))
-                                    {
-                                        return true;
-                                        <?php
-                                        echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
-                                        ?>
-                                    }else{
-                                      return false;
-                                    }
-                                        
-                            });*/
+        $(".imagenes").contextmenu(function(event){             
+            event.preventDefault();
+            $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
+        });
+        
+        $(".borrar").click(function(){
+        
+            if(confirm("Realmente desea eliminar?"))
+            {
+            return true;
+                <?php
+                    echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
+                ?>
+            }else{
+            return false;
+            }
+        
+        });
 });
                      
                             
 </script>
-
-                 
-    </script>
-
-                <style>
-                    .oculto {display:none;}
-                </style>
 
 <button id="btn-mapa">Abrir mapa</button>
 
