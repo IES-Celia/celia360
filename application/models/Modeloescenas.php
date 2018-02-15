@@ -33,7 +33,7 @@
             $cod = $panorama;
 
 			$insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod',120,10,10,'equirectangular','$panorama')";
+                      VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
 
 			$this->db->query($insert);
             
