@@ -9,25 +9,20 @@
 	}
 ?>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+  base_url = "<?php echo base_url();?>";
+  $(document).ready(function(){                   
+    $(".imagenes").click(function(){
+      var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
+      $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
+    });
                     
-                 $(document).ready(function(){
-                     
-                            $(".imagenes").click(function(){
-                                
-                                var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
-                                $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
-                            
-                            });
-                    
-                            $(".imagenes").contextmenu(function(event){
-                    
-                                event.preventDefault();
-                                $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
-                            
-                            });
-                 });
-    </script>
+    $(".imagenes").contextmenu(function(event){             
+      event.preventDefault();
+      $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
+    });
+  });
+</script>
                 <style>
                     .oculto {display:none;}
                 </style>

@@ -43,8 +43,7 @@ $(document).ready(function() {
    		left = (100*left)/anchura
    		var top = event.pageY-izquierda.top;
    		top = (100*top)/altura
-   		
-   		location.href="http://localhost/celia360/escenas/showinsert/"+id+"/"+left.toFixed(2)+"/"+top.toFixed(2);
+   		location.href=base_url+"escenas/showinsert/"+id+"/"+left.toFixed(2)+"/"+top.toFixed(2);
 
 
    		event.preventDefault();
