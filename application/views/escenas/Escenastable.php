@@ -42,7 +42,7 @@
                                     {
                                         return true;
                                         <?php
-                                        echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])"";
+                                        echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
                                         ?>
                                     }
                                         return false;
