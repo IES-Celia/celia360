@@ -17,12 +17,44 @@
       $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
     });
                     
+
     $(".imagenes").contextmenu(function(event){             
       event.preventDefault();
       $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
     });
+
+    $(".imagenes").click(function(){
+                                
+                                var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
+                                $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
+                            
+                            });
+                    
+                            $(".imagenes").contextmenu(function(event){
+                    
+                                event.preventDefault();
+                                $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
+                            
+                            });
+                     
+                            function confirmation() {
+                                    if(confirm("Realmente desea eliminar?"))
+                                    {
+                                        return true;
+                                        <?php
+                                        echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])"";
+                                        ?>
+                                    }
+                                        return false;
+                                    });
   });
+                     
+                            
 </script>
+
+                 
+    </script>
+
                 <style>
                     .oculto {display:none;}
                 </style>
@@ -89,8 +121,8 @@
             <td align='center'>".$escenas['yaw']."</td>
             <td align='center'>".$escenas['tipo']."</td>
             
-            <td align='center'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash-alt' style='font-size:30px;'></i> </a></td>
+            <td align='center' class='borrar'>
+            <i class='fa fa-trash' style='font-size:30px;'></i></td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
