@@ -92,11 +92,22 @@ class Img extends CI_Model {
             if ($resultado_subida) {
                 //cambiar el nombre de la imagen de carga
                 $userpic = $actualizar_id . "." . "jpg";
+            
+                // Creamos una miniatura de la imagen
+                $nombre_miniatura = $actualizar_id . "_miniatura.jpg";
+                copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
+                $config['maintain_ratio'] = TRUE;
+                $config['width'] = 200;
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
                 $fichero_actualizado = true;
                 $resultado = true;
             } else {
                 // si no se seleccionó ninguna imagen, la anterior permanecerá como está.
                 $userpic = $actualizar_url;
+                $nombre_miniatura = $actualizar_id . "_miniatura.jpg"; 
                 $fichero_actualizado = false;
                 $resultado = false;
             }
@@ -128,12 +139,16 @@ class Img extends CI_Model {
 
         $consulta = $this->db->query($miconsulta);
         $archivo_imagen = $consulta->result_array()[0]["url_imagen"];
-
-        //consultar la BD la fila
-        $url_imagen = "assets/imagenes/imagenes-hotspots/" . $archivo_imagen; // cargar directorio
+        
+        // cargar directorio
+        $url_imagen = "assets/imagenes/imagenes-hotspots/" . $archivo_imagen; 
+        // cargar directorio de la miniatura
+        $url_imagen_miniatura = "assets/imagenes/imagenes-hotspots/" . $id ."_miniatura.jpg";
         //unlink — Borra un fichero
         unlink($url_imagen);
-
+     
+        unlink($url_imagen_miniatura);  //borra la miniatura
+        //borrar el registro de la base de datos
         $q = "delete  from imagenes where id_imagen= '$id'";
 
         $this->db->query($q);
