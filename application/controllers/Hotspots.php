@@ -144,6 +144,15 @@ class Hotspots extends CI_Controller {
        
     }
   
+    public function process_insert_escaleras(){
+            $joshua = $this->hotspotsModel->insertarHotspotEscalera();
+            $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"]="hotspots/hotspotsTable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+    }
+  
   public function show_panel_info(){
     //cargar el modelo
     $this->load->model("Img");

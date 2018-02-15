@@ -149,6 +149,36 @@
 		
         }
       
+       public function insertarHotspotEscalera() {
+            
+            // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
+			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+            $idhotspot = $res+1;
+            
+            $id_scene= $_REQUEST["id_scene"];
+			$pitch = $_REQUEST["pitch"];
+			$yaw = $_REQUEST["yaw"];
+			$cssClass = $_REQUEST["cssClass"];
+            $clickHandlerFunc =$_REQUEST["clickHandlerFunc"]; 
+            // insercción del punto en la tabla hotspot
+			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc) 
+            VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc')";	
+			$this->db->query($insrt);
+            
+			// insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
+            // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
+            
+            $cadenaconsulta= "SELECT id_escena FROM escenas WHERE cod_escena='".$id_scene."'";
+            $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+            
+            $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+            
+            $this->db->query($insrt2);
+            
+			return $idhotspot;
+		
+        }
+      
       
       public function insertar_imagenes_hotspot(){
         
