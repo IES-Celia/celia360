@@ -26,7 +26,6 @@ class escenas extends CI_Controller {
 
             $this->pagination->initialize( $config );
 
-            echo  $this -> pagination -> create_links ();
         
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
@@ -34,6 +33,7 @@ class escenas extends CI_Controller {
         $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
+        echo  $this -> pagination -> create_links ();
     } 
     
     public function showinsert() {

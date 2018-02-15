@@ -20,7 +20,7 @@
                             
                             });
                     
-                            $(".imagenes").contextmenu(function(){
+                            $(".imagenes").contextmenu(function(event){
                     
                                 event.preventDefault();
                                 $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");

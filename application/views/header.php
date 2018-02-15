@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
     <!-- Css de pannellum -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_panellum.css");?>">
     <!--librerias JQuery & JQuery ui-->
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>

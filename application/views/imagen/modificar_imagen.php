@@ -17,7 +17,7 @@ $du = $lista_imagenes[0];
     echo "<input type='hidden' name='id_imagen' value='" . $du['id_imagen'] . "'><br/>";
     echo "T&iacute;tulo:<input type='text' name='titulo_imagen' value='" . $du['titulo_imagen'] . "'><br/>";
     echo "<br>Texto:<input type='text' name='texto_imagen' value='" . $du['texto_imagen'] . "'><br/>";
-    echo '<input type="hidden" name="MAX_FILE_SIZE" value="3000000" />';
+    echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
     echo "<br>Fecha:<input type='date' name='fecha'  value='" . $du['fecha'] . "'><br/>";
     echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value='" . $du['url_imagen'] . "'><br/>";
     echo "<input type='hidden' name='url_imagen' value='" . $du['url_imagen'] . "'>";
