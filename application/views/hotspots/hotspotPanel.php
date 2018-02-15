@@ -38,9 +38,9 @@
     
   echo "<div id='imgHS'>";
   foreach( $lista_imagenes as $img){
-  
+   $img_correcto = explode(".",$img["url_imagen"]);
    $imagen_propiedades = array(
-    "src" => "assets/imagenes-hotspots/".$img["url_imagen"],
+    "src" => "assets/imagenes/imagenes-hotspots/".$img_correcto[0]."_miniatura.JPG",
     "class" => "imgHS",
     "width" => "120",
     "height" => "120",
@@ -57,7 +57,7 @@
 <div id='panel'>
  <h2>Imagenes Seleccionadas</h2><br>
  HotSpot ID
- <input type="text" value="<?php echo $id_hotspot; ?>" disabled/><br>
+ <input type="text" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
  <ul id='img_seleccionadas'>
  
  </ul><br>
@@ -123,7 +123,7 @@
   function add_img_to_hotspot(){
     var prueba = [];
     //Valor temporal para probar si funciona
-    var hotspot = 31;
+    var hotspot = $("#idhs").val();
     //Aqui guardo en un array todos los ids de imagenes y lo mando al script php
     $("#img_seleccionadas li").each(function(i){
       prueba.push($(this).attr("data-id"));
@@ -138,7 +138,7 @@
     });
     
     peticion.done(function(){
-      console.log("TERMINADA! la transferencia!");
+     alert("TERMINADA! la transferencia!");
     });
     
   }
@@ -178,7 +178,7 @@
         $("#Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
         
       }
-      src="<?php echo base_url("assets/imagenes/generales/escudo.JPG");?>"
+     
       
     });
   }
