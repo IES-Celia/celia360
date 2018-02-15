@@ -11,6 +11,7 @@
 
 <script type="text/javascript">
   base_url = "<?php echo base_url();?>";
+  alert(base_url)
   $(document).ready(function(){                   
     $(".imagenes").click(function(){
       var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
@@ -23,7 +24,7 @@
       $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
     });
 
-    $(".imagenes").click(function(){
+   /* $(".imagenes").click(function(){
                                 
                                 var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
                                 $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
@@ -44,10 +45,12 @@
                                         <?php
                                         echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
                                         ?>
+                                    }else{
+                                      return false;
                                     }
-                                        return false;
-                                    });
-  });
+                                        
+                            });*/
+});
                      
                             
 </script>
