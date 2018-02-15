@@ -44,9 +44,9 @@
 
       foreach ($mapa as $imagen) {
         if($pisos[$indice]=="primer_piso"){
-          echo "<div id='".$pisos[$indice]."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+          echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
         }else{
-          echo "<div id='".$pisos[$indice]."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+          echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
         }
         
           foreach ($puntos as $punto) {

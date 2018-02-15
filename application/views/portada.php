@@ -54,8 +54,8 @@ tr.torre img {
             <nav id="nav_portada">
              <ul>
                  <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
-                  <li><a id="opcionlibre_portada" onclick='visita_libre("get_json_libre");'>Modo Libre</a></li>
-                 <li><a id="opcionguiada_portada" onclick='visita_libre("get_json_guiada");'>Visita Guiada</a></li>
+                  <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
+                 <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
                   <li><a>Biblioteca</a></li>
                  <li><a href="" >Glosario</a></li>
@@ -200,8 +200,6 @@ tr.torre img {
             <div id="GmyModal" class="Gmodal">
               <span class="Gclose cursor" onclick="closeModal()">&times;</span>
               <div class="Gmodal-content">
-                <img class="GmySlides" src="<?php echo base_url("assets/imagenes/generales/escudo.JPG");?>" style="width:100%">
-                <img class="GmySlides" src="<?php echo base_url("assets/imagenes/generales/escudo1.JPG");?>" style="width:100%">
                 <a class="Gprev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="Gnext" onclick="plusSlides(1)">&#10095;</a>
               </div>
@@ -212,13 +210,12 @@ tr.torre img {
                 <div class="overlay"></div>
                 <div class="modal__contents">
                  <a class="modal__close" href="#">&times;</a>
-                 <h2 id="titulo">Escudo de Armas</h2>
+                 <h2 id="titulo"></h2>
                  <div id="gallery" onclick="openModal();">
-                   <img src="<?php echo base_url("assets/imagenes/generales/escudo1.JPG");?>">
+                   <img src="">
                  </div>
                 <div id="texto">
-                 <p>Gran escudo de armas de grandes dimensiones, finalmente modelado, que constituye el blasón de Alfonso XIII, en esencia, el mismo escudo que para su dinastía organizó su cuarto abuelo el rey Carlos III: los cinco cuarteles pertenecientes a la Nación (Castilla-Castilla, León-León y Granada), uno a su linaje de Borbón-Anjou, y diez a sus demás antepasados. 
-En 1931 el fervor republicano le cambia la corona real cerrada por la mural de la Republica que, muda, se presta a acoger alrededor del de Castilla y León, los escudos de las principales casas reinantes de Europa, ancestros de nuestros reyes. Las iras contra el "Sr. Borbón" - que así nombraba la prensa de la época al exilado Alfonso XIII- se dirigen al primero de sus linajes y por eso caen del escusón las tres lises borbónicas, también las mismas florecillas de los cuarteles de las casas de Borgoña (IV), de Parma (V), y Médicis-Toscana (VI), mientras deja intactos los palos de Aragón (I), los palos y Águilas de Aragón-Sicilia (II), la faja de Austria (III), el bandeado de Borgoña viejo (VII), el León rampante de Brabante (VIII) y el de Flandes (IX) y el águila del Tirol (X); así como las de Castilla y León y Granada. Es todo un enigma la relación que entre el Toisón de Oro y las lises que vio el cincelador para borrarlo.</p>
+                
                 </div>
               </div>
             </div>
@@ -435,11 +432,11 @@ $( ".menu_slider" ).click(function() {
     //
   
       json_contenido='';
-      function visita_libre(nombre){
+      function visita_opcion(nombre){
         
 
         $.ajax({
-              url: "<?php echo base_url("conversorbd2json/get_json_libre"); ?>",
+              url: "<?php echo base_url("conversorbd2json/"); ?>"+nombre,
               type: 'GET',
               dataType: 'json',
             })
@@ -525,7 +522,60 @@ $( ".menu_slider" ).click(function() {
             
   }
   
-  
+    function panelInformacion(hotspotDiv,args){
+    
+    
+    
+     $(".modal").css("visibility","visible");
+     var peticion = $.ajax({
+        url: "<?php echo base_url("hotspots/load_panel"); ?>",
+        type:"post",
+        data:{id_hotpost : args},
+        beforeSend: function(){
+        //Cambiar el valor del texto y titulo
+        $("#titulo").html("Cargando...");
+        $("#texto").html("Cargando...");
+        //Borrar las tiras creadas en el punto anterior
+          $(".GmySlides").each(function(){
+            $(this).remove();
+           
+          });
+        }
+     });
+    
+    peticion.done(function(datos){
+      var prueba = JSON.parse(datos);
+      //Cargamos una vez los datos basicos
+      $("#titulo").html(prueba[0].titulo_panel);
+      $("#texto").html(prueba[0].texto_panel);
+      //La primera imagen que sale al abrir el panel
+      var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[0].url_imagen;
+      $("#gallery").find("img").attr("src",enlace_img);
+      //Por cada indice del array creamos la imagen de la galeria
+      for(var i=0;i<prueba.length;i++){
+        //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
+        var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
+        $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
+
+        
+      }
+      //Pone el indice
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    });
+    
+     $('.modal').css('display','block');
+     $(window).click(function(event){
+       if($(event.target).hasClass("modal")){ 
+         $('.modal').css('display','none');
+       }
+     });
+    
+     $('#close').click(function(event){
+       $('.modal').css('display','none');
+     });
+  }
   
   /////////////////////PANEL y GALERIA dentro del PANEL//////////////////////////////
   ///////////////////////////////////////////////////
@@ -539,9 +589,7 @@ $( ".menu_slider" ).click(function() {
 function closeModal() {
   $("#GmyModal").hide();
 }
-//Pone el indice
-var slideIndex = 1;
-showSlides(slideIndex);
+
 //Suma mas uno al indice
 function plusSlides(n) {
   showSlides(slideIndex += n);

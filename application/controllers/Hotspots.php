@@ -26,6 +26,7 @@ class Hotspots extends CI_Controller {
         $datos["yaw"]= $yaw;
         $datos["id_scene"]= $idescena;
         $datos["vista"]="hotspots/insertHotspot";
+        $datos["id_hotspot"] = $this->hotspotsModel->ultimo_hotspot()+1;
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
@@ -104,12 +105,25 @@ class Hotspots extends CI_Controller {
   
 ////////////////////////////Zygis - MOVIDAS DEL CMS//////////////////////////
   
+  public function process_insert_panel(){
+            $joshua = $this->hotspotsModel->insertarHotspotPanel();
+            $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
+            $datos["vista"]="hotspots/hotspotPanel";
+            $datos["idhs"]=$joshua;
+            //cargar el modelo
+            $this->load->model("Img");
+            //acciones para ver el listado de imagenes
+            $datos["lista_imagenes"] = $this->Img->buscar_todo();
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+       
+    }
+  
   public function show_panel_info(){
     //cargar el modelo
     $this->load->model("Img");
     //acciones para ver el listado de imagenes
     $datos["lista_imagenes"] = $this->Img->buscar_todo();
-    $datos["id_hotspot"] = 8;
     //Se lo paso a la vista
     $datos["vista"]="hotspots/hotspotPanel";
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -119,6 +133,7 @@ class Hotspots extends CI_Controller {
   public function add_imgs_hotspot(){
     //Añade las imagenes a la base de datos
     $resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
+    var_dump($resultado);
     //TODO: añadir mensaje de la situacion.
   }
   
@@ -127,8 +142,8 @@ class Hotspots extends CI_Controller {
  }
   
  public function load_panel(){
-  //Cargar el panel de informacion en pannellum
-  $resultado = $this->hotspotsModel->cargar_imagenes_panel();
+  $id = $_REQUEST["id_hotpost"];
+  $resultado = $this->hotspotsModel->cargar_imagenes_panel($id);
   //TODO: añadir mensaje de la situacion
  }
 
