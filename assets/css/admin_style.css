@@ -169,7 +169,7 @@
         margin-left: 50px;
     }
 
-    .sidenav .closebtn{
+    .sidenav .closebtn:hover{
     
         color: red;
     }
