@@ -191,8 +191,6 @@ class Hotspots extends CI_Controller {
   //TODO: añadir mensaje de la situacion
  }
 
- //LOLI------------------
- 
     public function process_insert_audio(){
         $resultado = $this->hotspotsModel->insertarHotspotAudio();
         if ($resultado == true) {
@@ -209,5 +207,4 @@ class Hotspots extends CI_Controller {
             $this->load->view('template_admin', $datos);
         }
     }
- //LOLI------------------------------
 }
