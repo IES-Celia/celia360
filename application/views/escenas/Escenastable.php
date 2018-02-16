@@ -25,19 +25,19 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
-        $(".borrar").click(function(){
+        /*$(".borrar").click(function(){
         
             if(confirm("Realmente desea eliminar?"))
             {
             return true;
                 <?php
-                    echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
+                //    echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
                 ?>
             }else{
             return false;
             }
         
-        });
+        });*/
 });
                      
                             
