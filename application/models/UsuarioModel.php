@@ -121,9 +121,12 @@
             $email = $this->input->get_post("email");
             $username = $this->input->get_post("username");
             $pass = $this->input->get_post("pass");
+            $tipo = $this->input->get_post("tipo");
+
+            $password = md5($pass);
 
            
-           $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', password = '$pass' where id_usuario = '$id'");
+           $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', password = '$password', tipo_usuario='$tipo' where id_usuario = '$id'");
             
             return $this->db->affected_rows();
     }
