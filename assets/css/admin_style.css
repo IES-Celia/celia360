@@ -54,7 +54,10 @@
         transition:0.4s;
         margin: 0 auto;
         display: block;
-        text-decoration: none;        
+        text-decoration: none; 
+        border: 1px solid black;
+        background: #0047b3;
+            
     }
         
     .insert:hover{
