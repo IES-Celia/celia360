@@ -43,7 +43,7 @@ echo "<table id='cont'>
 foreach ($tablaUsuarios as $usu) {
    
    $idusu = $usu["id_usuario"];
-    echo "<tr id='usu".$idusu."'>
+    echo"<tr id='usu".$idusu."'>
             <td id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
             <td>".$usu["password"]."</td>
             <td id='email_usuario_".$idusu."'>".$usu["email"]."</td>
@@ -61,13 +61,13 @@ foreach ($tablaUsuarios as $usu) {
      
     
 
-    echo " <td>
-            <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'>Borrar</a></td>
+    echo"   <td>
+                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'>Modificar</a>
+            </td>
             <td>
-
-            <a href='#' onclick='modusuario(".$usu["id_usuario"].")'>Modificar</a>
-          </td>
-          </tr>";
+                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'>Borrar</a>
+            </td>
+        </tr>";
 }
 echo "</table>";
 
@@ -94,7 +94,6 @@ echo"
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
-<div id='caja'>
     <label for='username'>Nombre de usuario</label>
     <input type='text' name='username' id='username'><br/>
     <label for='pass'>Password</label>
@@ -109,7 +108,7 @@ echo"
         <br/>
     <input type='submit'>
     <a href='#' onclick='cerrar()'>Cerrar</a>
-</div>    
+   
 </form>    
 </div>";
 
