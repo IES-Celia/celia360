@@ -30,7 +30,7 @@
 			
 			$name = $_REQUEST["name"];		
 			$panorama = $_REQUEST["panorama"];
-            $cod = $panorama;
+            $cod = substr($panorama, 0 , -4);
 
 			$insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";

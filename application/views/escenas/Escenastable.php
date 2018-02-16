@@ -85,10 +85,8 @@
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>
 		  <th> Codigo Escena </th>
-		  <th> hfov </th> 
 		  <th> Pitch </th>
 		  <th> Yaw </th>
-		  <th> Tipo </th>
 		  <th> Eliminar </th>
 		  <th> Modificar </th>
 		  </tr>";
@@ -100,10 +98,8 @@
             <td align='center'>". $escenas['id_escena']."</td>
             <td align='center'>".$escenas['Nombre']."</td>
             <td align='center' class='cod'>".$escenas['cod_escena']."</td>
-            <td align='center'>".$escenas['hfov']." </td>
             <td align='center'>".$escenas['pitch']."</td>
             <td align='center'>".$escenas['yaw']."</td>
-            <td align='center'>".$escenas['tipo']."</td>
             
             <td align='center' class='borrar'>
             <i class='fa fa-trash' style='font-size:30px;'></i></td>
@@ -112,7 +108,7 @@
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
+            <tr><th colspan='7' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
 <?php
 	}
 	echo "</table>";
