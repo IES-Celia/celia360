@@ -1,6 +1,6 @@
 
 <style type="text/css">
-    #oculto{
+    #modificar{
         display:none;
         z-index: 1;
         position: fixed;
@@ -12,7 +12,7 @@
         border: 3px solid ;
     }
 
-    #mostrar{
+    #insertar{
         display:none;
         z-index: 1;
         position: fixed;
@@ -73,7 +73,7 @@ echo "</table>";
 
 //Capa formulario modificar
 echo "
-<div id='oculto'>
+<div id='modificar'>
     <h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='get'>
         Nombre de usuario:<input type='text' name='username' id='form_modif_nick'><br/>
@@ -90,7 +90,7 @@ echo "
 
 //Capa formulario insertar
 echo"
-<div id='mostrar'>
+<div id='insertar'>
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
@@ -146,16 +146,16 @@ echo"
             document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
             document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
             document.getElementById("form_modif_id").value = idusu;
-            $("#oculto").show();
+            $("#modificar").show();
         }
 
         function mostrar(){
-            $("#mostrar").show();
+            $("#insertar").show();
         }
 
         function cerrar(){
-            $("#oculto").hide();
-             $("#mostrar").hide();
+            $("#insertar").hide();
+             $("#modificar").hide();
         }    
        
 </script>
