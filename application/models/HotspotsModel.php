@@ -1,7 +1,12 @@
 <?php
     class HotspotsModel extends CI_Model {
         
-		public function buscarHotspots() {
+        public function __construct() {
+        parent::__construct();
+        $this->load->database();
+        }
+
+    public function buscarHotspots() {
 		
 			$res = $this->db->query("SELECT * FROM hotspots");
             $tabla = array();
@@ -216,6 +221,25 @@
         echo json_encode($lista_info_imagenes);
 
       }
+<<<<<<< HEAD
+    //LOLI--------------------
+      
+      
+      
+    public function insertarHotspotAudio() {
+
+        // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
+        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+        $idhotspot = $res + 1;
+
+        $id_scene = $this->input->post_get("id_scene");
+        $pitch = $this->input->post_get("pitch");
+        $yaw = $this->input->post_get("yaw");
+        $cssClass = $this->input->post_get("cssClass");
+        $tipo = $this->input->post_get("tipo");
+        $clickHandlerFunc =$this->input->post_get("clickHandlerFunc");
+        $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
+=======
       
     //Sacar el id del ultimo hotspot.
     public function ultimo_hotspot(){
@@ -241,5 +265,25 @@
         
         
         
+>>>>>>> 20c039627e45d37d74c7aa9230121f46c39ca601
         
+
+        // insercción del audio en la tabla hotspot
+        $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,tipo,clickHandlerFunc,clickHandlerArgs,sceneId)"
+                . " VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass' ,'$tipo', '$clickHandlerFunc','$clickHandlerArgs','$id_scene')";
+        $this->db->query($insrt);
+  
+        // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
+        // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
+            
+        $cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
+        $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+
+        $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+
+        $this->db->query($insrt2);
+
+        return $this->db->affected_rows();
     }
+    //FIN LOLI----------------------------------
+}
