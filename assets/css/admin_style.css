@@ -1,279 +1,70 @@
   
-    .tabla{
-        margin-top: 20px;
-        color:#000000;
-        text-align:center;
-		margin-left: auto;
-		margin-right: auto;
-    
-    }
-    
-    .tabla td{
-        background-color:#1d96b2;
-    }
-    
-    .tabla th{
-        background-color:#b2b2b2;
-    }
-
-    .tabla a{
-
-        color:#ffffff;
-        transition: 2s;
-        text-decoration: none;
-       
+    #cont tr{
+        transition: 0.5s;
+        background-color: grey;
+        height: 40px;
         
     }
-    
-
-    .tabla a:hover{
         
-        color:#ffffff;
-        text-decoration: none;
+   
+    #cont tr:hover{
+        background-color: aqua;
+        /*height: 500px;*/
+    }
+        
+    #cont tr:active{
+        background-color: red;
+    }
+
+    #cont{
+        width:96%;
+        margin-left: 2%;
+        margin-right: 2%;
+        float: right;
+        border-color: black;
+        border: 2px solid black;
+        background-color: black;
+        box-shadow: 5px 5px 3px 2px rgba(0,0,0,0.7)
+    }
+    
+    #cont th{
+        background:#0047b3;
+        color:  white;
+        height: 50px;
+    }
+
+    #cont td a{
+    color:#002c59;
+    }
+        
+    #cont td a:hover{
+        color:#001021;
+        transform: scale(1.04);
+    }
+        
+    #cont td{
+        background-color:#e5e5e5;
+        border: 1px solid black;
+    }
+        
   
-    }
-    
-	#cont {
-  		font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-  		color: #5e5d52;
-	}
-
-	
-	#cont a {
-	    color: #337aa8;
-	}
-		
-	#cont a:hover, a:focus {
-  		color: #4b8ab2;
-	}
-
-	#cont .container {
-  		margin: 5% 3%;
-	}
-
-	#cont {
-		width: 100%;
-  		margin-bottom: 1.5em;
-	}
-
-	#cont thead {
-  		position: absolute;
-  		clip: rect(1px 1px 1px 1px);
-  		clip: rect(1px, 1px, 1px, 1px);
-  		padding: 0;
- 		border: 0;
-  		height: 1px;
-  		width: 1px;
-  		overflow: hidden;
-	}
-    
-	#cont th{
-   		background-color: linear-gradient(to bottom,#212e5b,blue);;
-    	border: 1px solid #1d96b2;
-    	font-weight: normal;
-    	text-align: center;
-    	color: white;
-    }
-    
-	#cont thead th {
-  		background-color: #1d96b2;
-  		border: 1px solid #1d96b2;
-  		font-weight: normal;
-  		text-align: center;
-  		color: white;
-	}
-		
-	#cont thead th:first-of-type {
-  		text-align: left;
-	}
-
-	#cont tbody,
-	#cont tr,
-	#cont th,
-	#cont td {
-  		display: block;
-  		padding: 0;
-  		text-align: left;
-  		white-space: normal;
-	}
-		
-	@media (min-width: 48em) {
-  	#cont tr {
-    	display: table-row;
-  	}
-	}
-		
-	#cont th,
-	#cont td {
-  		padding: .5em;
-  		vertical-align: middle;
-	}
-		
-	@media (min-width: 30em) {
-  	#cont th,
-  	#cont td {
-    	padding: .75em .5em;
-   }
-   }
-
-	@media (min-width: 48em) {
-    #cont th,
-    #cont td {
-   		display: table-cell;
-    	padding: .5em;
-  	}
-	}
-		
-	@media (min-width: 62em) {
-  	#cont th,
-  	#cont td {
-    	padding: .75em .5em;
-  	}
-	}
-
-	@media (min-width: 75em) {
-  	#cont th,
-  	#cont td {
-    	padding: .75em;
-  	}
-	}
-	
-	#cont caption {
-  		margin-bottom: 1em;
-  		font-size: 1em;
-  		font-weight: bold;
-  		text-align: center;
-	}
-	
-		
-	#cont tfoot {
-		font-size: .8em;
- 		font-style: italic;
-	}
-
-	@media (min-width: 62em) {
-  	#cont tfoot {
-    	font-size: .9em;
-  	}
-	}
-
-	@media (min-width: 48em) {
-  	#cont tbody {
-    	display: table-row-group;
-  	}
-	}
-		
-	#cont tbody tr {
-  		margin-bottom: 1em;
-  		border: 2px solid #1d96b2;
-	}
-		
-	@media (min-width: 48em) {
-	#cont tbody tr {
-    	display: table-row;
-    	border-width: 1px;
-  	}
-	}
-		
-	#cont tbody tr:last-of-type {
-		margin-bottom: 0;
-	}
-		
-	@media (min-width: 48em) {
-  	#cont tbody tr:nth-of-type(even) {
-    	background-color: rgba(94, 93, 82, 0.1);
-  	}
-	}
-		
-	#cont tbody th[scope="row"] {
-		background-color: #1d96b2;
-  		color: white;
-	}
-
-
-	#cont tbody td  {
-  		text-align: right;
-	}
-	
-	#cont tbody td a{
-		text-align: center;
-		text-decoration:none;
-	}
-    
-    #cont tbody tr:first-of-type{
-        background: linear-gradient(to bottom,#212e5b,blue);
-        color: white;
-    }
-	
-		
-    .insert{
-        
+	.insert{            
+        color: black;
+        font-size: 35px;
+        max-width: 500px;
+        transition:0.4s;
         margin: 0 auto;
         display: block;
-        text-align: center;
-        text-decoration: none;
-        max-width: 220px;
-        background: linear-gradient(to bottom,#212e5b,blue);
-        border-radius: 30px;
-        transition: 2s;
-        color:#ffffff;
-		margin-top: 1%;
-        font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-        transform: scale(1.25);  
-        margin-bottom: 20px;
+        text-decoration: none;        
     }
-    
+        
     .insert:hover{
-        color:#ffffff;
-        text-decoration: none;
-		max-width:280px;
-        transform: scale(1.45);
+        color: rgba(48,38,12,1);
+        text-shadow: rgba(0,0,0,0.7) 1px 1px 1px;
     }
-    #cont th{
         
-        border-style: groove;
-        border-radius: 5px;
-        
-    }
-    
-    body {
-        
-        /* Claro background-color: #C8D5B9;*/
-        background-color:url(content_texture.png no-repeat);
-    }
 
-    #menu{
-        margin-left: auto;
-        margin-right: auto;
-        background: linear-gradient(to bottom,#212e5b,blue);
-        border-width: 5px;
-        border-radius: 1px;
-		margin-bottom:25px;
-        box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.75);
-        font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
-
-    }
-    
-    #menu td{
-        padding: 40px;
-        transition: 0.4s;
-    }
-    
-    #menu td:hover{
-        background-color:navy;
-      
-    }
-    
-    #menu a{
-        text-decoration: none;
-        font-size: 20px;
-        color:white;
-        transition: 0.4s;
-    }
-   
-	
-
-    
+     
     .for{
     
         width: 500px;
@@ -343,27 +134,170 @@
         font-weight: bold;
     }
 		
-    
-    #nav{
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 1%; 
-		margin-bottom: 1%;
-        background-color: aqua;
-        border-width: 5px;
-        border-radius: 10px;
-        width: 90%;
-		border-color:aqua;
+        
+    /* Menu Lateral */
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #262626;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
     }
     
-    #nav td{
- 
-        transition: 3s;
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 27px;
+        color:#c1c1c1;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .enlacesidenav{
+        border-top: 1px solid #c1c1c1;
+    }
+        
+    .sidenav a:hover {
+        color: orange;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+        
+    .sidenavmenu {
+        font-size:50px;
+        cursor:pointer;
+        color:black;
+        background:transparent;
+        margin-top: -8px;
+        margin-left: -8px;
+        transition:0.4s;
+    }
+        
+    .sidenavmenu:hover{
+        color:darkorange;
+    }
+        
+    .sidenav input{
+        background-color: grey;
+        border: 3px solid white;
+        color: white;
+        border-radius: 50px;
+        position: absolute;
+        right: 54px;
+        top: 68px;
+        height: 30px;
+        transition: 1s;
+        color: black;
+        font-size: 25px;
+        max-width: 180px;
     }
     
-    #nav td:hover{
-        background-color:#00ce9e;
+    .sidenav input::placeholder{
+        color: black;
     }
+        
+    /* Parte del Formulario de Login */
+
+        #caja{
+            width: 600px;
+            margin: auto;
+            margin-top: 200px;
+            
+            
+        }
+        
+        #caja fieldset{
+            border: 4px solid grey;
+            height: 230px;
+            background:white;
+            box-shadow: -1px 7px 100px 100px rgba(144,144,144,0.4), 3px 3px 2px 2px rgba(0,0,0,0.7);
+            transition: 0.4s;
+      
+            
+        }
+        
+        #caja input[type=text]{
+            border:2px solid black;  
+            background: -moz-linear-gradient(-45deg, grey 0%, #FFFFFF 100%, #000000 100%);
+            background: -webkit-linear-gradient(-45deg, grey 0%, #FFFFFF 100%, #000000 100%);
+            background: linear-gradient(135deg, grey 0%, #FFFFFF 100%, #000000 100%);
+            transition: 0.3s;
+            width: 200px;
+            word-wrap: break-word;
+        }
+        
+        
+        #caja input[type=text]:focus{
+            width: 100%;    
+        }
+        
+        #caja input[type=password]{
+            margin-left: 1px;
+            border: 2px solid black;  
+            background: -moz-linear-gradient(-45deg, grey 0%, #FFFFFF 100%, #000000 100%);
+            background: -webkit-linear-gradient(-45deg, grey 0%, #FFFFFF 100%, #000000 100%);
+            background: linear-gradient(135deg, grey 0%, #FFFFFF 100%, #000000 100%);
+            
+            transition: 0.3s;
+            width: 200px;
+            word-wrap: break-word;
+        }
+        
+        #caja input[type=password]:focus{
+            width: 100%;    
+        }
+        
+        #caja input[type=submit]{
+            color:black;
+            margin-left: 80px;
+            width: 400px;
+            height: 40px;
+            border: 2px solid black;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+            box-shadow: inset 0 0 10px #000000; 
+            text-shadow: 1px 1px 1px black;
+        }
+        
+        
+        #caja legend{
+            font-size: 25px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            font-weight: bolder;
+            text-shadow: 1px 1px 1px black;
+
+        }
+        
+        #caja fieldset a {
+            text-decoration: none;
+            color: black;
+            width: 100px;
+            float: right; 
+            margin-top: 20px;
+            margin-right: -15px;
+        }
+        
+        #caja fieldset label{
+            font-weight: bolder;
+            text-shadow: 1px 1px 3px black;
+        }
     
-    
-    
+        

@@ -10,16 +10,18 @@ if (isset($error)) {
 
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
-echo "<br><table id='cont' border='1'>";
+echo "<br><table id='cont'>";
 echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Texto</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Borrar Imagen</th><th>Modificar Imagen</th></tr>';
 
 foreach ($lista_imagenes as $ima) {
     $fila = $ima["id_imagen"];
+    $nombre_archivo = $ima["id_imagen"]."_miniatura.jpg";
     $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
     $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
     echo "<tr id='imagen-" . $fila . "'><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" .
-    $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><img src='" .
-    base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"]) . "' height='100px'></td><td>" .
+    $ima["texto_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><a href='".
+    base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"])."'><img src='" .
+    base_url("assets/imagenes/imagenes-hotspots/" . $nombre_archivo) . "'></a></td><td>" .
     $ima["fecha"] . "</td>
     	<td><a class='delete' href='#' onclick='borrar_imagen($fila)'>Borrar</a></td>
     	<td><a href='" . $url_modificar . "'>Modificar</a></td></tr>";

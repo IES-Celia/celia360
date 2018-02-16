@@ -28,26 +28,33 @@
 		
 		}
 
-		public function update($id_libro){
-			$titulo=$_REQUEST["titulo"];
-			$autor=$_REQUEST["autor"];
-			$editorial=$_REQUEST["editorial"];
-			$lugar=$_REQUEST["lugar_edicion"];
-			$fecha=$_REQUEST["fecha_edicion"];
-			$isbn=$_REQUEST["ISBN"];
-			$tipo=$_REQUEST["tipo"];
-			$apaisado=$_REQUEST["apaisado"];
+		public function update($id_libro){			
+			$titulo=$this->input->get_post("titulo");
+			$autor=$this->input->get_post("autor");
+			$editorial=$this->input->get_post("editorial");
+			$lugar=$this->input->get_post("lugar_edicion");
+			$fecha=$this->input->get_post("fecha_edicion");
+			$isbn=$this->input->get_post("ISBN");
+			$tipo=$this->input->get_post("tipo");
+			$apaisado=$this->input->get_post("apaisado");
 
 			$this->db->query("Update libros set titulo='$titulo', autor='$autor',editorial='$editorial',lugar_edicion='$lugar', fecha_edicion='$fecha', ISBN='$isbn', tipo='$tipo',apaisado='$apaisado' where id_libro='$id_libro'");
 			$res = $this->db->affected_rows();
 			return $res;
 		}
+
+
+
+
 		public function deletelibro($id_libro){
             $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
          	
             return  $this->db->affected_rows();
 			
 		}
+
+
+
 		//renombrar imagenes
 		public function renomdir($id_libro,$pag_ant,$num_pag){
 			for($i=$num_pag-1;$i>$pag_ant;$i--){
@@ -100,33 +107,49 @@
 		public function insertlibro(){
 			
 
-			$titulo=$_REQUEST["titulo"];
-			$autor=$_REQUEST["autor"];
-			$editorial=$_REQUEST["editorial"];
-			$lugar=$_REQUEST["lugar"];
-			$fecha=$_REQUEST["fecha"];
-			$isbn=$_REQUEST["isbn"];
-			$tipo=$_REQUEST["tipo"];
+			$titulo=$this->input->get_post("titulo");
+			$autor=$this->input->get_post("autor");
+			$editorial=$this->input->get_post("editorial");
+			$lugar=$this->input->get_post("lugar");
+			$fecha=$this->input->get_post("fecha");
+			$isbn=$this->input->get_post("isbn");
+			$tipo=$this->input->get_post("tipo");
+			$apaisado=$this->input->get_post("apaisado");
 
-            $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo')");
+            $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo,apaisado) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo','$apaisado')");
          	
             return $res;
 		}
 
 
+		//BORRAR PAGINAS DEL LIBRO
+		public function deletepaglibro($id_libro,$num_pag,$cant_pag){
+			$filename="assets/imgs/books/$id_libro/$num_pag.jpg";
+			$res=unlink($filename);
+
+			if($res){
+				for($i=$num_pag;$i<$cant_pag;$i++){
+					$oldDir="assets/imgs/books/$id_libro/".($i+1).".jpg";
+					$newDir="assets/imgs/books/$id_libro/".$i.".jpg";
+					rename($oldDir,$newDir);
+				}
+			}
+			return $res;
+		}
+
 		//Renombrar archivos de una carpeta
-		public function rename_cont($id_libro){
+		/*public function rename_cont($id_libro){
 			$ruta ="imgs/books/$id_libro";
 			$carpeta = scandir($ruta,SCANDIR_SORT_NONE);
 			$cantidadarchivos=count($carpeta);
 
 			for($i=0;$i<$cantidadarchivos;$i++){
 				print_r($carpeta[$i]);
-				/*$oldDir="imgs/books/$id_libro/".$carpeta[$i].".jpg";
+				$oldDir="imgs/books/$id_libro/".$carpeta[$i].".jpg";
 				$newDir="imgs/books/$id_libro/".$i.".jpg";
-				rename($oldDir,$newDir);*/
+				rename($oldDir,$newDir);
 			}
-		}
+		}*/
 
 	}
 

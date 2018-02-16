@@ -22,22 +22,18 @@
                 }
 				
 			return $tabla;
-
-		
 		}
+        
+        
 
 		public function insertar() {
 			
-			$name = $_REQUEST["name"];
-			$cod = $_REQUEST{"cod"};
-            
-			$pitch = $_REQUEST["pitch"];
-			$yaw = $_REQUEST["yaw"];
-			
+			$name = $_REQUEST["name"];		
 			$panorama = $_REQUEST["panorama"];
+            $cod = $panorama;
 
 			$insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod',120,'$pitch','$yaw',equirectangular,'$panorama')";
+                      VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
 
 			$this->db->query($insert);
             
@@ -56,7 +52,6 @@
 			
             $id = $_REQUEST["Id"];
 			$name = $_REQUEST["name"];
-			$cod = $_REQUEST{"cod"};
 			$hfov = $_REQUEST["hfov"];
 			$pitch = $_REQUEST["pitch"];
 			$yaw = $_REQUEST["yaw"];
@@ -69,9 +64,8 @@
                     
                     SET 
                         
-                        Nombre = '$name',
-                        cod_escena = '$cod', 
-                        hfov = '$hfov', 
+                        Nombre = '$name', 
+                        hfov = '$hfov',
                         pitch = '$pitch', 
                         yaw = '$yaw', 
                         tipo = '$type', 

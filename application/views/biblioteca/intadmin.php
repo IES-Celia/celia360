@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,10 +67,11 @@
                 if(r==0){
                     alert("Error");
                 }else{
-                    selector = "#libro"+r;
+                    selector = "#libro"+parseInt(r);
                     $(selector).remove();
                 }
             }
+        
     </script>
 
 </div>

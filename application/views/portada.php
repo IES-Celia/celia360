@@ -1,5 +1,5 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
+  <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   <script>
     
     $(document).ready(function(){
@@ -14,7 +14,8 @@
       $('.efectBook').click(function(){
         $('.modalita2').toggle('slow');
           idlibro = $(this).attr("idlibro");
-          $('.modalita2').load('biblioteca/verLibroAjax/'+idlibro);
+          apaisado = $(this).attr("apaisado");
+          $('.modalita2').load('biblioteca/verLibroAjax/'+idlibro+'/'+apaisado);
       });
 
       $('#cerrarmodal').click(function(){
@@ -35,12 +36,11 @@
   </script>
 <style>
   
+tr.torre img {
+    margin-top: 26px ;
+} 
 
 </style>
-
-
-
-
 
     <div id="portadaca" style='z-index:100'; >
      <div id="cambio_portada">
@@ -54,8 +54,8 @@
             <nav id="nav_portada">
              <ul>
                  <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
-                  <li><a id="opcionlibre_portada" onclick='visita_libre("get_json_libre");'>Modo Libre</a></li>
-                 <li><a id="opcionguiada_portada" onclick='visita_libre("get_json_guiada");'>Visita Guiada</a></li>
+                  <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
+                 <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
                   <li><a>Biblioteca</a></li>
                  <li><a href="" >Glosario</a></li>
@@ -83,15 +83,15 @@
 <!-- VENTANA MODAL PARA SACAR LIBROS HISTORIA -->
 
     <div class="modalita" >
-      <div class="contenido" style="width:700px;background-color:white;margin:0 auto;margin-top:40px;border-radius:15px;">
-        <div class="cabecera-ventana" style="background-color:white;height:60px;border-radius:15px;">
-          <h1 style="text-align:center;border-bottom:1px solid grey;color:black;font-size:65px;">Biblioteca</h1>
+      <div class="contenido" style="background:url('assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
+        <div class="cabecera-ventana" style="background:url('assets/css/textura.jpg');height:60px;border-radius:15px;">
+          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">Biblioteca</h1>
         </div>
         <div class="pared" >
         <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
             <?php
 
-            
+                    
                     echo "<div class='estanteria' >"; 
                       echo "<div class='nuevecica'  >"   ;    
                         echo "<table >";  
@@ -101,11 +101,11 @@
                         foreach ($libros as $ides){
                           $i++;
                           //Sacamos las portadas de los libros
-
+                          
                             echo "<td class='columna'>";
-                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
                             echo "</td>";
-                              if ($i%4 == 0)  echo "</tr><tr>";
+                              if ($i%4 == 0)  echo "</tr><tr class='torre'>";
                                 }
                                 echo "</tr></table>";
                       echo "</div>";
@@ -200,8 +200,6 @@
             <div id="GmyModal" class="Gmodal">
               <span class="Gclose cursor" onclick="closeModal()">&times;</span>
               <div class="Gmodal-content">
-                <img class="GmySlides" src="<?php echo base_url("assets/imagenes/generales/escudo.JPG");?>" style="width:100%">
-                <img class="GmySlides" src="<?php echo base_url("assets/imagenes/generales/escudo1.JPG");?>" style="width:100%">
                 <a class="Gprev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="Gnext" onclick="plusSlides(1)">&#10095;</a>
               </div>
@@ -212,13 +210,12 @@
                 <div class="overlay"></div>
                 <div class="modal__contents">
                  <a class="modal__close" href="#">&times;</a>
-                 <h2 id="titulo">Escudo de Armas</h2>
+                 <h2 id="titulo"></h2>
                  <div id="gallery" onclick="openModal();">
-                   <img src="<?php echo base_url("assets/imagenes/generales/escudo1.JPG");?>">
+                   <img src="">
                  </div>
                 <div id="texto">
-                 <p>Gran escudo de armas de grandes dimensiones, finalmente modelado, que constituye el blasón de Alfonso XIII, en esencia, el mismo escudo que para su dinastía organizó su cuarto abuelo el rey Carlos III: los cinco cuarteles pertenecientes a la Nación (Castilla-Castilla, León-León y Granada), uno a su linaje de Borbón-Anjou, y diez a sus demás antepasados. 
-En 1931 el fervor republicano le cambia la corona real cerrada por la mural de la Republica que, muda, se presta a acoger alrededor del de Castilla y León, los escudos de las principales casas reinantes de Europa, ancestros de nuestros reyes. Las iras contra el "Sr. Borbón" - que así nombraba la prensa de la época al exilado Alfonso XIII- se dirigen al primero de sus linajes y por eso caen del escusón las tres lises borbónicas, también las mismas florecillas de los cuarteles de las casas de Borgoña (IV), de Parma (V), y Médicis-Toscana (VI), mientras deja intactos los palos de Aragón (I), los palos y Águilas de Aragón-Sicilia (II), la faja de Austria (III), el bandeado de Borgoña viejo (VII), el León rampante de Brabante (VIII) y el de Flandes (IX) y el águila del Tirol (X); así como las de Castilla y León y Granada. Es todo un enigma la relación que entre el Toisón de Oro y las lises que vio el cincelador para borrarlo.</p>
+                
                 </div>
               </div>
             </div>
@@ -240,7 +237,7 @@ En 1931 el fervor republicano le cambia la corona real cerrada por la mural de l
           <div class="boton_menu"></div>
           
           <div class="overlay_menu" id="nav_menu">
-          <div class="cerrar" onclick="$('#nav_menu').hide();">&times;</div>
+          <div class="cerrar_menu" onclick="$('#nav_menu').hide();">&times;</div>
           <div class="contenido_menu">
             
             <div class="fila1">
@@ -435,11 +432,11 @@ $( ".menu_slider" ).click(function() {
     //
   
       json_contenido='';
-      function visita_libre(nombre){
+      function visita_opcion(nombre){
         
 
         $.ajax({
-              url: "<?php echo base_url("conversorbd2json/get_json_libre"); ?>",
+              url: "<?php echo base_url("conversorbd2json/"); ?>"+nombre,
               type: 'GET',
               dataType: 'json',
             })
@@ -525,7 +522,60 @@ $( ".menu_slider" ).click(function() {
             
   }
   
-  
+    function panelInformacion(hotspotDiv,args){
+    
+    
+    
+     $(".modal").css("visibility","visible");
+     var peticion = $.ajax({
+        url: "<?php echo base_url("hotspots/load_panel"); ?>",
+        type:"post",
+        data:{id_hotpost : args},
+        beforeSend: function(){
+        //Cambiar el valor del texto y titulo
+        $("#titulo").html("Cargando...");
+        $("#texto").html("Cargando...");
+        //Borrar las tiras creadas en el punto anterior
+          $(".GmySlides").each(function(){
+            $(this).remove();
+           
+          });
+        }
+     });
+    
+    peticion.done(function(datos){
+      var prueba = JSON.parse(datos);
+      //Cargamos una vez los datos basicos
+      $("#titulo").html(prueba[0].titulo_panel);
+      $("#texto").html(prueba[0].texto_panel);
+      //La primera imagen que sale al abrir el panel
+      var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[0].url_imagen;
+      $("#gallery").find("img").attr("src",enlace_img);
+      //Por cada indice del array creamos la imagen de la galeria
+      for(var i=0;i<prueba.length;i++){
+        //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
+        var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
+        $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
+
+        
+      }
+      //Pone el indice
+    var slideIndex = 1;
+    showSlides(slideIndex);
+    
+    });
+    
+     $('.modal').css('display','block');
+     $(window).click(function(event){
+       if($(event.target).hasClass("modal")){ 
+         $('.modal').css('display','none');
+       }
+     });
+    
+     $('#close').click(function(event){
+       $('.modal').css('display','none');
+     });
+  }
   
   /////////////////////PANEL y GALERIA dentro del PANEL//////////////////////////////
   ///////////////////////////////////////////////////
@@ -539,9 +589,7 @@ $( ".menu_slider" ).click(function() {
 function closeModal() {
   $("#GmyModal").hide();
 }
-//Pone el indice
-var slideIndex = 1;
-showSlides(slideIndex);
+
 //Suma mas uno al indice
 function plusSlides(n) {
   showSlides(slideIndex += n);
@@ -800,6 +848,6 @@ function escaleras(){
     
 </script>
       
-     <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+     <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
      <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
   

@@ -1,13 +1,15 @@
-<?php // Formulario de rmodificacion de usuarios
-$datos=$aud[0];
-$tipo=$datos["tipo_aud"];
-$da1=basename($datos["url_aud"],".mp3");
-$da2=$datos["desc_aud"];
-$id=$datos["id_aud"];
+<?php
 
- echo "
+// Formulario de rmodificacion de usuarios
+$datos = $aud[0];
+$tipo = $datos["tipo_aud"];
+$da1 = basename($datos["url_aud"], ".mp3");
+$da2 = $datos["desc_aud"];
+$id = $datos["id_aud"];
+
+echo "
     
-                <form  class='for' action='". site_url("audio/modificaraud/".$id)."' method='post' enctype='multipart/form-data'>
+                <form  class='for' action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
                     URL audio:<input type='text' name='url_aud' value='$da1'><br/>
                     Descripcion:<input type='text' name='desc_aud'  value='$da2'><br/>    
 					<input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					

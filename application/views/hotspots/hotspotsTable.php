@@ -10,21 +10,21 @@
 	
 echo "<a class='insert' href='".site_url("hotspots/show_insert_hotspot")."'> Insertar Nuevo HotSpot </a>";
 
-echo "<table border='2px solid' align='center' id='cont'>";
+echo "<table id='cont'>";
 echo "<tr> 
-	  <td> Id Hotspot </td>
-	  <td> Descripcion </td> 
-	  <td> Pitch </td>
-	  <td> Yaw </td>
-	  <td> cssClass </td>
-	  <td> clickHandlerFunc </td>
-	  <td> clickHandlerArgs </td>
-	  <td> sceneId </td>
-	  <td> targetPitch </td>
-	  <td> targetYaw </td>
-	  <td> tipo</td>
-	  <td> Borrar Hotspot </td>
-	  <td> Modificar Hotspot </td>
+	  <th> Id Hotspot </th>
+	  <th> Descripcion </th> 
+	  <th> Pitch </th>
+	  <th> Yaw </th>
+	  <th> cssClass </th>
+	  <th> clickHandlerFunc </th>
+	  <th> clickHandlerArgs </th>
+	  <th> sceneId </th>
+	  <th> targetPitch </th>
+	  <th> targetYaw </th>
+	  <th> tipo</th>
+	  <th> Borrar Hotspot </th>
+	  <th> Modificar Hotspot </th>
 	  </tr>";
 	  
 	  

@@ -50,9 +50,9 @@ class Biblioteca extends CI_Controller {
 
 	public function showinsertlibro()
 	{		
-        $data["vista"]="biblioteca/inserlibro";
+        $datos["vista"]="biblioteca/inserlibro";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-		$this->load->view('template_admin', $data);
+		$this->load->view('template_admin', $datos);
 	}
 
 	public function modifiedLibro($id_libro)
@@ -106,6 +106,20 @@ class Biblioteca extends CI_Controller {
 		$this->load->view("template_admin",$datos);
 	}
 
+	//BORRAR PAGINAS DEL LIBRO
+	public function deletepag($id_libro,$num_pag,$cant_pag){
+		$res=$this->bibliotecaModel->deletepaglibro($id_libro,$num_pag,$cant_pag);
+		if($res){
+			$datos["idlibro"] = $id_libro;
+	        $datos["vista"] = "biblioteca/insertimg";
+	        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view("template_admin",$datos);
+		}else{
+			echo "pos no";
+		}
+
+	}
+
 	public function verLibro($id_libro) {
 		$datos["id_libro"] = $id_libro;
         $datos["vista"] = "biblioteca/libro";
@@ -113,8 +127,9 @@ class Biblioteca extends CI_Controller {
 		$this->load->view("template_admin", $datos);
 	}
 
-	public function verLibroAjax($idlibro){
+	public function verLibroAjax($idlibro,$apaisado){
 		$datos["id_libro"] = $idlibro;
+		$datos["apaisado"] = $apaisado;
 		$this->load->view("biblioteca/libroajax", $datos);
 	}
 

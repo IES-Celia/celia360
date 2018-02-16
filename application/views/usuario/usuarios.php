@@ -31,14 +31,14 @@
  echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
 echo "<table id='cont'>
         <tr>
-        <td>Nick</td>
-        <td>Contraseña</td>
-        <td>Correo</td>
-        <td>Nombre</td>
-        <td>Apellido</td>
-        <td>Tipo</td>
-        <td>Borrar</td>
-        <td>Modificar</td>";
+        <th>Nick</th>
+        <th>Contraseña</th>
+        <th>Correo</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Tipo</th>
+        <th>Borrar</th>
+        <th>Modificar</th>";
         
 foreach ($tablaUsuarios as $usu) {
    

@@ -35,11 +35,11 @@ if (isset($error)) {
                 </div>
                 <div>
                     <label for="fecha">Fecha:</label>
-                    <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha" required><br />
+                    <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha" value="<?php echo date("Y-m-d");?>" required><br />
                 </div>
                 <div>
                     <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />
+                    <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
                     <label for="imagen">Imagen:</label>
                     <input type="file" name="imagen"  id="imagen" placeholder="Seleccionar la imagen" required><br />
                 </div>
