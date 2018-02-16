@@ -5,8 +5,9 @@
 <title>Celia Tour</title>
  <!-- Javascript de pannellum framework -->
     <script>
-      ruta_base = "<?php echo site_url("hotspots/show_insert_hotspot/");?>";
-      
+      ruta_base = "<?php echo $redireccion_jotpoch; ?>";
+      hotspot_base = "<?php echo $idhotspot; ?>"; 
+      alert("id del jotpoch "+ hotspot_base + "ruta base: "+ruta_base )
     </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
@@ -71,9 +72,7 @@ $(document).ready(function() {
     }
     */
     function modificarHotspot(hotspotDiv, idjotpoch){
-        alert("Abrir la vetana de modificación de jotpoch para el jotpoch "+idjotpoch+"");
         location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch;
-        
         //.site_url("/hotspots/show_update_hotspot/".$hotspots['id_hotspot'])
 
     }

@@ -624,10 +624,13 @@ function onDocumentMouseDown(event) {
     var yaw = coords[1];
          if(event.which == 3){
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
-             alert(escena_base);
-        if(coso==true)
-            location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base;
+             
+             if(coso==true){
+                location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base+"/"+hotspot_base;
+            }
+             
         }
+        
         console.log('Pitch: ' + coords[0] + ', Yaw: ' + coords[1] + ', Center Pitch: ' + config.pitch + ', Center Yaw: ' + config.yaw + ', HFOV: ' + config.hfov);
     }
     
