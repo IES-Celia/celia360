@@ -50,7 +50,8 @@
     
     <div id="puntoAudio"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
+            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-audio' readonly="readonly"><br> 
