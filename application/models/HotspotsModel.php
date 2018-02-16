@@ -1,10 +1,5 @@
 <?php
     class HotspotsModel extends CI_Model {
-        
-        public function __construct() {
-        parent::__construct();
-        $this->load->database();
-        }
 
     public function buscarHotspots() {
 		
@@ -221,10 +216,6 @@
         echo json_encode($lista_info_imagenes);
 
       }
-<<<<<<< HEAD
-    //LOLI--------------------
-      
-      
       
     public function insertarHotspotAudio() {
 
@@ -239,35 +230,7 @@
         $tipo = $this->input->post_get("tipo");
         $clickHandlerFunc =$this->input->post_get("clickHandlerFunc");
         $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
-=======
-      
-    //Sacar el id del ultimo hotspot.
-    public function ultimo_hotspot(){
-        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
-        return $res;
-    }
         
-    // saca la escena de un punto... importante por no tener el cod_escena en el hotspot    
-    public function cargar_codigo_escena($idhotspot){
-        $sql ="SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=".$idhotspot;
-        $res = $this->db->query($sql)->result_array()[0]["id_escena"];
-        $sql2="SELECT cod_escena FROM escenas WHERE id_escena=".$res;
-        $res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
-        return $res;
-    }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
->>>>>>> 20c039627e45d37d74c7aa9230121f46c39ca601
-        
-
         // insercción del audio en la tabla hotspot
         $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,tipo,clickHandlerFunc,clickHandlerArgs,sceneId)"
                 . " VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass' ,'$tipo', '$clickHandlerFunc','$clickHandlerArgs','$id_scene')";
@@ -285,5 +248,19 @@
 
         return $this->db->affected_rows();
     }
-    //FIN LOLI----------------------------------
+      
+    //Sacar el id del ultimo hotspot.
+    public function ultimo_hotspot(){
+        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+        return $res;
+    }
+        
+    // saca la escena de un punto... importante por no tener el cod_escena en el hotspot    
+    public function cargar_codigo_escena($idhotspot){
+        $sql ="SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=".$idhotspot;
+        $res = $this->db->query($sql)->result_array()[0]["id_escena"];
+        $sql2="SELECT cod_escena FROM escenas WHERE id_escena=".$res;
+        $res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
+        return $res;
+    }        
 }
