@@ -49,6 +49,8 @@
         text-align: center;
         margin-bottom: 20px;
         box-shadow: inset 0px 0px 2px 1px rgba(255,255,255,1);
+        margin: auto;
+        display: block;
             
         }
         
@@ -151,6 +153,7 @@
         color:#c1c1c1;
         display: block;
         transition: 0.3s;
+        text-align: center;
     }
 
         
@@ -164,6 +167,11 @@
         right: 25px;
         font-size: 36px;
         margin-left: 50px;
+    }
+
+    .sidenav .closebtn{
+    
+        color: red;
     }
 
     @media screen and (max-height: 450px) {
