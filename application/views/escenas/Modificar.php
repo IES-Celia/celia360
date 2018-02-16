@@ -17,9 +17,8 @@
 				
 					hfov: <input type='text' name='hfov' value=" . $con['hfov'] . "> <br/>
 				
-					Pitch: <input type='text' name='pitch' value=" . $con['pitch'] . "> <br/>
-				
-					Yaw: <input type='text' name='yaw' value= ". $con['yaw'] . "> <br/>
+					Coordenada Pitch y Yaw:<br> 
+    <a href='".site_url('welcome/cargar_escena/'.$con['cod_escena'].'/'."update_escena_pitchyaw/")."'>Modificarlos</a><br><br>
 				
 					type: <input type='text' name='type' value=" . $con['tipo'] . "> <br/>
 				

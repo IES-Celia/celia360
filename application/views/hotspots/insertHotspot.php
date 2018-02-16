@@ -34,15 +34,16 @@
 
     <div id="puntoPanel"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>"; ?>
-            Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
-            Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
+        echo "<form action='".site_url("hotspots/process_insert_panel")."' method='get'>"; ?>
+            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
+            Coordenada Pitch: <input type='text' name='pitch' value='<?php echo $pitch ?>'><br> 
+            Coordenada Yaw: <input type='text' name='yaw' value='<?php echo $yaw ?>'><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-info' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='baseDatos' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs' value='aqui un boton para seleccionar las imagenes'><br> 
-            Titulo: <input type='text' name='titulo'><br>  // OJEAR
-            Descripción:  <input type='text' name='descripcion'   ><br> 
+            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='panelInformacion' readonly="readonly"><br> 
+            clickHandlerArgs: <input type='text' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'><br> 
+            Titulo: <input type='text' name='titulo'><br> 
+            Texto:  <input type='text' name='texto'><br> 
 
             <input type='submit' class="button">
         </form>
@@ -84,9 +85,10 @@
 
     <div id="puntoEscaleras"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
+            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
-            Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
+            Coordenada Yaw: <input type='text' name='yaw' value=' <?php echo $yaw ?> '><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='escaleras' readonly="readonly"><br> 

@@ -6,6 +6,9 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/ultimo-estilo.css");?>"/>
 <meta charset="UTF-8">
 		<script type="text/javascript">
+			// var ancho = 1000;
+			// var alto = 650;
+
 			$(document).ready(function(){
 				
 				$("#flipbook").turn({
@@ -17,10 +20,17 @@
 				
 				});
 			//abrir libro
+			$("#numeropag").change(function() {
+				var numpag=document.getElementById('numeropag').value;
+				var numpag=$("#numeropag").val();
+				$('#flipbook').turn('page', numpag);
+			});
+			
 				setTimeout(function() {
 					$('#flipbook').turn('page', 2);
 					},1000);
 				});
+
 			//agrega la funcion para la accion del link pagina previa
 				 $('.prev_page').click(function(){
 				  $('#flipbook').turn('previous');
@@ -69,7 +79,20 @@
 
 			.zoom img::selection { background-color: transparent; }
 
-		
+			#numeropag{
+				position: relative;
+			    left: 45%;
+			    height: 20px;
+			    width: 30px;
+			    text-align: right;
+			}
+			#cantpag{
+				position: relative;
+			    left: 45%;
+			    height: 20px;
+			    width: 30px;
+			}
+			
 		</style>
 
 
@@ -96,6 +119,12 @@
 						 width='500' height='650' alt='' /> </div>";
 						}
 					}else{
+				?>
+<!-- 						<script type="text/javascript">
+							ancho = 1076;
+							alto = 404;
+						</script> -->
+						<?php
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
 								echo"<div class='hard zoom zoomimg'> <img  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='800' height='650' alt=''> </div>";
@@ -103,6 +132,11 @@
 								echo "<div class='pag zoom zoomimg'><img  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='800' height='650' alt='' /> </div>";
 						}
 					}
+
+					
 				?>
+			</div>
+			<div>
+				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
 			</div>
 		</div>

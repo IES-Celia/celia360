@@ -2,6 +2,7 @@
 
 <h1>Registro de usuarios</h1>
 <?php
+echo"<p style='text-align:center; color:red;'>".$mensaje."</p>";   
 echo"<form action='".site_url("usuario/processregisterform")."' method='get'>";
 ?>
 <div id="caja">
@@ -18,6 +19,7 @@ echo"<form action='".site_url("usuario/processregisterform")."' method='get'>";
     </select>
         <br/>
     <input type='submit'>
-</form>    
+</form>
+
 </div>
     

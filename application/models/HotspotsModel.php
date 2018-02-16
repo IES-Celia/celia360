@@ -15,10 +15,15 @@
             }
 			return $tabla;
         }
+        
+    public function __construct() {
+        parent::__construct();
+        $this->load->model("Modeloescenas");
+        $this->load->model("UsuarioModel");
+    }
 		
 		
 		public function insertarHotspotEscena() {
-            
             // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
 			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
             $idhotspot = $res+1;
@@ -51,7 +56,15 @@
 			return $this->db->affected_rows();
 		
         }
-			
+        
+        public function modificarPitchYaw($pitch, $yaw, $idhotspot){
+            $this->db->query("UPDATE hotspots SET pitch=".$pitch.", yaw=".$yaw." WHERE id_hotspot=".$idhotspot);
+        }
+        
+        public function modificarPitchYawEscena($pitch, $yaw, $codescena){
+            $this->db->query("UPDATE escenas SET pitch=".$pitch.", yaw=".$yaw." WHERE cod_escena='".$codescena."'");
+        }
+ 
         public function borrarHotspot($id) {
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
 			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
@@ -60,14 +73,11 @@
 		}
 			
 		public function buscarUnHotspot($id) {
-            
             $res = $this->db->query("SELECT * FROM hotspots WHERE id_hotspot='$id' ");
             return $res->result_array();
 		}
 			
-			public function modificarHotspot($id){
-				
-				
+		public function modificarHotspot($id){
 			$id_hotspot = $_REQUEST["id_hotspot"];
 			$descripcion = $_REQUEST["descripcion"];
 			$pitch = $_REQUEST["pitch"];
@@ -109,6 +119,71 @@
       
        ///////////////////////////ZYGIS - Cosas del CMS/////////////////////////
       
+       public function insertarHotspotPanel() {
+            
+            // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
+			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+            $idhotspot = $res+1;
+            
+            $id_scene= $_REQUEST["id_scene"];
+			$pitch = $_REQUEST["pitch"];
+			$yaw = $_REQUEST["yaw"];
+			$cssClass = $_REQUEST["cssClass"];
+            $clickHandlerFunc =$_REQUEST["clickHandlerFunc"];
+			$clickHandlerArgs =$_REQUEST["clickHandlerArgs"];
+			$tipo = $_REQUEST["tipo"];
+            //Panel
+            $titulo = $_REQUEST["titulo"]; //
+            $texto = $_REQUEST["texto"]; //
+            
+            // insercción del punto en la tabla hotspot
+			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto')";	
+			$this->db->query($insrt);
+            
+			// insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
+            // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
+            
+            $cadenaconsulta= "SELECT id_escena FROM escenas WHERE cod_escena='".$id_scene."'";
+            $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+            
+            $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+            
+            $this->db->query($insrt2);
+            
+			return $idhotspot;
+		
+        }
+      
+       public function insertarHotspotEscalera() {
+            
+            // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
+			$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+            $idhotspot = $res+1;
+            
+            $id_scene= $_REQUEST["id_scene"];
+			$pitch = $_REQUEST["pitch"];
+			$yaw = $_REQUEST["yaw"];
+			$cssClass = $_REQUEST["cssClass"];
+            $clickHandlerFunc =$_REQUEST["clickHandlerFunc"]; 
+            // insercción del punto en la tabla hotspot
+			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc) 
+            VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc')";	
+			$this->db->query($insrt);
+            
+			// insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
+            // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
+            
+            $cadenaconsulta= "SELECT id_escena FROM escenas WHERE cod_escena='".$id_scene."'";
+            $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+            
+            $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+            
+            $this->db->query($insrt2);
+            
+			return $idhotspot;
+		
+        }
+      
       
       public function insertar_imagenes_hotspot(){
         
@@ -118,7 +193,7 @@
           //$resultado = implode(",",$listaimagenes);
           $listaimagenes = explode($listaArray,",");
           
-          foreach ($listaimagenes as $imagen_id){ 
+          foreach ($listaArray as $imagen_id){ 
              $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen)VALUES('$id_hotspot','$imagen_id')";
              $this->db->query($sql);
           }
@@ -126,9 +201,9 @@
       }
         
         //Aqui deberia deberia ser un parametro pero al no estar funcionando he puesto un numero fijo para hacer pruebas.
-      public function cargar_imagenes_panel(){
+      public function cargar_imagenes_panel($id){
         
-        $id_hotspot = 8;//$_REQUEST["idhs"];
+        $id_hotspot = $id;
         //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
         $res = $this->db->query("
         SELECT 
@@ -146,6 +221,7 @@
         echo json_encode($lista_info_imagenes);
 
       }
+<<<<<<< HEAD
     //LOLI--------------------
       
       
@@ -163,6 +239,33 @@
         $tipo = $this->input->post_get("tipo");
         $clickHandlerFunc =$this->input->post_get("clickHandlerFunc");
         $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
+=======
+      
+    //Sacar el id del ultimo hotspot.
+    public function ultimo_hotspot(){
+        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+        return $res;
+    }
+        
+    // saca la escena de un punto... importante por no tener el cod_escena en el hotspot    
+    public function cargar_codigo_escena($idhotspot){
+        $sql ="SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=".$idhotspot;
+        $res = $this->db->query($sql)->result_array()[0]["id_escena"];
+        $sql2="SELECT cod_escena FROM escenas WHERE id_escena=".$res;
+        $res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
+        return $res;
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+>>>>>>> 20c039627e45d37d74c7aa9230121f46c39ca601
         
 
         // insercción del audio en la tabla hotspot

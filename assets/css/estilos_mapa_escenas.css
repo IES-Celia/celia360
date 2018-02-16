@@ -4,8 +4,6 @@
 }
 
 #mapa_escena{
-	height: 100%;
-	width: 100%;
     z-index: 2;
     overflow: visible;
     position: relative;
@@ -14,9 +12,9 @@
 .puntos{
     cursor: pointer;
     width: 1.5%;
-    height: 3%;
+    height: 2.5%;
     border-radius: 50%;
-    background: blue;
+    background: white;
     position: absolute;
 }
 

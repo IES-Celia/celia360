@@ -9,28 +9,39 @@
 	}
 ?>
 
-    <script type="text/javascript">
+<script type="text/javascript">
+  base_url = "<?php echo base_url();?>";
+    
+    $(document).ready(function(){                   
+        
+        $(".imagenes").click(function(){
+            var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG";
+            $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
+        });
                     
-                 $(document).ready(function(){
+
+        $(".imagenes").contextmenu(function(event){             
+            event.preventDefault();
+            $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
+        });
+        
+        /*$(".borrar").click(function(){
+        
+            if(confirm("Realmente desea eliminar?"))
+            {
+            return true;
+                <?php
+                //    echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
+                ?>
+            }else{
+            return false;
+            }
+        
+        });*/
+});
                      
-                            $(".imagenes").click(function(){
-                                
-                                var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
-                                $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
                             
-                            });
-                    
-                            $(".imagenes").contextmenu(function(event){
-                    
-                                event.preventDefault();
-                                $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
-                            
-                            });
-                 });
-    </script>
-                <style>
-                    .oculto {display:none;}
-                </style>
+</script>
 
 <button id="btn-mapa">Abrir mapa</button>
 
@@ -44,15 +55,15 @@
 
       foreach ($mapa as $imagen) {
         if($pisos[$indice]=="primer_piso"){
-          echo "<div id='".$pisos[$indice]."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+          echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
         }else{
-          echo "<div id='".$pisos[$indice]."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+          echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
         }
         
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'')."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\");'></div></a>";
+                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'/'."show_insert_hotspot/")."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\");'></div></a>";
               
               
             }
@@ -94,8 +105,8 @@
             <td align='center'>".$escenas['yaw']."</td>
             <td align='center'>".$escenas['tipo']."</td>
             
-            <td align='center'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash-alt' style='font-size:30px;'></i> </a></td>
+            <td align='center' class='borrar'>
+            <i class='fa fa-trash' style='font-size:30px;'></i></td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>

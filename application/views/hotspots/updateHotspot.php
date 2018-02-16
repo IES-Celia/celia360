@@ -30,7 +30,6 @@ div.centrado {
 <?php
 
 $tabla = $tabla[0];
-
 echo "
 
 <h1> Formulario para UPDATE Hotspots </h1>
@@ -39,25 +38,13 @@ echo "
 
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
-	Descripción:  <input type='text' value='".$tabla['descripcion']."' name='descripcion'> </br> </br>
+	Coordenada Pitch y Yaw:<br> 
+    <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
+    
+	sceneId (escena a la que irá): <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>
 	
-	Coordenada Pitch: <input type='text' value='".$tabla['pitch']."' name='pitch'> </br> </br>
-	
-	Coordenada Yaw: <input type='text' value='".$tabla['yaw']."' name='yaw'> </br> </br>
-	
-	cssClass: <input type='text' value='".$tabla['cssClass']."' name='cssClass'> </br> </br>
-	
-	clickHandlerFunc: <input type='text' value='".$tabla['clickHandlerFunc']."' name='clickHandlerFunc'> </br> </br>
-	
-	clickHandlerArgs: <input type='text' value='".$tabla['clickHandlerArgs']."' name='clickHandlerArgs'> </br> </br>
-	
-	sceneId: <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>
-	
-	targetPitch: <input type='text'  value='".$tabla['targetPitch']."' name='targetPitch'> </br> </br>
-	
-	targetYaw: <input type='text' value='".$tabla['targetYaw']."' name='targetYaw'> </br> </br>
-	
-	Tipo: <input type='text' value='".$tabla['tipo']."' name='tipo'> </br> </br> 
+	Targets Pitch y Yaw (hacia donde mirará en la escena objetivo):<br> 
+    <a href='".site_url('welcome/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
 
