@@ -44,14 +44,13 @@
         
     #cont td{
         background-color:#e5e5e5;
-        border: 1px solid black;
     }
         
   
 	.insert{            
-        color: black;
+        color: white;
         font-size: 35px;
-        max-width: 500px;
+        width: 400px;
         transition:0.4s;
         margin: 0 auto;
         display: block;
@@ -59,8 +58,8 @@
     }
         
     .insert:hover{
-        color: rgba(48,38,12,1);
-        text-shadow: rgba(0,0,0,0.7) 1px 1px 1px;
+        color: rgba(255,255,255,1);
+        text-shadow: rgba(255,255,255,0.7) 1px 1px 1px;
     }
         
 
@@ -239,14 +238,11 @@
             background: -webkit-linear-gradient(-45deg, grey 0%, #FFFFFF 100%, #000000 100%);
             background: linear-gradient(135deg, grey 0%, #FFFFFF 100%, #000000 100%);
             transition: 0.3s;
-            width: 200px;
+            width: 100%;
             word-wrap: break-word;
         }
         
-        
-        #caja input[type=text]:focus{
-            width: 100%;    
-        }
+    
         
         #caja input[type=password]{
             margin-left: 1px;
@@ -256,14 +252,10 @@
             background: linear-gradient(135deg, grey 0%, #FFFFFF 100%, #000000 100%);
             
             transition: 0.3s;
-            width: 200px;
+            width: 100%;
             word-wrap: break-word;
         }
-        
-        #caja input[type=password]:focus{
-            width: 100%;    
-        }
-        
+
         #caja input[type=submit]{
             color:black;
             margin-left: 80px;
