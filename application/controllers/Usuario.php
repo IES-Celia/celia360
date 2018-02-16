@@ -76,7 +76,8 @@
                 $this->load->view('template_login', $datos);
             }
             else {
-                $datos["vista"] = "usuario/regiterForm";
+                $datos["mensaje"] = "Usuario ocupado";
+                $datos["vista"] = "usuario/registerForm";
                 $this->load->view("template_login", $datos);
             }
      

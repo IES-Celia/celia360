@@ -9,16 +9,24 @@
 
         public function inserusu(){
         
-            $email = $_REQUEST["email"];
-            $username = $_REQUEST["username"];
-            $pass = $_REQUEST["pass"];
-            $name = $_REQUEST["nombre"];
-            $apellido = $_REQUEST["subname"];
+            $email = $this->input->get_post("email");
+            $username = $this->input->get_post("username");
+            $pass = $this->input->get_post("pass");
+            $name = $this->input->get_post("nombre");
+            $apellido = $this->input->get_post("subname");
 
+            $prueba = $this->db->query("SELECT id_usuario FROM usuarios WHERE nombre_usuario = '$username' OR email = '$email'");
+
+           if($this->db->affected_rows($prueba)){
+
+              $resultado=false; 
+
+           }else{
+            
+            $resultado=true;
             $pass_encryted = md5($pass);
-        
-            $resultado=$this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','0')");
-
+            $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','0')");
+        }
         
             return $resultado;       
 
@@ -107,23 +115,17 @@
     }
 
         public function alterarusu($id){
-            $nombre = $_REQUEST["nombre"];
-            $apellidos = $_REQUEST["apellidos"];
-            $email = $_REQUEST["email"];
-            $username = $_REQUEST["username"];
-            $pass = $_REQUEST["pass"];
+         
+            $nombre = $this->input->get_post("nombre");
+            $apellidos = $this->input->get_post("apellidos");
+            $email = $this->input->get_post("email");
+            $username = $this->input->get_post("username");
+            $pass = $this->input->get_post("pass");
 
            
            $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', password = '$pass' where id_usuario = '$id'");
-
-            $resultado= $this->db->query("SELECT * FROM usuarios");
-
-            $tabla = array();
-                foreach($resultado->result_array() as $fila) {
-            $tabla[] = $fila;
-          }
-           
-        return $tabla;
+            
+            return $this->db->affected_rows();
     }
 	
 	public function comprueba_permisos($vista){
