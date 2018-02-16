@@ -24,6 +24,7 @@
                 ini_set('display_errors', '0');
             }
     ?>
+    <p>Estás logueado como <?php echo $this->session->nombreusr;?></p>
 </head>
 	
 <body>
