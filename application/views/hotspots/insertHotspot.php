@@ -11,7 +11,8 @@
         <button id="insertarPanel">Panel</button>
         <button id="insertarAudio">Audio</button>
         <button id="insertarVideo">Video</button>
-        <button id="insertarEscaleras">Escaleras</button><br><br>
+        <button id="insertarEscaleras">Escaleras</button>
+        <button id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
@@ -92,11 +93,10 @@
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='escaleras' readonly="readonly"><br> 
- 
-
             <input type='submit' class="button">
         </form>
     </div>
+
     
 </div>
 
@@ -129,6 +129,10 @@
         $("#insertarEscaleras").click(function() {
             $("#formularios").children().hide();
             $("#puntoEscaleras").show();
+        });
+          
+        $("modificarPitchYaw").click(function(){
+          // location.href= <?php echo site_url("/hotspots/") ?> + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/"; 
         });
           
       });
