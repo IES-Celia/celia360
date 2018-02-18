@@ -102,7 +102,8 @@
             <td align='center'>".$escenas['yaw']."</td>
             
             <td align='center' class='borrar'>
-            <i class='fa fa-trash' style='font-size:30px;'></i></td>
+            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash' style='font-size:30px;'></i> </a>;
+            </td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
