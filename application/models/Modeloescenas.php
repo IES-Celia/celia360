@@ -32,12 +32,24 @@
 			$panorama = $_REQUEST["panorama"];
             $cod = substr($panorama, 0 , -4);
 
-			$insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
-
-			$this->db->query($insert);
+            $config['upload_path'] = 'assets/imagenes/escenas/';
+            $config['allowed_types'] = 'jpg';
+            $config['file_name']= $panorama;
             
-            return $this->db->affected_rows();
+            $this->load->library('upload', $config);
+            
+            $resultado=$this->upload->do_upload('escenas');
+			
+            $comp = "SELECT cod_escena FROM escenas WHERE cod_escena ='$cod'";
+            if($resultado == false || $comp == $cod){
+                $result[0] = false;
+                $result[1] = $this->upload->display_errors("<i>","<i>");
+            }else{
+                $result[0] = true;
+                $result[1] = this->db->query ("INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
+                      VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')");
+            }
+            return $result;
 		}
 
 		public function borrar ($id) {
