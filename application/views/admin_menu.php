@@ -28,7 +28,7 @@
         <a href="<?php echo site_url("biblioteca");?>" class="enlacesidenav"> Biblioteca </a>
         <br><br><br><br>
     
-        <p><a href='<?php echo site_url("usuario/cerrarSesion");?>'>Cerrar Sesión</a></p>
+        <p><a href='<?php echo site_url("usuario/cerrarSesion");?>' class="closebtn">Cerrar Sesión</a></p>
         
         
     </div>
