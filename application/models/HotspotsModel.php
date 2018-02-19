@@ -262,5 +262,20 @@
         $sql2="SELECT cod_escena FROM escenas WHERE id_escena=".$res;
         $res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
         return $res;
-    }        
+    }       
+
+
+	 public function process_insert_hotspot(){
+		 $pitch = $this->input->post_get("pitch");
+		 $yaw = $this->input->post_get("yaw");
+		 $cssClass = $this->input->post_get("cssClass");
+		 $tipo = $this->input->post_get("tipo");
+		 $clickHandlerFunc = $this->input->post_get("clickHandlerFunc");
+		 $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
+		$res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
+		 $idhotspot = $res+1;
+		 $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo) VALUES('$idhotspot','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$tipo')";	
+		$this->db->query($insrt);
+		return $this->db->affected_rows();
+	  }	
 }
