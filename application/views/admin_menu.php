@@ -19,13 +19,17 @@
           
         
         <br><br><br>
-        <a href="<?php echo site_url("imagen");?>" class="enlacesidenav"> Imagenes</a>
+        <a href="<?php echo site_url("imagen");?>" class="enlacesidenav"> Imágenes</a>
         <a href="<?php echo site_url("audio");?>" class="enlacesidenav"> Audios</a>
         <a href="<?php echo site_url("video");?>" class="enlacesidenav"> Vídeos</a>
         <a href="<?php echo site_url("escenas");?>" class="enlacesidenav"> Escenas</a>
         <a href="<?php echo site_url("hotspots");?>" class="enlacesidenav"> Hotspots</a>
         <a href="<?php echo site_url("usuario/usuarios");?>" class="enlacesidenav"> Usuarios</a>
-        <a href="<?php echo site_url("biblioteca");?>" class="enlacesidenav"> Bibilioteca </a>
+        <a href="<?php echo site_url("biblioteca");?>" class="enlacesidenav"> Biblioteca </a>
+        <br><br><br><br>
+    
+        <p><a href='<?php echo site_url("usuario/cerrarSesion");?>'>Cerrar Sesión</a></p>
+        
         
     </div>
     
