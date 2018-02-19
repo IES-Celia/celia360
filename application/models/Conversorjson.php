@@ -95,7 +95,7 @@ class Conversorjson extends CI_Model {
         $json = $json . '"pitch": '.$escena['pitch'].',';  
         $json = $json . '"yaw": '.$escena['yaw'].',';  
         $json = $json . '"type": "equirectangular",';   
-        $json = $json . '"panorama": "'.base_url("assets/imagenes/escenas/".$escena['panorama']).'",';  
+        $json = $json . '"panorama": "'.$escena['panorama'].'",';   
         $json = $json . '"hotSpots": ['; // ese $escena[hotspot] no tiene sentido pero está gracioso        
                 
         $sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_escena = ".$escena['id_escena'];
