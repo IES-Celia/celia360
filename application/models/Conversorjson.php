@@ -10,7 +10,7 @@ class Conversorjson extends CI_Model {
     $res =  $this->db->query($sql);
     $flagObj=false;
     $flagHot=false;
-    $json = ' {"default": {"firstScene": "p1p2f3","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "preview22.png","hotSpotDebug": false },  "scenes": {';
+    $json = ' {"default": {"firstScene": "p1p2f3","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "assets/imagenes/generales/preview22.png","hotSpotDebug": false },  "scenes": {';
     //$query->result_array() as $row
     
     foreach ($res->result_array() as $escena) {
@@ -82,7 +82,7 @@ class Conversorjson extends CI_Model {
     $res = $this->db->query($sql);
     $flagObj=false;
     $flagHot=false;
-    $json = ' {"default": {"firstScene": "p1p2f3","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "preview22.png","hotSpotDebug": false }, "scenes": {';
+    $json = ' {"default": {"firstScene": "p1p2f3","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "assets/imagenes/generales/preview22.png","hotSpotDebug": false }, "scenes": {';
     foreach ($res->result_array() as $escena) {
         if($flagObj){ // con esta comprobacion pondrá coma entre objetos escenas sin ponerla en el primero
             $json = $json . ',';
