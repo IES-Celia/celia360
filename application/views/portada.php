@@ -214,6 +214,7 @@ tr.torre img {
                  <div id="gallery" onclick="openModal();">
                    <img src="">
                  </div>
+                 <div class='mas_imagenes'></div>
                 <div id="texto">
                 
                 </div>
@@ -229,7 +230,7 @@ tr.torre img {
           <!-- Audio para punto sensibles, no confundir con el boton audio!!!!.
             <div class="ventanaAudio">-->
             <div id="panelAudioPrueba">
-              <div id="botonPause">&times;</div>
+              <div id="botonPause"></div>
               <audio style="display:none;" id="musica1" src=""  controls> </audio>
               <audio id="audio_guiada" src=""  controls></audio>
               <div id="icono_audio"></div>
@@ -302,12 +303,7 @@ tr.torre img {
              
           </div>
           </div>
-              <!--https://codepen.io/JacobStone/pen/GfLEn https://gijsroge.github.io/tilt.js/
-            <div id="contenedorAudio">
-              <audio id="musica1" src="" autoplay controls> </audio>
-            </div>
-          </div>-->
-          
+            
          <div id="myModal" class="modalEscaleras">
                <button class="plantas" id="p4" onclick="viewer.loadScene('p4p0')"> Tejado</button>
               <button class="plantas" id="p3" onclick="viewer.loadScene('p3p1'); piso_escalera(3); puntos('p3punto1')"> Segunda planta</button>
@@ -467,64 +463,9 @@ $( ".menu_slider" ).click(function() {
 
 
    /////////////////////PRUEBAS AJAX////////////////////////////////
-  function baseDatos(hotspotDiv,args){
-    //Al clikear el ojo del salon de actos.
-     $(".modal").css("visibility","visible");
-         /*$.ajax({
-              type: 'POST',
-              url: 'baseDatos.php',
-              data: {idnombre:args},
-              beforeSend: function() {
-                $('#titulo').html("Cargando...");
-                $('#imagen').attr("src","");
-                $('#imagen2').attr("src","");
-                $('#imagen3').attr("src","");
-                 $('#wrapper').html("Cargando...");
-              },
-              success: function(resultado) {
-                var json = JSON.parse(resultado);
-                $('#titulo').html(json[0]);
-                $('#imagen').attr("src",json[1]);
-                $('#imagen2').attr("src",json[2]);
-                $('#imagen3').attr("src",json[3]);
-                $('#wrapper').html(json[4]);
-          },
-           error: function(xhr, status) {
-            // check if xhr.status is defined in $.ajax.statusCode
-            // if true, return false to stop this function
-            if(typeof this.statusCode[xhr.status] != 'undefined'){
-            	 return false;
-            }
-            // else continue
-            console.log('ajax.error');
-          },
-            statusCode: {
-                    200: function(response) {
-                        console.log('ajax.statusCode: 200');
-                    },
-                    404: function(response) {
-                        console.log('ajax.statusCode: 404');
-                    },
-                    500: function(response) {
-                        console.log('ajax.statusCode: 500');
-                    }
-                }           
-          });
-            $('.modal').css('display','block');
-            $(window).click(function(event){
-              if($(event.target).hasClass("modal")){ 
-                $('.modal').css('display','none');
-              }
-            })
-            $('#close').click(function(event){
-            $('.modal').css('display','none');
-            })*/
-            
-  }
+  
   
     function panelInformacion(hotspotDiv,args){
-    
-    
     
      $(".modal").css("visibility","visible");
      var peticion = $.ajax({
@@ -729,9 +670,23 @@ function escaleras(){
   //Automatizar todo.
   
   
-  array_escenas = ["p0p1f1","p4p3","p4p2","p0p5f2","p1p5","p1p32f1","p1p3","p2p2f1","p0p2","p3p7"];
-  array_audios = ["audio1.mp3","audio2.mp3","audio3.mp3","audio4.mp3","audio5.mp3","audio6.mp3","audio7.mp3","audio8.mp3","audio9.mp3","audio10.mp3"];
-  array_titulo = ["Titulo 1","Titulo 2","Titulo 3","Titulo 4","Titulo 5","Titulo 6","Titulo 7","Titulo 8","Titulo 9","Titulo 10"];
+  
+  
+  
+  
+  
+
+  
+  array_escenas = ["p1p2f3","p1p2f2","p1p2f1","p1p2","p1p11","p1p10"];
+  array_audios = [
+    "<?php echo base_url("audios/despertador-graciosos-.mp3");?>",
+    "<?php echo base_url("audios/Kalimba.mp3");?>",
+    "<?php echo base_url("audios/Maid with the Flaxen Hair.mp3");?>",
+    "<?php echo base_url("audios/Maid.mp3");?>",
+    "<?php echo base_url("audios/Sle.mp3");?>",
+    "<?php echo base_url("audios/Sleep Away.mp3");?>",
+   ];
+  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta secretaria","Antesala"];
   indice_escenas = 0;
  
   function audio_guiada(indice){

@@ -83,8 +83,8 @@
 
 #icono_audio {
   position: absolute;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   background-image: url("svg/audio_menu.svg");
   cursor: pointer;
   background-size:cover;
@@ -389,19 +389,23 @@ display: block;
 #botonPause {
   position: relative;
   float: right;
-  color:crimson;
   left: 10px;
+  top:8px;
   z-index: 100;
-  font-size: 25px;
   cursor:default;
-  font-weight: bold;
+  height: 20px;
+  width: 20px;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: width 0.5s, height 0.5s;
+  background-image: url("svg/mostrar_menos.svg");
+
 }
 
 #botonPause:hover {
-  position: relative;
-  float: right;
-  color:#585858;
-  text-decoration: none;
+  height: 24px;
+  width: 24px;
 }
 
 
@@ -439,6 +443,17 @@ display: block;
 }
 
 /* PANEL INFORMACION */
+
+.mas_imagenes {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  display: block;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("svg/galeria.svg");
+}
 
 /* fondo negro cuando se abre */
 .overlay {
