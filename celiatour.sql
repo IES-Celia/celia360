@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 19-02-2018 a las 19:04:49
+-- Tiempo de generación: 19-02-2018 a las 20:04:13
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -716,11 +716,7 @@ INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `
 (65, 'ptpunto2', 6, 85, 'p4p2', 4),
 (66, 'ptpunto3', 6, 15, 'p4p3', 4),
 (67, 'ptpunto4', 94, 61, 'p4p4', 4),
-(68, 'ptpunto5', 94, 91, 'p4p5', 4),
-(69, 'p1punto23', 74.73, 70.15, 'p0p2f5', 1),
-(70, 'p1punto23', 74.73, 70.15, 'p0p2f5', 1),
-(71, 'p0punto13', 73.64, 90.35, '', 0),
-(72, 'p0punto13', 73.64, 90.35, '', 0);
+(68, 'ptpunto5', 94, 91, 'p4p5', 4);
 
 -- --------------------------------------------------------
 
@@ -852,7 +848,7 @@ ALTER TABLE `audio`
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
-  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
