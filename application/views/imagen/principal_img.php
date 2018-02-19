@@ -1,3 +1,45 @@
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'></script>
+<script>
+    
+     $(document).ready(function(){
+	//utilizamos el evento keyup para coger la información
+	//cada vez que se pulsa alguna tecla con el foco en el buscador
+	$(".autocompletar").keyup(function(){
+					
+		//en info tenemos lo que vamos escribiendo en el buscador
+		var info = $(this).val();
+		//hacemos la petición al método autocompletar del controlador home 
+		//pasando la variable info
+		$.post('imagen/autocompletar',{ info : info }, function(data){
+						
+			//si el controlador nos devuelve algo
+			if(data !== ''){
+	
+				//en el div con clase contenedor mostramos la info
+				$('.contenedor').show();
+				$(".contenedor").html(data);
+								
+			}else{
+								
+				$(".contenedor").html('');
+								
+			}
+	    })
+					
+    })
+				
+	//buscamos el elemento pulsado con live y mostramos un alert
+	$(".contenedor").find("a").live('click',function(e){
+		e.defaultPrevented;
+                $("input[name=autocompletar]").val($(this).text());
+		//alert($(this).html());
+	});
+			
+})
+      
+    
+</script>
+
 <?php
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 //formulario para mostrar la tabla imagenes, con sus datos 
@@ -7,9 +49,21 @@ if (isset($mensaje)) {
 if (isset($error)) {
     echo "<p style='color:red'>" . $error . "</p>";
 }
-
+//título
+echo '<h1>IMAGEN</h1>';
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
+
+//El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
+?>
+<div class="wrapper">
+    <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
+    
+    <div class="contenedor"></div>
+</div>
+<?php
+
+
 echo "<br><table id='cont'>";
 echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Texto</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Borrar Imagen</th><th>Modificar Imagen</th></tr>';
 
