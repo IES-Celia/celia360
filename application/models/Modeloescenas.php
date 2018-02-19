@@ -49,8 +49,8 @@
             $this->db->query($insert);
             $piso_mapa = explode("p",$id_mapa);
             var_dump($piso_mapa);
-            $insert = "INSERT INTO `puntos_mapa`(`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `id_escena`, `piso`) 
-            VALUES (DEFAULT,'$id_mapa',$left_mapa,$top_mapa,'$cod',$piso_mapa[1])";
+            $insert = "INSERT INTO puntos_mapa (id_punto_mapa, nombre, left_mapa, top_mapa, id_escena, piso) 
+            VALUES (DEFAULT,'$id_mapa','$left_mapa','$top_mapa','$cod','$piso_mapa[1]')";
             echo $insert;
 
             $this->db->query($insert);
