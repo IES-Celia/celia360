@@ -31,6 +31,9 @@
 			$name = $_REQUEST["name"];		
 			$panorama = $_REQUEST["panorama"];
             $cod = substr($panorama, 0 , -4);
+            $id_mapa = $_REQUEST["id_mapa"];
+            $left_mapa = $_REQUEST["left_mapa"];
+            $top_mapa = $_REQUEST["top_mapa"];
 
             $config['upload_path'] = 'assets/imagenes/escenas/';
             $config['allowed_types'] = 'jpg';
@@ -43,7 +46,14 @@
             $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
 
-			$this->db->query($insert);
+            $this->db->query($insert);
+            $piso_mapa = explode("p",$id_mapa);
+            var_dump($piso_mapa);
+            $insert = "INSERT INTO `puntos_mapa`(`id_punto_mapa`, `nombre`, `left`, `top`, `id_escena`, `piso`) 
+            VALUES (DEFAULT,'$id_mapa',$left_mapa,$top_mapa,'$cod',$piso_mapa[1])";
+            echo $insert;
+
+            $this->db->query($insert);
             
             return $this->db->affected_rows();
 		}
@@ -82,7 +92,6 @@
                             WHERE cod_escena = '$cod'");
 			
 			return $this-> db->affected_rows();
-			
 		}
 		
 	}
