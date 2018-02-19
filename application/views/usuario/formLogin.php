@@ -10,44 +10,44 @@
 
 ?>
 
-<style>
 
-
-    body{
-           background: -moz-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-           background: -webkit-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-           background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-    
-    }
-    
-</style>
 
 <div id="caja">
     
-       <legend> Login </legend>
-        <fieldset>
+       <legend> 
 
-            <br>
+       Login
+
+      </legend>
+        
+
+          
             
     
 <?php
 echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
- ?>   
-    <label for="user">Nick</label>
-    <br>
-    <input type='text' id="user" name='user'>
-    <br><br>
-    <label for="pass">Password</label>
-    <br>
-    <input type='password' id="pass" name='pass'>
-    <br><br><br>
-    <input type='submit'>
-    <br>
+ ?> <br/>
+    <label for="user"><i class="far fa-user"></i> Nick</label>
+    
+    <br/>
+    <input type='text' id="user" name='user' required>
+    <br/><br/>
+    <label for="pass"><i class="fas fa-lock"></i> Password</label>
+  
+    <br/>
+    <input type='password' id="pass" name='pass' required>
+    <br/><br/>
+    <input type='submit' value="Entrar"/>
+    <br/>
+    <br/>
+<?php
+  echo "<input type='button' onclick='location.href=\"".site_url("Usuario/showRegisterForm")."\";' value='Darse de alta'";
+?> 
+<br/>
+<br/>
+<br/>
 
-<?php  
-	echo"<a href= '".site_url("Usuario/showRegisterForm")."'> Darse de alta </a>";
-?>
-
-    </fieldset>
+ </form>
+  
 
 </div>

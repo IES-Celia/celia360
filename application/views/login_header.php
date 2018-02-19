@@ -9,13 +9,20 @@
     <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
     <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
+
 
        
     <!-- CSS CMS -->
     
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
+    <style type="text/css">
+        p{
+            text-align: center;
+        }
+    </style>
     
     <?php 
         error_reporting(7);

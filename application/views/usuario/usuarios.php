@@ -4,13 +4,28 @@
         display:none;
         z-index: 1;
         position: fixed;
-        top: 30%;
-        left: 30%;
-        width: 600px;
-        height: 300px;
-        background-color: #ffffff;
+        padding-top: 100px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
         border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
     }
+
+
+    #mod_sub{
+        background-color: #ffffff;
+        width: 80%;
+        text-align: center;
+        position: fixed;
+        margin-left:auto; 
+        margin-right:auto;
+        
+    }
+
 
     #insertar{
         display:none;
@@ -37,8 +52,8 @@ echo "<table id='cont'>
         <th>Nombre</th>
         <th>Apellido</th>
         <th>Tipo</th>
-        <th>Borrar</th>
-        <th>Modificar</th>";
+        <th>Modificar</th>
+        <th>Borrar</th>";
         
 foreach ($tablaUsuarios as $usu) {
    
@@ -74,18 +89,20 @@ echo "</table>";
 //Capa formulario modificar
 echo "
 <div id='modificar'>
+    <div id='mod_sub'>
     <h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='get'>
         Nombre de usuario:<input type='text' name='username' id='form_modif_nick'><br/>
-        Password:<input type='text' name='pass'><br/>
+        Password:<input type='text' name='pass' required><br/>
         Email:<input type='text' name='email' id='form_modif_email'><br/>
         Nombre:<input type='text' name='nombre' id='form_modif_nombre' ><br/>
         Apellidos:<input type='text' name='apellidos' id='form_modif_ape'><br/>
-        Tipo:<input type='number' name='tipo' min='0' max='3' id='form_modif_tipo'><br/>
+        Tipo:<input type='number' name='tipo' min='0' max='3' id='form_modif_tipo' required><br/>
         <input type='hidden' name='id' id='form_modif_id'><br/>
         <input type=submit value='Modificar'>
     </form>
     <a href='#' onclick='cerrar()'>Cerrar</a>
+    </div>
 </div>";
 
 //Capa formulario insertar
@@ -146,7 +163,8 @@ echo"
             document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
             document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
             document.getElementById("form_modif_id").value = idusu;
-            $("#modificar").show();
+            
+            $("#modificar").css('display','block');
         }
 
         function mostrar(){
