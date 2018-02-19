@@ -79,7 +79,6 @@
 
 <?php
 
-    echo"<a class='insert' href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
 	echo "<table align='center' id='cont'>";
 	echo "<tr> 
 		  <th> IdEscena</th>
@@ -102,7 +101,7 @@
             <td align='center'>".$escenas['yaw']."</td>
             
             <td align='center' class='borrar'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash' style='font-size:30px;'></i> </a>;
+            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash' style='font-size:30px;'></i> </a>
             </td>
             
             <td align='center'>
