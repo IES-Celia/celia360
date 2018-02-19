@@ -25,7 +25,34 @@
             Tipo: <input type='text' name='tipo' value='scene' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='puntos' readonly="readonly"><br> 
             clickHandlerArgs: <input type='text' name='clickHandlerArgs'><br> 
-            sceneId: <input type='text' name='sceneId' value='aqui para seleccionar la imagen, un listado o como se vea'><br>
+            sceneId: <input type='hidden' name='sceneId'><br>
+            <button id="btn-mapa" type="button">Abrir mapa</button>
+
+            <div id="mapa_escena" >
+            <button id="btn-bajar-piso" type="button">Bajar piso</button>
+            <button id="btn-subir-piso" type="button">Subir piso</button>
+            <?php
+                $indice = 0;
+
+                foreach ($mapa as $imagen) {
+                    
+                    echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+                    
+                    foreach ($puntos as $punto) {
+                        if($punto['piso']==$indice){
+                        
+                            echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='punto_mapa(\"".$punto['id_escena']."\");'></div>";
+                        
+                        
+                        }
+                        
+                    }
+                    echo "</div>";
+                    $indice++;
+                }
+            ?>
+            </div>
+            <br>
             targetPitch: <input type='text' name='targetPitch' ><br>
             targetYaw: <input type='text' name='targetYaw'><br>
             

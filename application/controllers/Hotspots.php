@@ -22,9 +22,13 @@ class Hotspots extends CI_Controller {
     }
     
     public function show_insert_hotspot($pitch, $yaw, $idescena) {
+        $this->load->model('Mapa','mapa');
+
 	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
         $datos["id_scene"]= $idescena;
+        $datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["vista"]="hotspots/insertHotspot";
         $datos["id_hotspot"] = $this->hotspotsModel->ultimo_hotspot()+1;
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);

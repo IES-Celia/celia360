@@ -108,4 +108,6 @@ function bajar_piso(){
 /*=====  End of Subida y bajada de piso  ======*/
 
 
-
+function punto_mapa(identificador) {
+	$("#puntoEscena > form > input[name=sceneId]").val(identificador);
+}
