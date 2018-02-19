@@ -79,7 +79,6 @@
 
 <?php
 
-    echo"<a class='insert' href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
 	echo "<table align='center' id='cont'>";
 	echo "<tr> 
 		  <th> IdEscena</th>
