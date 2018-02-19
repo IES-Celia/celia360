@@ -163,6 +163,29 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
+    
+    public function buscador($abuscar) {
+        //usamos after para decir que empiece a buscar por
+        //el principio de la cadena
+        //ej SELECT titulo_imagen from imagenes 
+        //WHERE localidad LIKE '%$abuscar' limit 12
+        $this->db->select('titulo_imagen');
+
+        $this->db->like('titulo_imagen', $abuscar, 'after');
+
+        $resultados = $this->db->get('imagenes', 12);
+
+        //si existe algún resultado lo devolvemos
+        if ($resultados->num_rows() > 0) {
+
+            return $resultados->result();
+
+            //en otro caso devolvemos false
+        } else {
+
+            return FALSE;
+        }
+    }
    
     
 }

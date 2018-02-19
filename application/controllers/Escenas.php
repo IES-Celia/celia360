@@ -35,7 +35,10 @@ class escenas extends CI_Controller {
         echo  $this -> pagination -> create_links ();
     } 
     
-    public function showinsert() {
+    public function showinsert($id_mapa, $left_mapa, $top_mapa) {
+        $datos["id_mapa"] = $id_mapa;
+        $datos["left_mapa"] = $left_mapa;
+        $datos["top_mapa"] = $top_mapa;
         $datos["vista"]="escenas/Insertar";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
