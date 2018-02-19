@@ -30,8 +30,8 @@
 			
 			$name = $_REQUEST["name"];		
 			$panorama = $_REQUEST["panorama"];
-            $cod = substr($panorama, 0 , -4);
-            $id_mapa = $_REQUEST["id_mapa"];
+            //$cod = substr($panorama, 0 , -4);
+            //$id_mapa = $_REQUEST["id_mapa"];
             $left_mapa = $_REQUEST["left_mapa"];
             $top_mapa = $_REQUEST["top_mapa"];
 
