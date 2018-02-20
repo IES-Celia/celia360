@@ -103,18 +103,19 @@ display: block;
 #mensaje_guiada {
   display: none;
   position:absolute;
-  width: 200px;
-  height: 200px;
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 600px;
+  height: 600px;
+  background-color: rgba(17, 17, 17, 0.8);
   top:50%;
   left: 50%;
   transform: translate(-50%,-50%);
   z-index: 2;
+  border-radius: 2%;
 }
 
 #mensaje_guiada h3 {
+  margin-top: 30px;
   color: white;
-  font-weight: bold;
 }
 
 #boton_mensaje{
@@ -123,6 +124,74 @@ display: block;
   font-size: 60px;
   font-weight: bold;
   cursor: default;
+}
+
+.mensaje_guiada_inicio_recomendacion{
+ color:white;
+}
+
+.mensaje_guiada_inicio_recomendacion p{
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+ }
+
+ .mensaje_guiada_inicio_recomendacion ol {
+  list-style: none; /*lower-roman;*/
+  counter-reset: li;
+  position: relative;
+  left: 40px;
+  width: 500px;
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.mensaje_separador{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border:0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+}
+
+.mensaje_guiada_inicio_recomendacion ol li {
+  padding:8px;
+  border-left: 1px;
+  font-size: 0.89em;
+}
+
+.mensaje_guiada_inicio_recomendacion ol li::before {
+  content: counter(li); 
+  color: rgb(59, 248, 84);
+  display: inline-block; width: 1em;
+  margin-left: -1em;
+  font-size:1.7em;
+}
+
+.mensaje_guiada_inicio_recomendacion ol li {counter-increment: li}
+
+#boton_aceptar_guiada{
+  position: absolute;
+  margin: auto;
+  display: block;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 60px;
+  cursor: pointer;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("svg/check.svg");
+  transition: width 0.5s, height 0.5s;
+}
+
+#boton_aceptar_guiada:hover {
+  height: 60px;
+  width: 70px;
 }
 
 /* FIN CARTEL MENSAJE AL INICIAR GUIADA */

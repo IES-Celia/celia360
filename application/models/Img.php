@@ -163,12 +163,12 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
-    
+    //buscador
     public function buscador($abuscar) {
         //usamos after para decir que empiece a buscar por
         //el principio de la cadena
         //ej SELECT titulo_imagen from imagenes 
-        //WHERE localidad LIKE '%$abuscar' limit 12
+        //WHERE imagenes LIKE '%$abuscar' limit 12
         $this->db->select('titulo_imagen');
 
         $this->db->like('titulo_imagen', $abuscar, 'after');
@@ -186,6 +186,4 @@ class Img extends CI_Model {
             return FALSE;
         }
     }
-   
-    
 }
