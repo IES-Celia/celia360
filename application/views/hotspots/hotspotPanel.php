@@ -1,27 +1,35 @@
 <html>
 <head>
   <style>
-    div#imgHS {
+  
+  #contenedor_img {
+  display:flex;
+  align-items: flex-end;
+  justify-content:flex-start;
+}
+  #imgHS {
   display: flex;
   flex-wrap: wrap;
-  overflow-y: auto;
-  align-content: flex-star;
-  width: 40%;
-  height: 90%;
+  width: 60%;
+  height: 70%;
 }
     
-    a {
-  margin: 1px;
-
+  #imgHS > a {
+  margin-left: 2px;
+  margin-right: 2px;
 }
-    div#panel{
-      position: absolute;
-      right: 100px;
-      top:10px;
-    }
-    .borderojo{
-      border: 2px solid red;
-    }
+  #panel{
+  display:flex;
+  align-items: baseline;
+  flex-flow: column wrap;
+  margin: 0 20px;
+  align-self:flex-start;
+}
+  .borderojo{
+   border: 2px solid red;
+}
+
+
   </style>
 </head>
 <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
@@ -35,12 +43,16 @@
 		echo "<p style='color:blue'>".$mensaje."</p>";
 	}
 
-    
-  echo "<div id='imgHS'>";
+  
+  echo "<h2>Imagenes disponibles</h2>
+  <div id='contenedor_img'>
+  <br><div id='imgHS'>";
+  
   foreach( $lista_imagenes as $img){
    $img_correcto = explode(".",$img["url_imagen"]);
+   $img_correcto_enlace = base_url("assets/imagenes/imagenes-hotspots/").$img_correcto[0]."_miniatura.JPG";
    $imagen_propiedades = array(
-    "src" => "assets/imagenes/imagenes-hotspots/".$img_correcto[0]."_miniatura.JPG",
+    "src" => $img_correcto_enlace,
     "class" => "imgHS",
     "width" => "120",
     "height" => "120",
@@ -53,7 +65,7 @@
   
   }
  ?>
-</div>
+    </div>
 <div id='panel'>
  <h2>Imagenes Seleccionadas</h2><br>
  HotSpot ID
@@ -63,36 +75,9 @@
  </ul><br>
   <button onclick='add_img_to_hotspot()'>Enviar</button>
 </div>
-  
-  <!-- Pruebas AJAX -->
-  <div id='pruebaAjax'>
-  <h2 id='titulo'></h2>
-  <div id='gallery'>
-  <img src=''>
-  </div>
-  <p id='texto'></p>
-  <div id='Gmodal-content'></div>
-    
-    <button onclick='panelInformacion(8)'>panel 8</button>
-    <button onclick='panelInformacion(9)'>panel 9</button>
-  </div>
-  
-  
+</div>  
 <script>
-  /*
-    Cuando pinche en un enlace, asociar la imagen de ese enlace
-    Y mostrarlo en el otro DIV.
-    
-    Si esa imagen ya estaba asociado y vuelve a pulsar, lo quita.
-    
-    Al finalizar pincha en el boton aceptar y se crea la tabla.
-    
-    En el controlador de hotspots deberia salir una nueva opcion
-    En esa opcion te deja modificar las imagenes asociadas a ese punto.
-    
-    OPCIONAL- permitir organizar el orden de visualizacion
-    
-  */
+ 
    $("a").on('click', function(evento){
      evento.preventDefault();
      if($(this).find("img").hasClass("borderojo")){
@@ -145,43 +130,9 @@
   
   
   
-    //Version mas reciente del panel
-  function panelInformacion(args){
-     //$(".modal").css("visibility","visible");
-     var peticion = $.ajax({
-        url:"load_panel",
-        type:"post",
-        data:{id_hotpost : args},
-        beforeSend: function(){
-        //Cambiar el valor del texto y titulo
-        $("#titulo").html("Cargando...");
-        $("#texto").html("Cargando...");
-        //Borrar las tiras creadas en el punto anterior
-          $(".GmySlides").each(function(){
-            $(this).remove();
-           
-          });
-        }
-     });
-    
-    peticion.done(function(datos){
-      var prueba = JSON.parse(datos);
-      //Cargamos una vez los datos basicos
-      $("#titulo").html(prueba[0].titulo_panel);
-      $("#texto").html(prueba[0].texto_panel);
-      //La primera imagen que sale al abrir el panel
-      $("#gallery").find("img").attr("src",prueba[0].url_imagen);
-      //Por cada indice del array creamos la imagen de la galeria
-      for(var i=0;i<prueba.length;i++){
-        //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
-        var enlace = "<?php echo base_url("assets/imagenes-hotspots/")?>"+prueba[i].url_imagen;
-        $("#Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
-        
-      }
-     
-      
-    });
-  }
+
+
+  
 
 </script>  
 </body>	

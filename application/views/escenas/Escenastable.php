@@ -15,7 +15,7 @@
     $(document).ready(function(){                   
         
         $(".imagenes").click(function(){
-            var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG"
+            var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG";
             $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
         });
                     
@@ -25,19 +25,19 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
-        $(".borrar").click(function(){
+        /*$(".borrar").click(function(){
         
             if(confirm("Realmente desea eliminar?"))
             {
             return true;
                 <?php
-                    echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
+//                   echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
                 ?>
             }else{
             return false;
             }
         
-        });
+        });*/
 });
                      
                             
@@ -63,9 +63,8 @@
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'/'."show_insert_hotspot/")."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntosMapa(\"".$punto['nombre']."\");'></div></a>";
-              
-              
+                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'/'."show_insert_hotspot/")."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;'></div></a>";
+            
             }
             
           }
@@ -79,16 +78,13 @@
 
 <?php
 
-    echo"<a class='insert' href='".site_url("escenas/showinsert")."'> Insertar Nueva Escena </a>";
 	echo "<table align='center' id='cont'>";
 	echo "<tr> 
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>
 		  <th> Codigo Escena </th>
-		  <th> hfov </th> 
 		  <th> Pitch </th>
 		  <th> Yaw </th>
-		  <th> Tipo </th>
 		  <th> Eliminar </th>
 		  <th> Modificar </th>
 		  </tr>";
@@ -100,19 +96,18 @@
             <td align='center'>". $escenas['id_escena']."</td>
             <td align='center'>".$escenas['Nombre']."</td>
             <td align='center' class='cod'>".$escenas['cod_escena']."</td>
-            <td align='center'>".$escenas['hfov']." </td>
             <td align='center'>".$escenas['pitch']."</td>
             <td align='center'>".$escenas['yaw']."</td>
-            <td align='center'>".$escenas['tipo']."</td>
             
             <td align='center' class='borrar'>
-            <i class='fa fa-trash' style='font-size:30px;'></i></td>
+            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash' style='font-size:30px;'></i> </a>
+            </td>
             
             <td align='center'>
             <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
             </tr>";
 ?>
-            <tr><th colspan='9' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
+            <tr><th colspan='7' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
 <?php
 	}
 	echo "</table>";

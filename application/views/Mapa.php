@@ -104,9 +104,9 @@
  					foreach ($puntos as $punto) {
  						if($punto['piso']==$indice){
  							if ($punto['nombre']=='p1punto15') {
-							echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+							echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
 							}else{
-								echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left']."%; top: ".$punto['top']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+								echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntos(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
 							}
  							
  						}

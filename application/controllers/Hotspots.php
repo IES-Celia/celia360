@@ -22,9 +22,13 @@ class Hotspots extends CI_Controller {
     }
     
     public function show_insert_hotspot($pitch, $yaw, $idescena) {
+        $this->load->model('Mapa','mapa');
+
 	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
         $datos["id_scene"]= $idescena;
+        $datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["vista"]="hotspots/insertHotspot";
         $datos["id_hotspot"] = $this->hotspotsModel->ultimo_hotspot()+1;
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -191,5 +195,34 @@ class Hotspots extends CI_Controller {
   //TODO: añadir mensaje de la situacion
  }
 
-
+    public function process_insert_audio(){
+        $resultado = $this->hotspotsModel->insertarHotspotAudio();
+        if ($resultado == true) {
+            $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"]="hotspots/hotspotsTable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+        }else {
+            $datos["error"] = "La inserci&oacute;n ha fallado";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"]="hotspots/hotspotsTable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+        }
+    }
+	
+	public function process_insert_hotspot(){
+    $res=$this->hotspotsModel->process_insert_hotspot();
+     if($res){
+         echo"se a insertado correctamente";
+         $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+         $datos["vista"]="hotspots/hotspotsTable";
+         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+         $this->load->view('template_admin', $datos);
+         
+     }else{
+         echo"fallo al insertar hotspot";
+     }
+ }
 }

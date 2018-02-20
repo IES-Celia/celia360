@@ -11,7 +11,8 @@
         <button id="insertarPanel">Panel</button>
         <button id="insertarAudio">Audio</button>
         <button id="insertarVideo">Video</button>
-        <button id="insertarEscaleras">Escaleras</button><br><br>
+        <button id="insertarEscaleras">Escaleras</button>
+        <button id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
@@ -24,7 +25,34 @@
             Tipo: <input type='text' name='tipo' value='scene' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='puntos' readonly="readonly"><br> 
             clickHandlerArgs: <input type='text' name='clickHandlerArgs'><br> 
-            sceneId: <input type='text' name='sceneId' value='aqui para seleccionar la imagen, un listado o como se vea'><br>
+            sceneId: <input type='hidden' name='sceneId'><br>
+            <button id="btn-mapa" type="button">Abrir mapa</button>
+
+            <div id="mapa_escena" >
+            <button id="btn-bajar-piso" type="button">Bajar piso</button>
+            <button id="btn-subir-piso" type="button">Subir piso</button>
+            <?php
+                $indice = 0;
+
+                foreach ($mapa as $imagen) {
+                    
+                    echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+                    
+                    foreach ($puntos as $punto) {
+                        if($punto['piso']==$indice){
+                        
+                            echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='punto_mapa(\"".$punto['id_escena']."\");'></div>";
+                        
+                        
+                        }
+                        
+                    }
+                    echo "</div>";
+                    $indice++;
+                }
+            ?>
+            </div>
+            <br>
             targetPitch: <input type='text' name='targetPitch' ><br>
             targetYaw: <input type='text' name='targetYaw'><br>
             
@@ -51,7 +79,8 @@
     
     <div id="puntoAudio"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
+            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-audio' readonly="readonly"><br> 
@@ -91,11 +120,10 @@
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='escaleras' readonly="readonly"><br> 
- 
-
             <input type='submit' class="button">
         </form>
     </div>
+
     
 </div>
 
@@ -128,6 +156,10 @@
         $("#insertarEscaleras").click(function() {
             $("#formularios").children().hide();
             $("#puntoEscaleras").show();
+        });
+          
+        $("modificarPitchYaw").click(function(){
+          // location.href= <?php echo site_url("/hotspots/") ?> + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/"; 
         });
           
       });

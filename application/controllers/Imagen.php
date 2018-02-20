@@ -104,5 +104,47 @@ class Imagen extends CI_Controller {
             echo $resultado;
         }
     }
+    
+    public function autocompletar() {
+        //cargar el modelo
+        $this->load->model("Img");
+
+        //si es una petición ajax y existe una variable post
+        //llamada info dejamos pasar
+        if ($this->input->is_ajax_request() && $this->input->post('info')) {
+
+            $abuscar = $this->security->xss_clean($this->input->post('info'));
+            
+            $search = $this->Img->buscador($abuscar);
+
+            //si search es distinto de false significa que hay resultados
+            //y los mostramos con un loop foreach
+            if ($search !== FALSE) {
+
+                echo 'Resultados:';
+                foreach ($search as $fila) {
+   
+                    echo '<table><tr>';
+                    echo '<td>'. $fila->titulo_imagen .'<td>';
+                    echo '</tr>';
+                    echo '</table>';
+     
+                    ?>
+
+    <!--                <p><a href=""><?php // echo $fila->titulo_imagen ?></a></p> -->
+
+                    <?php
+                }
+
+                //en otro caso decimos que no hay resultados
+            } else {
+                ?>
+
+                <p><?php echo 'No hay resultados' ?></p>
+
+                <?php
+            }
+        }
+    }
 
 }
