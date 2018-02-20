@@ -125,7 +125,7 @@ class Imagen extends CI_Controller {
                 foreach ($search as $fila) {
    
                     echo '<table><tr>';
-                    echo '<td>'. $fila->titulo_imagen .'<td>';
+                    echo '<td>'. $fila->titulo_imagen .'</td>';
                     echo '</tr>';
                     echo '</table>';
      
