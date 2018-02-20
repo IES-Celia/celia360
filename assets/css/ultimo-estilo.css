@@ -170,24 +170,13 @@
 
 	
 #bloque{
-	width:990px;
+	width:925px;
 	height:700px;
-	margin:0 auto;
-	margin-top:-50px;
-		    
+	margin:0 auto;	
+  margin-top:50px;	
+   
 }
-#flipbook{
-	width:92%;
-	height:92%;
-	margin:4% auto;
-		
-}
-.hard{
-	background-color:#CCC;
-}
-.pag{
-	background-color:#F0E68C;
-}
+
 
 	
 .pag article img{

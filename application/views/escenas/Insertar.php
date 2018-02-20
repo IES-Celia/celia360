@@ -15,8 +15,8 @@
         ?>
 		    	
 				Nombre del lugar:  <input type='text' name='name'> <br/>
-        
-				Panorama:  <input type='file' name='panorama' placeholder='Seleccione la escena'> <br/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="20000000"/>
+				Panorama:  <input type='file' name='panorama' id='panorama' placeholder='Seleccione la escena'> <br/>
 			    
 			    
 				<input type='submit'>

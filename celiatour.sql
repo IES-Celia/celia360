@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-02-2018 a las 11:33:11
+-- Tiempo de generación: 19-02-2018 a las 20:04:13
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -94,7 +94,7 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (29, '', 'p1p5f1', 120, 22, 60, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
 (30, '', 'p1p6', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p6.JPG'),
 (31, '', 'p1p7', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p7.JPG'),
-(32, '', 'p1p72', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p72.JPG'),
+(32, '', 'p1p72', 120, -7, -18, 'equirectangular', 'assets/imagenes/escenas/p1p72.JPG'),
 (33, '', 'p1p8', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p8.JPG'),
 (34, '', 'p1p9', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9.JPG'),
 (35, '', 'p1p9f1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9f1.JPG'),
@@ -102,7 +102,7 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (37, '', 'p1p11', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p11.JPG'),
 (38, '', 'p1p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p10.JPG'),
 (39, '', 'p1p12', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p12.JPG'),
-(40, '', 'p0p0', 120, 190, -20, 'equirectangular', 'assets/imagenes/escenas/p0p0.JPG'),
+(40, '', 'p0p0', 120, 10, -46, 'equirectangular', 'assets/imagenes/escenas/p0p0.JPG'),
 (41, '', 'p0p1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p1.JPG'),
 (42, '', 'p0p1f1', 120, 172, 15, 'equirectangular', 'assets/imagenes/escenas/p0p1f1.JPG'),
 (43, '', 'p0p1f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p0p1f2.JPG'),
@@ -132,7 +132,8 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (67, '', 'p4p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p2.JPG'),
 (68, '', 'p4p3', 120, -86, -2, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
 (69, '', 'p4p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p4.JPG'),
-(70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG');
+(70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG'),
+(79, 'pasillo sur (sotano)', 'p0p2f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p2f1.JPG');
 
 -- --------------------------------------------------------
 
@@ -154,6 +155,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (1, 2),
 (1, 3),
 (1, 4),
+(1, 148),
 (2, 5),
 (2, 6),
 (2, 7),
@@ -224,6 +226,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (33, 72),
 (34, 73),
 (34, 74),
+(34, 147),
 (35, 75),
 (35, 76),
 (36, 77),
@@ -295,8 +298,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (68, 143),
 (69, 144),
 (70, 145),
-(72, 146),
-(73, 147);
+(72, 146);
 
 -- --------------------------------------------------------
 
@@ -470,7 +472,9 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (143, NULL, NULL, ' ', -2, -84, 'custom-hotspot-salto', 'puntos', 'ptpunto1', 'p4p1', -2, 19, 'scene'),
 (144, NULL, NULL, ' ', -3, -3, 'custom-hotspot-salto', 'puntos', 'ptpunto1', 'p4p1', 0, 0, 'scene'),
 (145, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', 'puntos', 'ptpunto1', 'p4p1', 0, 0, 'scene'),
-(146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene');
+(146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene'),
+(147, 'Puerta to guapa', 'La mas del sur', '', -17, -96, 'custom-hotspot-info', 'panelInformacion', '147', '', 0, 0, 'info'),
+(148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', '', 'p2p2f1', 0, 0, 'scene');
 
 -- --------------------------------------------------------
 
@@ -491,12 +495,71 @@ CREATE TABLE `imagenes` (
 --
 
 INSERT INTO `imagenes` (`id_imagen`, `titulo_imagen`, `texto_imagen`, `url_imagen`, `fecha`) VALUES
-(90, 'fghhh', 'kkk', '90.jpg', '2018-02-07'),
-(126, 'kpspppa', 'jjkfkkf', '126.jpg', '2018-02-15'),
-(127, 'La Alhambra', '', '127.jpg', '2018-02-15'),
-(128, 'La Alhambra', '', '128.jpg', '2018-02-15'),
-(129, 'nueva', '', '129.jpg', '2018-02-02'),
-(131, 'El pozo', '', '131.jpg', '2018-02-17');
+(209, 'laboratorio de física y química', '', '209.jpg', '2018-02-19'),
+(210, 'laboratorio de física y química', '', '210.jpg', '2018-02-19'),
+(211, 'laboratorio de física y química', '', '211.jpg', '2018-02-19'),
+(212, 'laboratorio de física y química', '', '212.jpg', '2018-02-19'),
+(213, 'laboratorio de física y química', '', '213.jpg', '2018-02-19'),
+(214, 'laboratorio de física y química', '', '214.jpg', '2018-02-19'),
+(215, 'laboratorio de física y química', '', '215.jpg', '2018-02-19'),
+(216, 'laboratorio de física y química', '', '216.jpg', '2018-02-19'),
+(217, 'laboratorio de física y química', '', '217.jpg', '2018-02-19'),
+(218, 'laboratorio de física y química', '', '218.jpg', '2018-02-19'),
+(219, 'laboratorio de física y química', '', '219.jpg', '2018-02-19'),
+(220, 'laboratorio de física y química', '', '220.jpg', '2018-02-19'),
+(221, 'laboratorio de física y química', '', '221.jpg', '2018-02-19'),
+(222, 'laboratorio de física y química', '', '222.jpg', '2018-02-19'),
+(223, 'laboratorio de física y química', '', '223.jpg', '2018-02-19'),
+(224, 'laboratorio de física y química', '', '224.jpg', '2018-02-19'),
+(225, 'laboratorio de física y química', '', '225.jpg', '2018-02-19'),
+(226, 'laboratorio de física y química', '', '226.jpg', '2018-02-19'),
+(227, 'laboratorio de física y química', '', '227.jpg', '2018-02-19'),
+(228, 'laboratorio de física y química', '', '228.jpg', '2018-02-19'),
+(229, 'laboratorio de física y química', '', '229.jpg', '2018-02-19'),
+(230, 'laboratorio de física y química', '', '230.jpg', '2018-02-19'),
+(231, 'laboratorio de física y química', '', '231.jpg', '2018-02-19'),
+(232, 'Laboratorio de Fisica y Quimica', '', '232.jpg', '2018-02-19'),
+(234, 'geografía', '', '234.jpg', '2018-02-19'),
+(236, 'geografía', '', '236.jpg', '2018-02-19'),
+(238, 'geografía', '', '238.jpg', '2018-02-19'),
+(240, 'geografía', '', '240.jpg', '2018-02-19'),
+(242, 'geografía', '', '242.jpg', '2018-02-19'),
+(244, 'geografía', '', '244.jpg', '2018-02-19'),
+(246, 'laboratorio de ciencias naturales', '', '246.jpg', '2018-02-19'),
+(248, 'laboratorio de ciencias naturales', '', '248.jpg', '2018-02-19'),
+(250, 'laboratorio de ciencias naturales', '', '250.jpg', '2018-02-19'),
+(252, 'laboratorio de ciencias naturales', '', '252.jpg', '2018-02-19'),
+(254, 'laboratorio de ciencias naturales', '', '254.jpg', '2018-02-19'),
+(256, 'laboratorio de ciencias naturales', '', '256.jpg', '2018-02-19'),
+(258, 'laboratorio de ciencias naturales', '', '258.jpg', '2018-02-19'),
+(260, 'laboratorio de ciencias naturales', '', '260.jpg', '2018-02-19'),
+(262, 'laboratorio de ciencias naturales', '', '262.jpg', '2018-02-19'),
+(264, 'laboratorio de ciencias naturales', '', '264.jpg', '2018-02-19'),
+(266, 'laboratorio de ciencias naturales', '', '266.jpg', '2018-02-19'),
+(268, 'laboratorio de ciencias naturales', '', '268.jpg', '2018-02-19'),
+(270, 'laboratorio de ciencias naturales', '', '270.jpg', '2018-02-19'),
+(272, 'laboratorio de ciencias naturales', '', '272.jpg', '2018-02-19'),
+(274, 'laboratorio de ciencias naturales', '', '274.jpg', '2018-02-19'),
+(276, 'laboratorio de ciencias naturales', '', '276.jpg', '2018-02-19'),
+(278, 'laboratorio de ciencias naturales', '', '278.jpg', '2018-02-19'),
+(280, 'laboratorio de ciencias naturales', '', '280.jpg', '2018-02-19'),
+(282, 'laboratorio de ciencias naturales', '', '282.jpg', '2018-02-19'),
+(284, 'laboratorio de ciencias naturales', '', '284.jpg', '2018-02-19'),
+(286, 'laboratorio de ciencias naturales', '', '286.jpg', '2018-02-19'),
+(288, 'laboratorio de ciencias naturales', '', '288.jpg', '2018-02-19'),
+(290, 'laboratorio de ciencias naturales', '', '290.jpg', '2018-02-19'),
+(292, 'laboratorio de ciencias naturales', '', '292.jpg', '2018-02-19'),
+(294, 'laboratorio de ciencias naturales', '', '294.jpg', '2018-02-19'),
+(296, 'laboratorio de ciencias naturales', '', '296.jpg', '2018-02-19'),
+(298, 'laboratorio de ciencias naturales', '', '298.jpg', '2018-02-19'),
+(300, 'laboratorio de ciencias naturales', '', '300.jpg', '2018-02-19'),
+(302, 'laboratorio de ciencias naturales', '', '302.jpg', '2018-02-19'),
+(304, 'laboratorio de ciencias naturales', '', '304.jpg', '2018-02-19'),
+(306, 'laboratorio de ciencias naturales', '', '306.jpg', '2018-02-19'),
+(308, 'laboratorio de ciencias naturales', '', '308.jpg', '2018-02-19'),
+(310, 'laboratorio de ciencias naturales', '', '310.jpg', '2018-02-19'),
+(312, 'laboratorio de ciencias naturales', '', '312.jpg', '2018-02-19'),
+(314, 'laboratorio de ciencias naturales', '', '314.jpg', '2018-02-19');
 
 -- --------------------------------------------------------
 
@@ -539,6 +602,13 @@ CREATE TABLE `panel_imagenes` (
   `id_imagen` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `panel_imagenes`
+--
+
+INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
+(150, 160);
+
 -- --------------------------------------------------------
 
 --
@@ -570,8 +640,8 @@ INSERT INTO `pisos` (`piso`, `url_img`) VALUES
 CREATE TABLE `puntos_mapa` (
   `id_punto_mapa` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `left` double NOT NULL,
-  `top` double NOT NULL,
+  `left_mapa` double NOT NULL,
+  `top_mapa` double NOT NULL,
   `id_escena` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `piso` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -580,7 +650,7 @@ CREATE TABLE `puntos_mapa` (
 -- Volcado de datos para la tabla `puntos_mapa`
 --
 
-INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left`, `top`, `id_escena`, `piso`) VALUES
+INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `id_escena`, `piso`) VALUES
 (1, 'pspunto1', 59, 62, 'p0p0', 0),
 (2, 'pspunto2', 50, 67.5, 'p0p1', 0),
 (3, 'pspunto3', 50, 73.5, 'p0p2', 0),
@@ -669,25 +739,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) VALUES
-(1, 'admin', '', '', 'admin', 'admin@iesceliaciclos.org', 0),
-(2, 'entrar', '', '', '1234', '', 1),
-(3, 'administrador', 'Luis', '', '1234', 'pepito@abc.es', 1),
-(8, 'Alfredo', '', '', 'php5', 'alfredo@celia.com', 1),
-(9, 'Fran', '', '', 'cisco91', 'Fran_91@celia.com', 1),
-(12, 'hamza', '', '', 'ben', 'hamzabenhachmi@gmail.com', 1),
-(20, 'Luisito', 'Luis', 'Garcia', '1234', 'pepito@abc.es', 1),
 (21, 'Hulio', 'Julio', 'Benitez', '1234', 'hulio@gmail.com', 1),
-(23, 'Javi', 'Javi', 'Lopez', '1234', 'javilito@gmail.com', 0),
-(24, 'Pepito', 'Pepe', 'Lopez', '1234', 'pepito@abc.es', 0),
-(25, 'Pepito', 'Pepe', 'Lopez', '1234', 'pepito@abc.es', 0),
-(27, 'Pepito', 'Pepe', 'Lopez', '1234', 'pepito@abc.es', 0),
-(28, 'Pepito', 'Pepe', 'Lopez', '1234', 'pepito@abc.es', 0),
-(29, 'Pepito', 'Pepe', 'Lopez', '1234', 'pepito@abc.es', 0),
-(30, 'Pepito', 'Pepe', 'Lopez', '1234', 'pepito@abc.es', 0),
 (31, 'Alfredo', 'Alfredo', 'Moreno', '81dc9bdb52d04dc20036dbd8313ed055', 'alfred@gmail.com', 1),
-(32, 'Marc', 'Marc', 'Exposito', '81dc9bdb52d04dc20036dbd8313ed055', 'marc@gmail.com', 0),
 (33, 'loli', 'loli', '', '202cb962ac59075b964b07152d234b70', '', 1),
-(34, 'Miguel', 'Miguel', 'Lopez', '81dc9bdb52d04dc20036dbd8313ed055', 'miguel@gmail.com', 0);
+(34, 'Miguel', 'Miguel', 'Lopez', '81dc9bdb52d04dc20036dbd8313ed055', 'miguel@gmail.com', 0),
+(36, 'ham', 'hamza', 'benhachmi', 'd41d8cd98f00b204e9800998ecf8427e', 'hamzabenhachmi@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -708,8 +764,8 @@ CREATE TABLE `video` (
 INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
 (1, 'https://www.youtube.com/', 'wewe'),
 (2, 'https://www.youtube.com/', 'ole'),
-(3, 'http://bit.ly/ItunesCriminal', 'Natti Natasha ❌ Ozuna - Criminal'),
-(4, 'https://www.youtube.com/watch?v=Lv9o3pPTn7I', 'wewe');
+(4, 'https://www.youtube.com/watch?v=Lv9o3pPTn7I', 'wewe'),
+(5, 'https://youtu.be/3TPW48bcd3Q', 'primer video celia tour');
 
 --
 -- Índices para tablas volcadas
@@ -792,32 +848,32 @@ ALTER TABLE `audio`
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
-  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
 --
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
-  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT de la tabla `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Restricciones para tablas volcadas
 --

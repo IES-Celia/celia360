@@ -41,7 +41,7 @@
             
             $this->load->library('upload', $config);
             
-            $resultado=$this->upload->do_upload('escenas');
+            $resultado=$this->upload->do_upload('panorama');
 			
             $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
@@ -49,7 +49,7 @@
             $this->db->query($insert);
             $piso_mapa = explode("p",$id_mapa);
             var_dump($piso_mapa);
-            $insert = "INSERT INTO puntos_mapa (nombre, left, top, id_escena, piso) 
+            $insert = "INSERT INTO puntos_mapa (nombre, left_mapa, top_mapa, id_escena, piso) 
             VALUES ('$id_mapa',$left_mapa,$top_mapa,'$cod',$piso_mapa[1])";
             echo $insert;
 
