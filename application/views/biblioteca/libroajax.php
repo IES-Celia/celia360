@@ -144,7 +144,7 @@
 			<div>
 				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
 			</div>
-			<div class="descargar">
-				<a href="" style="text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;" >Descargar PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></a>
-			</div>
+			<!-- <div class="descargar"> -->
+				<!-- <a href="" style="text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;" >Descargar PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></a> -->
+			<!-- </div> -->
 		</div>
