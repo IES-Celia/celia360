@@ -297,7 +297,7 @@
             font-size: 30px;
             color: white;
             background-color: rgba(0,0,0,0.2);
-            transition: 1s;
+            transition: 0.4s;
         }
         
         #caja input[type=button]{
@@ -310,7 +310,7 @@
             font-size: 30px;
             color: white;
             background-color: rgba(0,0,0,0.2);
-            transition: 1s;
+            transition: 0.4s;
 
         }
         
