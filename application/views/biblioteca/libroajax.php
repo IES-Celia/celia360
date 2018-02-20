@@ -4,6 +4,7 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/turn.js"); ?>"></script>
 <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/ultimo-estilo.css");?>"/>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <meta charset="UTF-8">
 		<script type="text/javascript">
 			// var ancho = 1000;
@@ -12,8 +13,8 @@
 			$(document).ready(function(){
 				
 				$("#flipbook").turn({
-					width: 1000,
-					height: 650,
+					width: 900,
+					height: 550,
 					elevation: 50,
 					autoCenter: true,
 					duration:2500
@@ -117,10 +118,10 @@
 					if($apaisado==0){
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard zoom zoomimg'> <img  id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
+								echo"<div class='hard zoom zoomimg'> <img  id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
 							else
 								echo "<div class='pag zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
-						 width='500' height='650' alt='' /> </div>";
+						 width='450' height='550' alt='' /> </div>";
 						}
 					}else{
 				?>
@@ -131,9 +132,9 @@
 						<?php
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='800' height='650' alt=''> </div>";
+								echo"<div class='hard zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
 							else
-								echo "<div class='pag zoom zoomimg'><img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='800' height='650' alt='' /> </div>";
+								echo "<div class='pag zoom zoomimg'><img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='450' height='550' alt='' /> </div>";
 						}
 					}
 
@@ -142,5 +143,8 @@
 			</div>
 			<div>
 				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
+			</div>
+			<div class="descargar">
+				<a href="" style="text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;" >Descargar PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></a>
 			</div>
 		</div>
