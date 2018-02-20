@@ -45,6 +45,7 @@
 //Tabla usuarios
  echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
 echo "<table id='cont'>
+       <thead> 
         <tr>
         <th>Nick</th>
         <th>Contraseña</th>
@@ -53,7 +54,10 @@ echo "<table id='cont'>
         <th>Apellido</th>
         <th>Tipo</th>
         <th>Modificar</th>
-        <th>Borrar</th>";
+        <th>Borrar</th>
+        </tr>
+       </thead>     
+        ";
         
 foreach ($tablaUsuarios as $usu) {
    
