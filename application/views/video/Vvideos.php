@@ -43,13 +43,11 @@ foreach ($tabla as $re) {
     echo'<td id="url_vid'.$id.'">' . $re["url_vid"] . '</td>';
     echo'<td id="desc_vid'.$id.'">' . $re["desc_vid"] . '</td>';
     echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
-    echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i</a></td>";
+    echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
     echo"<td><a href='" . site_url("video/borrarvideo/" . $re["id_vid"]) . "'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
 echo "</table>";
-$da1 = $re["url_vid"];
-$da2 = $re["desc_vid"];
-$id = $re["id_vid"];
+
 //Capa formulario modificar
 echo "
 <div id='modificar'>
