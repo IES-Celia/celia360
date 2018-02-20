@@ -120,21 +120,17 @@ class Imagen extends CI_Controller {
             //si search es distinto de false significa que hay resultados
             //y los mostramos con un loop foreach
             if ($search !== FALSE) {
-
-                echo 'Resultados:';
+                
+                echo '<table>';
+                echo '<th>Resultados</th>';
+		echo '<tr>';
+                
                 foreach ($search as $fila) {
    
-                    echo '<table><tr>';
                     echo '<td>'. $fila->titulo_imagen .'</td>';
-                    echo '</tr>';
-                    echo '</table>';
-     
-                    ?>
-
-    <!--                <p><a href=""><?php // echo $fila->titulo_imagen ?></a></p> -->
-
-                    <?php
                 }
+                echo '</tr>';
+                echo '</table>'; 
 
                 //en otro caso decimos que no hay resultados
             } else {
