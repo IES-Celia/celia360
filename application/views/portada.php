@@ -156,16 +156,16 @@ tr.torre img {
           <div id="mensaje_guiada">
           <h3 style="text-align: center;">Bienvenido a la Visita guiada!</h3>
           <div class='mensaje_guiada_inicio_recomendacion'>
+            <hr class="mensaje_separador"></hr>  
             <p>Consejos antes de empezar 👵🏻</p>
-            <hr class="mensaje_separador">
-            </hr>  
+            
             <ol>
               <li>La visita se realizara con audio descripciones, tenga listo un par de auriculares o altavoces.</li>
               <li>Cuando termine la visita en una area, automaticamente te llevaremos a la siguiente instancia.</li>
               <li>En cualquier momento puedes moverte a las diferentes instancias mediante los botones de flechas o el faro</li>
               <li>Si desea quedarse mas tiempo en una instancia, no dude en pausar el audio.</li>
             </ol>
-            <hr class="mensaje_separador">
+            <hr class="mensaje_separador"></hr>
           </div>
           <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el boton.</h4>
           <div id="boton_aceptar_guiada"></div>
