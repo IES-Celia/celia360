@@ -71,7 +71,8 @@
 		public function borrar ($id) {
 
 			$this->db->query("DELETE FROM escenas WHERE id_escena = '$id' ");
-			$this->db->query("DELETE FROM puntos_mapa WHERE id_escena = '$id' "); // no tiene sentido no borrar el punto si borras la escena, con esto debería estar solucionado
+			$this->db->query("DELETE FROM puntos_mapa WHERE id_escena = '$id' "); // no tiene sentido no borrar el punto si borras la escena, con esto debería estar solucionado 
+           // edit: pues no está solucionado, revisar
             
             
             return $this->db->affected_rows();
