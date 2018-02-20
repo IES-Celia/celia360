@@ -39,16 +39,16 @@ echo"<table align='center' id='cont'><tr>
 ";
 
 foreach ($tabla as $re) {
-
-    echo'<tr id="contenido"><td>' . $re["id_aud"] . '</td>';
-    echo'<td>' . $re["url_aud"] . '</td>';
-    echo'<td>' . $re["desc_aud"] . '</td>';
-    echo'<td>' . $re["tipo_aud"] . '</td>';
+    $id=$re["id_aud"];
+    echo'<tr id="contenido"><td id="id_aud'.$id.'">' . $re["id_aud"] . '</td>';
+    echo'<td id="url_aud'.$id.'">' . $re["url_aud"] . '</td>';
+    echo'<td id="desc_aud'.$id.'">' . $re["desc_aud"] . '</td>';
+    echo'<td id="tipo_aud'.$id.'">' . $re["tipo_aud"] . '</td>';
     echo"<td><audio controls='controls' preload='auto'>
 	<source src='" . base_url($re["url_aud"]) . "' type='audio/m4a'/>
 	<source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
 	</audio></td>";
-    echo"<td><a onclick='mostrarm()'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
+    echo"<td><a onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
     echo"<td><a href='" . site_url("audio/borraraud/" . $re["id_aud"]) . "'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
     
 }
@@ -59,11 +59,11 @@ echo "
 <div id='modificar'>
     <h1>Modificar Audio</h1>
     <form  class='for' action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
-                    URL audio:<input type='text' name='url_aud' value='$da1'><br/>
-                    Descripcion:<input id='desc' type='text' name='desc_aud'  value='$da2'><br/>    
+                    URL audio:<input type='text' name='url_aud' id='url'><br/>
+                    Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
 					<input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
-                    <input type='hidden' name='id'  value='$id'><br/>
-                       Tipo<select name='tipo_aud' selected='$tipo'>
+                    <input type='text' name='id'  id='id'><br/>
+                       Tipo<select name='tipo_aud' id='select'>
   			<option value='v-guiada'>visita guiada</option>
  			<option value='d-objeto'>definir objeto</option>
 		</select><br/><br/>
@@ -96,7 +96,15 @@ echo"
 
 <script>
 
-        function mostrarm(){
+        function mostrarm(id){
+            url = "url_aud"+id;
+            desc = "desc_aud"+id;
+            tipo = "tipo_aud"+id; 
+            document.getElementById("url").value = document.getElementById(url).innerHTML;
+            document.getElementById("desc").value = document.getElementById(desc).innerHTML;
+            document.getElementById("select").value = document.getElementById(tipo).innerHTML;
+            document.getElementById("id").value = id;
+            
             $("#modificar").show();
         }
 
