@@ -19,17 +19,21 @@
 					duration:2500
 				
 				});
-			//abrir libro
+
+			//Abrir pagina libro especifica
 			$("#numeropag").change(function() {
 				var numpag=document.getElementById('numeropag').value;
 				var numpag=$("#numeropag").val();
 				$('#flipbook').turn('page', numpag);
 			});
 			
+
+			//ABRIR LIBRO
 				setTimeout(function() {
 					$('#flipbook').turn('page', 2);
 					},1000);
 				});
+
 
 			//agrega la funcion para la accion del link pagina previa
 				 $('.prev_page').click(function(){
@@ -113,9 +117,9 @@
 					if($apaisado==0){
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard zoom zoomimg'> <img  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
+								echo"<div class='hard zoom zoomimg'> <img  id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
 							else
-								echo "<div class='pag zoom zoomimg'> <img src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
+								echo "<div class='pag zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
 						 width='500' height='650' alt='' /> </div>";
 						}
 					}else{
@@ -127,9 +131,9 @@
 						<?php
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard zoom zoomimg'> <img  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='800' height='650' alt=''> </div>";
+								echo"<div class='hard zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='800' height='650' alt=''> </div>";
 							else
-								echo "<div class='pag zoom zoomimg'><img  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='800' height='650' alt='' /> </div>";
+								echo "<div class='pag zoom zoomimg'><img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='800' height='650' alt='' /> </div>";
 						}
 					}
 
