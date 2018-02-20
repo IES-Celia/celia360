@@ -41,7 +41,7 @@
             
             $this->load->library('upload', $config);
             
-            $resultado=$this->upload->do_upload('escenas');
+            $resultado=$this->upload->do_upload('panorama');
 			
             $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
