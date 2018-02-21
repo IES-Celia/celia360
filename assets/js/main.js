@@ -2,7 +2,7 @@ $(buscar_datos());
 
 function buscar_datos(consulta){
 	$.ajax({
-		url: 'http://localhost/php/celia360/assets/app/buscar.php',
+		url: 'http://http://iesceliaciclos.org/celia360/assets/app/buscar.php',
 		type: 'POST',
 		dataType: 'html',
 		data: {consulta: consulta},
