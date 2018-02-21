@@ -171,7 +171,9 @@ class Img extends CI_Model {
         //WHERE imagenes LIKE '%$abuscar' limit 12
         $this->db->select('titulo_imagen');
 
-        $this->db->like('titulo_imagen', $abuscar, 'after');
+        //$this->db->like('titulo_imagen', $abuscar, 'after');
+        //buscar la cadena
+        $this->db->like('titulo_imagen', $abuscar);
 
         $resultados = $this->db->get('imagenes', 12);
 
