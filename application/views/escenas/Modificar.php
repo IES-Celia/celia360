@@ -20,7 +20,7 @@
 				
 					type: <input type='text' name='type' value=" . $con['tipo'] . "> <br/>
 				
-					panorama: <input type='text' name='panorama' value=" . $con['panorama'] . "> <br/>
+					panorama: <input type='file' name='panorama' value=" . $con['panorama'] . "> <br/>
 					    
 				    <input type='hidden' name='Id' value=". $con['id_escena'].">
 					    
