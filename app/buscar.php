@@ -20,12 +20,10 @@
  <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <?php 
 
-	$this->load->database();
+	$mysqli = new mysqli("localhost", "tour360", "Celia.2017", "celiatour");
 
 	$salida = "";
-	
-
-	$query = $this->db->query("Select * from libros order by titulo'");
+	$query = "Select * from libros order by titulo";
 
 	if(isset($_POST['consulta'])){
 		$q = $mysqli->real_escape_string($_POST['consulta']);
