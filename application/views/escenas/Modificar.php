@@ -15,8 +15,6 @@
 		
 					Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
 				
-					hfov: <input type='text' name='hfov' value=" . $con['hfov'] . "> <br/>
-				
 					Coordenada Pitch y Yaw:<br> 
     <a href='".site_url('welcome/cargar_escena/'.$con['cod_escena'].'/'."update_escena_pitchyaw/")."'>Modificarlos</a><br><br>
 				

@@ -78,34 +78,47 @@
 
 		public function update ($cod) {
 			
-     //////////////////////
-     //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al server, sobrescribiendo la existente)
-     /////////////////////
+            $config['upload_path'] = 'assets/imagenes/escenas/';
+            $config['allowed_types'] = 'jpg';
+           
+            $this->load->library('upload', $config);
             
-            $id = $_REQUEST["Id"];
-			$name = $_REQUEST["name"];
-			$hfov = $_REQUEST["hfov"];
-			$pitch = $_REQUEST["pitch"];
-			$yaw = $_REQUEST["yaw"];
-			$type = $_REQUEST["type"];
-			$panorama = $_REQUEST["panorama"];
-            
-			$this->db->query("
-                
-                UPDATE escenas 
-                    
-                    SET 
-                        
-                        Nombre = '$name', 
-                        hfov = '$hfov',
-                        pitch = '$pitch', 
-                        yaw = '$yaw', 
-                        tipo = '$type', 
-                        panorama = '$panorama' 
-                            
-                            WHERE cod_escena = '$cod'");
+            $resultado=$this->upload->do_upload('panorama');
 			
-			return $this-> db->affected_rows();
+            if($resultado) {
+                
+                //////////////////////
+                //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
+                /////////////////////
+
+                $id = $_REQUEST["Id"];
+                $name = $_REQUEST["name"];
+                $hfov = $_REQUEST["hfov"];
+                $pitch = $_REQUEST["pitch"];
+                $yaw = $_REQUEST["yaw"];
+                $type = $_REQUEST["type"];
+                $panorama = $_REQUEST["panorama"];
+
+                $this->db->query("
+
+                    UPDATE escenas 
+
+                        SET 
+
+                            Nombre = '$name', 
+                            hfov = '$hfov',
+                            pitch = '$pitch', 
+                            yaw = '$yaw', 
+                            tipo = '$type', 
+                            panorama = '$panorama' 
+
+                                WHERE cod_escena = '$cod'");
+
+                return $this-> db->affected_rows();
+            }
+            else {
+                echo $this->upload->display_errors();
+            }
 		}
 		
 	}
