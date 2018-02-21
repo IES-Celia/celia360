@@ -162,7 +162,7 @@ tr.torre img {
             <ol>
               <li>Revise y/o ponga en funcionamiento su sistema de audio.</li>
               <li>Cuando termine la descripción de una estancia, pasaremos automaticamente a la siguiente.</li>
-              <li>En cualquier momento es posible trasladarse a la estancia deseada, mediante los botones de siguiente, anterior o por la utilidad del icono faro, que nos permitirá elegir la estancia.</li>
+              <li>En cualquier momento es posible trasladarse a la estancia deseada, mediante los botones de siguiente, anterior o por la utilidad del icono faro que nos permitirá elegir la estancia.</li>
               <li>Si desea permanecer en una estancia concreta indefinidamente, detenga el audio.</li>
             </ol>
             <hr class="mensaje_separador"></hr>
