@@ -154,16 +154,16 @@ tr.torre img {
           
           <!-- CONTROLES VISITA GUIADA -->
           <div id="mensaje_guiada">
-          <h3 style="text-align: center;">Bienvenido a la Visita guiada!</h3>
+          <h3 style="text-align: center;">Visita guiada</h3>
           <div class='mensaje_guiada_inicio_recomendacion'>
             <hr class="mensaje_separador"></hr>  
             <p>Consejos antes de empezar 👵🏻</p>
             
             <ol>
-              <li>La visita se realizara con audio descripciones, tenga listo un par de auriculares o altavoces.</li>
-              <li>Cuando termine la visita en una area, automaticamente te llevaremos a la siguiente instancia.</li>
-              <li>En cualquier momento puedes moverte a las diferentes instancias mediante los botones de flechas o el faro</li>
-              <li>Si desea quedarse mas tiempo en una instancia, no dude en pausar el audio.</li>
+              <li>Revise y/o ponga en funcionamiento su sistema de audio.</li>
+              <li>Cuando termine la descripción de una estancia, pasaremos automaticamente a la siguiente.</li>
+              <li>En cualquier momento es posible trasladarse a la estancia deseada, mediante los botones de siguiente, anterior o por la utilidad del icono faro que nos permitirá elegir la estancia.</li>
+              <li>Si desea permanecer en una estancia concreta indefinidamente, detenga el audio.</li>
             </ol>
             <hr class="mensaje_separador"></hr>
           </div>
@@ -175,11 +175,11 @@ tr.torre img {
              
             <div class="main">
               <div class="slider-nav">
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="Junto al bar"></div>
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto2.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="Portico"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="Fachada"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto2.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="Pórtico"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto3.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="Escaleras"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto4.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="Conserjeria"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Puerta secretaria"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto4.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="Conserjería"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Puerta secretaría"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto6.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Antesala"></div>
               </div>
             </div>
@@ -237,7 +237,7 @@ tr.torre img {
               <audio id="musica" src="pinkfloyd.mp3"  controls> </audio>
             </div>
             </div>-->
-          <!-- Audio para punto sensibles, no confundir con el boton audio!!!!.
+          <!-- Audio para punto asdasdgooglsensibles, no confundir con el boton audio!!!!.
             <div class="ventanaAudio">-->
             <div id="panelAudioPrueba">
               <div id="botonPause"></div>
@@ -682,9 +682,9 @@ function escaleras(){
     "<?php echo base_url("assets/audio/audioescaleras.mp3");?>",
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
-    "<?php echo base_url("assets/audio/musicadeespera Away.mp3");?>",
+    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
    ];
-  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta secretaria","Antesala"];
+  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta Secretaria","Antesala"];
   indice_escenas = 0;
  
   function audio_guiada(indice){
