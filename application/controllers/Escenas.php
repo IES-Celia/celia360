@@ -8,6 +8,7 @@ class escenas extends CI_Controller {
         parent::__construct();
         $this->load->model("Modeloescenas");
         $this->load->model("UsuarioModel");
+        $this->load->model('Mapa','mapa');
     }
     
     
@@ -16,13 +17,12 @@ class escenas extends CI_Controller {
     }
     
     public function showescenas() {
-        $this->load->model('Mapa','mapa');
         $this->load->library( 'pagination' );
                
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
-        $datos["vista"]="escenas/Escenastable";
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
+        $datos["vista"]="escenas/Escenastable";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
          $config = array();
@@ -49,6 +49,8 @@ class escenas extends CI_Controller {
         if ($resultado == true) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+            $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
             $datos["vista"]="escenas/Escenastable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
@@ -56,6 +58,8 @@ class escenas extends CI_Controller {
         else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+            $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
             $datos["vista"]="escenas/Escenastable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
@@ -66,10 +70,12 @@ class escenas extends CI_Controller {
 
         $resultado = $this->Modeloescenas->borrar($id);
         
-        if ($resultado == 1) {
+        if ($resultado > 1) {
             $datos["mensaje"] = "Escena borrado correctamente";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
             $datos["vista"]="escenas/Escenastable";
+            $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
             }
@@ -77,6 +83,8 @@ class escenas extends CI_Controller {
             $datos["error"] = "Error al borrar la escena";
             $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
             $datos["vista"]="escenas/Escenastable";
+            $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin",$datos);
         }
@@ -98,6 +106,8 @@ class escenas extends CI_Controller {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
                 $datos["vista"]="escenas/Escenastable";
+                $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
@@ -105,10 +115,15 @@ class escenas extends CI_Controller {
                 $datos["error"] = "La modificaci&oacute;n ha fallado";
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
                 $datos["vista"]="escenas/Escenastable";
+                $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
         
     }
+
+
 }
+
 ?>

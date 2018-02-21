@@ -69,12 +69,12 @@
 		}
 
 		public function borrar ($id) {
+            $sql ="DELETE FROM puntos_mapa WHERE id_escena = (SELECT cod_escena FROM escenas WHERE id_escena = '$id') ";
+			$this->db->query($sql);
 
-			$this->db->query("DELETE FROM escenas WHERE id_escena = '$id' ");
-			$this->db->query("DELETE FROM puntos_mapa WHERE id_escena = '$id' "); // no tiene sentido no borrar el punto si borras la escena, con esto debería estar solucionado 
-           // edit: pues no está solucionado, revisar
-            
-            
+            $sql = "DELETE FROM escenas WHERE id_escena = '$id' ";
+            $this->db->query($sql);
+        
             return $this->db->affected_rows();
         }
 
