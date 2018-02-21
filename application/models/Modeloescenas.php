@@ -43,8 +43,18 @@
             
             $resultado=$this->upload->do_upload('panorama');
 			
+            
+     //////////////////////
+     //// Se tiene que comprobar que existe ya un cod_escena igual para evitar duplicados
+     /////////////////////
+            
+            
+            
             $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
+            
+            
+            
 
             $this->db->query($insert);
             $piso_mapa = explode("p",$id_mapa);
@@ -59,15 +69,21 @@
 		}
 
 		public function borrar ($id) {
-			
-			
+
 			$this->db->query("DELETE FROM escenas WHERE id_escena = '$id' ");
-			
+			$this->db->query("DELETE FROM puntos_mapa WHERE id_escena = '$id' "); // no tiene sentido no borrar el punto si borras la escena, con esto debería estar solucionado 
+           // edit: pues no está solucionado, revisar
+            
+            
             return $this->db->affected_rows();
         }
 
 		public function update ($cod) {
 			
+     //////////////////////
+     //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al server, sobrescribiendo la existente)
+     /////////////////////
+            
             $id = $_REQUEST["Id"];
 			$name = $_REQUEST["name"];
 			$hfov = $_REQUEST["hfov"];

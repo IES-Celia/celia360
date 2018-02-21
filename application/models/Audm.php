@@ -12,7 +12,7 @@ class AudM extends CI_Model {
         $r = "";
 
         $st = $_FILES["audio"]["name"];
-        $f_def = "audios/" . $_FILES["audio"]["name"];
+        $f_def = "assets/audio/" . $_FILES["audio"]["name"];
         if (move_uploaded_file($_FILES['audio']['tmp_name'], $f_def)) {
             echo "El fichero es válido y se subió con éxito.\n";
             $insrt = "insert into audio (url_aud,desc_aud, tipo_aud)values('$f_def','$desc','$tipo')";

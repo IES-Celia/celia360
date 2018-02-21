@@ -7,7 +7,6 @@
     <script>
       ruta_base = "<?php echo $redireccion_jotpoch; ?>";
       hotspot_base = "<?php echo $idhotspot; ?>"; 
-      alert("id del jotpoch "+ hotspot_base + "ruta base: "+ruta_base )
     </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>

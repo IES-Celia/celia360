@@ -154,23 +154,33 @@ tr.torre img {
           
           <!-- CONTROLES VISITA GUIADA -->
           <div id="mensaje_guiada">
-          <h3 style="text-align: center;">Bienvenido a la Visita guiada</h3>
-          <div id="boton_mensaje">&times;</div></div>
+          <h3 style="text-align: center;">Visita guiada</h3>
+          <div class='mensaje_guiada_inicio_recomendacion'>
+            <hr class="mensaje_separador"></hr>  
+            <p>Consejos antes de empezar 👵🏻</p>
+            
+            <ol>
+              <li>Revise y/o ponga en funcionamiento su sistema de audio.</li>
+              <li>Cuando termine la descripción de una estancia, pasaremos automaticamente a la siguiente.</li>
+              <li>En cualquier momento es posible trasladarse a la estancia deseada, mediante los botones de siguiente, anterior o por la utilidad del icono faro que nos permitirá elegir la estancia.</li>
+              <li>Si desea permanecer en una estancia concreta indefinidamente, detenga el audio.</li>
+            </ol>
+            <hr class="mensaje_separador"></hr>
+          </div>
+          <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el boton.</h4>
+          <div id="boton_aceptar_guiada"></div>
+        </div>
           <div id="menu_guiada_show">
           <div class="titulo_guiada"></div>
              
             <div class="main">
               <div class="slider-nav">
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p0p1f1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="PATIO"></div>
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/p4p3.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="SALON"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p4p2.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="COCINA"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p5f2.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="GARAJE"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="DORMITORIO"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p32f1.JPG");?>" style='height:  130px; width:130px;' alt="foto5" title="DORMITORIO2"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p1p3.JPG");?>" style='height:  130px; width:130px;' alt="foto6" title="TEJADO"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p2p2f1.JPG");?>" style='height:  130px; width:130px;' alt="foto7" title="BAÑO"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p0p2.JPG");?>" style='height:  130px; width:130px;' alt="foto8" title="COMEDOR"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/p3p7.JPG");?>" style='height:  130px; width:130px;' alt="foto9" title="PATIO TRASERO"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="Fachada"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto2.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="Pórtico"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto3.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="Escaleras"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto4.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="Conserjería"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Puerta secretaría"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto6.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Antesala"></div>
               </div>
             </div>
        
@@ -227,7 +237,7 @@ tr.torre img {
               <audio id="musica" src="pinkfloyd.mp3"  controls> </audio>
             </div>
             </div>-->
-          <!-- Audio para punto sensibles, no confundir con el boton audio!!!!.
+          <!-- Audio para punto asdasdgooglsensibles, no confundir con el boton audio!!!!.
             <div class="ventanaAudio">-->
             <div id="panelAudioPrueba">
               <div id="botonPause"></div>
@@ -244,7 +254,7 @@ tr.torre img {
             <div class="fila1">
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-             <div class="container_imagen" id="boton_libre">
+             <div class="container_imagen" id="boton_libre" onclick='visita_opcion("get_json_libre")'>
              <img src="<?php echo base_url("assets/imagenes/generales/vistalibre1.JPG");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">
@@ -253,7 +263,7 @@ tr.torre img {
             
           
              <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen" id="boton_guiada">
+               <div class="container_imagen" id="boton_guiada" onclick='visita_opcion("get_json_guiada")'>
              <img src="<?php echo base_url("assets/imagenes/generales/visitaguiada.JPG");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">
@@ -292,7 +302,8 @@ tr.torre img {
               </div>
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-                <a href='index.html'><div class="container_imagen">
+              <!--Provisional enlace para volver atras-->
+                <a href="<?php echo site_url("index.php");?>"><div class="container_imagen">
             <img src="<?php echo base_url("assets/imagenes/generales/portada.png");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">
@@ -444,6 +455,14 @@ $( ".menu_slider" ).click(function() {
                 });
               });
               viewer = pannellum.viewer("panorama", data);
+
+              if(nombre=="get_json_guiada"){
+                $("#boton_mapa").hide();
+                iniciar_visita_guiada();
+              } else {
+                $("#boton_mapa").show();
+                iniciar_visita_libre();
+              }
               console.log("success");
             })
             .fail(function() {
@@ -644,15 +663,6 @@ function escaleras(){
                         
   });
   
-       
-  
-  /*
-    $(".boton_menu").toggle(function()
-    {$("#nav_menu").show();},
-    function()
-    {$("#nav_menu").hide();
-    });
-  */
   //boton menu toggle hidden y visible
   $(".boton_menu").click(function(){
     if($("#nav_menu").is(":hidden")){
@@ -664,29 +674,17 @@ function escaleras(){
 
   ////////////////////////////////////////////////
   //VISITA GUIADA MENU
-  //Al terminar el audio de la escena saldra un mensaje de cuenta atras para el salto a la siguiente
-  //Pausa > el audio, 
-  //debe tener un boton que dice en que sitio te encuentras.
-  //Automatizar todo.
-  
-  
-  
-  
-  
-  
-  
-
   
   array_escenas = ["p1p2f3","p1p2f2","p1p2f1","p1p2","p1p11","p1p10"];
   array_audios = [
-    "<?php echo base_url("audios/despertador-graciosos-.mp3");?>",
-    "<?php echo base_url("audios/Kalimba.mp3");?>",
-    "<?php echo base_url("audios/Maid with the Flaxen Hair.mp3");?>",
-    "<?php echo base_url("audios/Maid.mp3");?>",
-    "<?php echo base_url("audios/Sle.mp3");?>",
-    "<?php echo base_url("audios/Sleep Away.mp3");?>",
+    "<?php echo base_url("assets/audio/audiobar.mp3");?>",
+    "<?php echo base_url("assets/audio/audioportico.mp3");?>",
+    "<?php echo base_url("assets/audio/audioescaleras.mp3");?>",
+    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
+    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
+    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
    ];
-  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta secretaria","Antesala"];
+  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta Secretaria","Antesala"];
   indice_escenas = 0;
  
   function audio_guiada(indice){
@@ -738,46 +736,30 @@ function escaleras(){
 
     };     
   
-    //boton para iniciar visitaguiada/quitar visitaguiada   
-    $("#boton_guiada").click(function(){
-    if($("#menu_guiada_show").is(":hidden")){
-      //viewer.loadScene(array_escenas[indice_escenas]);
-        $("#nav_menu").hide();
-        $("#mensaje_guiada").show();
-        $("#boton_mensaje").click(function(){
-        $("#mensaje_guiada").hide();
-        $("#menu_guiada_show").show();
-        $(".menu_libre_show").hide();
-        audio_guiada(indice_escenas);
-      });
-     
-    } else {
-       $("#menu_guiada_show").hide();
-       viewer.loadScene("p1p2f3");
-       $(".menu_libre_show").show();
-       $("#nav_menu").hide();
-    }
+    function iniciar_visita_guiada(){
+      $("#nav_menu").hide();
+      $("#mensaje_guiada").show();
+      $("#boton_aceptar_guiada").click(function(){
+      $("#mensaje_guiada").hide();
+      $("#menu_guiada_show").show();
+      $(".menu_libre_show").hide();
+      $("#boton_mapa").hide();
+      //Por ahora cada vez que lo inicias empieza en 0
+      audio_guiada(0);
     });
-    
-   
-    
-  
-  /*$("#boton_libre").click(function(){
-    
-    if($(".menu_libre_show").is(":hidden")){
-      viewer.loadScene("p1p2f3");
-      $(".menu_libre_show").show();
-      $("#nav_menu").hide();
-    } else {
-       $("#menu_libre_show").hide();
-       viewer.loadScene("p1p2f3");
-      $("#nav_menu").hide();
     }
-    });*/
     
-  
-  
-  
+    function iniciar_visita_libre(){
+      $("#nav_menu").hide();
+      //Mensaje de bienvenida para modo libre.
+      $("#menu_guiada_show").hide();
+      $(".menu_libre_show").show();
+      $("#boton_mapa").show();
+      $("#panelAudioPrueba").hide();
+      $('#audio_guiada').attr("src","");
+      //Por ahora cada vez que lo inicias empieza en 0
+    }
+      
   function anterior(){
     indice_escenas--;
     if(indice_escenas<0){
