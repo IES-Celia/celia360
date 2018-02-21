@@ -62,7 +62,7 @@ echo "
 <div id='modificar'>
     <h1>Modificar Audio</h1>
     <form  class='for' action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
-                    URL audio:<input type='text' name='url_aud' id='url'><br/>
+                    URL audio:<input onclick='javascript: limpia(this);' type='text' name='url_aud' id='url'><br/>
                     Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
 					<input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
                     <input type='text' name='id'  id='id'><br/>
@@ -119,5 +119,8 @@ echo"
             $("#insertar").hide();
              $("#modificar").hide();
         }    
+        function limpia(elemento){
+            elemento.value = "";
+        }
        
 </script>

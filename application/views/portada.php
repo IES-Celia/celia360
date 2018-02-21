@@ -237,7 +237,7 @@ tr.torre img {
               <audio id="musica" src="pinkfloyd.mp3"  controls> </audio>
             </div>
             </div>-->
-          <!-- Audio para punto asdasdsensibles, no confundir con el boton audio!!!!.
+          <!-- Audio para punto asdasdgooglsensibles, no confundir con el boton audio!!!!.
             <div class="ventanaAudio">-->
             <div id="panelAudioPrueba">
               <div id="botonPause"></div>
@@ -682,9 +682,9 @@ function escaleras(){
     "<?php echo base_url("assets/audio/audioescaleras.mp3");?>",
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
-    "<?php echo base_url("assets/audio/musicadeespera Away.mp3");?>",
+    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
    ];
-  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta secretaria","Antesala"];
+  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta Secretaria","Antesala"];
   indice_escenas = 0;
  
   function audio_guiada(indice){

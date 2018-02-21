@@ -22,7 +22,7 @@ class Audio extends CI_Controller {
     }
 
     public function insertaraud() {
-        $f_def = "audios/" . $_FILES["audio"]["name"];
+        $f_def = "assets/audio/" . $_FILES["audio"]["name"];
         $r = $this->Audm->existeaud($f_def);
 
         if ($r == true) {
