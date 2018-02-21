@@ -28,8 +28,8 @@
 
 		public function insertar() {
 			
-			$name = $_REQUEST["name"];		
-			$panorama = $_REQUEST["panorama"];
+			$name = $this->input->post_get("name");		
+			$panorama = $this->input->post_get("panorama");
             $cod = substr($panorama, 0 , -4);
             $id_mapa = $_REQUEST["id_mapa"];
             $left_mapa = $_REQUEST["left_mapa"];
