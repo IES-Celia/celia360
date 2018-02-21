@@ -40,7 +40,7 @@
                  /////////////////////
 
                 $name = $this->input->post_get("name");		
-			    $panorama = $this->upload->data()["panorama"];
+			    $panorama = $this->upload->data()["client_name"];
                 $cod = substr($panorama, 0 , -4);
                 $id_mapa = $_REQUEST["id_mapa"];
                 $left_mapa = $_REQUEST["left_mapa"];
@@ -91,13 +91,13 @@
                 //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
                 /////////////////////
 
-                $id = $_REQUEST["Id"];
-                $name = $_REQUEST["name"];
-                $hfov = $_REQUEST["hfov"];
+                
+                $name = $this->input->post_get["name"];
                 $pitch = $_REQUEST["pitch"];
                 $yaw = $_REQUEST["yaw"];
                 $type = $_REQUEST["type"];
-                $panorama = $_REQUEST["panorama"];
+                $panorama = $this->upload->data()["client_name"];
+                $cod = substr($panorama, 0 , -4);
 
                 $this->db->query("
 
@@ -106,15 +106,15 @@
                         SET 
 
                             Nombre = '$name', 
-                            hfov = '$hfov',
+                            cod_escena = '$cod',
                             pitch = '$pitch', 
                             yaw = '$yaw', 
                             tipo = '$type', 
-                            panorama = '$panorama' 
+                            panorama = assets/imagenes/escenas/'$panorama' 
 
                                 WHERE cod_escena = '$cod'");
 
-                return $this-> db->affected_rows();
+                return $this->db->affected_rows();
             }
             else {
                 echo $this->upload->display_errors();
