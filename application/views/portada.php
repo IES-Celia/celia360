@@ -237,7 +237,7 @@ tr.torre img {
               <audio id="musica" src="pinkfloyd.mp3"  controls> </audio>
             </div>
             </div>-->
-          <!-- Audio para punto sensibles, no confundir con el boton audio!!!!.
+          <!-- Audio para punto asdasdsensibles, no confundir con el boton audio!!!!.
             <div class="ventanaAudio">-->
             <div id="panelAudioPrueba">
               <div id="botonPause"></div>
