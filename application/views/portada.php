@@ -154,16 +154,16 @@ tr.torre img {
           
           <!-- CONTROLES VISITA GUIADA -->
           <div id="mensaje_guiada">
-          <h3 style="text-align: center;">Bienvenido a la Visita guiada!</h3>
+          <h3 style="text-align: center;">Visita guiada</h3>
           <div class='mensaje_guiada_inicio_recomendacion'>
             <hr class="mensaje_separador"></hr>  
             <p>Consejos antes de empezar 👵🏻</p>
             
             <ol>
-              <li>La visita se realizara con audio descripciones, tenga listo un par de auriculares o altavoces.</li>
-              <li>Cuando termine la visita en una area, automaticamente te llevaremos a la siguiente instancia.</li>
-              <li>En cualquier momento puedes moverte a las diferentes instancias mediante los botones de flechas o el faro</li>
-              <li>Si desea quedarse mas tiempo en una instancia, no dude en pausar el audio.</li>
+              <li>La visita se realizará con audiodescripciones, ponga en funcionamiento su sistema de audio.</li>
+              <li>Cuando termine la descripción de una estancia, pasaremos automaticamente a la sigiente.</li>
+              <li>En cualquier momento es posible trasladarse a la estancia deseada, mediante los botones de siguiente o anterior o por la utilidad del icono faro, que nos permitirá elegir la estancia.</li>
+              <li>Si desea permanecer mas tiempo en una estancia concreta sólo tiene que detener el audio.</li>
             </ol>
             <hr class="mensaje_separador"></hr>
           </div>
