@@ -121,13 +121,13 @@ class Imagen extends CI_Controller {
             //y los mostramos con un loop foreach
             if ($search !== FALSE) {
                 
-                echo '<table>';
+                echo '<table width="100%" cellspacing="10" cellpadding="10">';
                 echo '<th>Resultados</th>';
 		echo '<tr>';
                 
                 foreach ($search as $fila) {
    
-                    echo '<td>'. $fila->titulo_imagen .'</td>';
+                    echo '<td NOWRAP>'. $fila->titulo_imagen .'</td>';
                 }
                 echo '</tr>';
                 echo '</table>'; 
