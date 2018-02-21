@@ -7,7 +7,7 @@
         top: 5%;
         left: 30%;
         width: 600px;
-        height: 660px;
+        height: 620px;
         background-color: #ffffff;
         border: 3px solid ;
     }
