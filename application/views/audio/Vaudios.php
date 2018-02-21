@@ -3,26 +3,29 @@
     #modificar{
         display:none;
         z-index: 1;
-        position: fixed;
+        position: absolute;
         top: 5%;
         left: 30%;
         width: 600px;
-        height: 620px;
+        height: 650px;
         background-color: #ffffff;
         border: 3px solid ;
+        overflow: auto;
     }
 
     #insertar{
         display:none;
         z-index: 1;
-        position: fixed;
+        position: absolute;
         top: 5%;
         left: 30%;
         width: 600px;
         height: 580px;
         background-color: #ffffff;
         border: 3px solid ;
+        overflow: auto;
     }
+ 
 
 </style>
 <?php
@@ -68,8 +71,8 @@ echo "
  			<option value='d-objeto'>definir objeto</option>
 		</select><br/><br/>
                     <input type='submit'>
+                    <a href='#' onclick='cerrar()'>Cerrar</a>
                 </form>
-    <a href='#' onclick='cerrar()'>Cerrar</a>
 </div>";
 
 //Capa formulario insertar
@@ -85,9 +88,8 @@ echo"
 		</select><br/><br/>
 		<input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'> 
     <input type='submit'>
-</form>
     <a href='#' onclick='cerrar()'>Cerrar</a>
-      
+      </form>
 </div>";
 
 
