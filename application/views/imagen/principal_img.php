@@ -6,23 +6,25 @@
 	//utilizamos el evento keyup para coger la información
 	//cada vez que se pulsa alguna tecla con el foco en el buscador
 	$(".autocompletar").keyup(function(){
-					
 		//en info tenemos lo que vamos escribiendo en el buscador
 		var info = $(this).val();
 		//hacemos la petición al método autocompletar del controlador home 
 		//pasando la variable info
-		$.post('imagen/autocompletar',{ info : info }, function(data){
+                $.post('<?php echo site_url("imagen/busqueda_ajax/");?>' + info, null, function(data){
 						
 			//si el controlador nos devuelve algo
 			if(data !== ''){
 	
 				//en el div con clase contenedor mostramos la info
-				$('.contenedor').show();
-				$(".contenedor").html(data);
+				//$('.contenedor').show();
+				//$(".contenedor").html(data);
+                                $('#cont').empty();
+                                $('#cont').html(data);
 								
 			}else{
 								
-				$(".contenedor").html('');
+				$('#cont').empty();
+                                $('#cont').html("<strong>No hay datos</strong>");
 								
 			}
 	    })
@@ -84,6 +86,7 @@ foreach ($lista_imagenes as $ima) {
 }
 echo "</table><br>";
 ?>
+
 <script>
     function borrar_imagen(id_imagen) {
         if (confirm("¿Estás seguro?")) {

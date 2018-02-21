@@ -105,34 +105,37 @@ class Imagen extends CI_Controller {
         }
     }
     
-    public function autocompletar() {
+    public function busqueda_ajax($abuscar = "") {
         //cargar el modelo
         $this->load->model("Img");
 
         //si es una petición ajax y existe una variable post
         //llamada info dejamos pasar
-        if ($this->input->is_ajax_request() && $this->input->post('info')) {
-
-            $abuscar = $this->security->xss_clean($this->input->post('info'));
-            
-            $search = $this->Img->buscador($abuscar);
+            $lista_imagenes = $this->Img->buscar_ajax($abuscar);
 
             //si search es distinto de false significa que hay resultados
             //y los mostramos con un loop foreach
-            if ($search !== FALSE) {
+            if ($lista_imagenes !== FALSE) {
                 
-                echo '<table width="100%" cellspacing="10" cellpadding="10">';
-                echo '<th>Resultados</th>';
-		echo '<tr>';
-                
-                foreach ($search as $fila) {
-   
-                    echo '<td NOWRAP>'. $fila->titulo_imagen .'</td>';
-                }
-                echo '</tr>';
-                echo '</table>'; 
+            echo "<br><table id='cont'>";
+            echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th>'
+            . '<th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
+            foreach ($lista_imagenes as $ima) {
+                $fila = $ima["id_imagen"];
+                $nombre_archivo = $ima["id_imagen"] . "_miniatura.jpg";
+                $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
+                $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
+                echo "<tr id='imagen-" . $fila . "'><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] .
+                        "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><a href='" .
+                base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"]) . "'><img src='" .
+                base_url("assets/imagenes/imagenes-hotspots/" . $nombre_archivo) . "'></a></td><td>" .
+                $ima["fecha"] . "</td>
+                <td><a href='" . $url_modificar . "'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>
+                <td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+            }
+            echo "</table><br>";
 
-                //en otro caso decimos que no hay resultados
+            //en otro caso decimos que no hay resultados
             } else {
                 ?>
 
@@ -140,7 +143,6 @@ class Imagen extends CI_Controller {
 
                 <?php
             }
-        }
     }
 
 }
