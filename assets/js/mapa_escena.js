@@ -5,6 +5,7 @@ var piso = 1;
 =            ready            =
 =============================*/
 $(document).ready(function() {
+	
 	mapa_responsivo();
 	$(".pisos").hide('0');
 	$("#mapa_escena").slideUp(0);

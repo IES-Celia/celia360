@@ -40,8 +40,12 @@
                     
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
-                        
-                            echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            if($id_scene==$punto['id_escena']){
+                                echo "<div id='".$punto['nombre']."' class='punto_hotspot' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>"; 
+                            }else{
+                                echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";    
+                            }
+                            
                         
                         
                         }
