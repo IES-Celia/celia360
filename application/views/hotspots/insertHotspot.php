@@ -163,7 +163,7 @@
         });
           
         $("modificarPitchYaw").click(function(){
-          // location.href= <?php echo site_url("/hotspots/") ?> + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/"; 
+          location.href= '<?php echo site_url("/hotspots/") ?>'+ "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/"+'<?php echo $id_scene ?>'; 
         });
           
       });
