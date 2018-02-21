@@ -684,7 +684,8 @@ function escaleras(){
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
    ];
-  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta Secretaria","Antesala"];
+  array_titulo = ["Fachada principal","Pórtico","Escalera de entrada","Conserjería","Puerta secretaría","Antesala"];
+  
   indice_escenas = 0;
  
   function audio_guiada(indice){
