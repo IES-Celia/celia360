@@ -4,7 +4,7 @@
         display:none;
         z-index: 1;
         position: fixed;
-        top: 10%;
+        top: 5%;
         left: 30%;
         width: 600px;
         height: 660px;
@@ -16,7 +16,7 @@
         display:none;
         z-index: 1;
         position: fixed;
-        top: 10%;
+        top: 5%;
         left: 30%;
         width: 600px;
         height: 580px;
