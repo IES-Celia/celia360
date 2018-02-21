@@ -54,7 +54,7 @@ class AudM extends CI_Model {
         $desc = $this->input->post_get("desc_aud");
         $tipo = $this->input->post_get("tipo_aud");
 
-        $url1 = "" . $url . ".mp3";
+        $url1 = "" . $url . ".mp4";
 
         $s = "select url_aud from audio where id_aud='$id'";
         $res = $this->db->query($s);
