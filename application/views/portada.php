@@ -175,9 +175,9 @@ tr.torre img {
              
             <div class="main">
               <div class="slider-nav">
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="Fachada"></div>
+                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="Fachada principal"></div>
                 <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto2.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="Pórtico"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto3.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="Escaleras"></div>
+                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto3.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="Escalera de entrada"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto4.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="Conserjería"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Puerta secretaría"></div>
                 <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto6.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Antesala"></div>
@@ -684,7 +684,8 @@ function escaleras(){
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
     "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
    ];
-  array_titulo = ["Junto al bar","Portico","Escaleras","Conserjeria","puerta Secretaria","Antesala"];
+  array_titulo = ["Fachada principal","Pórtico","Escalera de entrada","Conserjería","Puerta secretaría","Antesala"];
+  
   indice_escenas = 0;
  
   function audio_guiada(indice){
