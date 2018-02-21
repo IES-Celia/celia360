@@ -99,7 +99,7 @@ class escenas extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
     
-    public function processupdatescene($id){
+    public function processupdatescene($cod){
             $resultado = $this->Modeloescenas->update($cod);
             
             if ($resultado == true) {
