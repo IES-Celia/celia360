@@ -36,9 +36,20 @@
   </script>
 <style>
   
-tr.torre img {
-    margin-top: 26px ;
-} 
+#completo{
+  width:95%;
+  margin:0 auto;
+}
+#portadaLibros{
+  width:20%;
+  float:left;
+}
+#portadaLibros img{
+   width: 90%;
+    height: 350px;
+
+}
+
 
 </style>
 
@@ -57,7 +68,7 @@ tr.torre img {
                   <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
-                  <li><a>Biblioteca</a></li>
+                  <li><a id="clickbiblio" href="#">Biblioteca</a></li>
                  <li><a href="" >Glosario</a></li>
                  <li><a href="" >Creditos</a></li>
              </ul>
@@ -99,12 +110,14 @@ tr.torre img {
 
                         $i = 0;
                         foreach ($libros as $ides){
-                          $i++;
-                          //Sacamos las portadas de los libros
-                          
-                            echo "<td class='columna'>";
-                            echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
-                            echo "</td>";
+                          if($ides['tipo']==1){
+                            $i++;
+                            //Sacamos las portadas de los libros
+                            
+                              echo "<td class='columna'>";
+                              echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+                              echo "</td>";
+                          }
                               if ($i%4 == 0)  echo "</tr><tr class='torre'>";
                                 }
                                 echo "</tr></table>";
@@ -118,6 +131,13 @@ tr.torre img {
         </div>
     </div>
   </div>
+
+
+
+            <!-- VENTANA BIBLIOTECA  AJAX -->
+
+
+
 
   <!-- VENTANA MODAL PARA SACAR LIBRO -->
       <div class="modalita2" style="display: none;" >
@@ -135,6 +155,30 @@ tr.torre img {
     </div>
   </div>
 
+
+              <div id="bibliotecaajax" style=" margin-top:-950px; display:none;width:100%;z-index:999999999999999999999999999999;">
+                <?php 
+
+                        echo "<div id='completo'>";  
+                            $i = 0;
+                            foreach ($libros as $ides){
+                              $i++;
+
+                              //Sacamos las portadas de los libros
+                             
+                                echo "<div id='portadaLibros'>";
+                                  echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+                                echo "</div>";
+                                  if ($i%4 == 0)  echo "<div>";
+                                
+                                    }
+                          
+
+                        echo "</div></div>";
+
+                ?>
+
+            </div>
 
   <!--FINALIZA BIBLIOTECA -->
   
@@ -392,6 +436,8 @@ $( ".menu_slider" ).click(function() {
     }
  
 });
+
+
       
   /*    // setPosition
       $('.slider-nav').on('setPosition', function(event, slick){
