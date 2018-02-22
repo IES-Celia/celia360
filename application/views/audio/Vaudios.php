@@ -31,6 +31,14 @@
         border: 3px solid ;
         overflow: auto;
     }
+    #div_pag{
+        position: relative;
+        top:20px;
+        text-align: center;
+    }
+    .paginacion{
+        border: 1px solid #ddd;
+    }
  
 
 </style>
@@ -60,14 +68,14 @@ foreach ($tabla as $re) {
 	</audio></td>";
     echo"<td><a onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
     echo"<td><a href='" . site_url("audio/borraraud/" . $re["id_aud"]) . "'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
-    
+  
 }
 echo "</table>";
 $ant = $primero - $cantidad;
 if($ant<0)$ant=0;
 $sig = $primero + $cantidad;
 if($sig>$total) $sig=$total;
-echo "<a href='". site_url("audio/mostraraudios/") ."$ant'>Anterior</a> - <a href='". site_url("audio/mostraraudios/") ."$sig'>Siguiente</a>";
+echo "<div id='div_pag'><a class='paginacion' href='". site_url("audio/mostraraudios/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("audio/mostraraudios/") ."$sig'>Siguiente</a></div>";
 
 //Capa formulario modificar
 echo "

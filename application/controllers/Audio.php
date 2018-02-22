@@ -37,7 +37,7 @@ class Audio extends CI_Controller {
             $tipo = $this->input->post_get("tipo_aud");
             $desc = $this->input->post_get("desc");
             $res = $this->Audm->insertaraud($desc, $tipo);
-            $datos["tabla"] = $this->Audm->buscaraud();
+            $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
             $datos["vista"] = "audio/Vaudios";
             $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
@@ -57,7 +57,7 @@ class Audio extends CI_Controller {
 
     public function borraraud($id) {
         $this->Audm->borraraud($id);
-        $datos["tabla"] = $this->Audm->buscaraud();
+        $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
@@ -71,16 +71,17 @@ class Audio extends CI_Controller {
     }
 
     public function modificaraud() {
+        $primero=0;
         $id = $this->input->post_get("id");
         $this->Audm->modificaraud($id);
-        $datos["tabla"] = $this->Audm->buscaraud();
+        $datos["tabla"] = $this->Audm->buscaraud($primero, $this->audios_por_pagina);
         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
     }
     
     public function obtenerListaAudiosAjax() {
-        $listaAudios = $this->Audm->buscaraud();
+        $listaAudios = $this->Audm->buscaraud(0, $this->audios_por_pagina);
         $html = '<script>'
                     . '       function seleccionarAudio(idAudio) {'
                     . '             document.getElementById("idAudioForm").value = idAudio;'
