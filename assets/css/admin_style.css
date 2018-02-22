@@ -1,28 +1,4 @@
-    body{
-        background: url(fondo.jpg) no-repeat center center fixed;
-        background-size: 100%;
-    }
 
-    #logueo{
-        float: right;
-        margin-right: 13px;
-    }
-
-    #menu{
-
-        background: -moz-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-        background: -webkit-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-        background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-
-    }
-
-    #fondo{
-        width:100%;
-        height: 100%;
-        background-color: rgba(39, 152, 231,0.25);
-        position: fixed;
-        top: -1;
-    }
 
     #cont tr:hover{
         background-color: #9CA09E;    
@@ -34,16 +10,6 @@
         background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);    
     }
 
-    p{
-        margin-top: 10px;
-        text-align: center;
-
-    }
-    .footer{
-
-        margin-top: 170px;
-   
-    }
 
 
    
@@ -60,9 +26,6 @@
         border-style: none;
         border-collapse: collapse;
     }
-
-
-    
     
     #cont th{
 
@@ -297,9 +260,7 @@
             width: 500px;
             height: auto;
             margin: auto;
-            margin-top: 80px;
-
-        
+            margin-top: 70px;
             text-align: center;
             border: 2px solid grey;
             border-radius: 10px;

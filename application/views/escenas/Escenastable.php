@@ -44,7 +44,6 @@
 </script>
 
 <button id="btn-mapa">Abrir mapa</button>
-</div>
 
 <div id="mapa_escena">
 <button id="btn-bajar-piso">Bajar piso</button>
