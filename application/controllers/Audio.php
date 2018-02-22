@@ -92,6 +92,7 @@ class Audio extends CI_Controller {
             <th>URL</th>
             <th>Descripcion</th>
             <th>Tipo de audio</th>
+            <th>Reproducir</th>
             <th>Seleccionar</th>
             </tr>
             ";
@@ -104,12 +105,57 @@ class Audio extends CI_Controller {
                     . '<td>' . $audio["url_aud"] . '</td>'
                     . '<td>' . $audio["desc_aud"]. '</td>'
                     . '<td>' . $audio["tipo_aud"] . '</td>'
+                    .'<td><audio controls="controls" preload="auto">
+	<source src="' . base_url($audio["url_aud"]) . '" type="audio/m4a"/>
+	<source src="' . base_url($audio["url_aud"]) . '" type="audio/mp3"/>
+	</audio></td>'
                     . '<td onClick="seleccionarAudio('.$fila.')"><a href="#">Seleccionar</a></td>'
                     . '</tr>';          
         }
         echo $html; 
         echo '</table>';
     }   
+    
+    
+    public function busqueda_ajax($abuscar = "") {
+        //cargar el modelo
+        
+
+        //si es una petición ajax y existe una variable post
+        //llamada info dejamos pasar
+            $lista_aud = $this->Audm->buscar_ajax($abuscar);
+
+            //si search es distinto de false significa que hay resultados
+            //y los mostramos con un loop foreach
+            if ($lista_aud !== FALSE) {
+                
+            echo "<br><table id='cont'>";
+            echo '<tr><th>Id</th><th>URL</th><th>desc</th><th>tipo</th><th>Fecha</th>'
+            . '<th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
+            foreach ($lista_imagenes as $ima) {
+                $fila = $ima["id_imagen"];
+                $nombre_archivo = $ima["id_imagen"] . "_miniatura.jpg";
+                $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
+                $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
+                echo "<tr id='imagen-" . $fila . "'><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] .
+                        "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><a href='" .
+                base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"]) . "'><img src='" .
+                base_url("assets/imagenes/imagenes-hotspots/" . $nombre_archivo) . "'></a></td><td>" .
+                $ima["fecha"] . "</td>
+                <td><a href='" . $url_modificar . "'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>
+                <td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+            }
+            echo "</table><br>";
+
+            //en otro caso decimos que no hay resultados
+            } else {
+                ?>
+
+                <p><?php echo 'No hay resultados' ?></p>
+
+                <?php
+            }
+    }
 
 
 
