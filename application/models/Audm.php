@@ -24,27 +24,17 @@ class AudM extends CI_Model {
         return $r;
     }
 
-    public function buscaraud($a, $b) {
-        $sel = "select * from audio limit $a,$b";
+    public function buscaraud() {
+
+        $sel = "select * from audio";
         $res = $this->db->query($sel);
         $tabla = array();
         foreach ($res->result_array() as $fila) {
             $tabla[] = $fila;
         }
+
         return $tabla;
     }
-     public function buscar(){
-        $sel = "select count(*) from audio";
-        $res = $this->db->query($sel);
-        $tabla = array();
-        foreach ($res->result_array() as $fila) {
-            $tabla[] = $fila;
-            
-        }
-        $res=$tabla[0]["count(*)"];
-        return $res;
-
-        }
 
     public function borraraud($id_aud) {
         $s = "select url_aud from audio where id_aud='$id_aud'";
@@ -98,8 +88,6 @@ class AudM extends CI_Model {
         else
             return false;
     }
-   
-      
 }
 
 ?>

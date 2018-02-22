@@ -18,7 +18,11 @@
     <!-- CSS CMS -->
     
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
-   
+    <style type="text/css">
+        p{
+            text-align: center;
+        }
+    </style>
     
     <?php 
         error_reporting(7);
@@ -29,4 +33,3 @@
 </head>
 	
 <body>
-    <div id="fondo">
