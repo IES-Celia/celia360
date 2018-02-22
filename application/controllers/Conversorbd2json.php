@@ -11,6 +11,7 @@ class Conversorbd2json extends CI_Controller {
     $this->load->view("main_template", $datos);
   }
   
+  
   public function get_json_libre() {
     $this->load->model("conversorjson");
     $json = $this->conversorjson->get_datos_libre();
