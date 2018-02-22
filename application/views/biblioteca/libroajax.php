@@ -1,6 +1,4 @@
-
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.2.1.js"); ?>"></script>
-<script type='text/javascript' src='<?php echo base_url("assets/js/zoom/jquery.zoom.min.js");?>'></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/turn.js"); ?>"></script>
 <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/ultimo-estilo.css");?>"/>
@@ -51,7 +49,10 @@
 		        $('.modalita2').css({display:"none"});
 		      });	
 
-			$('.zoomimg').zoom({ on:'click' });	
+			//$('.zoomimg').zoom({ on:'click' });
+
+			
+
 			
 				
 		</script>
@@ -62,12 +63,12 @@
 			p { position:absolute; top:3px; right:28px; color:#555; font:bold 13px/1 sans-serif;}
 
 			/* these styles are for the demo, but are not required for the plugin */
-			.zoom {
+			/*.zoom {
 				display:inline-block;
 				position: relative;
 			}
 			
-			/* magnifying glass icon */
+			// magnifying glass icon 
 			.zoom:after {
 				content:'';
 				display:block; 
@@ -82,7 +83,7 @@
 				display: block;
 			}
 
-			.zoom img::selection { background-color: transparent; }
+			.zoom img::selection { background-color: transparent; }*/
 
 			#numeropag{
 				position: relative;
@@ -118,9 +119,9 @@
 					if($apaisado==0){
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard zoom zoomimg'> <img  id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
+								echo"<div class='hard'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
 							else
-								echo "<div class='pag zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
+								echo "<div class='pag'> <img class='zoom' id='img$i'  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
 						 width='450' height='550' alt='' /> </div>";
 						}
 					}else{
@@ -132,15 +133,25 @@
 						<?php
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard zoom zoomimg'> <img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
+								echo"<div class='hard'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
 							else
-								echo "<div class='pag zoom zoomimg'><img id='$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='450' height='550' alt='' /> </div>";
+								echo "<div class='pag '><img class='zoom'  id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='450' height='550' alt='' /> </div>";
 						}
 					}
 
 					
 				?>
+				
 			</div>
+
+			<script type='text/javascript' src='<?php echo base_url("assets/js/zoom/wheelzoom.js");?>'></script>
+			<script>
+				<?php
+					for($i = 0;$i<$num_pag;$i++){
+						echo "wheelzoom(document.querySelector('img#img$i'));";
+					}
+				?>
+			</script>
 			<div>
 				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
 			</div>
@@ -148,3 +159,5 @@
 				<!-- <a href="" style="text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;" >Descargar PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></a> -->
 			<!-- </div> -->
 		</div>
+
+		
