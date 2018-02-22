@@ -68,7 +68,7 @@
                   <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
-                  <li><a id="clickbiblio" href="#">Biblioteca</a></li>
+                  <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
                  <li><a href="" >Glosario</a></li>
                  <li><a href="" >Creditos</a></li>
              </ul>

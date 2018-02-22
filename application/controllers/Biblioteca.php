@@ -66,6 +66,12 @@ class Biblioteca extends CI_Controller {
 			}
 	}
 
+	public function vertodosloslibros(){
+		$datos["tabla"] = $this->bibliotecaModel->get_info();
+		
+		$this->load->view("biblioteca/bibliotecaajax", $datos);
+
+	}
 
 	public function deletelibro($id_libro){
 		$resultado=$this->bibliotecaModel->deletelibro($id_libro);	
