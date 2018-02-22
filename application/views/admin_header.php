@@ -7,6 +7,7 @@
     <!-- CSS SLICK -->
 
     <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
+     
     <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
@@ -17,6 +18,7 @@
     <!-- CSS CMS -->
     
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
+    
     
     <?php 
         error_reporting(7);
