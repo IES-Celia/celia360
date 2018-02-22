@@ -103,7 +103,7 @@ echo "
         Email:<input type='text' name='email' id='form_modif_email'><br/>
         Nombre:<input type='text' name='nombre' id='form_modif_nombre' ><br/>
         Apellidos:<input type='text' name='apellidos' id='form_modif_ape'><br/>
-        Tipo:<input type='number' name='tipo' min='0' max='3' id='form_modif_tipo' required><br/>
+        Tipo:<input type='number' name='tipo' min='1' max='3' id='form_modif_tipo' required><br/>
         <input type='hidden' name='id' id='form_modif_id'><br/>
         <input type=submit value='Modificar'>
     </form>

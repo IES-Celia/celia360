@@ -29,4 +29,4 @@ echo"<form action='".site_url("usuario/processregisterform")."' method='get'>";
 </form>
 
 </div>
- <br/>   
+    
