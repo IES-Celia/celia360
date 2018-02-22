@@ -18,6 +18,10 @@
     
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
     
+</head>
+	
+<body>
+    
     <?php 
         error_reporting(7);
             if (!ini_get('display_errors')) {
@@ -25,9 +29,3 @@
             }
     ?>
     <p align="center">Estás logueado como <?php echo $this->session->nombreusr;?></p>
-</head>
-	
-<body>
-    
-</body>
-</html>

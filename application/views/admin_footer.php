@@ -1,6 +1,8 @@
 </body>
 <footer>
-<br>
-<p>&copy; IES Celia Viñas 2018</p>
+<br/>	
+<br/>
+<br/>
+<p class="footer">&copy; IES Celia Viñas 2018</p>
 </footer>
 </html>
