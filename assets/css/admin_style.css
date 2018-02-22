@@ -1,5 +1,5 @@
     body{
-        background-image: url(fondo.jpg);
+        background: url(fondo.jpg) no-repeat center center fixed;
         background-size: 100%;
     }
 
