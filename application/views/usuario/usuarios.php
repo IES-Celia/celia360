@@ -46,6 +46,8 @@
 <?php
 //Tabla usuarios
  echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
+
+echo"</div>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>

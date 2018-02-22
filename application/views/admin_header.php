@@ -21,11 +21,12 @@
 </head>
 	
 <body>
-    
+
+<div id="menu">    
     <?php 
         error_reporting(7);
             if (!ini_get('display_errors')) {
                 ini_set('display_errors', '0');
             }
     ?>
-    <p align="center">Estás logueado como <?php echo $this->session->nombreusr;?></p>
+    <p id="logueo" align="center">Estás logueado como <?php echo $this->session->nombreusr;?></p>
