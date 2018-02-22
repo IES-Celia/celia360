@@ -62,8 +62,10 @@ $('#opciondestacada_portada').bind("mouseenter",function(){
     
 });
 
-
-
+////// PRUEBA PARA MOSTRAR BIBLIO AYAX
+$('#clickbiblio').on("click",function(){
+    $('#bibliotecaajax').css("display","block");
+});
     // para desactivar el scroll cuando la pantalla sea grande 
 //if ($(window).width()<800){
     $('html, body').css({
