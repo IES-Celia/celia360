@@ -1,4 +1,45 @@
  <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
+ <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'></script>
+<script>
+    //buscador con ajax
+    $(document).ready(function(){
+	//utilizamos el evento keyup para coger la información
+	//cada vez que se pulsa alguna tecla con el foco en el buscador
+	$(".autocompletar").keyup(function(){
+		//en info tenemos lo que vamos escribiendo en el buscador
+		var info = $(this).val();
+		//hacemos la petición al método autocompletar del controlador home 
+		//pasando la variable info
+                $.post('<?php echo site_url("audio/busqueda_ajax/");?>' + info, null, function(data){
+						
+			//si el controlador nos devuelve algo
+			if(data !== ''){
+	
+				//en el div con clase contenedor mostramos la info
+				//$('.contenedor').show();
+				//$(".contenedor").html(data);
+                                $('#cont').empty();
+                                $('#cont').html(data);
+								
+			}else{
+								
+				$('#cont').empty();
+                                $('#cont').html("<strong>No hay datos</strong>");
+								
+			}
+	    })
+					
+    })
+				
+	//buscamos el elemento pulsado con live y mostramos un alert
+	$(".contenedor").find("a").live('click',function(e){
+		e.defaultPrevented;
+                $("input[name=autocompletar]").val($(this).text());
+		//alert($(this).html());
+	});
+			
+})
+</script>
  <style type="text/css">
      #contenedor {
          display:none;
@@ -51,6 +92,11 @@
  
 
 </style>
+<div class="wrapper">
+    <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
+    
+    <div class="contenedor"></div>
+</div>
 <?php
 echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";
 echo"<table align='center' id='cont'><tr>
