@@ -157,7 +157,7 @@
 			<?php 
 				echo " 
 					<div class='descargar'> 
-						<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;float:right;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+						<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:10px;color:white;border-radius:10px;float:right;margin-right:30px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 					</div>"; 
 			?>
 		</div>
