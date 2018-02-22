@@ -5,7 +5,6 @@ var piso = 1;
 =            ready            =
 =============================*/
 $(document).ready(function() {
-	
 	mapa_responsivo();
 	$(".pisos").hide('0');
 	$("#mapa_escena").slideUp(0);
@@ -28,12 +27,14 @@ $(document).ready(function() {
    	
    	$(".pisos").contextmenu(function(event){
    		
-		if(!$(this).hasClass("pisos_hotspots")){
-		var id = $(this).children().last().children().attr('id')
+
+   		var id = $(this).children().last().children().attr('id')
 
    		var prefijo = parseInt(id.split("punto")[1]) + 1;
    		
    		id = $(this).attr('id')+"punto"+prefijo;
+   		
+   		
 
    		var izquierda = $(this).offset();
    		var anchura = $(this).width()
@@ -46,17 +47,13 @@ $(document).ready(function() {
 
 
    		event.preventDefault();
-		}
-	});
+   		
+
+   		
+   	})
    	
    	/*=====  End of Inserción de puntos  ======*/
-	   
-	$(".puntos").click(function(){
-		$("#puntoEscena > form > input[name=sceneId]").val($(this).attr("escena"));
-		$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"));
-		$(".puntos").css("background", "white");
-		$(this).css("background","cyan")
-	  })
+   	
 
     
 });
@@ -112,5 +109,5 @@ function bajar_piso(){
 
 
 function punto_mapa(identificador) {
-	
+	$("#puntoEscena > form > input[name=sceneId]").val(identificador);
 }
