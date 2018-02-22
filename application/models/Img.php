@@ -163,29 +163,34 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
-    
-    public function buscador($abuscar) {
+    //buscador con ajax
+    public function buscar_ajax($abuscar) {
         //usamos after para decir que empiece a buscar por
         //el principio de la cadena
         //ej SELECT titulo_imagen from imagenes 
-        //WHERE localidad LIKE '%$abuscar' limit 12
-        $this->db->select('titulo_imagen');
+        //WHERE imagenes LIKE '%$abuscar' limit 12
+        $this->db->select('*');
 
-        $this->db->like('titulo_imagen', $abuscar, 'after');
+        //$this->db->like('titulo_imagen', $abuscar, 'after');
+        //buscar la cadena
+        if ($abuscar != "") $this->db->like('titulo_imagen', $abuscar);
 
-        $resultados = $this->db->get('imagenes', 12);
+        $resultados = $this->db->get('imagenes');
 
         //si existe algún resultado lo devolvemos
         if ($resultados->num_rows() > 0) {
 
-            return $resultados->result();
+            $lista = array();
+            foreach ($resultados->result_array() as $fila) {
+                $lista[] = $fila;
+            }
+            return $lista;
 
             //en otro caso devolvemos false
         } else {
 
             return FALSE;
-        }
-    }
-   
-    
+        }       
+        
+    }      
 }

@@ -50,7 +50,7 @@
   
   foreach( $lista_imagenes as $img){
    $img_correcto = explode(".",$img["url_imagen"]);
-   $img_correcto_enlace = base_url("assets/imagenes/imagenes-hotspots/").$img_correcto[0]."_miniatura.JPG";
+   $img_correcto_enlace = base_url("assets/imagenes/imagenes-hotspots/").$img_correcto[0]."_miniatura.jpg";
    $imagen_propiedades = array(
     "src" => $img_correcto_enlace,
     "class" => "imgHS",

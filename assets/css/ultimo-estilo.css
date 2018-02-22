@@ -27,10 +27,11 @@
     z-index:1000000000;
   }
       .btn {
-     background-color: transparent;
+     background-color: #2980b9;
       -webkit-border-radius: 5;
       -moz-border-radius: 5;
       border-radius: 5px;
+      border:none;
       -webkit-box-shadow: 2px 2px 4px #666666;
       -moz-box-shadow: 2px 2px 4px #666666;
       box-shadow: 2px 2px 4px #666666;

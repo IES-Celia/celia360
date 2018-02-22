@@ -27,71 +27,98 @@
         
 
 		public function insertar() {
-			
-			$name = $_REQUEST["name"];		
-			$panorama = $_REQUEST["panorama"];
-            $cod = substr($panorama, 0 , -4);
-            $id_mapa = $_REQUEST["id_mapa"];
-            $left_mapa = $_REQUEST["left_mapa"];
-            $top_mapa = $_REQUEST["top_mapa"];
 
             $config['upload_path'] = 'assets/imagenes/escenas/';
             $config['allowed_types'] = 'jpg';
-            $config['file_name']= $panorama;
-            
+           
             $this->load->library('upload', $config);
             
             $resultado=$this->upload->do_upload('panorama');
-			
-            $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
+			if($resultado) {            
+                 //////////////////////
+                 //// Se tiene que comprobar que existe ya un cod_escena igual para evitar duplicados
+                 /////////////////////
+
+                $name = $this->input->post_get("name");		
+			    $panorama = $this->upload->data()["client_name"];
+                $cod = substr($panorama, 0 , -4);
+                $id_mapa = $_REQUEST["id_mapa"];
+                $left_mapa = $_REQUEST["left_mapa"];
+                $top_mapa = $_REQUEST["top_mapa"];
+                
+            
+                $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
 
-            $this->db->query($insert);
-            $piso_mapa = explode("p",$id_mapa);
-            var_dump($piso_mapa);
-            $insert = "INSERT INTO puntos_mapa (nombre, left_mapa, top_mapa, id_escena, piso) 
-            VALUES ('$id_mapa',$left_mapa,$top_mapa,'$cod',$piso_mapa[1])";
-            echo $insert;
+                $this->db->query($insert);
+                $piso_mapa = explode("p",$id_mapa);
+                var_dump($piso_mapa);
+                $insert = "INSERT INTO puntos_mapa (nombre, left_mapa, top_mapa, id_escena, piso) 
+                VALUES ('$id_mapa',$left_mapa,$top_mapa,'$cod',$piso_mapa[1])";
+                echo $insert;
 
-            $this->db->query($insert);
-            
-            return $this->db->affected_rows();
+                $this->db->query($insert);
+
+                return $this->db->affected_rows();
+            }
+            else {
+                echo $this->upload->display_errors();
+            }
 		}
 
 		public function borrar ($id) {
-			
-			
-			$this->db->query("DELETE FROM escenas WHERE id_escena = '$id' ");
-			
+            $sql ="DELETE FROM puntos_mapa WHERE id_escena = (SELECT cod_escena FROM escenas WHERE id_escena = '$id') ";
+			$this->db->query($sql);
+
+            $sql = "DELETE FROM escenas WHERE id_escena = '$id' ";
+            $this->db->query($sql);
+        
             return $this->db->affected_rows();
         }
 
 		public function update ($cod) {
 			
-            $id = $_REQUEST["Id"];
-			$name = $_REQUEST["name"];
-			$hfov = $_REQUEST["hfov"];
-			$pitch = $_REQUEST["pitch"];
-			$yaw = $_REQUEST["yaw"];
-			$type = $_REQUEST["type"];
-			$panorama = $_REQUEST["panorama"];
+            $config['upload_path'] = 'assets/imagenes/escenas/';
+            $config['allowed_types'] = 'jpg';
+           
+            $this->load->library('upload', $config);
             
-			$this->db->query("
-                
-                UPDATE escenas 
-                    
-                    SET 
-                        
-                        Nombre = '$name', 
-                        hfov = '$hfov',
-                        pitch = '$pitch', 
-                        yaw = '$yaw', 
-                        tipo = '$type', 
-                        panorama = '$panorama' 
-                            
-                            WHERE cod_escena = '$cod'");
+            $resultado=$this->upload->do_upload('panorama');
 			
-			return $this-> db->affected_rows();
+            if($resultado) {
+                
+                //////////////////////
+                //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
+                /////////////////////
+
+                
+                $name = $this->input->post_get["name"];
+                $pitch = $_REQUEST["pitch"];
+                $yaw = $_REQUEST["yaw"];
+                $type = $_REQUEST["type"];
+                $panorama = $this->upload->data()["client_name"];
+                $cod = substr($panorama, 0 , -4);
+
+                $this->db->query("
+
+                    UPDATE escenas 
+
+                        SET 
+
+                            Nombre = '$name', 
+                            cod_escena = '$cod',
+                            pitch = '$pitch', 
+                            yaw = '$yaw', 
+                            tipo = '$type', 
+                            panorama = assets/imagenes/escenas/'$panorama' 
+
+                                WHERE cod_escena = '$cod'");
+
+                return $this->db->affected_rows();
+            }
+            else {
+                echo $this->upload->display_errors();
+            }
 		}
 		
 	}

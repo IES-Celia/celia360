@@ -12,7 +12,7 @@ class AudM extends CI_Model {
         $r = "";
 
         $st = $_FILES["audio"]["name"];
-        $f_def = "audios/" . $_FILES["audio"]["name"];
+        $f_def = "assets/audio/" . $_FILES["audio"]["name"];
         if (move_uploaded_file($_FILES['audio']['tmp_name'], $f_def)) {
             echo "El fichero es válido y se subió con éxito.\n";
             $insrt = "insert into audio (url_aud,desc_aud, tipo_aud)values('$f_def','$desc','$tipo')";
@@ -24,17 +24,27 @@ class AudM extends CI_Model {
         return $r;
     }
 
-    public function buscaraud() {
-
-        $sel = "select * from audio";
+    public function buscaraud($a, $b) {
+        $sel = "select * from audio limit $a,$b";
         $res = $this->db->query($sel);
         $tabla = array();
         foreach ($res->result_array() as $fila) {
             $tabla[] = $fila;
         }
-
         return $tabla;
     }
+     public function buscar(){
+        $sel = "select count(*) from audio";
+        $res = $this->db->query($sel);
+        $tabla = array();
+        foreach ($res->result_array() as $fila) {
+            $tabla[] = $fila;
+            
+        }
+        $res=$tabla[0]["count(*)"];
+        return $res;
+
+        }
 
     public function borraraud($id_aud) {
         $s = "select url_aud from audio where id_aud='$id_aud'";
@@ -53,8 +63,8 @@ class AudM extends CI_Model {
         $url = $this->input->post_get("url_aud");
         $desc = $this->input->post_get("desc_aud");
         $tipo = $this->input->post_get("tipo_aud");
-
-        $url1 = "" . $url . ".mp3";
+        
+        $url1 = "assets/audio/" . $url . ".mp4";
 
         $s = "select url_aud from audio where id_aud='$id'";
         $res = $this->db->query($s);
@@ -88,6 +98,8 @@ class AudM extends CI_Model {
         else
             return false;
     }
+   
+      
 }
 
 ?>

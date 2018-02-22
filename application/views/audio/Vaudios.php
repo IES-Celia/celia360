@@ -1,28 +1,45 @@
  <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
  <style type="text/css">
-    #modificar{
+     #contenedor {
+         display:none;
+         width:100%;
+         height:100%;
+         z-index: 1; 
+     }
+     #modificar{
         display:none;
-        z-index: 1;
-        position: fixed;
-        top: 10%;
+        z-index: 2;
+        position: absolute;
+        top: 5%;
         left: 30%;
         width: 600px;
-        height: 660px;
+        height: 650px;
         background-color: #ffffff;
         border: 3px solid ;
+        overflow: auto;
     }
 
     #insertar{
         display:none;
         z-index: 1;
-        position: fixed;
-        top: 10%;
+        position: absolute;
+        top: 5%;
         left: 30%;
         width: 600px;
         height: 580px;
         background-color: #ffffff;
         border: 3px solid ;
+        overflow: auto;
     }
+    #div_pag{
+        position: relative;
+        top:20px;
+        text-align: center;
+    }
+    .paginacion{
+        border: 1px solid #ddd;
+    }
+ 
 
 </style>
 <?php
@@ -36,6 +53,7 @@ echo"<table align='center' id='cont'><tr>
 <th>Modificar</th>
 <th>Eliminar</th>
 </tr>
+
 ";
 
 foreach ($tabla as $re) {
@@ -50,12 +68,18 @@ foreach ($tabla as $re) {
 	</audio></td>";
     echo"<td><a onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
     echo"<td><a href='" . site_url("audio/borraraud/" . $re["id_aud"]) . "'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
-    
+  
 }
 echo "</table>";
+$ant = $primero - $cantidad;
+if($ant<0)$ant=0;
+$sig = $primero + $cantidad;
+if($sig>$total) $sig=$total;
+echo "<div id='div_pag'><a class='paginacion' href='". site_url("audio/mostraraudios/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("audio/mostraraudios/") ."$sig'>Siguiente</a></div>";
 
 //Capa formulario modificar
 echo "
+<div id='contenedor'>
 <div id='modificar'>
     <h1>Modificar Audio</h1>
     <form  class='for' action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
@@ -68,9 +92,9 @@ echo "
  			<option value='d-objeto'>definir objeto</option>
 		</select><br/><br/>
                     <input type='submit'>
+                    <a href='#' onclick='cerrar()'>Cerrar</a>
                 </form>
-    <a href='#' onclick='cerrar()'>Cerrar</a>
-</div>";
+</div></div>";
 
 //Capa formulario insertar
 echo"
@@ -85,26 +109,29 @@ echo"
 		</select><br/><br/>
 		<input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'> 
     <input type='submit'>
-</form>
     <a href='#' onclick='cerrar()'>Cerrar</a>
-      
+      </form>
 </div>";
 
-
+        
 
 ?>
 
 <script>
-
+        
         function mostrarm(id){
             url = "url_aud"+id;
             desc = "desc_aud"+id;
             tipo = "tipo_aud"+id; 
+            url1=document.getElementById(url).innerHTML;
+            u=url1.substring(13, url1.length-4);
+            
             document.getElementById("url").value = document.getElementById(url).innerHTML;
             document.getElementById("desc").value = document.getElementById(desc).innerHTML;
             document.getElementById("select").value = document.getElementById(tipo).innerHTML;
             document.getElementById("id").value = id;
             
+            $("#contenedor").show();
             $("#modificar").show();
         }
 
@@ -117,5 +144,6 @@ echo"
             $("#insertar").hide();
              $("#modificar").hide();
         }    
+        
        
 </script>
