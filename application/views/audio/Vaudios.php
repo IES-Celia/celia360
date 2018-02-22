@@ -33,11 +33,20 @@
     }
     #div_pag{
         position: relative;
-        top:20px;
+        top:25px;
         text-align: center;
+        
     }
     .paginacion{
-        border: 1px solid #ddd;
+        border: 4px solid #ddd;
+        font-family: verdana, arial, sans-serif; 
+        font-size: 10pt; 
+        font-weight: bold; 
+        padding: 4px; 
+        background-color: #ffffcc; 
+        color: #666666; 
+        text-decoration: none;
+        padding: 8px 16px;
     }
  
 
