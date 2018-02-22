@@ -151,13 +151,13 @@
 			<script>
 				wheelzoom(document.querySelector('img.zoom'));
 			</script>
-			<div>
-				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
+			<div style="margin-top:10px;">
+				<input type='text' id='numeropag' style="padding:2px;"><?php echo "<input style='padding:2px;' type='text' id='cantpag' value='/$num_pag' readonly>";?>
 			</div>
 			<?php 
 				echo " 
 					<div class='descargar'> 
-						<a href='assets/pdf/$id_libro.pdf'  target='_blank' style='text-decoration: none; background:#FF0000;padding:10px;color:white;border-radius:10px;float:right;margin-right:30px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+						<a href='assets/pdf/$id_libro.pdf'  target='_blank' style='text-decoration: none; background:#FF0000;padding:10px;color:white;border-radius:10px;float:right;margin-right:30px;margin-top:-20px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 					</div>"; 
 			?>
 		</div>
