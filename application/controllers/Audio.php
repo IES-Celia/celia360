@@ -4,15 +4,18 @@
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 class Audio extends CI_Controller {
-
+    
+    private $audios_por_pagina = 3;
+    
     public function __construct() {
         parent::__construct();
         $this->load->model("Audm");
         $this->load->model("UsuarioModel");
+        $this->load->library( 'pagination' );
     }
 
     public function index() {
-        $this->mostraraudios();
+        $this->mostraraudios($primero=0);
     }
 
     public function forminsertaraudio() {
@@ -41,11 +44,15 @@ class Audio extends CI_Controller {
         }
     }
 
-    public function mostraraudios() {
-        $datos["tabla"] = $this->Audm->buscaraud();
+    public function mostraraudios($primero=0) {
         $datos["vista"] = "audio/Vaudios";
+        $datos["primero"] = $primero;
+        $datos["total"]=$this->Audm->buscar();
+        $datos["cantidad"] = $this->audios_por_pagina;
+        $datos["tabla"] = $this->Audm->buscaraud($primero, $this->audios_por_pagina);
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
+        
     }
 
     public function borraraud($id) {
@@ -102,6 +109,8 @@ class Audio extends CI_Controller {
         echo $html; 
         echo '</table>';
     }   
+
+
 
 }
 
