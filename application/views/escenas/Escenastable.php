@@ -80,7 +80,7 @@
 <?php
 
 	echo "<table align='center' id='cont'>";
-	echo "<tr> 
+	echo "<tr id='cabecera'> 
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>
 		  <th> Codigo Escena </th>
