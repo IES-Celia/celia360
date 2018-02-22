@@ -15,14 +15,12 @@
 		
 					Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
 				
-					hfov: <input type='text' name='hfov' value=" . $con['hfov'] . "> <br/>
-				
 					Coordenada Pitch y Yaw:<br> 
     <a href='".site_url('welcome/cargar_escena/'.$con['cod_escena'].'/'."update_escena_pitchyaw/")."'>Modificarlos</a><br><br>
 				
 					type: <input type='text' name='type' value=" . $con['tipo'] . "> <br/>
 				
-					panorama: <input type='text' name='panorama' value=" . $con['panorama'] . "> <br/>
+					panorama: <input type='file' name='panorama' value=" . $con['panorama'] . "> <br/>
 					    
 				    <input type='hidden' name='Id' value=". $con['id_escena'].">
 					    
