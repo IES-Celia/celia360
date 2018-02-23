@@ -24,8 +24,8 @@
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-salto' readonly="readonly"><br> 
             Tipo: <input type='text' name='tipo' value='scene' readonly="readonly"> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='puntos' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs'><br> 
-            sceneId: <input type='hidden' name='sceneId'><br>
+            clickHandlerArgs: <input type='text' name='clickHandlerArgs' readonly='readonly'><br> 
+            sceneId: <input type='text' name='sceneId' readonly='readonly'><br>
             <button id="btn-mapa" type="button">Abrir mapa</button>
 
             <div id="mapa_escena" >
@@ -36,12 +36,16 @@
 
                 foreach ($mapa as $imagen) {
                     
-                    echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+                    echo "<div id='p".$indice."' class='pisos pisos_hotspots' style='background-image: url(".base_url($imagen['url_img']).");'>";
                     
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
-                        
-                            echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='punto_mapa(\"".$punto['id_escena']."\");'></div>";
+                            if($punto['id_escena'] == $id_scene){
+                                echo "<div id='".$punto['nombre']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }else{
+                                echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }
+                            
                         
                         
                         }
