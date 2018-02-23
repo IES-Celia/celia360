@@ -17,6 +17,13 @@
     background: white;
     position: absolute;
 }
+.punto_inicial{
+    width: 1.5%;
+    height: 2.5%;
+    border-radius: 50%;
+    background: maroon;
+    position: absolute;
+}
 
 #btn-subir-piso, #btn-bajar-piso{
 	top: 20%;

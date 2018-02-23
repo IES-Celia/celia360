@@ -27,30 +27,35 @@ $(document).ready(function() {
    	
    	$(".pisos").contextmenu(function(event){
    		
+		if (!$(this).hasClass("pisos_hotspots")) {
+			var id = $(this).children().last().children().attr('id')
 
-   		var id = $(this).children().last().children().attr('id')
+			var prefijo = parseInt(id.split("punto")[1]) + 1;
+			
+			id = $(this).attr('id')+"punto"+prefijo;
+			
+			
 
-   		var prefijo = parseInt(id.split("punto")[1]) + 1;
-   		
-   		id = $(this).attr('id')+"punto"+prefijo;
-   		
-   		
-
-   		var izquierda = $(this).offset();
-   		var anchura = $(this).width()
-   		var altura = $(this).height()
-   		var left = event.pageX-izquierda.left;
-   		left = (100*left)/anchura
-   		var top = event.pageY-izquierda.top;
-   		top = (100*top)/altura
-   		location.href=base_url+"escenas/showinsert/"+id+"/"+left.toFixed(2)+"/"+top.toFixed(2);
+			var izquierda = $(this).offset();
+			var anchura = $(this).width()
+			var altura = $(this).height()
+			var left = event.pageX-izquierda.left;
+			left = (100*left)/anchura
+			var top = event.pageY-izquierda.top;
+			top = (100*top)/altura
+			location.href=base_url+"escenas/showinsert/"+id+"/"+left.toFixed(2)+"/"+top.toFixed(2);
 
 
-   		event.preventDefault();
-   		
-
-   		
-   	})
+			event.preventDefault();
+		}
+	});
+	   
+	$(".puntos").click(function() {
+		$(".puntos").css("background", "white");
+		$(this).css("background", "yellow")
+		$("#puntoEscena > form > input[name=sceneId]").val($(this).attr("escena"));
+		$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"))
+	})
    	
    	/*=====  End of Inserción de puntos  ======*/
    	

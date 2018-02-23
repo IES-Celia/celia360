@@ -62,9 +62,22 @@
 		margin-left:30px;
 		margin-top:-110px;
 	}
+	body{
+		
+	}
+	#contenedorbiblioteca{
+		background:url('../assets/imagenes/portada/portada5.jpg');
+		 background-size: cover;
+		width:100%;
+		height:auto;
+		
+	}
+
 </style>
+<body>
+	<div id="contenedorbiblioteca">
 <?php 
-	  echo "<div style='width:100%; margin:0 auto;'"; 
+	  echo "<div id='' style='width:100%; margin:0 auto;'"; 
             echo "<div class='headerbiblioteca' >"   ;   
             echo "<h1 style='text-align:center;'>BIBLIOTECA IES CELIA VIÑAS</h1>"; 
             echo "<img class='iniciologo' src='".base_url("assets/imagenes/portada/logo.png")."' >";
@@ -79,7 +92,7 @@
 		       
 		                     
 		          echo "<td class='tablatodo'>";
-		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:65px;padding:15px;'>'".$ides['titulo']."'";
+		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:50px;padding:10px;'>'".$ides['titulo']."'";
 		          echo "</td>";
 		      }
 		          if ($i%5 == 0)  echo "</tr><tr class=''>";
@@ -104,3 +117,5 @@
         </div>
     </div>
   </div>
+ </div>
+</body>
