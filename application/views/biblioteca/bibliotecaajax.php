@@ -8,6 +8,10 @@
 		margin-right:15px;
 		margin-left:15px;
 	}
+	.tablatodo{
+		width:200px !important;
+		height:200px !important;
+	}
 </style>
 <?php 
 	  echo "<div style='width:90%; margin:0 auto; ' "; 
@@ -21,7 +25,7 @@
         $i++;
        
                      
-          echo "<td class=''>";
+          echo "<td class='tablatodo'>";
           echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:black;color:white;margin-top:20px;height:65px;'>'".$ides['titulo']."'";
           echo "</td>";
       }
