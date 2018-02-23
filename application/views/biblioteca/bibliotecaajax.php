@@ -11,7 +11,7 @@
 	.tablatodo{
 		width:200px !important;
 		height:200px !important;
-		padding:15px;
+		padding:25px;
 	}
 	.pepitoo{
 		width:100%;
@@ -20,16 +20,16 @@
 		background:#000000d9;
 	}
 	.pepitoo h1{
-		width: 93%;
+		width: 90%;
     	padding: 20px;
-    	height:55px;
+    	height:54px;
 	}
 	table{
 		margin-top:80px;
 	}
 </style>
 <?php 
-	  echo "<div style='width:90%; margin:0 auto; ' "; 
+	  echo "<div style='width:100%; margin:0 auto; ' "; 
             echo "<div class='pepitoo' >"   ;   
             echo "<h1 style='text-align:center;'>BIBLIOTECA IES CELIA VIÑAS"; 
             echo "<table style=''>";  
