@@ -33,7 +33,7 @@
         
     </div>
     
-    <span class="sidenavmenu" onclick="openNav()">&#9776; Menu </span>
+    <span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menu </span>
 
     
 

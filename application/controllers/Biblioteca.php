@@ -139,6 +139,12 @@ class Biblioteca extends CI_Controller {
 		$this->load->view("biblioteca/libroajax", $datos);
 	}
 
+	public function ver_biblioteca_ajax($id_libro,$apaisado,$tipo){
+		$datos["id_libro"] = $idlibro;
+		$datos["apaisado"] = $apaisado;
+		$datos["tipo"]= $tipo;
+		$this->load->view("biblioteca/libroajax", $datos);
+	}
 	public function get_libro_modal($id_libro, $tipo_libro) {
 		$datos["id_libro"] = $id_libro;
 		$datos["tipo_libro"] = $tipo_libro;

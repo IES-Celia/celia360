@@ -17,6 +17,8 @@
           apaisado = $(this).attr("apaisado");
           $('.modalita2').load('biblioteca/verLibroAjax/'+idlibro+'/'+apaisado);
       });
+      
+
 
       $('#cerrarmodal').click(function(){
         $('.modalita2').css({display:"none"});
@@ -36,10 +38,7 @@
   </script>
 <style>
   
-#completo{
-  width:95%;
-  margin:0 auto;
-}
+
 #portadaLibros{
   width:20%;
   float:left;
@@ -155,30 +154,6 @@
     </div>
   </div>
 
-
-              <div id="bibliotecaajax" style=" margin-top:-950px; display:none;width:100%;z-index:999999999999999999999999999999;">
-                <?php 
-
-                        echo "<div id='completo'>";  
-                            $i = 0;
-                            foreach ($libros as $ides){
-                              $i++;
-
-                              //Sacamos las portadas de los libros
-                             
-                                echo "<div id='portadaLibros'>";
-                                  echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
-                                echo "</div>";
-                                  if ($i%4 == 0)  echo "<div>";
-                                
-                                    }
-                          
-
-                        echo "</div></div>";
-
-                ?>
-
-            </div>
 
   <!--FINALIZA BIBLIOTECA -->
   
