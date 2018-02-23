@@ -13,23 +13,27 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa_escena.js"); ?>"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
        
     <!-- CSS CMS -->
     
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
+    </head>
     
+    <body>
     
+    <div id="fondo">
     <?php 
         error_reporting(7);
             if (!ini_get('display_errors')) {
                 ini_set('display_errors', '0');
             }
     ?>
+        <div id="menu">
     <p align="center">Estás logueado como <?php echo $this->session->nombreusr;?></p>
-</head>
-	
-<body>
+
+
+
+
     
-</body>
-</html>

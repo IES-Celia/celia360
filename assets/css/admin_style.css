@@ -1,3 +1,32 @@
+    body{
+       background: url(fondo.JPG) no-repeat center center fixed;
+       background-size: 100%;
+    }
+
+    p{
+        text-align: center;
+
+    }
+
+    #fondo{
+        background-color: rgba(39, 152, 231,0.2);
+        width:100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    #menu{
+        height: 100px;
+        background-color:rgba(0,0,0,0.7);
+        border-bottom: 5px solid #ffffff;
+        margin-bottom: 30px;   
+    }
+    
+    #menu p{
+
+        float: right;
+        margin-right: 30px;
+    }
 
 
     #cont tr:hover{
@@ -215,11 +244,11 @@
     .sidenavmenu {
         font-size:50px;
         cursor:pointer;
-        color:black;
+        color:#ffffff;
         background:transparent;
-        margin-top: -8px;
-        margin-left: -8px;
+        margin-top: 30px;
         transition:0.4s;
+        margin-left: 40px;
     }
         
     .sidenavmenu:hover{
