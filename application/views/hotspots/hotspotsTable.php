@@ -11,7 +11,7 @@
 echo "<a class='insert' href='".site_url("hotspots/show_insert_hotspot")."'> Insertar Nuevo HotSpot </a>";
 
 echo "<table id='cont'>";
-echo "<tr> 
+echo "<tr id='cabecera'> 
 	  <th> Id Hotspot </th>
 	  <th> Descripcion </th> 
 	  <th> Pitch </th>

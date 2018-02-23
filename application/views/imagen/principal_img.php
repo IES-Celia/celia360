@@ -70,7 +70,7 @@ echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_image
 //cabecera  <th>Texto</th>
 //tabla <td>" . $ima["texto_imagen"] . "</td>
 echo "<br><table id='cont'>";
-echo '<tr><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
+echo '<tr id='cabecera'><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
 
 foreach ($lista_imagenes as $ima) {
     $fila = $ima["id_imagen"];

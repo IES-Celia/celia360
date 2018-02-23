@@ -28,7 +28,7 @@
 
 <?php
 echo"<a class='insert' onclick='mostrar()'>Insertar</a>";
-echo"<table align='center'  id='cont'><tr>
+echo"<table align='center'  id='cont'><tr id='cabecera'>
 <th>ID</th>
 <th>URL</th>
 <th>Descripcion</th>
