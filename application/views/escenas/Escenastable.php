@@ -25,19 +25,12 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
-        /*$(".borrar").click(function(){
-        
-            if(confirm("Realmente desea eliminar?"))
-            {
-            return true;
-                <?php
-//                   echo"<a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."";
-                ?>
-            }else{
-            return false;
+        function borrarusuario(id){
+            resultado=confirm("¿Desea borrar el usuario?");
+            if(resultado){ 
+            $.get("<?php echo base_url('escenas/deletescene/'); ?>" + id, null, respuesta);
             }
-        
-        });*/
+        }
 });
                      
                             
@@ -99,8 +92,8 @@
             <td align='center'>".$escenas['pitch']."</td>
             <td align='center'>".$escenas['yaw']."</td>
             
-            <td align='center' class='borrar'>
-            <a href= '".site_url("/escenas/deletescene/".$escenas['id_escena'])."'> <i class='fa fa-trash' style='font-size:30px;'></i> </a>
+            <td align='center'>
+            <a href='#' onclick='borrarusuario(".$escenas["id_escena"].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
             </td>
             
             <td align='center'>
