@@ -28,24 +28,39 @@
         
     }
 
-
     #insertar{
         display:none;
         z-index: 1;
         position: fixed;
-        top: 30%;
-        left: 30%;
-        width: 600px;
-        height: 300px;
-        background-color: #ffffff;
+        padding-top: 100px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
         border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
+
     }
+
+
+    #sub_ins{
+        background-color: #ffffff;
+        width: 80%;
+        text-align: center;
+        position: fixed;
+        margin-left:auto; 
+        margin-right:auto;
+    }
+
+    
 
 </style>
 
 <?php
 //Tabla usuarios
- echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
+ echo"<a class='insert' onclick='insertar()' > Insertar Usuario</a>";
  echo "</div>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
@@ -82,10 +97,10 @@ foreach ($tablaUsuarios as $usu) {
     
 
     echo"   <td>
-                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'>Modificar</a>
+                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'></a>
             </td>
             <td>
-                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'>Borrar</a>
+                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='far fa-trash-alt'></i></a>
             </td>
         </tr>";
 }
@@ -113,6 +128,7 @@ echo "
 //Capa formulario insertar
 echo"
 <div id='insertar'>
+    <div id='sub_ins'>
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
@@ -131,7 +147,8 @@ echo"
     <input type='submit'>
     <a href='#' onclick='cerrar()'>Cerrar</a>
    
-</form>    
+</form> 
+    </div>   
 </div>";
 
 ?>
@@ -172,13 +189,13 @@ echo"
             $("#modificar").css('display','block');
         }
 
-        function mostrar(){
-            $("#insertar").show();
+        function insertar(){
+            $("#insertar").css('display','block');
         }
 
         function cerrar(){
-            $("#insertar").hide();
-             $("#modificar").hide();
+            $("#insertar").css('display','none');
+             $("#modificar").css('display','none');
         }    
        
 </script>
