@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+    
 
     <style type="text/css">
             #modificar{
@@ -102,12 +98,10 @@
 
 	</script>
 
-</head>
-<body>
     <div>
         <?php
-            echo "<table id='contenido'>";
-                    echo "<tr>
+            echo "<table id='cont' style='margin-top:80px;'>";
+                    echo "<tr id='cabecera'>
                             <th>Id<a href='#' onClick='ordenarCampo(\"id_libro\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th>
                             <th>Titulo<a href='#' onClick='ordenarCampo(\"titulo\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th>
                             <th>Autor<a href='#' onClick='ordenarCampo(\"autor\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th>
@@ -320,8 +314,6 @@
 
 </div>
 
-</body>
-</html>
 
 
 
