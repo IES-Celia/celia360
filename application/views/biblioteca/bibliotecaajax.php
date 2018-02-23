@@ -9,7 +9,9 @@
         $('.modalita2').toggle('slow');
           idlibro = $(this).attr("idlibro");
           apaisado = $(this).attr("apaisado");
-          $('.modalita2').load('biblioteca/ver_biblioteca_ajax/'+idlibro+'/'+apaisado+'/'+tipo);
+          tipo = $(this).attr("tipo");
+          alert('<?php echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
+          $('.modalita2').load('<?php echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
       });
  $('#cerrarmodal').click(function(){
         $('.modalita2').css({display:"none"});
