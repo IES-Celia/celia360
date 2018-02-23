@@ -31,10 +31,4 @@
   echo "</div>";
 echo "</div>";
 
-
-
- echo "<div style='text-align:center;background:black;color:white;margin-top:20px;height:65px;'>'".$ides['titulo']."'";
-
-
-
 ?>
