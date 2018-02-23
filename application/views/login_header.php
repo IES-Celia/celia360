@@ -33,3 +33,4 @@
 </head>
 	
 <body>
+    <div id="fondo">
