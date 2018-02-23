@@ -136,6 +136,10 @@
 			}
 			return $res;
 		}
+		public function busqueda_aproximada($str_busqueda){
+					$res = $this->db->query("Select * from libros where id_libro LIKE '%".$q."%' OR titulo LIKE '%".$q."%' OR autor LIKE '%".$q."%' OR editorial LIKE '%".$q."' ");
+					return $res;
+		}
 
 		//Renombrar archivos de una carpeta
 		/*public function rename_cont($id_libro){

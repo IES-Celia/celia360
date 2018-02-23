@@ -96,6 +96,8 @@
 	    }
 
 
+      // $("#tabla").load("biblioteca/buscar_libro_ajax/"+busqueda);
+
 	</script>
 
     <div>

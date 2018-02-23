@@ -140,7 +140,7 @@ class Biblioteca extends CI_Controller {
 	}
 
 	public function ver_biblioteca_ajax($id_libro,$apaisado,$tipo){
-		$datos["id_libro"] = $idlibro;
+		$datos["id_libro"] = $id_libro;
 		$datos["apaisado"] = $apaisado;
 		$datos["tipo"]= $tipo;
 		$this->load->view("biblioteca/libroajax", $datos);
@@ -151,6 +151,63 @@ class Biblioteca extends CI_Controller {
         $datos["vista"] ="biblioteca/libro.php";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin", $datos);
+	}
+
+	public function buscar_libro_ajax($str_busqueda) {
+		$lista_libros = $this->bibliotecaModel->busqueda_aproximada($str_busqueda);
+		if($resultado->num_rows > 0){
+		$salida.="
+			<table border='1px solid black' style='border-spacing: 0;' class='tabla_datos'>
+				<thead>
+				<tr>
+					<th>IDLIBRO</th>
+					<th>TITULO</th>
+					<th>AUTOR</th>
+					<th>EDITORIAL</th>
+					<th>LUGAR EDICION</th>
+					<th>FECHA EDICION</th>
+					<th>ISBN</th>
+					<th>TIPO</th>
+					<th>APAISADO</th>
+				</tr>
+				</thead>
+				<tbody>
+		";
+
+		
+		while ($fila = $resultado->fetch_assoc()){
+
+			$salida.="<tr>
+				<td >".$fila['id_libro']."</td>
+				<td >".$fila['titulo']."</td>
+				<td >".$fila['autor']."</td>
+				<td >".$fila['editorial']."</td>
+				<td >".$fila['lugar_edicion']."</td>
+				<td >".$fila['fecha_edicion']."</td>
+				<td >".$fila['ISBN']."</td>
+				<td >".$fila['tipo']."</td>
+				<td >".$fila['apaisado']."</td>
+				<td> 
+					<a href='#'> <i title='Modificar' class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
+				</td>
+				<td>
+					<a href=''><i title='Insertar Páginas' class='fa fa-file-image-o' aria-hidden='true'></i></a>
+				</td>
+				<td>
+					<a href='#' onClick='borrarlibro('')'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a>
+				</td>
+			</tr>";
+			 
+		}
+		$salida.="</tbody></table>";
+
+	} else{
+		$salida.= "no hay datos MEN :(";
+	}
+
+	echo $salida;
+
+
 	}
 
 }
