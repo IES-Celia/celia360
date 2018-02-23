@@ -116,6 +116,10 @@
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
+					$directorio_PDF ="assets/pdf/$id_libro";
+					$arrayPDF = scandir($directorio_PDF);
+					$num_pdf = count($arrayPDF)-1;
+
 					if($apaisado==0){
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
@@ -126,7 +130,7 @@
 						}
 					}else{
 				?>
-<!-- 						<script type="text/javascript">
+				<!-- <script type="text/javascript">
 							ancho = 1076;
 							alto = 404;
 						</script> -->
@@ -155,9 +159,12 @@
 			<div>
 				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
 			</div>
-			<!-- <div class="descargar"> -->
-				<!-- <a href="" style="text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;" >Descargar PDF &nbsp;&nbsp;<i class="far fa-file-pdf"></i></a> -->
-			<!-- </div> -->
+			<?php 
+			echo " 
+				<div class='descargar'> 
+					<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;float:right;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+				</div>"; 
+			?>
 		</div>
 
 		

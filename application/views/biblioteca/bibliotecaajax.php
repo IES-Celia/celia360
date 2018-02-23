@@ -22,7 +22,7 @@
        
                      
           echo "<td class=''>";
-          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:black;color:white;margin-top:20px;height:65px;'>'".$ides['titulo']."'";
           echo "</td>";
       }
           if ($i%5 == 0)  echo "</tr><tr class=''>";
@@ -33,7 +33,7 @@ echo "</div>";
 
 
 
-
+ echo "<div style='text-align:center;background:black;color:white;margin-top:20px;height:65px;'>'".$ides['titulo']."'";
 
 
 
