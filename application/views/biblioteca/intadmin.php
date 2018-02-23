@@ -73,14 +73,14 @@
 	    function ordenarCampo(campo) {
 	        id_columna = campo;
 	        tabla.sort(ordenacion);
-	        html = "<table id='contenido'><tr><th>Id<a href='#' onClick='ordenarCampo(\"id_libro\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Titulo<a href='#' onClick='ordenarCampo(\"titulo\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Autor<a href='#' onClick='ordenarCampo(\"autor\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Editorial<a href='#' onClick='ordenarCampo(\"editorial\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Lugar de edicion<a href='#' onClick='ordenarCampo(\"lugar_edicion\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Fecha de edicion<a href='#' onClick='ordenarCampo(\"fecha_edicion\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>ISBN<a href='#' onClick='ordenarCampo(\"ISBN\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Tipo<a href='#' onClick='ordenarCampo(\"tipo\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Apaisado<a href='#' onClick='ordenarCampo(\"apaisado\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><td colspan='3'><a href='/biblioteca/showinsertlibro'><i class='fa fa-plus' aria-hidden='true'></i><i title='Insertar libro' class='fa fa-book' aria-hidden='true'></i></a></td></tr>";
+	        html = "<table id='cont' style='margin-top:80px;'><tr id='cabecera'><th>Id<a href='#' onClick='ordenarCampo(\"id_libro\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Titulo<a href='#' onClick='ordenarCampo(\"titulo\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Autor<a href='#' onClick='ordenarCampo(\"autor\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Editorial<a href='#' onClick='ordenarCampo(\"editorial\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Lugar de edicion<a href='#' onClick='ordenarCampo(\"lugar_edicion\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Fecha de edicion<a href='#' onClick='ordenarCampo(\"fecha_edicion\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>ISBN<a href='#' onClick='ordenarCampo(\"ISBN\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Tipo<a href='#' onClick='ordenarCampo(\"tipo\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><th>Apaisado<a href='#' onClick='ordenarCampo(\"apaisado\")'><i title='Ordenar' class='fa fa-trash' aria-hidden='true'></i></a></th><td colspan='3'><a href='/biblioteca/showinsertlibro'><i class='fa fa-plus' aria-hidden='true'></i><i title='Insertar libro' class='fa fa-book' aria-hidden='true'></i></a></td></tr>";
 	        for(var i in tabla)  {
 	            fila = tabla[i];
 	            html = html + "<tr id='libro" + fila['id_libro'] + "'><td>" + fila["id_libro"] + "</td><td>" + fila["titulo"] + "</td><td>" + fila["autor"] + "</td><td>" + fila["editorial"] + "</td><td>" + fila["lugar_edicion"] + "</td><td>" + fila["fecha_edicion"] + "</td><td>" + fila["ISBN"] + "</td><td>" + fila["tipo"] + "</td><td>" + fila["apaisado"] + "</td><td></td><td><a href='/biblioteca/showmodificarlibro/" + fila["id_libro"] + "'><i title='Modificar' class='fa fa-pencil-square-o' aria-hidden='true'></i></a><td><a href='/biblioteca/showinsertimg/" + fila["id_libro"] + "'><i title='Insertar Páginas' class='fa fa-file-image-o' aria-hidden='true'></i></a></td><td><a href='#' onClick='borrarlibro(" + fila['id_libro'] + ")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td><td><a href='/biblioteca/verLibro/" + fila["id_libro"] + "'>Ver libro</a></td></tr>";
 	        }
 	        html = html + "</table>";
-	        $("#contenido").empty();
-	        $("#contenido").html(html);
+	        $("#cont").empty();
+	        $("#cont").html(html);
 
 	    }
 
@@ -95,8 +95,6 @@
 	        }
 	    }
 
-
-      // $("#tabla").load("biblioteca/buscar_libro_ajax/"+busqueda);
 
 	</script>
 
