@@ -84,6 +84,7 @@
 	
 	foreach ($tablaEscenas as $escenas){
 		
+        $id=$escenas["id_escena"];
 		echo "<tr>
             
             <td align='center'>". $escenas['id_escena']."</td>
