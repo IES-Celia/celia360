@@ -90,7 +90,7 @@
 
 ?>
 
-<div class="modalita2" style="display: none; background:black;" >
+<div class="modalita2" style="display: none;" >
       <div class="contenido2" style="width:1000px;background-color:white;margin:0 auto;margin-top:40px;">
         <div class="cabecera-ventana" style="background-color:white;height:60px;">
           <h1 style="text-align:center;border-bottom:1px solid black;">Titulo Libro</h1>
