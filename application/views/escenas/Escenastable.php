@@ -56,7 +56,9 @@
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'/'."show_insert_hotspot/")."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;'></div></a>";
+              echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+              <span class='tooltip'>".$punto['nombre']."</span>
+              </div>";
             
             }
             

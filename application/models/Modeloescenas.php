@@ -66,15 +66,34 @@
             }
 		}
 
-		public function borrar ($id) {
+        public function borrar($cod){
+            $sql ="DELETE FROM puntos_mapa WHERE id_escena = '$cod'";
+            $this->db->query($sql);
+            
+            $sql = "DELETE FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod') ";
+            $this->db->query($sql);
+
+            $sql = "DELETE FROM escenas WHERE cod_escena = '$cod' ";
+            $this->db->query($sql);
+
+
+        
+            return $this->db->affected_rows();
+        } 
+        
+		/*public function borrar ($id) {
             $sql ="DELETE FROM puntos_mapa WHERE id_escena = (SELECT cod_escena FROM escenas WHERE id_escena = '$id') ";
 			$this->db->query($sql);
 
             $sql = "DELETE FROM escenas WHERE id_escena = '$id' ";
+
+            $sql = "DELETE FROM escenas_hotspots WHERE id_escena =  ";
             $this->db->query($sql);
+
+
         
             return $this->db->affected_rows();
-        }
+        }*/
 
 		public function update ($cod) {
 			
