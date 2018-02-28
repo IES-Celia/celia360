@@ -11,8 +11,8 @@
 			$(document).ready(function(){
 				
 				$("#flipbook").turn({
-					width: 900,
-					height: 550,
+					width: 1000,
+					height: 650,
 					elevation: 50,
 					autoCenter: true,
 					duration:2500
@@ -123,10 +123,10 @@
 					if($apaisado==0){
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
+								echo"<div class='hard'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
 							else
 								echo "<div class='pag'> <img class='zoom' id='img$i'  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
-						 width='450' height='550' alt='' /> </div>";
+						 width='500' height='650' alt='' /> </div>";
 						}
 					}else{
 				?>
@@ -137,9 +137,9 @@
 						<?php
 						for($i = 0;$i<$num_pag;$i++){
 							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='hard'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='450' height='550' alt=''> </div>";
+								echo"<div class='hard'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
 							else
-								echo "<div class='pag '><img class='zoom'  id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='450' height='550' alt='' /> </div>";
+								echo "<div class='pag '><img class='zoom'  id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt='' /> </div>";
 						}
 					}
 

@@ -139,8 +139,8 @@
         $dir =  explode("/", $vista);
         $dir = $dir[0];
 
-        if ($tipo == 1 && ($dir == "audio" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir== "usuario")) return true;
-        else if ($tipo == 2 && ($dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" ) )return true;
+        if ($tipo == 1 && ($dir == "audio" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir== "usuario" || $dir == "guiada")) return true;
+        else if ($tipo == 2 && ($dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir == "guiada" ) )return true;
         else if ($tipo == 3 && $dir == "biblioteca") return true;
         else return false;
 

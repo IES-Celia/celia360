@@ -148,7 +148,8 @@ class Hotspots extends CI_Controller {
             $joshua = $this->hotspotsModel->insertarHotspotPanel();
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["vista"]="hotspots/hotspotPanel";
-            $datos["idhs"]=$joshua;
+            $datos["idhs"]=$joshua[0];
+            $datos["escena_actual"]=$joshua[1];
             //cargar el modelo
             $this->load->model("Img");
             //acciones para ver el listado de imagenes
@@ -180,8 +181,15 @@ class Hotspots extends CI_Controller {
   
   public function add_imgs_hotspot(){
     //Añade las imagenes a la base de datos
+    
     $resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
-    var_dump($resultado);
+    if($resultado[0] > 0){
+        echo base_url("/welcome/cargar_escena/".$resultado[1]."/show_insert_hotspot");
+    }else{
+        //ERROR
+    echo "SE HA MATADO PACO";
+    }
+   
     //TODO: añadir mensaje de la situacion.
   }
   
@@ -190,10 +198,22 @@ class Hotspots extends CI_Controller {
  }
   
  public function load_panel(){
-  $id = $_REQUEST["id_hotpost"];
+  $id = $_REQUEST["id_hotspost"];
   $resultado = $this->hotspotsModel->cargar_imagenes_panel($id);
   //TODO: añadir mensaje de la situacion
  }
+
+ public function load_video(){
+    $id = $_REQUEST["id_hotspot"];
+    $resultado = $this->hotspotsModel->cargar_video($id);
+    //TODO: añadir mensaje de la situacion
+}
+
+public function load_audio(){
+    $id = $_REQUEST["id_hotspot"];
+    $resultado = $this->hotspotsModel->cargar_audio($id);
+    //TODO: añadir mensaje de la situacion
+}
 
     public function process_insert_audio(){
         $resultado = $this->hotspotsModel->insertarHotspotAudio();

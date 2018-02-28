@@ -98,6 +98,18 @@ class AudM extends CI_Model {
         else
             return false;
     }
+
+//NO BORRAR QUE ME HACE FALTA PARA LA GUIADA
+    public function allAudios() {
+
+        $sel = "select * from audio";
+        $res = $this->db->query($sel);
+        $tabla = array();
+        foreach ($res->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
    
       
 }

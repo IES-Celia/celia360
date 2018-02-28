@@ -144,8 +144,9 @@
             $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
             
             $this->db->query($insrt2);
-            
-			return $idhotspot;
+            //
+            $devoler = array($idhotspot,$id_scene);
+			return $devoler;
 		
         }
       
@@ -185,14 +186,20 @@
           $id_hotspot = $_REQUEST["idhs"];
           //Al ser un array string lo partimos por las comas.
           $listaArray = $_REQUEST["listaimg"];
+          $idescena = $_REQUEST["idescena"];
           //$resultado = implode(",",$listaimagenes);
           $listaimagenes = explode($listaArray,",");
+          $contador =0;
           
           foreach ($listaArray as $imagen_id){ 
              $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen)VALUES('$id_hotspot','$imagen_id')";
              $this->db->query($sql);
+             if($this->db->affected_rows() > 0){
+                 $contador=$contador+1;
+             }
           }
-         return $this->db->affected_rows();
+          $devolver = array($contador,$idescena);
+          return $devolver;
       }
         
         //Aqui deberia deberia ser un parametro pero al no estar funcionando he puesto un numero fijo para hacer pruebas.
@@ -214,7 +221,25 @@
         //Array donde guardamos todos los ids de imagenes.
         $lista_info_imagenes = $res->result_array();
         echo json_encode($lista_info_imagenes);
+      }
 
+      public function cargar_video($id){
+        
+        $id_hotspot = $id;
+        //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
+        $sql = "SELECT url_vid FROM video WHERE id_vid='$id_hotspot'";
+        $resultado = $this->db->query($sql);
+        echo ($resultado);
+      }
+
+      public function cargar_audio($id){
+        
+        $id_hotspot = $id;
+        //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
+        $sql = "SELECT url_aud FROM audio WHERE id_aud='$id_hotspot'";
+        $resultado = $this->db->query($sql);
+        $resultado->result_array();
+        echo json_encode($resultado);
       }
       
     public function insertarHotspotAudio() {
