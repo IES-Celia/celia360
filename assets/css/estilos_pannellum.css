@@ -81,7 +81,7 @@
 
 /* ICONO SENSIBLE AUDIO GUIADA */
 
-#icono_audio {
+.icono_audio {
   position: absolute;
   height: 35px;
   width: 35px;
@@ -148,12 +148,20 @@ display: block;
   margin-top: 30px;
 }
 
-.mensaje_separador{
+.mensaje_separador,
+.mensaje_separador_negro{
   margin-top: 10px;
   margin-bottom: 10px;
   border:0;
   height: 2px;
+}
+
+.mensaje_separador{
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+}
+
+.mensaje_separador_negro{
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(10, 10, 10, 0.75), rgba(255, 255, 255, 0));
 }
 
 .mensaje_guiada_inicio_recomendacion ol li {
@@ -400,8 +408,6 @@ display: block;
 
 /* icono de escaleras */
  .custom-hotspot-escaleras {
-        height: 40px;
-        width: 40px;
         background-image: url("svg/elevator.svg");
         background-size:contain;
         background-repeat: no-repeat;
@@ -410,17 +416,14 @@ display: block;
     }
 
 .custom-hotspot-escaleras:hover {
-        height: 50px;
-        width: 50px;
 }
 
 .custom-hotspot-info,
 .custom-hotspot-salto,
 .custom-hotspot-atras,
 .custom-hotspot-audio,
-.custom-hotspot-info2{
-        height: 35px;
-        width: 35px;
+.custom-hotspot-info2,
+.custom-hotspot-video{
         background-size:contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -431,22 +434,31 @@ display: block;
 .custom-hotspot-info2 {background-image: url("svg/info3.svg");}
 .custom-hotspot-salto {background-image: url("svg/saltoBlanco.svg");}
 .custom-hotspot-atras {background-image: url("svg/puertaBlanco.svg");}
-.custom-hotspot-audio {background-image: url("svg/audio.svg");}
+.custom-hotspot-audio {background-image: url("svg/long-play-record-cover.svg");}
+.custom-hotspot-video {background-image: url("svg/video-player.svg");}
 
 
 .custom-hotspot-info:hover,
 .custom-hotspot-salto:hover,
 .custom-hotspot-atras:hover,
-.custom-hotspot-audio:hover{
-        height: 45px;
-        width: 45px;
+.custom-hotspot-audio:hover,
+.custom-hotspot-video:hover{
 }
 
 /* Audio */
 
 
 /* Copia del id que aparece para la visita guiada solo con el nombre copiado */
-#panelAudioPrueba {
+#panel_audio_libre {
+  position:absolute;
+  z-index: 100;
+  top: 15px;
+  left: 50px;
+  padding: 0;
+  display: none;
+}
+
+#panel_audio_guiada {
   position:absolute;
   z-index: 100;
   top: 15px;
@@ -455,7 +467,7 @@ display: block;
   display: none;
 }
 /*X que aparece al lado del audio arriba */
-#botonPause {
+.botonPause {
   position: relative;
   float: right;
   left: 10px;
@@ -472,7 +484,7 @@ display: block;
 
 }
 
-#botonPause:hover {
+.botonPause:hover {
   height: 24px;
   width: 24px;
 }
@@ -514,14 +526,19 @@ display: block;
 /* PANEL INFORMACION */
 
 .mas_imagenes {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   margin: 0 auto;
-  display: block;
+  display:block;
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("svg/galeria.svg");
+  background-image: url("svg/gallery_icon.svg");
+  
+}
+
+.mas_img_div{
+  cursor:pointer;
 }
 
 /* fondo negro cuando se abre */
@@ -550,7 +567,7 @@ display: block;
   top: 50%;
   margin: 0 auto;
   transform: translate(-50%,-50%);
-
+  cursor: default;
   border-radius: 5px;
 }
 
@@ -570,14 +587,14 @@ display: block;
   display: block;
   position: absolute;
   right: 1rem;
-  top: 1rem;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.8em;
+  color:rgb(72, 72, 72)
 }
 
 .modal__close:hover {
-    color:black;
+    color:crimson;
   }
   	 
 /*Media queries */
@@ -688,12 +705,15 @@ display: block;
     letter-spacing: 2px;
   }
   #gallery img{
+    position: relative;
     max-height: 300px;
     width: auto;
     display: block;
     margin-left: auto;
     margin-right: auto; 
   }
+
+
           
 .Gmodal {
   display: none;
@@ -728,7 +748,7 @@ display: block;
 
 .Gclose:hover,
 .Gclose:focus {
-  color: #999;
+  color:crimson;
   text-decoration: none;
   cursor: pointer;
 }
@@ -867,4 +887,13 @@ display: block;
 
 .slider-nav:hover {
   cursor: pointer;
+}
+
+#video_visita_libre{
+  z-index: 3;
+  display:none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }

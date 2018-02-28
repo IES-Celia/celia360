@@ -141,11 +141,10 @@ container.appendChild(infoDisplay.container);
 // Load box
 infoDisplay.load = {};
 infoDisplay.load.box = document.createElement('div');
-infoDisplay.load.box.className = 'pnlm-load-box';
-infoDisplay.load.box.innerHTML = '<p>Cargando...</p>';
-infoDisplay.load.lbox = document.createElement('div');
-infoDisplay.load.lbox.className = 'pnlm-lbox';
-//infoDisplay.load.lbox.innerHTML = '<div class="pnlm-loading"></div>';
+infoDisplay.load.box.className = 'cargando_animacion2';
+//infoDisplay.load.lbox = document.createElement('div');
+//infoDisplay.load.lbox.className = 'pnlm-lbox';
+//infoDisplay.load.box.innerHTML = "<div class='cargando_anim'>Cargando</div>";
 //infoDisplay.load.box.appendChild(infoDisplay.load.lbox);
 //infoDisplay.load.lbar = document.createElement('div');
 //infoDisplay.load.lbar.className = 'pnlm-lbar';
@@ -156,12 +155,12 @@ infoDisplay.load.lbox.className = 'pnlm-lbox';
 //infoDisplay.load.msg = document.createElement('p');
 //infoDisplay.load.msg.className = 'pnlm-lmsg';
 //infoDisplay.load.box.appendChild(infoDisplay.load.msg);
-//container.appendChild(infoDisplay.load.box);
+container.appendChild(infoDisplay.load.box);
 
 // Error message
-infoDisplay.errorMsg = document.createElement('div');
-infoDisplay.errorMsg.className = 'pnlm-error-msg pnlm-info-box';
-container.appendChild(infoDisplay.errorMsg);
+//infoDisplay.errorMsg = document.createElement('div');
+//infoDisplay.errorMsg.className = 'pnlm-error-msg pnlm-info-box';
+//container.appendChild(infoDisplay.errorMsg);
 
 // Create controls
 var controls = {};
