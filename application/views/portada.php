@@ -58,7 +58,6 @@
          <img id="destacado_portada" src="<?php echo base_url("assets/imagenes/portada/portadadestacadamini.png"); ?>">
          <img id="guiada_portada" src="<?php echo base_url("assets/imagenes/portada/portadaguiadamini.png"); ?>">
      </div>
-
         <header id="header_portada">
             <div class="contenedor_portada">
             <nav id="nav_portada">
@@ -79,8 +78,12 @@
              <div id="slider1_portada">
                  <div class="contenedor_portada">
                      <h1>Celia Tour</h1>
-                     <div id="separador_portada"> </div>
-                    <button id="open" class="btn">HISTORIA</button>
+                     <div id="parrafito">
+                         
+                        <div id="separador_portada"> </div>
+                         <p>asdasd</p>
+                        <button id="open" class="btn">HISTORIA</button>
+                     </div>
                  </div> 
              </div> 
 
