@@ -12,8 +12,6 @@ class Puntos_destacados extends CI_Controller {
         else {
             echo "Aquí generariamos la vista pero con un mensaje de error";
         }
-            
-        
     }
     
     
@@ -26,6 +24,10 @@ class Puntos_destacados extends CI_Controller {
         $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 		$this->load->view("puntosdestacados/puntosDestacados", $datos);	
 	}
+    
+    public function processinsertdestacado(){
+        
+    }
     
    
     
