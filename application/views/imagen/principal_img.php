@@ -52,10 +52,14 @@ if (isset($mensaje)) {
 if (isset($error)) {
     echo "<p style='color:red'>" . $error . "</p>";
 }
-//título
-echo '<h1>IMAGEN</h1>';
+
+
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
+//div cierra menu
+echo "</div>";
+//título
+echo '<h1>IMAGEN</h1>';
 
 //El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
 ?>

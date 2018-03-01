@@ -106,7 +106,8 @@
 </div>
 <?php
 echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";
-echo"<table align='center' id='cont'><tr>
+echo"</div>";
+echo"<table align='center' id='cont'><tr id='cabecera'>
 <th>ID</th>
 <th>URL</th>
 <th>Descripcion</th>

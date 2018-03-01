@@ -62,6 +62,7 @@
 //Tabla usuarios
  echo"<a class='insert' onclick='insertar()' > Insertar Usuario</a>";
  echo "</div>";
+echo "<h1>Usuario</h1>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>
@@ -97,7 +98,7 @@ foreach ($tablaUsuarios as $usu) {
     
 
     echo"   <td>
-                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'></a>
+                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'><i class='fas fa-edit'></i></a>
             </td>
             <td>
                 <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='far fa-trash-alt'></i></a>
@@ -109,7 +110,7 @@ echo "</table>";
 //Capa formulario modificar
 echo "
 <div id='modificar'>
-    <div id='mod_sub'>
+    <div id='mod_sub' class='caja'>
     <h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='get'>
         Nombre de usuario:<input type='text' name='username' id='form_modif_nick'><br/>
