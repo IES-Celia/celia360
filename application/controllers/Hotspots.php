@@ -234,6 +234,7 @@ public function load_audio(){
             $this->load->view('template_admin', $datos);
         }
     }
+	   
 	
 	public function process_insert_hotspot(){
     $res=$this->hotspotsModel->process_insert_hotspot();

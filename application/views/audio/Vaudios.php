@@ -36,9 +36,9 @@
 		e.defaultPrevented;
                 $("input[name=autocompletar]").val($(this).text());
 		//alert($(this).html());
-	});
+	})
 			
-})
+});
 </script> 
  <style type="text/css">
      #contenedor {
@@ -102,7 +102,6 @@
 <div class="wrapper">
     <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
     
-    <div class="contenedor"></div>
 </div>
 <?php
 echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";

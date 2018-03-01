@@ -114,10 +114,12 @@ class Audio extends CI_Controller {
         echo $html; 
         echo '</table>';
     }   
-    
-    public function buscar_ajaxaud($abuscar) {
+    public function busqueda_ajaxaud($abuscar) {
         $listaAudios = $this->Audm->buscar_ajaxaud($abuscar);
-        
+        if ($listaAudios == false) {
+			echo "";
+		}
+		else {
         echo"<table align='center' id='cont' border:1><tr>
             <th>ID</th>
             <th>URL</th>
@@ -145,6 +147,7 @@ class Audio extends CI_Controller {
         }
         echo $html; 
         echo '</table>';
+		}
     }   
     
 

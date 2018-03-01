@@ -119,7 +119,7 @@ class AudM extends CI_Model {
             //en otro caso devolvemos false
         } else {
 
-            return FALSE;
+            return false;
         }       
         
     }    
