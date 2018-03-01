@@ -90,7 +90,7 @@
     .cerrar{
         position: relative;
     top:15px;
-    left:90%;
+    left:95%;
     
     }
     .img-cerrar{
@@ -163,7 +163,8 @@ echo "
 //Capa formulario insertar
 echo"
 <div id='insertar'>
-<a class='cerrar' href='#' onclick='cerrar()'>Cerrar</a>
+<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                base_url("assets/css/cerrar_icon.png") . "'></img></a>
 <h1>Insertar audio</h1>
 <form action='". site_url("/audio/insertarAud") ."' class='for' method='Post' enctype='multipart/form-data' >
     Descripcion:<input id='desc' type='text' name='desc'><br/>
