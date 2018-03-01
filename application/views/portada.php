@@ -81,7 +81,7 @@
                      <div id="parrafito">
                          
                         <div id="separador_portada"> </div>
-                         <p>asdasd</p>
+                         
                         <button id="open" class="btn">HISTORIA</button>
                      </div>
                  </div> 
