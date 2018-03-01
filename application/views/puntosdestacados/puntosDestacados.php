@@ -19,7 +19,9 @@
 
 </head>
     
-
+<?php
+    //Para acceder al array de celdas: $puntos_d[$fila][$celda]["escena_celda"]
+?>
     <!--- esto se construirá a partir de un array sacado del modelo -->
     <body>
             <div id="contenedor">
