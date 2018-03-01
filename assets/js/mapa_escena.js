@@ -1,19 +1,14 @@
 var id;
-var piso = 1;
+var piso = 0;
 
 
 $(document).ready(function() {
 	/**
 	 * Funcionamiento básico del mapa 
 	 */
+	$(".pisos:eq(" + piso + ")").show();
 	mapa_responsivo();
-	$(".pisos").hide('0');
-	$("#mapa_escena").slideUp(0);
-
-	$("#btn-mapa").click(function(event) {
-		$(".pisos:eq("+piso+")").toggle('0');
-        $("#mapa_escena").slideToggle(400);
-    });
+	
     $("#btn-subir-piso").click(function(event) {
     	subir_piso();
     });
@@ -21,8 +16,12 @@ $(document).ready(function() {
     $("#btn-bajar-piso").click(function(event) {
     	bajar_piso();
     });
-
-  
+/**
+ * Administración del mapa.
+ */
+	$("#btn-admin-mapa").click(function(){
+		location.href = base_url+"mapa/"
+	})
    	
    	$(".pisos").contextmenu(function(event){
    		
@@ -63,7 +62,7 @@ $(document).ready(function() {
 		$(this).children().css("visibility", "hidden");
 	});
 	/**
-	 * Punto de destino remarcado
+	 * Marcar punto de destino en creación hotspot de tipo salto.
 	 */
 	$(".puntos").click(function() {
 		if($(this).parent().hasClass("pisos_hotspots")){
