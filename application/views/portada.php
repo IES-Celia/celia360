@@ -53,11 +53,7 @@
 </style>
 
     <div id="portadaca" style='z-index:100'; >
-     <div id="cambio_portada">
-         <img id="libre_portada" src="<?php echo base_url("assets/imagenes/portada/portadalibremini2.png");?>">
-         <img id="destacado_portada" src="<?php echo base_url("assets/imagenes/portada/portadadestacadamini.png"); ?>">
-         <img id="guiada_portada" src="<?php echo base_url("assets/imagenes/portada/portadaguiadamini.png"); ?>">
-     </div>
+
         <header id="header_portada">
             <div class="contenedor_portada">
             <nav id="nav_portada">
@@ -67,8 +63,7 @@
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
                   <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
-                 <li><a href="" >Glosario</a></li>
-                 <li><a href="" >Creditos</a></li>
+                 <li><a id="creditos_portada" href="" >Creditos</a></li>
              </ul>
             </nav>
             </div>
@@ -77,11 +72,10 @@
         <main>
              <div id="slider1_portada">
                  <div class="contenedor_portada">
-                     <h1>Celia Tour</h1>
+                     <h1 id="titulito">Celia Tour</h1>
                      <div id="parrafito">
-                         
                         <div id="separador_portada"> </div>
-                         
+                         <p id="descripcion_portada">svdvds</p>
                         <button id="open" class="btn">HISTORIA</button>
                      </div>
                  </div> 

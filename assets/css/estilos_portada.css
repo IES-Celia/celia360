@@ -70,6 +70,13 @@ h3{
     font-family:"Lato"; 
     font-weight: bold; 
 }
+
+#descripcion_portada{
+    font-family:"Lato";
+    font-size: 30px;
+    color: white;
+    margin-top: 10px;
+}
  
 #nav_portada ul{
     list-style: none;
@@ -148,25 +155,15 @@ h3{
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    color: #fff;
     height: 500px;
     margin: 0;
     padding: 300px 0 260px 0;
     background-size: cover;
+
 }
 
-#cambio_portada{
-    width: 100%;
-    position:absolute;
-    background-color: rgba(0,0,0,.3);
-    height: 100%;
-}
 
-#libre_portada, #guiada_portada, #destacado_portada{
-    margin: 20% 0  0;
-    width: 100%;
-    position: absolute;
-}
+
 
 #slider1_portada .contenedor_portada{
     text-align:center;
@@ -175,7 +172,7 @@ h3{
 }
 
 #elamo_portada { 
-    color: white;
+    color: black;
     background: black; 
     font-family:"Lato"; 
     font-size: 14px; 
