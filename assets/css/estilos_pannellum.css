@@ -408,6 +408,8 @@ display: block;
 
 /* icono de escaleras */
  .custom-hotspot-escaleras {
+        width: 40px;
+        height: 40px;
         background-image: url("svg/elevator.svg");
         background-size:contain;
         background-repeat: no-repeat;
@@ -416,6 +418,8 @@ display: block;
     }
 
 .custom-hotspot-escaleras:hover {
+    width: 50px;
+    height: 50px;
 }
 
 .custom-hotspot-info,
@@ -424,6 +428,8 @@ display: block;
 .custom-hotspot-audio,
 .custom-hotspot-info2,
 .custom-hotspot-video{
+        width: 40px;
+        height: 40px;
         background-size:contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -443,6 +449,8 @@ display: block;
 .custom-hotspot-atras:hover,
 .custom-hotspot-audio:hover,
 .custom-hotspot-video:hover{
+  width: 50px;
+        height: 50px;
 }
 
 /* Audio */
