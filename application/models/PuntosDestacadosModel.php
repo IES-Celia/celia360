@@ -7,6 +7,25 @@ class PuntosDestacadosModel extends CI_Model {
         $this->load->database();
     }
     
+    public function ocultar_fila($id_fila){
+        
+    }
+    
+    public function mostrar_fila($id_fila){
+        
+    }
+    
+    public function crear_celda($id_fila){
+        
+    }
+    
+    public function borrar_celda{
+        
+    }
+    
+    
+    
+    
     public function getAll() {
         $sql = "SELECT * FROM celda_pd AS C
                 INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
