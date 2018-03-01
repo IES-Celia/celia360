@@ -76,6 +76,9 @@
             $sql = "DELETE FROM escenas WHERE cod_escena = '$cod' ";
             $this->db->query($sql);
 
+            $sql = "DELETE FROM hotspots WHERE sceneid='$cod'";
+            $this->db->query($sql);
+
 
         
             return $this->db->affected_rows();
