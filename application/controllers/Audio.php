@@ -115,7 +115,37 @@ class Audio extends CI_Controller {
         echo '</table>';
     }   
     
-    
+    public function buscar_ajaxaud($abuscar) {
+        $listaAudios = $this->Audm->buscar_ajaxaud($abuscar);
+        
+        echo"<table align='center' id='cont' border:1><tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Descripcion</th>
+            <th>Tipo de audio</th>
+            <th>Reproducir</th>
+            <th>Seleccionar</th>
+            </tr>
+            ";
+        foreach ($listaAudios as $audio) {
+            $fila = $audio["id_aud"];
+                    
+            $html = $html .
+                    '<tr>'
+                    . '<td>' . $audio["id_aud"] . '</td>'
+                    . '<td>' . $audio["url_aud"] . '</td>'
+                    . '<td>' . $audio["desc_aud"]. '</td>'
+                    . '<td>' . $audio["tipo_aud"] . '</td>'
+                    .'<td><audio controls="controls" preload="auto">
+	<source src="' . base_url($audio["url_aud"]) . '" type="audio/m4a"/>
+	<source src="' . base_url($audio["url_aud"]) . '" type="audio/mp3"/>
+	</audio></td>'
+                    . '<td onClick="seleccionarAudio('.$fila.')"><a href="#">Seleccionar</a></td>'
+                    . '</tr>';          
+        }
+        echo $html; 
+        echo '</table>';
+    }   
     
 
 

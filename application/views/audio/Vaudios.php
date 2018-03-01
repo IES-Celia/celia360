@@ -10,7 +10,7 @@
 		var info = $(this).val();
 		//hacemos la petición al método autocompletar del controlador home 
 		//pasando la variable info
-                $.post('<?php echo site_url("imagen/busqueda_ajax/");?>' + info, null, function(data){
+                $.post('<?php echo site_url("audio/busqueda_ajaxaud/");?>' + info, null, function(data){
 						
 			//si el controlador nos devuelve algo
 			if(data !== ''){

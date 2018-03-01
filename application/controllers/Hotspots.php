@@ -217,12 +217,15 @@ public function load_audio(){
 
     public function process_insert_audio(){
         $resultado = $this->hotspotsModel->insertarHotspotAudio();
+		$anda=$this->input->post_get("id_scene");
         if ($resultado == true) {
-            $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
+			echo $anda;
+			redirect('welcome/cargar_escena/'.$anda.'/show_insert_hotspot/');
+            /*$datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            $this->load->view('template_admin', $datos);
+            $this->load->view('template_admin', $datos);*/
         }else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
