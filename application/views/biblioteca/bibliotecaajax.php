@@ -10,7 +10,6 @@
           idlibro = $(this).attr("idlibro");
           apaisado = $(this).attr("apaisado");
           tipo = $(this).attr("tipo");
-          alert('<?php echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
           $('.modalita2').load('<?php echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
       });
  $('#cerrarmodal').click(function(){

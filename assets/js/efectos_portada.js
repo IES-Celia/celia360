@@ -3,65 +3,74 @@ $(document).ready(function(){
  
 // para que cambie el background a INICIO al hacer hover
     
-$('#header_portada img').bind("mouseenter",function(){
-    $('#slider1_portada').css("background-image", "url('assets/imagenes/portada/portada5.jpg')");
-    $('#cambio_portada').fadeOut();
-    $('#slider1_portada .contenedor_portada').children().fadeIn();
-    
-    $('#slider1_portada').unbind("click");
-    
+$('#header_portada img').mouseenter(function(){
+    $("#titulito").text("Celia Tour");
+    $("#descripcion_portada").text("");
+    $("#descripcion_portada").siblings().fadeIn();
 });
     
 // para que cambie el background a LIBRE al hacer hover
 
-    
-$('#opcionlibre_portada').bind("mouseenter",function(){
-    $('#cambio_portada').fadeIn();
-    $('#destacado_portada').fadeOut();
-    $('#guiada_portada').fadeOut();
-    $('#libre_portada').fadeIn();
-    $('#slider1_portada .contenedor_portada').children().fadeOut();
-  
+$('#opcionlibre_portada').mouseenter(function(){
+    $("#titulito").text("Visita Libre");
+    $("#descripcion_portada").text("Recorre el emblematico instituto Celia Viñas a voluntad");
+    $("#descripcion_portada").siblings().hide();
 });
     
 $('#opcionlibre_portada').click(function(){
   $('#portadaca').fadeOut();
-  
 }); 
-  
+
 $('#opcionguiada_portada').click(function(){
   $('#portadaca').fadeOut();
-  
 }); 
-  
-  
-
-    
-    
+      
 // para que cambie el background a GUIADA al hacer hover
 
-    
-$('#opcionguiada_portada').bind("mouseenter",function(){
-    $('#cambio_portada').fadeIn();
-    $('#destacado_portada').fadeOut();
-    $('#guiada_portada').fadeIn();
-    $('#libre_portada').fadeOut();
-    $('#slider1_portada .contenedor_portada').children().fadeOut();
+$('#opcionguiada_portada').mouseenter(function(){
+    $("#titulito").text("Visita Guiada");
+    $("#descripcion_portada").text("Dejate llevar y le mostraremos la historia de nuestro instituto");
+    $("#descripcion_portada").siblings().fadeOut();
     
 });
     
 // para que cambie el background a PUNTOS DESTACADOS al hacer hover
-
-    
-$('#opciondestacada_portada').bind("mouseenter",function(){
-    $('#cambio_portada').fadeIn();
-    $('#destacado_portada').fadeIn();
-    $('#guiada_portada').fadeOut();
-    $('#libre_portada').fadeOut();
-    $('#slider1_portada .contenedor_portada').children().fadeOut();
+  
+$('#opciondestacada_portada').mouseenter(function(){
+    $("#titulito").text("Visita Libre");
+    $("#descripcion_portada").text("Pasea por los lugares más atractivos del instituto");
+    $("#descripcion_portada").siblings().fadeOut();
     
 });
 
+    
+// para que cambie el background a BIBLIOTECA al hacer hover
+  
+$('#clickbiblio').mouseenter(function(){
+    $("#titulito").text("Biblioteca");
+    $("#descripcion_portada").text("Descubre y lee algunos de los libros de los que disponemos");
+    $("#descripcion_portada").siblings().fadeOut();
+    
+});    
+    
+// para que cambie el background a creditos al hacer hover
+  
+$('#creditos_portada').mouseenter(function(){
+    $("#titulito").text("Creditos");
+    $("#descripcion_portada").text("Conoce los alumnos de DAW que hicieron posible este tour");
+    $("#descripcion_portada").siblings().fadeOut();
+    
+});  
+    
+    
+$("#slider1_portada").mouseenter(function(){
+    $("#titulito").text("Celia Tour");
+    $("#descripcion_portada").text("");
+    $("#descripcion_portada").siblings().fadeIn();
+});    
+    
+    
+    
 ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
 $('#clickbiblio').on("click",function(){
     $('#bibliotecaajax').css("display","block");

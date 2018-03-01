@@ -10,7 +10,7 @@
   #imgHS {
   display: flex;
   flex-wrap: wrap;
-  width: 60%;
+  width: 50%;
   height: 70%;
 }
     
@@ -29,10 +29,26 @@
    border: 2px solid red;
 }
 
+  #img_seleccionadas { 
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    }
+  #img_seleccionadas li { 
+    background-color:  grey;
+    font-size: 1.2em;
+    padding: 12px;
+    border-radius: 10px;
+    color:white;
+    margin: 5px 0; 
+    }
+
+   
 
   </style>
 </head>
 <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+<script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.js"); ?>"></script>
   <body>
   <?php
 
@@ -59,7 +75,7 @@
     "data-id" => $img["id_imagen"]
     
   ); 
-  echo "<a href='#'>"; 
+  echo "<a class='enlace_img' href='#'>"; 
   echo img($imagen_propiedades);
   echo "</a>";       
   
@@ -78,14 +94,17 @@
 </div>  
 <script>
  
-   $("a").on('click', function(evento){
+   $(".enlace_img").on('click', function(evento){
      evento.preventDefault();
      if($(this).find("img").hasClass("borderojo")){
        $(this).find("img").removeClass("borderojo");
        //Remove el elemento de la lista.
        var imagen_buscar =$(this).find("img").attr("src");
+       var cortado_enlace = imagen_buscar.split("/");
+       var enlace_final = cortado_enlace[cortado_enlace.length-1];
+       console.log(enlace_final);
        $(".seleccionado").each(function(){
-         if(imagen_buscar==$(this).text()){
+         if(enlace_final==$(this).text()){
            $(this).remove();
          }
        });
@@ -95,17 +114,24 @@
       //Aqui guardaria el data-id y el src
       var attr_idimg = imagen.attr("data-id");
       var attr_img = imagen.attr("src");
+      var cortado_enlace = attr_img.split("/");
       imagen.addClass("borderojo");
-      $("#img_seleccionadas").append("<li class='seleccionado' data-id="+attr_idimg+">"+attr_img+"</li>");
+      $("#img_seleccionadas").append("<li class='seleccionado ui-state-default' data-id="+attr_idimg+">"+cortado_enlace[cortado_enlace.length-1]+"</li>");
 
       //TODO:confirm
      }
     });
-       
+
+     $(document).ready(function () {
+      $("#img_seleccionadas").sortable();
+      $("#img_seleccionadas").disableSelection();
+     });  
      
-    
+
+
   
   function add_img_to_hotspot(){
+    var escena = "<?php echo $escena_actual;?>";
     var prueba = [];
     //Valor temporal para probar si funciona
     var hotspot = $("#idhs").val();
@@ -114,16 +140,17 @@
       prueba.push($(this).attr("data-id"));
       
     });
-    
-    
+
     var peticion = $.ajax({
       url: "add_imgs_hotspot",
       type: "POST",
-      data:{listaimg : prueba, idhs : hotspot}
+      data:{listaimg : prueba, idhs : hotspot, idescena : escena }
     });
     
-    peticion.done(function(){
-     alert("TERMINADA! la transferencia!");
+    peticion.done(function(resultado){
+      
+      window.location.href = resultado;
+     //current_url()
     });
     
   }

@@ -99,7 +99,7 @@ class escenas extends CI_Controller {
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
                 $datos["vista"]="escenas/Escenastable";
                 $datos["mapa"] = $this->mapa->cargar_mapa();
-            $datos["puntos"] = $this->mapa->cargar_puntos();
+                $datos["puntos"] = $this->mapa->cargar_puntos();
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
@@ -108,7 +108,7 @@ class escenas extends CI_Controller {
                 $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
                 $datos["vista"]="escenas/Escenastable";
                 $datos["mapa"] = $this->mapa->cargar_mapa();
-            $datos["puntos"] = $this->mapa->cargar_puntos();
+                $datos["puntos"] = $this->mapa->cargar_puntos();
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }

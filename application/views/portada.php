@@ -53,11 +53,6 @@
 </style>
 
     <div id="portadaca" style='z-index:100'; >
-     <div id="cambio_portada">
-         <img id="libre_portada" src="<?php echo base_url("assets/imagenes/portada/portadalibremini2.png");?>">
-         <img id="destacado_portada" src="<?php echo base_url("assets/imagenes/portada/portadadestacadamini.png"); ?>">
-         <img id="guiada_portada" src="<?php echo base_url("assets/imagenes/portada/portadaguiadamini.png"); ?>">
-     </div>
 
         <header id="header_portada">
             <div class="contenedor_portada">
@@ -68,8 +63,7 @@
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a  id="opciondestacada_portada">Puntos D</a></li>
                   <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
-                 <li><a href="" >Glosario</a></li>
-                 <li><a href="" >Creditos</a></li>
+                 <li><a id="creditos_portada" href="" >Creditos</a></li>
              </ul>
             </nav>
             </div>
@@ -78,9 +72,12 @@
         <main>
              <div id="slider1_portada">
                  <div class="contenedor_portada">
-                     <h1>Celia Tour</h1>
-                     <div id="separador_portada"> </div>
-                    <button id="open" class="btn">HISTORIA</button>
+                     <h1 id="titulito">Celia Tour</h1>
+                     <div id="parrafito">
+                        <div id="separador_portada"> </div>
+                         <p id="descripcion_portada">svdvds</p>
+                        <button id="open" class="btn">HISTORIA</button>
+                     </div>
                  </div> 
              </div> 
 
@@ -167,10 +164,18 @@
         
 </div>
 
-
-	<div class="contenedor">
+<div class="contenedor">
 		<div id="panorama">
+           <!-- VIDEO VISITA LIBRE -->  
+          <div id='video_visita_libre'>
+          <iframe id='vimeo_video' src="" 
+          width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+
+
           
+         
+
           <!-- CONTROLES VISITA GUIADA -->
           <div id="mensaje_guiada">
           <h3 style="text-align: center;">Visita guiada</h3>
@@ -194,12 +199,6 @@
              
             <div class="main">
               <div class="slider-nav">
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto1.JPG");?>" style='height:  130px; width:130px;' alt="foto0" title="Fachada principal"></div>
-                <div class='titulo_slider'><img src=" <?php echo base_url("assets/imagenes/previews/foto2.JPG");?>" style='height:  130px; width:130px;' alt="foto1" title="Pórtico"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto3.JPG");?>" style='height:  130px; width:130px;' alt="foto2" title="Escalera de entrada"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto4.JPG");?>" style='height:  130px; width:130px;' alt="foto3" title="Conserjería"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto5.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Puerta secretaría"></div>
-                <div class='titulo_slider'><img src="<?php echo base_url("assets/imagenes/previews/foto6.JPG");?>" style='height:  130px; width:130px;' alt="foto4" title="Antesala"></div>
               </div>
             </div>
        
@@ -240,16 +239,21 @@
                 <div class="modal__contents">
                  <a class="modal__close" href="#">&times;</a>
                  <h2 id="titulo"></h2>
-                 <div id="gallery" onclick="openModal();">
+                 <hr class='mensaje_separador_negro'></hr>
+                 <div id="gallery">
                    <img src="">
                  </div>
+                 <hr class='mensaje_separador_negro'></hr>
+                 <div class='mas_img_div' onclick="openModal();">
                  <div class='mas_imagenes'></div>
+                 <h4 style="text-align:center;">Más Imagenes</h4>
+                 </div>
                 <div id="texto">
                 
                 </div>
               </div>
             </div>
-            <!-- Boton audio arriba con toggle.
+            <!-- panelAudioPrueba
             <div id="botonAudio1"></div>
             <div id="botonAudio">
             <div id="panelAudio">
@@ -258,11 +262,19 @@
             </div>-->
           <!-- Audio para punto asdasdgooglsensibles, no confundir con el boton audio!!!!.
             <div class="ventanaAudio">-->
-            <div id="panelAudioPrueba">
-              <div id="botonPause"></div>
-              <audio style="display:none;" id="musica1" src=""  controls> </audio>
-              <audio id="audio_guiada" src=""  controls></audio>
-              <div id="icono_audio"></div>
+
+            <div id="panel_audio_guiada">
+              <div class="botonPause"></div>
+              <audio id="audio_guiada" src="" controls></audio>
+              <div class="icono_audio"></div>
+            </div>                          
+            
+
+
+            <div id="panel_audio_libre">
+              <div class="botonPause"></div>
+              <audio id="audio_libre" src=""  controls> </audio>
+              <div class="icono_audio"></div>
             </div>
           <div class="boton_menu"></div>
           
@@ -390,8 +402,8 @@
   
     $( document ).ready(function() {
       
-
-$( ".menu_slider" ).click(function() {
+      
+      $( ".menu_slider" ).click(function() {
   
   if($(".main").css("display")=="none"){
     
@@ -418,33 +430,9 @@ $( ".menu_slider" ).click(function() {
       $('.slider-nav').on('setPosition', function(event, slick){
         console.log(event);
       });*/
-      //Al hacer click cargar esa escena.
-      $('.titulo_slider').click(function(e) {
-        if($(this).hasClass("titulo_planta")){
-          
-        } else {
-          var clickedIndex = $(this).data("slick-index");
-            if(clickedIndex==array_escenas.length){
-              indice_escenas=0;
-              audio_guiada(indice_escenas);  
-            } else {
-              indice_escenas=clickedIndex
-              audio_guiada(clickedIndex);  
-            }  
-        }  
-        // Manually refresh positioning of slick
-        //$('.slider-nav').slick('setPosition',clickedIndex);
-      });
+      
    
 
- $('.slider-nav').slick({
-   centerMode: false,
-   infinite: false,
-   slidesToShow: 6,
-   slidesToScroll: 6,
-   touchMove:false,
-   //focusOnSelect: true,
- });
       
 
     
@@ -480,8 +468,12 @@ $( ".menu_slider" ).click(function() {
               if(nombre=="get_json_guiada"){
                 $("#boton_mapa").hide();
                 iniciar_visita_guiada();
+                $("#panel_audio_libre").hide();
+                $('#audio_libre').attr("src","");
               } else {
                 $("#boton_mapa").show();
+                $("#panel_audio_guiada").hide();
+                $('#audio_guiada').attr("src","");
                 iniciar_visita_libre();
               }
               console.log("success");
@@ -511,7 +503,7 @@ $( ".menu_slider" ).click(function() {
      var peticion = $.ajax({
         url: "<?php echo base_url("hotspots/load_panel"); ?>",
         type:"post",
-        data:{id_hotpost : args},
+        data:{id_hotspost : args},
         beforeSend: function(){
         //Cambiar el valor del texto y titulo
         $("#titulo").html("Cargando...");
@@ -570,6 +562,8 @@ $( ".menu_slider" ).click(function() {
 function closeModal() {
   $("#GmyModal").hide();
 }
+
+
 
 //Suma mas uno al indice
 function plusSlides(n) {
@@ -642,7 +636,7 @@ function escaleras(){
   
   /////////////PRUEBA AUDIO//////////////////
   //////////////////PARA PUNTOS SENSIBLES.////////////////////////////
-  
+  /*
    function musica(hotspotDiv,args){
        $('#musica1').attr("src",args);
        var pantalleo = $("#panelAudioPrueba").css("display");
@@ -651,7 +645,7 @@ function escaleras(){
       }else {
         $('#panelAudioPrueba').show();
         
-      }
+      }*/
         
        /*$('.ventanaAudio').css('display','block');
             $(window).click(function(event){
@@ -660,8 +654,8 @@ function escaleras(){
                 $('#musica1').trigger("pause");
                 $('#musica').prop("pause");
               }
-            })*/
-  }
+            })
+  }*/
   
  /* $("#panelAudioPrueba #botonPause").click(function(){
     $('#musica1').trigger("pause");
@@ -669,20 +663,37 @@ function escaleras(){
   });*/
   
  
-  $("#panelAudioPrueba #botonPause").click(function(){
-      if($("#audio_guiada").css("display") == "block"){
-        $("#botonPause").hide();
+  $("#panel_audio_guiada .botonPause").click(function(){
+      if($("panel_audio_guiada").css("display") == "block"){
+        $(".botonPause").hide();
         $("#audio_guiada").hide();
-        $("#icono_audio").show();
+        $(".icono_audio").show();
       }                  
   });
   
-    $("#panelAudioPrueba #icono_audio").click(function(){
-        $("#botonPause").show();
+    $("#panel_audio_guiada .icono_audio").click(function(){
+        $(".botonPause").show();
         $("#audio_guiada").show();
-        $("#icono_audio").hide();
+        $(".icono_audio").hide();
                         
   });
+
+
+    $("#panel_audio_libre .botonPause").click(function(){
+      if($("#panel_audio_libre").css("display") == "block"){
+        $(".botonPause").hide();
+        $("#audio_libre").hide();
+        $(".icono_audio").show();
+      }                  
+  });
+  
+    $("#panel_audio_libre .icono_audio").click(function(){
+        $(".botonPause").show();
+        $("#audio_libre").show();
+        $(".icono_audio").hide();
+                        
+  });
+  
   
   //boton menu toggle hidden y visible
   $(".boton_menu").click(function(){
@@ -696,20 +707,29 @@ function escaleras(){
   ////////////////////////////////////////////////
   //VISITA GUIADA MENU
   
-  array_escenas = ["p1p2f3","p1p2f2","p1p2f1","p1p2","p1p11","p1p10"];
+  /*array_escenas = ["p1p2f3","p1p2f2","p1p2f1","p1p2","p1p11","p1p10"];
   array_audios = [
-    "<?php echo base_url("assets/audio/audiobar.mp3");?>",
-    "<?php echo base_url("assets/audio/audioportico.mp3");?>",
-    "<?php echo base_url("assets/audio/audioescaleras.mp3");?>",
-    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
-    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
-    "<?php echo base_url("assets/audio/musicadeespera.mp3");?>",
+    "<?php //echo base_url("assets/audio/audiobar.mp3");?>",
+    "<?php //echo base_url("assets/audio/audioportico.mp3");?>",
+    "<?php //echo base_url("assets/audio/audioescaleras.mp3");?>",
+    "<?php //echo base_url("assets/audio/musicadeespera.mp3");?>",
+    "<?php //echo base_url("assets/audio/musicadeespera.mp3");?>",
+    "<?php //echo base_url("assets/audio/musicadeespera.mp3");?>",
    ];
   array_titulo = ["Fachada principal","Pórtico","Escalera de entrada","Conserjería","Puerta secretaría","Antesala"];
-  
+  */
+
+  array_escenas =[];
+  array_audios =[];
+  array_titulo = [];
+  array_previews = [];
   indice_escenas = 0;
  
   function audio_guiada(indice){
+
+      $("#panel_audio_libre").hide();
+      $('#audio_libre').attr("src","");
+
       $('#audio_guiada').attr("src",array_audios[indice]);
       viewer.loadScene(array_escenas[indice]);
     
@@ -731,7 +751,7 @@ function escaleras(){
       // var pantalleo = $("#panelAudioPrueba").css("display");
       //if(pantalleo == "block")
       $(".titulo_guiada").text(array_titulo[indice]);
-      $('#panelAudioPrueba').show();
+      $('#panel_audio_guiada').show();
       $("#audio_guiada")[0].play();
   }
   
@@ -759,6 +779,56 @@ function escaleras(){
     };     
   
     function iniciar_visita_guiada(){
+
+        var peticion = $.ajax({
+        type: "get",
+        url: "guiada/getGuiada",
+        dataType: "json",
+
+      });
+
+      peticion.done(function(datos){
+        var largo = datos.length;
+
+        for(var i=0;i<largo;i++){
+          array_escenas.push(datos[i].cod_escena);
+          array_titulo.push(datos[i].titulo_escena);
+          array_audios.push(datos[i].audio_escena);
+          array_previews.push(datos[i].img_preview);
+          var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
+          var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
+          $(".slider-nav").append(crearSliderPreview);
+        }
+
+        $('.slider-nav').slick({
+          centerMode: false,
+          infinite: false,
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          touchMove:false,
+          vertical:false
+          //focusOnSelect: true,
+        });
+
+
+        //Al hacer click cargar esa escena.
+      $('.titulo_slider').click(function(e) {
+        
+        var clickedIndex = $(this).data("slick-index");
+          if(clickedIndex==array_escenas.length){
+            indice_escenas=0;
+            audio_guiada(indice_escenas);  
+          } else {
+            indice_escenas=clickedIndex
+            audio_guiada(clickedIndex);  
+          }  
+        
+      // Manually refresh positioning of slick
+      //$('.slider-nav').slick('setPosition',clickedIndex);
+    });
+      });
+
+
       $("#nav_menu").hide();
       $("#mensaje_guiada").show();
       $("#boton_aceptar_guiada").click(function(){
@@ -766,20 +836,21 @@ function escaleras(){
       $("#menu_guiada_show").show();
       $(".menu_libre_show").hide();
       $("#boton_mapa").hide();
-      //Por ahora cada vez que lo inicias empieza en 0
       audio_guiada(0);
     });
     }
     
     function iniciar_visita_libre(){
+
+      $("#panel_audio_guiada").hide();
+      $('#audio_guiada').attr("src","");
+
       $("#nav_menu").hide();
       //Mensaje de bienvenida para modo libre.
       $("#menu_guiada_show").hide();
       $(".menu_libre_show").show();
       $("#boton_mapa").show();
-      $("#panelAudioPrueba").hide();
-      $('#audio_guiada').attr("src","");
-      //Por ahora cada vez que lo inicias empieza en 0
+      
     }
       
   function anterior(){
@@ -800,13 +871,60 @@ function escaleras(){
       audio_guiada(indice_escenas);  
     } 
     }
-  
-  
-  
+
   ///////////FIN VISITA GUIADA  
-    
+
+  ////////////////VIDEO VISITA LIBRE//////////////////////  
+
+    function video(hotspotDiv,args){
+      var peticion = $.ajax({
+        type: "post",
+        url: "<?php echo base_url("hotspots/load_video"); ?>",
+        data: {idVideo : args},
+        beforeSend: function(){
+          $("#vimeo_video").attr(src,"");
+        }
+      });
+
+      peticion.done(function(resultado){
+        $("#vimeo_video").attr(src,resultado);
+        var pantalleo = $("#video_visita_libre").css("display");
+        if(pantalleo=="block")
+          $('#video_visita_libre').hide();
+          //PAUSE
+        else
+          $('#video_visita_libre').fadeIn();
+        });
+
+    }
+
+      ////////////////AUDIO VISITA LIBRE////////////////////// 
+
+    function musica(hotspotDiv,args){
+      var peticion = $.ajax({
+        type: "post",
+        url: "<?php echo base_url("hotspots/load_audio"); ?>",
+        data: {id_hotspot : args}
+      });
+
+      
+      peticion.done(function(resultado){
+        var prueba = JSON.parse(resultado);
+        var enlace_audio = prueba.result_array[0].url_aud;
+        var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
+        $("#audio_libre").attr("src",enlace_audio_correcto);
+        var pantalleo = $("#panel_audio_libre").css("display");
+        if(pantalleo=="block")
+        $('#panel_audio_libre').hide();
+        //PAUSE
+        else
+        $('#panel_audio_libre').show();
+        });
+
+
+      }
+
 </script>
       
      <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
      <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
-  

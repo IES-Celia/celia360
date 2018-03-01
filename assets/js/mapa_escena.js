@@ -1,18 +1,14 @@
 var id;
-var piso = 1;
+var piso = 0;
 
-/*=============================
-=            ready            =
-=============================*/
+
 $(document).ready(function() {
+	/**
+	 * Funcionamiento básico del mapa 
+	 */
+	$(".pisos:eq(" + piso + ")").show();
 	mapa_responsivo();
-	$(".pisos").hide('0');
-	$("#mapa_escena").slideUp(0);
-
-	$("#btn-mapa").click(function(event) {
-		$(".pisos:eq("+piso+")").toggle('0');
-        $("#mapa_escena").slideToggle(400);
-    });
+	
     $("#btn-subir-piso").click(function(event) {
     	subir_piso();
     });
@@ -20,15 +16,17 @@ $(document).ready(function() {
     $("#btn-bajar-piso").click(function(event) {
     	bajar_piso();
     });
-
-   	/*===========================================
-   	=            Inserción de puntos            =
-   	===========================================*/
+/**
+ * Administración del mapa.
+ */
+	$("#btn-admin-mapa").click(function(){
+		location.href = base_url+"mapa/"
+	})
    	
    	$(".pisos").contextmenu(function(event){
    		
 		if (!$(this).hasClass("pisos_hotspots")) {
-			var id = $(this).children().last().children().attr('id')
+			var id = $(this).children().last().attr('id');
 
 			var prefijo = parseInt(id.split("punto")[1]) + 1;
 			
@@ -37,42 +35,58 @@ $(document).ready(function() {
 			
 
 			var izquierda = $(this).offset();
-			var anchura = $(this).width()
-			var altura = $(this).height()
+			var anchura = $(this).width();
+			var altura = $(this).height();
 			var left = event.pageX-izquierda.left;
-			left = (100*left)/anchura
+			left = (100*left)/anchura;
 			var top = event.pageY-izquierda.top;
-			top = (100*top)/altura
+			top = (100*top)/altura;
 			location.href=base_url+"escenas/showinsert/"+id+"/"+left.toFixed(2)+"/"+top.toFixed(2);
 
 
 			event.preventDefault();
 		}
 	});
-	   
-	$(".puntos").click(function() {
-		$(".puntos").css("background", "white");
-		$(this).css("background", "yellow")
-		$("#puntoEscena > form > input[name=sceneId]").val($(this).attr("escena"));
-		$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"))
+	$(".puntos").contextmenu(function(event) {
+		event.stopImmediatePropagation();
+		if(confirm("¿Quieres borrar el punto seleccionado?")){
+			location.href=base_url+"escenas/deletescene/"+$(this).attr("escena");
+		}
+		
+		event.preventDefault();
 	})
-   	
-   	/*=====  End of Inserción de puntos  ======*/
-   	
 
-    
+	$(".puntos").hover(function(){
+		$(this).children().css("visibility", "visible");
+	},function(){
+		$(this).children().css("visibility", "hidden");
+	});
+	/**
+	 * Marcar punto de destino en creación hotspot de tipo salto.
+	 */
+	$(".puntos").click(function() {
+		if($(this).parent().hasClass("pisos_hotspots")){
+			$(".puntos").css("background", "white");
+			$(this).css("background", "yellow");
+			$("#puntoEscena > form > input[name=sceneId]").val($(this).attr("escena"));
+			$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"));
+		}else{
+			location.href=base_url+"welcome/cargar_escena/"+$(this).attr("escena")+"/show_insert_hotspot/"
+		}
+		
+	})
 });
 
-/*=====  End of ready  ======*/
 
 
 
 
-/*==============================================
-=            responsividad del mapa            =
-==============================================*/
+
+/**
+ * Responsibidad del mapa.
+ */
 $(window).resize(function() {
-    mapa_responsivo()
+	mapa_responsivo();
 });
 function mapa_responsivo(){
 	var anchura= window.innerWidth*0.7
@@ -86,13 +100,9 @@ function mapa_responsivo(){
 	});
 }
 	
-	
-/*=====  End of responsividad del mapa  ======*/
-	
-
-/*===============================================
-=            Subida y bajada de piso            =
-===============================================*/
+/**
+ * Subida y Bajada de piso.
+ */
 function subir_piso(){
 	if(piso<4){
 		$(".pisos:eq("+piso+")").hide('fast');
@@ -109,10 +119,3 @@ function bajar_piso(){
 	}
 }
 
-
-/*=====  End of Subida y bajada de piso  ======*/
-
-
-function punto_mapa(identificador) {
-	$("#puntoEscena > form > input[name=sceneId]").val(identificador);
-}

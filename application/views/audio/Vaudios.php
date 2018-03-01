@@ -10,7 +10,7 @@
 		var info = $(this).val();
 		//hacemos la petición al método autocompletar del controlador home 
 		//pasando la variable info
-                $.post('<?php echo site_url("imagen/busqueda_ajax/");?>' + info, null, function(data){
+                $.post('<?php echo site_url("audio/busqueda_ajaxaud/");?>' + info, null, function(data){
 						
 			//si el controlador nos devuelve algo
 			if(data !== ''){
@@ -36,9 +36,9 @@
 		e.defaultPrevented;
                 $("input[name=autocompletar]").val($(this).text());
 		//alert($(this).html());
-	});
+	})
 			
-})
+});
 </script> 
  <style type="text/css">
      #contenedor {
@@ -90,7 +90,7 @@
     .cerrar{
         position: relative;
     top:15px;
-    left:90%;
+    left:95%;
     
     }
     .img-cerrar{
@@ -102,7 +102,6 @@
 <div class="wrapper">
     <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
     
-    <div class="contenedor"></div>
 </div>
 <?php
 echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";
@@ -164,7 +163,8 @@ echo "
 //Capa formulario insertar
 echo"
 <div id='insertar'>
-<a class='cerrar' href='#' onclick='cerrar()'>Cerrar</a>
+<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                base_url("assets/css/cerrar_icon.png") . "'></img></a>
 <h1>Insertar audio</h1>
 <form action='". site_url("/audio/insertarAud") ."' class='for' method='Post' enctype='multipart/form-data' >
     Descripcion:<input id='desc' type='text' name='desc'><br/>

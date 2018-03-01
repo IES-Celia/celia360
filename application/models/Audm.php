@@ -98,6 +98,42 @@ class AudM extends CI_Model {
         else
             return false;
     }
+ public function buscar_ajaxaud($abuscar) {
+       
+        $this->db->select('*');
+
+        
+        if ($abuscar != "") $this->db->like('desc_aud', $abuscar);
+
+        $resultados = $this->db->get('audio');
+
+        //si existe algún resultado lo devolvemos
+        if ($resultados->num_rows() > 0) {
+
+            $lista = array();
+            foreach ($resultados->result_array() as $fila) {
+                $lista[] = $fila;
+            }
+            return $lista;
+
+            //en otro caso devolvemos false
+        } else {
+
+            return false;
+        }       
+        
+    }    
+//NO BORRAR QUE ME HACE FALTA PARA LA GUIADA
+    public function allAudios() {
+
+        $sel = "select * from audio";
+        $res = $this->db->query($sel);
+        $tabla = array();
+        foreach ($res->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
    
       
 }

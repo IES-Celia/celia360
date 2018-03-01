@@ -15,7 +15,8 @@
     $(document).ready(function(){                   
         
         $(".imagenes").click(function(){
-            var enlace = "assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG";
+            var enlace = base_url+"assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG";
+            alert(enlace)
             $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
         });
                     
@@ -36,27 +37,26 @@
                             
 </script>
 
-<button id="btn-mapa">Abrir mapa</button>
-
-<div id="mapa_escena">
 <button id="btn-bajar-piso">Bajar piso</button>
 <button id="btn-subir-piso">Subir piso</button>
+<button id="btn-admin-mapa">Admin mapa</button>
+
+<div id="mapa_escena">
 <?php
       $indice = 0;
 
        $pisos = array('0' => "sotano", '1' => "primer_piso", "2" => "segundo_piso", "3" => "tercer_piso", "4" => "tejado" );
 
       foreach ($mapa as $imagen) {
-        if($pisos[$indice]=="primer_piso"){
-          echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
-        }else{
-          echo "<div id='p".$indice."' class='pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
-        }
+          echo "<div id='p".$indice."' class='pisos' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
+        
         
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-                echo "<a href='".site_url('welcome/cargar_escena/'.$punto['id_escena'].'/'."show_insert_hotspot/")."'><div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;'></div></a>";
+              echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+              <span class='tooltip'>".$punto['nombre']."</span>
+              </div>";
             
             }
             
