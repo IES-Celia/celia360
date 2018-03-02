@@ -65,9 +65,11 @@
       }
 ?>
 </div>
-<button id="btn-bajar-piso">Bajar piso</button>
-<button id="btn-subir-piso">Subir piso</button>
-<button id="btn-admin-mapa">Admin mapa</button>
+<div class="botones_mapa">
+    <button id="btn-bajar-piso">Bajar piso</button>
+    <button id="btn-subir-piso">Subir piso</button>
+    <button id="btn-admin-mapa">Admin mapa</button>
+</div>
 <br>
 <br>
 

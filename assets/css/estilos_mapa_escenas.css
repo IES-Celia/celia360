@@ -7,7 +7,15 @@
     z-index: 2;
     overflow: visible;
     position: relative;
-    margin: auto;
+    display: inline-grid;
+    margin-left: 15px;
+    /* margin: auto; */
+}
+.botones_mapa{
+    width: 10%;
+    float: right;
+    display: inline-grid;
+    margin-right: 15px;
 }
 .puntos{
     cursor: pointer;
@@ -25,8 +33,7 @@
     position: absolute;
 }
 
-#btn-subir-piso, #btn-bajar-piso{
-	z-index: 4;
+#btn-subir-piso, #btn-bajar-piso, #btn-admin-mapa{
 	float: right;
 	position: relative;
 }
