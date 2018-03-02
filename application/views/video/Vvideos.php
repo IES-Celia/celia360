@@ -23,20 +23,7 @@
         background-color: #ffffff;
         border: 3px solid ;
     }
-     .paginacion{
-        border: 4px solid #ddd;
-        font-family: verdana, arial, sans-serif; 
-        font-size: 10pt; 
-        font-weight: bold; 
-        padding: 4px; 
-        background-color: #ffffcc; 
-        color: #666666; 
-        text-decoration: none;
-        padding: 8px 16px;
-        position: relative;
-        top:25px;
-        left:40%;
-    }
+ 
      .cerrar{
         position: relative;
     top:15px;
@@ -51,7 +38,7 @@
 
 <?php
 echo"<a class='insert' onclick='mostrar()'>Insertar</a>";
-echo"<table align='center'  id='cont'><tr>
+echo"<table  id='cont'><tr id='cabecera'>
 <th>ID</th>
 <th>URL</th>
 <th>Descripcion</th>

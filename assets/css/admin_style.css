@@ -81,6 +81,7 @@
 
     #cont td a{
     color:#002c59;
+    text-decoration: none;
     }
         
     #cont td a:hover{
@@ -194,6 +195,7 @@
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
+        z-index: 3;
     }
     
     .sidenav a {
@@ -246,9 +248,10 @@
         cursor:pointer;
         color:#ffffff;
         background:transparent;
-        margin-top: 30px;
+        top: 20px;
         transition:0.4s;
-        margin-left: 40px;
+        margin-left: 8px;
+        
     }
         
     .sidenavmenu:hover{
@@ -289,7 +292,7 @@
             width: 500px;
             height: auto;
             margin: auto;
-            margin-top: 70px;
+            margin-top: 120px;
             text-align: center;
             border: 2px solid grey;
             border-radius: 10px;
@@ -407,11 +410,45 @@
           }
 
 
+    /* Buscador */
 
+    .buscador{
     
-        
-     
+        display: block;
+        margin: 0 auto;
+        height: 30px;
+        background-color: #dddddd;
+        border-radius: 2px solid grey;
+        margin-bottom: 10px;
+    }
 
-        
+
+    /* Parte de la Paginación, es de Hamza pero para que no esten cosa sueltas en las vistas */
+
+
+    .paginacion{
+        border: 4px solid rgba(221, 221, 221, 1);
+        font-family: verdana, arial, sans-serif; 
+        font-size: 10pt; 
+        font-weight: bold; 
+        padding: 4px; 
+        background-color: rgba(255, 255, 204, 0.8); 
+        color: #666666; 
+        text-decoration: none;
+        padding: 8px 16px;
+        position: relative;
+        top:25px;
+        left:40%;
+        transition: 0.4s;
+}
+
+    .paginacion:hover{
     
+        border: 4px solid rgba(211, 211, 211, 1);
+        background-color: rgba(255,255,205,1);
+        color:black;
+        
+    }
+
+
         
