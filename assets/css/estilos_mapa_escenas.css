@@ -26,7 +26,6 @@
 }
 
 #btn-subir-piso, #btn-bajar-piso{
-	top: 20%;
 	z-index: 4;
 	float: right;
 	position: relative;
