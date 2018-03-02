@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 19-02-2018 a las 20:04:13
--- Versión del servidor: 10.1.26-MariaDB
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 02-03-2018 a las 10:02:03
+-- Versión del servidor: 10.1.28-MariaDB
+-- Versión de PHP: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,8 +40,13 @@ CREATE TABLE `audio` (
 --
 
 INSERT INTO `audio` (`id_aud`, `url_aud`, `desc_aud`, `tipo_aud`) VALUES
-(1, 'audios/Kalimba.mp3', 'hola', 'v-guiada'),
-(2, 'audios/despertador-graciosos-.mp3', 'Despertador gracioso', 'v-guiada');
+(4, 'audios/escalera .m4a.mp3', '', 'v-guiada'),
+(5, 'assets/audio/a.mp4', 'portico', 'v-guiada'),
+(6, 'assets/audio/holaaaaa.mp4', 'puerta cafeteria de enfrente del instituto', 'd-objeto'),
+(7, 'assets/audio/audio1.mp3', '', 'd-objeto'),
+(8, 'assets/audio/audio2.mp3', '', 'd-objeto'),
+(9, 'assets/audio/audioportico.mp3', '', 'd-objeto'),
+(10, 'assets/audio/audio4.mp3', '', 'd-objeto');
 
 -- --------------------------------------------------------
 
@@ -67,32 +74,32 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (2, '', 'p2p2f1', 120, -4, -175, 'equirectangular', 'assets/imagenes/escenas/p2p2f1.JPG'),
 (3, '', 'p2p2f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p2f2.JPG'),
 (4, '', 'p2p2f3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p2f3.JPG'),
-(5, '', 'p2p3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p3.JPG'),
+(5, '', 'p2p3', 120, -6, -179, 'equirectangular', 'assets/imagenes/escenas/p2p3.JPG'),
 (6, '', 'p2p4', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4.JPG'),
 (7, '', 'p2p4f3', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4f3.JPG'),
 (8, '', 'p2p4f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4f2.JPG'),
 (9, '', 'p2p4f4', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p4f4.JPG'),
-(10, '', 'p2p5', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p5.JPG'),
-(11, '', 'p2p6', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p6.JPG'),
+(10, '', 'p2p5', 120, 1, -90, 'equirectangular', 'assets/imagenes/escenas/p2p5.JPG'),
+(11, '', 'p2p6', 120, 0, 59, 'equirectangular', 'assets/imagenes/escenas/p2p6.JPG'),
 (12, '', 'p2p7', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p7.JPG'),
 (13, '', 'p2p72', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p2p72.JPG'),
-(14, '', 'p2p8', 120, 0, 0, 'equirectangular', 'assets/imagenes/escenas/p2p8.JPG'),
+(14, '', 'p2p8', 120, 3, -112, 'equirectangular', 'assets/imagenes/escenas/p2p8.JPG'),
 (15, '', 'p2p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p2p1.JPG'),
 (16, '', 'p2p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p2p10.JPG'),
 (17, '', 'p1p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p1.JPG'),
-(18, '', 'p1p2', 120, -44, -8, 'equirectangular', 'assets/imagenes/escenas/p1p2.JPG'),
-(19, '', 'p1p2f1', 120, -8, 181, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
-(20, '', 'p1p2f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
+(18, '', 'p1p2', 120, 0, -41, 'equirectangular', 'assets/imagenes/escenas/p1p2.JPG'),
+(19, '', 'p1p2f1', 120, 21, 3, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
+(20, '', 'p1p2f2', 120, 13, 27, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
 (21, '', 'p1p2f3', 120, 19, 110, 'equirectangular', 'assets/imagenes/escenas/p1p2f3.JPG'),
-(22, '', 'p1p22', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p22.JPG'),
-(23, '', 'p1p3', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p3.JPG'),
-(24, '', 'p1p32', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p32.JPG'),
-(25, '', 'p1p4', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p4.JPG'),
+(22, '', 'p1p22', 120, -4, 176, 'equirectangular', 'assets/imagenes/escenas/p1p22.JPG'),
+(23, '', 'p1p3', 120, -5, -181, 'equirectangular', 'assets/imagenes/escenas/p1p3.JPG'),
+(24, '', 'p1p32', 120, -4, -183, 'equirectangular', 'assets/imagenes/escenas/p1p32.JPG'),
+(25, '', 'p1p4', 120, -2, -35, 'equirectangular', 'assets/imagenes/escenas/p1p4.JPG'),
 (26, '', 'p1p32f1', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p1p32f1.JPG'),
 (27, '', 'p1p32f2', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p1p32f2.JPG'),
-(28, '', 'p1p5', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p5.JPG'),
+(28, '', 'p1p5', 120, -3, -88, 'equirectangular', 'assets/imagenes/escenas/p1p5.JPG'),
 (29, '', 'p1p5f1', 120, 22, 60, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
-(30, '', 'p1p6', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p6.JPG'),
+(30, '', 'p1p6', 120, -2, 39, 'equirectangular', 'assets/imagenes/escenas/p1p6.JPG'),
 (31, '', 'p1p7', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p7.JPG'),
 (32, '', 'p1p72', 120, -7, -18, 'equirectangular', 'assets/imagenes/escenas/p1p72.JPG'),
 (33, '', 'p1p8', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p8.JPG'),
@@ -100,17 +107,9 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (35, '', 'p1p9f1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9f1.JPG'),
 (36, '', 'p1p9f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9f2.JPG'),
 (37, '', 'p1p11', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p11.JPG'),
-(38, '', 'p1p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p10.JPG'),
-(39, '', 'p1p12', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p12.JPG'),
-(40, '', 'p0p0', 120, 10, -46, 'equirectangular', 'assets/imagenes/escenas/p0p0.JPG'),
-(41, '', 'p0p1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p1.JPG'),
-(42, '', 'p0p1f1', 120, 172, 15, 'equirectangular', 'assets/imagenes/escenas/p0p1f1.JPG'),
 (43, '', 'p0p1f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p0p1f2.JPG'),
-(44, '', 'p0p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p2.JPG'),
-(45, '', 'p0p3', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p3.JPG'),
 (46, '', 'p0p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p4.JPG'),
 (47, '', 'p0p4f2', 120, 11, -9, 'equirectangular', 'assets/imagenes/escenas/p0p4f2.JPG'),
-(48, '', 'p0p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5.JPG'),
 (49, '', 'p0p5f1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5f1.JPG'),
 (50, '', 'p0p5f2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5f2.JPG'),
 (51, '', 'p3p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p3p1.JPG'),
@@ -133,7 +132,28 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (68, '', 'p4p3', 120, -86, -2, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
 (69, '', 'p4p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p4.JPG'),
 (70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG'),
-(79, 'pasillo sur (sotano)', 'p0p2f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p2f1.JPG');
+(89, 'Pasillo', 'p0p8', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8.JPG'),
+(90, 'Dpt. de E. Fisica', 'p0p8f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8f1.JPG'),
+(91, 'Gimnasio', 'p0p8f2', 120, 1, 79, 'equirectangular', 'assets/imagenes/escenas/p0p8f2.JPG'),
+(93, 'Lab. Ciencias Naturales', 'p3p10f1', 120, -3, 82, 'equirectangular', 'assets/imagenes/escenas/p3p10f1.JPG'),
+(94, 'Lab. Ciencias Naturales', 'p3p10f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p3p10f2.JPG'),
+(95, 'Lab. F&Q', 'p2p10f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f1.JPG'),
+(96, 'Lab. F&Q', 'p2p10f3', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f3.JPG'),
+(97, 'Lab. F&Q', 'p2p10f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f2.JPG'),
+(98, 'Lab. F&Q', 'p2p10f4', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f4.JPG'),
+(99, 'Lab. F&Q', 'p2p10f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f5.JPG'),
+(101, 'Antesala', 'p1p13', 120, -3, -104, 'equirectangular', 'assets/imagenes/escenas/p1p13.JPG'),
+(102, 'Antesala', 'p1p14', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p14.JPG'),
+(103, 'Sala de juntas', 'p1p12f1', 120, -30, 78, 'equirectangular', 'assets/imagenes/escenas/p1p12f1.JPG'),
+(104, 'Dept. Informática ', 'p1p12f2', 120, -12, -67, 'equirectangular', 'assets/imagenes/escenas/p1p12f2.JPG'),
+(105, 'Dirección', 'p1p12f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12f5.JPG'),
+(106, 'Secretaría', 'p1p12f7', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12f7.JPG'),
+(107, 'Jefatura de estudios', 'p1p12f6', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12f6.JPG'),
+(108, 'Secretaría', 'p1p12f8', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12f8.JPG'),
+(109, 'Aula 3', 'p1p6f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p6f1.JPG'),
+(111, 'Aula 3', 'p1p6f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p6f2.JPG'),
+(116, 'Antesala', 'p1p12', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12.JPG'),
+(119, 'pasillo departamentos (sotano)', 'p0p2f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p2f1.JPG');
 
 -- --------------------------------------------------------
 
@@ -187,6 +207,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (15, 33),
 (15, 34),
 (16, 35),
+(16, 165),
 (17, 36),
 (17, 37),
 (17, 38),
@@ -218,8 +239,14 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (30, 64),
 (30, 65),
 (30, 66),
+(30, 202),
+(30, 214),
 (31, 67),
 (31, 68),
+(31, 219),
+(31, 220),
+(31, 223),
+(31, 224),
 (32, 69),
 (32, 70),
 (33, 71),
@@ -230,31 +257,19 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (35, 75),
 (35, 76),
 (36, 77),
-(37, 78),
 (37, 79),
+(37, 168),
+(37, 169),
+(37, 179),
 (38, 80),
 (38, 81),
 (39, 82),
-(40, 83),
-(40, 84),
-(41, 85),
-(41, 86),
-(41, 87),
-(42, 88),
-(42, 89),
 (43, 90),
 (43, 91),
-(44, 92),
-(44, 93),
-(45, 94),
-(45, 95),
 (46, 96),
 (46, 97),
 (46, 98),
 (47, 99),
-(48, 100),
-(48, 101),
-(48, 102),
 (49, 103),
 (49, 104),
 (50, 105),
@@ -282,11 +297,14 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (60, 127),
 (60, 128),
 (61, 129),
+(61, 149),
+(61, 151),
 (62, 130),
 (62, 131),
 (63, 132),
 (63, 133),
 (64, 134),
+(64, 160),
 (65, 135),
 (65, 136),
 (66, 137),
@@ -298,7 +316,62 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (68, 143),
 (69, 144),
 (70, 145),
-(72, 146);
+(72, 146),
+(89, 153),
+(89, 154),
+(90, 155),
+(91, 158),
+(91, 159),
+(93, 162),
+(93, 163),
+(93, 213),
+(94, 161),
+(95, 166),
+(95, 209),
+(95, 210),
+(96, 167),
+(96, 207),
+(96, 208),
+(97, 203),
+(97, 204),
+(97, 205),
+(98, 206),
+(98, 211),
+(98, 212),
+(99, 164),
+(101, 180),
+(101, 181),
+(101, 182),
+(101, 183),
+(102, 184),
+(102, 185),
+(102, 186),
+(102, 187),
+(104, 198),
+(105, 188),
+(105, 189),
+(106, 194),
+(106, 195),
+(106, 196),
+(106, 197),
+(107, 190),
+(107, 191),
+(107, 192),
+(108, 193),
+(109, 199),
+(109, 200),
+(111, 201),
+(112, 170),
+(113, 172),
+(113, 173),
+(113, 174),
+(116, 175),
+(116, 176),
+(116, 177),
+(116, 178),
+(118, 215),
+(118, 216),
+(118, 217);
 
 -- --------------------------------------------------------
 
@@ -327,14 +400,12 @@ CREATE TABLE `hotspots` (
 --
 
 INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcion`, `pitch`, `yaw`, `cssClass`, `clickHandlerFunc`, `clickHandlerArgs`, `sceneId`, `targetPitch`, `targetYaw`, `tipo`) VALUES
-(0, NULL, NULL, '', -12, 0, 'custom-hotspot-salto', 'puntos', '', 'p2p2f1', 0, 0, 'scene'),
 (1, NULL, NULL, '   ', -13, 2, 'custom-hotspot-salto', 'puntos', 'p2punto3', 'p2p3', -4, 182, 'scene'),
 (2, NULL, NULL, ' ', -16, 126, 'custom-hotspot-salto', 'puntos', 'p2punto1', 'p2p1', 0, 0, 'scene'),
 (3, NULL, NULL, ' ', -8, -180, 'custom-hotspot-salto', 'puntos', 'p2punto10', 'p2p10', 0, 0, 'scene'),
 (5, NULL, NULL, ' ', -10, -83, 'custom-hotspot-salto', 'puntos', 'p2punto2', 'p2p2', 0, -83, 'scene'),
 (6, NULL, NULL, ' ', -9, 185, 'custom-hotspot-salto', 'puntos', 'p2punto12', 'p2p2f3', -2, -2, 'scene'),
 (7, NULL, NULL, ' ', -8, 3, 'custom-hotspot-salto', 'puntos', 'p2punto13', 'p2p2f2', -2, 3, 'scene'),
-(8, NULL, NULL, ' ', 79, 174, 'custom-hotspot-info', 'baseDatos', 'id03', ' ', 0, 0, 'info'),
 (9, NULL, NULL, ' ', -22, 149, 'custom-hotspot-audio', 'musica', 'pinkfloyd.mp3', ' ', 0, 0, 'info'),
 (10, NULL, NULL, ' ', -21, -180, 'custom-hotspot-salto', 'puntos', 'p2punto11', 'p2p2f1', -6, 60, 'scene'),
 (11, NULL, NULL, ' ', -19, -9, 'custom-hotspot-salto', 'puntos', 'p2punto11', 'p2p2f1', -6, 60, 'scene'),
@@ -404,32 +475,12 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (75, NULL, NULL, ' ', 11, -28, 'custom-hotspot-salto', 'puntos', 'p1punto17', 'p1p9', 0, 0, 'scene'),
 (76, NULL, NULL, ' ', -46, -8, 'custom-hotspot-salto', 'puntos', 'pspunto12', 'p1p9f2', 0, 0, 'scene'),
 (77, NULL, NULL, ' ', -22, 148, 'custom-hotspot-salto', 'puntos', 'p1punto18', 'p1p9f1', 12, -17, 'scene'),
-(78, NULL, NULL, ' ', -12, 5, 'custom-hotspot-salto', 'puntos', 'p1punto10', 'p1p10', 0, 0, 'scene'),
 (79, NULL, NULL, ' ', -9, -172, 'custom-hotspot-salto', 'puntos', 'p1punto2', 'p1p2', 0, 0, 'scene'),
 (80, NULL, NULL, ' ', -21, 128, 'custom-hotspot-salto', 'puntos', 'p1punto9', 'p1p11', -11, -173, 'scene'),
 (81, NULL, NULL, ' ', -19, -5, 'custom-hotspot-salto', 'puntos', 'p1punto20', 'p1p12', 0, 0, 'scene'),
 (82, NULL, NULL, ' ', -14, 168, 'custom-hotspot-salto', 'puntos', 'p1punto10', 'p1p10', -6, 134, 'scene'),
-(83, NULL, NULL, ' ', -27, 172, 'custom-hotspot-salto', 'puntos', 'pspunto2', 'p0p1', -12, -166, 'scene'),
-(84, NULL, NULL, ' ', -3, 10, 'custom-hotspot-escaleras', 'escaleras', ' ', ' ', 0, 0, 'info'),
-(85, NULL, NULL, ' ', -19, 196, 'custom-hotspot-salto', 'puntos', 'pspunto9', 'p0p1f1', 37, -179, 'scene'),
-(86, NULL, NULL, ' ', -9, -19, 'custom-hotspot-salto', 'puntos', 'pspunto1', 'p0p0', 0, 0, 'scene'),
-(87, NULL, NULL, ' ', -25, 102, 'custom-hotspot-salto', 'puntos', 'pspunto3', 'p0p2', 0, 0, 'scene'),
-(88, NULL, NULL, ' ', -2, 10, 'custom-hotspot-salto', 'puntos', 'pspunto2', 'p0p1', 2, -18, 'scene'),
-(89, NULL, NULL, ' ', -11, 161, 'custom-hotspot-salto', 'puntos', 'pspunto8', 'p0p1f2', -5, 179, 'scene'),
-(90, NULL, NULL, ' ', -2, 10, 'custom-hotspot-salto', 'puntos', 'pspunto9', 'p0p1f1', 8, 9, 'scene'),
-(91, NULL, NULL, ' ', -13, -184, 'custom-hotspot-salto', 'puntos', 'pspunto6', 'p0p5', 2, 100, 'scene'),
-(92, NULL, NULL, ' ', -21, -82, 'custom-hotspot-salto', 'puntos', 'pspunto2', 'p0p1', 13, -179, 'scene'),
-(93, NULL, NULL, ' ', -12, -176, 'custom-hotspot-salto', 'puntos', 'pspunto4', 'p0p3', 0, 0, 'scene'),
-(94, NULL, NULL, ' ', -6, -2, 'custom-hotspot-salto', 'puntos', 'pspunto3', 'p0p2', 14, -129, 'scene'),
-(95, NULL, NULL, ' ', -11, 180, 'custom-hotspot-salto', 'puntos', 'pspunto5', 'p0p4', 0, 0, 'scene'),
-(96, NULL, NULL, ' ', -4, 3, 'custom-hotspot-salto', 'puntos', 'pspunto4', 'p0p3', 3, -3, 'scene'),
-(97, NULL, NULL, ' ', -9, -88, 'custom-hotspot-salto', 'puntos', 'pspunto7', 'p0p5', 0, 0, 'scene'),
 (98, NULL, NULL, ' ', -16, -182, 'custom-hotspot-salto', 'puntos', 'pspunto6', 'p0p4f2', 17, -5, 'scene'),
 (99, NULL, NULL, ' ', -2, 105, 'custom-hotspot-salto', 'puntos', 'pspunto5', 'p0p4', -10, -47, 'scene'),
-(100, NULL, NULL, ' ', -7, 87, 'custom-hotspot-salto', 'puntos', 'pspunto5', 'p0p4', -8, -45, 'scene'),
-(101, NULL, NULL, ' ', -5, 177, 'custom-hotspot-salto', 'puntos', 'pspunto10', 'p0p5f1', 0, 0, 'scene'),
-(102, NULL, NULL, ' ', -6, 74, 'custom-hotspot-salto', 'puntos', 'pspunto8', 'p0p1f2', -8, -45, 'scene'),
-(103, NULL, NULL, ' ', -2, -9, 'custom-hotspot-salto', 'puntos', 'pspunto7', 'p0p5', -2, 141, 'scene'),
 (104, NULL, NULL, ' ', -9, 165, 'custom-hotspot-salto', 'puntos', 'pspunto11', 'p0p5f2', 1, -13, 'scene'),
 (105, NULL, NULL, ' ', -3, 169, 'custom-hotspot-salto', 'puntos', 'pspunto10', 'p0p5f1', 9, -13, 'scene'),
 (106, NULL, NULL, ' ', -20, -106, 'custom-hotspot-salto', 'puntos', 'p3punto15', 'p3p8', -3, 172, 'scene'),
@@ -474,7 +525,78 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (145, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', 'puntos', 'ptpunto1', 'p4p1', 0, 0, 'scene'),
 (146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene'),
 (147, 'Puerta to guapa', 'La mas del sur', '', -17, -96, 'custom-hotspot-info', 'panelInformacion', '147', '', 0, 0, 'info'),
-(148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', '', 'p2p2f1', 0, 0, 'scene');
+(148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', '', 'p2p2f1', 0, 0, 'scene'),
+(149, NULL, NULL, '', 5, 0, 'custom-hotspot-audio', 'musica', '6', 'p3p6f1', 0, 0, 'info'),
+(150, NULL, NULL, '', -1, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info'),
+(151, NULL, NULL, '', -4, 29, 'custom-hotspot-salto', 'puntos', '', 'p1p7', 0, 0, 'scene'),
+(152, '', '', '', 0, 0, '', '', '', '', 0, 0, ''),
+(153, NULL, NULL, '', -7, -94, 'custom-hotspot-salto', 'puntos', 'p0punto15', 'p0p8f2', 0, 0, 'scene'),
+(154, NULL, NULL, '', -8, -175, 'custom-hotspot-salto', 'puntos', 'p0punto14', 'p0p8f1', 0, 0, 'scene'),
+(155, NULL, NULL, '', -12, -7, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene'),
+(158, NULL, NULL, '', -9, 77, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene'),
+(160, NULL, NULL, '', -4, 2, 'custom-hotspot-salto', 'puntos', 'p3punto18', 'p3p10f1', 0, 0, 'scene'),
+(161, NULL, NULL, '', -11, -99, 'custom-hotspot-salto', 'puntos', 'p3punto18', 'p3p10f1', 0, 0, 'scene'),
+(162, NULL, NULL, '', -12, -177, 'custom-hotspot-salto', 'puntos', 'p3punto17', 'p3p10', 0, 0, 'scene'),
+(163, NULL, NULL, '', -11, 87, 'custom-hotspot-salto', 'puntos', 'p3punto19', 'p3p10f2', 0, 0, 'scene'),
+(164, NULL, NULL, '', -13, -100, 'custom-hotspot-salto', 'puntos', 'p2punto16', 'p2p10f2', 0, 0, 'scene'),
+(165, NULL, NULL, '', -4, 6, 'custom-hotspot-salto', 'puntos', 'p2punto14', 'p2p10f1', 0, 0, 'scene'),
+(166, NULL, NULL, '', -20, -6, 'custom-hotspot-salto', 'puntos', 'p2punto15', 'p2p10f3', 0, 0, 'scene'),
+(167, NULL, NULL, '', -19, 91, 'custom-hotspot-salto', 'puntos', 'p2punto17', 'p2p10f4', 0, 0, 'scene'),
+(168, NULL, NULL, '', 0, 0, '', '', '', 'p1p12', 0, 0, ''),
+(169, NULL, NULL, '', -25, 94, 'custom-hotspot-salto', 'puntos', 'p1punto30', 'p1p12f7', 0, 0, 'scene'),
+(170, NULL, NULL, '', -30, -97, 'custom-hotspot-salto', 'puntos', 'p1punto25', 'p1p13', 0, 0, 'scene'),
+(172, NULL, NULL, '', -32, -93, 'custom-hotspot-salto', 'puntos', 'p1punto25', 'p1p13', 0, 0, 'scene'),
+(173, NULL, NULL, '', -19, -2, 'custom-hotspot-salto', 'puntos', 'p1punto26', 'p1p14', 0, 0, 'scene'),
+(174, NULL, NULL, '', -20, 82, 'custom-hotspot-salto', 'puntos', 'p1punto30', 'p1p12f7', 0, 0, 'scene'),
+(175, NULL, NULL, '', -18, 171, 'custom-hotspot-salto', 'puntos', 'p1punto9', 'p1p11', 0, 0, 'scene'),
+(176, NULL, NULL, '', -29, -90, 'custom-hotspot-salto', 'puntos', 'p1punto25', 'p1p13', 0, 0, 'scene'),
+(177, NULL, NULL, '', -17, 1, 'custom-hotspot-salto', 'puntos', 'p1punto26', 'p1p14', 0, 0, 'scene'),
+(178, NULL, NULL, '', -20, 86, 'custom-hotspot-salto', 'puntos', 'p1punto30', 'p1p12f7', 0, 0, 'scene'),
+(179, NULL, NULL, '', -20, -5, 'custom-hotspot-salto', 'puntos', 'p1punto35', 'p1p12', 0, 0, 'scene'),
+(180, NULL, NULL, '', -33, 86, 'custom-hotspot-salto', 'puntos', 'p1punto35', 'p1p12', 0, 0, 'scene'),
+(181, NULL, NULL, '', -16, 2, 'custom-hotspot-salto', 'puntos', 'p1punto26', 'p1p14', 0, 0, 'scene'),
+(182, NULL, NULL, '', -11, -127, 'custom-hotspot-salto', 'puntos', 'p1punto27', 'p1p12f1', 0, 0, 'scene'),
+(183, NULL, NULL, '', -13, -112, 'custom-hotspot-salto', 'puntos', 'p1punto28', 'p1p12f2', 0, 0, 'scene'),
+(184, NULL, NULL, '', -16, -166, 'custom-hotspot-salto', 'puntos', 'p1punto35', 'p1p12', 0, 0, 'scene'),
+(185, NULL, NULL, '', -10, 57, 'custom-hotspot-salto', 'puntos', 'p1punto29', 'p1p12f5', 0, 0, 'scene'),
+(186, NULL, NULL, '', -16, -138, 'custom-hotspot-salto', 'puntos', 'p1punto25', 'p1p13', 0, 0, 'scene'),
+(187, NULL, NULL, '', -19, 146, 'custom-hotspot-salto', 'puntos', 'p1punto31', 'p1p12f6', 0, 0, 'scene'),
+(188, NULL, NULL, '', -6, -159, 'custom-hotspot-salto', 'puntos', 'p1punto31', 'p1p12f6', 0, 0, 'scene'),
+(189, NULL, NULL, '', -10, -127, 'custom-hotspot-salto', 'puntos', 'p1punto26', 'p1p14', 0, 0, 'scene'),
+(190, NULL, NULL, '', -8, 1, 'custom-hotspot-salto', 'puntos', 'p1punto29', 'p1p12f5', 0, 0, 'scene'),
+(191, NULL, NULL, '', -13, -108, 'custom-hotspot-salto', 'puntos', 'p1punto26', 'p1p14', 0, 0, 'scene'),
+(192, NULL, NULL, '', -13, -147, 'custom-hotspot-salto', 'puntos', 'p1punto30', 'p1p12f7', 0, 0, 'scene'),
+(193, NULL, NULL, '', -21, -57, 'custom-hotspot-salto', 'puntos', 'p1punto30', 'p1p12f7', 0, 0, 'scene'),
+(194, NULL, NULL, '', -7, 5, 'custom-hotspot-salto', 'puntos', 'p1punto32', 'p1p12f8', 0, 0, 'scene'),
+(195, NULL, NULL, '', -8, -12, 'custom-hotspot-salto', 'puntos', 'p1punto31', 'p1p12f6', 0, 0, 'scene'),
+(196, NULL, NULL, '', -17, -41, 'custom-hotspot-salto', 'puntos', 'p1punto35', 'p1p12', 0, 0, 'scene'),
+(197, NULL, NULL, '', -12, -162, 'custom-hotspot-salto', 'puntos', 'p1punto9', 'p1p11', 0, 0, 'scene'),
+(198, NULL, NULL, '', -15, 109, 'custom-hotspot-salto', 'puntos', 'p1punto25', 'p1p13', 0, 0, 'scene'),
+(199, NULL, NULL, '', -9, 3, 'custom-hotspot-salto', 'puntos', 'p1punto6', 'p1p6', 0, 0, 'scene'),
+(200, NULL, NULL, '', -13, -82, 'custom-hotspot-salto', 'puntos', 'p1punto34', 'p1p6f2', 0, 0, 'scene'),
+(201, NULL, NULL, '', -11, 90, 'custom-hotspot-salto', 'puntos', 'p1punto33', 'p1p6f1', 0, 0, 'scene'),
+(202, NULL, NULL, '', -17, -161, 'custom-hotspot-salto', 'puntos', 'p1punto33', 'p1p6f1', 0, 0, 'scene'),
+(203, NULL, NULL, '', -29, -101, 'custom-hotspot-salto', 'puntos', 'p2punto14', 'p2p10f1', 0, 0, 'scene'),
+(204, NULL, NULL, '', -8, 63, 'custom-hotspot-salto', 'puntos', 'p2punto18', 'p2p10f5', 0, 0, 'scene'),
+(205, NULL, NULL, '', -22, 0, 'custom-hotspot-salto', 'puntos', 'p2punto17', 'p2p10f4', 0, 0, 'scene'),
+(206, NULL, NULL, '', -22, -87, 'custom-hotspot-salto', 'puntos', 'p2punto15', 'p2p10f3', 0, 0, 'scene'),
+(207, NULL, NULL, '', -26, -183, 'custom-hotspot-salto', 'puntos', 'p2punto14', 'p2p10f1', 0, 0, 'scene'),
+(208, NULL, NULL, '', -26, -183, 'custom-hotspot-salto', 'puntos', 'p2punto14', 'p2p10f1', 0, 0, 'scene'),
+(209, NULL, NULL, '', -20, 163, 'custom-hotspot-salto', 'puntos', 'p2punto10', 'p2p10', 0, 0, 'scene'),
+(210, NULL, NULL, '', -21, 97, 'custom-hotspot-salto', 'puntos', 'p2punto16', 'p2p10f2', 0, 0, 'scene'),
+(211, NULL, NULL, '', -22, 177, 'custom-hotspot-salto', 'puntos', 'p2punto16', 'p2p10f2', 0, 0, 'scene'),
+(212, NULL, NULL, '', -9, 113, 'custom-hotspot-salto', 'puntos', 'p2punto18', 'p2p10f5', 0, 0, 'scene'),
+(213, 'Craneo', 'Un craneo grande grande prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba ', '', 9, 155, 'custom-hotspot-info', 'panelInformacion', '213', '', 0, 0, 'info'),
+(214, NULL, NULL, '', 4, 0, 'custom-hotspot-audio', 'musica', '4', 'p1p6', 0, 0, 'info'),
+(215, NULL, NULL, '', 3, 0, 'custom-hotspot-audio', 'musica', '4', 'escudo', 0, 0, 'info'),
+(216, 'Prueba2', 'blablabla', '', -2, 83, 'custom-hotspot-info', 'panelInformacion', '216', '', 0, 0, 'info'),
+(217, NULL, NULL, '', -8, 109, 'custom-hotspot-salto', 'puntos', 'p1p3', 'p1p72', 0, 0, 'scene'),
+(218, NULL, NULL, '', 14, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info'),
+(219, NULL, NULL, '', 17, 0, 'custom-hotspot-audio', 'musica', '4', 'p1p7', 0, 0, 'info'),
+(220, NULL, NULL, '', 6, 0, 'custom-hotspot-audio', 'musica', '6', 'p1p7', 0, 0, 'info'),
+(222, NULL, NULL, '', 1, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info'),
+(223, 'sserwerwe', 'werwrwer', '', 17, -40, 'custom-hotspot-info', 'panelInformacion', '223', '', 0, 0, 'info'),
+(224, NULL, NULL, '', 12, 0, 'custom-hotspot-audio', 'musica', '4', 'p1p7', 0, 0, 'info');
 
 -- --------------------------------------------------------
 
@@ -586,10 +708,10 @@ CREATE TABLE `libros` (
 INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `editorial`, `lugar_edicion`, `fecha_edicion`, `ISBN`, `tipo`, `apaisado`) VALUES
 (5, 'Apuntes para una historia del Instituto \"Celia Viñas\" de Almería', 'D.Trino Gómez Ruiz', 'I.E.S Celia Viñas', 'Almería', '2013-10-01', '565989', 1, 0),
 (6, 'Nacimiento y primeros pasos de un edificio: el I.E.S \"Celia Viñas\"', 'D.José Luis Ruz Márquez', 'I.E.S Celia Viñas', 'Almeria', '2000-10-08', '0', 1, 0),
-(7, 'Gramática elemental de la lengua castellana', 'D.Hilario del Olmo Minguez', 'almeria', 'Almería', '1808-05-01', '2', 1, 0),
-(8, 'Sumario de psicología', 'D.Agustín Arredondo García', 'a', 'Valladolid', '2018-01-14', '46', 1, 0),
-(9, 'El esplendor de Almerï¿½a en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterrï¿½nea, Cajama.', 'Almeria', '2018-01-28', '8495531186', 1, 1),
-(10, 'Exposición y critica de la doctrina transformista', 'Agustin Arredondo', 'D. Mariano Alvares y Robles', 'Almería', '2018-01-05', '7', 1, 0);
+(7, 'Gramática elemental de la lengua castellana', 'D.Hilario del Olmo Minguez', 'almeria', 'Almería', '1808-05-01', '2', 0, 0),
+(8, 'Sumario de psicología', 'D.Agustín Arredondo García', 'a', 'Valladolid', '2018-01-14', '46', 0, 0),
+(9, 'El esplendor de Almerï¿½a en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterrï¿½nea, Cajama.', 'Almeria', '2018-01-28', '8495531186', 0, 1),
+(10, 'Exposición y critica de la doctrina transformista', 'Agustin Arredondo', 'D. Mariano Alvares y Robles', 'Almería', '2018-01-05', '7', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -607,7 +729,49 @@ CREATE TABLE `panel_imagenes` (
 --
 
 INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
-(150, 160);
+(150, 160),
+(152, 212),
+(152, 211),
+(152, 210),
+(152, 215),
+(152, 216),
+(213, 254),
+(213, 246),
+(213, 254),
+(213, 246),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(213, 0),
+(216, 209),
+(216, 210),
+(216, 211),
+(216, 212),
+(216, 209),
+(216, 210),
+(216, 211),
+(216, 212),
+(216, 0),
+(216, 0),
+(216, 0),
+(223, 211),
+(223, 218),
+(223, 224),
+(225, 209),
+(225, 210),
+(225, 211),
+(225, 294),
+(225, 296),
+(225, 298);
 
 -- --------------------------------------------------------
 
@@ -651,15 +815,9 @@ CREATE TABLE `puntos_mapa` (
 --
 
 INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `id_escena`, `piso`) VALUES
-(1, 'pspunto1', 59, 62, 'p0p0', 0),
-(2, 'pspunto2', 50, 67.5, 'p0p1', 0),
-(3, 'pspunto3', 50, 73.5, 'p0p2', 0),
-(4, 'pspunto4', 31.5, 73.5, 'p0p3', 0),
 (5, 'pspunto5', 16.5, 48.5, 'p0p4', 0),
 (8, 'pspunto6', 7.5, 88, 'p0p4f2', 0),
-(9, 'pspunto7', 16.5, 48.5, 'p0p5', 0),
 (10, 'pspunto8', 23.5, 61.5, 'p0p1f2', 0),
-(11, 'pspunto9', 41.5, 61, 'p0p1f1', 0),
 (12, 'pspunto10', 0, 50.5, 'p0p5f1', 0),
 (13, 'pspunto11', 0, 46.5, 'p0p5f2', 0),
 (14, 'pspunto12', 25, 26, 'p1p9f2', 0),
@@ -672,7 +830,6 @@ INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `
 (21, 'p1punto7', 34.5, 43.5, 'p1p7', 1),
 (22, 'p1punto8', 50, 53.5, 'p1p8', 1),
 (23, 'p1punto9', 64, 73.5, 'p1p11', 1),
-(24, 'p1punto10', 75, 71.5, 'p1p10', 1),
 (25, 'p1punto11', 25.5, 80.5, 'p1p32f1', 1),
 (26, 'p1punto12', 34.3, 84.5, 'p1p32f2', 1),
 (27, 'p1punto13', 48.8, 86, 'p1p2f1', 1),
@@ -681,7 +838,6 @@ INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `
 (30, 'p1punto17', 18, 26, 'p1p9', 1),
 (31, 'p1punto18', 25, 30, 'p1p9f1', 1),
 (32, 'p1punto19', 41, 48, 'p1p72', 1),
-(33, 'p1punto20', 80, 72, 'p1p12', 1),
 (34, 'p1punto21', 25.8, 73.5, 'p1p32', 1),
 (35, 'p1punto22', 42, 73.5, 'p1p22', 1),
 (36, 'p2punto1', 53, 62, 'p2p1', 2),
@@ -716,7 +872,29 @@ INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `
 (65, 'ptpunto2', 6, 85, 'p4p2', 4),
 (66, 'ptpunto3', 6, 15, 'p4p3', 4),
 (67, 'ptpunto4', 94, 61, 'p4p4', 4),
-(68, 'ptpunto5', 94, 91, 'p4p5', 4);
+(68, 'ptpunto5', 94, 91, 'p4p5', 4),
+(78, 'p0punto13', 49.58, 52.92, 'p0p8', 0),
+(79, 'p0punto14', 39.91, 49.94, 'p0p8f1', 0),
+(80, 'p0punto15', 54.89, 42.49, 'p0p8f2', 0),
+(82, 'p3punto18', 91.95, 74.72, 'p3p10f1', 3),
+(83, 'p3punto19', 92.59, 89.45, 'p3p10f2', 3),
+(84, 'p2punto14', 88.45, 72.86, 'p2p10f1', 2),
+(85, 'p2punto15', 95.14, 73.61, 'p2p10f3', 2),
+(86, 'p2punto16', 88.45, 85.16, 'p2p10f2', 2),
+(87, 'p2punto17', 95.78, 85.35, 'p2p10f4', 2),
+(88, 'p2punto18', 91.74, 94.48, 'p2p10f5', 2),
+(90, 'p1punto25', 74.06, 66.29, 'p1p13', 1),
+(91, 'p1punto26', 83.94, 73.45, 'p1p14', 1),
+(92, 'p1punto27', 69.67, 56.93, 'p1p12f1', 1),
+(93, 'p1punto28', 79.24, 55.42, 'p1p12f2', 1),
+(94, 'p1punto29', 92.26, 92.17, 'p1p12f5', 1),
+(95, 'p1punto30', 71.16, 82.67, 'p1p12f7', 1),
+(96, 'p1punto31', 81.28, 83.77, 'p1p12f6', 1),
+(97, 'p1punto32', 76.26, 92.86, 'p1p12f8', 1),
+(98, 'p1punto33', 7.45, 32.57, 'p1p6f1', 1),
+(100, 'p1punto34', 7.77, 17.71, 'p1p6f2', 1),
+(105, 'p1punto35', 74.42, 75.23, 'p1p12', 1),
+(108, 'p0punto17', 72.75, 74.71, 'p0p2f1', 0);
 
 -- --------------------------------------------------------
 
@@ -739,11 +917,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) VALUES
-(21, 'Hulio', 'Julio', 'Benitez', '1234', 'hulio@gmail.com', 1),
 (31, 'Alfredo', 'Alfredo', 'Moreno', '81dc9bdb52d04dc20036dbd8313ed055', 'alfred@gmail.com', 1),
-(33, 'loli', 'loli', '', '202cb962ac59075b964b07152d234b70', '', 1),
+(33, 'loli', 'loli', '', '81dc9bdb52d04dc20036dbd8313ed055', '', 1),
 (34, 'Miguel', 'Miguel', 'Lopez', '81dc9bdb52d04dc20036dbd8313ed055', 'miguel@gmail.com', 0),
-(36, 'ham', 'hamza', 'benhachmi', 'd41d8cd98f00b204e9800998ecf8427e', 'hamzabenhachmi@gmail.com', 1);
+(36, 'ham', 'hamza', 'ben', '7fe4771c008a22eb763df47d19e2c6aa', 'hamzabenhachmi@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -762,10 +939,23 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
-(1, 'https://www.youtube.com/', 'wewe'),
 (2, 'https://www.youtube.com/', 'ole'),
 (4, 'https://www.youtube.com/watch?v=Lv9o3pPTn7I', 'wewe'),
 (5, 'https://youtu.be/3TPW48bcd3Q', 'primer video celia tour');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `visita_guiada`
+--
+
+CREATE TABLE `visita_guiada` (
+  `id_visita` int(11) NOT NULL,
+  `cod_escena` varchar(10) NOT NULL,
+  `titulo_escena` varchar(100) NOT NULL,
+  `audio_escena` varchar(100) NOT NULL,
+  `img_preview` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
@@ -836,6 +1026,12 @@ ALTER TABLE `video`
   ADD PRIMARY KEY (`id_vid`);
 
 --
+-- Indices de la tabla `visita_guiada`
+--
+ALTER TABLE `visita_guiada`
+  ADD PRIMARY KEY (`id_visita`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -843,37 +1039,50 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT de la tabla `audio`
 --
 ALTER TABLE `audio`
-  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
-  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+
 --
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
-  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
 --
 -- AUTO_INCREMENT de la tabla `video`
 --
 ALTER TABLE `video`
   MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `visita_guiada`
+--
+ALTER TABLE `visita_guiada`
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -883,6 +1092,7 @@ ALTER TABLE `video`
 --
 ALTER TABLE `puntos_mapa`
   ADD CONSTRAINT `puntos_mapa_ibfk_1` FOREIGN KEY (`piso`) REFERENCES `pisos` (`piso`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
