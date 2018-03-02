@@ -26,19 +26,15 @@ class PuntosDestacadosModel extends CI_Model {
             $imagen_celda = $_REQUEST["imagen_celda"];
             $titulo_celda = $_REQUEST["titulo_celda"];
 
-            $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,fila_asociada,imagen_celda,titulo_celda) VALUES(' $id_celda','$escena_celda' ,'$id_fila','$imagen_celda', '$titulo_celda')";	
+            $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,fila_asociada,imagen_celda,titulo_celda) 
+                      VALUES(' $id_celda','$escena_celda' ,'$id_fila','$imagen_celda', '$titulo_celda')";	
         }else{
             echo "ya has excedido el numero maximo de celdas por fila";
         }
-        
-        
-        
-        
     }
     
     public function borrar_celda($id){
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
-
     }
     
     public function getAll() {
