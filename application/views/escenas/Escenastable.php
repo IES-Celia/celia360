@@ -55,7 +55,7 @@
             if($punto['piso']==$indice){
             
               echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-              <span class='tooltip'>".$punto['nombre']."</span>
+              <span class='tooltip'>".$punto['id_escena']."</span>
               </div>";
             
             }
