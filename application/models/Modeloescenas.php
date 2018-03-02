@@ -20,7 +20,6 @@
                 foreach($com->result_array() as $fila) {
                     $tabla[] = $fila;
                 }
-				
 			return $tabla;
 		}
         

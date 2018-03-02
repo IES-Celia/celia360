@@ -26,17 +26,16 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
-        function borrarusuario(id){
-            resultado=confirm("¿Desea borrar el usuario?");
-            if(resultado){ 
-            $.get("<?php echo base_url('escenas/deletescene/'); ?>" + id, null, respuesta);
+            function borrarscene(id) {
+                if (confirm("¿Estás seguro?")) {
+                    $.get("<?php echo site_url('/escenas/deletescene/'); ?>" + id, null, respuesta);
+                }
             }
-        }
-});
+    });
                      
                             
 </script>
-</div>
+
 
 
 

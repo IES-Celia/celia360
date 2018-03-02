@@ -19,10 +19,10 @@
 .slider{
     width: 100%;
     height: 50%;
-    
     background: grey;
     display:flex;
     flex-direction: row;
+    padding: 2px;
 }
 
 .slider div{
@@ -35,69 +35,9 @@
     overflow: hidden;
 }
 
-
-
-#d1{
-    background-image: url(img/lab1.jpg)
+#opciones_fila{
+    width: 50px;
 }
-
-#d2{
-    background-image: url(img/informatica.png)
-}
-
-#d3{
-    background-image: url(img/escalonada.jpg)
-}
-
-#d4{
-    background-image: url(img/musica.jpg)
-}
-
-#c1{
-    background-image: url("img/puntosd.jpg");
-}
-
-#c2{
-    background-image: url(img/biblio.png);
-}
-
-#c3{
-    background-image: url(img/arte.jpg);
-}
-
-#c4{
-    background-image: url(img/lab2.jpg);
-}
-
-#b1{
-    background-image: url(img/entrada.jpg);
-}
-
-#b2{
-    background-image: url(img/prof.png)
-}
-
-#b3{
-    background-image: url(img/geo.png);
-}
-
-#a1{
-    background-image: url("img/pozo.JPG");
-}
-
-#a2{
-    background-image: url(img/01.jpg);
-}
-
-#a3{
-    background-image: url(img/gimnasioI.jpg);
-}
-
-#a4{
-    background-image: url(img/archivo.jpg);
-}
-
-
 
 /*EFECTO*/
 
