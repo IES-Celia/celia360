@@ -208,6 +208,25 @@ class Hotspots extends CI_Controller {
     $resultado = $this->hotspotsModel->cargar_video($id);
     //TODO: añadir mensaje de la situacion
 }
+public function process_insert_video(){
+        $resultado = $this->hotspotsModel->insertarHotspotVideo();
+		$anda=$this->input->post_get("id_scene");
+        if ($resultado == true) {
+			echo $anda;
+			redirect('welcome/cargar_escena/'.$anda.'/show_insert_hotspot/');
+            /*$datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"]="hotspots/hotspotsTable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);*/
+        }else {
+            $datos["error"] = "La inserci&oacute;n ha fallado";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"]="hotspots/hotspotsTable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+        }
+    }
 
 public function load_audio(){
     $id = $_REQUEST["id_hotspot"];

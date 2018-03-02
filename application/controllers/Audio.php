@@ -11,7 +11,7 @@ class Audio extends CI_Controller {
         parent::__construct();
         $this->load->model("Audm");
         $this->load->model("UsuarioModel");
-        $this->load->library( 'pagination' );
+       
     }
 
     public function index() {
@@ -114,10 +114,10 @@ class Audio extends CI_Controller {
         echo $html; 
         echo '</table>';
     }   
-    public function busqueda_ajaxaud($abuscar) {
+    public function busqueda_ajaxaud($abuscar="") {
         $listaAudios = $this->Audm->buscar_ajaxaud($abuscar);
         if ($listaAudios == false) {
-			echo "";
+			echo 'No hay resultados';
 		}
 		else {
         echo"<table align='center' id='cont' border:1><tr>
@@ -131,10 +131,10 @@ class Audio extends CI_Controller {
             ";
         foreach ($listaAudios as $audio) {
             $fila = $audio["id_aud"];
-                    
+            $html="";     
             $html = $html .
                     '<tr>'
-                    . '<td>' . $audio["id_aud"] . '</td>'
+                    . '<td>' . $fila . '</td>'
                     . '<td>' . $audio["url_aud"] . '</td>'
                     . '<td>' . $audio["desc_aud"]. '</td>'
                     . '<td>' . $audio["tipo_aud"] . '</td>'
