@@ -20,7 +20,6 @@ echo"<form action='".site_url("usuario/processregisterform")."' method='get'>";
     <input type='text' name='nombre' id="nombre"><br/><br/>
     <label for="subname">Apellidos</label>
     <input type='text' name='subname' id="subname"><br/>
-    </select>
         <br/>
     <input type='submit'>
     <br/>

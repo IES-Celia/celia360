@@ -35,7 +35,7 @@
             }
     ?>
         <div id="menu">
-    <p align="center">Estás logueado como <span id="usuario"><?php echo $this->session->nombreusr;?></span></p>
+    <p style="color: #ffffff;" align="center">Estás logueado como <span id="usuario"><?php echo $this->session->nombreusr;?></span></p>
 
 
 

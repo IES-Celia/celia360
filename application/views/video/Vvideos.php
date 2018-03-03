@@ -50,7 +50,8 @@
 </style>
 
 <?php
-echo"<a class='insert' onclick='mostrar()'>Insertar</a>";
+echo"<a class='insert' onclick='mostrar()'>Insertar Video</a>";
+echo "</div>";
 echo"<table align='center'  id='cont'><tr>
 <th>ID</th>
 <th>URL</th>

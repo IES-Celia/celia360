@@ -99,13 +99,16 @@
  
 
 </style>
+<?php
+echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";
+echo"</div>";
+?>
 <div class="wrapper">
     <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
     
 </div>
 <?php
-echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";
-echo"</div>";
+
 echo"<table align='center' id='cont'><tr id='cabecera'>
 <th>ID</th>
 <th>URL</th>

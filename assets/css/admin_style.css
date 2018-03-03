@@ -1,6 +1,14 @@
+    @font-face{
+        font-family: comic;
+        src:url(../fonts/Caviar.ttf);
+    }
+
+
     body{
        background: url(fondo.JPG) no-repeat center center fixed;
        background-size: 100%;
+       font-family: comic;
+
     }
 
     p{
@@ -8,10 +16,18 @@
 
     }
 
-    h1{
+    .caja h1{
         text-align: center;
+    }
+
+    .cabecera{
+        text-align:center;
         position: relative;
-        top: 90px;
+        top: 50px;
+        margin: 30px 550px 0px 550px;
+        border-bottom: 5px solid black;
+        background-color: rgba(0,0,0,0.3);
+        color: #ffffff;
     }
 
 
@@ -23,15 +39,15 @@
     }
 
     #menu{
-        height: 100px;
-        background-color:rgba(0,0,0,0.7);
+        height: 65px;
+        background-color:rgba(0,0,0,0.8);
         border-bottom: 5px solid #ffffff;
         margin-bottom: 30px;
-            z-index: 999;
-            width: 100%;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
+        z-index: 999;
+        width: 100%;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
     }
     
     #menu p{
@@ -114,11 +130,11 @@
         transition:0.4s;
         background: #0047b3;
         text-align: center;
-        margin-bottom: 20px;
         box-shadow: inset 0px 0px 2px 1px rgba(255,255,255,1);
         margin: auto;
         display: block;
-        margin-bottom: 20px;
+        position: relative;
+        top: -50px;
         }
         
     .insert:hover{
@@ -293,11 +309,7 @@
         
     /* Parte del Formulario de Login */
 
-        @font-face{
-            font-family: comic;
-            src:url(../fonts/Caviar.ttf);
-        }
-
+    
        
 
         .caja{
@@ -368,7 +380,7 @@
         }
         
         .caja input[type=button]{
-             width: 300px;
+            width: 300px;
             height: auto;
             cursor: pointer;
             border-radius: 10px;
@@ -415,13 +427,15 @@
             background-color: rgba(0,0,0,0.0);
         }
 
-         .caja input[type=button]:hover{
+        .caja input[type=button]:hover{
             background-color: rgba(0,0,0,0.4);
-         }
+        }
 
-          .caja input[type=submit]:hover{
+        .caja input[type=submit]:hover{
             background-color: rgba(0,0,0,0.4);
-          }
+        }
+
+
 
 
 

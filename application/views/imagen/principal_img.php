@@ -59,7 +59,7 @@ echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_image
 //div cierra menu
 echo "</div>";
 //título
-echo '<h1>IMAGEN</h1>';
+echo '<h1 class="cabecera">IMAGEN</h1>';
 
 //El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
 ?>

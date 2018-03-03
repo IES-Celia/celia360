@@ -6,7 +6,6 @@
         display:none;
         z-index: 1;
         position: fixed;
-        padding-top: 100px;
         top: 0;
         left: 0;
         width: 100%;
@@ -17,22 +16,11 @@
         background-color:rgba(0,0,0,0.4);
     }
 
-
-    #mod_sub{
-        background-color: #ffffff;
-        width: 80%;
-        text-align: center;
-        position: fixed;
-        margin-left:auto; 
-        margin-right:auto;
-        
-    }
 
     #insertar{
         display:none;
         z-index: 1;
         position: fixed;
-        padding-top: 100px;
         top: 0;
         left: 0;
         width: 100%;
@@ -44,15 +32,6 @@
 
     }
 
-
-    #sub_ins{
-        background-color: #ffffff;
-        width: 80%;
-        text-align: center;
-        position: fixed;
-        margin-left:auto; 
-        margin-right:auto;
-    }
 
     
 
@@ -62,7 +41,7 @@
 //Tabla usuarios
  echo"<a class='insert' onclick='insertar()' > Insertar Usuario</a>";
  echo "</div>";
-echo "<h1>Usuario</h1>";
+echo "<h1 class='cabecera'>Usuario</h1>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>
@@ -110,43 +89,65 @@ echo "</table>";
 //Capa formulario modificar
 echo "
 <div id='modificar'>
-    <div id='mod_sub' class='caja'>
+    <div class='caja'>
     <h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='get'>
-        Nombre de usuario:<input type='text' name='username' id='form_modif_nick'><br/>
-        Password:<input type='text' name='pass' required><br/>
-        Email:<input type='text' name='email' id='form_modif_email'><br/>
-        Nombre:<input type='text' name='nombre' id='form_modif_nombre' ><br/>
-        Apellidos:<input type='text' name='apellidos' id='form_modif_ape'><br/>
-        Tipo:<input type='number' name='tipo' min='0' max='3' id='form_modif_tipo' required><br/>
+
+        <label for='form_modif_nick'>Nombre de usuario</label><br/>
+        <input type='text' name='username' id='form_modif_nick'><br/><br/>
+        <label for='pass'>Password</label>
+        <input type='text' name='pass' required><br/><br/>
+        <label for='form_modif_email'>Email</label><br/>
+        <input type='text' name='email' id='form_modif_email'><br/><br/>
+        <label for='form_modif_nombre'>Nombre</label>
+        <input type='text' name='nombre' id='form_modif_nombre' ><br/><br/>
+        <label for='form_modif_ape'>Apellidos</label>
+        <input type='text' name='apellidos' id='form_modif_ape'><br/><br/>
+
+        Tipo<br/>
+        <select>
+            <option value='1'>Admin</option>
+            <option value='2'>Mapero</option>
+            <option value='3'>Bibliotecario</option>
+            
+        </select>
+        </br>
         <input type='hidden' name='id' id='form_modif_id'><br/>
         <input type=submit value='Modificar'>
+            <br/>
+            <br/>
+        <input type='button' onclick='cerrar()' value='Cerrar'>
+            <br/>
+            <br/>
     </form>
-    <a href='#' onclick='cerrar()'>Cerrar</a>
     </div>
 </div>";
 
 //Capa formulario insertar
 echo"
 <div id='insertar'>
-    <div id='sub_ins'>
+    <div class='caja'>
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
     <label for='username'>Nombre de usuario</label>
-    <input type='text' name='username' id='username'><br/>
+    <input type='text' name='username' id='username'><br/><br/>
     <label for='pass'>Password</label>
-    <input type='password' id='pass' name='pass'><br/>
-    <label for='email'>Email</label>
-    <input type='text' name='email' id='email'><br/>
+    <input type='password' id='pass' name='pass'><br/><br/>
+    <label for='email'>Email</label><br/>
+    <input type='text' name='email' id='email'><br/><br/>
     <label for='name'>Nombre</label>
-    <input type='text' name='nombre' id='nombre'><br/>
+    <input type='text' name='nombre' id='nombre'><br/><br/>
     <label for='subname'>Apellidos</label>
-    <input type='text' name='subname' id='subname'><br/>
+    <input type='text' name='subname' id='subname'><br/><br/>
     </select>
         <br/>
     <input type='submit'>
-    <a href='#' onclick='cerrar()'>Cerrar</a>
+        <br/>
+        <br/>
+    <input type='button' onclick='cerrar()' value='Cerrar'>
+    <br/>
+    <br/>
    
 </form> 
     </div>   

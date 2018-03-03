@@ -68,7 +68,7 @@
 </div>
 <br>
 <br>
-
+</div>
 <?php
 
 	echo "<table align='center' id='cont'>";
