@@ -4,7 +4,7 @@
 # and nona (from Hugin)
 
 # generate.py - A multires tile set generator for Pannellum
-# Copyright (c) 2014-2016 Matthew Petroff
+# Copyright (c) 2014-2018 Matthew Petroff
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,8 +34,12 @@ import math
 from distutils.spawn import find_executable
 import subprocess
 
-# find external programs
-nona = find_executable('nona')
+# Find external programs
+try:
+    nona = find_executable('nona')
+except KeyError:
+    # Handle case of PATH not being set
+    nona = None
 
 # Parse input
 parser = argparse.ArgumentParser(description='Generate a Pannellum multires tile set from an full equirectangular panorama.',
@@ -107,6 +111,11 @@ print('Generating tiles...')
 for f in range(0, 6):
     size = cubeSize
     face = Image.open(os.path.join(args.output, faces[f]))
+    if 'A' in face.mode:
+        if face.mode == 'RGBA':
+            face = face.convert('RGB')
+        elif face.mode == 'LA':
+            face = face.convert('L')
     for level in range(levels, 0, -1):
         if not os.path.exists(os.path.join(args.output, str(level))):
             os.makedirs(os.path.join(args.output, str(level)))
@@ -130,6 +139,11 @@ for f in range(0, 6):
     if not os.path.exists(os.path.join(args.output, 'fallback')):
         os.makedirs(os.path.join(args.output, 'fallback'))
     face = Image.open(os.path.join(args.output, faces[f]))
+    if 'A' in face.mode:
+        if face.mode == 'RGBA':
+            face = face.convert('RGB')
+        elif face.mode == 'LA':
+            face = face.convert('L')
     face = face.resize([1024, 1024], Image.ANTIALIAS)
     face.save(os.path.join(args.output, 'fallback', faceLetters[f] + extension), quality = args.quality)
 

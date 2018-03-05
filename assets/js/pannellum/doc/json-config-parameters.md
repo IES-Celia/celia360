@@ -23,6 +23,12 @@ If set, the value is displayed as the panorama's author. If no author is
 desired, don't set this parameter.
 
 
+### `strings` (dictionary)
+
+Allows user-facing strings to be changed / translated.
+See `defaultConfig.strings` definition in `pannellum.js` for more details.
+
+
 ### `basePath` (string)
 
 This specifies a base path to load the images from.
@@ -80,9 +86,21 @@ If set to `false`, the zoom controls will not be displayed. Defaults to `true`.
 If set to `false`, zooming with keyboard will be disabled. Defaults to `true`.
 
 
-### `mouseZoom` (boolean)
+### `mouseZoom` (boolean or string)
 
 If set to `false`, zooming with mouse wheel will be disabled. Defaults to `true`.
+Can also be set to `fullscreenonly`, in which case it is only enabled when the
+viewer is fullscreen.
+
+
+### `draggable` (boolean)
+
+If set to `false`, mouse and touch dragging is disabled. Defaults to `true`.
+
+
+### `disableKeyboardCtrl` (boolean)
+
+If set to `true`, keyboard controls are disabled. Defaults to `false`.
 
 
 ### `showFullscreenCtrl` (boolean)
@@ -148,10 +166,42 @@ affects the compass, it only has an effect if `compass` is set to `true`.
 Specifies a URL for a preview image to display before the panorama is loaded.
 
 
+### `previewTitle` (string)
+
+Specifies the title to be displayed while the load button is displayed.
+
+
+### `previewAuthor` (string)
+
+Specifies the author to be displayed while the load button is displayed.
+
+
 ### `horizonPitch` and `horizonRoll` (number)
 
 Specifies pitch / roll of image horizon, in degrees (for correcting
 non-leveled panoramas).
+
+
+### `animationTimingFunction` (function) [API only]
+
+This specifies a timing function to be used for animating movements such as
+when the `lookAt` method is called. The default timing function is
+`easeInOutQuad`. If a custom function is specified, it should take a number
+[0, 1] as its only argument and return a number [0, 1].
+
+
+### `escapeHTML` (boolean)
+
+When true, HTML is escaped from configuration strings to help mitigate possible
+DOM XSS attacks. This is always `true` when using the standalone viewer since
+the configuration is provided via the URL; it defaults to `false` but can be
+set to `true` when using the API.
+
+
+### `crossOrigin` (string)
+
+This specifies the type of CORS request used and can be set to either
+`anonymous` or `use-credentials`. Defaults to `anonymous`.
 
 
 ### `hotSpots` (array)
@@ -208,6 +258,10 @@ maintain the same direction with regard to north.
 #### `targetHfov` (number)
 
 Specifies the HFOV of the target scene, in degrees.
+
+#### `id`
+
+Specifies hot spot ID, for use with API's `removeHotSpot` function.
 
 #### `cssClass` (string)
 

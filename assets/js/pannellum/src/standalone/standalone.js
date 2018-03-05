@@ -5,6 +5,7 @@ function anError(error) {
     document.getElementById('container').appendChild(errorMsg);
 }
 
+var viewer;
 function parseURLParameters() {
     var URL;
     if (window.location.hash.length > 0) {
@@ -80,7 +81,8 @@ function parseURLParameters() {
                 document.title = configFromURL.title;
 
             // Create viewer
-            pannellum.viewer('container', configFromURL);
+            configFromURL.escapeHTML = true;
+            viewer = pannellum.viewer('container', configFromURL);
         };
         request.open('GET', configFromURL.config);
         request.send();
@@ -92,7 +94,8 @@ function parseURLParameters() {
         document.title = configFromURL.title;
 
     // Create viewer
-    pannellum.viewer('container', configFromURL);
+    configFromURL.escapeHTML = true;
+    viewer = pannellum.viewer('container', configFromURL);
 }
 
 // Display error if opened from local file

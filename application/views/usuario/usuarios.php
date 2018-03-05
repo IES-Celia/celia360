@@ -6,6 +6,7 @@
         display:none;
         z-index: 1;
         position: fixed;
+        padding-top: 100px;
         top: 0;
         left: 0;
         width: 100%;
@@ -14,6 +15,17 @@
         border: 3px solid ;
         background-color:rgb(0,0,0); 
         background-color:rgba(0,0,0,0.4);
+    }
+
+
+    #mod_sub{
+        background-color: #ffffff;
+        width: 80%;
+        text-align: center;
+        position: fixed;
+        margin-left:auto; 
+        margin-right:auto;
+        
     }
 
 
@@ -21,27 +33,20 @@
         display:none;
         z-index: 1;
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
+        top: 30%;
+        left: 30%;
+        width: 600px;
+        height: 300px;
+        background-color: #ffffff;
         border: 3px solid ;
-        background-color:rgb(0,0,0); 
-        background-color:rgba(0,0,0,0.4);
-
     }
-
-
-    
 
 </style>
 
 <?php
 //Tabla usuarios
- echo"<a class='insert' onclick='insertar()' > Insertar Usuario</a>";
+ echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
  echo "</div>";
-echo "<h1 class='cabecera'>Usuario</h1>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>
@@ -77,10 +82,10 @@ foreach ($tablaUsuarios as $usu) {
     
 
     echo"   <td>
-                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'><i class='fas fa-edit'></i></a>
+                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'>Modificar</a>
             </td>
             <td>
-                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='far fa-trash-alt'></i></a>
+                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'>Borrar</a>
             </td>
         </tr>";
 }
@@ -89,68 +94,44 @@ echo "</table>";
 //Capa formulario modificar
 echo "
 <div id='modificar'>
-    <div class='caja'>
+    <div id='mod_sub'>
     <h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='get'>
-
-        <label for='form_modif_nick'>Nombre de usuario</label><br/>
-        <input type='text' name='username' id='form_modif_nick'><br/><br/>
-        <label for='pass'>Password</label>
-        <input type='text' name='pass' required><br/><br/>
-        <label for='form_modif_email'>Email</label><br/>
-        <input type='text' name='email' id='form_modif_email'><br/><br/>
-        <label for='form_modif_nombre'>Nombre</label>
-        <input type='text' name='nombre' id='form_modif_nombre' ><br/><br/>
-        <label for='form_modif_ape'>Apellidos</label>
-        <input type='text' name='apellidos' id='form_modif_ape'><br/><br/>
-
-        Tipo<br/>
-        <select>
-            <option value='1'>Admin</option>
-            <option value='2'>Mapero</option>
-            <option value='3'>Bibliotecario</option>
-            
-        </select>
-        </br>
+        Nombre de usuario:<input type='text' name='username' id='form_modif_nick'><br/>
+        Password:<input type='text' name='pass' required><br/>
+        Email:<input type='text' name='email' id='form_modif_email'><br/>
+        Nombre:<input type='text' name='nombre' id='form_modif_nombre' ><br/>
+        Apellidos:<input type='text' name='apellidos' id='form_modif_ape'><br/>
+        Tipo:<input type='number' name='tipo' min='0' max='3' id='form_modif_tipo' required><br/>
         <input type='hidden' name='id' id='form_modif_id'><br/>
         <input type=submit value='Modificar'>
-            <br/>
-            <br/>
-        <input type='button' onclick='cerrar()' value='Cerrar'>
-            <br/>
-            <br/>
     </form>
+    <a href='#' onclick='cerrar()'>Cerrar</a>
     </div>
 </div>";
 
 //Capa formulario insertar
 echo"
 <div id='insertar'>
-    <div class='caja'>
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
     <label for='username'>Nombre de usuario</label>
-    <input type='text' name='username' id='username'><br/><br/>
+    <input type='text' name='username' id='username'><br/>
     <label for='pass'>Password</label>
-    <input type='password' id='pass' name='pass'><br/><br/>
-    <label for='email'>Email</label><br/>
-    <input type='text' name='email' id='email'><br/><br/>
+    <input type='password' id='pass' name='pass'><br/>
+    <label for='email'>Email</label>
+    <input type='text' name='email' id='email'><br/>
     <label for='name'>Nombre</label>
-    <input type='text' name='nombre' id='nombre'><br/><br/>
+    <input type='text' name='nombre' id='nombre'><br/>
     <label for='subname'>Apellidos</label>
-    <input type='text' name='subname' id='subname'><br/><br/>
+    <input type='text' name='subname' id='subname'><br/>
     </select>
         <br/>
     <input type='submit'>
-        <br/>
-        <br/>
-    <input type='button' onclick='cerrar()' value='Cerrar'>
-    <br/>
-    <br/>
+    <a href='#' onclick='cerrar()'>Cerrar</a>
    
-</form> 
-    </div>   
+</form>    
 </div>";
 
 ?>
@@ -191,13 +172,13 @@ echo"
             $("#modificar").css('display','block');
         }
 
-        function insertar(){
-            $("#insertar").css('display','block');
+        function mostrar(){
+            $("#insertar").show();
         }
 
         function cerrar(){
-            $("#insertar").css('display','none');
-             $("#modificar").css('display','none');
+            $("#insertar").hide();
+             $("#modificar").hide();
         }    
        
 </script>

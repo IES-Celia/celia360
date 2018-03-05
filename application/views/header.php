@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
     <!-- CSS SLICK -->
-     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick-theme.css"); ?>"/>
     <!-- Javascript de pannellum framework -->
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
