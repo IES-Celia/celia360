@@ -118,19 +118,20 @@
                
                 /*echo "<a href='index.php?accion=showinsertlibro'><i class='fa fa-plus' aria-hidden='true'></i><i title='Insertar libro' class='fa fa-book' aria-hidden='true'></i></a>";*/
                 foreach ($tabla as $usu) {
-                    echo "<tr id='libro".$usu['id_libro']."'>
-                            <td>".$usu["id_libro"]."</td>
-                            <td>".$usu["titulo"]."</td>
-                            <td>".$usu["autor"]."</td>
-                            <td>".$usu["editorial"]."</td>
-                            <td>".$usu["lugar_edicion"]."</td>
-                            <td>".$usu["fecha_edicion"]."</td>
-                            <td>".$usu["ISBN"]."</td>
-                            <td>".$usu["tipo"]."</td>
-                            <td>".$usu["apaisado"]."</td>
+                    $id = $usu['id_libro'];
+                    echo "<tr id='libro".$id."'>
+                            <td >".$usu["id_libro"]."</td>
+                            <td id='titulo_libro_".$id."'>".$usu["titulo"]."</td>
+                            <td id='autor_libro_".$id."'>".$usu["autor"]."</td>
+                            <td id='editorial_libro_".$id."'>".$usu["editorial"]."</td>
+                            <td id='lugar_edicion_".$id."'>".$usu["lugar_edicion"]."</td>
+                            <td id='fecha_edicion_".$id."'>".$usu["fecha_edicion"]."</td>
+                            <td id='isbn_libro_".$id."'>".$usu["ISBN"]."</td>
+                            <td >".$usu["tipo"]."</td>
+                            <td '>".$usu["apaisado"]."</td>
                             <td></td>
                             <td>
-                            <a onclick='mostrarm()'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
+                            <a onclick='mostrarm(".$usu['id_libro'].")'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
                             <td><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
                             <td><a href='#' onclick='borrarlibro(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
 
@@ -144,51 +145,57 @@
                     echo "
                     <h1>Modificar Libro</h1>
                         <div >
-                            <form action='".site_url("biblioteca/modifiedLibro/".$libros[0]['id_libro'])."' method='get'>
+                            <form id='xxx' action='".site_url("biblioteca/modifiedLibro/")."' method='get'>
                                 <div class='group'>      
-                                  <input type='text' name='titulo' value='".$libros[0]['titulo']."' required>
+                                  <input type='text' name='titulo' id='modif_titulo'  required>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Titulo</label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='text' name='autor' value='".$libros[0]['autor']."' required>
+                                  <input type='text' name='autor' id='modif_autor' required>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Autor</label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='text' name='editorial' value='".$libros[0]['editorial']."' required>
+                                  <input type='text' name='editorial' id='modif_editorial' required>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Editorial</label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='text' name='lugar_edicion' value='".$libros[0]['lugar_edicion']."' required>
+                                  <input type='text' name='lugar_edicion' id='modif_lugar_edicion' required>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Lugar de Edición</label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='date' name='fecha_edicion' value='".$libros[0]['fecha_edicion']."' required>
+                                  <input type='date' name='fecha_edicion' id='modif_fecha_edicion' required>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Fecha de Edicion</label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='text' name='ISBN' value='".$libros[0]['ISBN']."' >
+                                  <input type='text' name='ISBN' id='modif_isbn' >
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>I S B N </label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='text' name='tipo' value='".$libros[0]['tipo']."' pattern='[0-1]{1}' maxlength='1' required>
+                                  <select>
+                                    <option value='0' selected>Biblioteca</options>
+                                    <option value='1'>Historia</options>
+                                  </select>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Tipo</label>
                                 </div>
                                 <div class='group'>      
-                                  <input type='text' name='apaisado' value='".$libros[0]['apaisado']."' required>
+                                  <select>
+                                    <option value='0' >No</options>
+                                    <option value='1' selected>Si</options>
+                                  </select>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Apaisado</label>
@@ -285,10 +292,25 @@
                     $(selector).remove();
                 }
             }
-            function mostrarm(){
+
+            function mostrarm(id_libro){
+                titulo = document.getElementById("titulo_libro_"+id_libro).innerHTML;
+                autor = document.getElementById("autor_libro_"+id_libro).innerHTML;
+                editorial = document.getElementById("editorial_libro_"+id_libro).innerHTML;
+                lugar_edicion = document.getElementById("lugar_edicion_"+id_libro).innerHTML;
+                fecha_edicion = document.getElementById("fecha_edicion_"+id_libro).innerHTML;
+                isbn = document.getElementById("isbn_libro_"+id_libro).innerHTML;
+
+
+                $("#modif_titulo").val(titulo);
+                $("#modif_autor").val(autor);
+                $("#modif_editorial").val(editorial);
+                $("#modif_lugar_edicion").val(lugar_edicion);
+                $("#modif_fecha_edicion").val(fecha_edicion);
+                $("#modif_isbn").val(isbn);
+                
                 $("#modificar").show();
             }
-
             function mostrar(){
                 $("#insertar").show();
                 

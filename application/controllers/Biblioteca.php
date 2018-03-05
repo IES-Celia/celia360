@@ -41,7 +41,6 @@ class Biblioteca extends CI_Controller {
 	{
 		$resultado = $this->bibliotecaModel->get_info_libro($id_libro);
 		$datos["libros"] = $resultado;
-        $datos["vista"]="biblioteca/modificarlibro";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('template_admin', $datos);
 	}
