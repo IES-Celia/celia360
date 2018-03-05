@@ -22,7 +22,7 @@ $(document).ready(function() {
  * Administración del mapa.
  */
 	$("#btn-admin-mapa").click(function(){
-		location.href = base_url+"mapa/"
+		location.href = base_url+"mapaadmin/"
 	})
    	
    	$(".pisos").contextmenu(function(event){
@@ -77,6 +77,28 @@ $(document).ready(function() {
 		}
 		
 	})
+	/**
+	 * 
+	 */
+	$("#btn-subir-piso-admin").click(function(event) {
+		subir_piso();
+		$("#piso_actual>span").text(piso)
+    });
+
+    $("#btn-bajar-piso-admin").click(function(event) {
+		bajar_piso();
+		$("#piso_actual>span").text(piso)
+	});
+	
+	$("#btn-editar-mapa").click(function () {
+		
+	})
+	$("#btn-eliminar-mapa").click(function () {
+
+	})
+	$("#btn-anadir-mapa").click(function () {
+
+	})
 });
 
 
@@ -121,3 +143,8 @@ function bajar_piso(){
 	}
 }
 
+/**
+ * Administración mapa
+ */
+
+ 
