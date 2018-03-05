@@ -26,11 +26,10 @@
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
             Escena de destino: <input type='text' name='sceneId' readonly='readonly'><br>
-            <button id="btn-mapa" type="button">Abrir mapa</button>
-
-            <div id="mapa_escena" >
             <button id="btn-bajar-piso" type="button">Bajar piso</button>
             <button id="btn-subir-piso" type="button">Subir piso</button>
+            <div id="mapa_escena" >
+            
             <?php
                 $indice = 0;
 

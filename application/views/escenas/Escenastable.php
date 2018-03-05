@@ -35,7 +35,6 @@
                      
                             
 </script>
-</div>
 
 
 <div id="mapa_escena">
