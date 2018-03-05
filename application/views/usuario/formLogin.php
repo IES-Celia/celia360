@@ -13,7 +13,7 @@
 
 
 
-<div class="caja">
+<div id="caja">
     
        <legend> 
 

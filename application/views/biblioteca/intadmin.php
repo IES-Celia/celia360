@@ -59,7 +59,7 @@
             }
 
     </style>
-      </div>
+
     <script>
 	<?php
 	    //echo "var tabla_json = '".json_encode($tabla)."';";
