@@ -21,11 +21,11 @@
             Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '><br> 
-            cssClass: <input type='text' name='cssClass' value='custom-hotspot-salto' readonly="readonly"><br> 
-            Tipo: <input type='text' name='tipo' value='scene' readonly="readonly"> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='puntos' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs' readonly='readonly'><br> 
-            sceneId: <input type='text' name='sceneId' readonly='readonly'><br>
+            <input type='hidden' name='cssClass' value='custom-hotspot-salto' readonly="readonly">
+            <input type='hidden' name='tipo' value='scene' readonly="readonly">
+            <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
+            <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
+            Escena de destino: <input type='text' name='sceneId' readonly='readonly'><br>
             <button id="btn-mapa" type="button">Abrir mapa</button>
 
             <div id="mapa_escena" >
@@ -101,7 +101,8 @@
 
     <div id="puntoVideo"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_hotspot")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
+			Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br>
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-video' readonly="readonly"><br> 

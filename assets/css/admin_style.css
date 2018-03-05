@@ -1,36 +1,12 @@
-    @font-face{
-        font-family: comic;
-        src:url(../fonts/Caviar.ttf);
-    }
-
-
     body{
        background: url(fondo.JPG) no-repeat center center fixed;
        background-size: 100%;
-       font-family: comic;
-
     }
 
     p{
         text-align: center;
 
     }
-
-    .caja h1{
-        text-align: center;
-        color: #ffffff;
-    }
-
-    .cabecera{
-        text-align:center;
-        position: relative;
-        top: 50px;
-        margin: 30px 550px 0px 550px;
-        border-bottom: 5px solid black;
-        background-color: rgba(0,0,0,0.3);
-        color: #ffffff;
-    }
-
 
     #fondo{
         background-color: rgba(39, 152, 231,0.2);
@@ -40,25 +16,16 @@
     }
 
     #menu{
-        height: 65px;
-        background-color:rgba(0,0,0,0.8);
+        height: 100px;
+        background-color:rgba(0,0,0,0.7);
         border-bottom: 5px solid #ffffff;
-        margin-bottom: 30px;
-        z-index: 999;
-        width: 100%;
-        overflow: hidden;
-        position: fixed;
-        top: 0;
+        margin-bottom: 30px;   
     }
     
     #menu p{
 
         float: right;
         margin-right: 30px;
-    }
-
-    #usuario{
-        color: blue;
     }
 
 
@@ -79,7 +46,6 @@
         width:96%;
         margin-left: 2%;
         margin-right: 2%;
-        margin-top: 70px;
         float: right;
         border-color: black;
         border: 2px solid black;
@@ -115,6 +81,7 @@
 
     #cont td a{
     color:#002c59;
+    text-decoration: none;
     }
         
     #cont td a:hover{
@@ -131,11 +98,11 @@
         transition:0.4s;
         background: #0047b3;
         text-align: center;
+        margin-bottom: 20px;
         box-shadow: inset 0px 0px 2px 1px rgba(255,255,255,1);
         margin: auto;
         display: block;
-        position: relative;
-        top: -50px;
+        margin-bottom: 20px;
         }
         
     .insert:hover{
@@ -228,6 +195,7 @@
         overflow-x: hidden;
         transition: 0.5s;
         padding-top: 60px;
+        z-index: 3;
     }
     
     .sidenav a {
@@ -280,9 +248,10 @@
         cursor:pointer;
         color:#ffffff;
         background:transparent;
-        margin-top: 30px;
+        top: 20px;
         transition:0.4s;
-        margin-left: 40px;
+        margin-left: 8px;
+        
     }
         
     .sidenavmenu:hover{
@@ -310,16 +279,20 @@
         
     /* Parte del Formulario de Login */
 
-    
+        @font-face{
+            font-family: comic;
+            src:url(../fonts/Caviar.ttf);
+        }
+
        
 
-        .caja{
+        #caja{
             font-family: comic;
             color:white;
             width: 500px;
             height: auto;
             margin: auto;
-            margin-top: 70px;
+            margin-top: 120px;
             text-align: center;
             border: 2px solid grey;
             border-radius: 10px;
@@ -334,7 +307,7 @@
 
         
         
-        .caja input[type=text]{
+        #caja input[type=text]{
             border: none;
             border-bottom:2px solid white;
             background-color: rgba(0,0,0,0.0);  
@@ -348,7 +321,7 @@
         
     
         
-        .caja input[type=password]{
+        #caja input[type=password]{
             border: none;
             border-bottom:2px solid white;
             background-color: rgba(0,0,0,0.0); 
@@ -367,7 +340,7 @@
             font-size: 15px;
         }
 
-        .caja input[type=submit]{
+        #caja input[type=submit]{
             width: 300px;
             height: auto;
             cursor: pointer;
@@ -380,8 +353,8 @@
             transition: 0.4s;
         }
         
-        .caja input[type=button]{
-            width: 300px;
+        #caja input[type=button]{
+             width: 300px;
             height: auto;
             cursor: pointer;
             border-radius: 10px;
@@ -394,7 +367,7 @@
 
         }
         
-        .caja legend{
+        #caja legend{
             font-size: 35px;
             margin: 0 auto;
             line-height: 60px;
@@ -404,7 +377,7 @@
             
         }
         
-        .caja form a{
+        #caja form a{
             text-decoration: none;
             -webkit-appearance: button;
             -moz-appearance: button;
@@ -428,22 +401,54 @@
             background-color: rgba(0,0,0,0.0);
         }
 
-        .caja input[type=button]:hover{
+         #caja input[type=button]:hover{
             background-color: rgba(0,0,0,0.4);
-        }
+         }
 
-        .caja input[type=submit]:hover{
+          #caja input[type=submit]:hover{
             background-color: rgba(0,0,0,0.4);
-        }
+          }
 
 
+    /* Buscador */
 
-
-
+    .buscador{
     
-        
-     
+        display: block;
+        margin: 0 auto;
+        height: 30px;
+        background-color: #dddddd;
+        border-radius: 2px solid grey;
+        margin-bottom: 10px;
+    }
 
-        
+
+    /* Parte de la Paginación, es de Hamza pero para que no esten cosa sueltas en las vistas */
+
+
+    .paginacion{
+        border: 4px solid rgba(221, 221, 221, 1);
+        font-family: verdana, arial, sans-serif; 
+        font-size: 10pt; 
+        font-weight: bold; 
+        padding: 4px; 
+        background-color: rgba(255, 255, 204, 0.8); 
+        color: #666666; 
+        text-decoration: none;
+        padding: 8px 16px;
+        position: relative;
+        top:25px;
+        left:40%;
+        transition: 0.4s;
+}
+
+    .paginacion:hover{
     
+        border: 4px solid rgba(211, 211, 211, 1);
+        background-color: rgba(255,255,205,1);
+        color:black;
+        
+    }
+
+
         

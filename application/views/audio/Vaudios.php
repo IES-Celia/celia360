@@ -73,20 +73,7 @@
         overflow: auto;
     }
    
-    .paginacion{
-        border: 4px solid #ddd;
-        font-family: verdana, arial, sans-serif; 
-        font-size: 10pt; 
-        font-weight: bold; 
-        padding: 4px; 
-        background-color: #ffffcc; 
-        color: #666666; 
-        text-decoration: none;
-        padding: 8px 16px;
-        position: relative;
-        top:25px;
-        left:40%;
-    }
+
     .cerrar{
         position: relative;
     top:15px;
@@ -99,17 +86,14 @@
  
 
 </style>
-<?php
-echo"<a class='insert' onclick='mostrar()'>Insertar audio</a><br>";
-echo"</div>";
-?>
 <div class="wrapper">
-    <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
-    
+<a class='insert' onclick='mostrar()'>Insertar audio</a>
 </div>
-<?php
+    
+<input class="buscador" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
 
-echo"<table align='center' id='cont'><tr id='cabecera'>
+<?php
+echo"<table id='cont'><tr id='cabecera'>
 <th>ID</th>
 <th>URL</th>
 <th>Descripcion</th>

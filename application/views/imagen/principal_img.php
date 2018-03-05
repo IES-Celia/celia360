@@ -52,19 +52,15 @@ if (isset($mensaje)) {
 if (isset($error)) {
     echo "<p style='color:red'>" . $error . "</p>";
 }
-
-
-// CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
-echo "<br><a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a><br>";
-//div cierra menu
-echo "</div>";
 //título
-echo '<h1 class="cabecera">IMAGEN</h1>';
+//echo '<h1>IMAGEN</h1>';
+// CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
+echo "<a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a>";
 
 //El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
 ?>
 <div class="wrapper">
-    <input type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
+    <input type="text" class="buscador" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
     
     <div class="contenedor"></div>
 </div>
@@ -73,7 +69,7 @@ echo '<h1 class="cabecera">IMAGEN</h1>';
 //he quitada la columna texto de la vista, pero sigue en la bd 
 //cabecera  <th>Texto</th>
 //tabla <td>" . $ima["texto_imagen"] . "</td>
-echo "<br><table id='cont'>";
+echo "<table id='cont'>";
 echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
 
 foreach ($lista_imagenes as $ima) {
