@@ -75,7 +75,6 @@ class Video extends CI_Controller {
             <th>ID</th>
             <th>URL</th>
             <th>Descripcion</th>
-			<th>ver video</th>
             <th>Seleccionar</th>
             </tr>
             ";
@@ -87,7 +86,6 @@ class Video extends CI_Controller {
                     . '<td>' . $video["id_vid"] . '</td>'
                     . '<td>' . $video["url_vid"] . '</td>'
                     . '<td>' . $video["desc_vid"]. '</td>'
-					.'<td><a target="_blank" href="'. $video["url_vid"] .'">visitar enlace</a></td>'
                     . '<td onClick="seleccionarVideo('.$fila.')"><a href="#">Seleccionar</a></td>'
                     . '</tr>';          
         }

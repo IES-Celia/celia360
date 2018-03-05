@@ -26,18 +26,20 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
-            function borrarscene(id) {
-                if (confirm("¿Estás seguro?")) {
-                    $.get("<?php echo site_url('/escenas/deletescene/'); ?>" + id, null, respuesta);
-                }
+        function borrarusuario(id){
+            resultado=confirm("¿Desea borrar el usuario?");
+            if(resultado){ 
+            $.get("<?php echo base_url('escenas/deletescene/'); ?>" + id, null, respuesta);
             }
-    });
+        }
+});
                      
                             
 </script>
 
-
-
+<button id="btn-bajar-piso">Bajar piso</button>
+<button id="btn-subir-piso">Subir piso</button>
+<button id="btn-admin-mapa">Admin mapa</button>
 
 <div id="mapa_escena">
 <?php
@@ -53,7 +55,7 @@
             if($punto['piso']==$indice){
             
               echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-              <span class='tooltip'>".$punto['id_escena']."</span>
+              <span class='tooltip'>".$punto['nombre']."</span>
               </div>";
             
             }
@@ -64,14 +66,9 @@
       }
 ?>
 </div>
-<div class="botones_mapa">
-    <button id="btn-bajar-piso">Bajar piso</button>
-    <button id="btn-subir-piso">Subir piso</button>
-    <button id="btn-admin-mapa">Admin mapa</button>
+<br>
+<br>
 </div>
-<br>
-<br>
-
 <?php
 
 	echo "<table align='center' id='cont'>";

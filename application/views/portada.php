@@ -75,7 +75,7 @@
                      <h1 id="titulito">Celia Tour</h1>
                      <div id="parrafito">
                         <div id="separador_portada"> </div>
-                         <p id="descripcion_portada"></p>
+                         <p id="descripcion_portada">svdvds</p>
                         <button id="open" class="btn">HISTORIA</button>
                      </div>
                  </div> 

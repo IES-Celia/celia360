@@ -1,5 +1,5 @@
 <?php
-class mapaadmin extends CI_Controller {
+class Mapa extends CI_Controller {
 
     public function __construct() {
         parent::__construct();

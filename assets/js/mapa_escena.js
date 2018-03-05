@@ -6,8 +6,6 @@ $(document).ready(function() {
 	/**
 	 * Funcionamiento básico del mapa 
 	 */
-	$(".pisos_hotspots").hide();
-	$(".pisos_hotspots:eq(" + piso + ")").show();
 	$(".pisos:eq(" + piso + ")").show();
 	mapa_responsivo();
 	

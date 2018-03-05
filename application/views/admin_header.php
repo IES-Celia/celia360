@@ -35,9 +35,8 @@
             }
     ?>
         <div id="menu">
-    <span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menu </span>
-    <p align="center">Estás logueado como <?php echo $this->session->nombreusr;?></p>
-        </div>
+    <p style="color: #ffffff;" align="center">Estás logueado como <span id="usuario"><?php echo $this->session->nombreusr;?></span></p>
+
 
 
 

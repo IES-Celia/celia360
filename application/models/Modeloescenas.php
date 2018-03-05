@@ -20,6 +20,7 @@
                 foreach($com->result_array() as $fila) {
                     $tabla[] = $fila;
                 }
+				
 			return $tabla;
 		}
         
@@ -66,27 +67,19 @@
 		}
 
         public function borrar($cod){
-            
-            $sql  = "DELETE FROM hotspots WHERE id_hotspot IN (
-                SELECT id_hotspot FROM escenas_hotspots where id_escena IN (
-                    SELECT id_escena FROM escenas WHERE cod_escena = '$cod'))";
-            $this->db->query($sql);
-
             $sql ="DELETE FROM puntos_mapa WHERE id_escena = '$cod'";
             $this->db->query($sql);
             
             $sql = "DELETE FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod') ";
             $this->db->query($sql);
 
-            $sql = "DELETE FROM hotspots WHERE sceneid='$cod'";
-            $this->db->query($sql);
-
             $sql = "DELETE FROM escenas WHERE cod_escena = '$cod' ";
             $this->db->query($sql);
 
-            $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
-            
-            unlink($imagen_borrar);
+            $sql = "DELETE FROM hotspots WHERE sceneid='$cod'";
+            $this->db->query($sql);
+
+
         
             return $this->db->affected_rows();
         } 
