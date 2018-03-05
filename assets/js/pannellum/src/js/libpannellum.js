@@ -1,6 +1,6 @@
 /*
  * libpannellum - A WebGL and CSS 3D transform based Panorama Renderer
- * Copyright (c) 2012-2016 Matthew Petroff
+ * Copyright (c) 2012-2018 Matthew Petroff
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,6 +42,7 @@ function Renderer(container) {
     var pose;
     var image, imageType, dynamic;
     var texCoordBuffer, cubeVertBuf, cubeVertTexCoordBuf, cubeVertIndBuf;
+    var globalParams;
 
     /**
      * Initialize renderer.
@@ -63,11 +64,19 @@ function Renderer(container) {
      */
     this.init = function(_image, _imageType, _dynamic, haov, vaov, voffset, callback, params) {
         // Default argument for image type
-        if (typeof _imageType === undefined)
+        if (_imageType === undefined)
             _imageType = 'equirectangular';
+
+        if (_imageType != 'equirectangular' && _imageType != 'cubemap' &&
+            _imageType != 'multires') {
+            console.log('Error: invalid image type specified!');
+            throw {type: 'config error'};
+        }
+
         imageType = _imageType;
         image = _image;
         dynamic = _dynamic;
+        globalParams = params || {};
 
         // Clear old data
         if (program) {
@@ -95,7 +104,8 @@ function Renderer(container) {
         
         // This awful browser specific test exists because iOS 8/9 and IE 11
         // don't display non-power-of-two cubemap textures but also don't
-        // throw an error (tested on an iPhone 5c / iOS 8.1.3 / iOS 9.2).
+        // throw an error (tested on an iPhone 5c / iOS 8.1.3 / iOS 9.2 /
+        // iOS 10.3.1).
         // Therefore, the WebGL context is never created for these browsers for
         // NPOT cubemaps, and the CSS 3D transform fallback renderer is used
         // instead.
@@ -103,10 +113,13 @@ function Renderer(container) {
             (image[0].width & (image[0].width - 1)) !== 0 &&
             (navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad).* os 8_/) ||
             navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad).* os 9_/) ||
+            navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad).* os 10_/) ||
             navigator.userAgent.match(/Trident.*rv[ :]*11\./)))) {
             // Enable WebGL on canvas
             if (!gl)
                 gl = canvas.getContext('experimental-webgl', {alpha: false, depth: false});
+            if (gl && gl.getError() == 1286)
+                handleWebGLError1286();
         }
         
         // If there is no WebGL, fall back to CSS 3D transform renderer.
@@ -202,7 +215,7 @@ function Renderer(container) {
             };
             for (s = 0; s < 6; s++) {
                 var faceImg = new Image();
-                faceImg.crossOrigin = 'anonymous';
+                faceImg.crossOrigin = globalParams.crossOrigin ? globalParams.crossOrigin : 'anonymous';
                 faceImg.side = s;
                 faceImg.onload = onLoad;
                 if (imageType == 'multires') {
@@ -258,7 +271,7 @@ function Renderer(container) {
         var glBindType = gl.TEXTURE_2D;
 
         // Create viewport for entire canvas
-        gl.viewport(0, 0, canvas.width, canvas.height);
+        gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
 
         // Create vertex shader
         vs = gl.createShader(gl.VERTEX_SHADER);
@@ -314,7 +327,7 @@ function Renderer(container) {
 
             // Pass aspect ratio
             program.aspectRatio = gl.getUniformLocation(program, 'u_aspectRatio');
-            gl.uniform1f(program.aspectRatio, canvas.width / canvas.height);
+            gl.uniform1f(program.aspectRatio, gl.drawingBufferWidth / gl.drawingBufferHeight);
 
             // Locate psi, theta, focal length, horizontal extent, vertical extent, and vertical offset
             program.psi = gl.getUniformLocation(program, 'u_psi');
@@ -395,8 +408,9 @@ function Renderer(container) {
         }
 
         // Check if there was an error
-        if (gl.getError() !== 0) {
-            console.log('Error: Something went wrong with WebGL!');
+        var err = gl.getError();
+        if (err !== 0) {
+            console.log('Error: Something went wrong with WebGL!', err);
             throw {type: 'webgl error'};
         }
 
@@ -410,10 +424,10 @@ function Renderer(container) {
      */
     this.destroy = function() {
         if (container !== undefined) {
-            if (canvas !== undefined) {
+            if (canvas !== undefined && container.contains(canvas)) {
                 container.removeChild(canvas);
             }
-            if (world !== undefined) {
+            if (world !== undefined && container.contains(world)) {
                 container.removeChild(world);
             }
         }
@@ -436,14 +450,25 @@ function Renderer(container) {
         canvas.width = canvas.clientWidth * pixelRatio;
         canvas.height = canvas.clientHeight * pixelRatio;
         if (gl) {
-            gl.viewport(0, 0, canvas.width, canvas.height);
+            if (gl.getError() == 1286)
+                handleWebGLError1286();
+            gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
             if (imageType != 'multires') {
-                gl.uniform1f(program.aspectRatio, canvas.width / canvas.height);
+                gl.uniform1f(program.aspectRatio, canvas.clientWidth / canvas.clientHeight);
             }
         }
     };
     // Initialize canvas size
     this.resize();
+
+    /**
+     * Set renderer horizon pitch and roll.
+     * @memberof Renderer
+     * @instance
+     */
+    this.setPose = function(horizonPitch, horizonRoll) {
+        pose = [horizonPitch, horizonRoll];
+    };
 
     /**
      * Render new view of panorama.
@@ -511,7 +536,7 @@ function Renderer(container) {
                 r: 'translate3d(' + s + 'px, -' + (s + 2) + 'px, -' + (s + 2) + 'px) rotateY(270deg)'
             };
             focal = 1 / Math.tan(hfov / 2);
-            var zoom = focal * canvas.width / (window.devicePixelRatio || 1) / 2 + 'px';
+            var zoom = focal * gl.drawingBufferWidth / 2 + 'px';
             var transform = 'perspective(' + zoom + ') translateZ(' + zoom + ') rotateX(' + pitch + 'rad) rotateY(' + yaw + 'rad) ';
             
             // Apply face transforms
@@ -526,7 +551,7 @@ function Renderer(container) {
         
         if (imageType != 'multires') {
             // Calculate focal length from vertical field of view
-            var vfov = 2 * Math.atan(Math.tan(hfov * 0.5) / (canvas.width / canvas.height));
+            var vfov = 2 * Math.atan(Math.tan(hfov * 0.5) / (gl.drawingBufferWidth / gl.drawingBufferHeight));
             focal = 1 / Math.tan(vfov * 0.5);
 
             // Pass psi, theta, roll, and focal length
@@ -548,7 +573,7 @@ function Renderer(container) {
         
         } else {
             // Create perspective matrix
-            var perspMatrix = makePersp(hfov, canvas.width / canvas.height, 0.1, 100.0);
+            var perspMatrix = makePersp(hfov, gl.drawingBufferWidth / gl.drawingBufferHeight, 0.1, 100.0);
             
             // Find correct zoom level
             checkZoom(hfov);
@@ -587,7 +612,7 @@ function Renderer(container) {
             // Only process one tile per frame to improve responsiveness
             for (i = 0; i < program.currentNodes.length; i++) {
                 if (!program.currentNodes[i].texture) {
-                    setTimeout(processNextTile(program.currentNodes[i]), 0);
+                    setTimeout(processNextTile, 0, program.currentNodes[i]);
                     break;
                 }
             }
@@ -961,7 +986,7 @@ function Renderer(container) {
      * @returns {number[]} Generated perspective matrix.
      */
     function makePersp(hfov, aspect, znear, zfar) {
-        var fovy = 2 * Math.atan(Math.tan(hfov/2) * canvas.height / canvas.width);
+        var fovy = 2 * Math.atan(Math.tan(hfov/2) * gl.drawingBufferHeight / gl.drawingBufferWidth);
         var f = 1 / Math.tan(fovy/2);
         return [
             f/aspect,   0,  0,  0,
@@ -992,12 +1017,13 @@ function Renderer(container) {
         var cacheTop = 4;   // Maximum number of concurrents loads
         var textureImageCache = {};
         var pendingTextureRequests = [];
+        var crossOrigin;
 
         function TextureImageLoader() {
             var self = this;
             this.texture = this.callback = null;
             this.image = new Image();
-            this.image.crossOrigin = 'anonymous';
+            this.image.crossOrigin = crossOrigin ? crossOrigin : 'anonymous';
             this.image.addEventListener('load', function() {
                 processLoadedTexture(self.image, self.texture);
                 self.callback(self.texture);
@@ -1028,7 +1054,8 @@ function Renderer(container) {
         for (var i = 0; i < cacheTop; i++)
             textureImageCache[i] = new TextureImageLoader();
 
-        return function(src, callback) {
+        return function(src, callback, _crossOrigin) {
+            crossOrigin = _crossOrigin;
             var texture = gl.createTexture();
             if (cacheTop)
                 textureImageCache[--cacheTop].loadTexture(src, texture, callback);
@@ -1049,7 +1076,7 @@ function Renderer(container) {
             loadTexture(encodeURI(node.path + '.' + image.extension), function(texture) {
                 node.texture = texture;
                 node.textureLoaded = true;
-            });
+            }, globalParams.crossOrigin);
         }
     }
     
@@ -1062,7 +1089,7 @@ function Renderer(container) {
         // Find optimal level
         var newLevel = 1;
         while ( newLevel < image.maxLevel &&
-            canvas.width > image.tileResolution *
+            gl.drawingBufferWidth > image.tileResolution *
             Math.pow(2, newLevel - 1) * Math.tan(hfov / 2) * 0.707 ) {
             newLevel++;
         }
@@ -1154,6 +1181,18 @@ function Renderer(container) {
         return testZ != 4;
         
 
+    }
+
+    /**
+     * On iOS (iPhone 5c, iOS 10.3), this WebGL error occurs when the canvas is
+     * too big. Unfortuately, there's no way to test for this beforehand, so we
+     * reduce the canvas size if this error is thrown.
+     * @private
+     */
+    function handleWebGLError1286() {
+        console.log('Reducing canvas size due to error 1286!');
+        canvas.width = Math.round(canvas.width / 2);
+        canvas.height = Math.round(canvas.height / 2);
     }
 }
 
