@@ -31,7 +31,7 @@
         <p><a href='<?php echo site_url("usuario/cerrarSesion");?>' class="cerrarsesionbtn">Cerrar Sesión</a></p>
         
         
-    </div>
+</div>
     
     <!-- <span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menu </span> -->
 
