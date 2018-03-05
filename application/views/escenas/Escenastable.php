@@ -36,10 +36,8 @@
                      
                             
 </script>
+</div>
 
-<button id="btn-bajar-piso">Bajar piso</button>
-<button id="btn-subir-piso">Subir piso</button>
-<button id="btn-admin-mapa">Admin mapa</button>
 
 <div id="mapa_escena">
 <?php
@@ -68,7 +66,7 @@
 </div>
 <br>
 <br>
-</div>
+
 <?php
 
 	echo "<table align='center' id='cont'>";
