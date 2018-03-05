@@ -1,3 +1,4 @@
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
@@ -11,7 +12,9 @@
           apaisado = $(this).attr("apaisado");
           tipo = $(this).attr("tipo");
           $('.modalita2').load('<?php echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
+          
       });
+
  $('#cerrarmodal').click(function(){
         $('.modalita2').css({display:"none"});
         $('.modalita').css({display:"block"});
@@ -75,6 +78,9 @@
 	}
 
 </style>
+
+
+
 <body>
 	<div id="contenedorbiblioteca">
 <?php 
@@ -105,18 +111,6 @@
 ?>
 
 <div class="modalita2" style="display: none;" >
-      <div class="contenido2" style="width:1000px;background-color:white;margin:0 auto;margin-top:40px;">
-        <div class="cabecera-ventana" style="background-color:white;height:60px;">
-          <h1 style="text-align:center;border-bottom:1px solid black;">Titulo Libro</h1>
-        </div>
-        <div class="cuerpo-ventana" id="cuerpo-ventana" style="margin-top:-100px;margin-bottom:100px; padding: 3%;margin-top: 80px;">
-         
-        </div>
-        <div class="pie-ventana2" style="border-top:1px solid black;border-radius:5px; height:50px;padding:18px;">
-          <a href="#" id="cerrarmodal" class="btn-2" style="float:right;">Cerrar</a>
-
-        </div>
-    </div>
-  </div>
- </div>
+   
+</div>
 </body>

@@ -1,9 +1,10 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.2.1.js"); ?>"></script>
-<script type="text/javascript" src="<?php echo base_url("assets/js/turn.js"); ?>"></script>
-<link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
+<script type="text/javascript" src="<?php echo base_url("assets/js/turn.js"); ?>"></script><link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
+<script type='text/javascript' src='<?php echo base_url("assets/js/zoom/wheelzoom.js");?>'></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/ultimo-estilo.css");?>"/>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <meta charset="UTF-8">
+
 		<script type="text/javascript">
 			// var ancho = 1000;
 			// var alto = 650;
@@ -28,10 +29,10 @@
 			
 
 			//ABRIR LIBRO
-				setTimeout(function() {
+				/*setTimeout(function() {
 					$('#flipbook').turn('page', 2);
-					},1000);
-				});
+					},1000);*/
+				
 
 
 			//agrega la funcion para la accion del link pagina previa
@@ -47,16 +48,33 @@
 			//nuevo
 			 $('.closeBook').click(function(){
 		        $('.modalita2').css({display:"none"});
-		      });	
+		      });		
 
-			//$('.zoomimg').zoom({ on:'click' });
+			//zoom
 
-			
+			/*$( "img.imagenpagina" ).on( "click", function() {
+  				wheelzoom(document.getElementsByClassName('imagenpagina'));
+  			});*/
 
+
+
+			/*<?php
+			$directorio = "assets/imgs/books/$id_libro";
+					$arrayPag = scandir($directorio);
+					$num_pag = count($arrayPag)-2;
+					for($i = 0;$i<$num_pag;$i++){
+
+							echo "wheelzoom(document.querySelector('img#imglibro$i'));";
+							//echo "wheelzoom(document.querySelector('img.imagenpagina'));";
+							//echo "document.getElementById('imglibro$i').src =  '".base_url('assets/imgs/books/11/1.jpg')."';";
+						}
+			?>*/
+
+			});
 			
 				
 		</script>
- 		
+
  		<style>
 			/* styles unrelated to zoom */
 			* { border:0; margin:0; padding:0; }
@@ -101,7 +119,6 @@
 			
 		</style>
 
-
 		<div id="bloque" class="animate">
 			
 			<a href="#" class="next_page a"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
@@ -122,11 +139,8 @@
 
 					if($apaisado==0){
 						for($i = 0;$i<$num_pag;$i++){
-							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='pag'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
-							else
-								echo "<div class='pag'> <img class='zoom' id='img$i'  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
-						 width='500' height='650' alt='' /> </div>";
+							echo "<div class='pag imagenpagina'> <img class='imagenpagina' id='imglibro$i'  src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' 
+						 width='500' height='650' alt=''/> </div>";
 						}
 					}else{
 				?>
@@ -136,10 +150,7 @@
 						</script> -->
 						<?php
 						for($i = 0;$i<$num_pag;$i++){
-							if((($i==0 || $i==1) || $i==$num_pag-1) || $i==$num_pag-2)
-								echo"<div class='pag'> <img class='zoom' id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."'  width='500' height='650' alt=''> </div>";
-							else
-								echo "<div class='pag '><img class='zoom'  id='img$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650' alt='' /> </div>";
+							echo "<div class='pag imagenpagina'><img class='imagenpagina' id='imglibro$i' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' width='500' height='650'  alt=''/> </div>";
 						}
 					}
 
@@ -148,13 +159,15 @@
 				
 			</div>
 
-			<script type='text/javascript' src='<?php echo base_url("assets/js/zoom/wheelzoom.js");?>'></script>
 			<script>
-				<?php
-					for($i = 0;$i<$num_pag;$i++){
-						echo "wheelzoom(document.querySelector('img#img$i'));";
-					}
-				?>
+					//$(document).ready(function(){
+					<?php
+						for($i = 0;$i<$num_pag;$i++){
+							//echo "wheelzoom(document.querySelector('img#imglibro$i'));";
+						}
+					?>
+				//});
+				
 			</script>
 			<div>
 				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
