@@ -37,6 +37,10 @@ class Guiada extends CI_Controller {
     }
 
     public function menuGuiada(){
+        //Todos los audios existentes.
+        $datos["audios"]=$this->Audm->allAudios();
+        //Todas las escenas existentes.
+        $datos["escenasGuiada"]=$this->Modeloescenas->getAll();
         $datos["escenas"] = $this->modeloGuiada->allEscenasGuiada();
         $datos["vista"]="guiada/administracionGuiada";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -91,7 +95,14 @@ class Guiada extends CI_Controller {
     
     public function actualizarEscena(){
         $id_visita = $_REQUEST["id"];
-        $this->modeloGuiada->actualizarEscena($id_visita);
+        $actualizar = $this->modeloGuiada->actualizarEscena($id_visita);
+        if($actualizar){
+            echo "CORRECTO";
+          
+        }else {
+            echo "FALSE";
+   
+        }
     }
 
 
