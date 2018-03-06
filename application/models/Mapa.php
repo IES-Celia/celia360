@@ -31,14 +31,16 @@
 			$posicion_inicial = $this->input->post_get("posicion_inicial");
 			$zona = $this->input->post_get("zona");
 			
-			if(!$posicion==$posicion_inicial){
+			if($posicion!=$posicion_inicial){
+				echo "no es igual";
 				if($posicion>$posicion_inicial){
-					echo "Hacia delante";
+					$this->imagen_adelante($posicion_inicial, $posicion);
 				}
 				if($posicion<$posicion_inicial){
-					echo "Hacia atras";
-					//imagen_atras($posicion_inicial, $posicion);
+					$this->imagen_atras($posicion_inicial, $posicion);
 				}
+			}else{
+				echo "son iguales";
 			}
 			
 			
@@ -51,19 +53,52 @@
 
 		public function imagen_atras($inicial, $destino){
 			$this->load->database();
+			$this->db->query("SET foreign_key_checks=0;");
+
 			$sql="UPDATE pisos SET piso=1000 WHERE piso=$inicial";
 			$this->db->query($sql);
+
+			$sql="UPDATE puntos_mapa SET piso=1000 WHERE piso=$inicial";
+			$this->db->query($sql);
+
 			for ($i=$inicial; $i > $destino ; $i--) { 
 				$sql="UPDATE pisos SET piso=$i WHERE piso=$i-1";
+				$this->db->query($sql);
+
+				$sql="UPDATE puntos_mapa SET piso=$i WHERE piso=$i-1";
 				$this->db->query($sql);
 			}
 			$sql="UPDATE pisos SET piso=$destino WHERE piso=1000";
 			$this->db->query($sql);
-			echo "hecho";
+
+			$sql="UPDATE puntos_mapa SET piso=$destino WHERE piso=1000";
+			$this->db->query($sql);
+			$this->db->query("SET foreign_key_checks=1;");
 		}
 
-		public function imagen_adelante(){
+		public function imagen_adelante($inicial, $destino){
+			$this->load->database();
+			$this->db->query("SET foreign_key_checks=0;");
 
+			$sql="UPDATE pisos SET piso=1000 WHERE piso=$inicial";
+			$this->db->query($sql);
+
+			$sql="UPDATE puntos_mapa SET piso=1000 WHERE piso=$inicial";
+			$this->db->query($sql);
+
+			for ($i=$inicial; $i < $destino ; $i++) { 
+				$sql="UPDATE pisos SET piso=$i WHERE piso=$i+1";
+				$this->db->query($sql);
+
+				$sql="UPDATE puntos_mapa SET piso=$i WHERE piso=$i+1";
+				$this->db->query($sql);
+			}
+			$sql="UPDATE pisos SET piso=$destino WHERE piso=1000";
+			$this->db->query($sql);
+
+			$sql="UPDATE puntos_mapa SET piso=$destino WHERE piso=1000";
+			$this->db->query($sql);
+			$this->db->query("SET foreign_key_checks=1;");
 		}
 
 	}
