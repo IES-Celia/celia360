@@ -99,9 +99,9 @@ class modeloGuiada extends CI_Model {
 
         $this->db->query("UPDATE visita_guiada
 				SET 
-				    cod_escena='$descripcion',
-	                titulo_escena='$pitch',
-					audio_escena='$yaw' 
+				    cod_escena='$cod_escena',
+	                titulo_escena='$titulo_escena',
+					audio_escena='$audio_escena' 
 				WHERE id_visita='$idEscena'");
 		
         return $this->db->affected_rows();
