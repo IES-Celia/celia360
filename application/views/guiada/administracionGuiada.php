@@ -3,6 +3,10 @@
  z-index:100;
 }
 
+#modalGuiadaImagen{
+z-index:100;
+}
+
 .modalFondoGuiada {
     display: none;
     position: fixed; 
@@ -75,7 +79,7 @@ foreach ($escenas as $escena) {
     <td class='cod_escena'>".$escena['cod_escena']."</td>
     <td class='audio_escena'>".$escena['audio_escena']."</td>
     <td class='titulo_escena'>".$escena['titulo_escena']."</td>
-    <td><img style='height:100px; width:auto;' src='".$imagen."'></td>
+    <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
     <td><a data-id='$idEscena' onclick='borrarGuiada(this);'>borrar</a></td>
     <td><a data-id='$idEscena' onclick='modificarGuiada(this);'>modificar</a></td>";
 
@@ -121,8 +125,36 @@ foreach ($escenas as $escena) {
 </div>
 
 
+<div id='modalGuiadaImagen' class='modalFondoGuiada'>
+    <div class="modal-contenidoGuiada">
+        <span class="closeGuiada">&times;</span>
+        <h2>Modificar Imagen</h2>
+        Selecciona una imagen:
+        <form id='guiadaImagen' class="for" enctype="multipart/form-data" action='' method="post">
+            <input type="file" name="imagenPreview" placeholder="Seleccionar la imagen" required><br>
+            <input type="hidden" name="MAX_FILE_SIZE" value="20000000"/>
+            <input type="hidden" name="id_visita" value=""/>
+            <input type="submit" value='Enviar'/>
+        </form>
+        <br><br>
+        
+    </div>
+</div>
+
+
 <script>
 
+$(".img_preview").on("click",function(){
+    var codigo = $(this).closest(".filaEscena").find(".id_visita").text();
+    $("#modalGuiadaImagen").css("display","block");
+    $(".closeGuiada").click(function (e) {  
+        $("#modalGuiadaImagen").css("display","none");
+    });
+    $("input[name='id_visita']").val(codigo);
+    var urlCodeIgniter ="<?php echo site_url('guiada/asociarImagenPreview'); ?>";
+    $("#guiadaImagen").attr("action",urlCodeIgniter);
+    alert("AQUI HEMOS TERMINADO");
+});
 
 
 function modificarGuiada(elemento){

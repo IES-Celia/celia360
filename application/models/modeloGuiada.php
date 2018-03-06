@@ -41,12 +41,12 @@ class modeloGuiada extends CI_Model {
 
     public function asociarImagen($idEscena){
 
-
         $filePath = 'assets/imagenes/previews-guiada/';
-        $nombreImagen="nombrearchivo";
+        $nombreImagen="prev".$idEscena;
         $config['upload_path'] = $filePath;
         $config['allowed_types'] = '*';
         $config['file_name'] = $nombreImagen;
+        $config['overwrite'] = TRUE;
 
        //cargar la librería
        $this->load->library('upload', $config);
@@ -89,6 +89,13 @@ class modeloGuiada extends CI_Model {
     public function borrarEscenaGuiada($idEscena) {
         $resultado = $this->db->query("DELETE FROM visita_guiada WHERE id_visita='$idEscena'");
         return $this->db->affected_rows();
+    }
+
+    public function borrarImagen($idEscena){
+        $sql ="SELECT img_preview  FROM visita_guiada WHERE id_visita='$idEscena'";
+        $resultado = $this->db->query($sql)->result_array()[0]["img_preview"];
+        $enlace ="assets/imagenes/previews-guiada/" . $resultado;
+        unlink($enlace);
     }
 
     public function actualizarEscena($idEscena){
