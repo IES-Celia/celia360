@@ -13,7 +13,7 @@
 				Nombre de la zona:  <input type='text' name='name'> <br/>
 				Imagen:  <input type='text' name='name'> <br/>
                 Escena inicial: <input type='text' name='name'> <br/>
-			    
+			    Fila a la que pertenece: <input type='text' name='' value='<?php echo '$idfila' ?>' readonly><br>
 			    
 				<input type='submit'>
 			   

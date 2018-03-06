@@ -10,16 +10,12 @@
      <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 
 </head>
-    //Para acceder al array de celdas: $puntos_d[$fila][$celda]["id_celda"]
-
-    <!--- esto se construirá a partir de un array sacado del modelo -->
     <body>
         <div id="contenedor">
-            
-            
+     
         <?php 
-            foreach($puntos_d as $fila){ //$fila=>$i
-              echo '<div class= "slider">
+            foreach($puntos_d as $fila => $valor){
+                echo '<div class= "slider">
                       <div id="opciones_fila">
                           <button>Mostrar</button>
                           <button>Ocultar</button>
@@ -38,9 +34,7 @@
                echo '</div>';
             }
         ?>    
-            
-            
-            
+
         </div>
            
         <script>
