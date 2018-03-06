@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 $config['base_url'] = 'http://iesceliaciclos.org/celia360/';
-//$config['base_url'] = 'http://localhost/celia360/';
+// $config['base_url'] = 'http://localhost/celia360/';
 
 /*
 |--------------------------------------------------------------------------
