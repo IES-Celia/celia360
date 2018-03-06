@@ -70,8 +70,8 @@
 
         </header>
         <main>
-             <div id="slider1_portada" class="fondo">
-                 <div class="contenedor_portada ">
+             <div id="slider1_portada">
+                 <div class="contenedor_portada">
                      <h1 id="titulito">Celia Tour</h1>
                      <div id="parrafito">
                         <div id="separador_portada"> </div>
@@ -164,7 +164,7 @@
         
 </div>
 
-<div class="contenedor" style='background-color: black'>
+<div class="contenedor">
 		<div id="panorama">
            <!-- VIDEO VISITA LIBRE -->  
           <div id='video_visita_libre'>
