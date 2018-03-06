@@ -33,3 +33,6 @@ application/config/config.php
 application/config/database.php
 
 application/views/portada.php
+
+assets/imgs/
+.vscode
