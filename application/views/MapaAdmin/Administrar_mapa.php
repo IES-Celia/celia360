@@ -1,3 +1,12 @@
+<div id="modalEditar" style="display: none;">
+    <form action='<?php echo site_url("MapaAdmin/editar_zona"); ?>'>
+        Nueva posicion<input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa)-1; echo $maxZonas; ?>">
+        <!-- <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br> -->
+        Posicion inicial<input type="text" name="posicion_inicial" readonly><br>
+        <!-- <input type="file" name="zona" placeholder="Seleccionar la imagen" required><br> -->
+        <button type="submit">Actualizar</button>
+    </form>
+</div>
 <?php
    echo '<div id="mapa_escena">';
          $indice = 0;
@@ -25,17 +34,11 @@
    </div>
 
 <div class="botones_mapa">
-    <p id="piso_actual" style="background: white;">piso <span>0</span></p>
+    <p id="piso_actual" style="background: white;">zona <span>0</span></p>
     <button id="btn-subir-piso-admin" >Subir zona</button>
     <button id="btn-bajar-piso-admin">Bajar zona</button>
     <button id="btn-editar-mapa">Editar zona</button>
     <button id="btn-anadir-mapa">Añadir zona</button>
     <button id="btn-eliminar-mapa">Eliminar zona</button>
 </div>
-<div id="modalEditar">
-    <form action='<?php echo site_url("MapaAdmin/editar_zona"); ?>'>
-        <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-        <input type="file" name="zona" placeholder="Seleccionar la imagen" required>
-    </form>
-    
-</div>
+

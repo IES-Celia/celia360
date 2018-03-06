@@ -47,19 +47,26 @@ class Guiada extends CI_Controller {
         $this->load->view("template_admin", $datos);
     }
 
-    public function asociarImagenPreview(){
+    public function asociarImagenPreview($id_visita = null){
           //Insertamos la escena y ahora con sql sacamos la ultima escena por ID.
-          $idEscena=$this->modeloGuiada->lastEscenaGuiada();
-          $asociar = $this->modeloGuiada->asociarImagen($idEscena);
-          if($asociar==false){
-              //Borrar ultima escena
-              $this->modeloGuiada->borrarEscenaGuiada($idEscena);
-              $this->mostrarFormularioGuiada();
+          if($id_visita){
+            $idEscena=$_REQUEST["id_visita"];
+            $asociar = $this->modeloGuiada->asociarImagen($idEscena);
+          }else {
+            $idEscena=$this->modeloGuiada->lastEscenaGuiada();
+            $asociar = $this->modeloGuiada->asociarImagen($idEscena);
+          }
+         /*
+          if($asociar){
+            //ir menuGuiada, donde puede ver el ultimo punto introducido
+            $this->menuGuiada();
 
           } else {
-              //ir menuGuiada, donde puede ver el ultimo punto introducido
-              $this->menuGuiada();
+            //Borrar ultima escena
+            $this->modeloGuiada->borrarEscenaGuiada($idEscena);
+            $this->mostrarFormularioGuiada();   
       }
+      */
     }
 
     public function modificarImagenPreview(){
@@ -97,10 +104,9 @@ class Guiada extends CI_Controller {
         $id_visita = $_REQUEST["id"];
         $actualizar = $this->modeloGuiada->actualizarEscena($id_visita);
         if($actualizar){
-            echo "CORRECTO";
-          
+            echo "1";
         }else {
-            echo "FALSE";
+            echo "0";
    
         }
     }

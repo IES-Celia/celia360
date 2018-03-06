@@ -27,11 +27,43 @@
 			return $lista;
 		}
 		public function editar_zona(){
-			$this->input->post_get("zona");
+			$posicion = $this->input->post_get("posicion");
+			$posicion_inicial = $this->input->post_get("posicion_inicial");
+			$zona = $this->input->post_get("zona");
 			
-			$imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
-			unlink($imagen_borrar);
+			if(!$posicion==$posicion_inicial){
+				if($posicion>$posicion_inicial){
+					echo "Hacia delante";
+				}
+				if($posicion<$posicion_inicial){
+					echo "Hacia atras";
+					//imagen_atras($posicion_inicial, $posicion);
+				}
+			}
 			
+			
+			
+		}
+
+		public function actualizar_imagen(){
+
+		}
+
+		public function imagen_atras($inicial, $destino){
+			$this->load->database();
+			$sql="UPDATE pisos SET piso=1000 WHERE piso=$inicial";
+			$this->db->query($sql);
+			for ($i=$inicial; $i > $destino ; $i--) { 
+				$sql="UPDATE pisos SET piso=$i WHERE piso=$i-1";
+				$this->db->query($sql);
+			}
+			$sql="UPDATE pisos SET piso=$destino WHERE piso=1000";
+			$this->db->query($sql);
+			echo "hecho";
+		}
+
+		public function imagen_adelante(){
+
 		}
 
 	}

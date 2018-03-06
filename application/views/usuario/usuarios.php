@@ -46,7 +46,6 @@
 <?php
 //Tabla usuarios
  echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
- echo "</div>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>
@@ -82,10 +81,10 @@ foreach ($tablaUsuarios as $usu) {
     
 
     echo"   <td>
-                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'>Modificar</a>
+                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
             </td>
             <td>
-                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'>Borrar</a>
+                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
             </td>
         </tr>";
 }

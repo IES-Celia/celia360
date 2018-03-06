@@ -7,17 +7,17 @@
 <h1> Formulario para Insertar Hotspots </h1>
     <div id="botones">
      Pulse el botón correspondiente al hotspot que desea insertar:
-        <button id="insertarEscena" >Escena</button>
-        <button id="insertarPanel">Panel</button>
-        <button id="insertarAudio">Audio</button>
-        <button id="insertarVideo">Video</button>
-        <button id="insertarEscaleras">Escaleras</button>
-        <button id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
+        <button class="buttonfor" id="insertarEscena" >Escena</button>
+        <button class="buttonfor" id="insertarPanel">Panel</button>
+        <button class="buttonfor" id="insertarAudio">Audio</button>
+        <button class="buttonfor" id="insertarVideo">Video</button>
+        <button class="buttonfor" id="insertarEscaleras">Escaleras</button>
+        <button class="buttonfor" id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
+        echo "<form class='for' action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
             Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '><br> 
@@ -65,7 +65,7 @@
 
     <div id="puntoPanel"> 
         <?php
-        echo "<form action='".site_url("hotspots/process_insert_panel")."' method='get'>"; ?>
+        echo "<form class='for' action='".site_url("hotspots/process_insert_panel")."' method='get'>"; ?>
             Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch' value='<?php echo $pitch ?>'><br> 
             Coordenada Yaw: <input type='text' name='yaw' value='<?php echo $yaw ?>'><br> 
@@ -82,7 +82,7 @@
     
     <div id="puntoAudio"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
+        echo "<form class='for' action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
             Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
@@ -100,7 +100,7 @@
 
     <div id="puntoVideo"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
+        echo "<form class='for' action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
 			Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br>
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value=' <?php echo $yaw ?> '><br> 
@@ -117,7 +117,7 @@
 
     <div id="puntoEscaleras"> 
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
+        echo "<form class='for' action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
             Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
             Coordenada Yaw: <input type='text' name='yaw' value=' <?php echo $yaw ?> '><br> 
