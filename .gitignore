@@ -31,5 +31,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 application/config/config.php
 application/config/database.php
-
+.vscode
 application/views/portada.php
