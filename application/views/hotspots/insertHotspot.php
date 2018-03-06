@@ -7,12 +7,12 @@
 <h1> Formulario para Insertar Hotspots </h1>
     <div id="botones">
      Pulse el botón correspondiente al hotspot que desea insertar:
-        <button id="insertarEscena" >Escena</button>
-        <button id="insertarPanel">Panel</button>
-        <button id="insertarAudio">Audio</button>
-        <button id="insertarVideo">Video</button>
-        <button id="insertarEscaleras">Escaleras</button>
-        <button id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
+        <button class="buttonfor" id="insertarEscena" >Escena</button>
+        <button class="buttonfor" id="insertarPanel">Panel</button>
+        <button class="buttonfor" id="insertarAudio">Audio</button>
+        <button class="buttonfor" id="insertarVideo">Video</button>
+        <button class="buttonfor" id="insertarEscaleras">Escaleras</button>
+        <button class="buttonfor" id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
