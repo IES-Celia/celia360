@@ -91,7 +91,9 @@ $(document).ready(function() {
 	});
 	
 	$("#btn-editar-mapa").click(function () {
-		
+		$("#modalEditar").toggle();
+		$("#modalEditar").find("input[name=posicion]").val(piso);
+		$("#modalEditar").find("input[name=posicion_inicial]").val(piso);
 	})
 	$("#btn-eliminar-mapa").click(function () {
 

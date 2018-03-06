@@ -15,15 +15,11 @@ class mapaadmin extends CI_Controller {
         $this->load->view('template_admin',$datos);
     } 
   
-    public function crear_zona(){
-
-        $this->mapa->crear_zona();
+    public function editar_zona(){
+        $this->mapa->editar_zona();
     }
 
-    public function usuarios(){
-
-        $datos["vista"] = "usuario/usuarios";
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('template_admin',$datos);
+    public function crear_zona(){
+        $this->mapa->crear_zona();
     }
 }

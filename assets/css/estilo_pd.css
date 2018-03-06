@@ -25,6 +25,7 @@
     padding: 2px;
 }
 
+
 .slider div{
     width: 100%;
     height: 100%;
@@ -36,7 +37,11 @@
 }
 
 #opciones_fila{
-    width: 50px;
+    width: 80px;
+}
+
+.oculto{
+    opacity: 80%;
 }
 
 /*EFECTO*/
@@ -48,7 +53,7 @@
 html {
   height: 100%;
   font-size: 16px;
-}
+} 
 
 body {
   height: 100%;
