@@ -36,6 +36,15 @@ class PuntosDestacadosModel extends CI_Model {
     public function borrar_celda($id){
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
     }
+    
+    public function mover_celda($idcelda, $idfila){
+        $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=.$id_fila.")->result_array()[0]["COUNT(id_celda)"];
+        if($res<4){
+            $this->db->query("UPDATE celda_pd SET fila_asociada=.$id_fila. WHERE id_celda=.$idcelda.");
+        }else{
+            return false;
+        }
+    }
      
     public function getAll() {
         $sql = "SELECT * FROM celda_pd AS C
