@@ -2,10 +2,17 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Puntos_destacados extends CI_Controller {
-    
     public function __construct(){
         parent::__construct();
         $this->load->model("PuntosDestacadosModel");
+    }
+    
+    public function anadir_fila($id_fila){
+        $resultado = $this->PuntosDestacadosModel->mostrar_fila($id_fila);
+        if($resultado){
+            $datos["idfila"]=$id_fila;
+            $this->load->view("puntosdestacados/insertarDestacado", $datos);
+        }
     }
     
     public function quitar_fila($id_fila) {
@@ -31,8 +38,5 @@ class Puntos_destacados extends CI_Controller {
     
     public function processinsertdestacado(){
         
-    }
-    
-   
-    
+    } 
 }

@@ -9,6 +9,7 @@ class PuntosDestacadosModel extends CI_Model {
     
     public function ocultar_fila($id_fila){
         $this->db->query("UPDATE fila_pd SET id_fila=.$id_fila. WHERE mostrar='0'");
+        $this->db->query("DELETE celda_p WHERE fila_asociada=.$id_fila");
     }
     
     public function mostrar_fila($id_fila){
