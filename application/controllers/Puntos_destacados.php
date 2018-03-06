@@ -12,7 +12,7 @@ class Puntos_destacados extends CI_Controller {
         $resultado = $this->PuntosDestacadosModel->ocultar_fila($id_fila);
         if ($resultado) {
             $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-            $this->load->view("puntosdestacados/puntosDestacados", $datos);	
+            $this->load->view("puntosdestacados/adminDestacados", $datos);	
         }
         else {
             echo "Aquí generariamos la vista pero con un mensaje de error";

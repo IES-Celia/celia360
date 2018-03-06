@@ -21,7 +21,6 @@ class PuntosDestacadosModel extends CI_Model {
         if($res<4){
             $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
             $id_celda = $res+1;
-
             $escena_celda= $_REQUEST["escena_celda"];
             $imagen_celda = $_REQUEST["imagen_celda"];
             $titulo_celda = $_REQUEST["titulo_celda"];
@@ -36,8 +35,26 @@ class PuntosDestacadosModel extends CI_Model {
     public function borrar_celda($id){
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
     }
-    
+     
     public function getAll() {
+        $sql = "SELECT * FROM celda_pd AS C
+                INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
+                ORDER BY C.fila_asociada, C.id_celda";
+        $result = $this->db->query($sql);
+        $r = array();
+        $r[0] = array();
+        $r[1] = array();
+        $r[2] = array();
+        $r[3] = array();
+        $r[4] = array();
+        foreach ($result->fetch_array() as $fila) {
+            $f = $fila["fila_asociada"];
+            $r[$f][] = $fila;
+        }
+        return $r;
+    }
+    
+        public function getAllMostrados() {
         $sql = "SELECT * FROM celda_pd AS C
                 INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
                 WHERE F.mostrar = 1
@@ -55,6 +72,5 @@ class PuntosDestacadosModel extends CI_Model {
         }
         return $r;
     }
-
     
 }
