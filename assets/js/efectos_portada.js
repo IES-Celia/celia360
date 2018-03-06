@@ -14,7 +14,8 @@ $('#header_portada img').mouseenter(function(){
 $('#opcionlibre_portada').mouseenter(function(){
     $("#titulito").text("Visita Libre");
     $("#descripcion_portada").text("Recorre el emblematico instituto Celia Viñas a voluntad");
-    $("#descripcion_portada").siblings().hide();
+    $("#descripcion_portada").siblings().fadeOut();
+    // $("#descripcion_portada").siblings().css('visibility', 'hidden');; con mantiene el mismo flujo pero no tiene animación
 });
     
 $('#opcionlibre_portada').click(function(){

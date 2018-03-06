@@ -53,6 +53,7 @@ h3{
 
 #nav_portada { 
      float: left;  
+   
 }
 
 #nav_portada img{
@@ -76,7 +77,9 @@ h3{
     font-size: 30px;
     color: white;
     margin-top: 10px;
+    
 }
+
  
 #nav_portada ul{
     list-style: none;
@@ -102,7 +105,7 @@ h3{
     margin-top: 15px;
     color: #fff; 
     opacity:0.9; 
-    font-size: 24px; 
+    font-size: 30px; 
     text-decoration: none; 
     font-family: 'Lato'; 
     display:block;
@@ -120,6 +123,7 @@ h3{
     width: 300px; 
     height: 35px; 
     margin: 0px auto 27px auto; 
+    
 }
 
 #lazo_portada { 
