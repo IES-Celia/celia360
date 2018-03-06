@@ -96,10 +96,11 @@ $(document).ready(function() {
 		$("#modalEditar").find("input[name=posicion_inicial]").val(piso);
 	})
 	$("#btn-eliminar-mapa").click(function () {
-
+		
 	})
 	$("#btn-anadir-mapa").click(function () {
-
+		$("#modalAnadir").toggle();
+		$("#modalAnadir").find("input[name=posicion]").val(piso);
 	})
 });
 

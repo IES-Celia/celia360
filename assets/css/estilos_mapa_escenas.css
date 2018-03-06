@@ -52,7 +52,7 @@
     position: absolute;
     z-index: 1;
 }
-#modalEditar{
+.modalMapa{
     position: fixed;
     z-index: 3;
     margin: auto;
@@ -63,6 +63,6 @@
     left: 32%;
     border: 1px solid black;
 }
-#modalEditar>form, #modalEditar>form>input{
+.modalMapa>form, #modalEditar>form>input{
     margin: auto;
 }
