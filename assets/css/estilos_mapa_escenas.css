@@ -52,3 +52,17 @@
     position: absolute;
     z-index: 1;
 }
+#modalEditar{
+    position: fixed;
+    z-index: 3;
+    margin: auto;
+    background: white;
+    display: inline-flex;
+    width: 500px;
+    height: 500px;
+    left: 32%;
+    border: 1px solid black;
+}
+#modalEditar>form, #modalEditar>form>input{
+    margin: auto;
+}
