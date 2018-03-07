@@ -59,6 +59,10 @@
         public function modificarPitchYawEscena($pitch, $yaw, $codescena){
             $this->db->query("UPDATE escenas SET pitch=".$pitch.", yaw=".$yaw." WHERE cod_escena='".$codescena."'");
         }
+		public function modificarpuntovideo($id, $vid){
+            $this->db->query("UPDATE hotspots SET clickHandlerArgs=".$vid." WHERE id_hotspot='".$id."'");
+			return $this->db->affected_rows();
+        }
  
         public function borrarHotspot($id) {
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");

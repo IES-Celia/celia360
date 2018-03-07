@@ -130,7 +130,24 @@ class Hotspots extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
-    
+    public function updateHotsportVideo(){
+              $id = $this->input->post_get("id_hotspot");
+			  $vid = $this->input->post_get("clickHandlerArgs");
+			$resultado=$this->hotspotsModel->modificarpuntovideo($id, $vid);
+		$anda=$this->input->post_get("sceneId");
+		if ($resultado == true) {
+			
+			redirect('welcome/cargar_escena/'.$anda.'/show_insert_hotspot/');
+            
+        }else {
+            $datos["error"] = "a fallado el cambio de video";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"]="hotspots/hotspotsTable";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+        }
+        
+	}
     public function process_update_hotspot(){
     
             

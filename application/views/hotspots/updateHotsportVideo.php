@@ -30,28 +30,28 @@ div.centrado {
 <?php
 
 $tabla = $tabla[0];
-print_r($tabla);
+
 echo "
 
 <h1> Formulario para UPDATE Hotspots Video </h1>
 
 <fieldset class='for'>
 
-<form action=' ".site_url("hotspots/updateHotspotVideo")." ' method='get'>
+<form action=' ".site_url("hotspots/updateHotsportVideo")." ' method='get'>
 
 	Coordenada Pitch y Yaw:<br> 
     <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
 	<div id='puntoVideo'> 
        
-        
-			Escena: <input type='text' name='id_scene'  readonly='readonly' value='".$tabla['id_hotspot']."'><br>
+			Escena: <input type='text' name='sceneId' id='sceneId' readonly='readonly' value='".$codigo_escena."'><br>
+			idhotspor: <input type='text' name='id_scene'  readonly='readonly' value='".$tabla['id_hotspot']."'><br>
             Coordenada Pitch: <input type='text' name='pitch' value='".$tabla['pitch']."'><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value='".$tabla['yaw']."'><br> 
             cssClass: <input type='text' name='cssClass' value='custom-hotspot-video' readonly='readonly'><br> 
             Tipo: <input type='text' name='tipo' value='info' readonly='readonly'> <br>
             clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='video' readonly='readonly'><br> 
-			<button id='insertarVideo'>CambiarVideo</button>
+			
             clickHandlerArgs: <input type='text' name='clickHandlerArgs' id='idVideoForm' value='".$tabla['clickHandlerArgs']."'><br> 
 
 
@@ -76,8 +76,8 @@ echo "
 <div id='listaVideos'>Capa vacia</div>
 	
 <script>
- $("#insertarVideo").click(function() {
-             $("#puntoVideo").children().hide();
+ $("#idVideoForm").click(function() {
+             $("#listaVideos").children().show();
             $("#listaVideos").load("<?php echo site_url("video/obtenerListaVideosAjax");?>");
         });
 
