@@ -53,7 +53,7 @@
 
 			switch ($tipo) {
 				case 'actualizacion':
-					unlink($resultado[0][piso]);
+					unlink($resultado[0][piso])
 					break;
 				case 'movimiento':
 
