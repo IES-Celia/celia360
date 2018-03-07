@@ -27,7 +27,8 @@
         });
         
             function borrarscene(cod) {
-                if (confirm("¿Estás seguro?")) {
+                var resultado = confirm("¿Esta seguro?");
+                if (resultado) {
                     $.get("<?php echo site_url('/escenas/deletescene/'); ?>" + cod, null, respuesta);
                 }
             }
@@ -96,7 +97,7 @@
             <td align='center'>".$escenas['yaw']."</td>
             
             <td align='center'>
-            <a href='#' onclick='borrarscene(".$escenas['cod_escena'].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
+            <a href='#' onclick='borrarscene(".$escenas["cod_escena"].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
             </td>
             
             <td align='center'>
