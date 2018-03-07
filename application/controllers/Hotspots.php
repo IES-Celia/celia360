@@ -109,7 +109,23 @@ class Hotspots extends CI_Controller {
     
     public function show_update_hotspot($id){
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
-        $datos["vista"]="hotspots/updateHotspot";
+		
+		if ($datos["tabla"][0]["clickHandlerFunc"] == "puntos") {
+			$datos["vista"]="hotspots/updateHotspot";
+		}
+		if ($datos["tabla"][0]["clickHandlerFunc"] == "video") {
+			$datos["vista"]="hotspots/updateHotsportVideo";
+ 		}
+		if ($datos["tabla"][0]["clickHandlerFunc"] == "musica") {
+			$datos["vista"]="hotspots/updateHotspotAudio";
+ 		}
+		if ($datos["tabla"][0]["clickHandlerFunc"] == "panelInformacion") {
+			$datos["vista"]="hotspots/updateHotspotPanel";
+ 		}
+		if ($datos["tabla"][0]["clickHandlerFunc"] == "escaleras") {
+			$datos["vista"]="hotspots/updateHotspotEscaleras";
+ 		}
+		
         $datos["codigo_escena"]=$this->hotspotsModel->cargar_codigo_escena($id);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
