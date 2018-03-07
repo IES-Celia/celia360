@@ -52,46 +52,12 @@
 					
 				}
 			}else{
-<<<<<<< HEAD
 				$tipo="sustitucion";
 				$resultado = $this->actualizar_imagen($posicion);
 				$sin_imagen = strpos("You did not select a file to upload.", $resultado);
 				if($resultado==1  || $sin_imagen>=0){
 					echo "No has cambiado la zona ni la imagen de la misma, no has hecho nada -.-\"";
-=======
-				$tipo="actualizacion";
-				$this->actualizar_imagen($posicion,$tipo);
-			}
-		}
 
-		public function actualizar_imagen($posicion,$tipo){
-			
-			$resultado = $this->db->query("SELECT url_img, piso FROM pisos WHERE url_img LIKE '%".$_FILES['zona']['name']."%'");
-			$resultado = $resultado->result_array();
-
-			switch ($tipo) {
-				case 'actualizacion':
-					unlink($resultado[0][piso]);
-					break;
-				case 'movimiento':
-
-					break;
-			}
-			
-			if($this->db->affected_rows()==0){
-				$config['upload_path'] = 'assets/css/';
-				$config['allowed_types'] = 'jpg|png';
-				
-				$this->load->library('upload', $config);
-				$nombre = $this->upload->data('file_name');
-
-				$this->db->query("UPDATE pisos SET url_img='assets/css/$nombre' WHERE piso=$posicion ");
-
-				$resultado = $this->upload->do_upload('zona');
-			}else {
-				if($resultado[0]["piso"]==$posicion){
-					echo "es el mismo piso";
->>>>>>> 6ef0e74738d9e117a018209d4a291b0d7b490386
 				}else{
 					echo $resultado;
 				} 
