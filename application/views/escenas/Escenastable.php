@@ -26,13 +26,26 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
-            function borrarscene(cod) {
-                var resultado = confirm("¿Esta seguro?");
+           
+    });
+    
+     function borrarscene(cod) {
+                resultado = confirm("¿Esta seguro?");
                 if (resultado) {
-                    $.get("<?php echo site_url('/escenas/deletescene/'); ?>" + cod, null, respuesta);
+                    $.get("<?php echo base_url('/escenas/deletesceneajax/'); ?>" + cod, null, respuesta);
                 }
             }
-    });
+    
+    function respuesta(r) {
+        r = r.trim();
+        if (r==" ") alert("Ha ocurrido algún error al borrar la escena.");
+        else {
+            selector = "#fila" + r;
+            $(selector).next().remove();
+            $(selector).remove();
+        }
+        
+    }
                      
                             
 </script>
@@ -88,7 +101,7 @@
 		
         $id=$escenas["id_escena"];
         $cod=$escenas["cod_escena"];
-		echo "<tr>
+		echo "<tr id='fila".$cod."'>
             
             <td align='center'>". $escenas['id_escena']."</td>
             <td align='center'>".$escenas['Nombre']."</td>
@@ -97,7 +110,7 @@
             <td align='center'>".$escenas['yaw']."</td>
             
             <td align='center'>
-            <a href='#' onclick='borrarscene(".$escenas["cod_escena"].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
+            <a onclick='borrarscene(\"".$escenas["cod_escena"]."\")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
             </td>
             
             <td align='center'>
