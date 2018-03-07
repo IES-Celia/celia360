@@ -25,6 +25,7 @@ class PuntosDestacadosModel extends CI_Model {
             $escena_celda= $_REQUEST["escena_celda"];
             $imagen_celda = $_REQUEST["imagen_celda"];
             $titulo_celda = $_REQUEST["titulo_celda"];
+            $fila_asociada= $_REQUEST["fila_asociada"];
 
             $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,fila_asociada,imagen_celda,titulo_celda) 
                       VALUES(' $id_celda','$escena_celda' ,'$id_fila','$imagen_celda', '$titulo_celda')";	
@@ -38,7 +39,21 @@ class PuntosDestacadosModel extends CI_Model {
     }
     
     public function editar_celda(){
+        $id_celda = $_REQUEST["id_celda"];
+        $escena_celda= $_REQUEST["escena_celda"];
+        $imagen_celda = $_REQUEST["imagen_celda"];
+        $titulo_celda = $_REQUEST["titulo_celda"];
+        $fila_asociada= $_REQUEST["fila_asociada"];
         
+        $this->db->query("
+				UPDATE hotspots SET 
+					 escena_celda='$escena_celda',
+					 imagen_celda='$imagen_celda',
+					 titulo_celda='$titulo_celda',
+					 fila_asociada='$fila_asociada'
+					 WHERE id_celda='$id_celda'
+					 ");
+        return $this->db->affected_rows();
     }
     
     public function mover_celda($idcelda, $idfila){

@@ -64,6 +64,7 @@ class Puntos_destacados extends CI_Controller {
     } 
     
     public function processupdatedestacado(){
+        $resultado = $this->PuntosDestacadosModel->editar_celda();
         
     }
     

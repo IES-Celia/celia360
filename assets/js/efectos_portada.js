@@ -1,20 +1,21 @@
 $(document).ready(function(){
-    $('#cambio_portada').hide();
- 
+    $("#descripcion_portada").fadeOut('fast');
 // para que cambie el background a INICIO al hacer hover
     
 $('#header_portada img').mouseenter(function(){
     $("#titulito").text("Celia Tour");
     $("#descripcion_portada").text("");
-    $("#descripcion_portada").siblings().fadeIn();
+    $("#descripcion_portada").siblings().fadeIn('fast');
 });
     
 // para que cambie el background a LIBRE al hacer hover
 
 $('#opcionlibre_portada').mouseenter(function(){
     $("#titulito").text("Visita Libre");
+    
     $("#descripcion_portada").text("Recorre el emblematico instituto Celia Viñas a voluntad");
-    $("#descripcion_portada").siblings().fadeOut();
+    $("#descripcion_portada").fadeIn('fast');
+    $("#descripcion_portada").siblings().fadeOut('fast');
     // $("#descripcion_portada").siblings().css('visibility', 'hidden');; con mantiene el mismo flujo pero no tiene animación
 });
     
