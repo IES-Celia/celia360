@@ -86,6 +86,7 @@
 	foreach ($tablaEscenas as $escenas){
 		
         $id=$escenas["id_escena"];
+        $cod=$escenas["cod_escena"];
 		echo "<tr>
             
             <td align='center'>". $escenas['id_escena']."</td>
@@ -95,7 +96,7 @@
             <td align='center'>".$escenas['yaw']."</td>
             
             <td align='center'>
-            <a href='#' onclick='borrarusuario(".$escenas["id_escena"].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
+            <a href='#' onclick='borrarscene(".$escenas["id_escena"].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
             </td>
             
             <td align='center'>
