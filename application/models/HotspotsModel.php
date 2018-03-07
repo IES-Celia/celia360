@@ -127,9 +127,8 @@
                     SET 
                           pitch='$pitch',
                           yaw='$yaw',
-                          titulo_panel=,
-                          texto_panel=,
-                          cssClass='$cssClass', 
+                          titulo_panel='$titulo_panel',
+                          texto_panel='$texto_panel'
                     WHERE id_hotspot='$id_hotspot'");
             
                     return $this->db->affected_rows();
