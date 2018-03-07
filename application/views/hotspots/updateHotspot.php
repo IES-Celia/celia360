@@ -47,7 +47,7 @@ echo "
     <a href='".site_url('welcome/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
-
+	
 	
 	<input type='submit' class='button'>
 	<a href=
