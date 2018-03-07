@@ -152,9 +152,11 @@ class Hotspots extends CI_Controller {
     
             
             $id = $_REQUEST["id_hotspot"];
-            /**echo "id = $id";**/
-            
-            $resultado = $this->hotspotsModel->modificarHotspot($id);
+            $tipoHotspot = $_REQUEST["cssClass"];
+            if($tipoHotspot == "custom-hotspot-info")
+                $resultado = $this->hotspotsModel->modificarHotspotPanel($id);
+            else if($tipoHotspot == "custom-hotspot-salto")
+                $resultado = $this->hotspotsModel->modificarHotspot($id);
             
             if ($resultado == true) {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
