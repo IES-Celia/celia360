@@ -55,7 +55,7 @@ class PuntosDestacadosModel extends CI_Model {
 					 ");
         return $this->db->affected_rows();
     }
-    
+
     public function mover_celda($idcelda, $idfila){
         $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=.$id_fila.")->result_array()[0]["COUNT(id_celda)"];
         if($res<4){
@@ -64,7 +64,7 @@ class PuntosDestacadosModel extends CI_Model {
             return false;
         }
     }
-     
+
     public function getAll() {
         $sql = "SELECT * FROM celda_pd AS C
                 INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
@@ -84,25 +84,4 @@ class PuntosDestacadosModel extends CI_Model {
         }
         return $r;
     }
-    
-        public function getAllMostrados() {
-        $sql = "SELECT * FROM celda_pd AS C
-                INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
-                WHERE F.mostrar = 1
-                ORDER BY C.fila_asociada, C.id_celda";
-
-        $result = $this->db->query($sql);
-        $r = array();
-        $r[0] = array();
-        $r[1] = array();
-        $r[2] = array();
-        $r[3] = array();
-        $r[4] = array();
-        foreach ($result->result_array() as $fila) {
-            $f = $fila["fila_asociada"];
-            $r[$f][] = $fila;
-        }
-        return $r;
-    }
-    
 }

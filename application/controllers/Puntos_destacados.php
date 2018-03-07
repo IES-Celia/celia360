@@ -44,12 +44,13 @@ class Puntos_destacados extends CI_Controller {
     }
     
 	public function cargar_puntosdestacados(){
+        // hay que sacar un array que te diga que filas se muestran para que al crear la vista no se creen varias filas
         $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 		$this->load->view("puntosdestacados/puntosDestacados", $datos);	
 	}
     
     public function cargar_admin_puntosdestacados(){
-        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAllMostrados();
+        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 		$this->load->view("puntosdestacados/puntosDestacados", $datos);	
 	}
     
