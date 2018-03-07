@@ -31,16 +31,34 @@
 			$posicion_inicial = $this->input->post_get("posicion_inicial");
 			if($posicion!=$posicion_inicial){
 				if($posicion>$posicion_inicial){
-					$tipo="movimiento";
-					//$this->imagen_adelante($posicion_inicial, $posicion);
-					$this->actualizar_imagen($posicion);
+					$tipo = "movimiento";
+					$resultado = $this->actualizar_imagen($posicion);
+					$sin_imagen = strpos("You did not select a file to upload.", $resultado);
+					if($resultado == 1 || $sin_imagen>=0)
+					$this->imagen_adelante($posicion_inicial, $posicion);
+					else{
+						echo $resultado;
+					} 
 				}
 				if($posicion<$posicion_inicial){
 					$tipo="movimiento";
-					//$this->imagen_atras($posicion_inicial, $posicion);
-					$this->actualizar_imagen($posicion);
+					$resultado = $this->actualizar_imagen($posicion);
+					$sin_imagen = strpos("You did not select a file to upload.", $resultado);
+					if($resultado == 1 || $sin_imagen>=0)
+					$this->imagen_atras($posicion_inicial, $posicion);
+					else{
+						echo $resultado;
+					} 
+					
 				}
 			}else{
+<<<<<<< HEAD
+				$tipo="sustitucion";
+				$resultado = $this->actualizar_imagen($posicion);
+				$sin_imagen = strpos("You did not select a file to upload.", $resultado);
+				if($resultado==1  || $sin_imagen>=0){
+					echo "No has cambiado la zona ni la imagen de la misma, no has hecho nada -.-\"";
+=======
 				$tipo="actualizacion";
 				$this->actualizar_imagen($posicion,$tipo);
 			}
@@ -53,7 +71,7 @@
 
 			switch ($tipo) {
 				case 'actualizacion':
-					unlink($resultado[0][piso])
+					unlink($resultado[0][piso]);
 					break;
 				case 'movimiento':
 
@@ -73,26 +91,47 @@
 			}else {
 				if($resultado[0]["piso"]==$posicion){
 					echo "es el mismo piso";
+>>>>>>> 6ef0e74738d9e117a018209d4a291b0d7b490386
 				}else{
-					echo "no es el mismo piso";
-				}
-
-
-				/*$config['upload_path'] = 'assets/css/';
-				$config['allowed_types'] = 'jpg|png';
-				
-				$this->load->library('upload', $config);
-				$nombre = $this->upload->data('file_name');
-
-				$this->db->query("UPDATE pisos SET url_img='assets/css/$nombre' WHERE piso=$posicion ");
-
-				$resultado = $this->upload->do_upload('zona');*/
+					echo $resultado;
+				} 
 			}
+		}
 
-			
+		public function actualizar_imagen($posicion){
+					$imagen_antigua=$this->db->query("SELECT url_img FROM pisos WHERE piso=$posicion")->result_array()[0]["url_img"];
+					$piso_imagen_coincidente = $this->db->query("SELECT piso FROM pisos WHERE url_img LIKE '%/".$_FILES["zona"]["name"]."'")->result_array();
+					$coincidencia = $this->db->affected_rows(); 
+					if($coincidencia==0){
+						
+						$config['upload_path'] = 'assets/imagenes/mapa/';
+						$config['allowed_types'] = 'jpg|png';
 
-			
+						$this->load->library('upload', $config);
+						
+						$resultado = $this->upload->do_upload('zona');
+						if($resultado==1){
+							$nombre=$this->upload->data("file_name");
+							$this->db->query("UPDATE pisos SET url_img='assets/imagenes/mapa/$nombre' WHERE piso=$posicion ");
+							unlink($imagen_antigua);
+						}else{
+							$resultado = $this->upload->display_errors();
+						}
+						}else if($piso_imagen_coincidente==$posicion){
 
+								$config['upload_path'] = 'assets/imagenes/mapa/';
+								$config['allowed_types'] = 'jpg|png';
+								$config['overwrite'] = true;
+								
+								$this->load->library('upload', $config);
+								$resultado = $this->upload->do_upload('zona');
+								if(resultado!=1){
+									$resultado = $this->upload->display_errors();
+								}
+							}else if($piso_imagen_coincidente!=$posicion){
+									$resultado="el nombre de la imagen ya existe para otra zona, porfavor renombre la imagen antes de subirla";
+							}
+			return $resultado;
 		}
 
 		public function imagen_atras($inicial, $destino){ 

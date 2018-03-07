@@ -3,7 +3,7 @@
         Nueva posicion<input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa)-1; echo $maxZonas; ?>">
         <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
         Posicion inicial<input type="text" name="posicion_inicial" readonly><br>
-        <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen" required><br>
+        <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>
         <button type="submit">Actualizar</button>
     </form>
 </div>
