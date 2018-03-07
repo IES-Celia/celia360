@@ -37,16 +37,12 @@ echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
   
     <br/>
     <input type='password' id="pass" name='pass' required>
-    <br/><br/>
     <input type='submit' value="Entrar"/>
-    <br/>
-    <br/>
+
 <?php
-  echo "<input type='button' onclick='location.href=\"".site_url("Usuario/showRegisterForm")."\";' value='Darse de alta'";
+  echo "<input type='button' onclick='location.href=\"".site_url("Usuario/showRegisterForm")."\";' value='Darse de alta'>";
 ?> 
-<br/>
-<br/>
-<br/>
+
 
  </form>
   

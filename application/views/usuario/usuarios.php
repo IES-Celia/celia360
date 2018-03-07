@@ -6,7 +6,6 @@
         display:none;
         z-index: 1;
         position: fixed;
-        padding-top: 100px;
         top: 0;
         left: 0;
         width: 100%;
@@ -17,28 +16,18 @@
         background-color:rgba(0,0,0,0.4);
     }
 
-
-    #mod_sub{
-        background-color: #ffffff;
-        width: 80%;
-        text-align: center;
-        position: fixed;
-        margin-left:auto; 
-        margin-right:auto;
-        
-    }
-
-
     #insertar{
         display:none;
         z-index: 1;
         position: fixed;
-        top: 30%;
-        left: 30%;
-        width: 600px;
-        height: 300px;
-        background-color: #ffffff;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
         border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
     }
 
 </style>
@@ -69,13 +58,13 @@ foreach ($tablaUsuarios as $usu) {
             <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
             <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
         if($usu["tipo_usuario"]==0){
-            echo "<td style='color:red;'>Usuario pendiente de asignacion</td>";
+            echo "<td id='tipo_usuario".$idusu."'style='color:red;'>Usuario pendiente de asignación</td>";
         }elseif ($usu["tipo_usuario"]==1) {
-            echo "<td>Admin</td>";
+            echo "<td id='tipo_usuario".$idusu."'>Admin</td>";
         }elseif ($usu["tipo_usuario"]==2) {
-            echo "<td>Mapero</td>";
+            echo "<td id='tipo_usuario".$idusu."'>Mapero</td>";
         }elseif ($usu["tipo_usuario"]==3) {
-            echo "<td>Bibliotecario</td>";
+            echo "<td id='tipo_usuario".$idusu."'>Bibliotecario</td>";
         }    
      
     
@@ -93,44 +82,58 @@ echo "</table>";
 //Capa formulario modificar
 echo "
 <div id='modificar'>
-    <div id='mod_sub'>
+    <div id='caja'>
     <h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='get'>
-        Nombre de usuario:<input type='text' name='username' id='form_modif_nick'><br/>
-        Password:<input type='text' name='pass' required><br/>
-        Email:<input type='text' name='email' id='form_modif_email'><br/>
-        Nombre:<input type='text' name='nombre' id='form_modif_nombre' ><br/>
-        Apellidos:<input type='text' name='apellidos' id='form_modif_ape'><br/>
-        Tipo:<input type='number' name='tipo' min='0' max='3' id='form_modif_tipo' required><br/>
+
+        <label for='username'>Nombre de usuario</label>
+        <input type='text' name='username' id='form_modif_nick'><br/>
+        <br/>
+        <label for='pass'>Password</label>
+        <input type='text' name='pass' required><br/><br/>
+        <label for='email'>Email</label><br/>
+        <input type='text' name='email' id='form_modif_email'><br/><br/>
+        <label for='name'>Nombre</label>
+        <input type='text' name='nombre' id='form_modif_nombre' ><br/><br/>
+        <label for='subname'>Apellidos</label>
+        <input type='text' name='apellidos' id='form_modif_ape'><br/><br/>
+        <label for='tipo'>Tipo</label><br/>
+        <select name='tipo' id='form_modif_tipo'>
+                <option value='0'>Pendiente asignación</option>
+                <option value='1'>Admin</option>
+                <option value='2'>Mapero</option>
+                <option value='3'>Bibliotecario</option>
+        </select>
         <input type='hidden' name='id' id='form_modif_id'><br/>
         <input type=submit value='Modificar'>
+         <input type='button' onclick='cerrar()' value='Cerrar'>
     </form>
-    <a href='#' onclick='cerrar()'>Cerrar</a>
+   
     </div>
 </div>";
 
 //Capa formulario insertar
 echo"
 <div id='insertar'>
+    <div id='caja'>
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
     <label for='username'>Nombre de usuario</label>
-    <input type='text' name='username' id='username'><br/>
+    <input type='text' name='username' id='username'>
     <label for='pass'>Password</label>
-    <input type='password' id='pass' name='pass'><br/>
-    <label for='email'>Email</label>
-    <input type='text' name='email' id='email'><br/>
+    <input type='password' id='pass' name='pass'>
+    <label for='email'>Correo</label>
+    <input type='text' name='email' id='email'>
     <label for='name'>Nombre</label>
-    <input type='text' name='nombre' id='nombre'><br/>
+    <input type='text' name='nombre' id='nombre'>
     <label for='subname'>Apellidos</label>
-    <input type='text' name='subname' id='subname'><br/>
-    </select>
-        <br/>
+    <input type='text' name='subname' id='subname'>
     <input type='submit'>
-    <a href='#' onclick='cerrar()'>Cerrar</a>
-   
-</form>    
+    <input type='button' onclick='cerrar()' value='Cerrar'>
+    
+</form>
+    </div>    
 </div>";
 
 ?>
@@ -162,10 +165,23 @@ echo"
             nick = "nick_usuario_"+idusu;
             nombre = "name_usuario_"+idusu;
             ape = "ape_usuario_"+idusu;
+            tipo = "tipo_usuario"+idusu;
             document.getElementById("form_modif_email").value = document.getElementById(email).innerHTML;
             document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
             document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
             document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
+            aux = document.getElementById(tipo).innerHTML;
+            
+            if(aux=='Admin'){
+                document.getElementById("form_modif_tipo").selectedIndex='1';
+            }else if(aux=='Mapero'){
+                document.getElementById("form_modif_tipo").selectedIndex='2';
+            }else if(aux=='Bibliotecario'){
+                document.getElementById("form_modif_tipo").selectedIndex='3';
+            }else{
+                document.getElementById("form_modif_tipo").selectedIndex='0';
+            }
+            
             document.getElementById("form_modif_id").value = idusu;
             
             $("#modificar").css('display','block');
