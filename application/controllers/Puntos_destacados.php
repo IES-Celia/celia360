@@ -7,7 +7,12 @@ class Puntos_destacados extends CI_Controller {
         $this->load->model("PuntosDestacadosModel");
     }
     
-    // para poner 
+    public function index(){
+        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+		$this->load->view("puntosdestacados/adminDestacados", $datos);	
+    }
+    
+    
     public function anadir_fila($id_fila){
         $resultado = $this->PuntosDestacadosModel->mostrar_fila($id_fila);
         if($resultado){
@@ -44,7 +49,7 @@ class Puntos_destacados extends CI_Controller {
 	}
     
     public function cargar_admin_puntosdestacados(){
-        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAllMostrados();
 		$this->load->view("puntosdestacados/puntosDestacados", $datos);	
 	}
     
