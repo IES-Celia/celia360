@@ -1,4 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.2.1.js"); ?>"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/turn.js"); ?>"></script><link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
 <script type='text/javascript' src='<?php echo base_url("assets/js/zoom/wheelzoom.js");?>'></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/ultimo-estilo.css");?>"/>
@@ -58,21 +59,46 @@
 
 
 
-			/*<?php
+			<?php
 			$directorio = "assets/imgs/books/$id_libro";
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 					for($i = 0;$i<$num_pag;$i++){
 
-							echo "wheelzoom(document.querySelector('img#imglibro$i'));";
-							//echo "wheelzoom(document.querySelector('img.imagenpagina'));";
-							//echo "document.getElementById('imglibro$i').src =  '".base_url('assets/imgs/books/11/1.jpg')."';";
+						echo "
+							$('#imglibro$i').on('click',function(){
+					        $('#imglibro$i').css('height', '1300px');
+					        $('#imglibro$i').css('width', '1000px');
+					      });
+
+					        $('#imglibro$i').draggable({
+					           drag: function(evt,ui)
+					                {
+					                    var anchura = parseInt($('#imglibro$i').css('width').split('px')[0]);
+					                    var altura =parseInt($('#imglibro$i').css('height').split('px')[0]);
+					                    
+
+					                    if (ui.position.left < 500 - $(this).width() )
+					                         ui.position.left = 500 - $(this).width(); 
+					                    if (ui.position.left + $(this).width()> anchura)
+					                          ui.position.left = 0;
+					                    if (ui.position.top < -altura+650 )
+					                        ui.position.top = 650 - $(this).height();
+					                    if (ui.position.top + $(this).height() > altura)
+					                            ui.position.top = 0;
+
+					                    $('html, body').scrollTop(280)
+					                  
+					                }  
+					        });";
 						}
-			?>*/
+			?>
 
 			});
 			
 				
+
+
 		</script>
 
  		<style>
