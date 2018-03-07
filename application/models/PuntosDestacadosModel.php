@@ -37,6 +37,10 @@ class PuntosDestacadosModel extends CI_Model {
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
     }
     
+    public function editar_celda(){
+        
+    }
+    
     public function mover_celda($idcelda, $idfila){
         $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=.$id_fila.")->result_array()[0]["COUNT(id_celda)"];
         if($res<4){

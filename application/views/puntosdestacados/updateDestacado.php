@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h1 align="center">Update de celda</h1>
+	
+	<fieldset class='for'>
+
+		<?php
+			echo"<form action='".site_url("Puntos_destacados/processupdatedestacado")."' method='get'>
+                    
+                    Nombre de la zona:  <input type='text' name='titulo_celda' value='".$tabla['titulo_celda']."'> <br/>
+                    Imagen:  <input type='text' name='imagen_celda' value='".$tabla['imagen_celda']."'> <br/>
+                    Escena de pannellum: <input type='text' name='escena_celda' value='".$tabla['escena_celda']."'> <br/>
+                    Fila a la que pertenece: <input type='text' name='fila_asociada' value='".$tabla['fila_asociada']."' readonly><br>
+			    
+				    <input type='submit'>
+            ";
+        ?>
+		    	
+				
+			   
+			</form>
+	
+	</fieldset>
+
+</body>
+</html>

@@ -62,4 +62,9 @@ class Puntos_destacados extends CI_Controller {
         
         return $this->db->affected_rows();
     } 
+    
+    public function processupdatedestacado(){
+        
+    }
+    
 }

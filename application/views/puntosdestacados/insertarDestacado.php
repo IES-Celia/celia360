@@ -2,7 +2,7 @@
 <html>
 <body>
 
-			<h1 align="center">Insercion de lugares</h1>
+	<h1 align="center">Insercion de celda</h1>
 	
 	<fieldset class='for'>
 

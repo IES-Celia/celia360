@@ -39,7 +39,7 @@
            
         <script>
             $(".grid-item").click(function(){
-               //location.href= vista() 
+                //location.href= <?php echo site_url("hotspots/") ?>;
                 $(this).children().last().val();
             });
         </script>
