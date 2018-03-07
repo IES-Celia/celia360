@@ -25,10 +25,12 @@
                       foreach($fila as $celda){
                           echo '
                           <a class="grid-item">
+                                patata
                                  <div class="grid-item__image" style="background-image: url('.$celda["imagen_celda"].')"></div>
                                  <div class="grid-item__hover"></div>
                                  <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
                                  <input type="hidden" value="'.$celda["id_celda"].'">
+                                 patata
                           </a>';
                       }
                echo '</div>';
@@ -38,10 +40,11 @@
         </div>
            
         <script>
-            $(".grid-item").click(function(){
+           /* $(".grid-item").click(function(){
                 //location.href= <?php echo site_url("hotspots/") ?>;
                 $(this).children().last().val();
             });
+            */
         </script>
 </body>
 </html>

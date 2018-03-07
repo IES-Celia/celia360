@@ -20,6 +20,8 @@ h1 {
     color: #fff;
     margin: 0;
     padding: 0;
+    text-shadow: 1px 2px #000;
+
 }
 
 h2 {
@@ -76,7 +78,9 @@ h3{
     font-family:"Lato";
     font-size: 30px;
     color: white;
-    margin-top: 10px;
+    margin-top: 20px;
+    text-shadow: 1px 2px #000;
+
 }
 
  
@@ -158,11 +162,10 @@ h3{
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 450px;
     margin: 0;
-    padding: 300px 0 260px 0;
+    padding: 250px 0 260px 0;
     background-size: cover;
-
 }
 
 

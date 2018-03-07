@@ -54,7 +54,7 @@
 
     <div id="portadaca" style='z-index:100'; >
 
-        <header id="header_portada">
+        <header id="header_portada"  >
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
@@ -70,7 +70,10 @@
 
         </header>
         <main>
-             <div id="slider1_portada">
+
+             <div id="slider1_portada" >
+               
+
                  <div class="contenedor_portada">
                      <h1 id="titulito">Celia Tour</h1>
                      <div id="parrafito">
@@ -79,8 +82,7 @@
                         <button id="open" class="btn">HISTORIA</button>
                      </div>
                  </div> 
-             </div> 
-
+            </div>
         </main>
       
       
