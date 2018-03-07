@@ -113,7 +113,28 @@
 		
                 return $this->db->affected_rows();
 		
-			}
+            }
+            
+            public function modificarHotspotPanel($id){
+                $id_hotspot = $_REQUEST["id_hotspot"];
+                $pitch = $_REQUEST["pitch"];
+                $yaw = $_REQUEST["yaw"];
+                $cssClass = $_REQUEST["cssClass"];
+                $titulo_panel = $_REQUEST["titulo_panel"];
+                $texto_panel = $_REQUEST["texto_panel"];
+                
+                $this->db->query("UPDATE hotspots
+                    SET 
+                          pitch='$pitch',
+                          yaw='$yaw',
+                          titulo_panel=,
+                          texto_panel=,
+                          cssClass='$cssClass', 
+                    WHERE id_hotspot='$id_hotspot'");
+            
+                    return $this->db->affected_rows();
+            
+                }
       
       
        ///////////////////////////ZYGIS - Cosas del CMS/////////////////////////
