@@ -63,8 +63,14 @@
             $this->db->query("UPDATE hotspots SET clickHandlerArgs=".$vid." WHERE id_hotspot='".$id."'");
 			return $this->db->affected_rows();
         }
- 
-        public function borrarHotspot($id) {
+        
+///loli
+    public function modificarpuntoaudio($id, $aud) {
+        $this->db->query("UPDATE hotspots SET clickHandlerArgs=" . $aud . " WHERE id_hotspot='" . $id . "'");
+        return $this->db->affected_rows();
+    }
+    
+    public function borrarHotspot($id) {
             $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
 			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
 

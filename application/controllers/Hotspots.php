@@ -67,8 +67,28 @@ class Hotspots extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
-    
-    
+////loli
+
+    public function updateHotspotAudio() {
+        
+        $id = $this->input->post_get("id_hotspot");
+        $vid = $this->input->post_get("clickHandlerArgs");
+        $resultado = $this->hotspotsModel->modificarpuntoaudio($id, $aud);
+        $cambio = $this->input->post_get("sceneId");
+        
+        if ($resultado == true) {
+            
+            redirect('welcome/cargar_escena/' . $cambio . '/show_insert_hotspot/');
+            
+        } else {
+            $datos["error"] = "No se ha podido modificar el audio";
+            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
+            $datos["vista"] = "hotspots/hotspotsTable";
+            $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('template_admin', $datos);
+        }
+    }
+
     // fin
     
     public function process_insert_scene(){
@@ -266,29 +286,26 @@ public function load_audio(){
     $resultado = $this->hotspotsModel->cargar_audio($id);
     //TODO: añadir mensaje de la situacion
 }
+///loli
+    public function process_insert_audio() {
 
-    public function process_insert_audio(){
         $resultado = $this->hotspotsModel->insertarHotspotAudio();
-		$anda=$this->input->post_get("id_scene");
+        $cambio = $this->input->post_get("id_scene");
+
         if ($resultado == true) {
-			echo $anda;
-			redirect('welcome/cargar_escena/'.$anda.'/show_insert_hotspot/');
-            /*$datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
-            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $datos["vista"]="hotspots/hotspotsTable";
-            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            $this->load->view('template_admin', $datos);*/
-        }else {
+
+            redirect('welcome/cargar_escena/' . $cambio . '/show_insert_hotspot/');
+
+        } else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $datos["vista"]="hotspots/hotspotsTable";
-            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $datos["vista"] = "hotspots/hotspotsTable";
+            $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
         }
     }
-	   
-	
-	public function process_insert_hotspot(){
+
+    public function process_insert_hotspot(){
     $res=$this->hotspotsModel->process_insert_hotspot();
      if($res){
          echo"se a insertado correctamente";
