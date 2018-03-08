@@ -24,7 +24,7 @@
                           foreach($fila as $celda){
                               echo '
                               <a class="grid-item">
-                                     <div class="grid-item__image" style="background-image: url('.$celda["imagen_celda"].')"></div>
+                                     <div class="grid-item__image" style="background-image: url('.base_url($celda["imagen_celda"]).')"></div>
                                      <div class="grid-item__hover"></div>
                                      <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
                                      <input type="hidden" value="'.$celda["id_celda"].'">
