@@ -18,7 +18,7 @@
         max-width: 100%;
       }
       #panorama {
-        height: auto;
+        height: 100vh;
       }
     /* Controles de pannellum, zoom y full screen */
    
