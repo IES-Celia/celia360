@@ -29,9 +29,10 @@
     }
 
     #cont #cabecera{
-        background: -moz-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-        background: -webkit-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-        background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);    
+        background: rgb(90,163,237); 
+        background: -moz-linear-gradient(top, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
+        background: -webkit-linear-gradient(top, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 
+        background: linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);    
     }
 
     #usuario{
@@ -324,9 +325,10 @@
             border: 2px solid grey;
             border-radius: 10px;
             box-shadow: 3px 3px 10px grey;
-            background: -moz-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-            background: -webkit-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
-            background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);    
+            background: rgb(90,163,237); 
+            background: -moz-linear-gradient(top, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
+            background: -webkit-linear-gradient(top, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 
+            background: linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);    
            
         }
 
