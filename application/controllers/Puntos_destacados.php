@@ -75,4 +75,8 @@ class Puntos_destacados extends CI_Controller {
         }
     }
     
+    public function processinsertdestacado(){
+         $resultado = $this->PuntosDestacadosModel->crear_celda();
+    }
+    
 }

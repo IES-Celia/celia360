@@ -46,10 +46,8 @@ z-index:100;
 
 </style>
 
-<h1 align='center'>VISITA GUIADA</h1>
-
 <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
-<input class='insert' type="submit" value="crear Escena" />
+<button class='insert' type='submit'><span class='fa fa-plus-circle'></span>crear Nuevo</button>
 </form>
 <table align='center' id='cont'>
     <tr id='cabecera'>
@@ -173,7 +171,12 @@ function modificarGuiada(elemento){
     */
 
     $("#actualizarGuiada").on("click", function () {
-        
+        var confirmar = confirm("¿Estas seguro que quieres modificarlo?");
+        if(confirmar){
+
+        } else {
+
+        }
         var idEscena = $(elemento).attr("data-id");
         codEscena = $("#escenaGuiada").find(":selected").text();
         audioEscena = $("#audioGuiada").find(":selected").text();
@@ -207,7 +210,12 @@ function modificarGuiada(elemento){
 }
 
 function borrarGuiada(elemento){
+    var confirmar = confirm("¿Estas seguro que quieres borrar este elemento?");
+    if(confirmar){
 
+    } else {
+        
+    }
     var idEscena = $(elemento).attr("data-id");
     var urlPeticion= "<?php echo base_url("guiada/borrarEscena");?>";
     var peticion = $.ajax({

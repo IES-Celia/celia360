@@ -1,22 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
-
-
-
-//GetAllscenes
-//GetSceneTitle
-//GetAllaudios
-//El orden lo hago en la pantalla principal.
-
 ?>
 
-<h2>Insertar escena guiada</h2>
 
+<div id='caja'>
+<h1>Insertar escena guiada</h1>
 <form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
-    <!--<input type='hidden' name='accion' value='insertarEscenaGuiada'>-->
-
-     
-    Selecciona una escena:
+   
+    <label for='escenaGuiada'>Selecciona una escena</label>
     <select id='escenaGuiada' name="escenaGuiada">
         <?php 
             foreach ($escenas as $escena) {
@@ -31,9 +22,10 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
         ?>
     </select>
     <br><br>
-    Nombre escena:<input id='titulo_escena' type='text' name='tituloGuiada' value='' >
+    <label for='titulo_escena'>Nombre escena</label>
+    <input id='titulo_escena' type='text' name='tituloGuiada' value='' >
     <br><br>
-    Selecciona un audio:
+    <label for='audioGuiada'>Selecciona un audio</label>
     <select name="audioGuiada">
         <?php 
             foreach ($audios as $audio) {
@@ -45,6 +37,8 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
     <br><br>
     <input type="submit" name="enviar"/>
 </form>
+</div>
+
 
 <script>
 

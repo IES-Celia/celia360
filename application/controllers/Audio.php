@@ -126,7 +126,6 @@ class Audio extends CI_Controller {
             <th>Descripcion</th>
             <th>Tipo de audio</th>
             <th>Reproducir</th>
-            <th>Seleccionar</th>
             </tr>
             ";
         foreach ($listaAudios as $audio) {
@@ -142,7 +141,8 @@ class Audio extends CI_Controller {
 	<source src="' . base_url($audio["url_aud"]) . '" type="audio/m4a"/>
 	<source src="' . base_url($audio["url_aud"]) . '" type="audio/mp3"/>
 	</audio></td>'
-                    . '<td onClick="seleccionarAudio('.$fila.')"><a href="#">Seleccionar</a></td>'
+				
+                  
                     . '</tr>';          
         }
         echo $html; 

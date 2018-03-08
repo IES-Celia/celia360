@@ -59,6 +59,31 @@ class Vidm extends CI_Model {
 
         return $tabla;
     }
+	 public function buscar_ajaxvid($abuscar) {
+       
+        $this->db->select('*');
+
+        
+        if ($abuscar != "") $this->db->like('desc_vid', $abuscar);
+
+        $resultados = $this->db->get('video');
+
+        //si existe algún resultado lo devolvemos
+        if ($resultados->num_rows() > 0) {
+
+            $lista = array();
+            foreach ($resultados->result_array() as $fila) {
+                $lista[] = $fila;
+            }
+            return $lista;
+
+            //en otro caso devolvemos false
+        } else {
+
+            return false;
+        }       
+        
+    }    
 
 }
 
