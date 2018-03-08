@@ -66,9 +66,9 @@ class escenas extends CI_Controller {
     }
     
     
-    public function deletescene($id){
+    public function deletescene($cod){
 
-        $resultado = $this->Modeloescenas->borrar($id);
+        $resultado = $this->Modeloescenas->borrar($cod);
         
         if ($resultado > 1) {
             $datos["mensaje"] = "Escena borrado correctamente";
@@ -99,7 +99,9 @@ class escenas extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
     
-    public function processupdatescene($cod){
+    public function processupdatescene(){
+    
+        $cod=$_REQUEST['cod'];
             $resultado = $this->Modeloescenas->update($cod);
             
             if ($resultado == true) {
