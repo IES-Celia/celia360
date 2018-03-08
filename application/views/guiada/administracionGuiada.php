@@ -171,7 +171,12 @@ function modificarGuiada(elemento){
     */
 
     $("#actualizarGuiada").on("click", function () {
-        
+        var confirmar = confirm("¿Estas seguro que quieres modificarlo?");
+        if(confirmar){
+
+        } else {
+
+        }
         var idEscena = $(elemento).attr("data-id");
         codEscena = $("#escenaGuiada").find(":selected").text();
         audioEscena = $("#audioGuiada").find(":selected").text();
@@ -205,7 +210,12 @@ function modificarGuiada(elemento){
 }
 
 function borrarGuiada(elemento){
+    var confirmar = confirm("¿Estas seguro que quieres borrar este elemento?");
+    if(confirmar){
 
+    } else {
+        
+    }
     var idEscena = $(elemento).attr("data-id");
     var urlPeticion= "<?php echo base_url("guiada/borrarEscena");?>";
     var peticion = $.ajax({
