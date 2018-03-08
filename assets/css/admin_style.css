@@ -182,11 +182,24 @@
 		
     .buttonfor{
     
-        color:blue;
-  
+        color: white;
+        background: #0047b3;
+        border: 1px solid white;
+        border-radius: 10px;
+        height: 30px;
+        cursor: pointer;
+        box-shadow: inset 0px 0px 2px 1px rgba(255,255,255,1);
+        font-size: larger;
+        transition:0.4s;
     }
 
+    .buttonfor:hover{
+    
+        transform: scale(1.05);
         
+        
+    }
+
     /* Menu Lateral */
 
     .sidenav {
