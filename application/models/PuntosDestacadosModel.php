@@ -7,6 +7,11 @@ class PuntosDestacadosModel extends CI_Model {
         $this->load->database();
     }
     
+    public function info_celda($id_celda){
+        $res = $this->db->query("SELECT * FROM celda_pd WHERE id_celda='$id_celda' ");
+        return $res->result_array();
+    }
+    
     public function ocultar_fila($id_fila){
         $this->db->query("UPDATE fila_pd SET id_fila=.$id_fila. WHERE mostrar='0'");
         $this->db->query("DELETE celda_p WHERE fila_asociada=.$id_fila");
@@ -46,7 +51,7 @@ class PuntosDestacadosModel extends CI_Model {
         $fila_asociada= $_REQUEST["fila_asociada"];
         
         $this->db->query("
-				UPDATE hotspots SET 
+				UPDATE celda_pd SET 
 					 escena_celda='$escena_celda',
 					 imagen_celda='$imagen_celda',
 					 titulo_celda='$titulo_celda',
@@ -70,7 +75,7 @@ class PuntosDestacadosModel extends CI_Model {
                 INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
                 WHERE F.mostrar = 1
                 ORDER BY C.fila_asociada, C.id_celda";
-
+        
         $result = $this->db->query($sql);
         $r = array();
         $r[0] = array();

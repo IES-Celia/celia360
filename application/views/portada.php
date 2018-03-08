@@ -411,44 +411,8 @@
     $( document ).ready(function() {
       
       
-      $( ".menu_slider" ).click(function() {
-  
-  if($(".main").css("display")=="none"){
-    
-     $(".main")
-    .fadeIn()
-    .css("display","block");
-   
-     var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-     $('.slider-nav').slick('setPosition',currentSlide);
-    
-  }else if($(".main").css("display")=="block"){
-          
-     $(".main").css("display","none")
-     var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-     $('.slider-nav').slick('setPosition',currentSlide);
-    
-    }
- 
-});
 
 
-      
-  /*    // setPosition
-      $('.slider-nav').on('setPosition', function(event, slick){
-        console.log(event);
-      });*/
-      
-   
-
-      
-
-    
-      
-
-	
-  
-      
     });  
   
     //
@@ -456,13 +420,23 @@
     //
   
       json_contenido='';
+      zeus = $("#panorama").html();
       function visita_opcion(nombre){
-        
-
         $.ajax({
               url: "<?php echo base_url("conversorbd2json/"); ?>"+nombre,
               type: 'GET',
               dataType: 'json',
+              beforeSend: function(){
+                if (typeof viewer !== 'undefined') {
+                  
+                  viewer.destroy();
+                  $("#panorama").append(zeus);          
+                } else {
+                  
+                }
+                cargarPannellum();
+
+              }
             })
             .done(function(data) {
               $.each(data.scenes, function(i){
@@ -471,39 +445,122 @@
                   escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
                 });
               });
-              viewer = pannellum.viewer("panorama", data);
-
+              
               if(nombre=="get_json_guiada"){
-                $("#boton_mapa").hide();
-                iniciar_visita_guiada();
-                $("#panel_audio_libre").hide();
-                $('#audio_libre').attr("src","");
-              } else {
-                $("#boton_mapa").show();
-                $("#panel_audio_guiada").hide();
-                $('#audio_guiada').attr("src","");
-                iniciar_visita_libre();
-              }
+                  viewer = pannellum.viewer("panorama", data);
+                  $("#boton_mapa").hide();
+                  iniciar_visita_guiada();
+                  $("#panel_audio_libre").hide();
+                  $('#audio_libre').attr("src","");
+                } else {
+                  viewer = pannellum.viewer("panorama", data);
+                  $("#boton_mapa").show();
+                  $("#panel_audio_guiada").hide();
+                  $('#audio_guiada').attr("src","");
+                  iniciar_visita_libre();
+                }
               console.log("success");
+
             })
             .fail(function() {
               console.log("error");
             })
-
-
-
-        
         }
     
     // 
     // FIN DE CARGA DE JSON PANNELLUM
     //
 
+function cargarPannellum(){
 
+//boton menu toggle hidden y visible
+$(".boton_menu").click(function(){
+                    if($("#nav_menu").is(":hidden")){
+                      $("#nav_menu").fadeIn("fast");
+                    } else {
+                      $("#nav_menu").fadeOut("fast");
+                    }
+});
 
-
-   /////////////////////PRUEBAS AJAX////////////////////////////////
+//Toggle Audio boton.
+$("#botonAudio1").toggle(function()
+    {$("#botonAudio").show();},
+    function()
+    {$("#botonAudio").hide();
+    });
+   
+    $("#panel_audio_guiada .botonPause").click(function(){
+      if($("panel_audio_guiada").css("display") == "block"){
+        $(".botonPause").hide();
+        $("#audio_guiada").hide();
+        $(".icono_audio").show();
+      }                  
+  });
   
+    $("#panel_audio_guiada .icono_audio").click(function(){
+        $(".botonPause").show();
+        $("#audio_guiada").show();
+        $(".icono_audio").hide();
+                        
+  });
+
+    $("#panel_audio_libre .botonPause").click(function(){
+      if($("#panel_audio_libre").css("display") == "block"){
+        $(".botonPause").hide();
+        $("#audio_libre").hide();
+        $(".icono_audio").show();
+      }                  
+  });
+  
+    $("#panel_audio_libre .icono_audio").click(function(){
+        $(".botonPause").show();
+        $("#audio_libre").show();
+        $(".icono_audio").hide();
+                        
+  });
+
+  array_escenas =[];
+  array_audios =[];
+  array_titulo = [];
+  array_previews = [];
+  indice_escenas = 0;
+  //Al terminar cambiar.
+  var audio_terminado = document.getElementById("audio_guiada");
+    audio_terminado.onended = function() {
+      indice_escenas++;
+      if(indice_escenas==array_escenas.length){
+        indice_escenas=0;
+        audio_guiada(indice_escenas);  
+      } else {
+        audio_guiada(indice_escenas);  
+      } 
+
+    };
+
+
+    $( ".menu_slider" ).click(function() {
+      if($(".main").css("display")=="none"){
+        $(".main").fadeIn().css("display","block");
+        var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+        $('.slider-nav').slick('setPosition',currentSlide);
+      }else if($(".main").css("display")=="block"){    
+        $(".main").css("display","none");
+        var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+        $('.slider-nav').slick('setPosition',currentSlide);
+    }
+});     
+  
+}
+
+
+  
+
+
+
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
   
     function panelInformacion(hotspotDiv,args){
     
@@ -558,50 +615,6 @@
      });
   }
   
-  /////////////////////PANEL y GALERIA dentro del PANEL//////////////////////////////
-  ///////////////////////////////////////////////////
-  
-  //Abrir la galeria y poner la primera imagen.
-  function openModal() {
-  $("#GmyModal").show();
-  currentSlide(1);
-}
-//Cerrar galeria
-function closeModal() {
-  $("#GmyModal").hide();
-}
-
-
-
-//Suma mas uno al indice
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-//Pone el indice actual.
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-//Muestra el numero de imagenes que hay con la clase gmyslide y va poniendo cada vez que cambiamos con las flechas.
-function showSlides(n) {
-  var i;
-  var slides = $(".GmySlides");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  slides[slideIndex-1].style.display = "block";
-}
-  //Si le das click fuera de la ventana quitarlo.
-$( ".overlay" ).on( "click", function() {
-  $( ".modal" ).css('visibility',"hidden");
-});
-  //Si el das click a la X se cierra.
-$( ".modal__close" ).on( "click", function() {
-  $( ".modal" ).css('visibility',"hidden");
-});  
-  
-
 function escaleras(){
     nombreEscena = viewer.getScene();
     pisoActual = nombreEscena.substring(0,2);
@@ -633,14 +646,239 @@ function escaleras(){
     viewer.toggleFullscreen();
 });
     
+
+
+function openModal() {
+    $("#GmyModal").show();
+    currentSlide(1);
+}
+
+function closeModal() {
+  $("#GmyModal").hide();
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+//Muestra el numero de imagenes que hay con la clase gmyslide y va poniendo cada vez que cambiamos con las flechas.
+function showSlides(n) {
+  var i;
+  var slides = $(".GmySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+  //Si le das click fuera de la ventana quitarlo.
+$( ".overlay" ).on( "click", function() {
+  $( ".modal" ).css('visibility',"hidden");
+});
+  //Si el das click a la X se cierra.
+$( ".modal__close" ).on( "click", function() {
+  $( ".modal" ).css('visibility',"hidden");
+});  
+
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
+ 
+
+  
+ 
+
+              
+
+              /////////////////////PANEL y GALERIA dentro del PANEL//////////////////////////////
+  ///////////////////////////////////////////////////
+  
+
+  
+  
+  function audio_guiada(indice){
+
+      $("#panel_audio_libre").hide();
+      $('#audio_libre').attr("src","");
+
+      $('#audio_guiada').attr("src",array_audios[indice]);
+      viewer.loadScene(array_escenas[indice]);
     
-    //Toggle Audio boton.
-    $("#botonAudio1").toggle(function()
-    {$("#botonAudio").show();},
-    function()
-    {$("#botonAudio").hide();
-    });
-   
+      $(".titulo_slider").each(function(){
+        $(this).removeClass("highlight_slider");
+      });
+    
+      $('.slider-nav').slick('slickGoTo',indice,true);
+      
+      var prueba =$('.titulo_slider').get(indice);
+      $(prueba).addClass("highlight_slider");
+      $(".titulo_guiada").text(array_titulo[indice]);
+      $('#panel_audio_guiada').show();
+      $("#audio_guiada")[0].play();
+  }
+  
+   function estado_audio(){
+    var audio_boton = document.getElementById("audio_guiada");
+    if(audio_boton.paused){
+        $("#audio_guiada")[0].play();
+      //Aqui cambiar imagen a pause
+    } else {
+        $("#audio_guiada")[0].pause();
+       //Aqui cambiar imagen a play
+    }         
+  }
+  
+  
+function iniciar_visita_guiada(){
+
+var peticion = $.ajax({
+type: "get",
+url: "guiada/getGuiada",
+dataType: "json",
+
+});
+
+peticion.done(function(datos){
+var largo = datos.length;
+
+for(var i=0;i<largo;i++){
+  array_escenas.push(datos[i].cod_escena);
+  array_titulo.push(datos[i].titulo_escena);
+  array_audios.push(datos[i].audio_escena);
+  array_previews.push(datos[i].img_preview);
+  var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
+  var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
+  $(".slider-nav").append(crearSliderPreview);
+}
+
+$('.slider-nav').slick({
+  centerMode: false,
+  infinite: false,
+  slidesToShow: 6,
+  slidesToScroll: 6,
+  touchMove:false,
+  vertical:false
+  //focusOnSelect: true,
+});
+
+
+//Al hacer click cargar esa escena.
+$('.titulo_slider').click(function(e) {
+
+var clickedIndex = $(this).data("slick-index");
+  if(clickedIndex==array_escenas.length){
+    indice_escenas=0;
+    audio_guiada(indice_escenas);  
+  } else {
+    indice_escenas=clickedIndex
+    audio_guiada(clickedIndex);  
+  }  
+
+// Manually refresh positioning of slick
+//$('.slider-nav').slick('setPosition',clickedIndex);
+});
+});
+
+
+$("#nav_menu").hide();
+$("#mensaje_guiada").show();
+$("#boton_aceptar_guiada").click(function(){
+$("#mensaje_guiada").hide();
+$("#menu_guiada_show").show();
+$(".menu_libre_show").hide();
+$("#boton_mapa").hide();
+audio_guiada(0);
+});
+}
+
+function iniciar_visita_libre(){
+
+$("#panel_audio_guiada").hide();
+$('#audio_guiada').attr("src","");
+
+$("#nav_menu").hide();
+//Mensaje de bienvenida para modo libre.
+$("#menu_guiada_show").hide();
+$(".menu_libre_show").show();
+$("#boton_mapa").show();
+
+}
+
+function anterior(){
+indice_escenas--;
+if(indice_escenas<0){
+indice_escenas= 0;
+} else {
+audio_guiada(indice_escenas);  
+} 
+}
+
+function siguiente(){
+indice_escenas++;
+if(indice_escenas==array_escenas.length){
+indice_escenas=0;
+audio_guiada(indice_escenas);  
+} else {  
+audio_guiada(indice_escenas);  
+} 
+}
+
+///////////FIN VISITA GUIADA  
+
+////////////////VIDEO VISITA LIBRE//////////////////////  
+
+function video(hotspotDiv,args){
+var peticion = $.ajax({
+type: "post",
+url: "<?php echo base_url("hotspots/load_video"); ?>",
+data: {idVideo : args},
+beforeSend: function(){
+  $("#vimeo_video").attr(src,"");
+}
+});
+
+peticion.done(function(resultado){
+$("#vimeo_video").attr(src,resultado);
+var pantalleo = $("#video_visita_libre").css("display");
+if(pantalleo=="block")
+  $('#video_visita_libre').hide();
+  //PAUSE
+else
+  $('#video_visita_libre').fadeIn();
+});
+
+}
+
+////////////////AUDIO VISITA LIBRE////////////////////// 
+
+function musica(hotspotDiv,args){
+var peticion = $.ajax({
+type: "post",
+url: "<?php echo base_url("hotspots/load_audio"); ?>",
+data: {id_hotspot : args}
+});
+
+
+peticion.done(function(resultado){
+var prueba = JSON.parse(resultado);
+var enlace_audio = prueba.result_array[0].url_aud;
+var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
+$("#audio_libre").attr("src",enlace_audio_correcto);
+var pantalleo = $("#panel_audio_libre").css("display");
+if(pantalleo=="block")
+$('#panel_audio_libre').hide();
+//PAUSE
+else
+$('#panel_audio_libre').show();
+});
+}
+    
+  
   
   /////////////PRUEBA AUDIO//////////////////
   //////////////////PARA PUNTOS SENSIBLES.////////////////////////////
@@ -671,47 +909,6 @@ function escaleras(){
   });*/
   
  
-  $("#panel_audio_guiada .botonPause").click(function(){
-      if($("panel_audio_guiada").css("display") == "block"){
-        $(".botonPause").hide();
-        $("#audio_guiada").hide();
-        $(".icono_audio").show();
-      }                  
-  });
-  
-    $("#panel_audio_guiada .icono_audio").click(function(){
-        $(".botonPause").show();
-        $("#audio_guiada").show();
-        $(".icono_audio").hide();
-                        
-  });
-
-
-    $("#panel_audio_libre .botonPause").click(function(){
-      if($("#panel_audio_libre").css("display") == "block"){
-        $(".botonPause").hide();
-        $("#audio_libre").hide();
-        $(".icono_audio").show();
-      }                  
-  });
-  
-    $("#panel_audio_libre .icono_audio").click(function(){
-        $(".botonPause").show();
-        $("#audio_libre").show();
-        $(".icono_audio").hide();
-                        
-  });
-  
-  
-  //boton menu toggle hidden y visible
-  $(".boton_menu").click(function(){
-    if($("#nav_menu").is(":hidden")){
-      $("#nav_menu").fadeIn("fast");
-    } else {
-       $("#nav_menu").fadeOut("fast");
-    }
-  });
-
   ////////////////////////////////////////////////
   //VISITA GUIADA MENU
   
@@ -726,212 +923,6 @@ function escaleras(){
    ];
   array_titulo = ["Fachada principal","Pórtico","Escalera de entrada","Conserjería","Puerta secretaría","Antesala"];
   */
-
-  array_escenas =[];
-  array_audios =[];
-  array_titulo = [];
-  array_previews = [];
-  indice_escenas = 0;
- 
-  function audio_guiada(indice){
-
-      $("#panel_audio_libre").hide();
-      $('#audio_libre').attr("src","");
-
-      $('#audio_guiada').attr("src",array_audios[indice]);
-      viewer.loadScene(array_escenas[indice]);
-    
-      $(".titulo_slider").each(function(){
-        $(this).removeClass("highlight_slider");
-      });
-    
-      $('.slider-nav').slick('slickGoTo',indice,true);
-      //var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-      //alert(currentSlide);
-      
-      //$('.slider-nav').slick('setPosition',indice);
-    
-      var prueba =$('.titulo_slider').get(indice);
-      $(prueba).addClass("highlight_slider");
-        //.addClass("highlight_slider");
-      //$(".slick-current").addClass("highlight_slider");
-    
-      // var pantalleo = $("#panelAudioPrueba").css("display");
-      //if(pantalleo == "block")
-      $(".titulo_guiada").text(array_titulo[indice]);
-      $('#panel_audio_guiada').show();
-      $("#audio_guiada")[0].play();
-  }
-  
-   function estado_audio(){
-    var audio_boton = document.getElementById("audio_guiada");
-    if(audio_boton.paused){
-        $("#audio_guiada")[0].play();
-      //Aqui cambiar imagen a pause
-    } else {
-        $("#audio_guiada")[0].pause();
-       //Aqui cambiar imagen a play
-    }         
-  }
-  
-  var audio_terminado = document.getElementById("audio_guiada");
-    audio_terminado.onended = function() {
-      indice_escenas++;
-      if(indice_escenas==array_escenas.length){
-        indice_escenas=0;
-        audio_guiada(indice_escenas);  
-      } else {
-        audio_guiada(indice_escenas);  
-      } 
-
-    };     
-  
-    function iniciar_visita_guiada(){
-
-        var peticion = $.ajax({
-        type: "get",
-        url: "guiada/getGuiada",
-        dataType: "json",
-
-      });
-
-      peticion.done(function(datos){
-        var largo = datos.length;
-
-        for(var i=0;i<largo;i++){
-          array_escenas.push(datos[i].cod_escena);
-          array_titulo.push(datos[i].titulo_escena);
-          array_audios.push(datos[i].audio_escena);
-          array_previews.push(datos[i].img_preview);
-          var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
-          var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
-          $(".slider-nav").append(crearSliderPreview);
-        }
-
-        $('.slider-nav').slick({
-          centerMode: false,
-          infinite: false,
-          slidesToShow: 6,
-          slidesToScroll: 6,
-          touchMove:false,
-          vertical:false
-          //focusOnSelect: true,
-        });
-
-
-        //Al hacer click cargar esa escena.
-      $('.titulo_slider').click(function(e) {
-        
-        var clickedIndex = $(this).data("slick-index");
-          if(clickedIndex==array_escenas.length){
-            indice_escenas=0;
-            audio_guiada(indice_escenas);  
-          } else {
-            indice_escenas=clickedIndex
-            audio_guiada(clickedIndex);  
-          }  
-        
-      // Manually refresh positioning of slick
-      //$('.slider-nav').slick('setPosition',clickedIndex);
-    });
-      });
-
-
-      $("#nav_menu").hide();
-      $("#mensaje_guiada").show();
-      $("#boton_aceptar_guiada").click(function(){
-      $("#mensaje_guiada").hide();
-      $("#menu_guiada_show").show();
-      $(".menu_libre_show").hide();
-      $("#boton_mapa").hide();
-      audio_guiada(0);
-    });
-    }
-    
-    function iniciar_visita_libre(){
-
-      $("#panel_audio_guiada").hide();
-      $('#audio_guiada').attr("src","");
-
-      $("#nav_menu").hide();
-      //Mensaje de bienvenida para modo libre.
-      $("#menu_guiada_show").hide();
-      $(".menu_libre_show").show();
-      $("#boton_mapa").show();
-      
-    }
-      
-  function anterior(){
-    indice_escenas--;
-    if(indice_escenas<0){
-      indice_escenas= 0;
-    } else {
-      audio_guiada(indice_escenas);  
-    } 
-    }
-  
-   function siguiente(){
-     indice_escenas++;
-    if(indice_escenas==array_escenas.length){
-      indice_escenas=0;
-      audio_guiada(indice_escenas);  
-    } else {
-      audio_guiada(indice_escenas);  
-    } 
-    }
-
-  ///////////FIN VISITA GUIADA  
-
-  ////////////////VIDEO VISITA LIBRE//////////////////////  
-
-    function video(hotspotDiv,args){
-      var peticion = $.ajax({
-        type: "post",
-        url: "<?php echo base_url("hotspots/load_video"); ?>",
-        data: {idVideo : args},
-        beforeSend: function(){
-          $("#vimeo_video").attr(src,"");
-        }
-      });
-
-      peticion.done(function(resultado){
-        $("#vimeo_video").attr(src,resultado);
-        var pantalleo = $("#video_visita_libre").css("display");
-        if(pantalleo=="block")
-          $('#video_visita_libre').hide();
-          //PAUSE
-        else
-          $('#video_visita_libre').fadeIn();
-        });
-
-    }
-
-      ////////////////AUDIO VISITA LIBRE////////////////////// 
-
-    function musica(hotspotDiv,args){
-      var peticion = $.ajax({
-        type: "post",
-        url: "<?php echo base_url("hotspots/load_audio"); ?>",
-        data: {id_hotspot : args}
-      });
-
-      
-      peticion.done(function(resultado){
-        var prueba = JSON.parse(resultado);
-        var enlace_audio = prueba.result_array[0].url_aud;
-        var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
-        $("#audio_libre").attr("src",enlace_audio_correcto);
-        var pantalleo = $("#panel_audio_libre").css("display");
-        if(pantalleo=="block")
-        $('#panel_audio_libre').hide();
-        //PAUSE
-        else
-        $('#panel_audio_libre').show();
-        });
-
-
-      }
-
 </script>
       
      <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
