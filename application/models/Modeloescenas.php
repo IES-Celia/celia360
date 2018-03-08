@@ -43,7 +43,7 @@
                 $cod = substr($panorama, 0 , -4);
                 $left_mapa = $_REQUEST["left_mapa"];
                 $top_mapa = $_REQUEST["top_mapa"];
-                $piso_mapa = $_REQUEST["piso"];
+                $piso_mapa = $_REQUEST["piso_mapa"];
                 
             
                 $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
