@@ -1,21 +1,17 @@
     body{
-       background: url(fondo.JPG) no-repeat center center fixed;
-       background-size: 100%;
-    }
-
-    p{
-        text-align: center;
-
-    }
+        background: url(fondo.JPG) no-repeat center center fixed;
+        background-size: 100%;
+        }
 
     #fondo{
         background-color: rgba(39, 152, 231,0.2);
+        position: absolute;
         width:100%;
         height: 100%;
     }
 
     #menu{
-        height: 100px;
+        height: 70px;
         background-color:rgba(0,0,0,0.7);
         border-bottom: 5px solid #ffffff;
         margin-bottom: 30px;   
@@ -36,6 +32,14 @@
         background: -moz-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
         background: -webkit-radial-gradient(center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);
         background: radial-gradient(ellipse at center, #ABCEBA 0%, #1C6EA4 100%, #C5C5C5 100%);    
+    }
+
+    #usuario{
+        color: #2798E7;
+    }
+
+    #sesion{
+        color: #ffffff;
     }
 
 
@@ -91,17 +95,19 @@
 
 	.insert{            
         color: white;
-        font-size: 35px;
+        font-size: 28px;
         text-decoration: none;
-        width: 400px;
+        width: 250px;
         transition:0.4s;
-        background: #0047b3;
+        background: #1C6EA4;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         box-shadow: inset 0px 0px 2px 1px rgba(255,255,255,1);
-        margin: auto;
+        margin-right: 28px;
         display: block;
-        margin-bottom: 20px;
+        float: right;
+        border-radius: 5px;
+
         }
         
     .insert:hover{
@@ -282,7 +288,7 @@
         color: black;
     }
         
-    /* Parte del Formulario de Login */
+    /* Parte del Formulario de Login y registro*/
 
         @font-face{
             font-family: comic;
@@ -324,6 +330,7 @@
             text-align: center;
             color:white;
             font-size: 20px;
+            margin-bottom: 13px;
 
         }
 
@@ -336,6 +343,7 @@
             text-align: center;
             color: white;
             font-size: 20px;
+            margin-bottom: 13px;
 
 
         }
@@ -471,6 +479,13 @@
         color:black;
         
     }
+
+    /*footer*/
+    footer{
+        text-align: center;
+    }
+
+  
 
 
         
