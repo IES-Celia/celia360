@@ -13,9 +13,11 @@
                     Nombre de la zona:  <input type='text' name='titulo_celda' value='".$tabla['titulo_celda']."'> <br/>
                     Imagen:  <input type='text' name='imagen_celda' value='".$tabla['imagen_celda']."'> <br/>
                     Escena de pannellum: <input type='text' name='escena_celda' value='".$tabla['escena_celda']."'> <br/>
-                    Fila a la que pertenece: <input type='text' name='fila_asociada' value='".$tabla['fila_asociada']."' readonly><br>
+                    Fila a la que pertenece: <input type='number' min='0' max='4' name='fila_asociada' value='".$tabla['fila_asociada']."'><br>
 			    
 				    <input type='submit'>
+                    <a href='".site_url("/puntos_destacados/borrar_celda/".$tabla['id_celda'])."'
+    >BORRAR ESTA CELDA (CUIDADO)</a>
             ";
         ?>
 		    	
