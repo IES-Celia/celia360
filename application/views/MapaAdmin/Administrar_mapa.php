@@ -8,7 +8,7 @@
     </form>
 </div>
 <div id="modalAnadir" class="modalMapa" style="display: none;">
-    <form action='<?php echo site_url("MapaAdmin/editar_zona"); ?>' method="post" enctype='multipart/form-data'>
+    <form action='<?php echo site_url("MapaAdmin/crear_zona"); ?>' method="post" enctype='multipart/form-data'>
         Posición:<input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas; ?>">
         <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
         <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>

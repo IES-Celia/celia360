@@ -26,6 +26,15 @@
 			}
 			return $lista;
 		}
+
+		public function cargar_config(){
+			$this->load->database();
+			$query = $this->db->query('SELECT * FROM config_mapa')->result_array();
+			$resultado["piso_inicial"]=$query[0]["piso_inicial"];
+			$resultado["punto_inicial"]=$query[0]["punto_inicial"];
+			return $resultado;
+		}
+
 		public function editar_zona(){
 			$posicion = $this->input->post_get("posicion");
 			$posicion_inicial = $this->input->post_get("posicion_inicial");
@@ -57,7 +66,6 @@
 				$sin_imagen = strpos("You did not select a file to upload.", $resultado);
 				if($resultado==1  || $sin_imagen>=0){
 					echo "No has cambiado la zona ni la imagen de la misma, no has hecho nada -.-\"";
-
 				}else{
 					echo $resultado;
 				} 
@@ -141,24 +149,35 @@
 			$this->db->query("SET foreign_key_checks=1;");
 		}
 
-		public function anadir_zona(){
+		public function crear_zona(){
 			$posicion = $this->input->post_get("posicion");
 
 			$this->load->database();
+			$config['upload_path'] = 'assets/imagenes/mapa/';
+			$config['allowed_types'] = 'jpg|png';
 
-			$maximo = $this->db->query("SELECT COUNT(piso) from pisos");
+			$this->load->library('upload', $config);
 
-			$this->db->query("SET foreign_key_checks=0;");
-			
-			for ($i=$maximo-1; $i >= $posicion ; $i--) { 
+			$resultado = $this->upload->do_upload('zona');
+			$imagen_subida = $this->upload->data("file_name");
+			if($resultado==1){
+
+				$maximo = $this->db->query("SELECT COUNT(piso) from pisos")->result_array()[0]["COUNT(piso)"];
 				
-				$this->db->query("UPDATE pisos SET piso=$i+1 WHERE piso=$i");
+				$this->db->query("SET foreign_key_checks=0;");
+			
+				for ($i=$maximo-1; $i >= $posicion ; $i--) { 
+					$piso_siguiente = $i+1;
+					$this->db->query("UPDATE pisos SET piso=$piso_siguiente WHERE piso=$i");
 
-				$this->db->query("UPDATE puntos_mapa SET piso=$i+1 WHERE piso=$i");
+					$this->db->query("UPDATE puntos_mapa SET piso=$piso_siguiente WHERE piso=$i");
+				}
 
+				$this->db->query("INSERT INTO pisos (piso, url_img) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida');");
+				$this->db->query("SET foreign_key_checks=1;");
+
+			}else{
+				$resultado = $this->upload->display_errors();
 			}
-			$this->db->query("INSERT ");
-
-			$this->db->query("SET foreign_key_checks=1;");
 		}
 	}
