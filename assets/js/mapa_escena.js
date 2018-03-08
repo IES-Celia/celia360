@@ -27,15 +27,10 @@ $(document).ready(function() {
    	
    	$(".pisos").contextmenu(function(event){
    		
-		if (!$(this).hasClass("pisos_hotspots")) {
-			var id = $(this).children().last().attr('id');
-
-			var prefijo = parseInt(id.split("punto")[1]) + 1;
+		if (!$(this).hasClass("pisos_hotspots")) {			
+			var id =$(this).attr("id");
+			id=id.substr(4);
 			
-			id = $(this).attr('id')+"punto"+prefijo;
-			
-			
-
 			var izquierda = $(this).offset();
 			var anchura = $(this).width();
 			var altura = $(this).height();

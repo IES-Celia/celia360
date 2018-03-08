@@ -41,19 +41,18 @@
                 $name = $this->input->post_get("name");		
 			    $panorama = $this->upload->data()["client_name"];
                 $cod = substr($panorama, 0 , -4);
-                $id_mapa = $_REQUEST["id_mapa"];
                 $left_mapa = $_REQUEST["left_mapa"];
                 $top_mapa = $_REQUEST["top_mapa"];
+                $piso_mapa = $_REQUEST["piso"];
                 
             
                 $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
                       VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
 
                 $this->db->query($insert);
-                $piso_mapa = explode("p",$id_mapa);
-                var_dump($piso_mapa);
-                $insert = "INSERT INTO puntos_mapa (nombre, left_mapa, top_mapa, id_escena, piso) 
-                VALUES ('$id_mapa',$left_mapa,$top_mapa,'$cod',$piso_mapa[1])";
+            
+                $insert = "INSERT INTO puntos_mapa (left_mapa, top_mapa, id_escena, piso) 
+                VALUES ($left_mapa,$top_mapa,'$cod',$piso_mapa)";
                 echo $insert;
 
                 $this->db->query($insert);
