@@ -11,16 +11,7 @@ class PuntosDestacadosModel extends CI_Model {
         $res = $this->db->query("SELECT * FROM celda_pd WHERE id_celda='$id_celda' ");
         return $res->result_array();
     }
-    
-    public function ocultar_fila($id_fila){
-        $this->db->query("UPDATE fila_pd SET id_fila=$id_fila WHERE mostrar='0'");
-        $this->db->query("DELETE celda_p WHERE fila_asociada=$id_fila");
-    }
-    
-    public function mostrar_fila($id_fila){
-        $this->db->query("UPDATE fila_pd SET id_fila=$id_fila WHERE mostrar='1'");
-    }
-    
+   
     public function crear_celda(){
         $fila_asociada= $_REQUEST["fila_asociada"];
         
@@ -30,11 +21,9 @@ class PuntosDestacadosModel extends CI_Model {
             $imagen_celda = $_REQUEST["imagen_celda"];
             $titulo_celda = $_REQUEST["titulo_celda"];
             
-            $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,fila_asociada,imagen_celda,titulo_celda) 
-                      VALUES(' $id_celda','$escena_celda' ,'$fila_asociada','$imagen_celda', '$titulo_celda')";	
+            $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,imagen_celda,titulo_celda,fila_asociada) 
+                        VALUES(' $id_celda','$escena_celda' ,'$imagen_celda', '$titulo_celda',$fila_asociada)";	
             
-            echo $insrt;
-        
             $this->db->query($insrt);
         
     }
@@ -50,14 +39,13 @@ class PuntosDestacadosModel extends CI_Model {
         $titulo_celda = $_REQUEST["titulo_celda"];
         $fila_asociada= $_REQUEST["fila_asociada"];
         
-        $this->db->query("
-				UPDATE celda_pd SET 
-					 escena_celda='$escena_celda',
-					 imagen_celda='$imagen_celda',
-					 titulo_celda='$titulo_celda',
-					 fila_asociada='$fila_asociada'
-					 WHERE id_celda='$id_celda'
-					 ");
+        $this->db->query("UPDATE celda_pd SET 
+                           escena_celda='$escena_celda',
+                           imagen_celda='$imagen_celda',
+                           titulo_celda='$titulo_celda',
+                           fila_asociada='$fila_asociada'
+                           WHERE id_celda='$id_celda'
+                            ");
         return $this->db->affected_rows();
     }
 
@@ -71,10 +59,7 @@ class PuntosDestacadosModel extends CI_Model {
     }
 
     public function getAll() {
-        $sql = "SELECT * FROM celda_pd AS C
-                INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
-                WHERE F.mostrar = 1
-                ORDER BY C.fila_asociada, C.id_celda";
+        $sql = "SELECT * FROM celda_pd";
         
         $result = $this->db->query($sql);
         $r = array();

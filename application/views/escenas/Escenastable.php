@@ -63,7 +63,7 @@
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-              echo "<div id='".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+              echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
               <span class='tooltip'>".$punto['id_escena']."</span>
               </div>";
             

@@ -366,7 +366,7 @@
     <?php
       $mapa = array_reverse($mapa);
       $indice = 0;
-
+     
       foreach ($mapa as $imagen) {
         if($config_mapa["piso_inicial"]==$indice){
           echo "<div id='zona$indice' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
@@ -376,10 +376,11 @@
         
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
-              if ($punto['nombre']==$config_mapa["punto_inicial"]) {
-              echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              
+              if ("punto".$punto['id_punto_mapa']==$config_mapa["punto_inicial"]) {
+              echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }else{
-                echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }
               
             }
