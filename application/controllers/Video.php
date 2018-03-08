@@ -96,6 +96,10 @@ class Video extends CI_Controller {
     }
  public function videosajax($abuscar="") {
         $listaVideos = $this->Vidm->buscar_ajaxvid($abuscar);
+		if ($listaVideos == false) {
+			echo 'No hay resultados';
+		}
+		else {
         $html = '<script>'
                     . '       function seleccionarVideo(idVideo) {'
                     . '             document.getElementById("idVideoForm").value = idVideo;'
@@ -123,6 +127,7 @@ class Video extends CI_Controller {
         }
         echo $html; 
         echo '</table>';
+		}
     }  	
 }
 
