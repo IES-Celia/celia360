@@ -6,7 +6,15 @@
 <title>Celia Tour</title>
     <!-- CSS SLICK -->
     
-        <?php 
+        
+    
+    <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
+     
+    <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
+    <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+    <?php 
             if(isset($mapa)){
                 echo "<script>";
                 echo "piso_maximo = ".count($mapa).";";
@@ -15,14 +23,6 @@
                 echo "<script src='".base_url('assets/js/mapa_escena.js')."'></script>";
             }
         ?>
-    
-    <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
-     
-    <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
-    <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-    <script src="<?php echo base_url("assets/js/mapa_escena.js"); ?>"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>

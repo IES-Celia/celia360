@@ -56,16 +56,14 @@
 <?php
       $indice = 0;
 
-       $pisos = array('0' => "sotano", '1' => "primer_piso", "2" => "segundo_piso", "3" => "tercer_piso", "4" => "tejado" );
-
       foreach ($mapa as $imagen) {
-          echo "<div id='p".$indice."' class='pisos' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
+          echo "<div id='zona".$indice."' class='pisos' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
         
         
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
             
-              echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+              echo "<div id='".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
               <span class='tooltip'>".$punto['id_escena']."</span>
               </div>";
             
