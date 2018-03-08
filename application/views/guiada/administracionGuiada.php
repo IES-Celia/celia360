@@ -46,10 +46,8 @@ z-index:100;
 
 </style>
 
-<h1 align='center'>VISITA GUIADA</h1>
-
 <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
-<input class='insert' type="submit" value="crear Escena" />
+<button class='insert' type='submit'><span class='fa fa-plus-circle'></span>crear Nuevo</button>
 </form>
 <table align='center' id='cont'>
     <tr id='cabecera'>

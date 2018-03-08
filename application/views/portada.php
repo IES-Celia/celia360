@@ -248,7 +248,7 @@
                  <hr class='mensaje_separador_negro'></hr>
                  <div class='mas_img_div' onclick="openModal();">
                  <div class='mas_imagenes'></div>
-                 <h4 style="text-align:center;">Más Imagenes</h4>
+                 <p style="text-align:center;">Más Imagenes</p>
                  </div>
                 <div id="texto">
                 
