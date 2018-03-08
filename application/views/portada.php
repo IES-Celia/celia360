@@ -167,18 +167,18 @@
 </div>
 
 <div class="contenedor">
-		<div id="panorama">
+	<!--div donde se carga pannellum --> 
+  <div id="panorama">
+    <!--boton menu --> 
+    <div class="boton_menu"></div>
+          <!--boton full screen-->
+          <div class="ctrl" id="fullscreen"></div>                        
            <!-- VIDEO VISITA LIBRE -->  
           <div id='video_visita_libre'>
           <iframe id='vimeo_video' src="" 
           width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
           </div>
-
-
-          
-         
-
-          <!-- CONTROLES VISITA GUIADA -->
+          <!--  VISITA GUIADA -->
           <div id="mensaje_guiada">
           <h3 style="text-align: center;">Visita guiada</h3>
           <div class='mensaje_guiada_inicio_recomendacion'>
@@ -206,25 +206,15 @@
        
           
           <div class="menu_vguiada">
-          <ul>
-            <li>
-              <div class='icono_left' onclick="anterior();"></div>
-            </li>
-            <li>
-              <div  class='icono_pp' onclick="estado_audio();"></div>
-            </li>
-            <li>
-              <div  class='icono_menu menu_slider'></div>
-            </li>
-            <li>
-              <div  class='icono_right' onclick="siguiente();"></div>
-            </li>
-          </ul>
+            <ul>
+              <li><div class='icono_left' onclick="anterior();"></div></li>
+              <li><div class='icono_pp' onclick="estado_audio();"></div></li>
+              <li><div class='icono_menu menu_slider'></div></li>
+              <li><div class='icono_right' onclick="siguiente();"></div></li>
+            </ul>
           </div>
-        
-          
-           
-            </div>
+
+          </div>
           
           <!-- Galeria -->
             <div id="GmyModal" class="Gmodal">
@@ -255,31 +245,21 @@
                 </div>
               </div>
             </div>
-            <!-- panelAudioPrueba
-            <div id="botonAudio1"></div>
-            <div id="botonAudio">
-            <div id="panelAudio">
-              <audio id="musica" src="pinkfloyd.mp3"  controls> </audio>
-            </div>
-            </div>-->
-          <!-- Audio para punto asdasdgooglsensibles, no confundir con el boton audio!!!!.
-            <div class="ventanaAudio">-->
-
+         
+          <!-- Audio punto sensible LIBRE y GUIADA -->
+                  
             <div id="panel_audio_guiada">
               <div class="botonPause"></div>
               <audio id="audio_guiada" src="" controls></audio>
               <div class="icono_audio"></div>
             </div>                          
-            
-
-
+ 
             <div id="panel_audio_libre">
               <div class="botonPause"></div>
               <audio id="audio_libre" src=""  controls> </audio>
               <div class="icono_audio"></div>
             </div>
-          <div class="boton_menu"></div>
-          
+          <!--OPCIONES MENU -->                      
           <div class="overlay_menu" id="nav_menu">
           <div class="cerrar_menu" onclick="$('#nav_menu').hide();">&times;</div>
           <div class="contenido_menu">
@@ -290,17 +270,14 @@
              <div class="container_imagen" id="boton_libre" onclick='visita_opcion("get_json_libre")'>
              <img src="<?php echo base_url("assets/imagenes/generales/vistalibre1.JPG");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">
-               Visita Libre</p></div></div>
+               <p class="texto">Visita Libre</p></div></div>
                </div>
             
-          
              <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
                <div class="container_imagen" id="boton_guiada" onclick='visita_opcion("get_json_guiada")'>
              <img src="<?php echo base_url("assets/imagenes/generales/visitaguiada.JPG");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">
-               Visita Guiada</p></div></div>
+               <p class="texto">Visita Guiada</p></div></div>
               </div>
             
             
@@ -308,8 +285,7 @@
                <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/puntosd.JPG");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">
-               Puntos D</p></div></div>
+               <p class="texto">Puntos D</p></div></div>
               </div>
             
             </div>
@@ -320,18 +296,14 @@
                <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/biblioteca.jpg");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">
-               Biblioteca</p></div></div>
+               <p class="texto">Biblioteca</p></div></div>
               </div>
-            
- 
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
                <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/glosario1.jpg");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">
-               Glosario</p></div></div>
+               <p class="texto">Glosario</p></div></div>
               </div>
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
@@ -339,16 +311,14 @@
                 <a href="<?php echo site_url("index.php");?>"><div class="container_imagen">
             <img src="<?php echo base_url("assets/imagenes/generales/portada.png");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">
-               Portada</p></div></div></a>
+               <p class="texto">Portada</p></div></div></a>
               </div>
             
             </div>
              
           </div>
           </div>          
-          
-         <div class="ctrl" id="fullscreen"></div>
+         
         <?php
           $mapa = array_reverse($mapa);
           echo "<div id='myModal' class='modalEscaleras'>";
@@ -406,249 +376,224 @@
 	</div>
 	
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
-	
 <script type="text/javascript">
+////// AJAX CARGA JSON PANNELLUM
   
-    $( document ).ready(function() {
-      
-      
+json_contenido='';
+//Contiene todo el html dentro del div panorama
+panorama_html = $("#panorama").html();
 
-
-    });  
-  
-    //
-    // INICIO DE CARGA DE JSON PANNELLUM
-    //
-  
-      json_contenido='';
-      zeus = $("#panorama").html();
-      function visita_opcion(nombre){
-        $.ajax({
-              url: "<?php echo base_url("conversorbd2json/"); ?>"+nombre,
-              type: 'GET',
-              dataType: 'json',
-              beforeSend: function(){
-                if (typeof viewer !== 'undefined') {
-                  
-                  viewer.destroy();
-                  $("#panorama").append(zeus);          
-                } else {
-                  
-                }
-                cargarPannellum();
-
-              }
-            })
-            .done(function(data) {
-              $.each(data.scenes, function(i){
-              var escenas = data.scenes[i];
-               $.each(escenas.hotSpots, function(j){
-                  escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
-                });
-              });
+function visita_opcion(nombre){
+  $.ajax({
+    url: "<?php echo base_url("conversorbd2json/"); ?>"+nombre,
+    type: 'GET',
+    dataType: 'json',
+    beforeSend: function(){
+       //Si esta definido, lo destruimos y creamos uno nuevo
+      if (typeof viewer !== 'undefined') {
+        viewer.destroy();
+        $("#panorama").append(panorama_html);          
+      } 
+      cargarPannellum();
+    }
+  }).done(function(data) {
+      $.each(data.scenes, function(i){
+        var escenas = data.scenes[i];
+        $.each(escenas.hotSpots, function(j){
+          escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
+        });
+      });
               
-              if(nombre=="get_json_guiada"){
-                  viewer = pannellum.viewer("panorama", data);
-                  $("#boton_mapa").hide();
-                  iniciar_visita_guiada();
-                  $("#panel_audio_libre").hide();
-                  $('#audio_libre').attr("src","");
-                } else {
-                  viewer = pannellum.viewer("panorama", data);
-                  $("#boton_mapa").show();
-                  $("#panel_audio_guiada").hide();
-                  $('#audio_guiada').attr("src","");
-                  iniciar_visita_libre();
-                }
-              console.log("success");
+      viewer = pannellum.viewer("panorama", data);
 
-            })
-            .fail(function() {
-              console.log("error");
-            })
-        }
-    
-    // 
-    // FIN DE CARGA DE JSON PANNELLUM
-    //
+      if(nombre=="get_json_guiada"){
+        $("#boton_mapa").hide();
+        iniciar_visita_guiada();
+        $("#panel_audio_libre").hide();
+        $('#audio_libre').attr("src","");
+      } else {
+        $("#boton_mapa").show();
+        $("#panel_audio_guiada").hide();
+        $('#audio_guiada').attr("src","");
+        iniciar_visita_libre();
+      }
+        console.log("success");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+}
 
+//Asignacion de eventos al html de id panorama
 function cargarPannellum(){
 
 //boton menu toggle hidden y visible
 $(".boton_menu").click(function(){
-                    if($("#nav_menu").is(":hidden")){
-                      $("#nav_menu").fadeIn("fast");
-                    } else {
-                      $("#nav_menu").fadeOut("fast");
-                    }
+  
+  if($("#nav_menu").is(":hidden")){
+    $("#nav_menu").fadeIn("fast");
+    //Pausar audios y cerrar menu
+    $("#audio_guiada")[0].pause();
+    $("#audio_libre")[0].pause();
+  
+    if($("#mapa").attr("class") == "abierto"){
+      mover(document.getElementById('mapa')); 
+      mover(document.getElementById('boton_mapa'));
+      mover(document.getElementById('subir_piso')); 
+      mover(document.getElementById('bajar_piso'));
+    }
+
+  } else {
+    $("#nav_menu").fadeOut("fast");
+  }
 });
 
-//Toggle Audio boton.
-$("#botonAudio1").toggle(function()
-    {$("#botonAudio").show();},
-    function()
-    {$("#botonAudio").hide();
-    });
+
+//Toggle Audio boton tanto visita libre como guiada.
    
-    $("#panel_audio_guiada .botonPause").click(function(){
-      if($("panel_audio_guiada").css("display") == "block"){
-        $(".botonPause").hide();
-        $("#audio_guiada").hide();
-        $(".icono_audio").show();
-      }                  
-  });
+$("#panel_audio_guiada .botonPause").click(function(){
+  if($("#panel_audio_guiada").css("display") == "block"){
+    $(".botonPause").hide();
+    $("#audio_guiada").hide();
+    $(".icono_audio").show();
+  }                  
+});
   
-    $("#panel_audio_guiada .icono_audio").click(function(){
-        $(".botonPause").show();
-        $("#audio_guiada").show();
-        $(".icono_audio").hide();
+$("#panel_audio_guiada .icono_audio").click(function(){
+    $(".botonPause").show();
+    $("#audio_guiada").show();
+    $(".icono_audio").hide();
                         
-  });
+});
 
-    $("#panel_audio_libre .botonPause").click(function(){
-      if($("#panel_audio_libre").css("display") == "block"){
-        $(".botonPause").hide();
-        $("#audio_libre").hide();
-        $(".icono_audio").show();
-      }                  
-  });
+$("#panel_audio_libre .botonPause").click(function(){
+  if($("#panel_audio_libre").css("display") == "block"){
+    $(".botonPause").hide();
+    $("#audio_libre").hide();
+    $(".icono_audio").show();
+  }                  
+});
   
-    $("#panel_audio_libre .icono_audio").click(function(){
-        $(".botonPause").show();
-        $("#audio_libre").show();
-        $(".icono_audio").hide();
+$("#panel_audio_libre .icono_audio").click(function(){
+    $(".botonPause").show();
+    $("#audio_libre").show();
+    $(".icono_audio").hide();
                         
-  });
+});
 
-  array_escenas =[];
-  array_audios =[];
-  array_titulo = [];
-  array_previews = [];
-  indice_escenas = 0;
-  //Al terminar cambiar.
-  var audio_terminado = document.getElementById("audio_guiada");
-    audio_terminado.onended = function() {
-      indice_escenas++;
-      if(indice_escenas==array_escenas.length){
-        indice_escenas=0;
-        audio_guiada(indice_escenas);  
-      } else {
-        audio_guiada(indice_escenas);  
-      } 
+//Variables "globales" de la visita guiada
+array_escenas =[];
+array_audios =[];
+array_titulo = [];
+array_previews = [];
+indice_escenas = 0;
 
-    };
+//Al terminar el audio cambiar a siguiente escena
+var audio_terminado = document.getElementById("audio_guiada");
+  audio_terminado.onended = function() {
+    indice_escenas++;
+    if(indice_escenas==array_escenas.length){
+      indice_escenas=0;
+      audio_guiada(indice_escenas);  
+    } else {
+      audio_guiada(indice_escenas);  
+    } 
+  };
 
-
-    $( ".menu_slider" ).click(function() {
-      if($(".main").css("display")=="none"){
-        $(".main").fadeIn().css("display","block");
-        var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-        $('.slider-nav').slick('setPosition',currentSlide);
-      }else if($(".main").css("display")=="block"){    
-        $(".main").css("display","none");
-        var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-        $('.slider-nav').slick('setPosition',currentSlide);
-    }
+//Cambio de escena al clickear en el "slider" de la visita guiada
+$( ".menu_slider" ).click(function() {
+  if($(".main").css("display")=="none"){
+    $(".main").fadeIn().css("display","block");
+    var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+    $('.slider-nav').slick('setPosition',currentSlide);
+  }else if($(".main").css("display")=="block"){    
+    $(".main").css("display","none");
+    var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+    $('.slider-nav').slick('setPosition',currentSlide);
+  }
 });     
   
 }
-
-
   
-
-
-
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-  
-    function panelInformacion(hotspotDiv,args){
+function panelInformacion(hotspotDiv,args){
     
-     $(".modal").css("visibility","visible");
-     var peticion = $.ajax({
-        url: "<?php echo base_url("hotspots/load_panel"); ?>",
-        type:"post",
-        data:{id_hotspost : args},
-        beforeSend: function(){
-        //Cambiar el valor del texto y titulo
-        $("#titulo").html("Cargando...");
-        $("#texto").html("Cargando...");
-        //Borrar las tiras creadas en el punto anterior
-          $(".GmySlides").each(function(){
-            $(this).remove();
-           
-          });
-        }
-     });
+  $(".modal").css("visibility","visible");
+  var peticion = $.ajax({
+    url: "<?php echo base_url("hotspots/load_panel"); ?>",
+    type:"post",
+    data:{id_hotspost : args},
+    beforeSend: function(){
+      //Cambiar el valor del texto y titulo
+      $("#titulo").html("Cargando...");
+      $("#texto").html("Cargando...");
+      //Borrar las tiras creadas en el punto anterior
+      $(".GmySlides").each(function(){
+        $(this).remove();
+      });
+    }
+  });
     
-    peticion.done(function(datos){
-      var prueba = JSON.parse(datos);
-      //Cargamos una vez los datos basicos
-      $("#titulo").html(prueba[0].titulo_panel);
-      $("#texto").html(prueba[0].texto_panel);
-      //La primera imagen que sale al abrir el panel
-      var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[0].url_imagen;
-      $("#gallery").find("img").attr("src",enlace_img);
-      //Por cada indice del array creamos la imagen de la galeria
-      for(var i=0;i<prueba.length;i++){
-        //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
-        var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
-        $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
-
-        
-      }
-      //Pone el indice
-    var slideIndex = 1;
-    showSlides(slideIndex);
-    
-    });
-    
-     $('.modal').css('display','block');
-     $(window).click(function(event){
-       if($(event.target).hasClass("modal")){ 
-         $('.modal').css('display','none');
-       }
-     });
-    
-     $('#close').click(function(event){
-       $('.modal').css('display','none');
-     });
+peticion.done(function(datos){
+  var prueba = JSON.parse(datos);
+  //Cargamos una vez los datos basicos
+  $("#titulo").html(prueba[0].titulo_panel);
+  $("#texto").html(prueba[0].texto_panel);
+  //La primera imagen que sale al abrir el panel
+  var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[0].url_imagen;
+  $("#gallery").find("img").attr("src",enlace_img);
+  //Por cada indice del array creamos la imagen de la galeria
+  for(var i=0;i<prueba.length;i++){
+    //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
+    var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
+    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
   }
-  
-function escaleras(){
-    nombreEscena = viewer.getScene();
-    pisoActual = nombreEscena.substring(0,2);
-    largo = $(".plantas").length;
-    nombre = $(".plantas").attr("id");
-    $('.plantas').each(function(){
-    $(this).removeClass("plantaElegida");
-    });
-    nombreBuscado = $("#"+pisoActual).addClass("plantaElegida");
-   
-     
-    $("#myModal").css("display","block");
-    $(window).click(function(event){
-      if($(event.target).hasClass("plantas")){ 
-        $('#myModal').css('display','none');
-      }
-    });
-      
-  }
-    
-    window.onclick = function(event) {
-      if ($(event.target).hasClass("modalEscaleras")) {
-          $("#myModal").css("display","none");
-      }
-    } 
-  
-  //boton fullscreen.
-  document.getElementById('fullscreen').addEventListener('click', function(e) {
-    viewer.toggleFullscreen();
+  //Pone el indice
+  var slideIndex = 1;
+  showSlides(slideIndex);  
 });
     
-
-
+  $('.modal').css('display','block');
+  $(window).click(function(event){
+    if($(event.target).hasClass("modal")){ 
+     $('.modal').css('display','none');
+    }
+  });
+    
+  $('#close').click(function(event){
+    $('.modal').css('display','none');
+  });
+}
+  
+function escaleras(){
+  nombreEscena = viewer.getScene();
+  pisoActual = nombreEscena.substring(0,2);
+  largo = $(".plantas").length;
+  nombre = $(".plantas").attr("id");
+  $('.plantas').each(function(){
+    $(this).removeClass("plantaElegida");
+  });
+  nombreBuscado = $("#"+pisoActual).addClass("plantaElegida");
+   
+     
+  $("#myModal").css("display","block");
+  $(window).click(function(event){
+    if($(event.target).hasClass("plantas")){ 
+      $('#myModal').css('display','none');
+    }
+  });     
+  }
+    
+  window.onclick = function(event) {
+    if ($(event.target).hasClass("modalEscaleras")) {
+      $("#myModal").css("display","none");
+    }
+  } 
+  
+  //boton fullscreen.
+document.getElementById('fullscreen').addEventListener('click', function(e) {
+  viewer.toggleFullscreen();
+});
+    
 function openModal() {
     $("#GmyModal").show();
     currentSlide(1);
@@ -685,76 +630,57 @@ $( ".modal__close" ).on( "click", function() {
   $( ".modal" ).css('visibility',"hidden");
 });  
 
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
-//////////////////////////////////////////////////ZONA DE FUNCIONAMIENTO
- 
 
-  
- 
+//inicia la carga del audio con su correspondiente audio 
+function audio_guiada(indice){
 
-              
-
-              /////////////////////PANEL y GALERIA dentro del PANEL//////////////////////////////
-  ///////////////////////////////////////////////////
-  
-
-  
-  
-  function audio_guiada(indice){
-
-      $("#panel_audio_libre").hide();
-      $('#audio_libre').attr("src","");
-
-      $('#audio_guiada').attr("src",array_audios[indice]);
-      viewer.loadScene(array_escenas[indice]);
+  $("#panel_audio_libre").hide();
+  $('#audio_libre').attr("src","");
+  $('#audio_guiada').attr("src",array_audios[indice]);
+  viewer.loadScene(array_escenas[indice]);
     
-      $(".titulo_slider").each(function(){
-        $(this).removeClass("highlight_slider");
-      });
-    
-      $('.slider-nav').slick('slickGoTo',indice,true);
-      
-      var prueba =$('.titulo_slider').get(indice);
-      $(prueba).addClass("highlight_slider");
-      $(".titulo_guiada").text(array_titulo[indice]);
-      $('#panel_audio_guiada').show();
-      $("#audio_guiada")[0].play();
+  $(".titulo_slider").each(function(){
+    $(this).removeClass("highlight_slider");
+  });
+  
+  $('.slider-nav').slick('slickGoTo',indice,true);    
+  var prueba =$('.titulo_slider').get(indice);
+  $(prueba).addClass("highlight_slider");
+  $(".titulo_guiada").text(array_titulo[indice]);
+  $('#panel_audio_guiada').show();
+  $("#audio_guiada")[0].play();
+}
+  
+function estado_audio(){
+  var audio_boton = document.getElementById("audio_guiada");
+  if(audio_boton.paused){
+    $("#audio_guiada")[0].play();
+    //Aqui cambiar imagen a pause
+  } else {
+    $("#audio_guiada")[0].pause();
+    //Aqui cambiar imagen a play
   }
+}
   
-   function estado_audio(){
-    var audio_boton = document.getElementById("audio_guiada");
-    if(audio_boton.paused){
-        $("#audio_guiada")[0].play();
-      //Aqui cambiar imagen a pause
-    } else {
-        $("#audio_guiada")[0].pause();
-       //Aqui cambiar imagen a play
-    }         
-  }
-  
-  
+ //inicia la carga de los elementos necesarios para la visita guiada 
 function iniciar_visita_guiada(){
-
-var peticion = $.ajax({
-type: "get",
-url: "guiada/getGuiada",
-dataType: "json",
-
+  var peticion = $.ajax({
+  type: "get",
+  url: "guiada/getGuiada",
+  dataType: "json",
 });
 
 peticion.done(function(datos){
-var largo = datos.length;
+  var largo = datos.length;
 
-for(var i=0;i<largo;i++){
-  array_escenas.push(datos[i].cod_escena);
-  array_titulo.push(datos[i].titulo_escena);
-  array_audios.push(datos[i].audio_escena);
-  array_previews.push(datos[i].img_preview);
-  var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
-  var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
-  $(".slider-nav").append(crearSliderPreview);
+  for(var i=0;i<largo;i++){
+    array_escenas.push(datos[i].cod_escena);
+    array_titulo.push(datos[i].titulo_escena);
+    array_audios.push(datos[i].audio_escena);
+    array_previews.push(datos[i].img_preview);
+    var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
+    var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
+    $(".slider-nav").append(crearSliderPreview);
 }
 
 $('.slider-nav').slick({
@@ -770,8 +696,7 @@ $('.slider-nav').slick({
 
 //Al hacer click cargar esa escena.
 $('.titulo_slider').click(function(e) {
-
-var clickedIndex = $(this).data("slick-index");
+  var clickedIndex = $(this).data("slick-index");
   if(clickedIndex==array_escenas.length){
     indice_escenas=0;
     audio_guiada(indice_escenas);  
@@ -785,25 +710,23 @@ var clickedIndex = $(this).data("slick-index");
 });
 });
 
-
 $("#nav_menu").hide();
 $("#mensaje_guiada").show();
 $("#boton_aceptar_guiada").click(function(){
-$("#mensaje_guiada").hide();
-$("#menu_guiada_show").show();
-$(".menu_libre_show").hide();
-$("#boton_mapa").hide();
-audio_guiada(0);
+  $("#mensaje_guiada").hide();
+  $("#menu_guiada_show").show();
+  $(".menu_libre_show").hide();
+  $("#boton_mapa").hide();
+  audio_guiada(0);
 });
 }
 
+//inicia todos los elementos necesarios de la visita libre
 function iniciar_visita_libre(){
 
 $("#panel_audio_guiada").hide();
 $('#audio_guiada').attr("src","");
-
 $("#nav_menu").hide();
-//Mensaje de bienvenida para modo libre.
 $("#menu_guiada_show").hide();
 $(".menu_libre_show").show();
 $("#boton_mapa").show();
@@ -811,22 +734,22 @@ $("#boton_mapa").show();
 }
 
 function anterior(){
-indice_escenas--;
-if(indice_escenas<0){
-indice_escenas= 0;
-} else {
-audio_guiada(indice_escenas);  
-} 
+  indice_escenas--;
+  if(indice_escenas<0){
+    indice_escenas= 0;
+  } else {
+    audio_guiada(indice_escenas);  
+  } 
 }
 
 function siguiente(){
-indice_escenas++;
-if(indice_escenas==array_escenas.length){
-indice_escenas=0;
-audio_guiada(indice_escenas);  
-} else {  
-audio_guiada(indice_escenas);  
-} 
+  indice_escenas++;
+  if(indice_escenas==array_escenas.length){
+    indice_escenas=0;
+    audio_guiada(indice_escenas);  
+  } else {  
+    audio_guiada(indice_escenas);  
+  } 
 }
 
 ///////////FIN VISITA GUIADA  
@@ -855,76 +778,30 @@ else
 
 }
 
-////////////////AUDIO VISITA LIBRE////////////////////// 
+/////AJAX AUDIO VISITA LIBRE
 
 function musica(hotspotDiv,args){
-var peticion = $.ajax({
-type: "post",
-url: "<?php echo base_url("hotspots/load_audio"); ?>",
-data: {id_hotspot : args}
+  var peticion = $.ajax({
+  type: "post",
+  url: "<?php echo base_url("hotspots/load_audio"); ?>",
+  data: {id_hotspot : args}
 });
 
-
 peticion.done(function(resultado){
-var prueba = JSON.parse(resultado);
-var enlace_audio = prueba.result_array[0].url_aud;
-var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
-$("#audio_libre").attr("src",enlace_audio_correcto);
-var pantalleo = $("#panel_audio_libre").css("display");
-if(pantalleo=="block")
-$('#panel_audio_libre').hide();
-//PAUSE
-else
-$('#panel_audio_libre').show();
+  var prueba = JSON.parse(resultado);
+  var enlace_audio = prueba.result_array[0].url_aud;
+  alert(enlace_audio);
+  var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
+  $("#audio_libre").attr("src",enlace_audio_correcto);
+  var pantalleo = $("#panel_audio_libre").css("display");
+
+  if(pantalleo=="block")
+    $('#panel_audio_libre').hide();
+  else
+    $('#panel_audio_libre').show();
 });
 }
     
-  
-  
-  /////////////PRUEBA AUDIO//////////////////
-  //////////////////PARA PUNTOS SENSIBLES.////////////////////////////
-  /*
-   function musica(hotspotDiv,args){
-       $('#musica1').attr("src",args);
-       var pantalleo = $("#panelAudioPrueba").css("display");
-      if(pantalleo == "block"){
-        $('#panelAudioPrueba').hide();
-      }else {
-        $('#panelAudioPrueba').show();
-        
-      }*/
-        
-       /*$('.ventanaAudio').css('display','block');
-            $(window).click(function(event){
-              if($(event.target).hasClass("ventanaAudio")){ 
-                $('.ventanaAudio').css('display','none');
-                $('#musica1').trigger("pause");
-                $('#musica').prop("pause");
-              }
-            })
-  }*/
-  
- /* $("#panelAudioPrueba #botonPause").click(function(){
-    $('#musica1').trigger("pause");
-    $('#panelAudioPrueba').hide();
-  });*/
-  
- 
-  ////////////////////////////////////////////////
-  //VISITA GUIADA MENU
-  
-  /*array_escenas = ["p1p2f3","p1p2f2","p1p2f1","p1p2","p1p11","p1p10"];
-  array_audios = [
-    "<?php //echo base_url("assets/audio/audiobar.mp3");?>",
-    "<?php //echo base_url("assets/audio/audioportico.mp3");?>",
-    "<?php //echo base_url("assets/audio/audioescaleras.mp3");?>",
-    "<?php //echo base_url("assets/audio/musicadeespera.mp3");?>",
-    "<?php //echo base_url("assets/audio/musicadeespera.mp3");?>",
-    "<?php //echo base_url("assets/audio/musicadeespera.mp3");?>",
-   ];
-  array_titulo = ["Fachada principal","Pórtico","Escalera de entrada","Conserjería","Puerta secretaría","Antesala"];
-  */
-</script>
-      
-     <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
-     <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
+</script>      
+<script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
+<script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
