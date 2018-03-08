@@ -498,6 +498,10 @@
         text-align: center;
     }
 
+    footer p{
+        display: inline;    
+    }
+
   
 
 
