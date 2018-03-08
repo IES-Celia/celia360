@@ -76,7 +76,7 @@ echo "
 <div id='listaVideos'>Capa vacia</div>
 	
 <script>
- $("#idVideoForm").click(function() {
+ $(document).ready(function() {
              $("#listaVideos").children().show();
             $("#listaVideos").load("<?php echo site_url("video/obtenerListaVideosAjax");?>");
         });

@@ -1,7 +1,6 @@
 /////////////////////PAQUILLO/////////////////////////
 $(document).ready(function($) {
     mapa_responsivo();
-    
 });
 var piso=1;
 /*evento de resize*/
@@ -27,75 +26,27 @@ function puntosMapa(identificador){
 }
  /*cambio de mapa con las escaleras*/
 function piso_escalera(option){
-      switch(option){
-          case 0:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("sotano").className="piso_abierto pisos";
-              break;
-          case 1:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("primer_piso").className="piso_abierto pisos";
-              break;
-          case 2:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("segundo_piso").className="piso_abierto pisos";
-              break;
-          case 3:
-            document.getElementsByClassName("piso_abierto pisos")[0].className="piso_cerrado pisos";
-            document.getElementById("tercer_piso").className="piso_abierto pisos";
-              break;
-             }
-      variable_piso(option);
+    $("#mapa > div.piso_abierto").attr("class", "piso_cerrado pisos");
+    $("#mapa > div:eq("+option+")").attr("class", "piso_abierto pisos");
+    piso=option;
 }
 /*función de botones subir y bajar piso mapa*/
 function cambiar_piso(opcion){
-    if (opcion==10) {
-        if (piso==4) {
+    if (opcion=="arriba") {
+        if (piso==piso_maximo) {
             // aqui puedes poner algo y saltará cuando intentas pasar más allá del tejado
         }else{
+            $("#mapa > div:eq(" + piso + ")").attr("class", "piso_cerrado pisos");
             piso++;
-            switch (piso){
-                case 1:
-                    document.getElementById("sotano").className="piso_cerrado pisos";
-                    document.getElementById("primer_piso").className="piso_abierto pisos";
-                    break;
-                case 2:
-                    document.getElementById("primer_piso").className="piso_cerrado pisos";
-                    document.getElementById("segundo_piso").className="piso_abierto pisos";
-                    break;
-                case 3:
-                    document.getElementById("segundo_piso").className="piso_cerrado pisos";
-                    document.getElementById("tercer_piso").className="piso_abierto pisos";
-                    break;
-                case 4:
-                    document.getElementById("tercer_piso").className="piso_cerrado pisos";
-                    document.getElementById("tejado").className="piso_abierto pisos";
-                    break;
-            }
+            $("#mapa > div:eq(" + piso + ")").attr("class", "piso_abierto pisos"); 
         }
-    }else if (opcion==-10) {
+    }else if (opcion=="abajo") {
         if(piso==0){
-    // aqui puedes poner algo y saltará cuando intentas pasar más allá del sotano
+            // aqui puedes poner algo y saltará cuando intentas pasar más allá del sotano
         }else{
+            $("#mapa > div:eq("+piso+")").attr("class", "piso_cerrado pisos");
             piso--;
-            switch (piso){
-            case 3:
-                document.getElementById("tejado").className      ="piso_cerrado pisos";
-                document.getElementById("tercer_piso").className ="piso_abierto pisos";
-                break;
-            case 2:
-                document.getElementById("tercer_piso").className  ="piso_cerrado pisos";
-                document.getElementById("segundo_piso").className ="piso_abierto pisos";
-                break;
-            case 1:
-                document.getElementById("segundo_piso").className ="piso_cerrado pisos";
-                document.getElementById("primer_piso").className  ="piso_abierto pisos";
-                break;
-            case 0:
-                document.getElementById("primer_piso").className ="piso_cerrado pisos";
-                document.getElementById("sotano").className      ="piso_abierto pisos";
-                break;
-            }
+            $("#mapa > div:eq("+piso+")").attr("class", "piso_abierto pisos");
         }
     }   
 }

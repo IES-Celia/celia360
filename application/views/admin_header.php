@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
     <!-- CSS SLICK -->
-
+    <script>
+        piso_maximo = <?php echo count($mapa)?>;
+        piso_maximo--;
+    </script>
     <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
      
     <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">

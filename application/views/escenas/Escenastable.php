@@ -7,6 +7,7 @@
 	if (isset($datos["mensaje"])) {
 		echo "<p style='color:blue'>".$datos["mensaje"]."</p>";
 	}
+	
 ?>
 
 <script type="text/javascript">
@@ -77,8 +78,8 @@
 ?>
 </div>
 <div class="botones_mapa">
-    <button id="btn-bajar-piso">Bajar piso</button>
     <button id="btn-subir-piso">Subir piso</button>
+    <button id="btn-bajar-piso">Bajar piso</button>
     <button id="btn-admin-mapa">Admin mapa</button>
 </div>
 <br>
