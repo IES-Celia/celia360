@@ -8,6 +8,7 @@ class Hotspots extends CI_Controller {
         parent::__construct();
         $this->load->model("hotspotsModel");
         $this->load->model("UsuarioModel");
+		 $this->load->model('Mapa','mapa');
     }
     
     public function index(){
@@ -43,6 +44,8 @@ class Hotspots extends CI_Controller {
         $datos["id_scene"]= $idescena;
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
+		$datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["resultado"] = $this->hotspotsModel->modificarPitchYaw($pitch, $yaw, $idhotspot);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
@@ -53,6 +56,8 @@ class Hotspots extends CI_Controller {
         $datos["yaw"]= $yaw;
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
+		$datos["mapa"] = $this->mapa->cargar_mapa();
+		$datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $codescena);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);

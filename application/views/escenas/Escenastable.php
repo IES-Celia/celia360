@@ -7,6 +7,7 @@
 	if (isset($datos["mensaje"])) {
 		echo "<p style='color:blue'>".$datos["mensaje"]."</p>";
 	}
+	
 ?>
 
 <script type="text/javascript">
