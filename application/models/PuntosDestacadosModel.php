@@ -32,6 +32,10 @@ class PuntosDestacadosModel extends CI_Model {
             
             $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,fila_asociada,imagen_celda,titulo_celda) 
                       VALUES(' $id_celda','$escena_celda' ,'$fila_asociada','$imagen_celda', '$titulo_celda')";	
+            
+            echo $insrt;
+        
+            $this->db->query($insrt);
         
     }
     
