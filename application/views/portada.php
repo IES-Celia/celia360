@@ -422,11 +422,11 @@
               dataType: 'json',
               beforeSend: function(){
                 if (typeof viewer !== 'undefined') {
-                  alert("LA VARIABLE ESTA DEFINIDA");
+                  
                   viewer.destroy();
                   $("#panorama").append(zeus);          
                 } else {
-                  alert("NO ESTA DEFINIDA");
+                  
                 }
                 cargarPannellum();
 
