@@ -107,28 +107,34 @@
 
 		public function update ($cod) {
 			
+            $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
+            
+                    
+            
             $config['upload_path'] = 'assets/imagenes/escenas/';
             $config['allowed_types'] = 'jpg';
            
             $this->load->library('upload', $config);
             
             $resultado=$this->upload->do_upload('panorama');
+            echo $this->upload->display_errors();
 			
-            if($resultado) {
-                
+            if($resultado==1) {
+                unlink($imagen_borrar);
                 //////////////////////
                 //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
                 /////////////////////
 
-                
-                $name = $this->input->post_get["name"];
+            
+                $name = $_REQUEST["name"];
                 $pitch = $_REQUEST["pitch"];
+                $id = $_REQUEST["Id"];
                 $yaw = $_REQUEST["yaw"];
-                $type = $_REQUEST["type"];
                 $panorama = $this->upload->data()["client_name"];
                 $cod = substr($panorama, 0 , -4);
-
-                $this->db->query("
+                
+               
+                $update = "
 
                     UPDATE escenas 
 
@@ -138,14 +144,19 @@
                             cod_escena = '$cod',
                             pitch = '$pitch', 
                             yaw = '$yaw', 
-                            tipo = '$type', 
-                            panorama = assets/imagenes/escenas/'$panorama' 
+                            tipo = 'equirectangular', 
+                            panorama = 'assets/imagenes/escenas/$panorama' 
 
-                                WHERE cod_escena = '$cod'");
+                                WHERE id_escena = '$id'";
+                
+                
+                $this->db->query($update);
 
                 return $this->db->affected_rows();
             }
-            else {
+            else { 
+                echo $resultado;
+
                 echo $this->upload->display_errors();
             }
 		}
