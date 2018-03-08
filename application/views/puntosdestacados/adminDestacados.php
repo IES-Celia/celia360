@@ -17,9 +17,9 @@
             foreach($puntos_d as $fila){
                 echo '<div class="slider">
                       <div id="opciones_fila">
-                          <button>Mostrar</button>
-                          <button>Ocultar</button>
-                          <button>Añadir celda</button>
+                          <button onclick="mostrar_fila()">Mostrar</button>
+                          <button onclick="ocultar_fila()">Ocultar</button>
+                          <button onclick="anadir_celda()">Añadir celda</button>
                       </div>';
                       
                       foreach($fila as $celda){
@@ -41,9 +41,20 @@
         <script>
             $(".grid-item").click(function(){
                 location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$(this).children().last().val();
-    
             });
             
+            function mostrar_fila($id){
+                location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$id
+            }
+            
+            function ocultar_fila($id){
+                location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$id
+            }
+            
+            function anadir_celda($id){
+                 location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$id               
+            }
+
         </script>
 </body>
 </html>

@@ -87,7 +87,6 @@ class PuntosDestacadosModel extends CI_Model {
             $f = $fila["fila_asociada"];
             $r[$f][] = $fila;
         }
-        print_r($r);
         return $r;
     }
 }
