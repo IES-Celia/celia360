@@ -1,6 +1,6 @@
 
 <footer>
-<p>&copy; IES Celia Viñas 2018</p>
+&copy; IES Celia Viñas 2018
 </footer>
 </div>
 </body>
