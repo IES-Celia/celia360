@@ -27,6 +27,7 @@
         <a href="<?php echo site_url("usuario/usuarios");?>" class="enlacesidenav"> Usuarios</a>
         <a href="<?php echo site_url("biblioteca");?>" class="enlacesidenav"> Biblioteca </a>
         <a href="<?php echo site_url("guiada/menuGuiada");?>" class="enlacesidenav"> Guiada </a>
+        <a href="<?php echo site_url("Puntos_destacados");?>" class="enlacesidenav"> Destacados </a>
         <br><br><br><br>
     
         <p><a href='<?php echo site_url("usuario/cerrarSesion");?>' class="cerrarsesionbtn">Cerrar Sesión</a></p>

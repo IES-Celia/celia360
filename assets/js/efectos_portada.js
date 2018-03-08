@@ -32,6 +32,7 @@ $('#opcionguiada_portada').click(function(){
 $('#opcionguiada_portada').mouseenter(function(){
     $("#titulito").text("Visita Guiada");
     $("#descripcion_portada").text("Dejate llevar y le mostraremos la historia de nuestro instituto");
+    $("#descripcion_portada").fadeIn('fast');
     $("#descripcion_portada").siblings().fadeOut();
     
 });
@@ -39,8 +40,9 @@ $('#opcionguiada_portada').mouseenter(function(){
 // para que cambie el background a PUNTOS DESTACADOS al hacer hover
   
 $('#opciondestacada_portada').mouseenter(function(){
-    $("#titulito").text("Visita Libre");
+    $("#titulito").text("Zonas Destacadas");
     $("#descripcion_portada").text("Pasea por los lugares más atractivos del instituto");
+    $("#descripcion_portada").fadeIn('fast');
     $("#descripcion_portada").siblings().fadeOut();
     
 });
@@ -51,6 +53,7 @@ $('#opciondestacada_portada').mouseenter(function(){
 $('#clickbiblio').mouseenter(function(){
     $("#titulito").text("Biblioteca");
     $("#descripcion_portada").text("Descubre y lee algunos de los libros de los que disponemos");
+    $("#descripcion_portada").fadeIn('fast');
     $("#descripcion_portada").siblings().fadeOut();
     
 });    
@@ -60,6 +63,7 @@ $('#clickbiblio').mouseenter(function(){
 $('#creditos_portada').mouseenter(function(){
     $("#titulito").text("Creditos");
     $("#descripcion_portada").text("Conoce los alumnos de DAW que hicieron posible este tour");
+    $("#descripcion_portada").fadeIn('fast');
     $("#descripcion_portada").siblings().fadeOut();
     
 });  
