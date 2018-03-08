@@ -70,7 +70,7 @@ class PuntosDestacadosModel extends CI_Model {
                 INNER JOIN fila_pd AS F ON C.fila_asociada = F.id_fila
                 WHERE F.mostrar = 1
                 ORDER BY C.fila_asociada, C.id_celda";
-
+        
         $result = $this->db->query($sql);
         $r = array();
         $r[0] = array();
@@ -82,6 +82,7 @@ class PuntosDestacadosModel extends CI_Model {
             $f = $fila["fila_asociada"];
             $r[$f][] = $fila;
         }
+        print_r($r);
         return $r;
     }
 }

@@ -14,8 +14,8 @@
         <div id="contenedor">
      
         <?php 
-            foreach($puntos_d as $fila => $valor){
-                echo '<div class= "slider">
+            foreach($puntos_d as $fila){
+                echo '<div class="slider">
                       <div id="opciones_fila">
                           <button>Mostrar</button>
                           <button>Ocultar</button>
@@ -25,12 +25,10 @@
                       foreach($fila as $celda){
                           echo '
                           <a class="grid-item">
-                                patata
                                  <div class="grid-item__image" style="background-image: url('.$celda["imagen_celda"].')"></div>
                                  <div class="grid-item__hover"></div>
                                  <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
                                  <input type="hidden" value="'.$celda["id_celda"].'">
-                                 patata
                           </a>';
                       }
                echo '</div>';
@@ -38,13 +36,14 @@
         ?>    
 
         </div>
-           
+        <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+
         <script>
-           /* $(".grid-item").click(function(){
-                //location.href= <?php echo site_url("hotspots/") ?>;
-                $(this).children().last().val();
+            $(".grid-item").click(function(){
+                location.href= "<?php echo site_url("puntosdestacados/updateDestacado/")?>"+$(this).children().last().val();
+    
             });
-            */
+            
         </script>
 </body>
 </html>
