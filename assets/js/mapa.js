@@ -1,7 +1,6 @@
 /////////////////////PAQUILLO/////////////////////////
 $(document).ready(function($) {
     mapa_responsivo();
-    
 });
 var piso=1;
 /*evento de resize*/

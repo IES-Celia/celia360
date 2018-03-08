@@ -131,7 +131,7 @@ function mapa_responsivo(){
  * Subida y Bajada de piso.
  */
 function subir_piso(){
-	if(piso<4){
+	if(piso<piso_maximo){
 		$(".pisos:eq("+piso+")").hide('fast');
 		piso++;
 		$(".pisos:eq("+piso+")").show('fast');	
