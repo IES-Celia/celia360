@@ -53,6 +53,7 @@ class Puntos_destacados extends CI_Controller {
 		$this->load->view("puntosdestacados/adminDestacados", $datos);	
 	}
     
+    /* ERROR
     public function processinsertdestacado(){
         $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
         $id_celda = $res+1;
@@ -67,7 +68,12 @@ class Puntos_destacados extends CI_Controller {
         $this->db->query($insrt);
         
         return $this->db->affected_rows();
-    } 
+    } */
+    
+    public function formulario_update($id){
+        $datos["celda"]= $this->PuntosDestacadosModel->info_celda($id);
+        $this->load->view("puntosdestacados/updateDestacado", $datos);
+    }
     
     public function processupdatedestacado(){
         $resultado = $this->PuntosDestacadosModel->editar_celda();

@@ -40,7 +40,7 @@
 
         <script>
             $(".grid-item").click(function(){
-                location.href= "<?php echo site_url("puntosdestacados/updateDestacado/")?>"+$(this).children().last().val();
+                location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$(this).children().last().val();
     
             });
             
