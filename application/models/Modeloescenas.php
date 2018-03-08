@@ -108,29 +108,28 @@
 			
             $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
             
-                    
-            
             $config['upload_path'] = 'assets/imagenes/escenas/';
             $config['allowed_types'] = 'jpg';
+            $config['file_name'] = "$cod.JPG";
+            $config['overwrite'] = TRUE;
            
             $this->load->library('upload', $config);
             
             $resultado=$this->upload->do_upload('panorama');
-            echo $this->upload->display_errors();
+                
+                echo $this->upload->display_errors();
 			
             if($resultado==1) {
-                unlink($imagen_borrar);
+//                unlink($imagen_borrar);
                 //////////////////////
                 //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
                 /////////////////////
 
             
                 $name = $_REQUEST["name"];
-                $pitch = $_REQUEST["pitch"];
                 $id = $_REQUEST["Id"];
-                $yaw = $_REQUEST["yaw"];
                 $panorama = $this->upload->data()["client_name"];
-                $cod = substr($panorama, 0 , -4);
+               
                 
                
                 $update = "
@@ -139,12 +138,8 @@
 
                         SET 
 
-                            Nombre = '$name', 
-                            cod_escena = '$cod',
-                            pitch = '$pitch', 
-                            yaw = '$yaw', 
-                            tipo = 'equirectangular', 
-                            panorama = 'assets/imagenes/escenas/$panorama' 
+                            Nombre = '$name',
+                            panorama = 'assets/imagenes/escenas/$panorama'
 
                                 WHERE id_escena = '$id'";
                 
