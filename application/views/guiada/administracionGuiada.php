@@ -46,10 +46,10 @@ z-index:100;
 
 </style>
 
-<h2 align='center'>Menu VISITA GUIADA</h2>
+<h1 align='center'>VISITA GUIADA</h1>
 
 <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
-<input type="submit" value="crear Escena" />
+<input class='insert' type="submit" value="crear Escena" />
 </form>
 <table align='center' id='cont'>
     <tr id='cabecera'>
@@ -58,6 +58,7 @@ z-index:100;
         <th>audio escena</th>
         <th>titulo escena</th>
         <th>imagen preview</th>
+        <th>cambiar Imagen</th>
         <th>borrar</th>
         <th>modificar</th>
     </tr>
@@ -80,8 +81,9 @@ foreach ($escenas as $escena) {
     <td class='audio_escena'>".$escena['audio_escena']."</td>
     <td class='titulo_escena'>".$escena['titulo_escena']."</td>
     <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
-    <td><a data-id='$idEscena' onclick='borrarGuiada(this);'>borrar</a></td>
-    <td><a data-id='$idEscena' onclick='modificarGuiada(this);'>modificar</a></td>";
+    <td><button class='change_img'>Cambiar</button></td>
+    <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
+    <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>";
 
 
 }
@@ -144,7 +146,7 @@ foreach ($escenas as $escena) {
 
 <script>
 
-$(".img_preview").on("click",function(){
+$(".change_img").on("click",function(){
     var codigo = $(this).closest(".filaEscena").find(".id_visita").text();
     $("#modalGuiadaImagen").css("display","block");
     $(".closeGuiada").click(function (e) {  
@@ -153,7 +155,6 @@ $(".img_preview").on("click",function(){
     $("input[name='id_visita']").val(codigo);
     var urlCodeIgniter ="<?php echo site_url('guiada/asociarImagenPreview'); ?>";
     $("#guiadaImagen").attr("action",urlCodeIgniter);
-    alert("AQUI HEMOS TERMINADO");
 });
 
 

@@ -34,7 +34,7 @@
 
 <?php
 //Tabla usuarios
- echo"<a class='insert' onclick='mostrar()' > Insertar Usuario</a>";
+ echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar Usuario </a>";
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>
@@ -87,24 +87,23 @@ echo "
     <form action='".site_url("usuario/modUsuario")."' method='get'>
 
         <label for='username'>Nombre de usuario</label>
-        <input type='text' name='username' id='form_modif_nick'><br/>
-        <br/>
+        <input type='text' name='username' id='form_modif_nick'>
         <label for='pass'>Password</label>
-        <input type='text' name='pass' required><br/><br/>
-        <label for='email'>Email</label><br/>
-        <input type='text' name='email' id='form_modif_email'><br/><br/>
+        <input type='password' name='pass' required>
+        <label for='email'>Correo</label>
+        <input type='text' name='email' id='form_modif_email'>
         <label for='name'>Nombre</label>
-        <input type='text' name='nombre' id='form_modif_nombre' ><br/><br/>
+        <input type='text' name='nombre' id='form_modif_nombre' >
         <label for='subname'>Apellidos</label>
-        <input type='text' name='apellidos' id='form_modif_ape'><br/><br/>
-        <label for='tipo'>Tipo</label><br/>
+        <input type='text' name='apellidos' id='form_modif_ape'>
+        <label for='tipo'>Tipo de usuario</label>
         <select name='tipo' id='form_modif_tipo'>
-                <option value='0'>Pendiente asignación</option>
+                <option value='0' style='color:red'>Pendiente asignación</option>
                 <option value='1'>Admin</option>
                 <option value='2'>Mapero</option>
                 <option value='3'>Bibliotecario</option>
         </select>
-        <input type='hidden' name='id' id='form_modif_id'><br/>
+        <input type='hidden' name='id' id='form_modif_id'>
         <input type=submit value='Modificar'>
          <input type='button' onclick='cerrar()' value='Cerrar'>
     </form>

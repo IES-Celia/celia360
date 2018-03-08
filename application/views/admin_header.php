@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
     <!-- CSS SLICK -->
-
+    <script>
+        piso_maximo = <?php echo count($mapa)?>;
+        piso_maximo--;
+    </script>
     <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
      
     <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
@@ -27,7 +30,7 @@
     
     <body>
     
-    <div id="fondo">
+   
     <?php 
         error_reporting(7);
             if (!ini_get('display_errors')) {
@@ -36,7 +39,7 @@
     ?>
         <div id="menu">
     <span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menu </span>
-    <p align="center">Estás logueado como <?php echo $this->session->nombreusr;?></p>
+    <p id="sesion" align="center">Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></p>
         </div>
 
 

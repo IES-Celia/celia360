@@ -346,34 +346,37 @@
             </div>
              
           </div>
-          </div>
-            
-         <div id="myModal" class="modalEscaleras">
-               <button class="plantas" id="p4" onclick="viewer.loadScene('p4p0')"> Tejado</button>
-              <button class="plantas" id="p3" onclick="viewer.loadScene('p3p1'); piso_escalera(3); puntos('p3punto1')"> Segunda planta</button>
-              <button class="plantas" id="p2" onclick="viewer.loadScene('p2p1'); piso_escalera(2); puntos('p2punto1')"> Primera planta</button>
-              <button class="plantas" id="p1" onclick="viewer.loadScene('p1p1'); piso_escalera(1); puntos('p1punto1')"> Planta Baja</button>
-              <button class="plantas" id="p0" onclick="viewer.loadScene('p0p0'); piso_escalera(0); puntos('pspunto1')"> Planta Inferior</button>
-          </div>
-          
+          </div>          
           
          <div class="ctrl" id="fullscreen"></div>
+        <?php
+          $mapa = array_reverse($mapa);
+          echo "<div id='myModal' class='modalEscaleras'>";
+          foreach ($mapa as $imagen) {
+            $piso = $imagen["piso"];
+            $escena_inicial = $imagen["escena_inicial"];
+            $punto_inicial = $imagen["punto_inicial"];
+            $titulo_piso = $imagen["titulo_piso"];
+            echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+          }
+          echo "</div>";//div final de myModal
+        ?>
+
          <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
     <?php
+      $mapa = array_reverse($mapa);
       $indice = 0;
 
-       $pisos = array('0' => "sotano", '1' => "primer_piso", "2" => "segundo_piso", "3" => "tercer_piso", "4" => "tejado" );
-
       foreach ($mapa as $imagen) {
-        if($pisos[$indice]=="primer_piso"){
-          echo "<div id='".$pisos[$indice]."' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+        if($config_mapa["piso_inicial"]==$indice){
+          echo "<div id='zona$indice' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
         }else{
-          echo "<div id='".$pisos[$indice]."' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+          echo "<div id='zona$indice' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
         }
         
           foreach ($puntos as $punto) {
             if($punto['piso']==$indice){
-              if ($punto['nombre']=='p1punto15') {
+              if ($punto['nombre']==$config_mapa["punto_inicial"]) {
               echo "<div id='".$punto['nombre']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }else{
                 echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"".$punto['nombre']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
@@ -385,15 +388,18 @@
         echo "</div>";
         $indice++;
       }
+
       
+      
+   
     ?>
 
   </div>
   <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));"></div>
 
-        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(10)"></div>
+        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('arriba')"></div>
 
-        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso(-10); this.style"></div>
+        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('abajo'); this.style"></div>
         </div>
 
 	</div>

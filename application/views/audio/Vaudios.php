@@ -3,9 +3,11 @@
 <script>
     //buscador con ajax
     $(document).ready(function(){
+		
 	//utilizamos el evento keyup para coger la información
 	//cada vez que se pulsa alguna tecla con el foco en el buscador
-	$(".autocompletar").keyup(function(){
+	$("#autocompletar").keyup(function(){
+		
 		//en info tenemos lo que vamos escribiendo en el buscador
 		var info = $(this).val();
 		//hacemos la petición al método autocompletar del controlador home 
@@ -90,7 +92,7 @@
 <a class='insert' onclick='mostrar()'>Insertar audio</a>
 </div>
     
-<input class="buscador" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
+<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
 
 <?php
 echo"<table id='cont'><tr id='cabecera'>
