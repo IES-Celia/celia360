@@ -16,15 +16,18 @@
         <?php 
             $contador = 0 ;
             foreach($puntos_d as $fila){
-                $contador = $contador + 1;
-                // un if que compruebe si $fila tiene una longitud de cero, si es cero pues no hace na 
+                
+                $longitud = count($fila);
                 echo '<div class="slider">
                       <div id="opciones_fila">
-                          <button onclick="mostrar_fila('.$contador.')">Mostrar</button>
-                          <button onclick="ocultar_fila('.$contador.')">Ocultar</button>
-                          <button onclick="anadir_celda('.$contador.')">Añadir celda</button>
-                      </div>';
-                      
+                          <button onclick="mostrar_fila('.$contador.')">Mostrar</button>';
+                          if($longitud!=0){ 
+                              echo '<button onclick="ocultar_fila('.$contador.')">Ocultar</button>';
+                              if($longitud<4) echo '<button onclick="anadir_celda('.$contador.')">Añadir celda</button>';
+                              
+                              }
+                      echo '</div>';
+                      $contador = $contador + 1;
                       foreach($fila as $celda){
                           echo '
                           <a class="grid-item">

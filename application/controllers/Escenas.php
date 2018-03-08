@@ -27,8 +27,8 @@ class escenas extends CI_Controller {
         $this->load->view('template_admin', $datos);
     } 
     
-    public function showinsert($id_mapa, $left_mapa, $top_mapa) {
-        $datos["id_mapa"] = $id_mapa;
+    public function showinsert($piso_mapa, $left_mapa, $top_mapa) {
+        $datos["piso_mapa"] = $piso_mapa;
         $datos["left_mapa"] = $left_mapa;
         $datos["top_mapa"] = $top_mapa;
         $datos["vista"]="escenas/Insertar";

@@ -534,15 +534,19 @@ display: block;
 /* PANEL INFORMACION */
 
 .mas_imagenes {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   margin: 0 auto;
   display:block;
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("svg/gallery_icon.svg");
-  
+}
+
+.mas_img_div p{
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 .mas_img_div{

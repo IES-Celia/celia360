@@ -94,7 +94,7 @@
     <div class="modalita" >
       <div class="contenido" style="background:url('assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
         <div class="cabecera-ventana" style="background:url('assets/css/textura.jpg');height:60px;border-radius:15px;">
-          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">Biblioteca</h1>
+          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">I.E.S. Celia Viñas</h1>
         </div>
         <div class="pared" >
         <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
@@ -248,7 +248,7 @@
                  <hr class='mensaje_separador_negro'></hr>
                  <div class='mas_img_div' onclick="openModal();">
                  <div class='mas_imagenes'></div>
-                 <h4 style="text-align:center;">Más Imagenes</h4>
+                 <p style="text-align:center;">Más Imagenes</p>
                  </div>
                 <div id="texto">
                 

@@ -35,4 +35,5 @@ application/config/database.php
 application/views/portada.php
 
 assets/imgs/
+assets/imagenes/imagenes-hotspot/*
 .vscode

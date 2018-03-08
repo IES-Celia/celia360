@@ -10,7 +10,7 @@ function variable_piso(x){
 }
 /*cambio de punto seleccionado, mediante los puntos del mapa*/
 function puntos(hotspotDiv,identificador){
-    if(identificador=="pspunto12"){
+    if(identificador=="p0punto12"){
         piso_escalera(0);
     }
     if(identificador=="p1punto18"){
