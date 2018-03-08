@@ -23,17 +23,6 @@ class Puntos_destacados extends CI_Controller {
 		$this->load->view("puntosdestacados/adminDestacados", $datos);	
     }
     
- 
-    // mejorar en un futuro (que si una fila se queda sin celdas se ponga automaticamente en oculta)
-    public function mover_celda($idcelda, $idfila){
-        $resultado = $this->PuntosDestacadosModel->mover_celda($idcelda, $idfila);
-        if($resultado){
-            
-        }else{
-            
-        }
-    }
-    
 	public function cargar_puntosdestacados(){
         $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 		$this->load->view("puntosdestacados/puntosDestacados", $datos);	

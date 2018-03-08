@@ -18,7 +18,7 @@
             foreach($puntos_d as $fila){
                 
                 $longitud = count($fila);
-                echo '<div class="slider">
+                echo '<div class="slider_admin">
                       <div id="opciones_fila">';
                           if($longitud<4) 
                               echo '<button onclick="anadir_celda('.$contador.')">Añadir celda</button>';

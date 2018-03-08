@@ -16,14 +16,33 @@
     background: black;
 }
 
-.slider{
+.slider_admin{
     width: 100%;
     height: 50%;
     background: grey;
     display:flex;
     flex-direction: row;
     padding: 2px;
-    border: 2px dotted red;
+    border: 1px dotted red;
+}
+
+.slider_admin div{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.9;
+    overflow: hidden;
+    border: 1px solid blue;
+}
+
+.slider{
+    width: 100%;
+    height: 50%;
+    background: grey;
+    display:flex;
+    flex-direction: row;
 }
 
 .slider div{
@@ -34,7 +53,6 @@
     background-size: cover;
     opacity: 0.9;
     overflow: hidden;
-    border: 2px solid blue;
 }
 
 #opciones_fila{
