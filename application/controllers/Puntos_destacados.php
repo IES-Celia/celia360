@@ -12,6 +12,15 @@ class Puntos_destacados extends CI_Controller {
 		$this->load->view("puntosdestacados/adminDestacados", $datos);	
     }
     
+    public function anadir_celda($id_fila){
+        $datos["id_fila"]= $id_fila;
+        $this->load->view("puntosdestacados/insertarDestacado", $datos);
+    }
+    
+    public function borrar_celda($id_fila){
+        $resultado = $this->PuntosDestacadosModel->borrar_celda();
+    }
+    
     public function anadir_fila($id_fila){
         $resultado = $this->PuntosDestacadosModel->mostrar_fila($id_fila);
         if($resultado){ // si se añade una fila se añade una celda

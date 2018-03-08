@@ -13,16 +13,16 @@ class PuntosDestacadosModel extends CI_Model {
     }
     
     public function ocultar_fila($id_fila){
-        $this->db->query("UPDATE fila_pd SET id_fila=.$id_fila. WHERE mostrar='0'");
-        $this->db->query("DELETE celda_p WHERE fila_asociada=.$id_fila");
+        $this->db->query("UPDATE fila_pd SET id_fila=$id_fila WHERE mostrar='0'");
+        $this->db->query("DELETE celda_p WHERE fila_asociada=$id_fila");
     }
     
     public function mostrar_fila($id_fila){
-        $this->db->query("UPDATE fila_pd SET id_fila=.$id_fila. WHERE mostrar='1'");
+        $this->db->query("UPDATE fila_pd SET id_fila=$id_fila WHERE mostrar='1'");
     }
     
     public function crear_celda($id_fila){
-        $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=.$id_fila.")->result_array()[0]["COUNT(id_celda)"];
+        $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=$id_fila")->result_array()[0]["COUNT(id_celda)"];
         
         if($res<4){
             $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
@@ -62,9 +62,9 @@ class PuntosDestacadosModel extends CI_Model {
     }
 
     public function mover_celda($idcelda, $idfila){
-        $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=.$id_fila.")->result_array()[0]["COUNT(id_celda)"];
+        $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=$id_fila")->result_array()[0]["COUNT(id_celda)"];
         if($res<4){
-            $this->db->query("UPDATE celda_pd SET fila_asociada=.$id_fila. WHERE id_celda=.$idcelda.");
+            $this->db->query("UPDATE celda_pd SET fila_asociada=.$id_fila. WHERE id_celda=$idcelda");
         }else{
             return false;
         }
@@ -87,6 +87,7 @@ class PuntosDestacadosModel extends CI_Model {
             $f = $fila["fila_asociada"];
             $r[$f][] = $fila;
         }
+        print_r($r);
         return $r;
     }
 }

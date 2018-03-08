@@ -14,12 +14,15 @@
         <div id="contenedor">
      
         <?php 
+            $contador = 0 ;
             foreach($puntos_d as $fila){
+                $contador = $contador + 1;
+                // un if que compruebe si $fila tiene una longitud de cero, si es cero pues no hace na 
                 echo '<div class="slider">
                       <div id="opciones_fila">
-                          <button onclick="mostrar_fila()">Mostrar</button>
-                          <button onclick="ocultar_fila()">Ocultar</button>
-                          <button onclick="anadir_celda()">Añadir celda</button>
+                          <button onclick="mostrar_fila('.$contador.')">Mostrar</button>
+                          <button onclick="ocultar_fila('.$contador.')">Ocultar</button>
+                          <button onclick="anadir_celda('.$contador.')">Añadir celda</button>
                       </div>';
                       
                       foreach($fila as $celda){
@@ -52,7 +55,7 @@
             }
             
             function anadir_celda($id){
-                 location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$id               
+                 location.href= "<?php echo site_url("Puntos_destacados/anadir_celda/")?>"+$id               
             }
 
         </script>

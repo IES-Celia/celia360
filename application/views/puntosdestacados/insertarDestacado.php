@@ -13,7 +13,7 @@
 				Nombre de la zona:  <input type='text' name='titulo_celda'> <br/>
 				Imagen:  <input type='text' name='imagen_celda'> <br/>
                 Escena de pannellum: <input type='text' name='escena_celda'> <br/>
-			    Fila a la que pertenece: <input type='text' name='fila_asociada' value='<?php echo '$idfila' ?>' readonly><br>
+			    Fila a la que pertenece: <input type='text' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br>
 			    
 				<input type='submit'>
 			   
