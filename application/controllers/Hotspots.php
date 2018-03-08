@@ -44,6 +44,8 @@ class Hotspots extends CI_Controller {
         $datos["id_scene"]= $idescena;
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
+		$datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["resultado"] = $this->hotspotsModel->modificarPitchYaw($pitch, $yaw, $idhotspot);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
