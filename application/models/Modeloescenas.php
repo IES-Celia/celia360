@@ -53,7 +53,6 @@
             
                 $insert = "INSERT INTO puntos_mapa (left_mapa, top_mapa, id_escena, piso) 
                 VALUES ($left_mapa,$top_mapa,'$cod',$piso_mapa)";
-                echo $insert;
 
                 $this->db->query($insert);
 
