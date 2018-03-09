@@ -288,8 +288,8 @@ class HotspotsModel extends CI_Model {
         $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
 
         // insercción del audio en la tabla hotspot
-        $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,tipo,clickHandlerFunc,clickHandlerArgs,sceneId)"
-                . " VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass' ,'$tipo', '$clickHandlerFunc','$clickHandlerArgs','$id_scene')";
+        $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,tipo,clickHandlerFunc,clickHandlerArgs)"
+                . " VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass' ,'$tipo', '$clickHandlerFunc','$clickHandlerArgs')";
         $this->db->query($insrt);
 
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
