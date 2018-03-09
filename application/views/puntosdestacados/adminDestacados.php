@@ -1,5 +1,3 @@
-<!--- por adaptar a codeigniter -->
-
 <!DOCTYPE html>
 <html lang="es">
  <head>
