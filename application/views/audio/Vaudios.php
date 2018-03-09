@@ -43,43 +43,39 @@
 });
 </script> 
  <style type="text/css">
-     #contenedor {
-         display:none;
-         width:100%;
-         height:100%;
-         z-index: 2; 
-     }
-     #modificar{
+      #modificar{
         display:none;
         z-index: 1;
-        position: absolute;
-        top: 5%;
-        left: 30%;
-        width: 600px;
-        height: 650px;
-        background-color: #ffffff;
-        border: 3px solid ;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         overflow: auto;
+        border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
     }
 
     #insertar{
         display:none;
         z-index: 1;
-        position: absolute;
-        top: 5%;
-        left: 30%;
-        width: 600px;
-        height: 580px;
-        background-color: #ffffff;
-        border: 3px solid ;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         overflow: auto;
+        border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
     }
    
 
     .cerrar{
         position: relative;
     top:15px;
-    left:95%;
+    left:44%;
     
     }
     .img-cerrar{
@@ -130,12 +126,13 @@ echo "<div id='div_pag'><a class='paginacion' href='". site_url("audio/mostrarau
 
 //Capa formulario modificar
 echo "
-<div id='contenedor'>
 <div id='modificar'>
-<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+
+	<div id='caja'>
+	<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
                 base_url("assets/css/cerrar_icon.png") . "'></img></a>
     <h1>Modificar Audio</h1>
-    <form  class='for' action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
+    <form  action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
                     URL audio:<input type='text' name='url_aud' id='url'><br/>
                     Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
 					<input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
@@ -147,15 +144,17 @@ echo "
                     <input type='submit'>
                     
                 </form>
-</div></div>";
+				</div>
+</div>";
 
 //Capa formulario insertar
 echo"
 <div id='insertar'>
+<div id='caja'>
 <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
                 base_url("assets/css/cerrar_icon.png") . "'></img></a>
 <h1>Insertar audio</h1>
-<form action='". site_url("/audio/insertarAud") ."' class='for' method='Post' enctype='multipart/form-data' >
+<form action='". site_url("/audio/insertarAud") ."'  method='Post' enctype='multipart/form-data' >
     Descripcion:<input id='desc' type='text' name='desc'><br/>
 	Inserte audio<input type='file' name ='audio' id='audio'><br/>
 	Tipo<select name='tipo_aud' id='tipo'>
@@ -166,6 +165,7 @@ echo"
     <input type='submit'>
     
       </form>
+	  </div>
 </div>";
 
         
