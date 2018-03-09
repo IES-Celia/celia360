@@ -166,8 +166,8 @@ public function get_datos_destacado() {
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
-                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
-                    $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'"';   
+                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'"';  
+                    //$json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'"';   
                     $json = $json . '} '; 
                 }else{
                     if($flagHot){
@@ -195,9 +195,9 @@ public function get_datos_destacado() {
                     $json = $json . '"sceneId": "'.$hotspot['sceneId'].'",'; 
                     $json = $json . '"targetPitch": '.$hotspot['targetPitch'].',';  
                     $json = $json . '"targetYaw": '.$hotspot['targetYaw'].','; 
-                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
-                    $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
-                    $json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
+                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'"';  
+                    //$json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
+                    //$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
                     $json = $json . '} ';  
                 }else{
                      if($flagHot){

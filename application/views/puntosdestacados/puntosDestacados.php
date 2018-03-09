@@ -6,10 +6,17 @@
      <link rel="stylesheet" href="<?php echo base_url("assets/css/estilo_pd.css");?>">
      <meta name="viewport" content="width=device-width, user-scalable=no ,initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
      <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-
+         <!-- Javascript de pannellum framework -->
+    <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
+	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
+    <!-- Css de pannellum framework -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
+    <!-- Css de pannellum -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_panellum.css");?>">
 </head>
     <body>
-        <div id="contenedor">
+        <div id="contenedor" >
         <?php 
             $contador = 0 ;
             foreach($puntos_d as $fila){ 
@@ -37,10 +44,10 @@
         <div class="contenedor">
           <div id="panorama"> <!--div donde se carga pannellum -->
             <div class="boton_menu"></div> <!--boton menu --> 
-            <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
-          </div> 
+           <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
+         </div> 
         </div>
-
+        
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
         <script>
@@ -51,15 +58,7 @@
             $.ajax({
                 url: "<?php echo base_url("conversorbd2json/get_json_destacados"); ?>",
                 type: 'GET',
-                dataType: 'json',
-                beforeSend: function(){
-                   //Si esta definido, lo destruimos y creamos uno nuevo
-                  if (typeof viewer !== 'undefined') {
-                    viewer.destroy();
-                    $("#panorama").append(panorama_html);          
-                  } 
-                  cargarPannellum();
-                }
+                dataType: 'json'
               }).done(function(data) {
                   $.each(data.scenes, function(i){
                     var escenas = data.scenes[i];
@@ -69,7 +68,97 @@
                   });
                   viewer = pannellum.viewer("panorama", data);
             })
+            
+            function musica(hotspotDiv,args){
+                  var peticion = $.ajax({
+                  type: "post",
+                  url: "<?php echo base_url("hotspots/load_audio"); ?>",
+                  data: {id_hotspot : args}
+                });
 
+                peticion.done(function(resultado){
+                  var prueba = JSON.parse(resultado);
+                  var enlace_audio = prueba.result_array[0].url_aud;
+                  alert(enlace_audio);
+                  var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
+                  $("#audio_libre").attr("src",enlace_audio_correcto);
+                  var pantalleo = $("#panel_audio_libre").css("display");
+
+                  if(pantalleo=="block")
+                    $('#panel_audio_libre').hide();
+                  else
+                    $('#panel_audio_libre').show();
+                });
+            }
+            
+            function video(hotspotDiv,args){
+                var peticion = $.ajax({
+                    type: "post",
+                    url: "<?php echo base_url("hotspots/load_video"); ?>",
+                    data: {idVideo : args},
+                    beforeSend: function(){
+                      $("#vimeo_video").attr(src,"");
+                    }
+                });
+
+                peticion.done(function(resultado){
+                    $("#vimeo_video").attr(src,resultado);
+                    var pantalleo = $("#video_visita_libre").css("display");
+                    if(pantalleo=="block")
+                      $('#video_visita_libre').hide();
+                      //PAUSE
+                    else
+                      $('#video_visita_libre').fadeIn();
+                });
+            }
+            
+            function panelInformacion(hotspotDiv,args){
+                  $(".modal").css("visibility","visible");
+                  var peticion = $.ajax({
+                    url: "<?php echo base_url("hotspots/load_panel"); ?>",
+                    type:"post",
+                    data:{id_hotspost : args},
+                    beforeSend: function(){
+                      //Cambiar el valor del texto y titulo
+                      $("#titulo").html("Cargando...");
+                      $("#texto").html("Cargando...");
+                      //Borrar las tiras creadas en el punto anterior
+                      $(".GmySlides").each(function(){
+                        $(this).remove();
+                      });
+                    }
+                  });
+
+                peticion.done(function(datos){
+                  var prueba = JSON.parse(datos);
+                  //Cargamos una vez los datos basicos
+                  $("#titulo").html(prueba[0].titulo_panel);
+                  $("#texto").html(prueba[0].texto_panel);
+                  //La primera imagen que sale al abrir el panel
+                  var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[0].url_imagen;
+                  $("#gallery").find("img").attr("src",enlace_img);
+                  //Por cada indice del array creamos la imagen de la galeria
+                  for(var i=0;i<prueba.length;i++){
+                    //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
+                    var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
+                    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
+                  }
+                  //Pone el indice
+                  var slideIndex = 1;
+                  showSlides(slideIndex);  
+                });
+
+                  $('.modal').css('display','block');
+                  $(window).click(function(event){
+                    if($(event.target).hasClass("modal")){ 
+                     $('.modal').css('display','none');
+                    }
+                  });
+
+                  $('#close').click(function(event){
+                    $('.modal').css('display','none');
+                  });
+                }
         </script>
 </body>
 </html>
