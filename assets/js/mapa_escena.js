@@ -6,17 +6,13 @@ $(document).ready(function() {
 	/**
 	 * Funcionamiento básico del mapa 
 	 */
-	if ($(".pisos").hasClass("pisos_hotspots")){
-		$(".pisos_hotspots").hide();
-		$(".pisos_hotspots:eq(" + piso + ")").show();
+	
+		$(".pisos").hide();
+		$(".pisos:eq(" + piso + ")").show();
 		$(".pisos:eq(" + piso + ")").show();
 		mapa_responsivo();
-	} else if ($(".pisos").hasClass("pisos_pd")){
-		$(".pisos_pd").hide();
-		$(".pisos_pd:eq(" + piso + ")").show();
-		$(".pisos:eq(" + piso + ")").show();
-		mapa_responsivo();
-	}
+		
+	
 	
 	
     $("#btn-subir-piso").click(function(event) {
