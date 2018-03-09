@@ -3,7 +3,7 @@
 // Este es el controlador de la aplicación
 
 class Video extends CI_Controller {
-
+private $videos_por_pagina = 3;
     public function __construct() {
         parent::__construct();
         $this->load->model("Vidm");
@@ -11,7 +11,7 @@ class Video extends CI_Controller {
     }
 
     public function index() {
-        $this->mostrarvideo();
+        $this->mostrarvideo($primero=0);
     }
 
     public function frominsertarvideo() {
@@ -30,9 +30,13 @@ class Video extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
 
-    public function mostrarvideo() {
+    public function mostrarvideo($primero=0) {
         $datos["tabla"] = $this->Vidm->buscarvideo();
+		$datos["primero"] = $primero;
+		$datos["total"]=$this->Vidm->buscar();
+		$datos["cantidad"] = $this->videos_por_pagina;
         $datos["vista"] = "video/Vvideos";
+		$datos["tabla"] = $this->Vidm->buscarvid($primero, $this->videos_por_pagina);
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
@@ -65,7 +69,7 @@ class Video extends CI_Controller {
     }
     
     public function obtenerListaVideosAjax() {
-        $listaVideos = $this->Vidm->buscarvideo();
+        $listaVideos = $this->Vidm->buscarvid(0, $this->videos_por_pagina);
         $html = '<script>'
                     . '       function seleccionarVideo(idVideo) {'
                     . '             document.getElementById("idVideoForm").value = idVideo;'

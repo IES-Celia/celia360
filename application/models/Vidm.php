@@ -47,7 +47,27 @@ class Vidm extends CI_Model {
 
         return $r;
     }
+	public function buscarvid($a, $b) {
+        $sel = "select * from video limit $a,$b";
+        $res = $this->db->query($sel);
+        $tabla = array();
+        foreach ($res->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
+	 public function buscar(){
+        $sel = "select count(*) from video";
+        $res = $this->db->query($sel);
+        $tabla = array();
+        foreach ($res->result_array() as $fila) {
+            $tabla[] = $fila;
+            
+        }
+        $res=$tabla[0]["count(*)"];
+        return $res;
 
+        }
     public function buscaridvideo($id) {
 
         $sel = "select * from video where id_vid='$id'";

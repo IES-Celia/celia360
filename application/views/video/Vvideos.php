@@ -43,34 +43,40 @@
 });
 </script> 
  <style type="text/css">
-    #modificar{
+   
+     #modificar{
         display:none;
         z-index: 1;
         position: fixed;
-        top: 10%;
-        left: 30%;
-        width: 600px;
-        height: 200px;
-        background-color: #ffffff;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
         border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
     }
 
     #insertar{
         display:none;
         z-index: 1;
         position: fixed;
-        top: 10%;
-        left: 30%;
-        width: 600px;
-        height: 200px;
-        background-color: #ffffff;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
         border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
     }
- 
-     .cerrar{
+   
+
+    .cerrar{
         position: relative;
     top:15px;
-    left:90%;
+    left:44%;
     
     }
     .img-cerrar{
@@ -104,11 +110,12 @@ echo "</table>";
 $ant = $primero - $cantidad;
 if($ant<0)$ant=0;
 $sig = $primero + $cantidad;
-if($sig>$total) $sig=$total;
-echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideos/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("audio/mostrarvideos/") ."$sig'>Siguiente</a></div>";
+if($sig>$total) $sig=$total-$cantidad+1;
+echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideo/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("video/mostrarvideo/") ."$sig'>Siguiente</a></div>";
 //Capa formulario modificar
 echo "
 <div id='modificar'>
+<div id='caja'>
 <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
                 base_url("assets/css/cerrar_icon.png") . "'></img></a>
     <h1>Modificar Audio</h1>
@@ -119,11 +126,13 @@ echo "
                     
                     <input type='submit'>
                 </form>
+	</div>
 </div>";
 
 //Capa formulario insertar
 echo"
 <div id='insertar'>
+<div id='caja'>
 <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
                 base_url("assets/css/cerrar_icon.png") . "'></img></a>
 <h1>Insertar Video</h1>
@@ -134,7 +143,7 @@ echo"
 
         <input type='submit'>
     </form>
-    
+    </div>
 </div>";
 
 
