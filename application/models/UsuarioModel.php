@@ -15,18 +15,29 @@
             $name = $this->input->get_post("nombre");
             $apellido = $this->input->get_post("subname");
 
-            $prueba = $this->db->query("SELECT id_usuario FROM usuarios WHERE nombre_usuario = '$username' OR email = '$email'");
+           
+            $consulta = $this->db->query("SELECT * FROM usuarios");    
+            
+            if(!$this->db->affected_rows($consulta)){
+                
+            $resultado=true;
+            $pass_encryted = md5($pass);
+            $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','1')");
+            
+            }else{
 
-           if($this->db->affected_rows($prueba)){
+            $prueba = $this->db->query("SELECT id_usuario FROM usuarios WHERE nombre_usuario = '$username' OR email = '$email'");
+            if($this->db->affected_rows($prueba)){
 
               $resultado=false; 
 
-           }else{
+            }else{
             
             $resultado=true;
             $pass_encryted = md5($pass);
             $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','0')");
         }
+    }
         
             return $resultado;       
 
