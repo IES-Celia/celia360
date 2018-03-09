@@ -41,12 +41,12 @@
         
             
         
-        <div class="contenedor">
+       <!-- <div class="contenedor">
           <div id="panorama"> <!--div donde se carga pannellum -->
-            <div class="boton_menu"></div> <!--boton menu --> 
-           <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
-         </div> 
-        </div>
+       <!--     <div class="boton_menu"></div> <!--boton menu --> 
+        <!--   <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
+        <!-- </div> 
+       <!-- </div>  -->
         
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
