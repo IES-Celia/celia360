@@ -127,7 +127,6 @@ class Conversorjson extends CI_Model {
   }
     
     
-
 public function get_datos_destacado() {
     $this->load->database();
     
@@ -157,14 +156,13 @@ public function get_datos_destacado() {
         $sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_escena = ".$escena['id_escena'];
         $res2 =  $this->db->query($sql);
         foreach ($res2->result_array() as $hotspot) {
-           
-            $flagHot= false;
+            
             if($hotspot['tipo']=="info"){ // si es de info pues te mete to esto
                 if($hotspot['cssClass']=="custom-hotspot-escaleras"){
-                     if($flagHot){
+                    if($flagHot){
                         $json = $json . ',';
                     }
-                     $flagHot= true;
+                    $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -172,10 +170,10 @@ public function get_datos_destacado() {
                     $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'"';   
                     $json = $json . '} '; 
                 }else{
-                     if($flagHot){
-                        $json = $json . ',';
-                    }
-                     $flagHot= true;
+                    if($flagHot){
+                $json = $json . ',';
+            }
+            $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -187,10 +185,10 @@ public function get_datos_destacado() {
                  
             }else{ // si es de escena pues te mete to esto
                 if($hotspot['cerrado_destacado']==0){
-                     if($flagHot){
+                    if($flagHot){
                         $json = $json . ',';
                     }
-                     $flagHot= true;
+                    $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -201,6 +199,10 @@ public function get_datos_destacado() {
                     $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
                     $json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
                     $json = $json . '} ';  
+                }else{
+                     if($flagHot){
+                        $json = $json . '';
+                    }
                 }
             }
         }
