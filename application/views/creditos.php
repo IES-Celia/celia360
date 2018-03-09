@@ -4,7 +4,7 @@ $enlace_volver = "background-image: url('".$enlace_svg."')";
 
 
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 <style>
 
 *{
@@ -41,6 +41,17 @@ body{
 
 .celda_creditos img {
   display: block;
+}
+
+.hover_nombre{
+    color: black;
+    bottom:5px;
+    text-align: center;
+    font-size: 1.4rem;
+    position: absolute;
+    width:100%;
+    display:none;
+    transition:transform 0.1s ease-out;
 }
 
 
@@ -140,17 +151,30 @@ body{
     transform: scale(1.4);
 }
 
-.hover_nombre{
-    color: white;
-    bottom:5px;
-    text-align: center;
-    font-size: 20px;
-    position: absolute;
-    width:100%;
-    display:none;
-    transition:transform 0.1s ease-out;
+
+#izq_creditos{
+    position:absolute;
+    left:5%;
+    top:50%;
+    transform: translateX(50%);
+}
+#der_creditos{
+    position:absolute;
+    right:5%;
+    top:50%;
+    transform: translateX(50%);
 }
 
+#selector_creditos{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background-color:yellow;
+    position:absolute;
+    z-index:2;
+    top:95px;
+    left:305px;
+}
 
 
 </style>
@@ -160,6 +184,7 @@ body{
     svg de volver atras
     "background-image: url('.base_url(sdsdsd).')"
 -->
+<div id='selector_creditos'></div>
 <header id="header_portada">
     <div class="contenedor_portada">
     <nav id="nav_portada">
@@ -177,6 +202,9 @@ body{
 </header>
 
 <div class="container_creditos">
+  
+  <div id='izq_creditos'>IZQ</div>
+  <div id='der_creditos'>DER</div>
   <div class="grid_creditos">
     <div class="celda_creditos">
       <img src="http://placehold.it/200x200" class="responsive-image">
@@ -222,7 +250,9 @@ body{
     <div class='hover_nombre'>Manolo</div>
       <img src="http://placehold.it/200x200" class="responsive-image">
     </div>
+
   </div>
+  
 </div>
 
 <script>
