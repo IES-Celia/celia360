@@ -56,9 +56,7 @@
             ?>
             </div>
             <br>
-            targetPitch: <input type='text' name='targetPitch' ><br>
-            targetYaw: <input type='text' name='targetYaw'><br>
-            
+
             <input type='submit' class="button">
         </form>
     </div>

@@ -85,36 +85,12 @@ class HotspotsModel extends CI_Model {
     public function modificarHotspot($id) {
         
         $id_hotspot = $this->input->post_get("id_hotspot");
-        $descripcion = $this->input->post_get("descripcion");
-        $pitch = $this->input->post_get("pitch");
-        $yaw = $this->input->post_get("yaw");
-        $cssClass = $this->input->post_get("cssClass");
-        $clickHandlerFunc = $this->input->post_get("clickHandlerFunc");
-        $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
         $sceneId = $this->input->post_get("sceneId");
-        $targetPitch = $this->input->post_get("targetPitch");
-        $targetYaw = $this->input->post_get("targetYaw");
-        $tipo = $this->input->post_get("tipo");
+        $cerrado_destacado = $this->input->post_get("cerrado_destacado");   
 
-        $this->db->query("
-
-				UPDATE hotspots
-				
-				 SET 
-					 descripcion='$descripcion',
-					 pitch='$pitch',
-					 yaw='$yaw',
-					 cssClass='$cssClass',
-					 clickHandlerFunc='$clickHandlerFunc',
-					 clickHandlerArgs='$clickHandlerArgs',
-					 sceneId='$sceneId',
-					 targetPitch='$targetPitch',
-					 targetYaw='$targetYaw',
-					 tipo='$tipo'
-					 
-				 WHERE id_hotspot='$id_hotspot'
-					 
-					     ");
+        $sql ="UPDATE hotspots SET sceneId='$sceneId', cerrado_destacado='$cerrado_destacado'
+				 WHERE id_hotspot='$id_hotspot'";
+        $this->db->query($sql);
 
         return $this->db->affected_rows();
     }
