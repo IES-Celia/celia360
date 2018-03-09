@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-03-2018 a las 00:16:49
+-- Tiempo de generación: 09-03-2018 a las 10:33:34
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -68,8 +68,9 @@ INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celd
 (4, 'asdads', 'assets/imagenes/escenas/p0p1.JPG', 'Biblioteca', 1),
 (2, 'ads', 'asd', 'Biblioteca', 0),
 (3, 'asdadsdas', 'sadasd', 'Capilla', 1),
-(5, 'adsads', 'adsasd', 'Dept. Geografía', 1),
-(6, 'dsadsadsa', 'dasdsa', 'Tejado', 2);
+(5, 'adsads', 'asdasdasd', 'Dept. Geografía', 1),
+(6, 'dsadsadsa', 'dasdsa', 'Tejado', 2),
+(7, 'asdsd', 'asdsd', 'sdas', 3);
 
 -- --------------------------------------------------------
 
@@ -129,15 +130,15 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (16, '', 'p2p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p2p10.JPG'),
 (17, '', 'p1p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p1.JPG'),
 (18, '', 'p1p2', 120, 0, -41, 'equirectangular', 'assets/imagenes/escenas/p1p2.JPG'),
-(19, '', 'p1p2f1', 120, 21, 3, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
-(20, '', 'p1p2f2', 120, 13, 27, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
-(21, '', 'p1p2f3', 120, 19, 110, 'equirectangular', 'assets/imagenes/escenas/p1p2f3.JPG'),
+(19, 'Escalera Principal', 'p1p2f1', 120, 26, -174, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
+(20, 'Entrada', 'p1p2f2', 120, -6, -11, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
+(21, 'Entrada', 'p1p2f3', 120, 2, -178, 'equirectangular', 'assets/imagenes/escenas/p1p2f3.JPG'),
 (22, '', 'p1p22', 120, -4, 176, 'equirectangular', 'assets/imagenes/escenas/p1p22.JPG'),
 (23, '', 'p1p3', 120, -5, -181, 'equirectangular', 'assets/imagenes/escenas/p1p3.JPG'),
 (24, '', 'p1p32', 120, -4, -183, 'equirectangular', 'assets/imagenes/escenas/p1p32.JPG'),
 (25, '', 'p1p4', 120, -2, -35, 'equirectangular', 'assets/imagenes/escenas/p1p4.JPG'),
 (26, '', 'p1p32f1', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p1p32f1.JPG'),
-(27, '', 'p1p32f2', 120, 14, 24, 'equirectangular', 'assets/imagenes/escenas/p1p32f2.JPG'),
+(27, 'Dept. Inglés ', 'p1p32f2', 120, 14, 24, 'equirectangular', 'assets/imagenes/escenas/p1p3f2.JPG'),
 (28, '', 'p1p5', 120, -3, -88, 'equirectangular', 'assets/imagenes/escenas/p1p5.JPG'),
 (29, '', 'p1p5f1', 120, 22, 60, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
 (30, '', 'p1p6', 120, -2, 39, 'equirectangular', 'assets/imagenes/escenas/p1p6.JPG'),
@@ -208,7 +209,15 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (129, 'Dept. Filosofía', 'p0p9f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p9f2.JPG'),
 (131, 'Pasillo', 'p0p9f1', 120, -8, 8, 'equirectangular', 'assets/imagenes/escenas/p0p9f1.JPG'),
 (134, 'AulaTaller', 'p0p9f3', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p9f3.JPG'),
-(135, 'AulaTaller', 'p0p9f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p9f5.JPG');
+(135, 'AulaTaller', 'p0p9f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p9f5.JPG'),
+(136, 'Sala de profesores', 'p1p12f3', 120, 14, -42, 'equirectangular', 'assets/imagenes/escenas/p1p12f3.JPG'),
+(137, 'Sala de profesores', 'p1p12f4', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12f4.JPG'),
+(138, 'Dept. Lengua', 'p1p22f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p22f1.JPG'),
+(139, 'Dept. Francés', 'p1p3f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p3f5.JPG'),
+(140, 'Dept. Matemáticas ', 'p1p3f3', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p3f3.JPG'),
+(141, 'Dept. Matemáticas', 'p1p3f4', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p3f4.JPG'),
+(142, 'Dept. Latín y Griego', 'p1p7f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p7f2.JPG'),
+(143, 'Dept. Naturales', 'p1p7f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p7f1.JPG');
 
 -- --------------------------------------------------------
 
@@ -286,6 +295,8 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (25, 56),
 (26, 57),
 (26, 58),
+(26, 276),
+(26, 277),
 (27, 59),
 (28, 60),
 (28, 61),
@@ -294,14 +305,14 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (30, 65),
 (30, 66),
 (30, 202),
-(30, 214),
 (30, 226),
 (31, 67),
 (31, 68),
 (31, 219),
 (31, 220),
-(31, 223),
 (31, 224),
+(31, 278),
+(31, 279),
 (32, 69),
 (32, 70),
 (32, 228),
@@ -330,6 +341,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (41, 86),
 (41, 87),
 (41, 229),
+(41, 269),
 (42, 88),
 (42, 89),
 (43, 90),
@@ -429,6 +441,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (102, 185),
 (102, 186),
 (102, 187),
+(102, 264),
 (104, 198),
 (105, 188),
 (105, 189),
@@ -470,7 +483,17 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (134, 243),
 (134, 251),
 (135, 247),
-(135, 248);
+(135, 248),
+(136, 267),
+(136, 268),
+(137, 265),
+(137, 266),
+(139, 275),
+(140, 272),
+(140, 273),
+(141, 274),
+(142, 270),
+(143, 271);
 
 -- --------------------------------------------------------
 
@@ -539,11 +562,11 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (40, NULL, NULL, ' ', -10, -176, 'custom-hotspot-salto', 'puntos', 'punto35', 'p1p22', -4, 175, 'scene', 0),
 (41, NULL, NULL, ' ', 0, -71, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0),
 (42, NULL, NULL, ' ', -1, -4, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0),
-(43, NULL, NULL, ' ', -27, -177, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 0, 0, 'scene', 0),
-(44, NULL, NULL, ' ', 20, 3, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -5, -42, 'scene', 0),
-(45, NULL, NULL, ' ', -14, -160, 'custom-hotspot-salto', 'puntos', 'punto29', 'p1p2f3', 0, 0, 'scene', 0),
-(46, NULL, NULL, ' ', -1, 31, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 27, 2, 'scene', 0),
-(47, NULL, NULL, ' ', -18, 115, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 26, 28, 'scene', 0),
+(43, NULL, NULL, ' ', -26, 8, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 0, 0, 'scene', 0),
+(44, NULL, NULL, ' ', 6, -174, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -5, -42, 'scene', 0),
+(45, NULL, NULL, ' ', -17, -11, 'custom-hotspot-salto', 'puntos', 'punto29', 'p1p2f3', 0, 0, 'scene', 0),
+(46, NULL, NULL, ' ', -9, 164, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 27, 2, 'scene', 0),
+(47, NULL, NULL, ' ', -15, -179, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 26, 28, 'scene', 0),
 (48, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', -4, 180, 'scene', 0),
 (49, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0),
 (50, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -5, 180, 'scene', 0),
@@ -704,12 +727,10 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (211, NULL, NULL, '', -22, 177, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0),
 (212, NULL, NULL, '', -9, 113, 'custom-hotspot-salto', 'puntos', 'punto88', 'p2p10f5', 0, 0, 'scene', 0),
 (213, 'Craneo', 'Un craneo grande grande prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba ', '', 9, 155, 'custom-hotspot-info', 'panelInformacion', '213', '', 0, 0, 'info', 0),
-(214, NULL, NULL, '', 4, 0, 'custom-hotspot-audio', 'musica', '4', 'p1p6', 0, 0, 'info', 0),
 (217, NULL, NULL, '', -8, 109, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', 0, 0, 'scene', 0),
 (218, NULL, NULL, '', 14, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
 (221, NULL, NULL, '', -1, 93, 'custom-hotspot-salto', 'puntos', '', '', 0, 0, 'scene', 0),
 (222, NULL, NULL, '', 1, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
-(223, 'sserwerwe', 'werwrwer', '', 17, -40, 'custom-hotspot-info', 'panelInformacion', '223', '', 0, 0, 'info', 0),
 (227, NULL, NULL, '', -9, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
 (229, NULL, NULL, '', -2, -13, 'custom-hotspot-salto', 'puntos', 'punto112', 'p0p0', 0, 0, 'scene', 0),
 (230, NULL, NULL, '', -22, 162, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 0, 0, 'scene', 0),
@@ -740,7 +761,23 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (259, NULL, NULL, '', 30, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
 (260, NULL, NULL, '', 32, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
 (262, NULL, NULL, '', 27, -96, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
-(263, NULL, NULL, '', 26, -49, 'custom-hotspot-audio', 'musica', 'punto14', 'p1p9f2', 0, 0, 'info', 0);
+(263, NULL, NULL, '', 26, -49, 'custom-hotspot-audio', 'musica', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
+(264, NULL, NULL, '', -14, 21, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0),
+(265, NULL, NULL, '', -20, -161, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
+(266, NULL, NULL, '', -16, -90, 'custom-hotspot-salto', 'puntos', 'punto125', 'p1p12f3', 0, 0, 'scene', 0),
+(267, NULL, NULL, '', -17, 88, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0),
+(268, NULL, NULL, '', -15, 122, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
+(269, NULL, NULL, '', -19, -87, 'custom-hotspot-salto', 'puntos', 'punto78', 'p0p8', 0, 0, 'scene', 0),
+(270, NULL, NULL, '', -14, 114, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0),
+(271, NULL, NULL, '', -13, 54, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0),
+(272, NULL, NULL, '', -15, -62, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', 0, 0, 'scene', 0),
+(273, NULL, NULL, '', -28, 82, 'custom-hotspot-salto', 'puntos', 'punto130', 'p1p3f4', 0, 0, 'scene', 0),
+(274, NULL, NULL, '', -23, -78, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0),
+(275, NULL, NULL, '', -12, 115, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', 0, 0, 'scene', 0),
+(276, NULL, NULL, '', -13, 10, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0),
+(277, NULL, NULL, '', -16, 155, 'custom-hotspot-salto', 'puntos', 'punto128', 'p1p3f5', 0, 0, 'scene', 0),
+(278, NULL, NULL, '', -13, -116, 'custom-hotspot-salto', 'puntos', 'punto132', 'p1p7f1', 0, 0, 'scene', 0),
+(279, NULL, NULL, '', -15, -80, 'custom-hotspot-salto', 'puntos', 'punto131', 'p1p7f2', 0, 0, 'scene', 0);
 
 -- --------------------------------------------------------
 
@@ -1058,7 +1095,15 @@ INSERT INTO `puntos_mapa` (`id_punto_mapa`, `nombre`, `left_mapa`, `top_mapa`, `
 (118, 'p0punto24', 94.6, 85.32, 'p0p9f2', 0),
 (120, 'p0punto26', 73.27, 81.1, 'p0p9f1', 0),
 (123, 'p0punto27', 81.64, 91.37, 'p0p9f3', 0),
-(124, 'p0punto28', 65.95, 91.19, 'p0p9f5', 0);
+(124, 'p0punto28', 65.95, 91.19, 'p0p9f5', 0),
+(125, '', 93.6, 63.48, 'p1p12f3', 1),
+(126, '', 94.02, 75.96, 'p1p12f4', 1),
+(127, '', 40.16, 84.58, 'p1p22f1', 1),
+(128, '', 22.07, 88.07, 'p1p3f5', 1),
+(129, '', 28.86, 86.6, 'p1p3f3', 1),
+(130, '', 28.86, 93.57, 'p1p3f4', 1),
+(131, '', 38.38, 36.33, 'p1p7f2', 1),
+(132, '', 29.7, 31.92, 'p1p7f1', 1);
 
 -- --------------------------------------------------------
 
@@ -1215,7 +1260,7 @@ ALTER TABLE `audio`
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
-  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
@@ -1230,7 +1275,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
-  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
