@@ -15,8 +15,19 @@
                 #panorama{
                 height: auto;
                 }
-            </style>
-        </head>
+			</style>";
+			?>
+			<script>
+			$(document).ready(function() {
+				$("#eliminar").click(function(){
+					alert("hola");
+					if(confirm("Seguro que desea eliminar la escena?")) location.href='<?php echo base_url("escenas/deletescene/".$con['cod_escena'])?>';
+				});
+			})
+				
+			</script>
+			<?php
+       echo "</head>
     <h1 align='center'>Modificar escenas</h1>
 			<fieldset class='for'>
 				<form action='".site_url("escenas/processupdatescene/")."' method='post' enctype='multipart/form-data'>
@@ -31,7 +42,8 @@
 				    <input type='hidden' name='Id' value=". $con['id_escena'].">
                     <input type='hidden' name='cod' value=". $con['cod_escena'].">
 					    
-					    <p align='center'><input type='submit'>
+						<p align='center'><input type='submit'>
+						<a href='#' id='eliminar'>Eliminar este punto</a>
 					    
 					</form>
 				</fieldset>

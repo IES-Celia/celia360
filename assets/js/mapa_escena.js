@@ -50,9 +50,9 @@ $(document).ready(function() {
 	});
 	$(".puntos").contextmenu(function(event) {
 		event.stopImmediatePropagation();
-		if(confirm("¿Quieres borrar el punto seleccionado?")){
-			location.href=base_url+"escenas/deletescene/"+$(this).attr("escena");
-		}
+		location.href=base_url+"escenas/showUpdateScene/"+$(this).attr("escena");
+			//location.href=base_url+"escenas/deletescene/"+$(this).attr("escena");
+		
 		
 		event.preventDefault();
 	})
