@@ -2,6 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
+
+  
     
 	public function cargar_escena($escenaInicial, $redireccion){
         $redireccion = site_url("/hotspots/".$redireccion."/");
@@ -18,6 +20,10 @@ class Welcome extends CI_Controller {
 		$datos["escenaInicial"] = $escenaInicial;
         $datos["idhotspot"]= $idhotspot;
 		$this->load->view("jotpoch", $datos);	
-	}
+    }
+
+    public function index(){
+		$this->load->view("creditos");	
+    }
     
 }

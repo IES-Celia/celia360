@@ -262,7 +262,7 @@ display: block;
   background-repeat: no-repeat;
   background-position: center;
   z-index: 3;
-  cursor: default;
+  cursor: pointer;
   
 }
 
