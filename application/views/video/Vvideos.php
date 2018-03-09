@@ -98,7 +98,7 @@ foreach ($tabla as $re) {
     echo'<td id="desc_vid'.$id.'">' . $re["desc_vid"] . '</td>';
     echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
     echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
-    echo"<td><a href='#' onclick='borraraud(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+    echo"<td><a href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
 echo "</table>";
 $ant = $primero - $cantidad;
@@ -163,7 +163,7 @@ echo"
         }    
 		
 		  //confirmacion al borrar
-        function borraraud(id) {
+        function borrarvid(id) {
         if (confirm("¿Estás seguro?")) {
             $.get("<?php echo site_url('video/borrarvideo/'); ?>" + id, null, respuesta);
         }
