@@ -1,36 +1,4 @@
 
-<style type="text/css">
-    
-    
-    #modificar{
-        display:none;
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        border: 3px solid ;
-        background-color:rgb(0,0,0); 
-        background-color:rgba(0,0,0,0.4);
-    }
-
-    #insertar{
-        display:none;
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        border: 3px solid ;
-        background-color:rgb(0,0,0); 
-        background-color:rgba(0,0,0,0.4);
-    }
-
-</style>
 
 <?php
 //Tabla usuarios

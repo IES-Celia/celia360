@@ -145,6 +145,7 @@
                 //MODAL MODIFICAR LIBROS
 
                 echo "<div id='modificar'>";
+                echo "<div id='caja'>";
                     echo "
                     <h1>Modificar Libro</h1>
                         <div >
@@ -209,11 +210,13 @@
                         <a href='#' onclick='cerrar()'>Cerrar</a>
                     </div> ";
                  echo "</div>";
+                 echo "</div>";
 
 
                  //MODAL INSERTAR LIBROS
 
                  echo "<div id='insertar'>";
+                 echo "<div id='caja'>";
                  echo"
 
                     <h1>Insertar libro</h1>
@@ -274,6 +277,7 @@
                         <a href='#' onclick='cerrar()'>Cerrar</a>
                     </div>
                 ";
+                 echo "</div>";
                  echo "</div>";
 
     ?>
