@@ -127,7 +127,8 @@ class Conversorjson extends CI_Model {
   }
     
     
-      public function get_datos_destacado() {
+
+public function get_datos_destacado() {
     $this->load->database();
     
     
@@ -156,12 +157,14 @@ class Conversorjson extends CI_Model {
         $sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_escena = ".$escena['id_escena'];
         $res2 =  $this->db->query($sql);
         foreach ($res2->result_array() as $hotspot) {
-            if($flagHot){
-                $json = $json . ',';
-            }
-            $flagHot= true;
+           
+            $flagHot= false;
             if($hotspot['tipo']=="info"){ // si es de info pues te mete to esto
                 if($hotspot['cssClass']=="custom-hotspot-escaleras"){
+                     if($flagHot){
+                        $json = $json . ',';
+                    }
+                     $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -169,6 +172,10 @@ class Conversorjson extends CI_Model {
                     $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'"';   
                     $json = $json . '} '; 
                 }else{
+                     if($flagHot){
+                        $json = $json . ',';
+                    }
+                     $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -180,6 +187,10 @@ class Conversorjson extends CI_Model {
                  
             }else{ // si es de escena pues te mete to esto
                 if($hotspot['cerrado_destacado']==0){
+                     if($flagHot){
+                        $json = $json . ',';
+                    }
+                     $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
