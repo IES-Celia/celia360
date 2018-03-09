@@ -26,7 +26,7 @@ $(document).ready(function() {
  * Administración del mapa.
  */
 	$("#btn-admin-mapa").click(function(){
-		location.href = base_url+"mapaadmin/"
+		location.href = base_url+"MapaAdmin/"
 	})
    	
    	$(".pisos").contextmenu(function(event){
