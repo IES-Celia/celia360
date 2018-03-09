@@ -13,6 +13,9 @@ class Puntos_destacados extends CI_Controller {
     }
     
     public function anadir_celda($id_fila){
+        $this->load->model("Mapa", "mapa");
+        $datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["id_fila"]= $id_fila;
         $this->load->view("puntosdestacados/insertarDestacado", $datos);
     }

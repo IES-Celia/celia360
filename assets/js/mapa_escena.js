@@ -6,10 +6,18 @@ $(document).ready(function() {
 	/**
 	 * Funcionamiento básico del mapa 
 	 */
-	$(".pisos_hotspots").hide();
-	$(".pisos_hotspots:eq(" + piso + ")").show();
-	$(".pisos:eq(" + piso + ")").show();
-	mapa_responsivo();
+	if ($(".pisos").hasClass("pisos_hotspots")){
+		$(".pisos_hotspots").hide();
+		$(".pisos_hotspots:eq(" + piso + ")").show();
+		$(".pisos:eq(" + piso + ")").show();
+		mapa_responsivo();
+	} else if ($(".pisos").hasClass("pisos_pd")){
+		$(".pisos_pd").hide();
+		$(".pisos_pd:eq(" + piso + ")").show();
+		$(".pisos:eq(" + piso + ")").show();
+		mapa_responsivo();
+	}
+	
 	
     $("#btn-subir-piso").click(function(event) {
     	subir_piso();
@@ -62,13 +70,22 @@ $(document).ready(function() {
 	 * Marcar punto de destino en creación hotspot de tipo salto.
 	 */
 	$(".puntos").click(function() {
+		if($("#mapa").hasClass("insertar_pd")){
+
+		}else{
+
+		}
 		if($(this).parent().hasClass("pisos_hotspots")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
 			$("#puntoEscena > form > input[name=sceneId]").val($(this).attr("escena"));
 			$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"));
+		} else if ($(this).parent().hasClass("pisos_pd")){
+			$(".puntos").css("background", "white");
+			$(this).css("background", "yellow");
+			$(".for > form > input[name=escena_celda]").val($(this).attr("escena"));
 		}else{
-			location.href=base_url+"welcome/cargar_escena/"+$(this).attr("escena")+"/show_insert_hotspot/"
+			location.href = base_url + "welcome/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"
 		}
 		
 	})
@@ -113,8 +130,6 @@ $(window).resize(function() {
 function mapa_responsivo(){
 	var anchura= window.innerWidth*0.7
 	var altura=anchura*0.57
-
-	var pisos = $(".pisos")
 
 	$("#mapa_escena").css({
 		height: altura+'px',
