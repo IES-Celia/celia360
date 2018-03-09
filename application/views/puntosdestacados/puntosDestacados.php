@@ -1,3 +1,5 @@
+<!--- por adaptar a codeigniter -->
+
 <!DOCTYPE html>
 <html lang="es">
  <head>
@@ -10,16 +12,18 @@
 </head>
     <body>
         <div id="contenedor">
+     
         <?php 
             $contador = 0 ;
-            foreach($puntos_d as $fila){ 
+            foreach($puntos_d as $fila){
+                
                 $longitud = count($fila);
                 if($longitud!=0){
                     echo '<div class="slider">';
                           $contador = $contador + 1;
                           foreach($fila as $celda){
                               echo '
-                              <a class="grid-item" onclick="saltarEscena("'.$celda["escena_celda"].'")">
+                              <a class="grid-item">
                                      <div class="grid-item__image" style="background-image: url('.base_url($celda["imagen_celda"]).')"></div>
                                      <div class="grid-item__hover"></div>
                                      <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
@@ -30,45 +34,18 @@
                 }
             }
         ?>    
-        </div>
-        
-            
-        
-        <div class="contenedor">
-          <div id="panorama"> <!--div donde se carga pannellum -->
-            <div class="boton_menu"></div> <!--boton menu --> 
-            <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
-          </div> 
-        </div>
 
+        </div>
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
         <script>
-            function saltarEscena(codscene){
-                viewer.loadScene(codscene);
-            }
+            $(".grid-item").click(function(){
+                location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$(this).children().last().val();
+            });
             
-            $.ajax({
-                url: "<?php echo base_url("conversorbd2json/get_json_destacados"); ?>",
-                type: 'GET',
-                dataType: 'json',
-                beforeSend: function(){
-                   //Si esta definido, lo destruimos y creamos uno nuevo
-                  if (typeof viewer !== 'undefined') {
-                    viewer.destroy();
-                    $("#panorama").append(panorama_html);          
-                  } 
-                  cargarPannellum();
-                }
-              }).done(function(data) {
-                  $.each(data.scenes, function(i){
-                    var escenas = data.scenes[i];
-                    $.each(escenas.hotSpots, function(j){
-                      escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
-                    });
-                  });
-                  viewer = pannellum.viewer("panorama", data);
-            })
+            function anadir_celda($id){
+                 location.href= "<?php echo site_url("Puntos_destacados/anadir_celda/")?>"+$id               
+            }
 
         </script>
 </body>
