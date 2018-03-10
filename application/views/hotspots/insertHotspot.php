@@ -18,9 +18,9 @@
     <div id="puntoEscena"> 
         <?php
         echo "<form class='for' action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
-            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
-            Coordenada Pitch: <input type='text' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '><br> 
-            Coordenada Yaw: <input type='text' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '><br> 
+            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
+            <input type='hidden' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '> 
+            <input type='hidden' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '> 
             <input type='hidden' name='cssClass' value='custom-hotspot-salto' readonly="readonly">
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
@@ -64,15 +64,15 @@
     <div id="puntoPanel"> 
         <?php
         echo "<form class='for' action='".site_url("hotspots/process_insert_panel")."' method='get'>"; ?>
-            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
-            Coordenada Pitch: <input type='text' name='pitch' value='<?php echo $pitch ?>'><br> 
-            Coordenada Yaw: <input type='text' name='yaw' value='<?php echo $yaw ?>'><br> 
-            cssClass: <input type='text' name='cssClass' value='custom-hotspot-info' readonly="readonly"><br> 
-            Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='panelInformacion' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'><br> 
-            Titulo: <input type='text' name='titulo'><br> 
-            Texto:  <input type='text' name='texto'><br> 
+            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'> 
+            <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
+            <input type='hidden' name='yaw' value='<?php echo $yaw ?>'> 
+            <input type='hidden' name='cssClass' value='custom-hotspot-info' readonly="readonly">
+            <input type='hidden' name='tipo' value='info' readonly="readonly">
+            <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
+            <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
+            Nombre del objeto: <input type='text' name='titulo'><br> 
+            Descripción del objeto:  <input type='text' name='texto'><br> 
 
             <input type='submit' class="button">
         </form>
@@ -116,12 +116,13 @@
     <div id="puntoEscaleras"> 
         <?php
         echo "<form class='for' action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
-            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
-            Coordenada Pitch: <input type='text' name='pitch' value=' <?php echo $pitch ?> '><br> 
-            Coordenada Yaw: <input type='text' name='yaw' value=' <?php echo $yaw ?> '><br> 
-            cssClass: <input type='text' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"><br> 
-            Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='escaleras' readonly="readonly"><br> 
+            Esto creará un punto de tipo escalera, el cual conecta las distintas zonas
+            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
+            <input type='hidden' name='pitch' value=' <?php echo $pitch ?> '><br> 
+            <input type='hidden' name='yaw' value=' <?php echo $yaw ?> '><br> 
+            <input type='hidden' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"><br> 
+            <input type='hidden' name='tipo' value='info' readonly="readonly"> <br>
+            <input type='hidden' name='clickHandlerFunc' value='escaleras' readonly="readonly"><br> 
             <input type='submit' class="button">
         </form>
     </div>
@@ -161,7 +162,9 @@
         });
           
         $("#modificarPitchYaw").click(function(){
-          location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
+          var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
+            if(resp)
+                location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
         });
           
       });
