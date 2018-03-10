@@ -66,26 +66,14 @@ class PuntosDestacadosModel extends CI_Model {
             $this->image_lib->resize();
         }
         return $resultado;
-    
-        
-            /* ORIGINAL
-            
-            $fila_asociada= $_REQUEST["fila_asociada"];
-            $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
-            $id_celda = $res+1;
-            $escena_celda= $_REQUEST["escena_celda"];
-            $imagen_celda = $_REQUEST["imagen_celda"];
-            $titulo_celda = $_REQUEST["titulo_celda"];
-            
-            $insrt = "INSERT INTO celda_pd (id_celda,escena_celda,imagen_celda,titulo_celda,fila_asociada) 
-                        VALUES(' $id_celda','$escena_celda' ,'$imagen_celda', '$titulo_celda',$fila_asociada)";	
-            
-            $this->db->query($insrt);
-        */
     }
     
     public function borrar_celda($id){
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
+        $imagen_borrar = "assets/imagenes/destacados/$id.JPG";
+        unlink($imagen_borrar);
+        $imagen_borrar = "assets/imagenes/destacados/$id._miniatura.JPG";
+        unlink($imagen_borrar);
     }
     
     public function editar_celda(){

@@ -21,10 +21,10 @@
 			echo"<form action='".site_url("Puntos_destacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";
         ?>
 		    	
-				Nombre de la zona:  <input type='text' name='titulo_celda'> <br/>
+				Nombre de la zona:  <input type='text' name='titulo_celda' required> <br/>
                 <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-				Imagen:  <input type='file' name='imagen_celda'> <br/>
-                Escena de pannellum: <input type='text' name='escena_celda'> <br/>
+				Imagen:  <input type='file' name='imagen_celda' required> <br/>
+                Escena de pannellum: <input type='text' name='escena_celda' required readonly> <br/>
 				<button id="btn-bajar-piso" type="button">Bajar piso</button>
 				<button id="btn-subir-piso" type="button">Subir piso</button>
 				<div id="mapa_escena" class="insertar_pd">

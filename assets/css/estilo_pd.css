@@ -57,6 +57,9 @@
 
 #opciones_fila{
     width: 80px;
+    position: absolute;
+    height: auto;
+    z-index: 100;
 }
 
 .oculto{
