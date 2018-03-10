@@ -39,21 +39,27 @@
         ?>    
         </div>
         
-            
-        
-       <!-- <div class="contenedor">
+        <!-- PENDIENTE DE CORREGIR QUE GENERA MAL LAS RUTAS DEL PANORAMA
+        <div class="contenedor">
           <div id="panorama"> <!--div donde se carga pannellum -->
-       <!--     <div class="boton_menu"></div> <!--boton menu --> 
-        <!--   <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
-        <!-- </div> 
-       <!-- </div>  -->
+           <div class="boton_menu"></div> <!--boton menu --> 
+          <div class="ctrl" id="fullscreen"></div> <!--boton full screen-->
+         </div> 
+       </div>  
         
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
         <script>
             function saltarEscena(codscene){
+                $("#contenedor").css( "z-index", "100" );
+                $(".contenedor").css( "z-index", "150" );
                 viewer.loadScene(codscene);
             }
+            
+            $(".boton_menu").click(function(){
+                $("#contenedor").css( "z-index", "150" );
+                $(".contenedor").css( "z-index", "100" );           
+            });
             
             $.ajax({
                 url: "<?php echo base_url("conversorbd2json/get_json_destacados"); ?>",
@@ -67,10 +73,10 @@
                     });
                   });
                   viewer = pannellum.viewer("panorama", data);
-            })
+            });
             
             function musica(hotspotDiv,args){
-                  var peticion = $.ajax({
+               /*   var peticion = $.ajax({
                   type: "post",
                   url: "<?php echo base_url("hotspots/load_audio"); ?>",
                   data: {id_hotspot : args}
@@ -88,11 +94,11 @@
                     $('#panel_audio_libre').hide();
                   else
                     $('#panel_audio_libre').show();
-                });
+                });*/
             }
             
             function video(hotspotDiv,args){
-                var peticion = $.ajax({
+               /* var peticion = $.ajax({
                     type: "post",
                     url: "<?php echo base_url("hotspots/load_video"); ?>",
                     data: {idVideo : args},
@@ -110,10 +116,11 @@
                     else
                       $('#video_visita_libre').fadeIn();
                 });
+                */
             }
             
             function panelInformacion(hotspotDiv,args){
-                  $(".modal").css("visibility","visible");
+              /*    $(".modal").css("visibility","visible");
                   var peticion = $.ajax({
                     url: "<?php echo base_url("hotspots/load_panel"); ?>",
                     type:"post",
@@ -158,6 +165,7 @@
                   $('#close').click(function(event){
                     $('.modal').css('display','none');
                   });
+                */
                 }
         </script>
 </body>
