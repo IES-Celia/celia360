@@ -22,7 +22,8 @@
         ?>
 		    	
 				Nombre de la zona:  <input type='text' name='titulo_celda'> <br/>
-				Imagen:  <input type='text' name='imagen_celda'> <br/>
+                <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+				Imagen:  <input type='file' name='imagen_celda'> <br/>
                 Escena de pannellum: <input type='text' name='escena_celda'> <br/>
 				<button id="btn-bajar-piso" type="button">Bajar piso</button>
 				<button id="btn-subir-piso" type="button">Subir piso</button>
