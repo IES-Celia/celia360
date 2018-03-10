@@ -79,13 +79,11 @@ class PuntosDestacadosModel extends CI_Model {
     public function editar_celda(){
         $id_celda = $_REQUEST["id_celda"];
         $escena_celda= $_REQUEST["escena_celda"];
-        $imagen_celda = $_REQUEST["imagen_celda"];
         $titulo_celda = $_REQUEST["titulo_celda"];
         $fila_asociada= $_REQUEST["fila_asociada"];
         
         $this->db->query("UPDATE celda_pd SET 
                            escena_celda='$escena_celda',
-                           imagen_celda='$imagen_celda',
                            titulo_celda='$titulo_celda',
                            fila_asociada='$fila_asociada'
                            WHERE id_celda='$id_celda'

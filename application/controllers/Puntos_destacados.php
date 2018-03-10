@@ -49,6 +49,8 @@ class Puntos_destacados extends CI_Controller {
         $resultado = $this->PuntosDestacadosModel->editar_celda();
         if($resultado){
             redirect('puntos_destacados');
+        }else{
+            redirect('puntos_destacados');
         }
     }
     
