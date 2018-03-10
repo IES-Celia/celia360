@@ -21,7 +21,7 @@
         <br><br><br>
         <a href="<?php echo site_url("escenas");?>" class="enlacesidenav">Mapa</a>
         <a href="<?php echo site_url("guiada/menuGuiada");?>" class="enlacesidenav">Guiada</a>
-        <a href="<?php echo site_url("Puntos_destacados");?>" class="enlacesidenav">Destacados</a>
+        <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados");?>" class="enlacesidenav">Destacados</a>
         <a href="<?php echo site_url("biblioteca");?>" class="enlacesidenav"> Biblioteca</a>
         <a href="<?php echo site_url("imagen");?>" class="enlacesidenav"> Imágenes</a>
         <a href="<?php echo site_url("audio");?>" class="enlacesidenav"> Audios</a>

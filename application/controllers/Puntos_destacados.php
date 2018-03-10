@@ -9,7 +9,7 @@ class Puntos_destacados extends CI_Controller {
     
     public function index(){
         $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-		$this->load->view("puntosdestacados/adminDestacados", $datos);	
+		$this->load->view("puntosdestacados/puntosDestacados", $datos);	
     }
     
     public function anadir_celda($id_fila){
