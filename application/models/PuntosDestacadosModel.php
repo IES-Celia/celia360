@@ -56,14 +56,14 @@ class PuntosDestacadosModel extends CI_Model {
             $resultado[0] = true;
             $resultado[1] = $this->db->query("UPDATE celda_pd SET titulo_celda='$titulo_celda', imagen_celda = 'assets/imagenes/destacados/$userpic', escena_celda='$escena_celda' ,fila_asociada = '$fila_asociada' WHERE id_celda = '$id_celda'");
             // Creamos una miniatura de la imagen
-            $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
+           /* $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
             copy('assets/imagenes/destacados/'.$userpic, 'assets/imagenes/destacados/'.$nombre_miniatura);
             $config['image_library'] = 'gd2';
             $config['source_image'] = 'assets/imagenes/destacados/'.$nombre_miniatura;
             $config['maintain_ratio'] = TRUE;
             $config['width'] = 200;
             $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
+            $this->image_lib->resize(); */
         }
         return $resultado;
     }
@@ -72,8 +72,8 @@ class PuntosDestacadosModel extends CI_Model {
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
         $imagen_borrar = "assets/imagenes/destacados/$id.JPG";
         unlink($imagen_borrar);
-        $imagen_borrar = "assets/imagenes/destacados/$id._miniatura.JPG";
-        unlink($imagen_borrar);
+       /* $imagen_borrar = "assets/imagenes/destacados/$id._miniatura.JPG";
+        unlink($imagen_borrar);*/
     }
     
     public function editar_celda(){

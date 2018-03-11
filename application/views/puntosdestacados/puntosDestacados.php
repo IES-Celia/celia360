@@ -118,7 +118,7 @@
             }
             
             function panelInformacion(hotspotDiv,args){
-              /*    $(".modal").css("visibility","visible");
+                  $(".modal").css("visibility","visible");
                   var peticion = $.ajax({
                     url: "<?php echo base_url("hotspots/load_panel"); ?>",
                     type:"post",
@@ -163,7 +163,7 @@
                   $('#close').click(function(event){
                     $('.modal').css('display','none');
                   });
-                */
+                
                 }
             
               //boton fullscreen.

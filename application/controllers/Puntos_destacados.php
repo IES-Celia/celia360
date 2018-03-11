@@ -47,11 +47,8 @@ class Puntos_destacados extends CI_Controller {
     
     public function processupdatedestacado(){
         $resultado = $this->PuntosDestacadosModel->editar_celda();
-        if($resultado){
-            redirect('puntos_destacados');
-        }else{
-            redirect('puntos_destacados');
-        }
+        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+        $this->load->view("puntosdestacados/adminDestacados", $datos);
     }
     
     public function processinsertdestacado(){

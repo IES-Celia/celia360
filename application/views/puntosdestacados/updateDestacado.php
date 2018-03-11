@@ -54,12 +54,9 @@
                     echo "Fila a la que pertenece: <input type='number' min='0' max='4' name='fila_asociada' value='".$tabla['fila_asociada']."'><br>
 			    
 				    <input type='submit'><br><br>
-                    <a href='".site_url("/puntos_destacados/borrar_celda/".$tabla['id_celda'])."'
-    >BORRAR ESTA CELDA (CUIDADO)</a>
-            ";
-        ?>
-		    	
-				
+                    <a href='".site_url("/puntos_destacados/borrar_celda/".$tabla['id_celda'])."'>BORRAR ESTA CELDA (CUIDADO)</a>";  ?>
+		    	     <br>
+				    <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados"); ?>">Atrás</a>
 			   
 			</form>
 	

@@ -51,7 +51,8 @@
 				</div><br>
 			    Fila a la que pertenece: <input type='text' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br>
 			    
-				<input type='submit'>
+				<input type='submit'> <br>
+                <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados"); ?>">Atrás</a><br>
 			   
 			</form>
 	
