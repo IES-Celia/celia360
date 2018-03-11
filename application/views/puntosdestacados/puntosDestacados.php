@@ -38,7 +38,6 @@
         ?>    
         </div>
         
-        <!-- PENDIENTE DE CORREGIR QUE GENERA MAL LAS RUTAS DEL PANORAMA -->
         <div class="contenedor">
           <div id="panorama"> <!--div donde se carga pannellum -->
            <div class="boton_menu"></div> <!--boton menu --> 
@@ -75,7 +74,7 @@
             });
             
             function musica(hotspotDiv,args){
-               /*   var peticion = $.ajax({
+                  var peticion = $.ajax({
                   type: "post",
                   url: "<?php echo base_url("hotspots/load_audio"); ?>",
                   data: {id_hotspot : args}
@@ -93,7 +92,7 @@
                     $('#panel_audio_libre').hide();
                   else
                     $('#panel_audio_libre').show();
-                });*/
+                });
             }
             
             function video(hotspotDiv,args){
@@ -166,6 +165,11 @@
                   });
                 */
                 }
+            
+              //boton fullscreen.
+            document.getElementById('fullscreen').addEventListener('click', function(e) {
+              viewer.toggleFullscreen();
+            });
         </script>
 </body>
 </html>
