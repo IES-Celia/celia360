@@ -36,7 +36,6 @@ class Puntos_destacados extends CI_Controller {
 		$this->load->view("puntosdestacados/adminDestacados", $datos);	
 	}
 
-    
     public function formulario_update($id){
         $this->load->model("Mapa", "mapa");
         $datos["mapa"] = $this->mapa->cargar_mapa();

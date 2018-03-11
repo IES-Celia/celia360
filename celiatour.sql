@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-03-2018 a las 10:33:34
+-- Tiempo de generación: 11-03-2018 a las 23:38:55
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -65,12 +65,10 @@ CREATE TABLE `celda_pd` (
 --
 
 INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celda`, `fila_asociada`) VALUES
-(4, 'asdads', 'assets/imagenes/escenas/p0p1.JPG', 'Biblioteca', 1),
-(2, 'ads', 'asd', 'Biblioteca', 0),
-(3, 'asdadsdas', 'sadasd', 'Capilla', 1),
-(5, 'adsads', 'asdasdasd', 'Dept. Geografía', 1),
-(6, 'dsadsadsa', 'dasdsa', 'Tejado', 2),
-(7, 'asdsd', 'asdsd', 'sdas', 3);
+(2, 'p2p4', 'assets/imagenes/escenas/p2p4f2.JPG', 'Biblioteca', 0),
+(3, 'p0p4f2', 'assets/imagenes/escenas/p0p4f2.JPG', 'Capilla', 1),
+(5, 'p1p5f1', 'assets/imagenes/escenas/p1p5f1.JPG', 'Dept. Geografía', 1),
+(6, 'p4p4', 'assets/imagenes/escenas/p4p2.JPG', 'Tejado', 2);
 
 -- --------------------------------------------------------
 
@@ -174,9 +172,9 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (63, '', 'p3p8', 120, 0, 0, 'equirectangular', 'assets/imagenes/escenas/p3p8.JPG'),
 (64, '', 'p3p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p3p10.JPG'),
 (65, '', 'p4p0', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p4p0.JPG'),
-(66, '', 'p4p1', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p1.JPG'),
+(66, '', 'p4p1', 120, -4, -163, 'equirectangular', 'assets/imagenes/escenas/p4p1.JPG'),
 (67, '', 'p4p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p2.JPG'),
-(68, '', 'p4p3', 120, -86, -2, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
+(68, '', 'p4p3', 120, -21, 115, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
 (69, '', 'p4p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p4.JPG'),
 (70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG'),
 (89, 'Pasillo', 'p0p8', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8.JPG'),
@@ -985,6 +983,18 @@ INSERT INTO `pisos` (`piso`, `url_img`, `punto_inicial`, `titulo_piso`, `escena_
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `portada`
+--
+
+CREATE TABLE `portada` (
+  `id_portada` int(11) NOT NULL,
+  `tituloweb` varchar(50) NOT NULL,
+  `imagenweb` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `puntos_mapa`
 --
 
@@ -1221,6 +1231,12 @@ ALTER TABLE `libros`
 ALTER TABLE `pisos`
   ADD PRIMARY KEY (`piso`),
   ADD KEY `piso` (`piso`);
+
+--
+-- Indices de la tabla `portada`
+--
+ALTER TABLE `portada`
+  ADD PRIMARY KEY (`id_portada`);
 
 --
 -- Indices de la tabla `puntos_mapa`

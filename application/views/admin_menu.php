@@ -28,6 +28,7 @@
         <a href="<?php echo site_url("video");?>" class="enlacesidenav"> Vídeos</a>
         <!-- <a href="<?php echo site_url("hotspots");?>" class="enlacesidenav"> Hotspots</a> -->
         <a href="<?php echo site_url("usuario/usuarios");?>" class="enlacesidenav"> Usuarios</a>
+        <a href="<?php echo site_url("Conversorbd2json/formulario_portada");?>" class="enlacesidenav"> Portada</a>
         
         
         <br><br><br><br>
