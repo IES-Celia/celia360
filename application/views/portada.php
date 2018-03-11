@@ -61,7 +61,7 @@
                 <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
                 <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
                 <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
-                <li><a href="<?php echo site_url("Puntos_destacados/cargar_puntosdestacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
+                <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
                 <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
                 <li><a href="<?php echo site_url("welcome");?>" id="creditos_portada">Creditos</a></li>
              </ul>
@@ -338,10 +338,10 @@
             
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen">
+               <div class="container_imagen" onclick="cargardestacado()">
              <img src="<?php echo base_url("assets/imagenes/generales/puntosd.JPG");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">Puntos D</p></div></div>
+               <p class="texto">Destacados</p></div></div>
               </div>
             
             </div>
@@ -349,19 +349,19 @@
             <div class="fila2">
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen">
+               <div class="container_imagen" onclick="cargarbiblioteca()">
              <img src="<?php echo base_url("assets/imagenes/generales/biblioteca.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Biblioteca</p></div></div>
               </div>
-            
+            <!--
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
                <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/glosario1.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Glosario</p></div></div>
               </div>
-            
+            -->
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
               <!--Provisional enlace para volver atras-->
                 <a href="<?php echo site_url("index.php");?>"><div class="container_imagen">
@@ -382,6 +382,13 @@
 	
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
 <script type="text/javascript">
+    function cargardestacado(){
+        location.href="<?php echo site_url("Puntos_destacados"); ?>";
+    }
+     function cargarbiblioteca(){
+        location.href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>";
+    }
+    
 ////// AJAX CARGA JSON PANNELLUM
   
 json_contenido='';

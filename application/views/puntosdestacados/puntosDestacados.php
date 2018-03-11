@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_panellum.css");?>">
 </head>
     <body>
-        <div id="contenedor" >
+        <div id="contenedor" style="z-index:1000">
         <?php 
             $contador = 0 ;
             foreach($puntos_d as $fila){ 
@@ -25,13 +25,12 @@
                     echo '<div class="slider">';
                           $contador = $contador + 1;
                           foreach($fila as $celda){
-                              echo '
-                              <a class="grid-item" onclick="saltarEscena("'.$celda["escena_celda"].'")">
-                                     <div class="grid-item__image" style="background-image: url('.base_url($celda["imagen_celda"]).')"></div>
-                                     <div class="grid-item__hover"></div>
-                                     <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
-                                     <input type="hidden" value="'.$celda["id_celda"].'">
-                              </a>';
+                              echo ' <a class="grid-item" onclick=saltarEscena("'.$celda["escena_celda"].'")>
+                                         <div class="grid-item__image" style="background-image: url('.base_url($celda["imagen_celda"]).')"></div>
+                                         <div class="grid-item__hover"></div>
+                                         <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
+                                         <input type="hidden" value="'.$celda["id_celda"].'">
+                                    </a>';
                           }
                    echo '</div>';
                 }
@@ -39,7 +38,7 @@
         ?>    
         </div>
         
-        <!-- PENDIENTE DE CORREGIR QUE GENERA MAL LAS RUTAS DEL PANORAMA
+        <!-- PENDIENTE DE CORREGIR QUE GENERA MAL LAS RUTAS DEL PANORAMA -->
         <div class="contenedor">
           <div id="panorama"> <!--div donde se carga pannellum -->
            <div class="boton_menu"></div> <!--boton menu --> 
@@ -51,14 +50,14 @@
 
         <script>
             function saltarEscena(codscene){
-                $("#contenedor").css( "z-index", "100" );
-                $(".contenedor").css( "z-index", "150" );
                 viewer.loadScene(codscene);
+                $("#contenedor").fadeOut();
+                $(".contenedor").fadeIn();
             }
             
             $(".boton_menu").click(function(){
-                $("#contenedor").css( "z-index", "150" );
-                $(".contenedor").css( "z-index", "100" );           
+                $("#contenedor").fadeIn();
+                $(".contenedor").fadeOut();         
             });
             
             $.ajax({
