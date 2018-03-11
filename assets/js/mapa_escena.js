@@ -66,11 +66,7 @@ $(document).ready(function() {
 	 * Marcar punto de destino en creación hotspot de tipo salto.
 	 */
 	$(".puntos").click(function() {
-		if($("#mapa").hasClass("insertar_pd")){
-
-		}else{
-
-		}
+		
 		if($(this).parent().hasClass("pisos_hotspots")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
@@ -104,7 +100,9 @@ $(document).ready(function() {
 		$("#modalEditar").find("input[name=posicion_inicial]").val(piso);
 	})
 	$("#btn-eliminar-mapa").click(function () {
-		
+		if(confirm("Desea eliminar la zona, tambien se eliminara cualquier escena y hotspot relacionado.")){
+			location.href=base_url+"MapaAdmin/eliminar_zona/"+piso+"/"+piso_maximo;
+		}
 	})
 	$("#btn-anadir-mapa").click(function () {
 		$("#modalAnadir").toggle();

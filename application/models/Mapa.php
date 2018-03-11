@@ -180,4 +180,49 @@
 				$resultado = $this->upload->display_errors();
 			}
 		}
+
+		public function eliminar_zona($piso,$piso_maximo){
+			$this->imagen_adelante($piso,$piso_maximo);
+
+			$this->db->query("SET foreign_key_checks=0;");
+
+			$sql = "SELECT id_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo )";
+			$resultado = $this->db->query($sql)->result_array();
+
+			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
+			$this->db->query($sql);
+
+			$sql = "SELECT url_img FROM pisos WHERE piso = $piso_maximo";
+			$zona_borrar = $this->db->query($sql)->result_array();
+			if (isset($zona_borrar[0]["url_img"])) {
+				unlink($zona_borrar[0]["url_img"]);
+			}
+
+			
+			$sql ="DELETE FROM puntos_mapa WHERE piso = $piso_maximo";
+			$this->db->query($sql);
+
+			foreach ($resultado as $id) {
+				$sql = "DELETE FROM hotspots WHERE id_hotspot IN (
+					SELECT id_hotspot FROM escenas_hotspots where id_escena = \"".$id['id_escena']."\")";
+				$this->db->query($sql);
+	
+				
+				$sql = "DELETE FROM escenas_hotspots WHERE id_escena = \"".$id['id_escena']."\" ";
+				$this->db->query($sql);
+	
+				$sql = "DELETE FROM hotspots WHERE sceneid=(SELECT cod_escena FROM escenas WHERE id_escena=\"".$id['id_escena']."\")";
+				$this->db->query($sql);
+
+				$sql = "SELECT panorama FROM escenas WHERE id_escena = \"".$id['id_escena']."\" ";
+				$panorama_borrar=$this->db->query($sql)->result_array();
+				unlink($panorama_borrar[0]["panorama"]);
+					
+				$sql = "DELETE FROM escenas WHERE id_escena = \"".$id['id_escena']."\" ";
+				$this->db->query($sql);
+			}
+			$this->db->query("SET foreign_key_checks=1;");
+
+			
+		}
 	}

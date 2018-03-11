@@ -22,4 +22,8 @@ class mapaadmin extends CI_Controller {
     public function crear_zona(){
         $this->mapa->crear_zona();
     }
+
+    public function eliminar_zona($piso,$piso_maximo){
+        $this->mapa->eliminar_zona($piso,$piso_maximo);
+    }
 }
