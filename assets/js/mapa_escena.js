@@ -122,13 +122,27 @@ $(window).resize(function() {
 	mapa_responsivo();
 });
 function mapa_responsivo(){
-	var anchura= window.innerWidth*0.7
-	var altura=anchura*0.57
+	if ($("#mapa_escena").length){
+		var anchura = window.innerWidth * 0.7
+		var altura = anchura * 0.57
 
-	$("#mapa_escena").css({
-		height: altura+'px',
-		width: anchura+'px'
-	});
+		$("#mapa_escena").css({
+			height: altura + 'px',
+			width: anchura + 'px'
+		});
+	}
+	if ($("#mapa_escena_hotspot").length){
+		var anchura = $("#mapa_escena_hotspot").parent().width();
+		var altura = anchura * 0.57;
+
+
+		$("#mapa_escena_hotspot").css({
+			height: altura + 'px',
+			width: anchura + 'px'
+		});
+	}
+	
+	
 }
 	
 /**

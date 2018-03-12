@@ -9,7 +9,12 @@
     position: relative;
     display: inline-grid;
     margin-left: 15px;
-    /* margin: auto; */
+}
+#mapa_escena_hotspot{
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+    display: inline-grid;
 }
 .botones_mapa{
     width: 10%;

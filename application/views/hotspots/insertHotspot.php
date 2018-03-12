@@ -28,7 +28,7 @@
             Escena de destino: <input type='text' name='sceneId' readonly='readonly'><br>
             <button id="btn-bajar-piso" type="button">Bajar piso</button>
             <button id="btn-subir-piso" type="button">Subir piso</button>
-            <div id="mapa_escena" >
+            <div id="mapa_escena_hotspot" >
             
             <?php
                 $indice = 0;
