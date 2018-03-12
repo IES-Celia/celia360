@@ -62,5 +62,5 @@ class Conversorbd2json extends CI_Controller {
     $resultado = $this->PortadaModel->editar_celda();   
   }    
   
-  
+     // maravilloso
 }
