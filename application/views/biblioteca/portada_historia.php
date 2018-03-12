@@ -1,4 +1,8 @@
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
    <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
@@ -34,7 +38,7 @@
 		    idlibro = $(this).attr("idlibro");
 		    apaisado = $(this).attr("apaisado");
 		    tipo = $(this).attr("tipo");
-		    location.href = '<?php echo site_url("biblioteca/vertodosloslibros/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo;
+		    location.href = '<?php echo site_url("biblioteca/abrir_phistoria/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo;
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
@@ -43,13 +47,13 @@
 		    idlibro = $(this).attr("idlibro");
 		    apaisado = $(this).attr("apaisado");
 		    tipo = $(this).attr("tipo");
-		    location.href = '<?php echo site_url("biblioteca/vertodosloslibros/");?>';
+		    location.href = '<?php echo site_url("Conversorbd2json/index");?>';
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
 		$(document).keyup(function(e) {
 		    if (e.keyCode == 27) { // escape key maps to keycode `27`
-		   	 location.href = '<?php echo site_url("biblioteca/vertodosloslibros/");?>';
+		   	 location.href = '<?php echo site_url("Conversorbd2json/index/");?>';
 		    }
 		});
 
@@ -61,112 +65,59 @@
 		});
 	}); 
 </script>
+	<title>Celia Tour</title>
 
-<style>
+	<style type="text/css">
+		.modalita{
+			background: url('<?php echo base_url();?>assets/imagenes/portada/portada_historia.jpg');
+			background-size: cover; 
+			height: 100%;
+			width: 100%;
+		}
+	</style>
+</head>
+<body style="width:100%;">
+	<div>
+		<div class="modalita" >
+	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
+	        <div class="cabecera-ventana" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');height:60px;border-radius:15px;">
+	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">I.E.S. Celia Viñas</h1>
+	        </div>
+	        <div class="pared" >
+	        <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
+	            <?php
 
-
-	td img{
-		width:200px;
-		height:250px;
-	}
-	td{
-		margin-right:15px;
-		margin-left:15px;
-	}
-	.tablatodo{
-		width:200px !important;
-		height:200px !important;
-		padding:30px;
-	}
-	.headerbiblioteca{
-		width:100%;
-		height:115px;
-		color:white;
-		background:#000000d9;
-	}
-	.headerbiblioteca h1{
-		width: 90%;
-    	padding: 20px;
-    	height:54px;
-	}
-	table{
-		margin-top:30px;
-	}
-
-	.iniciologo{
-		width:90px;
-		height:110px;
-		margin-left:30px;
-		margin-top:-75px;
-	}
-
-	#contenedorbiblioteca{
-	    background: url('<?php echo base_url();?>assets/imagenes/portada/portada5.jpg');
-	    background-size: cover;
-	    width:100%;
-	    height:auto;
- 	} 
-
-  .cerrarBook{
-  	width: 40px;
-    height: 40px;
-  	background:#208cbf;
-  	color:white;
-  	text-align:center;
-  	font-size:30px;
-  	top: 20px;
-    left: 85%;
-    position: absolute;
-    border-radius:50px;
-  }
-  			#numeropag{
-				position: relative;
-			    left: 45%;
-			    height: 20px;
-			    width: 30px;
-			    text-align: right;
-			}
-			#cantpag{
-				position: relative;
-			    left: 45%;
-			    height: 20px;
-			    width: 30px;
-			}
-
-</style>
-
-
-
-<body>
-	<div id="contenedorbiblioteca">
-	<?php 
-	  echo "<div id='' style='width:100%; margin:0 auto;'>\n"; 
-            echo "<div class='headerbiblioteca'>\n"   ;   
-            echo "<h1 style='text-align:center;'>BIBLIOTECA IES CELIA VIÑAS</h1>"; 
-            echo "<img class='iniciologo' src='".base_url("assets/imagenes/portada/logo.png")."' >";
-            echo "</div>\n";
-            echo "<table style=''>";  
-            echo "<tr>";  
-
-		 	$i = 0;
-		    foreach ($tabla as $ides){
-		      if($ides['tipo']==0){
-		        $i++;
-		       
-		                     
-		          echo "<td class='tablatodo'>";
-		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:50px;padding:10px;'>'".$ides['titulo']."'";
-		          echo "</div></td>";
-		      }
-		          if ($i%5 == 0)  echo "</tr><tr class=''>";
-		            }
-		            echo "</tr></table>";
-		  //otro cambio
-		echo "</div></div>";
-
-?>
-
-<!-- ******************* Capa modal para mostrar el libro ****************** --> 
+	                    
+	                    echo "<div class='estanteria' >"; 
+	                      echo "<div class='nuevecica'  >"   ;    
+	                        echo "<table >";  
+	                        echo "<tr>";
+	                        $i = 0;
+	                        foreach ($tabla as $ides){
+	                          if($ides['tipo']==1){
+	                            $i++;
+	                            //Sacamos las portadas de los libros
+	                            
+	                              echo "<td class='columna'>";
+	                              echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+	                              echo "</td>";
+	                          }
+	                              if ($i%4 == 0)  echo "</tr><tr class='torre'>";
+	                                }
+	                                echo "</tr></table>";
+	                      echo "</div>";
+	                    echo "</div>";
+	        ?>
+	        </div>
+	        </div>
+	        <div class="pie-ventana" style="border-top:1px solid grey;border-radius:5px; height:75px;padding:18px;">
+	          <a href="<?php echo site_url("Conversorbd2json/index"); ?>" class="btn-2" style="float:right;">Cerrar</a>
+	        </div>
+	    </div>
+	  </div>
+	 </div>
+	
+	<!-- ******************* Capa modal para mostrar el libro ****************** --> 
 
 <?php
 	if ($id_libro != -1) {	// Si id_libro = -1 significa que no hay ningún libro seleccionado, y no cargaremos nada en la modal
@@ -178,7 +129,7 @@
 			<a href="#" class="cerrarBook">x</a>
 			<header>	
 			</header>
-			<div class="main clearfix" style="margin-left:-12%;">
+			<div class="main clearfix" style="width:60%;">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
 						<?php
@@ -213,7 +164,7 @@
 				</div>
 				<?php 
 						echo " 
-							<div class='descargar' style='width:112%;'> 
+							<div class='descargar' style=''> 
 								<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;float:right;margin-top:-75px;margin-left:50px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 							</div>"; 
 				?>
@@ -267,7 +218,7 @@
 							return false;
 						} );
 						
-						// // add swipe events
+						// // CAMBIAR DE PAGINA AL ARRASTRAR
 						// $slides.on( {
 						// 	'swipeleft' : function( event ) {
 						// 		config.$bookBlock.bookblock( 'next' );
@@ -333,19 +284,7 @@
 			                  
 			                }  
 			         });
-/*
-			        $(".mySlides").draggable({
-			              revert: true
-			             });
 
-			         $(".contenedor").mouseleave(function(e){
-			           $(".mySlides").css({
-			                  "height": "650px",
-			                  "width": "1000px"
-			              });
-			         });
-
-*/
 		      });
 
 		      $(function(){
@@ -444,3 +383,4 @@
 }	// Fin del if (id_libro != -1)
 ?>
 </body>
+</html>

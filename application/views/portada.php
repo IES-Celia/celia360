@@ -58,12 +58,12 @@
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
-                <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
-                <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
-                <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
-                <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
-                <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
-                <li><a href="<?php echo site_url("welcome");?>" id="creditos_portada">Creditos</a></li>
+                 <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
+                  <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
+                 <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
+                 <li><a href="<?php echo site_url("Puntos_destacados/cargar_puntosdestacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
+                  <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
+                 <li><a id="creditos_portada" href="" >Creditos</a></li>
              </ul>
             </nav>
             </div>
@@ -71,7 +71,7 @@
         </header>
         <main>
 
-             <div id="slider1_portada" style="background-image:url('<?php echo site_url("assets/imagenes/portada/portada5.jpg"); ?>')">
+             <div id="slider1_portada" >
                
 
                  <div class="contenedor_portada">
@@ -79,7 +79,7 @@
                      <div id="parrafito">
                          <p id="descripcion_portada"></p>
                         <div id="separador_portada"> </div>
-                        <button id="open" class="btn">HISTORIA</button>
+                        <a href="<?php echo site_url("biblioteca/abrir_phistoria"); ?>" class="btn">HISTORIA</a>
                      </div>
                  </div> 
             </div>
@@ -91,7 +91,7 @@
 
 <!-- VENTANA MODAL PARA SACAR LIBROS HISTORIA -->
 
-    <div class="modalita" >
+    <div class="modalita" style="display: none;">
       <div class="contenido" style="background:url('assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
         <div class="cabecera-ventana" style="background:url('assets/css/textura.jpg');height:60px;border-radius:15px;">
           <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">I.E.S. Celia Viñas</h1>
@@ -172,63 +172,7 @@
     <!--boton menu --> 
     <div class="boton_menu"></div>
           <!--boton full screen-->
-          <div class="ctrl" id="fullscreen"></div>
-          <!-- Escalera -->
-          <?php
-          $mapa = array_reverse($mapa);
-          echo "<div id='myModal' class='modalEscaleras'>";
-          foreach ($mapa as $imagen) {
-            $piso = $imagen["piso"];
-            $escena_inicial = $imagen["escena_inicial"];
-            $punto_inicial = $imagen["punto_inicial"];
-            $titulo_piso = $imagen["titulo_piso"];
-            echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
-          }
-          echo "</div>";//div final de myModal
-        ?>
-          <!-- mapica-->
-
-          <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
-    <?php
-      $mapa = array_reverse($mapa);
-      $indice = 0;
-     
-      foreach ($mapa as $imagen) {
-        if($config_mapa["piso_inicial"]==$indice){
-          echo "<div id='zona$indice' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
-        }else{
-          echo "<div id='zona$indice' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
-        }
-        
-          foreach ($puntos as $punto) {
-            if($punto['piso']==$indice){
-              
-              if ("punto".$punto['id_punto_mapa']==$config_mapa["punto_inicial"]) {
-              echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
-              }else{
-                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
-              }
-              
-            }
-            
-          }
-        echo "</div>";
-        $indice++;
-      }
-
-      
-      
-   
-    ?>
-
-  </div>
-  <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));"></div>
-
-        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('arriba')"></div>
-
-        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('abajo'); this.style"></div>
-        </div>
-
+          <div class="ctrl" id="fullscreen"></div>                        
            <!-- VIDEO VISITA LIBRE -->  
           <div id='video_visita_libre'>
           <iframe id='vimeo_video' src="" 
@@ -338,10 +282,10 @@
             
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen" onclick="cargardestacado()">
+               <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/puntosd.JPG");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">Destacados</p></div></div>
+               <p class="texto">Puntos D</p></div></div>
               </div>
             
             </div>
@@ -349,19 +293,19 @@
             <div class="fila2">
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen" onclick="cargarbiblioteca()">
+               <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/biblioteca.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Biblioteca</p></div></div>
               </div>
-            <!--
+            
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
                <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/glosario1.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Glosario</p></div></div>
               </div>
-            -->
+            
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
               <!--Provisional enlace para volver atras-->
                 <a href="<?php echo site_url("index.php");?>"><div class="container_imagen">
@@ -375,20 +319,64 @@
           </div>
           </div>          
          
+        <?php
+          $mapa = array_reverse($mapa);
+          echo "<div id='myModal' class='modalEscaleras'>";
+          foreach ($mapa as $imagen) {
+            $piso = $imagen["piso"];
+            $escena_inicial = $imagen["escena_inicial"];
+            $punto_inicial = $imagen["punto_inicial"];
+            $titulo_piso = $imagen["titulo_piso"];
+            echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+          }
+          echo "</div>";//div final de myModal
+        ?>
 
-         
+         <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
+    <?php
+      $mapa = array_reverse($mapa);
+      $indice = 0;
+     
+      foreach ($mapa as $imagen) {
+        if($config_mapa["piso_inicial"]==$indice){
+          echo "<div id='zona$indice' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+        }else{
+          echo "<div id='zona$indice' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+        }
+        
+          foreach ($puntos as $punto) {
+            if($punto['piso']==$indice){
+              
+              if ("punto".$punto['id_punto_mapa']==$config_mapa["punto_inicial"]) {
+              echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              }else{
+                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              }
+              
+            }
+            
+          }
+        echo "</div>";
+        $indice++;
+      }
+
+      
+      
+   
+    ?>
+
+  </div>
+  <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));"></div>
+
+        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('arriba')"></div>
+
+        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('abajo'); this.style"></div>
+        </div>
 
 	</div>
 	
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
 <script type="text/javascript">
-    function cargardestacado(){
-        location.href="<?php echo site_url("Puntos_destacados"); ?>";
-    }
-     function cargarbiblioteca(){
-        location.href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>";
-    }
-    
 ////// AJAX CARGA JSON PANNELLUM
   
 json_contenido='';
