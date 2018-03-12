@@ -2,62 +2,37 @@
     
 
     <style type="text/css">
-            #modificar{
-                display:none;
-                z-index: 1;
-                position: fixed;
-                top: 10%;
-                left: 30%;
-                width: 600px;
-                height: 660px;
-                background-color: #ffffff;
-                border: 3px solid ;
-            }
 
-            #insertar{
-                display:none;
-                z-index: 1;
-                position: fixed;
-                top: 10%;
-                left: 30%;
-                width: 600px;
-                height: 580px;
-                background-color: #ffffff;
-                border: 3px solid ;
-            }
+        label{
+        
+            margin-left: 10px;
+        
+        }
+        
+        #caja input[type=text]{
+            
+            width:70%;            
+        }
+        
+        .img-cerrar{
+         
+            width: 20px; height: 20px;
+        }
+ 
+        .cerrar{
+            
+            position:relative;
+            top:-480px;
+            left:44%;
+        }
+        
+        .cerrar1{
+            position:relative;
+            top:-410px;
+            left:44%;
+        }
 
-            .file-input {
-              visibility: hidden;
-              width: 0;
-              float: left;
-            }
-            .file-input::before {
-              content: 'Insertar paginas';
-              display: inline-block;
-              background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-              border: 1px solid #999;
-              border-radius: 3px;
-              padding: 5px 8px;
-              outline: none;
-              white-space: nowrap;
-              -webkit-user-select: none;
-              cursor: pointer;
-              text-shadow: 1px 1px #fff;
-              font-weight: 700;
-              font-size: 10pt;
-              visibility: visible;
-              position: absolute;
-            }
-            .file-input:hover::before {
-              border-color: black;
-            }
-            .file-input:active::before {
-              background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-            }
-            .enviar{
-                top: 1500px;
-            }
-
+        
     </style>
 
     <script>
@@ -154,6 +129,7 @@
                 //MODAL MODIFICAR LIBROS
 
                 echo "<div id='modificar'>";
+                echo "<div id='caja'>";
                     echo "
                     <h1>Modificar Libro</h1>
                         <div >
@@ -215,14 +191,17 @@
                             <input type='hidden' id='modif_id_libro' name='id_libro'>
                             <input type='submit' class='enviar'>
                         </form>
-                        <a href='#' onclick='cerrar()'>Cerrar</a>
+                        <a class='cerrar1' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
                     </div> ";
+                 echo "</div>";
                  echo "</div>";
 
 
                  //MODAL INSERTAR LIBROS
 
                  echo "<div id='insertar'>";
+                 echo "<div id='caja'>";
                  echo"
 
                     <h1>Insertar libro</h1>
@@ -280,9 +259,11 @@
                             <input type='file' class='file-input' name='fichero' accept='image/jpg'  id='input' multiple='true' onchange='handleFiles(this.files)'/><br/><br/>
                             <input class='boton' type='submit'>
                         </form>
-                        <a href='#' onclick='cerrar()'>Cerrar</a>
+                        <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
                     </div>
                 ";
+                 echo "</div>";
                  echo "</div>";
 
     ?>
