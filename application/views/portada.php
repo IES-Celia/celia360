@@ -71,7 +71,8 @@
         </header>
         <main>
 
-             <div id="slider1_portada" >
+            <div id="slider1_portada" style="background-image:url('<?php echo site_url("assets/imagenes/portada/portada5.jpg"); ?>')">
+
                
 
                  <div class="contenedor_portada">
