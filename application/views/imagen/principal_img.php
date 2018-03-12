@@ -5,7 +5,7 @@
      $(document).ready(function(){
 	//utilizamos el evento keyup para coger la información
 	//cada vez que se pulsa alguna tecla con el foco en el buscador
-	$(".autocompletar").keyup(function(){
+	$("#autocompletar").keyup(function(){
 		//en info tenemos lo que vamos escribiendo en el buscador
 		var info = $(this).val();
 		//hacemos la petición al método autocompletar del controlador home 
@@ -60,7 +60,7 @@ echo "<a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") 
 //El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
 ?>
 <div class="wrapper">
-    <input type="text" class="buscador" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
+    <input type="text" class="buscador" id="autocompletar" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
     
     <div class="contenedor"></div>
 </div>
