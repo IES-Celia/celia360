@@ -7,6 +7,8 @@
     <script>
         piso_maximo = <?php echo count($mapa)?>;
         piso_maximo--;
+        base_titulo = '<?php echo $portada[0]["tituloweb"]  ?>';
+
     </script>
     <!-- CSS SLICK -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
@@ -23,7 +25,10 @@
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
+    <!-- Css y JS de la portada -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
+    <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
+
  
     
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">

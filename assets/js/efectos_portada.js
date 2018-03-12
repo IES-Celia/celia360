@@ -3,7 +3,7 @@ $(document).ready(function(){
 // para que cambie el background a INICIO al hacer hover
     
 $('#header_portada img').mouseenter(function(){
-    $("#titulito").text("Celia Tour");
+    $("#titulito").text(base_titulo);
     $("#descripcion_portada").text("");
     $("#descripcion_portada").siblings().fadeIn('fast');
 });
@@ -70,7 +70,7 @@ $('#creditos_portada').mouseenter(function(){
     
     
 $("#slider1_portada").mouseenter(function(){
-    $("#titulito").text("Celia Tour");
+    $("#titulito").text(base_titulo);
     $("#descripcion_portada").text("");
     $("#descripcion_portada").siblings().fadeIn();
 });    

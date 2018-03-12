@@ -1,7 +1,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   <script>
-    
+      
+      
+
     $(document).ready(function(){
       $('#open').click(function(){
         $('.modalita').toggle('slow');
@@ -49,9 +51,11 @@
 
 }
 
-
 </style>
 
+<?php 
+    $con = $portada[0]; 
+?>
     <div id="portadaca" style='z-index:100'; >
 
         <header id="header_portada"  >
@@ -76,7 +80,7 @@
                
 
                  <div class="contenedor_portada">
-                     <h1 id="titulito">Celia Tour</h1>
+                     <h1 id="titulito"><?php echo $con["tituloweb"] ?></h1>
                      <div id="parrafito">
                          <p id="descripcion_portada"></p>
                         <div id="separador_portada"> </div>
@@ -161,8 +165,6 @@
             <div id="elamo_portada">Celia Tour 360</div>
         </footer>
         
-        <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-        <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
      
         
 </div>

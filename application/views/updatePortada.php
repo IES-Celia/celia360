@@ -21,15 +21,15 @@
         $tabla=$tabla[0];
 			echo"<form action='".site_url("Conversorbd2json/modificar_titulo")."' method='get'>
                     Titulo de la web:  <input type='text' name='tituloweb' value='".$tabla['tituloweb']."'> <br/>
-			    
 				    <input type='submit'><br><br>
-                    </form>  
-		 <br><br><br>
-            <form action='".site_url("Conversorbd2json/modificar_imagen")."' method='get'>
+                </form>  
+                
+		        <br><br><br>
+                <form action='".site_url("Conversorbd2json/modificar_imagen")."' method='get'>
                     Imagen de portada: <input type='file' name='imagenweb'><br>
 			    
 				    <input type='submit'><br><br>
-                    </form>";  
+                </form>";  
         ?>
 	</fieldset>
 
