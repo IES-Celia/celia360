@@ -35,7 +35,7 @@ class Conversorbd2json extends CI_Controller {
     $json = $this->conversorjson->get_datos_destacado();
     echo $json;
   }
-  
+     // maravilloso
       public function get_json_plataforma($escenaInicial) {
           $json = $this->conversorjson->get_datos_plataforma($escenaInicial);
           echo $json;
