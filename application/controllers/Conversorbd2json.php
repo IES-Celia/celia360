@@ -23,6 +23,8 @@ class Conversorbd2json extends CI_Controller {
     $json = $this->conversorjson->get_datos_libre();
     echo $json;
   }
+    
+    // maravilloso
   
    public function get_json_guiada() {
     $json = $this->conversorjson->get_datos_guiada();
