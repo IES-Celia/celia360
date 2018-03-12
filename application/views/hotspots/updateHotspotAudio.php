@@ -71,7 +71,7 @@
         <div id='listaAudios'>Capa vacia</div>
 
         <script>
-            $("#idAudioForm").click(function () {
+            $(document).ready(function () {
                 $("#listaAudios").children().show();
                 $("#listaAudios").load("<?php echo site_url("audio/obtenerListaAudiosAjax"); ?>");
             });

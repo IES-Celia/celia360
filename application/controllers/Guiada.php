@@ -10,7 +10,7 @@ class Guiada extends CI_Controller {
         $this->load->model("UsuarioModel");
         $this->load->model("Audm");
         $this->load->model("Modeloescenas");
-        $this->load->model("modeloGuiada");
+        $this->load->model("ModeloGuiada");
        
     }
 
@@ -25,7 +25,7 @@ class Guiada extends CI_Controller {
     }
 
     public function insertarEscenaGuiada(){
-        $resultado = $this->modeloGuiada->crearEscenaGuiada();
+        $resultado = $this->ModeloGuiada->crearEscenaGuiada();
         if($resultado > 0){
             $datos["vista"]="guiada/asociarImagen";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -41,7 +41,7 @@ class Guiada extends CI_Controller {
         $datos["audios"]=$this->Audm->allAudios();
         //Todas las escenas existentes.
         $datos["escenasGuiada"]=$this->Modeloescenas->getAll();
-        $datos["escenas"] = $this->modeloGuiada->allEscenasGuiada();
+        $datos["escenas"] = $this->ModeloGuiada->allEscenasGuiada();
         $datos["vista"]="guiada/administracionGuiada";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
@@ -51,15 +51,15 @@ class Guiada extends CI_Controller {
           //Insertamos la escena y ahora con sql sacamos la ultima escena por ID.
           if(isset($_POST["id_visita"])){
             $idEscena=$_POST["id_visita"];
-            $asociar = $this->modeloGuiada->asociarImagen($idEscena);
+            $asociar = $this->ModeloGuiada->asociarImagen($idEscena);
 
             //Buscar la imagen y borrarla si ha salido bien.
-            //$borrar = $this->modeloGuiada->borrarImagen($id_visita);
+            //$borrar = $this->ModeloGuiada->borrarImagen($id_visita);
             //if($borrar)echo "se ha borrado saecio";
             //else echo "Hubo por haber problames habidos";
           }else {
-            $idEscena=$this->modeloGuiada->lastEscenaGuiada();
-            $asociar = $this->modeloGuiada->asociarImagen($idEscena);
+            $idEscena=$this->ModeloGuiada->lastEscenaGuiada();
+            $asociar = $this->ModeloGuiada->asociarImagen($idEscena);
           }
 
           $this->menuGuiada();
@@ -70,7 +70,7 @@ class Guiada extends CI_Controller {
 
           } else {
             //Borrar ultima escena
-            $this->modeloGuiada->borrarEscenaGuiada($idEscena);
+            $this->ModeloGuiada->borrarEscenaGuiada($idEscena);
             $this->mostrarFormularioGuiada();   
       }
       */
@@ -78,7 +78,7 @@ class Guiada extends CI_Controller {
 
     public function modificarImagenPreview(){
         $idEscena=$_REQUEST["id_visita"];
-        $asociar = $this->modeloGuiada->asociarImagen($idEscena);
+        $asociar = $this->ModeloGuiada->asociarImagen($idEscena);
         if($asociar==false){
             echo "ERROR";
             $this->menuGuiada();
@@ -90,21 +90,21 @@ class Guiada extends CI_Controller {
   }
 
     public function getGuiada(){
-        $resultado = $this->modeloGuiada->allEscenasGuiada();
+        $resultado = $this->ModeloGuiada->allEscenasGuiada();
         echo json_encode($resultado);
     }
 
     public function borrarEscena(){
         $idEscena = $_REQUEST["id"];
-        $this->modeloGuiada->borrarImagen($idEscena);
-        $this->modeloGuiada->borrarEscenaGuiada($idEscena);
+        $this->ModeloGuiada->borrarImagen($idEscena);
+        $this->ModeloGuiada->borrarEscenaGuiada($idEscena);
         //$this->menuGuiada();
        
     }
     
     public function actualizarEscena(){
         $id_visita = $_REQUEST["id"];
-        $actualizar = $this->modeloGuiada->actualizarEscena($id_visita);
+        $actualizar = $this->ModeloGuiada->actualizarEscena($id_visita);
         if($actualizar)echo "1";
         else echo "0";
     }

@@ -29,6 +29,7 @@ class Biblioteca extends CI_Controller {
 	}
 
 	
+	
 	public function showintadmin()
 	{
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
@@ -65,12 +66,33 @@ class Biblioteca extends CI_Controller {
 			}
 	}
 
-	public function vertodosloslibros(){
+	public function vertodosloslibros($idlibro = -1,$apaisado = -1,$tipo=-1){
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
-		
+		$datos["id_libro"] = $idlibro;
+		$datos["apaisado"] = $apaisado;
 		$this->load->view("biblioteca/bibliotecaajax", $datos);
 
 	}
+
+	// public function abrir_phistoria(){
+	// 	$datos["tabla"] = $this->bibliotecaModel->get_info();
+	// 	$this->load->view('biblioteca/portada_historia', $datos);
+	// }
+
+	public function abrir_phistoria($idlibro = -1,$apaisado = -1,$tipo=-1){
+		$datos["tabla"] = $this->bibliotecaModel->get_info();
+		$datos["id_libro"] = $idlibro;
+		$datos["apaisado"] = $apaisado;
+		$this->load->view("biblioteca/portada_historia", $datos);
+
+	}
+/*
+	public function verLibroAjax($idlibro,$apaisado){
+		$datos["id_libro"] = $idlibro;
+		$datos["apaisado"] = $apaisado;
+		$this->load->view("biblioteca/libroajax", $datos);
+	}
+*/
 
 	public function deletelibro($id_libro){
 		$resultado=$this->bibliotecaModel->deletelibro($id_libro);	
@@ -130,12 +152,6 @@ class Biblioteca extends CI_Controller {
         $datos["vista"] = "biblioteca/libro";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("template_admin", $datos);
-	}
-
-	public function verLibroAjax($idlibro,$apaisado){
-		$datos["id_libro"] = $idlibro;
-		$datos["apaisado"] = $apaisado;
-		$this->load->view("biblioteca/libroajax", $datos);
 	}
 
 	public function ver_biblioteca_ajax($id_libro,$apaisado,$tipo){
