@@ -85,7 +85,7 @@
 
 </style>
 <div class="wrapper">
-<a class='insert' onclick='mostrar()'>Insertar audio</a>
+<a class='insert' onclick='mostrar()'><i class='fas fa-plus-circle'></i>  Insertar audio</a>
 </div>
     
 <input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />

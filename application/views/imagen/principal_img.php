@@ -55,7 +55,7 @@ if (isset($error)) {
 //título
 //echo '<h1>IMAGEN</h1>';
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
-echo "<a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'>Insertar imagen</a>";
+echo "<a class='insert' href='" . site_url("imagen/formulario_insertar_imagen") . "'> <i class='fas fa-plus-circle'></i> Insertar imagen</a>";
 
 //El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
 ?>
