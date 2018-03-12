@@ -164,9 +164,7 @@
         <footer>
             <div id="elamo_portada">Celia Tour 360</div>
         </footer>
-        
-     
-        
+       
 </div>
 
 <div class="contenedor">
@@ -285,10 +283,10 @@
             
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen">
+               <div class="container_imagen" onclick=cargardestacado()>
              <img src="<?php echo base_url("assets/imagenes/generales/puntosd.JPG");?>" class="imagen">
               <div class="overlay_imagen">
-               <p class="texto">Puntos D</p></div></div>
+               <p class="texto">Destacados</p></div></div>
               </div>
             
             </div>
@@ -296,19 +294,19 @@
             <div class="fila2">
             
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
-               <div class="container_imagen">
+               <div class="container_imagen" onclick=cargarbiblioteca()>
              <img src="<?php echo base_url("assets/imagenes/generales/biblioteca.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Biblioteca</p></div></div>
               </div>
-            
+            <!--
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
                <div class="container_imagen">
              <img src="<?php echo base_url("assets/imagenes/generales/glosario1.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Glosario</p></div></div>
               </div>
-            
+            -->
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
               <!--Provisional enlace para volver atras-->
                 <a href="<?php echo site_url("index.php");?>"><div class="container_imagen">
@@ -381,7 +379,14 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
 <script type="text/javascript">
 ////// AJAX CARGA JSON PANNELLUM
-  
+      function cargardestacado(){
+        location.href="<?php echo site_url("Puntos_destacados"); ?>";
+    }
+     function cargarbiblioteca(){
+        location.href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>";
+    }
+    
+    
 json_contenido='';
 //Contiene todo el html dentro del div panorama
 panorama_html = $("#panorama").html();
