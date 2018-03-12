@@ -28,8 +28,7 @@
 		
 		}
 
-		public function update(){
-			$id_libro=$this->input->get_post("id_libro");
+		public function update($id_libro){			
 			$titulo=$this->input->get_post("titulo");
 			$autor=$this->input->get_post("autor");
 			$editorial=$this->input->get_post("editorial");

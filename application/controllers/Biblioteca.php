@@ -55,9 +55,9 @@ class Biblioteca extends CI_Controller {
 		$this->load->view('template_admin', $datos);
 	}
 
-	public function modifiedLibro()
+	public function modifiedLibro($id_libro)
 	{
-		$resultado=$this->bibliotecaModel->update();
+		$resultado=$this->bibliotecaModel->update($id_libro);
 		if($resultado){
 				$datos["tabla"] = $this->bibliotecaModel->get_info();
                 $datos["vista"]="biblioteca/intadmin";
