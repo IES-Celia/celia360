@@ -18,7 +18,7 @@
 	<fieldset class='for'>
 
 		<?php
-			echo"<form action='".site_url("Puntos_destacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";
+			echo"<form action='".site_url("Puntos_destacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";   // maravilloso
         ?>
 		    	
 				Nombre de la zona:  <input type='text' name='titulo_celda' required> <br/>

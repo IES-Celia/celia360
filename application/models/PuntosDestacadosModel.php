@@ -89,7 +89,7 @@ class PuntosDestacadosModel extends CI_Model {
                             ");
         return $this->db->affected_rows();
     }
-
+   // maravilloso
     public function mover_celda($idcelda, $idfila){
         $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=$id_fila")->result_array()[0]["COUNT(id_celda)"];
         if($res<4){
