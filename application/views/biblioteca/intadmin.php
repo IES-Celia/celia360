@@ -130,9 +130,18 @@
                             <td id='editorial_libro_".$id."'>".$usu["editorial"]."</td>
                             <td id='lugar_edicion_".$id."'>".$usu["lugar_edicion"]."</td>
                             <td id='fecha_edicion_".$id."'>".$usu["fecha_edicion"]."</td>
-                            <td id='isbn_libro_".$id."'>".$usu["ISBN"]."</td>
-                            <td >".$usu["tipo"]."</td>
-                            <td '>".$usu["apaisado"]."</td>
+                            <td id='isbn_libro_".$id."'>".$usu["ISBN"]."</td>";
+                            if($usu["tipo"]==0){
+                              echo "<td>Biblioteca</td>";
+                            }else{
+                              echo "<td>Historia</td>";
+                            }
+                            if($usu["apaisado"]==0){
+                              echo "<td>Normal</td>";
+                            }else{
+                              echo "<td>Apaisado</td>";
+                            }
+                            echo"
                             <td>
                             <a onclick='mostrarm(".$usu['id_libro'].")'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
                             <td><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
@@ -145,7 +154,6 @@
                 //MODAL MODIFICAR LIBROS
 
                 echo "<div id='modificar'>";
-                echo "<div id='caja'>";
                     echo "
                     <h1>Modificar Libro</h1>
                         <div >
@@ -204,19 +212,17 @@
                                   <span class='bar'></span>
                                   <label>Apaisado</label>
                                 </div>
-                            
+                            <input type='hidden' id='modif_id_libro' name='id_libro'>
                             <input type='submit' class='enviar'>
                         </form>
                         <a href='#' onclick='cerrar()'>Cerrar</a>
                     </div> ";
-                 echo "</div>";
                  echo "</div>";
 
 
                  //MODAL INSERTAR LIBROS
 
                  echo "<div id='insertar'>";
-                 echo "<div id='caja'>";
                  echo"
 
                     <h1>Insertar libro</h1>
@@ -278,7 +284,6 @@
                     </div>
                 ";
                  echo "</div>";
-                 echo "</div>";
 
     ?>
 
@@ -307,15 +312,15 @@
                 lugar_edicion = document.getElementById("lugar_edicion_"+id_libro).innerHTML;
                 fecha_edicion = document.getElementById("fecha_edicion_"+id_libro).innerHTML;
                 isbn = document.getElementById("isbn_libro_"+id_libro).innerHTML;
-
-
+                pasar_id=id_libro;
                 $("#modif_titulo").val(titulo);
                 $("#modif_autor").val(autor);
                 $("#modif_editorial").val(editorial);
                 $("#modif_lugar_edicion").val(lugar_edicion);
                 $("#modif_fecha_edicion").val(fecha_edicion);
                 $("#modif_isbn").val(isbn);
-                
+                $("#modif_id_libro").val(pasar_id);
+
                 $("#modificar").show();
             }
             function mostrar(){
