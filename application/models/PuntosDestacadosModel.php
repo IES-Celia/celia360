@@ -19,7 +19,6 @@ class PuntosDestacadosModel extends CI_Model {
         $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
         $id_celda = $res+1;
         $escena_celda= $_REQUEST["escena_celda"];
-        $imagen_celda = $_REQUEST["imagen_celda"];
         $titulo_celda = $_REQUEST["titulo_celda"];
 
         //Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir

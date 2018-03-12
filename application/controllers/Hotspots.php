@@ -77,7 +77,7 @@ class Hotspots extends CI_Controller {
     public function updateHotspotAudio() {
         
         $id = $this->input->post_get("id_hotspot");
-        $vid = $this->input->post_get("clickHandlerArgs");
+        $aud = $this->input->post_get("clickHandlerArgs");
         $resultado = $this->hotspotsModel->modificarpuntoaudio($id, $aud);
         $cambio = $this->input->post_get("sceneId");
         

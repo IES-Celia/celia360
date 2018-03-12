@@ -122,7 +122,7 @@ $ant = $primero - $cantidad;
 if($ant<0)$ant=0;
 $sig = $primero + $cantidad;
 if($sig>$total) $sig=$total-$cantidad+1;
-echo "<div id='div_pag'><a class='paginacion' href='". site_url("audio/mostraraudios/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("audio/mostraraudios/") ."$sig'>Siguiente</a></div>";
+echo "<div id='div_pag'><a class='paginacion' href='". site_url("audio/mostraraudios/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("audio/mostraraudios/") ."$sig'>Siguiente</a></div></br></br>";
 
 //Capa formulario modificar
 echo "

@@ -51,7 +51,6 @@ class Puntos_destacados extends CI_Controller {
     }
     
     public function processinsertdestacado(){
-        echo $escena_celda;
          $resultado = $this->PuntosDestacadosModel->crear_celda();
         if($resultado){
             $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
