@@ -138,6 +138,7 @@
 
 
 <body>
+	
 	<div id="contenedorbiblioteca">
 	<?php 
 	  echo "<div id='' style='width:100%; margin:0 auto;'>\n"; 
@@ -208,15 +209,16 @@
 						</div> -->
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
+						
 					</nav>
-				
-				</div>
 				<?php 
 						echo " 
 							 
-								<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;float:right;margin-top:-75px;margin-left:50px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+								<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#0d4682;padding:15px;color:white;border-radius:10px;position: absolute;left: 815px;top: 560px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 							"; 
-				?>
+						?>
+				</div>
+				
 			</div>
 
 		</div>
