@@ -1,3 +1,13 @@
+<?php 
+
+$id_escena = $_REQUEST["id_scene"];
+$yaw = $_REQUEST["yaw"];
+$pitch = $_REQUEST["pitch"];
+
+
+$urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
+
+?>
 <html>
 <head>
   <style>
@@ -60,7 +70,7 @@
 	}
 
   
-  echo "<h2>Imagenes disponibles</h2>
+  echo "<h2 align='left' style='color:white;'>Imagenes disponibles</h2>
   <div id='contenedor_img'>
   <br><div id='imgHS'>";
   
@@ -89,10 +99,32 @@
  <ul id='img_seleccionadas'>
  
  </ul><br>
+  <div style='color:white; font-weight:bold; font-size: 1.2rem;'>
+    Nota: Puedes ordenar las imagenes arrastrandolas en la lista.
+  </div>
   <button onclick='add_img_to_hotspot()'>Enviar</button>
+  <br>
+  <form id='formulario_atras' action="<?php echo $urlAtras; ?>" method='get'>
+    <input id='panel_atras' type='button' value='volver atras'>
+  </form>
 </div>
 </div>  
 <script>
+
+  $("#panel_atras").on("click",function(){
+    var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
+    console.log(url);
+    var peticion = $.ajax({
+      type: "get",
+      url: url
+    });
+
+    peticion.done(function(){
+      console.log("Se ha borrado el ultimo hotspot");
+      $("#formulario_atras").submit();
+
+    });
+  });
  
    $(".enlace_img").on('click', function(evento){
      evento.preventDefault();
@@ -131,7 +163,11 @@
 
   
   function add_img_to_hotspot(){
-    var escena = "<?php echo $escena_actual;?>";
+
+    if($("#img_seleccionadas").empty()){
+      alert("Debes seleccionar alguna imagen!");
+    } else {
+      var escena = "<?php echo $escena_actual;?>";
     var prueba = [];
     //Valor temporal para probar si funciona
     var hotspot = $("#idhs").val();
@@ -152,6 +188,9 @@
       window.location.href = resultado;
      //current_url()
     });
+    }
+
+    
     
   }
   

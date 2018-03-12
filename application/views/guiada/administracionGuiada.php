@@ -1,3 +1,15 @@
+<?php
+if (isset($error)) {
+		echo "<p style='color:red'>".$error."</p>";
+	}
+	if (isset($mensaje)) {
+		echo "<p style='color:blue'>".$mensaje."</p>";
+    }
+
+    $urlFormulario = site_url('guiada/modificarEscena');
+    
+?>
+
 <style>
 #modalGuiada{
  z-index:100;
@@ -44,18 +56,25 @@ z-index:100;
     cursor: pointer;
 }
 
+.ordernar{
+    padding-left:4px;
+    font-size:1.3rem;
+    color:black;
+}
+
 </style>
 
 <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
 <button class='insert' type='submit'><span class='fa fa-plus-circle'></span>crear Nuevo</button>
+<input id='orden' type='hidden' value='asc' name='orden'>
 </form>
 <table align='center' id='cont'>
     <tr id='cabecera'>
-        <th>id guiada</th>
-        <th>cod escena</th>
-        <th>audio escena</th>
-        <th>titulo escena</th>
-        <th>imagen preview</th>
+        <th onclick='ordenarTabla("id_visita")'>id_visita<span class='ordernar'>&#8645;</span></th>
+        <th onclick='ordenarTabla("cod_escena")'>cod_escena<span class='ordernar'>&#8645;</span></th>
+        <th onclick='ordenarTabla("audio_escena")'>audio_escena<span class='ordernar'>&#8645;</span></th>
+        <th onclick='ordenarTabla("titulo_escena")'>titulo_escena<span class='ordernar'>&#8645;</span></th>
+        <th >imagen preview</th>
         <th>cambiar Imagen</th>
         <th>borrar</th>
         <th>modificar</th>
@@ -71,7 +90,7 @@ foreach ($escenas as $escena) {
         $imagen = base_url('assets/imagenes/previews-guiada/').$imagen;
     }
         $idEscena =$escena['id_visita'];
-        $urlFormulario = site_url('guiada/modificarEscena');
+        
 
     echo "<tr class='filaEscena'>".
     "<td class='id_visita'>".$escena['id_visita']."</td>
@@ -173,50 +192,42 @@ function modificarGuiada(elemento){
     $("#actualizarGuiada").on("click", function () {
         var confirmar = confirm("¿Estas seguro que quieres modificarlo?");
         if(confirmar){
+            var idEscena = $(elemento).attr("data-id");
+            codEscena = $("#escenaGuiada").find(":selected").text();
+            audioEscena = $("#audioGuiada").find(":selected").text();
+            tituloEscena = $("#titulo_escena").val();
+            var urlPeticion= "<?php echo base_url("guiada/actualizarEscena");?>";
+            var peticion = $.ajax({
+                type: "post",
+                url: urlPeticion,
+                data: {id : idEscena, escena : codEscena , audio : audioEscena , titulo : tituloEscena  }
+            });
 
-        } else {
-
-        }
-        var idEscena = $(elemento).attr("data-id");
-        codEscena = $("#escenaGuiada").find(":selected").text();
-        audioEscena = $("#audioGuiada").find(":selected").text();
-        tituloEscena = $("#titulo_escena").val();
-        var urlPeticion= "<?php echo base_url("guiada/actualizarEscena");?>";
-        var peticion = $.ajax({
-            type: "post",
-            url: urlPeticion,
-            data: {id : idEscena, escena : codEscena , audio : audioEscena , titulo : tituloEscena  }
-        });
-
-        peticion.done(function(resultado){
-            if(resultado==1){
-                alert("Se ha modificado correctamente");
-                $(elemento).closest(".filaEscena").find(".cod_escena").html(codEscena);
-                $(elemento).closest(".filaEscena").find(".titulo_escena").html(tituloEscena);
-                $(elemento).closest(".filaEscena").find(".audio_escena").html(audioEscena);
-                $("#modalGuiada").css("display","none");
-            } else {
-                alert("Error al intentar modificar");
-            }
+            peticion.done(function(resultado){
+                if(resultado==1){
+                    alert("Se ha modificado correctamente");
+                    $(elemento).closest(".filaEscena").find(".cod_escena").html(codEscena);
+                    $(elemento).closest(".filaEscena").find(".titulo_escena").html(tituloEscena);
+                    $(elemento).closest(".filaEscena").find(".audio_escena").html(audioEscena);
+                    $("#modalGuiada").css("display","none");
+                } else {
+                    alert("Error al intentar modificar");
+                }
+            }); 
+        
 
             $("#titulo_escena").val("");
             $("#escenaGuiada").val($("#escenaGuiada option:first").val());
             $("#audioGuiada").val($("#audioGuiada option:first").val());
-            
+        }   
         });
-        
-    });
-   
 }
+
 
 function borrarGuiada(elemento){
     var confirmar = confirm("¿Estas seguro que quieres borrar este elemento?");
     if(confirmar){
-
-    } else {
-        
-    }
-    var idEscena = $(elemento).attr("data-id");
+        var idEscena = $(elemento).attr("data-id");
     var urlPeticion= "<?php echo base_url("guiada/borrarEscena");?>";
     var peticion = $.ajax({
         type: "post",
@@ -225,10 +236,79 @@ function borrarGuiada(elemento){
     });
 
     peticion.done(function(resultado){
-        alert("Borrado");
         $(elemento).closest(".filaEscena").remove();
     });
+    } 
+   
+}
 
+function ordenarTabla(elemento){
+    var valor = $("#orden").val();
+    var urlPeticion= "<?php echo base_url("guiada/ordenarTabla");?>";
+    var peticion = $.ajax({
+        type: "post",
+        url: urlPeticion,
+        data: {nombreColumna : elemento, orden : valor},
+        dataType: "json"
+    });
+
+    peticion.done(function(resultado){
+        $(".filaEscena").each(function (i, e) {
+            $(this).remove();
+            
+        });    
+        
+        $.each(resultado, function (i, e) {
+
+            var id_visita = resultado[i]["id_visita"];
+            var audio_escena = resultado[i]["audio_escena"];
+            var titulo_escena = resultado[i]["titulo_escena"];
+            var cod_escena = resultado[i]["cod_escena"];
+            var img_preview = resultado[i]["img_preview"];
+            img_preview = "<?php echo base_url('assets/imagenes/previews-guiada/');?>"+img_preview;
+            
+            var filaTabla ="<tr class='filaEscena'><td class='id_visita'>"+
+            id_visita+"</td><td class='cod_escena'>"+
+            cod_escena+"</td><td class='audio_escena'>"+
+            audio_escena+"</td><td class='titulo_escena'>"+
+            titulo_escena+"</td><td><img class='img_preview' style='height:100px; width:auto;' src='"+img_preview+"'></td><td><button class='change_img'>Cambiar</button></td><td><a data-id='"+id_visita+"' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td><td><a data-id='"+id_visita+"' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td></tr>";
+            var htmlTabla = $("#cont").append(filaTabla);
+
+            console.log(htmlTabla);
+            
+        });
+
+
+    if(valor == "asc"){
+        $("#orden").val("desc");
+    }else{
+        $("#orden").val("asc");
+   }
+    });
+}
+
+
+
+function sortTable(columnName){
+ 
+ var sort = $("#sort").val();
+ $.ajax({
+  url:'fetch_details.php',
+  type:'post',
+  data:{columnName:columnName,sort:sort},
+  success: function(response){
+ 
+   $("#empTable tr:not(:first)").remove();
+ 
+   $("#empTable").append(response);
+   if(sort == "asc"){
+     $("#sort").val("desc");
+   }else{
+     $("#sort").val("asc");
+   }
+ 
+  }
+ });
 }
 
 </script>

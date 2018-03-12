@@ -71,8 +71,9 @@
             <input type='hidden' name='tipo' value='info' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
-            Nombre del objeto: <input type='text' name='titulo'><br> 
-            Descripción del objeto:  <input type='text' name='texto'><br> 
+            Titulo del panel: <input type='text' name='titulo' required><br> 
+            Texto del panel:  <textarea name="texto" rows="4" cols="50" required></textarea><br>
+             
 
             <input type='submit' class="button">
         </form>

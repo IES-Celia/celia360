@@ -48,21 +48,20 @@ class Guiada extends CI_Controller {
     }
 
     public function asociarImagenPreview(){
-          //Insertamos la escena y ahora con sql sacamos la ultima escena por ID.
+        //Si es una modificacion de imagen existente
           if(isset($_POST["id_visita"])){
             $idEscena=$_POST["id_visita"];
+            $borrarImagen = $this->ModeloGuiada->borrarImagen($idEscena);
             $asociar = $this->ModeloGuiada->asociarImagen($idEscena);
-
-            //Buscar la imagen y borrarla si ha salido bien.
-            //$borrar = $this->ModeloGuiada->borrarImagen($id_visita);
-            //if($borrar)echo "se ha borrado saecio";
-            //else echo "Hubo por haber problames habidos";
           }else {
+        //Si es la primera vez que introducimos una imagen
             $idEscena=$this->ModeloGuiada->lastEscenaGuiada();
             $asociar = $this->ModeloGuiada->asociarImagen($idEscena);
+            if($asociar==-1){
+                $this->ModeloGuiada->borrarEscenaGuiada($idEscena);
+            }
           }
-
-          $this->menuGuiada();
+          redirect('/guiada/menuGuiada', 'refresh');
          /*
           if($asociar){
             //ir menuGuiada, donde puede ver el ultimo punto introducido
@@ -80,18 +79,16 @@ class Guiada extends CI_Controller {
         $idEscena=$_REQUEST["id_visita"];
         $asociar = $this->ModeloGuiada->asociarImagen($idEscena);
         if($asociar==false){
-            echo "ERROR";
-            $this->menuGuiada();
+             redirect('/guiada/menuGuiada', 'refresh');
 
         } else {
-            echo "CORRECTO";
-            $this->menuGuiada();
+             redirect('/guiada/menuGuiada', 'refresh');
     }
   }
 
     public function getGuiada(){
         $resultado = $this->ModeloGuiada->allEscenasGuiada();
-        echo json_encode($resultado);
+         json_encode($resultado);
     }
 
     public function borrarEscena(){
@@ -105,8 +102,13 @@ class Guiada extends CI_Controller {
     public function actualizarEscena(){
         $id_visita = $_REQUEST["id"];
         $actualizar = $this->ModeloGuiada->actualizarEscena($id_visita);
-        if($actualizar)echo "1";
-        else echo "0";
+        if($actualizar) "1";
+        else  "0";
+    }
+
+    public function ordenarTabla(){
+        $ordenar= $this->ModeloGuiada->ordenarTabla();
+        echo json_encode($ordenar);
     }
 
 

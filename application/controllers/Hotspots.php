@@ -201,6 +201,8 @@ class Hotspots extends CI_Controller {
     }
   
 ////////////////////////////Zygis - MOVIDAS DEL CMS//////////////////////////
+
+
   
   public function process_insert_panel(){
             $joshua = $this->hotspotsModel->insertarHotspotPanel();
@@ -322,5 +324,12 @@ public function load_audio(){
      }else{
          echo"fallo al insertar hotspot";
      }
+ }
+
+ //Borra ultimo hotspot
+ public function borrarUltimo(){
+    $ultimo = $this->hotspotsModel->ultimo_hotspot();
+    echo "ULTIMO ".$ultimo;
+    $this->hotspotsModel->borrarHotspot($ultimo);
  }
 }
