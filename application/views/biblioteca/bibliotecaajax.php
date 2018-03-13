@@ -11,7 +11,8 @@
 		<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 		<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
-	
+	    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
+    <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
 
 		<style type="text/css">
 			.contenedor{
@@ -105,6 +106,7 @@
 	    background-size: cover;
 	    width:100%;
 	    height:auto;
+	    margin-top: 109px;
  	} 
 
   .cerrarBook{
@@ -117,7 +119,7 @@
   	top: 20px;
     left: 85%;
     position: absolute;
-    border-radius:50px;
+    border-radius:5px;
   }
   			#numeropag{
 				position: relative;
@@ -138,13 +140,25 @@
 
 
 <body>
+	 <header id="header_portada"  >
+            <div class="contenedor_portada">
+            <nav id="nav_portada">
+             <ul>
+                 <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
+                  <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
+                 <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
+                 <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
+                  <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
+                 <li><a id="creditos_portada" href="<?php echo site_url("welcome"); ?>" >Creditos</a></li>
+             </ul>
+            </nav>
+            </div>
+
+        </header>
 	<div id="contenedorbiblioteca">
+
 	<?php 
-	  echo "<div id='' style='width:100%; margin:0 auto;'>\n"; 
-            echo "<div class='headerbiblioteca'>\n"   ;   
-            echo "<h1 style='text-align:center;'>BIBLIOTECA IES CELIA VIÑAS</h1>"; 
-            echo "<img class='iniciologo' src='".base_url("assets/imagenes/portada/logo.png")."' >";
-            echo "</div>\n";
+	 
             echo "<table style=''>";  
             echo "<tr>";  
 
@@ -178,7 +192,7 @@
 			<a href="#" class="cerrarBook">x</a>
 			<header>	
 			</header>
-			<div class="main clearfix" style="margin-left:-12%;">
+			<div class="main clearfix">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
 						<?php
@@ -209,13 +223,12 @@
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>
-				
 				</div>
 				<?php 
-						echo " 
-							<div class='descargar' style='width:112%;'> 
-								<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;float:right;margin-top:-75px;margin-left:50px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
-							</div>"; 
+					echo " 
+						<div class='descargar' style=''> 
+							<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 580px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+						</div>"; 
 				?>
 			</div>
 

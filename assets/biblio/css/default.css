@@ -72,7 +72,8 @@ a img {
 
 /* Main Content */
 .main {
-	max-width: 69em;
+	max-width: 68%;
+	width:65%;
 }
 
 .column {
