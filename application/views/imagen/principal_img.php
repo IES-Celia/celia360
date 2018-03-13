@@ -26,22 +26,18 @@ if (isset($error)) {
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 echo"<a class='insert' onclick='mostrar(\"insertar\")' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>";
 
-//BUSCADOR
-//El evento onpaste se produce cuando el usuario pega algo de contenido en un elemento.
-?>
-<div class="wrapper">
-    <input type="text" class="buscador" id="autocompletar" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />
-    
-    <div class="contenedor"></div>
-</div>
-<?php
-
 //he quitado la columna texto de la vista, pero sigue en la bd 
 //cabecera  <th>Texto</th>
 //tabla <td>" . $ima["texto_imagen"] . "</td>
-echo "<table id='cont'>";
+echo "<table id='cont' class='tabla' class='display'>";
+//****************** PAGINACIÓN CON JQUERY LOLI************\\
+echo "<thead>";
 echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
-
+echo "</thead>";
+echo "<tfoot>";
+echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
+echo "</tfoot>";
+echo "<tbody>";
 foreach ($lista_imagenes as $ima) {
     $fila = $ima["id_imagen"];
     $nombre_archivo = $ima["id_imagen"]."_miniatura.jpg";
@@ -54,6 +50,7 @@ foreach ($lista_imagenes as $ima) {
         <td><a href='#' onclick='mostrar(\"modificar\")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>
     	<td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
+echo "</tbody>";
 echo "</table><br>";
 //FIN DEL LISTADO
 ?>
@@ -155,44 +152,25 @@ $du = $lista_imagenes[0];
         $("#modificar").hide();
     }  
  
- 
-    $(document).ready(function(){
-	//utilizamos el evento keyup para coger la información
-	//cada vez que se pulsa alguna tecla con el foco en el buscador
-	$("#autocompletar").keyup(function(){
-		//en info tenemos lo que vamos escribiendo en el buscador
-		var info = $(this).val();
-		//hacemos la petición al método autocompletar del controlador home 
-		//pasando la variable info
-                $.post('<?php echo site_url("imagen/busqueda_ajax/"); ?>' + info, null, function(data){
-						
-			//si el controlador nos devuelve algo
-			if(data !== ''){
-	
-				//en el div con clase contenedor mostramos la info
-				//$('.contenedor').show();
-				//$(".contenedor").html(data);
-                                $('#cont').empty();
-                                $('#cont').html(data);
-								
-			}else{
-								
-				$('#cont').empty();
-                                $('#cont').html("<strong>No hay datos</strong>");
-								
-			}
-	    })
-					
-    })
-				
-	//buscamos el elemento pulsado con live y mostramos un alert
-	$(".contenedor").find("a").live('click',function(e){
-		e.defaultPrevented;
-                $("input[name=autocompletar]").val($(this).text());
-		//alert($(this).html());
-	});
-			
-})
-      
-    
+//PAGINACIÓN CON JQUERY LOLI
+
+    $(document).ready(function() {
+        $('.tabla').dataTable({
+    	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron resultados en su búsqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+	            "first":    "Primero",
+	            "last":    "Último",
+	            "next":    "Siguiente",
+	            "previous": "Anterior"
+	        },
+        }
+    });
+    } );
 </script>
