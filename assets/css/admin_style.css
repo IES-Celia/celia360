@@ -416,6 +416,8 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
+            color:white;
+            background-color:transparent;
         }
         
         #caja legend{
@@ -460,6 +462,14 @@
             background-color: rgba(0,0,0,0.4);
         }
 
+        input[type="date" i]{
+            color: white;
+            background-color: transparent;
+            
+        }
+
+
+    
 
 
                                         /*          Estilo ventanas modales */
