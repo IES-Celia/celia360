@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 11-03-2018 a las 23:38:55
+-- Tiempo de generación: 13-03-2018 a las 18:50:16
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -44,7 +44,8 @@ INSERT INTO `audio` (`id_aud`, `url_aud`, `desc_aud`, `tipo_aud`) VALUES
 (7, 'assets/audio/audio1.mp3', '', 'd-objeto'),
 (8, 'assets/audio/audio2.mp3', '', 'd-objeto'),
 (9, 'assets/audio/audioportico.mp3', '', 'd-objeto'),
-(10, 'assets/audio/audio4.mp3', '', 'd-objeto');
+(10, 'assets/audio/audio4.mp3', '', 'd-objeto'),
+(11, 'assets/audio/texto1.mp3', 'Texto 1', 'v-guiada');
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,8 @@ INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celd
 (2, 'p2p4', 'assets/imagenes/escenas/p2p4f2.JPG', 'Biblioteca', 0),
 (3, 'p0p4f2', 'assets/imagenes/escenas/p0p4f2.JPG', 'Capilla', 1),
 (5, 'p1p5f1', 'assets/imagenes/escenas/p1p5f1.JPG', 'Dept. Geografía', 1),
-(6, 'p4p4', 'assets/imagenes/escenas/p4p2.JPG', 'Tejado', 2);
+(6, 'p4p4', 'assets/imagenes/escenas/p4p2.JPG', 'Tejado', 2),
+(7, 'p0p5', 'assets/imagenes/destacados/7.jpg', 'dasasd', 3);
 
 -- --------------------------------------------------------
 
@@ -328,6 +330,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (36, 260),
 (36, 262),
 (36, 263),
+(36, 280),
 (37, 79),
 (37, 168),
 (37, 169),
@@ -414,6 +417,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (91, 158),
 (91, 159),
 (92, 156),
+(92, 281),
 (93, 162),
 (93, 163),
 (93, 213),
@@ -775,7 +779,9 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (276, NULL, NULL, '', -13, 10, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0),
 (277, NULL, NULL, '', -16, 155, 'custom-hotspot-salto', 'puntos', 'punto128', 'p1p3f5', 0, 0, 'scene', 0),
 (278, NULL, NULL, '', -13, -116, 'custom-hotspot-salto', 'puntos', 'punto132', 'p1p7f1', 0, 0, 'scene', 0),
-(279, NULL, NULL, '', -15, -80, 'custom-hotspot-salto', 'puntos', 'punto131', 'p1p7f2', 0, 0, 'scene', 0);
+(279, NULL, NULL, '', -15, -80, 'custom-hotspot-salto', 'puntos', 'punto131', 'p1p7f2', 0, 0, 'scene', 0),
+(280, NULL, NULL, '', 41, -80, 'custom-hotspot-audio', 'musica', '4', '', 0, 0, 'info', 0),
+(281, 'Puerta', 'Una puerta muy guapa en el gimnasio', '', 1, 40, 'custom-hotspot-info', 'panelInformacion', '281', '', 0, 0, 'info', 0);
 
 -- --------------------------------------------------------
 
@@ -953,7 +959,12 @@ INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
 (225, 298),
 (255, 209),
 (255, 210),
-(255, 211);
+(255, 211),
+(281, 300),
+(282, 212),
+(282, 211),
+(282, 210),
+(282, 215);
 
 -- --------------------------------------------------------
 
@@ -991,6 +1002,13 @@ CREATE TABLE `portada` (
   `tituloweb` varchar(50) NOT NULL,
   `imagenweb` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `portada`
+--
+
+INSERT INTO `portada` (`id_portada`, `tituloweb`, `imagenweb`) VALUES
+(1, 'CeliaTour', '');
 
 -- --------------------------------------------------------
 
@@ -1139,7 +1157,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `p
 (31, 'Alfredo', 'Alfredo', 'Moreno', '81dc9bdb52d04dc20036dbd8313ed055', 'alfred@gmail.com', 1),
 (33, 'loli', 'loli', '', '81dc9bdb52d04dc20036dbd8313ed055', '', 1),
 (34, 'Miguel', 'Miguel', 'Lopez', '81dc9bdb52d04dc20036dbd8313ed055', 'miguel@gmail.com', 0),
-(36, 'ham', 'hamza', 'ben', '1fd1fa41d6a1720c1a096a70eb472941', 'hamzabenhachmi@gmail.com', 0);
+(36, 'ham', 'hamza', 'ben', '81dc9bdb52d04dc20036dbd8313ed055', 'hamzabenhachmi@gmail.com', 1),
+(38, 'Felix', 'Felix', 'Exposito Lopez', '33eb30894eb347b0ea9e254f30d46cc7', 'el_otro_04@hotmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -1271,7 +1290,7 @@ ALTER TABLE `visita_guiada`
 -- AUTO_INCREMENT de la tabla `audio`
 --
 ALTER TABLE `audio`
-  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
@@ -1296,7 +1315,7 @@ ALTER TABLE `puntos_mapa`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `video`
 --
@@ -1306,7 +1325,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT de la tabla `visita_guiada`
 --
 ALTER TABLE `visita_guiada`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
