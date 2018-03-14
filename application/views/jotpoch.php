@@ -25,14 +25,23 @@
 <body>
 	<div class="contenedor">
 		<div id="panorama">   
+           <div class="boton_menu" id="botoncico"></div> <!--boton menu --> 
          <div id="titulo">MODO INSERCCIÓN DE PUNTOS HOTSPOT</div> 
          <div class="ctrl" id="fullscreen"></div>
         </div>
 	</div>
 	
 <script type="text/javascript">
-    escena_base="";
+escena_base="";
+
+
+    
 $(document).ready(function() {
+    
+$("#botoncico").click(function(){
+    location.href="<?php echo site_url("escenas");?>"
+}); 
+    
   function ayax(){
     $.ajax({
         url: '<?php echo base_url("conversorbd2json/get_json_plataforma/".$escenaInicial) ?>',
@@ -51,28 +60,10 @@ $(document).ready(function() {
     }).fail(function() {
         console.log("error");
     })
-
-    /*$.ajax({
-      url: "<?php echo base_url("conversorbd2json/get_json_plataforma/p1p4") ?>",
-      dataType: 'json',
-      success: function(data){
-        viewer = pannellum.viewer("panorama", data);
-        viewer.loadScene(data.default.firstScene);
-      },
-      error: function(){
-        console.log("ERROR fallo del ajax rico rico");
-      }
-    });*/
 } 
-        
-        
-   /* function cosa(hotspotDiv,args){
-        alert(args);
-    }
-    */
+ 
     function modificarHotspot(hotspotDiv, idjotpoch){
         location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch;
-        //.site_url("/hotspots/show_update_hotspot/".$hotspots['id_hotspot'])
 
     }
 
@@ -82,6 +73,7 @@ $(document).ready(function() {
   });
   ayax();
 });
+    
 // meter en json en un string para poder modificarlo   
 
   
