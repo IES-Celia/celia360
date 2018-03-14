@@ -83,11 +83,11 @@ $('#clickbiblio').on("click",function(){
 });
     // para desactivar el scroll cuando la pantalla sea grande 
 //if ($(window).width()<800){
-    $('html, body').css({
+  /*  $('html, body').css({
         overflow: 'hidden',
         height: '100%'
     });
-
+*/
     // para activar el scroll    
     /*$('#lazo_portada').on('click',function(){
       $('html, body').css({

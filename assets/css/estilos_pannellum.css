@@ -368,6 +368,8 @@ display: block;
   text-align: center;
   font-weight: bold;
   margin-top: 50px;
+  overflow: scroll;
+
   
 }
 
@@ -708,6 +710,8 @@ display: block;
     border:none;
     overflow-y:auto;
     cursor: default;
+    width:90%;
+    height: 90%;
   }
   #titulo{
     color: black;
