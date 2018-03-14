@@ -9,10 +9,12 @@
 
 </head>
     <body>
+        <a href="<?php echo site_url("escenas");?>" class="enlacesidenav">Atrás</a>
         <div id="contenedor">
-     
+        
         <?php 
             $contador = 0 ;
+            
             foreach($puntos_d as $fila){
                 
                 $longitud = count($fila);
