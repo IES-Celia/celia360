@@ -33,7 +33,7 @@
              if($resultado ==1){
                    
                     $data["tablaUsuarios"]= $this->UsuarioModel->buscartodousu(); 
-                    $data["vista"] = "usuario/usuarios";
+                    $data["vista"] = "usuario/mapero";
                      $data["permiso"]=$this->UsuarioModel->comprueba_permisos($data["vista"]);
                      
                     $this->load->view('template_admin',$data);
