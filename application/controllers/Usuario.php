@@ -31,15 +31,25 @@
         
             
              if($resultado ==1){
-                   
-                    $data["tablaUsuarios"]= $this->UsuarioModel->buscartodousu(); 
-                    $data["vista"] = "usuario/mapero";
-                     $data["permiso"]=$this->UsuarioModel->comprueba_permisos($data["vista"]);
-                     
-                    $this->load->view('template_admin',$data);
+                    $this->load->model("Modeloescenas");
+                    $this->load->model("UsuarioModel");
+                    $this->load->model('Mapa','mapa');
+                    $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+                    $datos["mapa"] = $this->mapa->cargar_mapa();
+                    $datos["puntos"] = $this->mapa->cargar_puntos();
+                    $datos["vista"]="escenas/Escenastable";
+                    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+                    $this->load->view('template_admin', $datos);
              }else if($resultado ==2){
-                    $datos["vista"] = "usuario/mapero";
-                    $this->load->view('template_login',$datos);
+                    $this->load->model("Modeloescenas");
+                    $this->load->model("UsuarioModel");
+                    $this->load->model('Mapa','mapa');
+                    $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+                    $datos["mapa"] = $this->mapa->cargar_mapa();
+                    $datos["puntos"] = $this->mapa->cargar_puntos();
+                    $datos["vista"]="escenas/Escenastable";
+                    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+                    $this->load->view('template_admin', $datos);
             }else if($resultado ==3){
                 $datos["tabla"] = $libro->get_info();
                 $datos["vista"] = "libro/IntAdmin";
