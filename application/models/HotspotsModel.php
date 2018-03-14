@@ -215,6 +215,7 @@ class HotspotsModel extends CI_Model {
         SELECT 
         hotspots.titulo_panel,
         hotspots.texto_panel,
+        hotspots.documento_url,
         imagenes.* 
         FROM imagenes 
         INNER JOIN panel_imagenes 

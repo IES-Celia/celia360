@@ -913,3 +913,34 @@ display: block;
   top: 50%;
   transform: translate(-50%,-50%);
 }
+
+/* DOCUMENTO */
+
+#mostrarDocumento{
+  z-index: 3;
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:80%;
+  height: 80%;
+}
+
+#documentoPanel{
+  display:none;
+}
+
+#cerrarDocumento{
+  z-index: 3;
+  display: block;
+  position: absolute;
+  right:1rem;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2.5em;
+  color:white;
+}
+
+#cerrarDocumento:hover {
+  color:crimson;
+}
