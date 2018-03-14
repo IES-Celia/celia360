@@ -89,9 +89,10 @@
 		//crear carpeta con el siguiente id de la base de datos
 		
 		public function getmaxidlibro(){
-            $maxid = $this->db->query("SELECT MAX(id_libro) from libros");
-
-			return $maxid;
+            $maxid = $this->db->query("SELECT MAX(id_libro) AS maximo from libros");
+            $fila = $maxid->result_array();
+                       
+            return $fila[0]["maximo"];
 		}
 
 		public function insertarimagen($id_libro, $pag_ant) {

@@ -73,6 +73,9 @@
 
     <div>
         <?php
+
+            if (isset($mensaje)) echo "<script>alert('$mensaje');</script>";
+
             echo"<a class='insert' onclick='mostrar()' > Insertar Libro</a>"; 
             echo "<table id='cont' style='margin-top:10px;'>";
                     echo "<tr id='cabecera'>
@@ -253,7 +256,7 @@
                               <label>Apaisado</label>
                             </div>
 
-                            <input type='file' class='file-input' name='fichero' accept='image/jpg'  id='input' multiple='true' onchange='handleFiles(this.files)'/><br/><br/>
+                           <br/><br/>
                             <input class='boton' type='submit'>
                         </form>
                         <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
@@ -307,9 +310,14 @@
                 
             }
 
+            function alertid(id_libro){
+               alert("EL nombre de la carpeta que contenga el libro debera ser: "+id_libro);
+            }
             function cerrar(){
+              
                 $("#insertar").hide();
                 $("#modificar").hide();
+
             }  
 
             function ordenacion(a, b) {
