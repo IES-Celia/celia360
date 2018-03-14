@@ -80,11 +80,8 @@ class Hotspots extends CI_Controller {
         $aud = $this->input->post_get("clickHandlerArgs");
         $resultado = $this->hotspotsModel->modificarpuntoaudio($id, $aud);
         $cambio = $this->input->post_get("sceneId");
-        
         if ($resultado == true) {
-            
             redirect('welcome/cargar_escena/' . $cambio . '/show_insert_hotspot/');
-            
         } else {
             $datos["error"] = "No se ha podido modificar el audio";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
@@ -101,7 +98,6 @@ class Hotspots extends CI_Controller {
         if ($resultado == true) {
             $anda=$this->input->post_get("id_scene");
             redirect('welcome/cargar_escena/'.$anda.'/show_insert_hotspot/');
-
         }else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
@@ -111,12 +107,12 @@ class Hotspots extends CI_Controller {
         }
     }
     
-    
     public function delete_hotspot($id){
 
         $resultado = $this->hotspotsModel->borrarHotspot($id);
+        redirect('escenas');
         
-        if ($resultado == 1) {
+       /* if ($resultado == 1) {
             $datos["mensaje"] = "Hotspot borrado correctamente";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
@@ -129,7 +125,7 @@ class Hotspots extends CI_Controller {
             $datos["vista"]="hotspots/hotspotsTable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin',$datos);
-        }
+        }*/
     }
     
     public function show_update_hotspot($id){
@@ -150,20 +146,18 @@ class Hotspots extends CI_Controller {
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "escaleras") {
 			$datos["vista"]="hotspots/updateHotspotEscaleras";
  		}
-		
         $datos["codigo_escena"]=$this->hotspotsModel->cargar_codigo_escena($id);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
+    
     public function updateHotsportVideo(){
               $id = $this->input->post_get("id_hotspot");
 			  $vid = $this->input->post_get("clickHandlerArgs");
 			$resultado=$this->hotspotsModel->modificarpuntovideo($id, $vid);
 		$anda=$this->input->post_get("sceneId");
 		if ($resultado == true) {
-			
 			redirect('welcome/cargar_escena/'.$anda.'/show_insert_hotspot/');
-            
         }else {
             $datos["error"] = "a fallado el cambio de video";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
@@ -171,11 +165,9 @@ class Hotspots extends CI_Controller {
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
         }
-        
 	}
-    public function process_update_hotspot(){
     
-            
+    public function process_update_hotspot(){
             $id = $_REQUEST["id_hotspot"];
             $tipoHotspot = $_REQUEST["cssClass"];
             if($tipoHotspot == "custom-hotspot-info")
@@ -202,8 +194,6 @@ class Hotspots extends CI_Controller {
   
 ////////////////////////////Zygis - MOVIDAS DEL CMS//////////////////////////
 
-
-  
   public function process_insert_panel(){
             $joshua = $this->hotspotsModel->insertarHotspotPanel();
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
@@ -216,16 +206,13 @@ class Hotspots extends CI_Controller {
             $datos["lista_imagenes"] = $this->Img->buscar_todo();
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('template_admin', $datos);
-       
     }
   
     public function process_insert_escaleras(){
             $joshua = $this->hotspotsModel->insertarHotspotEscalera();
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
-            $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-            $datos["vista"]="hotspots/hotspotsTable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            $this->load->view('template_admin', $datos);
+            redirect('escenas');
     }
   
   public function show_panel_info(){
@@ -249,7 +236,6 @@ class Hotspots extends CI_Controller {
         //ERROR
     echo "SE HA MATADO PACO";
     }
-   
     //TODO: añadir mensaje de la situacion.
   }
   
