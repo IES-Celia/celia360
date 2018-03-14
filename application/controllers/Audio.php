@@ -120,33 +120,33 @@ class Audio extends CI_Controller {
 			echo 'No hay resultados';
 		}
 		else {
-        echo"<table align='center' id='cont' border:1><tr>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            </tr>
-            ";
-        foreach ($listaAudios as $audio) {
-            $fila = $audio["id_aud"];
-            $html="";     
-            $html = $html .
-                    '<tr>'
-                    . '<td>' . $fila . '</td>'
-                    . '<td>' . $audio["url_aud"] . '</td>'
-                    . '<td>' . $audio["desc_aud"]. '</td>'
-                    . '<td>' . $audio["tipo_aud"] . '</td>'
-                    .'<td><audio controls="controls" preload="auto">
-	<source src="' . base_url($audio["url_aud"]) . '" type="audio/m4a"/>
-	<source src="' . base_url($audio["url_aud"]) . '" type="audio/mp3"/>
-	</audio></td>'
-				
-                  
-                    . '</tr>';          
-        }
-        echo $html; 
-        echo '</table>';
+        echo"<table id='cont'><tr id='cabecera'>
+<th>ID</th>
+<th>URL</th>
+<th>Descripcion</th>
+<th>Tipo de audio</th>
+<th>Reproducir</th>
+<th>Modificar</th>
+<th>Eliminar</th>
+</tr>
+
+";
+
+foreach ($listaAudios as $re) {
+    $id=$re["id_aud"];
+    echo'<tr id="contenido"><td id="id_aud'.$id.'">' . $re["id_aud"] . '</td>';
+    echo'<td id="url_aud'.$id.'">' . $re["url_aud"] . '</td>';
+    echo'<td id="desc_aud'.$id.'">' . $re["desc_aud"] . '</td>';
+    echo'<td id="tipo_aud'.$id.'">' . $re["tipo_aud"] . '</td>';
+    echo"<td><audio controls='controls' preload='auto'>
+	<source src='" . base_url($re["url_aud"]) . "' type='audio/m4a'/>
+	<source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
+	</audio></td>";
+    echo"<td><a onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
+    echo"<td><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+  
+}
+echo "</table>";
 		}
     }   
     

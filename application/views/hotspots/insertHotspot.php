@@ -3,6 +3,18 @@
         <title> Insert Hotspot </title>
 
     </head>
+    <style>
+    #textoareaPanel{
+    outline: none;
+    display: block;
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 10px;
+    height: 400px;
+    }
+    
+    
+    </style>
 <body>
 <h1> Formulario para Insertar Hotspots </h1>
     <div id="botones">
@@ -68,7 +80,7 @@
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
             Titulo del panel: <input type='text' name='titulo' required><br> 
-            Texto del panel:  <textarea name="texto" rows="4" cols="50" required></textarea><br>
+            Texto del panel:  <textarea id='textoareaPanel' name="texto" rows="6" cols="50" required></textarea><br>
              
 
             <input type='submit' class="button">
