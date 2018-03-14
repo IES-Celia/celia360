@@ -17,6 +17,7 @@
 </head>
     <body>
         <div id="contenedor" style="z-index:1000">
+            <div class="boton_menu" id="botoncico"></div> <!--boton menu --> 
         <?php 
             $contador = 0 ;
             foreach($puntos_d as $fila){ 
@@ -48,6 +49,10 @@
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
         <script>
+            $("#botoncico").click(function(){
+                location.href="<?php echo site_url("index.php");?>"
+            });
+            
             function saltarEscena(codscene){
                 viewer.loadScene(codscene);
                 $("#contenedor").fadeOut();
