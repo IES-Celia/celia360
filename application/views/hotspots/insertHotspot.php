@@ -108,11 +108,11 @@
     <div id="puntoVideo"> 
         <?php
         echo "<form class='for' action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
-			<input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br>
-            Coordenada Pitch: <input type='text' name='pitch' value='<?php echo $pitch ?>'><br> 
-            Coordenada Yaw: <input type='text' name='yaw 'value='<?php echo $yaw ?>'><br> 
-            <input type='hidden' name='cssClass' value='custom-hotspot-video' readonly="readonly"><br> 
-            <input type='hidden' name='tipo' value='info' readonly="readonly"> <br>
+			<input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
+            <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
+             <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>
+            <input type='hidden' name='cssClass' value='custom-hotspot-video' readonly="readonly"> 
+            <input type='hidden' name='tipo' value='info' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='video' readonly="readonly"><br> 
             ID del video que se reproducirá: <input type='text' name='clickHandlerArgs' id='idVideoForm' required><br> 
 

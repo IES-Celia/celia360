@@ -140,7 +140,7 @@
 
 
 <body>
-	 <header id="header_portada"  >
+	 <header id="header_portada" style="margin-top:-110px;"  >
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
@@ -169,7 +169,7 @@
 		       
 		                     
 		          echo "<td class='tablatodo'>";
-		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:50px;padding:10px;'>'".$ides['titulo']."'";
+		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:50px;padding:10px;'>'".$ides['titulo']."'";
 		          echo "</div></td>";
 		      }
 		          if ($i%5 == 0)  echo "</tr><tr class=''>";
@@ -196,7 +196,7 @@
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
 						<?php
-					$directorio = "assets/imgs/books/$id_libro";
+					$directorio = "assets/libros/$id_libro";
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
@@ -207,8 +207,8 @@
 				?>   
 				
 				<?php 
-					for($i=0;$i<$num_pag;$i++){
-						echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
+					for($i=1;$i<$num_pag;$i++){
+						echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
 					}
 							
 				?>

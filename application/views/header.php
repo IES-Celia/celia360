@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
     <script>
+        piso = <?php echo $config_mapa["piso_inicial"]?>;
         piso_maximo = <?php echo count($mapa)?>;
         piso_maximo--;
         base_titulo = '<?php echo $portada[0]["tituloweb"]  ?>';

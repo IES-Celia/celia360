@@ -7,6 +7,7 @@
     <!-- CSS SLICK -->
     <script>
         base_url = '<?php echo base_url() ?>';
+        piso = <?php echo $configuracion["piso_inicial"] ?>
     </script>
     <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
      

@@ -8,8 +8,10 @@ $(document).ready(function() {
 	 */
 	
 		$(".pisos").hide();
+		$("#mapa_escena > .pisos:eq(" + piso + ")").show();
 		$(".pisos:eq(" + piso + ")").show();
-		$(".pisos:eq(" + piso + ")").show();
+		var piso_config = $("#modalConfig > #caja > form > input[name=piso_inicial]").val();
+		$("#modalConfig > #caja > #mapa_escena_hotspot > .pisos_config:eq("+piso_config+")").show();
 		mapa_responsivo();
 		
 	
@@ -76,6 +78,11 @@ $(document).ready(function() {
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
 			$(".for > form > input[name=escena_celda]").val($(this).attr("escena"));
+		} else if ($(this).parent().hasClass("pisos_config")){
+			$("#modalConfig > #caja > #mapa_escena_hotspot > .pisos_config > .puntos").css("background-color", "white")
+			$("#modalConfig > #caja > form > input[name=punto_inicial]").val($(this).attr("id"))
+			$("#modalConfig > #caja > form > input[name=escena_inicial]").val($(this).attr("escena"))
+			$(this).css("background", "yellow");
 		}else{
 			location.href = base_url + "welcome/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"
 		}
@@ -98,16 +105,27 @@ $(document).ready(function() {
 		$("#modalEditar").show();
 		$("#modalEditar").find("input[name=posicion]").val(piso);
 		$("#modalEditar").find("input[name=posicion_inicial]").val(piso);
-	})
+	});
 	$("#btn-eliminar-mapa").click(function () {
 		if(confirm("Desea eliminar la zona, tambien se eliminara cualquier escena y hotspot relacionado.")){
 			location.href=base_url+"MapaAdmin/eliminar_zona/"+piso+"/"+piso_maximo;
 		}
-	})
+	});
 	$("#btn-anadir-mapa").click(function () {
 		$("#modalAnadir").show();
 		$("#modalAnadir").find("input[name=posicion]").val(piso);
-	})
+	});
+
+	$("#btn-config-mapa").click(function () {
+		$("#modalConfig").show();
+		
+	});
+
+	$("#modalConfig > #caja > form > input[name=piso_inicial]").change(function(){
+		var piso_config = $(this).val();
+		$("#mapa_escena_hotspot > .pisos_config").hide();
+		$("#mapa_escena_hotspot > .pisos_config:eq(" + piso_config + ")").show();
+	});
 
 	$("#caja > form > input[value='Cerrar']").click(function(){
 		$(this).parent().parent().parent().hide();
@@ -155,17 +173,17 @@ function mapa_responsivo(){
  */
 function subir_piso(){
 	if(piso<piso_maximo){
-		$(".pisos:eq("+piso+")").hide('fast');
+		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
 		piso++;
-		$(".pisos:eq("+piso+")").show('fast');	
+		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');	
 	}
 }
 
 function bajar_piso(){
 	if(piso>0){
-		$(".pisos:eq("+piso+")").hide('fast');
+		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
 		piso--;
-		$(".pisos:eq("+piso+")").show('fast');	
+		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');	
 	}
 }
 

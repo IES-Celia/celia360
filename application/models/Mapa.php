@@ -32,6 +32,7 @@
 			$query = $this->db->query('SELECT * FROM config_mapa')->result_array();
 			$resultado["piso_inicial"]=$query[0]["piso_inicial"];
 			$resultado["punto_inicial"]=$query[0]["punto_inicial"];
+			$resultado["escena_inicial"]=$query[0]["escena_inicial"];
 			return $resultado;
 		}
 
@@ -224,5 +225,15 @@
 			$this->db->query("SET foreign_key_checks=1;");
 
 			
+		}
+
+		public function update_config(){
+			$piso = $this->input->post_get("piso_inicial");
+			$punto = $this->input->post_get("punto_inicial");
+			$escena = $this->input->post_get("escena_inicial");
+			$sql = "UPDATE config_mapa SET piso_inicial='$piso', punto_inicial='$punto', escena_inicial='$escena'";
+			$resultado = $this->db->query($sql);
+
+			return $resultado;
 		}
 	}
