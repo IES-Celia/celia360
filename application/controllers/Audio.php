@@ -79,14 +79,17 @@ class Audio extends CI_Controller {
         $this->load->view("template_admin", $datos);
     }
     
+        //ATENCIÓN CAMBIO LOLI
     public function obtenerListaAudiosAjax() {
-        $listaAudios = $this->Audm->buscaraud(0, $this->audios_por_pagina);
+        $listaAudios = $this->Audm->buscaraudio();
         $html = '<script>'
                     . '       function seleccionarAudio(idAudio) {'
                     . '             document.getElementById("idAudioForm").value = idAudio;'
                     . '       }'
                     . '</script>';
-        echo"<table align='center' id='cont' border:1><tr>
+        echo"<table align='center' class='tabla' class='display' id='cont' border:1>
+            <thead>
+            <tr>
             <th>ID</th>
             <th>URL</th>
             <th>Descripcion</th>
@@ -94,6 +97,18 @@ class Audio extends CI_Controller {
             <th>Reproducir</th>
             <th>Seleccionar</th>
             </tr>
+            </thead>
+            <tfoot>
+            <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Descripcion</th>
+            <th>Tipo de audio</th>
+            <th>Reproducir</th>
+            <th>Seleccionar</th>
+            </tr>
+            </tfoot>
+            <tbody>
             ";
         foreach ($listaAudios as $audio) {
             $fila = $audio["id_aud"];
@@ -109,11 +124,50 @@ class Audio extends CI_Controller {
 	<source src="' . base_url($audio["url_aud"]) . '" type="audio/mp3"/>
 	</audio></td>'
                     . '<td onClick="seleccionarAudio('.$fila.')"><a href="#">Seleccionar</a></td>'
-                    . '</tr>';          
+                    . '</tr>'
+                    . '</tbody>';          
         }
         echo $html; 
         echo '</table>';
     }   
+    //FIN CAMBIO LOLI
+    
+    
+//    public function obtenerListaAudiosAjax() {
+//        $listaAudios = $this->Audm->buscaraud(0, $this->audios_por_pagina);
+//        $html = '<script>'
+//                    . '       function seleccionarAudio(idAudio) {'
+//                    . '             document.getElementById("idAudioForm").value = idAudio;'
+//                    . '       }'
+//                    . '</script>';
+//        echo"<table align='center' id='cont' border:1><tr>
+//            <th>ID</th>
+//            <th>URL</th>
+//            <th>Descripcion</th>
+//            <th>Tipo de audio</th>
+//            <th>Reproducir</th>
+//            <th>Seleccionar</th>
+//            </tr>
+//            ";
+//        foreach ($listaAudios as $audio) {
+//            $fila = $audio["id_aud"];
+//                    
+//            $html = $html .
+//                    '<tr>'
+//                    . '<td>' . $audio["id_aud"] . '</td>'
+//                    . '<td>' . $audio["url_aud"] . '</td>'
+//                    . '<td>' . $audio["desc_aud"]. '</td>'
+//                    . '<td>' . $audio["tipo_aud"] . '</td>'
+//                    .'<td><audio controls="controls" preload="auto">
+//	<source src="' . base_url($audio["url_aud"]) . '" type="audio/m4a"/>
+//	<source src="' . base_url($audio["url_aud"]) . '" type="audio/mp3"/>
+//	</audio></td>'
+//                    . '<td onClick="seleccionarAudio('.$fila.')"><a href="#">Seleccionar</a></td>'
+//                    . '</tr>';          
+//        }
+//        echo $html; 
+//        echo '</table>';
+//    }   
     public function busqueda_ajaxaud($abuscar="") {
         $listaAudios = $this->Audm->buscar_ajaxaud($abuscar);
         if ($listaAudios == false) {
@@ -149,13 +203,34 @@ foreach ($listaAudios as $re) {
 echo "</table>";
 		}
     }   
-    
-
-
 
 }
 
 ?>
+<script>
+//PAGINACIÓN CON JQUERY LOLI
+
+    $(document).ready(function() {
+        $('.tabla').dataTable({
+    	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron resultados en su búsqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+	            "first":    "Primero",
+	            "last":    "Último",
+	            "next":    "Siguiente",
+	            "previous": "Anterior"
+	    },
+        }
+        });
+    } );
+
+</script>
 
 
  

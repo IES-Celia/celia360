@@ -32,14 +32,14 @@
 
         echo "
 
-<h1> Formulario para UPDATE Hotspots Audio </h1>
+        <h1> Formulario para UPDATE Hotspots Audio </h1>
 
-<fieldset class='for'>
+        <fieldset class='for'>
 
-<form action=' " . site_url("hotspots/updateHotspotAudio") . " ' method='get'>
+        <form action=' " . site_url("hotspots/updateHotspotAudio") . " ' method='get'>
 
 	Coordenadas donde se situa el punto:<br>
-    <a href='" . site_url('welcome/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificarlos</a><br><br>
+        <a href='" . site_url('welcome/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificarlos</a><br><br>
 	
 	<div id='puntoAudio'> 
        
@@ -54,16 +54,16 @@
             Audio que se reproducirá al clickar en el punto: <input type='text' name='clickHandlerArgs' id='idAudioForm' value='" . $tabla['clickHandlerArgs'] . "'><br> 
         
         
-    </div>
-	<input type='hidden' name='id_hotspot' value='" . $tabla['id_hotspot'] . "'>
+        </div>
+            <input type='hidden' name='id_hotspot' value='" . $tabla['id_hotspot'] . "'>
 	
 	
-	<input type='submit' class='button'>
-	<a href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
-    >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
+            <input type='submit' class='button'>
+            <a href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
+        >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
 	
-</form>
-</fieldset>
+        </form>
+    </fieldset>
 
 ";/**  Cierre echo * */
         ?>

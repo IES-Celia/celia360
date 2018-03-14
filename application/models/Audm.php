@@ -24,6 +24,19 @@ class AudM extends CI_Model {
         return $r;
     }
 
+    //ATENCIÓN CAMBIO LOLI
+    public function buscaraudio() {
+        $sel = "select * from audio";
+        $res = $this->db->query($sel);
+        $tabla = array();
+        foreach ($res->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
+    
+    //FIN CAMBIO LOLI
+    
     public function buscaraud($a, $b) {
         $sel = "select * from audio limit $a,$b";
         $res = $this->db->query($sel);
