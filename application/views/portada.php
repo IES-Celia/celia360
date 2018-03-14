@@ -229,6 +229,12 @@
                <!-- Ventana Modal -->
               <div class="modal">
                 <div class="overlay"></div>
+                <div id='documentoPanel'>
+                  <a id="cerrarDocumento" href="#">&times;</a>            
+                    <object id='mostrarDocumento' data="" type="application/pdf">
+                    Tu navegador no soporta esta funcion, intente abrirlo con el enlace.<a href="data/test.pdf">prueba.pdf</a>
+                  </object>   
+                </div>
                 <div class="modal__contents">
                  <a class="modal__close" href="#">&times;</a>
                  <h2 id="titulo"></h2>
@@ -243,7 +249,12 @@
                  </div>
                 <div id="texto">
                 
-                </div>
+                </div> 
+                <button id='botonDoc'>hola</button>
+              
+                         
+                
+                
               </div>
             </div>
          
@@ -555,7 +566,11 @@ peticion.done(function(datos){
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
     $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
   }
-  //Pone el indice
+
+  var urlDocumento = "<?php echo base_url("assets/documentos-panel/");?>"+prueba[0].documento_url;
+  $("#mostrarDocumento").attr("data",urlDocumento);
+  
+  //Poner el indice
   var slideIndex = 1;
   showSlides(slideIndex);  
 });
@@ -809,6 +824,17 @@ peticion.done(function(resultado){
     $('#panel_audio_libre').show();
 });
 }
+
+$("#botonDoc").click(function (e) { 
+    $("#documentoPanel").show();
+  
+  
+});
+
+$("#cerrarDocumento").click(function (e) { 
+  $("#documentoPanel").hide();
+  
+});
     
 </script>      
 <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
