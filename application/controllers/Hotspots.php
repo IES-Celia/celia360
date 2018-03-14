@@ -24,7 +24,7 @@ class Hotspots extends CI_Controller {
     
     public function show_insert_hotspot($pitch, $yaw, $idescena) {
         $this->load->model('Mapa','mapa');
-
+        $datos["documentos"]= $this->hotspotsModel->getAllDocumentos();
 	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
         $datos["id_scene"]= $idescena;

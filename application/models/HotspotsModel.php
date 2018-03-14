@@ -137,9 +137,10 @@ class HotspotsModel extends CI_Model {
         //Panel
         $titulo = $this->input->post_get("titulo"); //
         $texto = $this->input->post_get("texto"); //
+        $documento = $this->input->post_get("documentoPanel");
         // insercción del punto en la tabla hotspot
-        $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto')";
-        $this->db->query($insrt);
+        $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','$documento')";
+        $this->db->query($sql);
 
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
@@ -271,7 +272,7 @@ class HotspotsModel extends CI_Model {
 
         $id_hotspot = $id;
         //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
-        $sql = "SELECT url_aud FROM audio WHERE id_aud='$id_hotspot'";
+        $sql ="INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
         $resultado = $this->db->query($sql);
         $resultado->result_array();
         echo json_encode($resultado);
@@ -340,6 +341,16 @@ class HotspotsModel extends CI_Model {
         $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo) VALUES('$idhotspot','$pitch','$yaw','$cssClass','$clickHandlerFunc','$clickHandlerArgs','$tipo')";
         $this->db->query($insrt);
         return $this->db->affected_rows();
+    }
+
+    public function getAllDocumentos(){
+        $resultado = $this->db->query("SELECT documento_url FROM panel_informacion");
+        $tabla = array();
+        foreach ($resultado->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+
     }
 
 }

@@ -10,8 +10,18 @@
     width: 100%;
     padding: 7px;
     margin-bottom: 10px;
-    height: 400px;
+    height: 300px;
+    overflow-y:scroll;
+    font-family:"verdana";
+    border: 1px solid grey;
+    font-size:0.6rem;
+   
     }
+
+     textarea {
+   font-family: inherit;
+   font-size: inherit;
+}
     
     
     </style>
@@ -81,8 +91,19 @@
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
             Titulo del panel: <input type='text' name='titulo' required><br> 
             Texto del panel:  <textarea id='textoareaPanel' name="texto" rows="6" cols="50" required></textarea><br>
-             
-
+            <label>seleccionar documento (OPCIONAL)</label>
+            <select name="documentoPanel">
+            <option value="ninguno">ninguno</option>
+                <?php 
+                    foreach ($documentos as $doc) {
+                        $documento=$doc["documento_url"];
+                        $documentoIdentificador= $doc["id_documento"];
+                       
+                            echo "<option value=$documento>$documento</option>";
+                    }
+                ?>
+            </select>
+            <br><br>
             <input type='submit' class="button">
         </form>
     </div>   
