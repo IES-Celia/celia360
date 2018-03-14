@@ -47,11 +47,32 @@
 
 
 
+		public function borrarDir($directorio){
+			$archivos = scandir($directorio); 
+			$num = count($archivos);
+			chmod("$directorio", 0777);
+
+			$res = TRUE;
+
+			for ($i=2; $i<$num; $i++) {
+			 $res = unlink ($directorio.$archivos[$i]);
+			 if (!$res) break;
+			}
+
+			if ($res) $res = rmdir ($directorio);
+			return $res;
+		}
+
 		public function deletelibro($id_libro){
-            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
-         	
-            return  $this->db->affected_rows();
-			
+            $directorio = "assets/imgs/books/$id_libro/";
+            $res = $this->borrarDir($directorio);
+            if ($res) {
+	            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
+	            return $this->db->affected_rows();
+	        }
+	        else {
+	        	return 0;
+	        }
 		}
 
 
