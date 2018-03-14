@@ -227,157 +227,103 @@ body{
     </div>
 </header>
 
-<div class="container_creditos">
-  
-  <div id='izq_creditos'>IZQ</div>
-  <div id='der_creditos'>DER</div>
-  <div class="grid_creditos">
-    <div class="celda_creditos">
-      <img src="http://placehold.it/200x200" class="responsive-image">
-      <span class='hover_nombre'>Manolo</span>
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-    <div class="celda_creditos">
-    <div class='hover_nombre'>Manolo</div>
-      <img src="http://placehold.it/200x200" class="responsive-image">
-    </div>
-
-  </div>
-  
-</div>
-
 
 <div id='prueba_contenedor'>
 
     <div id='prueba_cartas'>
-        <div class='prueba_carta'>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-        <div>
-        <h2>PEPE</h2>
-        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-            </div>
+
         <hr class='separador_creditos'>
+
         <div class='prueba_carta'>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
+
+            <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
         </div>
 
-        <div>
-        <h2>PEPE</h2>
-        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-            </div>
         <hr class='separador_creditos'>
+
         <div class='prueba_carta'>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
+
+            <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
         </div>
 
-        <div>
-        <h2>PEPE</h2>
-        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
+         <hr class='separador_creditos'>
+
+        <div class='prueba_carta'>
+
+            <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
             </div>
-            <hr class='separador_creditos'>
-            <div class='prueba_carta'>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
         </div>
 
-        <div>
-        <h2>PEPE</h2>
-        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
+         <hr class='separador_creditos'>
+
+        <div class='prueba_carta'>
+
+            <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
             </div>
-            <hr class='separador_creditos'>
-            <div class='prueba_carta'>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
+
+              <div>
+                <h2>Manolo</h2>
+                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+            </div>
         </div>
 
-        <div>
-        <h2>PEPE</h2>
-        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-            </div>
-            <hr class='separador_creditos'>
-            <div class='prueba_carta'>
-        <div>
-        <h2>Manolo</h2>
-            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-
-        <div>
-        <h2>PEPE</h2>
-        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-            <div class='redes'>Linkedin , BADO , Vodafone</div>
-        </div>
-            </div>
-            <hr class='separador_creditos'>
-            <div class='prueba_carta'>
-        <div>
-       
         
+        
+         
+
     </div>
+
 </div>
 
 
