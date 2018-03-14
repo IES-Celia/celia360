@@ -55,11 +55,12 @@ class Biblioteca extends CI_Controller {
 		$this->load->view('template_admin', $datos);
 	}
 
-	public function modifiedLibro($id_libro)
+	public function modifiedLibro()
 	{
-		$resultado=$this->bibliotecaModel->update($id_libro);
+		$resultado=$this->bibliotecaModel->update();
 		if($resultado){
 				$datos["tabla"] = $this->bibliotecaModel->get_info();
+				$datos["maxid"] = $this->bibliotecaModel->getmaxidlibro();
                 $datos["vista"]="biblioteca/intadmin";
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 				$this->load->view('template_admin',$datos);
