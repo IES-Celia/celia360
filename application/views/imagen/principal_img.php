@@ -169,8 +169,8 @@ $du = $lista_imagenes[0];
 	            "last":    "Último",
 	            "next":    "Siguiente",
 	            "previous": "Anterior"
-	        },
+	    },
         }
-    });
+        });
     } );
 </script>

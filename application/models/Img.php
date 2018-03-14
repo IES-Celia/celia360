@@ -1,13 +1,34 @@
 <?php
-
+/** 
+  * Las operaciones de la base de datos se deben colocar en un modelo, para que puedan reutilizarse fácilmente más adelante.
+  * Clase Img que extiende del Modelo base de Codeigniter, que carga la librería de base de datos.
+  * Esto hará que la clase de base de datos esté disponible a través del $this->dbobjeto.
+  * 
+  * @author: María Dolores Salmeron Sierra
+  */
 class Img extends CI_Model {
-
+    
+    /**
+     * Constructor, ejecuta un proceso predeterminado cuando se crea una instancia de su clase
+     * 
+     * 
+     * 
+     * @author: María Dolores Salmeron Sierra
+     */
     public function __construct() {
         parent::__construct();
         $this->load->database();
     }
-
+    
+    /**
+     * Inserta un registro en la tabla "imagenes" de la base de datos
+     * Sube al servidor el fichero de la imagen, crea una miniatura de la imagen en el servidor
+     * 
+     * @return $resultado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
+     * @author: María Dolores Salmeron Sierra
+     */
     public function insertar_imagen() {
+        
         $resultado = array();
 
         $id_imagen = $this->input->post_get('id_imagen');
@@ -63,7 +84,14 @@ class Img extends CI_Model {
         return $resultado;
     }
 
-    //Modifica los datos de la imagen
+    /**
+     * Modifica un registro en la tabla "imagenes" de la base de datos 
+     * Sube al servidor el fichero de la nueva imagen, crea una miniatura de la imagen en el servidor
+     * 
+     * @return $resultado | $fichero_actualizado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
+     * @author: María Dolores Salmeron Sierra
+     */
+
     public function modificar_imagen() {
 
         $fichero_actualizado = false;
@@ -120,8 +148,12 @@ class Img extends CI_Model {
             return $resultado | $fichero_actualizado;
         }
     }
-
-    //buscar todos los datos    
+    /**
+     * Busca todos los registros de la tabla "imagenes" de la base de datos
+     * 
+     * @return $lista, nos devuelve todos los registros de la tabla "imagenes" 
+     * @author: María Dolores Salmeron Sierra    
+     */   
     public function buscar_todo() {
 
         $res = $this->db->query("SELECT * FROM imagenes");
@@ -131,8 +163,14 @@ class Img extends CI_Model {
         }
         return $lista;
     }
-
-    //Eliminar imagen
+    /**
+     * Elimina un registro en la tabla "imagenes" de la base de datos 
+     * Elimina del servidor el fichero de la imagen y el fichero de la imagen en miniatura
+     * 
+     * @return $this->db->affected_rows(), si se ha realizado correctamente
+     * @param $id, el identificador de la imagen
+     * @author: María Dolores Salmeron Sierra 
+     */
     public function borrar_imagen($id) {
 
         $miconsulta = "SELECT url_imagen FROM imagenes WHERE id_imagen = '$id'";
@@ -154,8 +192,13 @@ class Img extends CI_Model {
         $this->db->query($q);
         return $this->db->affected_rows();
     }
-
-    // Busca una imagen en la BD y devuelve sus datos en un array
+    /**
+     * Busca un registro en la tabla "imagenes" de la base de datos
+     * 
+     * @param $id, el identificador de la imagen
+     * @return $tabla, devuelve sus datos en un array
+     * @author: María Dolores Salmeron Sierra       
+     */
     public function buscar_imagen($id) {
 
         $miconsulta = "SELECT * FROM imagenes WHERE id_imagen = '$id'";
@@ -163,8 +206,18 @@ class Img extends CI_Model {
         $tabla = $select->result_array();
         return $tabla;
     }
+    
+    /**
+     * Buscador de cadenas de caracteres con AJAX
+     * 
+     * @param $abuscar, la cadena a buscar
+     * @return $lista, devuelve los resultados de la búsqueda
+     * @return FALSE, no hay resultados coincidentes con la cadena a buscar
+     * @author: María Dolores Salmeron Sierra   
+     */
     //buscador con ajax
     public function buscar_ajax($abuscar) {
+        
         //usamos after para decir que empiece a buscar por
         //el principio de la cadena
         //ej SELECT titulo_imagen from imagenes 

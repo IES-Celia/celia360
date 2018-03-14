@@ -1,24 +1,48 @@
 <?php
 
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
-
+/**
+ * Clase Imagen que extiende del controlador base de Codeigniter, para que pueda heredar todos sus métodos
+ * 
+ * @author: María Dolores Salmeron Sierra
+ */
 class Imagen extends CI_Controller {
 
+    /**Constructor, ejecuta un proceso predeterminado cuando se crea una instancia de su clase
+     * 
+     * @author: María Dolores Salmeron Sierra
+     */
     public function __construct() {
+        
         parent::__construct();
         $this->load->model("UsuarioModel");
     }
-
+    /**
+     * El método "index()" se carga de manera predeterminada, llama al método lista_imagenes()
+     * 
+     * @author: María Dolores Salmeron Sierra
+     */
+    
     public function index() {
         $this->lista_imagenes();
     }
 
+    /**
+     * Muestra el formulario para insertar una imagen
+     * 
+     * @author: María Dolores Salmeron Sierra     
+     */
     public function formulario_insertar_imagen() {
         $datos["vista"] = "imagen/formulario_insertar_imagen";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
 
+    /**
+     * Inserta una imagen y nos muestra el mensaje si ha sido un éxito o no
+     * 
+     * @author: María Dolores Salmeron Sierra    
+     */
     public function insertar_imagen() {
 
         //cargar el modelo
@@ -43,6 +67,11 @@ class Imagen extends CI_Controller {
         }
     }
 
+    /**
+     * Muestra una tabla con el listado de imágenes
+     * 
+     * @author: María Dolores Salmeron Sierra     
+     */
     public function lista_imagenes() {
         //cargar el modelo
         $this->load->model("Img");
@@ -54,6 +83,12 @@ class Imagen extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
 
+    /**
+     * Muestra el formulario para modificar la imagen
+     * 
+     * @param $id, el identificador de la imagen
+     * @author: María Dolores Salmeron Sierra     
+     */
     public function modificar_imagen($id) {
 
         //cargar el modelo
@@ -67,6 +102,11 @@ class Imagen extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
 
+    /**
+     * Actualiza la imagen y muestra un mensaje si se ha realizado correctamente o no
+     * 
+     * @author: María Dolores Salmeron Sierra
+     */
     public function actualizar_imagen() {
         //cargar el modelo
         $this->load->model("Img");
@@ -91,6 +131,12 @@ class Imagen extends CI_Controller {
         $this->load->view('template_admin', $datos);
     }
 
+    /**
+     * Borra la imagen
+     *  
+     * @param $id_imagen, el identificador de la imagen  
+     * @author: María Dolores Salmeron Sierra  
+     */
     public function borrar_imagen($id_imagen) {
 
         //cargar el modelo
@@ -104,7 +150,14 @@ class Imagen extends CI_Controller {
             echo $resultado;
         }
     }
-    
+    /**
+     * Busca la cadena especificada en el título de la imagen
+     * 
+     * 
+     * @return los resultados obtenidos, que coinciden con la cadena introducida o no hay resultados 
+     * @param $abuscar, la cadena que introducimos en el buscador  
+     * @author: María Dolores Salmeron Sierra  
+     */
     public function busqueda_ajax($abuscar = "") {
         //cargar el modelo
         $this->load->model("Img");
