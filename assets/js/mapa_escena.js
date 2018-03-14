@@ -95,7 +95,7 @@ $(document).ready(function() {
 	});
 	
 	$("#btn-editar-mapa").click(function () {
-		$("#modalEditar").toggle();
+		$("#modalEditar").show();
 		$("#modalEditar").find("input[name=posicion]").val(piso);
 		$("#modalEditar").find("input[name=posicion_inicial]").val(piso);
 	})
@@ -105,9 +105,14 @@ $(document).ready(function() {
 		}
 	})
 	$("#btn-anadir-mapa").click(function () {
-		$("#modalAnadir").toggle();
+		$("#modalAnadir").show();
 		$("#modalAnadir").find("input[name=posicion]").val(piso);
 	})
+
+	$("#caja > form > input[value='Cerrar']").click(function(){
+		$(this).parent().parent().parent().hide();
+	});
+
 });
 
 

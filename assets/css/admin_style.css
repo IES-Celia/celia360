@@ -354,6 +354,18 @@
             margin-bottom: 13px;
 
         }
+        #caja input[type=number]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
+
+        }
 
         #caja input[type=password]{
             border: none;
@@ -491,6 +503,34 @@
     #insertar{
         display:none;
         z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
+    }
+
+    #modalAnadir{
+        display:none;
+        z-index: 3;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        border: 3px solid ;
+        background-color:rgb(0,0,0); 
+        background-color:rgba(0,0,0,0.4);
+    }
+
+    #modalEditar{
+        display:none;
+        z-index: 3;
         position: fixed;
         top: 0;
         left: 0;
