@@ -54,11 +54,11 @@ class Hotspots extends CI_Controller {
      public function update_escena_pitchyaw($pitch, $yaw, $codescena) {
 	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
+        $datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $codescena);
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
 		$datos["mapa"] = $this->mapa->cargar_mapa();
 		$datos["puntos"] = $this->mapa->cargar_puntos();
-        $datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $codescena);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
@@ -68,7 +68,7 @@ class Hotspots extends CI_Controller {
         $datos["yaw"]= $yaw;
         $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
         $datos["vista"]="escenas/Escenastable";
-        $datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $codescena, $idhotspot);
+        $datos["resultado"] = $this->hotspotsModel->modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot);
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
