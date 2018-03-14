@@ -240,17 +240,18 @@
                  <h2 id="titulo"></h2>
                  <hr class='mensaje_separador_negro'></hr>
                  <div id="gallery">
-                   <img src="">
+                  <div class='mas_img_div' onclick="openModal();">
+                  <div class='mas_imagenes'></div>
+                  <p style="text-align:center;">&plus; Imagenes</p>
+                  </div>
+                <img src="">
                  </div>
                  <hr class='mensaje_separador_negro'></hr>
-                 <div class='mas_img_div' onclick="openModal();">
-                 <div class='mas_imagenes'></div>
-                 <p style="text-align:center;">Más Imagenes</p>
-                 </div>
+                 
                 <div id="texto">
                 
                 </div> 
-                <button id='botonDoc'>hola</button>
+                <button id='botonDoc'>Ver mas</button>
               
                          
                 

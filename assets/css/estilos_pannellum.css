@@ -538,12 +538,11 @@ display: block;
 .mas_imagenes {
   height: 40px;
   width: 40px;
-  margin: 0 auto;
-  display:block;
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url("svg/gallery_icon.svg");
+  margin:0 auto;
 }
 
 .mas_img_div p{
@@ -553,6 +552,14 @@ display: block;
 
 .mas_img_div{
   cursor:pointer;
+  position:absolute;
+  bottom:5px;
+  left:70%;
+  transform:translateX(-70%);
+  z-index: 3;
+  color:white;
+  font-weight: normal;
+  font-size: 0.9rem;
 }
 
 /* fondo negro cuando se abre */
@@ -710,8 +717,10 @@ display: block;
     border:none;
     overflow-y:auto;
     cursor: default;
-    width:90%;
-    height: 90%;
+    width:95%;
+    height:400px;
+    overflow-x: hidden;
+    word-break: break-all;
   }
   #titulo{
     color: black;
@@ -727,6 +736,10 @@ display: block;
     display: block;
     margin-left: auto;
     margin-right: auto; 
+  }
+
+  #gallery{
+    position:relative;
   }
 
 
@@ -943,4 +956,9 @@ display: block;
 
 #cerrarDocumento:hover {
   color:crimson;
+}
+
+#botonDoc{
+  display:block;
+  margin:10px auto;
 }
