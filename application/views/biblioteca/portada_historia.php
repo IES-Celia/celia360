@@ -2,19 +2,19 @@
 <html>
 <head>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
-  <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-   <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/bookblock.css");?>" />
-		<!-- custom demo style -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/demo1.css");?>" />
-		<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
+  	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+   	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/bookblock.css");?>" />
+	<!-- custom demo style -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/demo1.css");?>" />
+	<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
 
-		<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-		<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
 	
 
 		<style type="text/css">
@@ -47,13 +47,13 @@
 		    idlibro = $(this).attr("idlibro");
 		    apaisado = $(this).attr("apaisado");
 		    tipo = $(this).attr("tipo");
-		    location.href = '<?php echo site_url("Conversorbd2json/index");?>';
+		    location.href = '<?php echo site_url("biblioteca/abrir_phistoria");?>';
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
 		$(document).keyup(function(e) {
 		    if (e.keyCode == 27) { // escape key maps to keycode `27`
-		   	 location.href = '<?php echo site_url("Conversorbd2json/index/");?>';
+		   	 location.href = '<?php echo site_url("biblioteca/abrir_phistoria");?>';
 		    }
 		});
 
@@ -129,7 +129,7 @@
 			<a href="#" class="cerrarBook">x</a>
 			<header>	
 			</header>
-			<div class="main clearfix" style="width:60%;">
+			<div class="main clearfix">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
 						<?php
@@ -160,13 +160,13 @@
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>
-				
+					
 				</div>
 				<?php 
-						echo " 
-							<div class='descargar' style=''> 
-								<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#FF0000;padding:15px;color:white;border-radius:10px;float:right;margin-top:-75px;margin-left:50px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
-							</div>"; 
+					echo " 
+						<div class='descargar' style=''> 
+							<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 93%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+						</div>"; 
 				?>
 			</div>
 

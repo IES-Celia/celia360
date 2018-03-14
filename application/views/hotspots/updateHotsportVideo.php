@@ -39,32 +39,26 @@ echo "
 
 <form action=' ".site_url("hotspots/updateHotsportVideo")." ' method='get'>
 
-	Coordenada Pitch y Yaw:<br> 
+	Coordenadas donde se situa el punto:<br>
     <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
 	<div id='puntoVideo'> 
        
-			Escena: <input type='text' name='sceneId' id='sceneId' readonly='readonly' value='".$codigo_escena."'><br>
-			idhotspor: <input type='text' name='id_scene'  readonly='readonly' value='".$tabla['id_hotspot']."'><br>
-            Coordenada Pitch: <input type='text' name='pitch' value='".$tabla['pitch']."'><br> 
-            Coordenada Yaw: <input type='text' name='yaw 'value='".$tabla['yaw']."'><br> 
-            cssClass: <input type='text' name='cssClass' value='custom-hotspot-video' readonly='readonly'><br> 
-            Tipo: <input type='text' name='tipo' value='info' readonly='readonly'> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='video' readonly='readonly'><br> 
-			
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs' id='idVideoForm' value='".$tabla['clickHandlerArgs']."'><br> 
+			<input type='hidden' name='sceneId' id='sceneId' readonly='readonly' value='".$codigo_escena."'><br>
+			<input type='hidden' name='id_scene'  readonly='readonly' value='".$tabla['id_hotspot']."'><br>
+            <input type='hidden' name='pitch' value='".$tabla['pitch']."'><br> 
+            <input type='hidden' name='yaw 'value='".$tabla['yaw']."'><br> 
+            <input type='hidden' name='cssClass' value='custom-hotspot-video' readonly='readonly'><br> 
+            <input type='hidden' name='tipo' value='info' readonly='readonly'> <br>
+            <input type='hidden' name='clickHandlerFunc' value='video' readonly='readonly'><br> 
+            ID del video que se reproducirá al clickar: <input type='text' name='clickHandlerArgs' id='idVideoForm' value='".$tabla['clickHandlerArgs']."'><br> 
 
-
-            
-        
-        
     </div>
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
 	
 	
 	<input type='submit' class='button'>
-	<a href=
-    '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
+	<a href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
     >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
 	
 </form>

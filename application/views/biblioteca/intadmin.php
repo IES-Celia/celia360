@@ -2,62 +2,35 @@
     
 
     <style type="text/css">
-            #modificar{
-                display:none;
-                z-index: 1;
-                position: fixed;
-                top: 10%;
-                left: 30%;
-                width: 600px;
-                height: 660px;
-                background-color: #ffffff;
-                border: 3px solid ;
-            }
-
-            #insertar{
-                display:none;
-                z-index: 1;
-                position: fixed;
-                top: 10%;
-                left: 30%;
-                width: 600px;
-                height: 580px;
-                background-color: #ffffff;
-                border: 3px solid ;
-            }
-
-            .file-input {
-              visibility: hidden;
-              width: 0;
-              float: left;
-            }
-            .file-input::before {
-              content: 'Insertar paginas';
-              display: inline-block;
-              background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
-              border: 1px solid #999;
-              border-radius: 3px;
-              padding: 5px 8px;
-              outline: none;
-              white-space: nowrap;
-              -webkit-user-select: none;
-              cursor: pointer;
-              text-shadow: 1px 1px #fff;
-              font-weight: 700;
-              font-size: 10pt;
-              visibility: visible;
-              position: absolute;
-            }
-            .file-input:hover::before {
-              border-color: black;
-            }
-            .file-input:active::before {
-              background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
-            }
-            .enviar{
-                top: 1500px;
-            }
-
+           
+        label{
+        
+            margin-left: 10px;
+        
+        }
+        
+        #caja input[type=text]{
+            
+            width:70%;            
+        }
+        
+        .img-cerrar{
+         
+            width: 20px; height: 20px;
+        }
+ 
+        .cerrar{
+            
+            position:relative;
+            top:-480px;
+            left:44%;
+        }
+        
+        .cerrar1{
+            position:relative;
+            top:-410px;
+            left:44%;
+        }
     </style>
 
     <script>
@@ -130,10 +103,18 @@
                             <td id='editorial_libro_".$id."'>".$usu["editorial"]."</td>
                             <td id='lugar_edicion_".$id."'>".$usu["lugar_edicion"]."</td>
                             <td id='fecha_edicion_".$id."'>".$usu["fecha_edicion"]."</td>
-                            <td id='isbn_libro_".$id."'>".$usu["ISBN"]."</td>
-                            <td >".$usu["tipo"]."</td>
-                            <td '>".$usu["apaisado"]."</td>
-                            <td>
+                            <td id='isbn_libro_".$id."'>".$usu["ISBN"]."</td>";
+                            if($usu["tipo"]==0){
+                                echo "<td>Biblioteca</td>";
+                              }else{
+                                echo "<td>Historia</td>";
+                              }
+                              if($usu["apaisado"]==0){
+                                echo "<td>Normal</td>";
+                              }else{
+                                echo "<td>Apaisado</td>";
+                              }                            
+                            echo" <td>
                             <a onclick='mostrarm(".$usu['id_libro'].")'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
                             <td><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
                             <td><a href='#' onclick='borrarlibro(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
@@ -204,10 +185,11 @@
                                   <span class='bar'></span>
                                   <label>Apaisado</label>
                                 </div>
-                            
+                            <input type='hidden' id='modif_id_libro' name='id_libro'>
                             <input type='submit' class='enviar'>
                         </form>
-                        <a href='#' onclick='cerrar()'>Cerrar</a>
+                        <a class='cerrar1' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
                     </div> ";
                  echo "</div>";
                  echo "</div>";
@@ -274,7 +256,8 @@
                             <input type='file' class='file-input' name='fichero' accept='image/jpg'  id='input' multiple='true' onchange='handleFiles(this.files)'/><br/><br/>
                             <input class='boton' type='submit'>
                         </form>
-                        <a href='#' onclick='cerrar()'>Cerrar</a>
+                        <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
                     </div>
                 ";
                  echo "</div>";
@@ -307,7 +290,7 @@
                 lugar_edicion = document.getElementById("lugar_edicion_"+id_libro).innerHTML;
                 fecha_edicion = document.getElementById("fecha_edicion_"+id_libro).innerHTML;
                 isbn = document.getElementById("isbn_libro_"+id_libro).innerHTML;
-
+                pasar_id=id_libro;
 
                 $("#modif_titulo").val(titulo);
                 $("#modif_autor").val(autor);
@@ -315,7 +298,8 @@
                 $("#modif_lugar_edicion").val(lugar_edicion);
                 $("#modif_fecha_edicion").val(fecha_edicion);
                 $("#modif_isbn").val(isbn);
-                
+                $("#modif_id_libro").val(pasar_id);
+
                 $("#modificar").show();
             }
             function mostrar(){

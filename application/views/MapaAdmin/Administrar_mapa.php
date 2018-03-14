@@ -1,19 +1,30 @@
 <div id="modalEditar" class="modalMapa" style="display: none;">
-    <form action='<?php echo site_url("MapaAdmin/editar_zona"); ?>' method="post" enctype='multipart/form-data'>
-        Nueva posicion<input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa)-1; echo $maxZonas; ?>">
-        <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
-        Posicion inicial<input type="text" name="posicion_inicial" readonly><br>
-        <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>
-        <button type="submit">Actualizar</button>
-    </form>
+    <div id="caja">
+        <form action='<?php echo site_url("MapaAdmin/editar_zona"); ?>' method="post" enctype='multipart/form-data'>
+            <h1>Editar zona</h1>
+            <label for="posicion">Nueva posición</label>
+            <input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa)-1; echo $maxZonas; ?>">
+            <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
+            <label for="posicion_inicial">Posición inicial</label>
+            <input type="text" name="posicion_inicial" readonly><br>
+            <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>
+            <input type="submit" value="Modificar">
+            <input type="button" value="Cerrar">
+        </form>
+    </div>
 </div>
 <div id="modalAnadir" class="modalMapa" style="display: none;">
-    <form action='<?php echo site_url("MapaAdmin/crear_zona"); ?>' method="post" enctype='multipart/form-data'>
-        Posición:<input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas; ?>">
-        <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
-        <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>
-        <button type="submit">Añadir</button>
-    </form>
+    <div id="caja">
+        <form action='<?php echo site_url("MapaAdmin/crear_zona"); ?>' method="post" enctype='multipart/form-data'>
+            <h1>Añadir zona</h1>
+            <label for="posicion">Posición:</label>
+            <input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas; ?>">
+            <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
+            <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>
+            <input type="submit" value="Añadir">
+            <input type="button" value="Cerrar">
+        </form>
+    </div>
 </div>
 <?php
    echo '<div id="mapa_escena">';

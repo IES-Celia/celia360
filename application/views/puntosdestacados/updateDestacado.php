@@ -5,7 +5,7 @@
 		echo "<script>";
 		echo "piso_maximo = ".count($mapa).";";
         echo "piso_maximo--";
-        echo "</script>";
+        echo "</script>";   // maravilloso
 	?>
 	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 	<script src='<?php echo base_url('assets/js/mapa_escena.js')?>'></script>

@@ -116,10 +116,7 @@
             
             $resultado=$this->upload->do_upload('panorama');
                 
-                echo $this->upload->display_errors();
-			
-            if($resultado==1) {
-//                unlink($imagen_borrar);
+
                 //////////////////////
                 //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
                 /////////////////////
@@ -129,7 +126,8 @@
                 $id = $_REQUEST["Id"];
                 $panorama = $this->upload->data()["client_name"];
                
-                
+          
+            if($resultado!=0 || $name !=" ") {
                
                 $update = "
 
@@ -148,7 +146,6 @@
                 return $this->db->affected_rows();
             }
             else { 
-                echo $resultado;
 
                 echo $this->upload->display_errors();
             }

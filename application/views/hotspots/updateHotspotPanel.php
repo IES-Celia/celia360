@@ -38,7 +38,7 @@ echo "
 
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
-	Coordenada Pitch y Yaw:<br> 
+	Coordenadas donde se situa el punto:<br> 
     <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
     
 	titulo_panel : <input type='text' value='".$tabla['titulo_panel']."' name='titulo_panel'> </br> </br>

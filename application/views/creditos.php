@@ -28,6 +28,7 @@ body{
   margin: 0 auto;
   max-width: 900px;
   padding: 10rem 1rem;
+  display:none;
 }
 
 .responsive-image {
@@ -57,12 +58,16 @@ body{
 
 /* HEADER */
 #header_portada {
-    width: 100%;
-    background: url('../imagenes/portada/header-bg2.png');
     height: 110px;
-    position: absolute;
+    position: fixed;
     margin-top: 0px;
+    background-color:black;
+    width: 100%;
     
+}
+body{
+    height:3000px;
+    width:auto;
 }
 
 .contenedor_portada{ 
@@ -123,8 +128,7 @@ body{
 }
 
 #header_portada{
-    background-color:rgba(0.0,0.0,0.0,0.70);
-    width: 100%;
+    
 }
 
 #nav_portada img{
@@ -144,7 +148,7 @@ body{
     background-position: center;
     margin-top:10px;
     margin-right:20px;
-    transition:transform 0.1s ease-out
+    transition:transform 0.1s ease-out;
 }
 
 #volver_atras:hover{
@@ -173,7 +177,28 @@ body{
     position:absolute;
     z-index:2;
     top:95px;
-    left:305px;
+    left:307px;
+}
+
+#prueba_contenedor{
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 10rem 1rem;
+ 
+}
+
+.separador_creditos{
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    margin:50px 0;
+    border:0;
+    height: 2px;
+}
+.prueba_carta{
+    display:flex;
+    justify-content: space-between;
+}
+#prueba_cartas{
+    margin-top:100px;
 }
 
 
@@ -184,18 +209,19 @@ body{
     svg de volver atras
     "background-image: url('.base_url(sdsdsd).')"
 -->
-<div id='selector_creditos'></div>
+
 <header id="header_portada">
     <div class="contenedor_portada">
     <nav id="nav_portada">
         <ul>
-            <li><div id='volver_atras' style="<?php echo $enlace_volver; ?>"></div></li>
+            <li><a href="<?php echo site_url("index.php");?>"><div id='volver_atras' style="<?php echo $enlace_volver; ?>"></div></a></li>
             <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
-            <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Tour's</a></li>
-            <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Biblioteca</a></li>
-            <li><a href="<?php echo site_url("Puntos_destacados/cargar_puntosdestacados"); ?>" id="opciondestacada_portada">Administracion</a></li>
-            <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Dise&ntilde;o</a></li>
-            <li><a href="<?php echo site_url("welcome");?>" id="creditos_portada">Colaboradores</a></li>
+            <li><a id="creditos_tour" class='creditos_header'>Tour's</a></li>
+            <li><a id="creditos_biblioteca" class='creditos_header'>Biblioteca</a></li>
+            <li><a id='creditos_administracion' class='creditos_header'>Administracion</a></li>
+            <li><a id="creditos_diseno" class='creditos_header'>Dise&ntilde;o</a></li>
+            <li><a id="creditos_colaboradores" class='creditos_header'>Colaboradores</a></li>
+            
         </ul>
     </nav>
     </div>
@@ -255,7 +281,163 @@ body{
   
 </div>
 
-<script>
+
+<div id='prueba_contenedor'>
+
+    <div id='prueba_cartas'>
+        <div class='prueba_carta'>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+        <div>
+        <h2>PEPE</h2>
+        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+            </div>
+        <hr class='separador_creditos'>
+        <div class='prueba_carta'>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+
+        <div>
+        <h2>PEPE</h2>
+        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+            </div>
+        <hr class='separador_creditos'>
+        <div class='prueba_carta'>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+
+        <div>
+        <h2>PEPE</h2>
+        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+            </div>
+            <hr class='separador_creditos'>
+            <div class='prueba_carta'>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+
+        <div>
+        <h2>PEPE</h2>
+        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+            </div>
+            <hr class='separador_creditos'>
+            <div class='prueba_carta'>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+
+        <div>
+        <h2>PEPE</h2>
+        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+            </div>
+            <hr class='separador_creditos'>
+            <div class='prueba_carta'>
+        <div>
+        <h2>Manolo</h2>
+            <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+
+        <div>
+        <h2>PEPE</h2>
+        <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
+            <div class='redes'>Linkedin , BADO , Vodafone</div>
+        </div>
+            </div>
+            <hr class='separador_creditos'>
+            <div class='prueba_carta'>
+        <div>
+       
+        
+    </div>
+</div>
+
+
+  <hr class='separador_creditos'>
+    <h2 align='center'>Tour's</h2>
+
+    <hr class='separador_creditos'>
+    <h2 align='center'>Biblioteca</h2>
+
+    <hr class='separador_creditos'>
+    <h2 align='center'>Administracion</h2>
+
+    <hr class='separador_creditos'>
+    <h2 align='center'>Diseno</h2>
+
+    <hr class='separador_creditos'>
+    <h2 align='center'>Colaboradores</h2>
+
+    <hr class='separador_creditos'>
+
+<script type='text/javascript'>
+
+$(window).scroll( function() {
+    var value = $(this).scrollTop();
+    $(".creditos_header").each(function (index, element) {
+        $(this).css("font-size","1.5rem");
+        $(this).css("color","white");
+        $(this).css("font-weight","normal");
+        $(this).css("border-bottom","3px solid transparent");
+    });
+
+    if(value > 100 && value < 300){   
+        $("#creditos_tour").css("font-size","1.9rem");
+        $("#creditos_tour").css("color","DarkOrange");
+        $("#creditos_tour").css("font-weight","bold");
+        $("#creditos_tour").css("border-bottom","2px solid DarkOrange");
+    } else if(value > 300 && value < 800){
+        $("#creditos_biblioteca").css("font-size","1.9rem");
+        $("#creditos_biblioteca").css("color","DarkOrange");
+        $("#creditos_biblioteca").css("font-weight","bold");
+        $("#creditos_biblioteca").css("border-bottom","2px solid DarkOrange");
+    } else if(value > 800 && value < 1200){
+        $("#creditos_administracion").css("font-size","1.9rem");
+        $("#creditos_administracion").css("color","DarkOrange");
+        $("#creditos_administracion").css("font-weight","bold");
+        $("#creditos_administracion").css("border-bottom","2px solid DarkOrange");
+    } else if(value > 1200 && value < 1500){
+        $("#creditos_diseno").css("font-size","1.9rem");
+        $("#creditos_diseno").css("color","DarkOrange");
+        $("#creditos_diseno").css("font-weight","bold");
+        $("#creditos_diseno").css("border-bottom","2px solid DarkOrange");
+    } else if (value > 1500 && value < 1900){
+        $("#creditos_colaboradores").css("font-size","1.9rem");
+        $("#creditos_colaboradores").css("color","DarkOrange");
+        $("#creditos_colaboradores").css("font-weight","bold");
+        $("#creditos_colaboradores").css("border-bottom","2px solid DarkOrange");
+    }
+    
+});
+
 
 $(".celda_creditos").hover(function(){
     $(this).find(".hover_nombre").fadeIn("fast");

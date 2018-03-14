@@ -12,7 +12,7 @@
         <button class="buttonfor" id="insertarAudio">Audio</button>
         <button class="buttonfor" id="insertarVideo">Video</button>
         <button class="buttonfor" id="insertarEscaleras">Escaleras</button>
-        <button class="buttonfor" id="modificarPitchYaw">Modificar Pitch y Yaw (de esta escena)</button><br><br>
+        <button class="buttonfor" id="modificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
@@ -25,7 +25,7 @@
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
-            Escena de destino: <input type='text' name='sceneId' readonly='readonly'><br>
+            Escena de destino (en rojo donde estás, amarillo el seleccionado): <input type='text' name='sceneId' required><br>
             <button id="btn-bajar-piso" type="button">Bajar piso</button>
             <button id="btn-subir-piso" type="button">Subir piso</button>
             <div id="mapa_escena_hotspot" >
@@ -44,11 +44,7 @@
                             }else{
                                 echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
                             }
-                            
-                        
-                        
                         }
-                        
                     }
                     echo "</div>";
                     $indice++;
@@ -71,8 +67,9 @@
             <input type='hidden' name='tipo' value='info' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
-            Nombre del objeto: <input type='text' name='titulo'><br> 
-            Descripción del objeto:  <input type='text' name='texto'><br> 
+            Titulo del panel: <input type='text' name='titulo' required><br> 
+            Texto del panel:  <textarea name="texto" rows="4" cols="50" required></textarea><br>
+             
 
             <input type='submit' class="button">
         </form>
@@ -81,13 +78,13 @@
     <div id="puntoAudio"> 
         <?php
         echo "<form class='for' action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
-            Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
-            Coordenada Pitch: <input type='text' name='pitch' value='<?php echo $pitch ?>'><br> 
-            Coordenada Yaw: <input type='text' name='yaw' value='<?php echo $yaw ?>'><br> 
-            cssClass: <input type='text' name='cssClass' value='custom-hotspot-audio' readonly="readonly"><br> 
-            Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='musica' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs' id='idAudioForm'><br> 
+            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
+            <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
+            <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>
+            <input type='hidden' name='cssClass' value='custom-hotspot-audio' readonly="readonly">
+            <input type='hidden' name='tipo' value='info' readonly="readonly">
+            <input type='hidden' name='clickHandlerFunc' value='musica' readonly="readonly">
+            ID del audio que se reproducirá al hacer click: <input type='text' name='clickHandlerArgs' id='idAudioForm' required><br> 
 
 
             <input type='submit' class="button">
@@ -99,14 +96,13 @@
     <div id="puntoVideo"> 
         <?php
         echo "<form class='for' action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
-			Escena: <input type='text' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br>
+			<input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br>
             Coordenada Pitch: <input type='text' name='pitch' value='<?php echo $pitch ?>'><br> 
             Coordenada Yaw: <input type='text' name='yaw 'value='<?php echo $yaw ?>'><br> 
-            cssClass: <input type='text' name='cssClass' value='custom-hotspot-video' readonly="readonly"><br> 
-            Tipo: <input type='text' name='tipo' value='info' readonly="readonly"> <br>
-            clickHandlerFunc: <input type='text' name='clickHandlerFunc' value='video' readonly="readonly"><br> 
-            clickHandlerArgs: <input type='text' name='clickHandlerArgs' id='idVideoForm'><br> 
-
+            <input type='hidden' name='cssClass' value='custom-hotspot-video' readonly="readonly"><br> 
+            <input type='hidden' name='tipo' value='info' readonly="readonly"> <br>
+            <input type='hidden' name='clickHandlerFunc' value='video' readonly="readonly"><br> 
+            ID del video que se reproducirá: <input type='text' name='clickHandlerArgs' id='idVideoForm' required><br> 
 
             <input type='submit' class="button">
         </form>

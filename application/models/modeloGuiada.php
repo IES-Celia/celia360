@@ -44,10 +44,9 @@ class ModeloGuiada extends CI_Model {
         $filePath = 'assets/imagenes/previews-guiada/';
         $nombreImagen="prev".$idEscena;
         $config['upload_path'] = $filePath;
-        $config['allowed_types'] = '*';
+        $config['allowed_types'] = 'jpg|png|jpeg';
         $config['file_name'] = $nombreImagen;
         $config['overwrite'] = TRUE;
-
        //cargar la librería
        $this->load->library('upload', $config);
        //Realiza la carga según las preferencias que ha establecido.
@@ -55,39 +54,26 @@ class ModeloGuiada extends CI_Model {
 
         if ($resultado_subida == false) {
             $malasuerte = $this->upload->display_errors("<i>", "</i>");
-            print_r($malasuerte);
+            var_dump($malasuerte);
+           // $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
+            //$this->db->query($sql);
+            $resultado = -1;
         } else {
             //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
             $imgFile = $this->upload->data('client_name');
             //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
             $tmp_dir = $this->upload->data('file_name');
-
             $sql="UPDATE visita_guiada SET img_preview='$tmp_dir' WHERE id_visita='$idEscena'";
-
             $this->db->query($sql);
-            // Deberia cambiarle el tamaño de la imagen preview subida!
-            /*
-            $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
-            copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/previews-guiada/'.$nombre_miniatura);
-            $config['image_library'] = 'gd2';
-            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
-            $config['maintain_ratio'] = TRUE;
-            $config['width'] = 450;
-            $config['height'] = 450;
-            $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
-            */
-
-
-
+            $resultado = 1;
         }
-        
-        return $this->db->affected_rows();
-
+        return $resultado;
     }
     
     public function borrarEscenaGuiada($idEscena) {
-        $resultado = $this->db->query("DELETE FROM visita_guiada WHERE id_visita='$idEscena'");
+        $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
+        $resultado = $this->db->query($sql);
+        echo($sql);
         return $this->db->affected_rows();
     }
 
@@ -114,6 +100,23 @@ class ModeloGuiada extends CI_Model {
         return $this->db->affected_rows();
 
 
+    }
+
+    public function ordenarTabla(){
+        $nombreColumna = $_POST['nombreColumna'];
+        $orden = $_POST['orden'];
+
+        $sql = "SELECT * FROM visita_guiada order by ".$nombreColumna." ".$orden." ";
+
+        $resultado = $this->db->query($sql);
+        $array = array();
+
+        foreach ($resultado->result_array() as $fila) {
+            $array[] = $fila;
+        }
+
+        return $array;
+        
     }
 
 

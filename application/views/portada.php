@@ -67,7 +67,7 @@
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
                   <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
-                 <li><a id="creditos_portada" href="" >Creditos</a></li>
+                 <li><a id="creditos_portada" href="<?php echo site_url("welcome"); ?>" >Creditos</a></li>
              </ul>
             </nav>
             </div>
@@ -302,7 +302,7 @@
             <!--
             <div data-tilt data-tilt-transition="true" data-tilt-scale="1.2" class="js_tilt">
                <div class="container_imagen">
-             <img src="<?php echo base_url("assets/imagenes/generales/glosario1.jpg");?>" class="imagen">
+             <img src="<?php //echo base_url("assets/imagenes/generales/glosario1.jpg");?>" class="imagen">
               <div class="overlay_imagen">
                <p class="texto">Glosario</p></div></div>
               </div>

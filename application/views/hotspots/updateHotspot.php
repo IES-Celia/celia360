@@ -39,20 +39,19 @@ echo "
 
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
-	Coordenada Pitch y Yaw:<br> 
+	Coordenadas donde se situa el punto:<br>
     <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
     
-	Targets Pitch y Yaw (hacia donde mirará en la escena objetivo):<br> 
+	Hacia donde estará orientada la vista en la imagen 360 a la que se salta:<br> 
     <a href='".site_url('welcome/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
-    sceneId (escena a la que irá): <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>
+    Escena destino: <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>
     Pon esto a 1 sino quieres que aparezca en Puntos Destacados (para delimitar zonas)<br><input type='number' max='1' min='0' value='".$tabla['cerrado_destacado']."' name='cerrado_destacado'>
 
 	<input type='hidden' name='cssClass' value='".$tabla['cssClass']."'>
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
 	<input type='submit' class='button'>
-	<a href=
-    '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
+	<a href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
     >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
 	
 </form>
