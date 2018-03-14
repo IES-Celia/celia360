@@ -26,11 +26,46 @@
         </form>
     </div>
 </div>
+<div id="modalConfig" style="display: none;">
+    <div id="caja">
+        <form action='<?php echo site_url("MapaAdmin/update_config"); ?>' method="post" enctype='multipart/form-data'>
+            <h1>Modificar Configuración</h1>
+            <label for="piso_inicial">Piso inicial</label>
+            <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+            <input type="hidden" name="punto_inicial">
+            <input type="hidden" name="escena_inicial">
+            <input type="submit" value="Añadir">
+            <input type="button" value="Cerrar">
+        </form>
+        <?php
+                echo '<div id="mapa_escena_hotspot">';
+                        $indice = 0;
+                
+                        foreach ($mapa as $imagen) {
+                            echo "<div id='p".$indice."' class='pisos_config' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
+                        
+                        
+                            foreach ($puntos as $punto) {
+                                if($punto['piso']==$indice){
+                                
+                                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+                                    <span class='tooltip'>".$punto['id_escena']."</span>
+                                    </div>";
+                                
+                                }
+                            }
+                        echo "</div>";
+                        $indice++;
+                        }
+                ?>
+                </div>
+    </div>
+</div>
+
+
 <?php
    echo '<div id="mapa_escena">';
          $indice = 0;
-   
-          $pisos = array('0' => "sotano", '1' => "primer_piso", "2" => "segundo_piso", "3" => "tercer_piso", "4" => "tejado" );
    
          foreach ($mapa as $imagen) {
              echo "<div id='p".$indice."' class='pisos' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
@@ -58,6 +93,7 @@
     <button id="btn-bajar-piso-admin">Bajar zona</button>
     <button id="btn-editar-mapa">Editar zona</button>
     <button id="btn-anadir-mapa">Añadir zona</button>
+    <button id="btn-config-mapa">Config general</button>
     <button id="btn-eliminar-mapa">Eliminar zona</button>
 </div>
 

@@ -2,6 +2,10 @@
 	height: 100%;
 	background-size: 100% 100%;
 }
+.pisos_config{
+	height: 100%;
+	background-size: 100% 100%;
+}
 
 #mapa_escena{
     z-index: 2;
@@ -56,18 +60,4 @@
 
     position: absolute;
     z-index: 1;
-}
-.modalMapa{
-    position: fixed;
-    z-index: 3;
-    margin: auto;
-    background: white;
-    display: inline-flex;
-    width: 500px;
-    height: 500px;
-    left: 32%;
-    border: 1px solid black;
-}
-.modalMapa>form, #modalEditar>form>input{
-    margin: auto;
 }

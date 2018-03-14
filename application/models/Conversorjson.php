@@ -2,15 +2,14 @@
 
 class Conversorjson extends CI_Model {
 
-  public function get_datos_libre() {
+  public function get_datos_libre($datos) {
     $this->load->database();
-    
     
     $sql = "SELECT * FROM escenas";
     $res =  $this->db->query($sql);
     $flagObj=false;
     $flagHot=false;
-    $json = ' {"default": {"firstScene": "p1p2f3","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "assets/imagenes/generales/preview22.png","hotSpotDebug": false },  "scenes": {';
+    $json = ' {"default": {"firstScene": "'.$datos["inicio"]["escena_inicial"].'","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "assets/imagenes/generales/preview22.png","hotSpotDebug": false },  "scenes": {';
     //$query->result_array() as $row
     
     foreach ($res->result_array() as $escena) {

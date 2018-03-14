@@ -20,7 +20,9 @@ class Conversorbd2json extends CI_Controller {
   }
 
   public function get_json_libre() {
-    $json = $this->conversorjson->get_datos_libre();
+    $this->load->model("Mapa","mapa");
+    $datos["inicio"] = $this->mapa->cargar_config();
+    $json = $this->conversorjson->get_datos_libre($datos);
     echo $json;
   }
     

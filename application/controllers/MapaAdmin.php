@@ -9,6 +9,7 @@ class mapaadmin extends CI_Controller {
     public function index(){
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
+        $datos["configuracion"] = $this->mapa->cargar_config();
         $datos["vista"] = "MapaAdmin/Administrar_mapa";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin',$datos);
@@ -34,6 +35,14 @@ class mapaadmin extends CI_Controller {
 
     public function eliminar_zona($piso,$piso_maximo){
         $this->mapa->eliminar_zona($piso,$piso_maximo);
+        $datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
+        $datos["vista"] = "MapaAdmin/Administrar_mapa";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('template_admin',$datos);
+    }
+    public function update_config(){
+        $resultado = $this->mapa->update_config();
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["vista"] = "MapaAdmin/Administrar_mapa";
