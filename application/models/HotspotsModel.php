@@ -272,12 +272,11 @@ class HotspotsModel extends CI_Model {
     public function cargar_audio($id) {
 
         $id_hotspot = $id;
-        //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
-        $sql ="INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
-        $resultado = $this->db->query($sql);
-        $resultado->result_array();
-        echo json_encode($resultado);
+        $sql ="SELECT url_aud FROM audio WHERE id_aud='$id_hotspot'";
+        $resultado = $this->db->query($sql)->result_array()[0]["url_aud"];
+        echo $resultado;
     }
+
 
     public function insertarHotspotAudio() {
 

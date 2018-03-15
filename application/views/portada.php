@@ -818,13 +818,12 @@ function musica(hotspotDiv,args){
 });
 
 peticion.done(function(resultado){
-  var prueba = JSON.parse(resultado);
-  var enlace_audio = prueba.result_array[0].url_aud;
-  alert(enlace_audio);
-  var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
+  var enlace_audio = resultado;
+  enlace_audio=enlace_audio.trim(enlace_audio);
+  var enlace_audio_correcto = "<?php echo current_url();?>"+enlace_audio;
   $("#audio_libre").attr("src",enlace_audio_correcto);
   var pantalleo = $("#panel_audio_libre").css("display");
-
+  $("#audio_libre")[0].play();
   if(pantalleo=="block")
     $('#panel_audio_libre').hide();
   else
