@@ -13,11 +13,12 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
             foreach ($escenas as $escena) {
                 $codEscena=$escena["cod_escena"];
                 $nombreEscena=$escena["Nombre"];
-                if(empty($nombreEscena)){
+                echo "<option value=$codEscena>$codEscena</option>";
+                /*if(empty($nombreEscena)){
                     echo "<option value=$codEscena>$codEscena</option>";
                 } else {
                     echo "<option value=$codEscena>$nombreEscena</option>";
-                }
+                }*/
             }
         ?>
     </select>
@@ -44,7 +45,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
             $(document).ready(function () {
                 $("#escenaGuiada").change(function (e) { 
-                    $("#titulo_escena").val($(this).val());
+                    //$("#titulo_escena").val($(this).val());
                 });
             });
 

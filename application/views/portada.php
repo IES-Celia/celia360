@@ -667,14 +667,15 @@ function audio_guiada(indice){
   $('#audio_libre').attr("src","");
   $('#audio_guiada').attr("src",array_audios[indice]);
   viewer.loadScene(array_escenas[indice]);
-    
+  //Deseleccionar el hightlight  
   $(".titulo_slider").each(function(){
     $(this).removeClass("highlight_slider");
   });
-  
+  //Añadir borde al carrusel
   $('.slider-nav').slick('slickGoTo',indice,true);    
   var prueba =$('.titulo_slider').get(indice);
   $(prueba).addClass("highlight_slider");
+  //Cargar titulo, mostrar panel y iniciar audio.
   $(".titulo_guiada").text(array_titulo[indice]);
   $('#panel_audio_guiada').show();
   $("#audio_guiada")[0].play();

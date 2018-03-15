@@ -172,7 +172,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 	  alert("Debes seleccionar alguna imagen!");
     } else {
 
-      var escena = "<?php echo $escena_actual;?>";
+    var escena = "<?php echo $escena_actual;?>";
     var prueba = [];
     //Valor temporal para probar si funciona
     var hotspot = $("#idhs").val();
