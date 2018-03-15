@@ -11,7 +11,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 <html>
 <head>
   <style>
-  
+ 
   #contenedor_img {
   display:flex;
   align-items: flex-end;
@@ -22,6 +22,9 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   flex-wrap: wrap;
   width: 50%;
   height: 70%;
+  background-color:rgba(0,0,0,0.2);
+  border-radius:20px;
+  padding:20px;
 }
     
   #imgHS > a {
@@ -34,9 +37,13 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   flex-flow: column wrap;
   margin: 0 20px;
   align-self:flex-start;
+  background-color:rgba(0,0,0,0.2);
+  border-radius:20px;
+  padding:20px;
+  font-family:"verdana";
 }
   .borderojo{
-   border: 2px solid red;
+   border: 2px solid white;
 }
 
   #img_seleccionadas { 
@@ -62,15 +69,10 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   <body>
   <?php
 
-	if (isset($error)) {
-		echo "<p style='color:red'>".$error."</p>";
-	}
-	if (isset($mensaje)) {
-		echo "<p style='color:blue'>".$mensaje."</p>";
-	}
+
 
   
-  echo "<h2 align='left' style='color:white;'>Imagenes disponibles</h2>
+  echo "<h2 align='left' style='color:white;font-family:verdana; margin-left:10px;'>Imagenes disponibles</h2>
   <div id='contenedor_img'>
   <br><div id='imgHS'>";
   
@@ -93,8 +95,8 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
  ?>
     </div>
 <div id='panel'>
- <h2>Imagenes Seleccionadas</h2><br>
- HotSpot ID
+ <h2 style='color:white'>Imagenes Seleccionadas</h2><br>
+ <div style='color:white'>HotSpot ID</div>
  <input type="text" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
  <ul id='img_seleccionadas'>
  

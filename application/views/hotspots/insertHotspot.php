@@ -79,7 +79,7 @@
 
     <div id="puntoPanel"> 
         <?php
-        echo "<form class='for' action='".site_url("hotspots/process_insert_panel")."' method='get'>"; ?>
+        echo "<form class='for' enctype='multipart/form-data' action='".site_url("hotspots/process_insert_panel")."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'> 
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
             <input type='hidden' name='yaw' value='<?php echo $yaw ?>'> 
@@ -90,18 +90,21 @@
             Titulo del panel: <input type='text' name='titulo' required><br> 
             Texto del panel:  <textarea id='textoareaPanel' name="texto" rows="6" cols="50" required></textarea><br>
             <label>seleccionar documento (OPCIONAL)</label>
+            <input type="file" name="documento" placeholder="Seleccionar la imagen" required><br>
+            <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+            <!--
             <select name="documentoPanel">
             <option value="ninguno">ninguno</option>
                 <?php 
-                    foreach ($documentos as $doc) {
+                    /*foreach ($documentos as $doc) {
                         $documento=$doc["documento_url"];
                         $documentoIdentificador= $doc["id_documento"];
                        
                             echo "<option value=$documento>$documento</option>";
-                    }
+                    }*/
                 ?>
             </select>
-            <br><br>
+            <br><br>-->
             <input type='submit' class="button">
         </form>
     </div>   
