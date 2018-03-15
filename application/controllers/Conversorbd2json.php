@@ -4,6 +4,7 @@ class Conversorbd2json extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model("conversorjson");
+        $this->load->model("UsuarioModel");
     } 
 
   public function index(){
@@ -49,22 +50,30 @@ class Conversorbd2json extends CI_Controller {
   public function formulario_portada(){ 
       $this->load->model("PortadaModel");
       $datos["tabla"]= $this->PortadaModel->info_portada();
-      $this->load->view("updatePortada", $datos);
+      $datos["vista"]="portada/updatePortada";
+      $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+      $this->load->view("template_admin", $datos);
   }
   
   public function modificar_titulo(){
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->editar_titulo();   
     $datos["tabla"]= $this->PortadaModel->info_portada();
-    $this->load->view("updatePortada", $datos);
+    $datos["vista"]="portada/updatePortada";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+
+    $this->load->view("template_admin", $datos);
 
   }
 
   public function modificar_imagen(){
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->editar_imagen();   
-    $datos["tabla"]= $this->PortadaModel->info_portada();
-    $this->load->view("updatePortada", $datos);
+    $datos["tabla"]= $this->PortadaModel->info_portada();      
+    $datos["vista"]="portada/updatePortada";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+
+    $this->load->view("template_admin", $datos);
 
   }    
   
