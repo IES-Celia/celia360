@@ -11,7 +11,7 @@
 		<div id="cualquiera">
 			<?php  
 			
-			$directorio = "assets/libros/books/$idlibro";
+			$directorio = "assets/libros/$idlibro";
 			$arrayPag = scandir($directorio);
 			$num_pag = count($arrayPag)-2;
 			
