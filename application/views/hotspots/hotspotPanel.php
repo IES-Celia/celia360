@@ -5,7 +5,7 @@ $yaw = $_REQUEST["yaw"];
 $pitch = $_REQUEST["pitch"];
 
 
-$urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/null";
+$urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
 
 ?>
 <html>

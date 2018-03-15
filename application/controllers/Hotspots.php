@@ -238,7 +238,7 @@ class Hotspots extends CI_Controller {
     
     $resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
     if($resultado[0] > 0){
-        echo base_url("/welcome/cargar_escena/".$resultado[1]."/show_insert_hotspot");
+        echo base_url("/welcome/cargar_escena/".$resultado[1]."/show_insert_hotspot/null");
     }else{
         //ERROR
     echo "SE HA MATADO PACO";
