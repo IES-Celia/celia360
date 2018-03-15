@@ -59,12 +59,16 @@ class Biblioteca extends CI_Controller {
 	{
 		$resultado=$this->bibliotecaModel->update();
 		if($resultado){
-				$datos["tabla"] = $this->bibliotecaModel->get_info();
-				$datos["maxid"] = $this->bibliotecaModel->getmaxidlibro();
-                $datos["vista"]="biblioteca/intadmin";
-                $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-				$this->load->view('template_admin',$datos);
-			}
+				$datos["mensaje"] = "Libro modificado con éxito";
+		}
+		else {
+				$datos["error"] = "Error al modificar el libro";
+		}
+		$datos["tabla"] = $this->bibliotecaModel->get_info();
+		$datos["maxid"] = $this->bibliotecaModel->getmaxidlibro();
+        $datos["vista"]="biblioteca/intadmin";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+		$this->load->view('template_admin',$datos);
 	}
 
 	public function vertodosloslibros($idlibro = -1,$apaisado = -1,$tipo=-1){

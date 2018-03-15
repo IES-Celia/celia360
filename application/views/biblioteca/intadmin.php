@@ -74,8 +74,7 @@
     <div>
         <?php
 
-            if (isset($mensaje)) echo "<script>alert('$mensaje');</script>";
-
+          
             echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar Libro</a>"; 
             echo "<table id='cont' style='margin-top:10px;'>";
                     echo "<tr id='cabecera'>
@@ -171,17 +170,17 @@
                                   <label>I S B N </label>
                                 </div>
                                 <div class='group'>      
-                                  <select>
-                                    <option value='0' selected>Biblioteca</options>
-                                    <option value='1'>Historia</options>
+                                  <select name='tipo'>
+                                    <option value='0'>Biblioteca</options>
+                                    <option value='1' selected>Historia</options>
                                   </select>
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>Tipo</label>
                                 </div>
                                 <div class='group'>      
-                                  <select>
-                                    <option value='0' >No</options>
+                                  <select name='apaisado'>
+                                    <option value='0'>No</options>
                                     <option value='1' selected>Si</options>
                                   </select>
                                   <span class='highlight'></span>
