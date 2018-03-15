@@ -55,15 +55,15 @@ echo "
     <form action='".site_url("usuario/modUsuario")."' method='get'>
 
         <label for='username'>Nombre de usuario</label>
-        <input type='text' name='username' id='form_modif_nick'>
+        <input type='text' name='username' id='form_modif_nick' required>
         <label for='pass'>Password</label>
         <input type='password' name='pass' required>
         <label for='email'>Correo</label>
-        <input type='text' name='email' id='form_modif_email'>
+        <input type='text' name='email' id='form_modif_email' required>
         <label for='name'>Nombre</label>
-        <input type='text' name='nombre' id='form_modif_nombre' >
+        <input type='text' name='nombre' id='form_modif_nombre' required>
         <label for='subname'>Apellidos</label>
-        <input type='text' name='apellidos' id='form_modif_ape'>
+        <input type='text' name='apellidos' id='form_modif_ape' required>
         <label for='tipo'>Tipo de usuario</label>
         <select name='tipo' id='form_modif_tipo'>
                 <option value='0' style='color:red'>Pendiente asignación</option>
@@ -87,15 +87,15 @@ echo"
 <form action='".site_url("usuario/processregisterform")."' method='get'>
 
     <label for='username'>Nombre de usuario</label>
-    <input type='text' name='username' id='username'>
+    <input type='text' name='username' id='username' required>
     <label for='pass'>Password</label>
-    <input type='password' id='pass' name='pass'>
+    <input type='password' id='pass' name='pass' required>
     <label for='email'>Correo</label>
-    <input type='text' name='email' id='email'>
+    <input type='text' name='email' id='email' required>
     <label for='name'>Nombre</label>
-    <input type='text' name='nombre' id='nombre'>
+    <input type='text' name='nombre' id='nombre' required>
     <label for='subname'>Apellidos</label>
-    <input type='text' name='subname' id='subname'>
+    <input type='text' name='subname' id='subname' required>
     <input type='submit'>
     <input type='button' onclick='cerrar()' value='Cerrar'>
     
