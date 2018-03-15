@@ -88,7 +88,7 @@ class Guiada extends CI_Controller {
 
     public function getGuiada(){
         $resultado = $this->ModeloGuiada->allEscenasGuiada();
-         json_encode($resultado);
+        echo json_encode($resultado);
     }
 
     public function borrarEscena(){
