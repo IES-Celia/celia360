@@ -37,9 +37,9 @@
 									echo "<p class='numeroPagina'>$i</p>";
 								echo "</td>";
 
-								// echo "
-								// 	<td><input class='btnenviar' type='submit'/>".
-								// 	"</td></form>";
+								echo "
+									<td><input class='btnenviar' type='submit'/>".
+									"</td></form>";
 							}
 					echo "</tr>";
 				echo "</table>";		
