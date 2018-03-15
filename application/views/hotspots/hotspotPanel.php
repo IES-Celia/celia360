@@ -166,7 +166,13 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   
   function add_img_to_hotspot(){
 
-    var escena = "<?php echo $escena_actual;?>";
+
+    if($("#img_seleccionadas").has("li").length == 0) {
+
+	  alert("Debes seleccionar alguna imagen!");
+    } else {
+
+      var escena = "<?php echo $escena_actual;?>";
     var prueba = [];
     //Valor temporal para probar si funciona
     var hotspot = $("#idhs").val();
@@ -187,10 +193,9 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       window.location.href = resultado;
      //current_url()
     });
-    
 
-    
-    
+
+    }
   }
   
   
