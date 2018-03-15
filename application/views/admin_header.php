@@ -55,6 +55,8 @@
             }
     ?>
         <div id="menu">
+            <?php  if (isset($mensaje)) echo "<span id='mensaje_cabecera'>$mensaje</span>"; ?>
+            <?php  if (isset($error)) echo "<span id='error_cabecera'>$error</span>"; ?>
     <span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menu </span>
     <p id="sesion" align="center">Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></p>
         </div>
