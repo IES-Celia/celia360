@@ -132,8 +132,8 @@
 			<div class="main clearfix">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
-						<?php
-					$directorio = "assets/imgs/books/$id_libro";
+				<?php
+					$directorio = "assets/libros/$id_libro";
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
@@ -141,9 +141,6 @@
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
-				?>   
-				
-				<?php 
 					for($i=0;$i<$num_pag;$i++){
 						echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
 					}
