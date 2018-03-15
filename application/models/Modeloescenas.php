@@ -115,20 +115,20 @@
                 $name = $_REQUEST["name"];
                 $id = $_REQUEST["Id"];
                 $panorama = $this->upload->data()["client_name"];
-               
-          
-            if($resultado!=0 || $name !=" ") {
-               
-                $update = "
+               $update = "
 
                     UPDATE escenas 
 
                         SET 
 
-                            Nombre = '$name',
-                            panorama = 'assets/imagenes/escenas/$panorama'
+                            Nombre = '$name'";
+          
+            if($resultado!=0) {
+               
+                $update = $update . ", panorama = 'assets/imagenes/escenas/$panorama'";
 
-                                WHERE id_escena = '$id'";
+            }
+            $update = $update .   "WHERE id_escena = '$id'";
                 
                 
                 $this->db->query($update);
