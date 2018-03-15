@@ -204,7 +204,7 @@
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
-					$directorio_PDF = "assets/pdf/$id_libro";
+					$directorio_PDF ="assets/pdf/$id_libro";
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
@@ -222,7 +222,7 @@
 					<nav style="width:230%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
-						<!-- <!-- AQUI esta el numero de pagina -->
+						<!-- <!-- AQUI  esta el numero de pagina -->
 						
 							<!-- <input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/".$num_pag."' readonly>";?> -->
 						

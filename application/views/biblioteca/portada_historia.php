@@ -174,7 +174,7 @@
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->
 						
-						<!-- <input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?> -->
+						<!-- <input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>  -->
 						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
@@ -184,7 +184,7 @@
 				<?php 
 					echo " 
 						<div class='descargar' style=''> 
-							<a href='".base_url("assets/pdf/$id_libro.pdf")."' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 93%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+							<a href='".base_url('assets/pdf/$id_libro.pdf')."' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 93%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 						</div>"; 
 				?>
 			</div>
