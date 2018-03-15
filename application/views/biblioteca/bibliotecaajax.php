@@ -123,16 +123,18 @@
   }
   			#numeropag{
 				position: relative;
-			    left: 45%;
+			    /*left: 45%;*/
 			    height: 20px;
 			    width: 30px;
 			    text-align: right;
+
 			}
 			#cantpag{
 				position: relative;
-			    left: 45%;
+			    /*left: 45%;*/
 			    height: 20px;
 			    width: 30px;
+
 			}
 
 </style>
@@ -140,7 +142,7 @@
 
 
 <body>
-	 <header id="header_portada" style="margin-top:-110px;"  >
+	 <header id="header_portada">
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
@@ -169,7 +171,7 @@
 		       
 		                     
 		          echo "<td class='tablatodo'>";
-		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:50px;padding:10px;'>'".$ides['titulo']."'";
+		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1a76a2;color:white;margin-top:20px;height:auto;overflow:hidden;padding:10px;'>'".$ides['titulo']."'";
 		          echo "</div></td>";
 		      }
 		          if ($i%5 == 0)  echo "</tr><tr class=''>";
@@ -195,7 +197,7 @@
 			<div class="main clearfix">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
-						<?php
+				<?php
 					$directorio = "assets/libros/$id_libro";
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
@@ -204,11 +206,13 @@
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
-				?>   
-				
-				<?php 
-					for($i=1;$i<$num_pag;$i++){
-						echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
+				echo"<script>alert(".$apaisado.");</script>";
+					for($i=0;$i<$num_pag;$i++){
+						if($i==0){
+							echo " <div class='bb-item' ><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='450' height='550'></div> ";
+						}else{
+							echo " <div class='bb-item'><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='900' height='550'></div> ";
+						 }
 					}
 							
 				?>
@@ -217,9 +221,9 @@
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI HAY CANTIDAD -->
-						<!-- <div>
+						
 							<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
-						</div> -->
+						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>

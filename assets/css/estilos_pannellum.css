@@ -2,6 +2,8 @@
 
      html {
         height: 100%;
+        -webkit-font-smoothing: antialiased;
+        box-sizing: border-box;
       }
      body {
         margin: 0;
@@ -150,10 +152,11 @@ display: block;
 
 .mensaje_separador,
 .mensaje_separador_negro{
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px auto;
   border:0;
   height: 2px;
+  
+
 }
 
 .mensaje_separador{
@@ -161,6 +164,7 @@ display: block;
 }
 
 .mensaje_separador_negro{
+  width: 70%;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(10, 10, 10, 0.75), rgba(255, 255, 255, 0));
 }
 
@@ -658,7 +662,9 @@ display: block;
     font-size: 0.9em;
   }
   .modal__contents {
-    width: 50%;
+    width: 40%;
+    height:90vh;
+
   } 
     
   .Gmodal-content {
@@ -722,9 +728,12 @@ display: block;
     overflow-y:auto;
     cursor: default;
     width:95%;
-    height:400px;
-    overflow-x: hidden;
-    word-break: break-all;
+    height:200px;
+    overflow-x: auto;
+    font-size:0.8em;
+    margin-left:5px;
+    text-align: justify;
+    
   }
   #titulo{
     color: black;
@@ -939,7 +948,7 @@ display: block;
   top:50%;
   transform:translate(-50%,-50%);
   width:80%;
-  height: 80%;
+  height: 98%;
 }
 
 #documentoPanel{
@@ -964,4 +973,7 @@ display: block;
 #botonDoc{
   display:block;
   margin:10px auto;
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	cursor: pointer;
+
 }

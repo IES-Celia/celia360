@@ -99,7 +99,7 @@
 	                            //Sacamos las portadas de los libros
 	                            
 	                              echo "<td class='columna'>";
-	                              echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/imgs/books/$ides[id_libro]/0.jpg")."' ></a>";
+	                              echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
 	                              echo "</td>";
 	                          }
 	                              if ($i%4 == 0)  echo "</tr><tr class='torre'>";
@@ -132,8 +132,8 @@
 			<div class="main clearfix">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
-						<?php
-					$directorio = "assets/imgs/books/$id_libro";
+				<?php
+					$directorio = "assets/libros/$id_libro";
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
@@ -141,11 +141,12 @@
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
-				?>   
-				
-				<?php 
-					for($i=0;$i<$num_pag;$i++){
-						echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/imgs/books/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
+					for($i=0;$i<$num_pag;$i++){ 
+						if($i==0){
+							echo " <div class='bb-item' ><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='450' height='550'></div> ";
+						}else{
+							echo " <div class='bb-item'><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='900' height='550'></div> ";
+						 }
 					}
 							
 				?>

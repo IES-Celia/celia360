@@ -86,7 +86,7 @@
 </style>
 
 <?php
-echo"<a class='insert' onclick='mostrar()'>Insertar</a>";
+echo"<a class='insert' onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar Video</a>";
 echo'<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />';
 echo"<table  id='cont'><tr id='cabecera'>
 <th>ID</th>

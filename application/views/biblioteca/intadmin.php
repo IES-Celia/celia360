@@ -76,7 +76,7 @@
 
             if (isset($mensaje)) echo "<script>alert('$mensaje');</script>";
 
-            echo"<a class='insert' onclick='mostrar()' > Insertar Libro</a>"; 
+            echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar Libro</a>"; 
             echo "<table id='cont' style='margin-top:10px;'>";
                     echo "<tr id='cabecera'>
                             <th>Id<a href='#' onClick='ordenarCampo(\"id_libro\")'><i title='Ordenar' class='fas fa-caret-down' aria-hidden='true'></i></a></th>
@@ -244,13 +244,19 @@
                               <label>I S B N </label>
                             </div>
                             <div class='group'>      
-                              <input type='text' name='tipo' pattern='[0-1]{1}' min='1' maxlength='1' required>
+                              <select>
+                                <option value='0' selected>Biblioteca</options>
+                                <option value='1'>Historia</options>
+                              </select>
                               <span class='highlight'></span>
                               <span class='bar'></span>
                               <label>Tipo</label>
                             </div>
                             <div class='group'>      
-                              <input type='text' name='apaisado' pattern='[0-1]{1}' min='1' maxlength='1' required>
+                              <select>
+                                <option value='0' >No</options>
+                                <option value='1' selected>Si</options>
+                              </select>
                               <span class='highlight'></span>
                               <span class='bar'></span>
                               <label>Apaisado</label>
