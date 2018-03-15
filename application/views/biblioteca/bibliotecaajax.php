@@ -148,7 +148,7 @@
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
-                 <li><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/> </li>
+                 <li><a  href="<?php echo site_url("Conversorbd2json/index"); ?>"><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/></a></li>
                   <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
