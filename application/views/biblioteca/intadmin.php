@@ -168,25 +168,55 @@
                                   <span class='highlight'></span>
                                   <span class='bar'></span>
                                   <label>I S B N </label>
-                                </div>
-                                <div class='group'>      
-                                  <select name='tipo'>
-                                    <option value='0'>Biblioteca</options>
-                                    <option value='1' selected>Historia</options>
-                                  </select>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Tipo</label>
-                                </div>
-                                <div class='group'>      
-                                  <select name='apaisado'>
-                                    <option value='0'>No</options>
-                                    <option value='1' selected>Si</options>
-                                  </select>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Apaisado</label>
-                                </div>
+                                </div>";
+
+                                if($usu["tipo"]==0){
+                                  echo"
+                                  <div class='group'>      
+                                    <select name='tipo'>
+                                      <option value='0'selected>Biblioteca</options>
+                                      <option value='1'>Historia</options>
+                                    </select>
+                                    <span class='highlight'></span>
+                                    <span class='bar'></span>
+                                    <label>Tipo</label>
+                                  </div>";
+                                }else{
+                                  echo"
+                                  <div class='group'>      
+                                    <select name='tipo'>
+                                      <option value='0'>Biblioteca</options>
+                                      <option value='1'selected>Historia</options>
+                                    </select>
+                                    <span class='highlight'></span>
+                                    <span class='bar'></span>
+                                    <label>Tipo</label>
+                                  </div>";
+                                }
+                                if ($usu["apaisado"]==0) {
+                                   echo"
+                                  <div class='group'>      
+                                    <select name='apaisado'>
+                                      <option value='0' selected>No</options>
+                                      <option value='1'>Si</options>
+                                    </select>
+                                    <span class='highlight'></span>
+                                    <span class='bar'></span>
+                                    <label>Apaisado</label>
+                                  </div>";
+                                }else{
+                                    echo"
+                                    <div class='group'>      
+                                      <select name='apaisado'>
+                                        <option value='0'>No</options>
+                                        <option value='1' selected>Si</options>
+                                      </select>
+                                      <span class='highlight'></span>
+                                      <span class='bar'></span>
+                                      <label>Apaisado</label>
+                                    </div>";
+                                  }
+                                echo"
                             <input type='hidden' id='modif_id_libro' name='id_libro'>
                             <input type='submit' class='enviar'>
                         </form>
@@ -253,8 +283,8 @@
                             </div>
                             <div class='group'>      
                               <select name='apaisado'>
-                                <option value='0' >No</options>
-                                <option value='1' selected>Si</options>
+                                <option value='0'selected >No</options>
+                                <option value='1' >Si</options>
                               </select>
                               <span class='highlight'></span>
                               <span class='bar'></span>
