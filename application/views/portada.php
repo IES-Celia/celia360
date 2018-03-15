@@ -173,11 +173,16 @@
     <!--boton menu --> 
     <div class="boton_menu"></div>
           <!--boton full screen-->
-          <div class="ctrl" id="fullscreen"></div>                        
-           <!-- VIDEO VISITA LIBRE -->  
-          <div id='video_visita_libre'>
-          <iframe id='vimeo_video' src="" 
-          width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <div class="ctrl" id="fullscreen"></div>
+           <!-- VIDEO VISITA LIBRE -->
+          <div id="modal_video">  
+            <div class="overlay">
+              <a class="cerrarDocumento" href="#">&times;</a>
+            </div>
+            <div id='video_visita_libre'>
+              <iframe id='vimeo_video' src="" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              
+            </div>
           </div>
           <!--  VISITA GUIADA -->
           <div id="mensaje_guiada">
@@ -230,7 +235,7 @@
               <div class="modal">
                 <div class="overlay"></div>
                 <div id='documentoPanel'>
-                  <a id="cerrarDocumento" href="#">&times;</a>            
+                  <a class="cerrarDocumento" href="#">&times;</a>            
                     <object id='mostrarDocumento' data="" type="application/pdf">
                     Tu navegador no soporta esta funcion, intente abrirlo con el enlace.<a href="data/test.pdf">prueba.pdf</a>
                   </object>   
@@ -781,24 +786,25 @@ function siguiente(){
 ////////////////VIDEO VISITA LIBRE//////////////////////  
 
 function video(hotspotDiv,args){
-var peticion = $.ajax({
-type: "post",
-url: "<?php echo base_url("hotspots/load_video"); ?>",
-data: {idVideo : args},
-beforeSend: function(){
-  $("#vimeo_video").attr(src,"");
-}
-});
-
-peticion.done(function(resultado){
-$("#vimeo_video").attr(src,resultado);
-var pantalleo = $("#video_visita_libre").css("display");
-if(pantalleo=="block")
-  $('#video_visita_libre').hide();
-  //PAUSE
-else
-  $('#video_visita_libre').fadeIn();
-});
+  $.ajax({
+    type: "post",
+    url: "<?php echo base_url("hotspots/load_video"); ?>",
+    data: {idVideo : args},
+    beforeSend: function(){
+      $("#vimeo_video").attr("src","");
+    }
+  }).done(function(resultado){
+      console.log(resultado);
+      $("#vimeo_video").attr("src",resultado);
+      var pantalleo = $("#modal_video").css("display");
+      if(pantalleo=="block")
+        $('#modal_video').hide();
+        //PAUSE
+      else
+        $('#modal_video').fadeIn();
+    }).fail(function(){
+      console.log("Error en carga de video ;)")
+    });
 
 }
 
@@ -832,8 +838,8 @@ $("#botonDoc").click(function (e) {
   
 });
 
-$("#cerrarDocumento").click(function (e) { 
-  $("#documentoPanel").hide();
+$(".cerrarDocumento").click(function (e) { 
+  $(this).parent().parent().hide()
   
 });
     

@@ -62,7 +62,11 @@
                 echo $this->upload->display_errors();
             }
 		}
-
+/**
+ * Función encargada de eliminar las escenas y todos los hotspots relacionados.
+ * 
+ * @param codigo_escena
+ */
         public function borrar($cod){
             
             $sql  = "DELETE FROM hotspots WHERE id_hotspot IN (
@@ -88,20 +92,6 @@
         
             return $this->db->affected_rows();
         } 
-        
-		/*public function borrar ($id) {
-            $sql ="DELETE FROM puntos_mapa WHERE id_escena = (SELECT cod_escena FROM escenas WHERE id_escena = '$id') ";
-			$this->db->query($sql);
-
-            $sql = "DELETE FROM escenas WHERE id_escena = '$id' ";
-
-            $sql = "DELETE FROM escenas_hotspots WHERE id_escena =  ";
-            $this->db->query($sql);
-
-
-        
-            return $this->db->affected_rows();
-        }*/
 
 		public function update ($cod) {
 			

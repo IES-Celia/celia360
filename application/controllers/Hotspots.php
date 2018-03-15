@@ -252,8 +252,9 @@ class Hotspots extends CI_Controller {
  }
 
  public function load_video(){
-    $id = $_REQUEST["id_hotspot"];
+    $id = $_REQUEST["idVideo"];
     $resultado = $this->hotspotsModel->cargar_video($id);
+    echo $resultado;
     //TODO: añadir mensaje de la situacion
 }
 public function process_insert_video(){

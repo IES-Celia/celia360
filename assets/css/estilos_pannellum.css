@@ -566,7 +566,7 @@ display: block;
 .overlay {
   background: rgba(0,0,0,.5);
   position: absolute;
-  z-index: 1;
+  z-index: 3;
   top: 0;
   left: 0;
   width: 100%;
@@ -612,6 +612,10 @@ display: block;
   font-weight: bold;
   font-size: 1.8em;
   color:rgb(72, 72, 72)
+}
+
+#modal_video{
+  display:none;
 }
 
 .modal__close:hover {
@@ -920,7 +924,6 @@ display: block;
 
 #video_visita_libre{
   z-index: 3;
-  display:none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -943,7 +946,7 @@ display: block;
   display:none;
 }
 
-#cerrarDocumento{
+.cerrarDocumento{
   z-index: 3;
   display: block;
   position: absolute;
@@ -954,7 +957,7 @@ display: block;
   color:white;
 }
 
-#cerrarDocumento:hover {
+.cerrarDocumento:hover {
   color:crimson;
 }
 

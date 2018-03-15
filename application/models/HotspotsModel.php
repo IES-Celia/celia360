@@ -233,8 +233,8 @@ class HotspotsModel extends CI_Model {
         $id_hotspot = $id;
         //Sacar todas las imagenes que tiene asociadas ese ID que le hemos pasado
         $sql = "SELECT url_vid FROM video WHERE id_vid='$id_hotspot'";
-        $resultado = $this->db->query($sql);
-        echo ($resultado);
+        $resultado = $this->db->query($sql)->result_array()[0]["url_vid"];
+        return $resultado;
     }
 
     public function insertarHotspotVideo() {
@@ -252,8 +252,8 @@ class HotspotsModel extends CI_Model {
         $clickHandlerArgs = $this->input->post_get("clickHandlerArgs");
 
         // insercción del audio en la tabla hotspot
-        $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,tipo,clickHandlerFunc,clickHandlerArgs,sceneId)"
-                . " VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass' ,'$tipo', '$clickHandlerFunc','$clickHandlerArgs','$id_scene')";
+        $insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,tipo,clickHandlerFunc,clickHandlerArgs)"
+                . " VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass' ,'$tipo', '$clickHandlerFunc','$clickHandlerArgs')";
         $this->db->query($insrt);
 
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
