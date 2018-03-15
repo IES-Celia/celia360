@@ -137,7 +137,7 @@ class HotspotsModel extends CI_Model {
         //Panel
         $titulo = $this->input->post_get("titulo"); //
         $texto = $this->input->post_get("texto"); //
-        $documento = $this->input->post_get("documento");
+        //$documento = $this->input->post_get("documento");
         // insercción del punto en la tabla hotspot
 
         $filePath = 'assets/documentos-panel/';
