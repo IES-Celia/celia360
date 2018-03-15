@@ -420,7 +420,7 @@
         #caja select{
             border: none;
             border-bottom:2px solid white;
-            background-color: rgba(0,0,0,0.0);  
+            background: rgba(0,0,0,0);
             width: 80%;
             word-wrap: break-word;
             text-align: center;
@@ -432,6 +432,11 @@
             background-color:transparent;
         }
         
+        option{
+        
+            background-color:rgb(90,163,237);
+        }
+
         #caja legend{
             font-size: 35px;
             margin: 0 auto;

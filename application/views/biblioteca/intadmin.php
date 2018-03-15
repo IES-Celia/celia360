@@ -76,7 +76,7 @@
 
             if (isset($mensaje)) echo "<script>alert('$mensaje');</script>";
 
-            echo"<a class='insert' onclick='mostrar()' > Insertar Libro</a>"; 
+            echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar Libro</a>"; 
             echo "<table id='cont' style='margin-top:10px;'>";
                     echo "<tr id='cabecera'>
                             <th>Id<a href='#' onClick='ordenarCampo(\"id_libro\")'><i title='Ordenar' class='fas fa-caret-down' aria-hidden='true'></i></a></th>
