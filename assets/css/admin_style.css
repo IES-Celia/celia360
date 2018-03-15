@@ -773,13 +773,23 @@
 
     /*     Mensajes del menu de la cabezera     */
 
+    #mensajemenu{
+    
+        background-color:transparent;
+        
+        overflow: auto;
+        text-align: center;
+        
+    }
+
 
     #mensaje_cabecera{
     
-        color:forestgreen;
+        color:greenyellow;
         position:absolute;
-        top:25px;
-        left:44%;
+        top:20px;
+        font-size: 25px;
+
     }
     
 
@@ -787,8 +797,9 @@
     
         color:red;
         position:absolute;
-        top:25px;
-        left:44%;
+        top:20px;
+        font-size: 25px;
+
     }
 
     

@@ -59,6 +59,8 @@ tr,td,th{
 	  visibility: hidden;
 	  width: 20px;
 	  position: relative;
+      top:-100px;
+      left:45px;
 	}
 .file-input::before {
     content: '+';
