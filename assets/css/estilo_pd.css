@@ -34,7 +34,15 @@
     background-size: cover;
     opacity: 0.9;
     overflow: hidden;
-    border: 1px solid blue;
+}
+
+#opcion_celda{
+    z-index: 1000;
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    visibility: hidden;
+
 }
 
 .slider{

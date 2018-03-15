@@ -28,10 +28,18 @@
                       foreach($fila as $celda){
                           echo '
                           <a class="grid-item">
+                                <div id="opcion_celda">
+                                    <button onclick="borrar_celda('.$celda["id_celda"].')">Borrar</button>
+                                    <button onclick="update_celda('.$celda["id_celda"].')">Actualizar</button>
+                                 </div>
                                  <div class="grid-item__image" style="background-image: url('.base_url($celda["imagen_celda"]).')"></div>
                                  <div class="grid-item__hover"></div>
                                  <div class="grid-item__name">'.$celda["titulo_celda"].'</div>
+                                 
                                  <input type="hidden" value="'.$celda["id_celda"].'">
+
+
+                                 
                           </a>';
                       }
                echo '</div>';
@@ -42,6 +50,21 @@
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
         <script>
+            function borrar_celda(id){
+                var result = confirm("¿Desea borrar la celda?");
+                alert(id);
+                if(result == true){
+                    location.href= "<?php echo site_url("Puntos_destacados/borrar_celda/")?>"+$id  
+                }
+            }
+            
+            function update_celda(id){
+                var result = confirm("¿Desea modificar la celda?");
+                if(result== true){
+                    location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$id  
+                }
+            }
+            
             $(".grid-item").click(function(){
                 location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$(this).children().last().val();
             });
