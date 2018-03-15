@@ -127,6 +127,7 @@
 			    height: 20px;
 			    width: 30px;
 			    text-align: right;
+			    padding:10px;
 
 			}
 			#cantpag{
@@ -134,6 +135,7 @@
 			    /*left: 45%;*/
 			    height: 20px;
 			    width: 30px;
+			    padding:10px;
 
 			}
 
@@ -206,7 +208,7 @@
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
-				echo"<script>alert(".$apaisado.");</script>";
+				
 					for($i=0;$i<$num_pag;$i++){
 						if($i==0){
 							echo " <div class='bb-item' ><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='450' height='550'></div> ";
@@ -217,10 +219,10 @@
 							
 				?>
 					</div>
-					<nav style="width:250%;">
+					<nav style="width:230%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
-						<!-- AQUI HAY CANTIDAD -->
+						<!-- AQUI esta el numero de pagina -->
 						
 							<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
 						

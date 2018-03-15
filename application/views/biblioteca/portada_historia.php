@@ -27,6 +27,24 @@
     		.mySlides, #persona{
     			position:absolute;
     		};
+    		#numeropag{
+				position: relative;
+			    /*left: 45%;*/
+			    height: 20px;
+			    width: 30px;
+			    text-align: right;
+			    padding:10px;
+
+			};
+			#cantpag{
+				position: relative;
+			    /*left: 45%;*/
+			    height: 20px;
+			    width: 30px;
+			    padding:10px;
+
+			};
+
 
 		</style>
 
@@ -151,13 +169,13 @@
 							
 				?>
 					</div>
-					<nav style="width:250%;">
+					<nav style="width:230%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
-						<!-- AQUI HAY CANTIDAD -->
-						<!-- <div>
-							<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
-						</div> -->
+						<!-- AQUI esta el numero de pagina -->
+						
+						<!-- <input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?> -->
+						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>
