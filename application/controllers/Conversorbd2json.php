@@ -60,7 +60,9 @@ class Conversorbd2json extends CI_Controller {
     $resultado = $this->PortadaModel->editar_titulo();   
     $datos["tabla"]= $this->PortadaModel->info_portada();
     $datos["vista"]="portada/updatePortada";
-            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+    if ($resultado) $datos["mensaje"] = "Título modificado correctamente";
+    else $datos["mensaje"] = "Error al modificar el título";
+    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 
     $this->load->view("template_admin", $datos);
 
@@ -71,7 +73,9 @@ class Conversorbd2json extends CI_Controller {
     $resultado = $this->PortadaModel->editar_imagen();   
     $datos["tabla"]= $this->PortadaModel->info_portada();      
     $datos["vista"]="portada/updatePortada";
-            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+    if ($resultado) $datos["mensaje"] = "Título modificado correctamente";
+    else $datos["mensaje"] = "Error al modificar el título";
 
     $this->load->view("template_admin", $datos);
 
