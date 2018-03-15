@@ -7,6 +7,7 @@
     <script>
       ruta_base = "<?php echo $redireccion_jotpoch; ?>";
       hotspot_base = "<?php echo $idhotspot; ?>"; 
+      piso = "<?php echo $piso ?>"
     </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
@@ -63,7 +64,7 @@ $("#botoncico").click(function(){
 } 
  
     function modificarHotspot(hotspotDiv, idjotpoch){
-        location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch;
+        location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch+"/"+piso+"/"+escena_base;
 
     }
 

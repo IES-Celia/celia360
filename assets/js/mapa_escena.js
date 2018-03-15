@@ -83,8 +83,12 @@ $(document).ready(function() {
 			$("#modalConfig > #caja > form > input[name=punto_inicial]").val($(this).attr("id"))
 			$("#modalConfig > #caja > form > input[name=escena_inicial]").val($(this).attr("escena"))
 			$(this).css("background", "yellow");
+		}else if($(this).parent().hasClass("pisos_update")){
+			$(".for > form > input[name=sceneId]").val($(this).attr("escena"));
+			$(".puntos").css("background-color","white");
+			$(this).css("background-color","yellow");
 		}else{
-			location.href = base_url + "welcome/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"
+			location.href = base_url + "welcome/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"+piso;
 		}
 		
 	})

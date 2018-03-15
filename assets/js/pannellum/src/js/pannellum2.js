@@ -626,7 +626,7 @@ function onDocumentMouseDown(event) {
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
 
              if(coso==true){
-                location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base+"/"+hotspot_base;
+                location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base+"/"+piso;
             }
         }
         
