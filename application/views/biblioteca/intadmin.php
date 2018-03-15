@@ -244,7 +244,7 @@
                               <label>I S B N </label>
                             </div>
                             <div class='group'>      
-                              <select>
+                              <select name='tipo'>
                                 <option value='0' selected>Biblioteca</options>
                                 <option value='1'>Historia</options>
                               </select>
@@ -253,7 +253,7 @@
                               <label>Tipo</label>
                             </div>
                             <div class='group'>      
-                              <select>
+                              <select name='apaisado'>
                                 <option value='0' >No</options>
                                 <option value='1' selected>Si</options>
                               </select>

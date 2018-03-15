@@ -66,14 +66,12 @@
 		public function deletelibro($id_libro){
             $directorio = "assets/libros/$id_libro/";
             $res = $this->borrarDir($directorio);
-            if ($res) {
+            
 	            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
 	            return $this->db->affected_rows();
+	        
 	        }
-	        else {
-	        	return 0;
-	        }
-		}
+		
 
 
 
@@ -88,12 +86,7 @@
 
 		//crear carpeta con el siguiente id de la base de datos
 		
-		public function getmaxidlibro(){
-            $maxid = $this->db->query("SELECT MAX(id_libro) AS maximo from libros");
-            $fila = $maxid->result_array();
-                       
-            return $fila[0]["maximo"];
-		}
+		
 
 		public function insertarimagen($id_libro, $pag_ant) {
 			
@@ -127,6 +120,12 @@
 
 		}
 
+		public function getmaxidlibro(){
+            $maxid = $this->db->query("SELECT MAX(id_libro) AS maximo from libros");
+            $fila = $maxid->result_array();
+                       
+            return $fila[0]["maximo"];
+		}
 		public function insertlibro(){
 			
 
@@ -139,9 +138,11 @@
 			$tipo=$this->input->get_post("tipo");
 			$apaisado=$this->input->get_post("apaisado");
 
-            $res = $this->db->query("INSERT INTO libros(id_libro,titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo,apaisado) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$fecha','$isbn','$tipo','$apaisado')");
-         	
-            return $res;
+
+            $res = $this->db->query("INSERT INTO libros(titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo,apaisado) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$isbn','$tipo','$apaisado')");
+
+         	$id_libro=$this->getmaxidlibro();
+            return $id_libro;
 		}
 
 
