@@ -141,7 +141,7 @@ class HotspotsModel extends CI_Model {
         // insercción del punto en la tabla hotspot
 
         $filePath = 'assets/documentos-panel/';
-        $nombreImagen="documento".$id_scene;
+        $nombreImagen="documento".$idhotspot;
         $config['upload_path'] = $filePath;
         $config['allowed_types'] = 'pdf';
         $config['file_name'] = $nombreImagen;
@@ -162,13 +162,12 @@ class HotspotsModel extends CI_Model {
             $imgFile = $this->upload->data('client_name');
             //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
             $tmp_dir = $this->upload->data('file_name');
-            $sql="UPDATE hotspots SET documento_url='$tmp_dir' WHERE id_hotspot='$idEscena'";
+            $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','$tmp_dir')";
             $this->db->query($sql);
+    
             $resultado = 1;
         }
-        $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','$documento')";
-        $this->db->query($sql);
-
+     
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
 
