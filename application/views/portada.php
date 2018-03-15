@@ -839,7 +839,7 @@ $("#botonDoc").click(function (e) {
 });
 
 $(".cerrarDocumento").click(function (e) { 
-  $(this).parent().parent().hide()
+  $(this).parent().hide()
   
 });
     
