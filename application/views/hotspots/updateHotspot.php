@@ -58,6 +58,8 @@ echo "
             if($punto['piso']==$piso){
                 if($punto['id_escena'] == $escena_inicial){
                     echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                }else if($punto['id_escena'] == $tabla['sceneId']){
+                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%; background-color: yellow;' escena='".$punto['id_escena']."'></div>";
                 }else{
                     echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
                 }
