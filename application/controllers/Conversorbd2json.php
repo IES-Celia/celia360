@@ -26,29 +26,27 @@ class Conversorbd2json extends CI_Controller {
     echo $json;
   }
     
-    // maravilloso
   
    public function get_json_guiada() {
-    $json = $this->conversorjson->get_datos_guiada();
-    echo $json;
+        $json = $this->conversorjson->get_datos_guiada();
+        echo $json;
   }
   
     public function get_json_destacados() {
-    $json = $this->conversorjson->get_datos_destacado();
-    echo $json;
-  }
-     // maravilloso
-      public function get_json_plataforma($escenaInicial) {
-          $json = $this->conversorjson->get_datos_plataforma($escenaInicial);
-          echo $json;
-      }
-
+        $json = $this->conversorjson->get_datos_destacado();
+        echo $json;
+    }
     
+    public function get_json_plataforma($escenaInicial) {
+        $json = $this->conversorjson->get_datos_plataforma($escenaInicial);
+        echo $json;
+    }
+
     // 
     // Modificar datos Portada
     // 
     
-  public function formulario_portada(){
+  public function formulario_portada(){ 
       $this->load->model("PortadaModel");
       $datos["tabla"]= $this->PortadaModel->info_portada();
       $this->load->view("updatePortada", $datos);
@@ -59,10 +57,9 @@ class Conversorbd2json extends CI_Controller {
     $resultado = $this->PortadaModel->editar_titulo();   
   }
 
-  public function editar_imagen(){
+  public function modificar_imagen(){
     $this->load->model("PortadaModel");
-    $resultado = $this->PortadaModel->editar_celda();   
+    $resultado = $this->PortadaModel->editar_imagen();   
   }    
   
-     // maravilloso
 }
