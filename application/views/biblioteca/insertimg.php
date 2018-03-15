@@ -11,7 +11,7 @@
 		<div id="cualquiera">
 			<?php  
 			
-			$directorio = "assets/imgs/books/$idlibro";
+			$directorio = "assets/libros/books/$idlibro";
 			$arrayPag = scandir($directorio);
 			$num_pag = count($arrayPag)-2;
 			
@@ -25,7 +25,7 @@
 								}
 									echo "<td>";
 									echo "<form action='".site_url("/biblioteca/procesarinsertimg")."' method='post' enctype='multipart/form-data'>";
-									echo "<img src='".base_url("assets/imgs/books/$idlibro/$i.jpg")."' height='200px' width='150px'>".
+									echo "<img src='".base_url("assets/libros/$idlibro/$i.jpg")."' height='200px' width='150px'>".
 											
 												"<input type='hidden' name='id' value='$idlibro'>".
 												"<input type='hidden' name='num_pag' value='$num_pag'>".
