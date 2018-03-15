@@ -204,7 +204,7 @@
 					$arrayPag = scandir($directorio);
 					$num_pag = count($arrayPag)-2;
 
-					$directorio_PDF ="assets/pdf/$id_libro";
+					$directorio_PDF = "assets/pdf/$id_libro";
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
@@ -233,7 +233,7 @@
 				<?php 
 					echo " 
 						<div class='descargar' style=''> 
-							<a href='assets/pdf/$id_libro.pdf' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 580px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+							<a href='".base_url('assets/pdf/$id_libro.pdf')."' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 580px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 						</div>"; 
 				?>
 			</div>
