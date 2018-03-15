@@ -29,7 +29,9 @@
 			<?php
        echo "</head>
     <h1 align='center'>Modificar escenas</h1>
-			<fieldset class='for'>
+        <p></p>
+        <div id='caja'>
+			<fieldset>
 				<form action='".site_url("escenas/processupdatescene/")."' method='post' enctype='multipart/form-data'>
 		
 					Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
@@ -47,5 +49,6 @@
 					    
 					</form>
 				</fieldset>
+                </div>
 		</table>";
 ?>
