@@ -64,7 +64,7 @@
 		}
 
 		public function deletelibro($id_libro){
-            $directorio = "assets/imgs/books/$id_libro/";
+            $directorio = "assets/libros/$id_libro/";
             $res = $this->borrarDir($directorio);
             if ($res) {
 	            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
@@ -80,8 +80,8 @@
 		//renombrar imagenes
 		public function renomdir($id_libro,$pag_ant,$num_pag){
 			for($i=$num_pag-1;$i>$pag_ant;$i--){
-				$oldDir="assets/imgs/books/$id_libro/".$i.".jpg";
-				$newDir="assets/imgs/books/$id_libro/".($i+1).".jpg";
+				$oldDir="assets/libros/$id_libro/".$i.".jpg";
+				$newDir="assets/libros/$id_libro/".($i+1).".jpg";
 				rename($oldDir,$newDir);
 			}
 		}
@@ -97,7 +97,7 @@
 
 		public function insertarimagen($id_libro, $pag_ant) {
 			
-			$target_file = "assets/imgs/books/$id_libro/" . ($pag_ant + 1). ".jpg";
+			$target_file = "assets/libros/$id_libro/" . ($pag_ant + 1). ".jpg";
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
@@ -112,8 +112,8 @@
 		public function insertarimgsLibros($id_libro) {
 			
 
-			$target_file = "imgs/books/$id_libro/jpg";
-			$target_file = "imgs/books/$id_libro/" . $_FILES["fichero"]["name"];
+			$target_file = "libros/$id_libro/jpg";
+			$target_file = "libros/$id_libro/" . $_FILES["fichero"]["name"];
 			echo $target_file;
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -147,13 +147,13 @@
 
 		//BORRAR PAGINAS DEL LIBRO
 		public function deletepaglibro($id_libro,$num_pag,$cant_pag){
-			$filename="assets/imgs/books/$id_libro/$num_pag.jpg";
+			$filename="assets/libros/$id_libro/$num_pag.jpg";
 			$res=unlink($filename);
 
 			if($res){
 				for($i=$num_pag;$i<$cant_pag;$i++){
-					$oldDir="assets/imgs/books/$id_libro/".($i+1).".jpg";
-					$newDir="assets/imgs/books/$id_libro/".$i.".jpg";
+					$oldDir="assets/libros/$id_libro/".($i+1).".jpg";
+					$newDir="assets/libros/$id_libro/".$i.".jpg";
 					rename($oldDir,$newDir);
 				}
 			}
@@ -166,14 +166,14 @@
 
 		//Renombrar archivos de una carpeta
 		/*public function rename_cont($id_libro){
-			$ruta ="imgs/books/$id_libro";
+			$ruta ="libros/$id_libro";
 			$carpeta = scandir($ruta,SCANDIR_SORT_NONE);
 			$cantidadarchivos=count($carpeta);
 
 			for($i=0;$i<$cantidadarchivos;$i++){
 				print_r($carpeta[$i]);
-				$oldDir="imgs/books/$id_libro/".$carpeta[$i].".jpg";
-				$newDir="imgs/books/$id_libro/".$i.".jpg";
+				$oldDir="libros/$id_libro/".$carpeta[$i].".jpg";
+				$newDir="libros/$id_libro/".$i.".jpg";
 				rename($oldDir,$newDir);
 			}
 		}*/

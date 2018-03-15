@@ -207,8 +207,12 @@
 				?>   
 				
 				<?php 
-					for($i=1;$i<$num_pag;$i++){
-						echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
+					for($i=0;$i<$num_pag;$i++){
+						if($i==0){
+							echo " <div class='bb-item' ><img class='mySlides' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='450' height='550'></div> ";
+						}else{
+							echo " <div class='bb-item'><img class='mySlides' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
+						 }
 					}
 							
 				?>
