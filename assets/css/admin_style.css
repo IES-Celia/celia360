@@ -771,6 +771,28 @@
     }
 
 
+    /*     Mensajes del menu de la cabezera     */
+
+
+    #mensaje_cabecera{
+    
+        color:forestgreen;
+        position:absolute;
+        top:25px;
+        left:44%;
+    }
+    
+
+    #error_cabecera{
+    
+        color:red;
+        position:absolute;
+        top:25px;
+        left:44%;
+    }
+
+    
+
     /* Parte de la Paginación, es de Hamza pero para que no esten cosa sueltas en las vistas si son comunes */
 
 
