@@ -123,16 +123,18 @@
   }
   			#numeropag{
 				position: relative;
-			    left: 45%;
+			    /*left: 45%;*/
 			    height: 20px;
 			    width: 30px;
 			    text-align: right;
+
 			}
 			#cantpag{
 				position: relative;
-			    left: 45%;
+			    /*left: 45%;*/
 			    height: 20px;
 			    width: 30px;
+
 			}
 
 </style>
@@ -140,7 +142,7 @@
 
 
 <body>
-	 <header id="header_portada" style="margin-top:-110px;"  >
+	 <header id="header_portada">
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
@@ -219,9 +221,9 @@
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI HAY CANTIDAD -->
-						<!-- <div>
+						
 							<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
-						</div> -->
+						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>
