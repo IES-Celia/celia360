@@ -55,11 +55,17 @@ class Conversorbd2json extends CI_Controller {
   public function modificar_titulo(){
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->editar_titulo();   
+    $datos["tabla"]= $this->PortadaModel->info_portada();
+    $this->load->view("updatePortada", $datos);
+
   }
 
   public function modificar_imagen(){
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->editar_imagen();   
+    $datos["tabla"]= $this->PortadaModel->info_portada();
+    $this->load->view("updatePortada", $datos);
+
   }    
   
 }
