@@ -134,12 +134,7 @@
                 $this->db->query($update);
 
                 return $this->db->affected_rows();
-            }
-            else { 
-
-                echo $this->upload->display_errors();
-            }
-		}
+        }
 		
 	}
 ?>	
