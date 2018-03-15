@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-			<h1 align="center">Insercion de lugares</h1>
+    <style>
+        #panorama{
+            height: auto;
+        }
+    </style>";
+    
+    
+  
+    <div id='caja'>
 	
-	<fieldset class='for'>
+			<h1 align="center">Insercion de lugares</h1>
+   
 
 		<?php
 			echo"<form action='".site_url("escenas/processinsertscene")."' method='post' enctype='multipart/form-data'>";
@@ -21,9 +26,9 @@
 			    
 				<input type='submit'>
 			   
-			</form>
-	
-	</fieldset>
 
-</body>
-</html>
+	
+	
+
+    </div>
+  
