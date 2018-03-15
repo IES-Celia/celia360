@@ -3,6 +3,9 @@
 var id;
 $(document).ready(function() {
     mapa_responsivo();
+    $("#boton_libre").click(function (){
+        mapa_responsivo();
+    })
 });
 
 /*evento de resize*/
