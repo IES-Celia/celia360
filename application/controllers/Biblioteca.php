@@ -111,10 +111,10 @@ class Biblioteca extends CI_Controller {
 	public function insertlibro(){
 		$idlibro=$this->bibliotecaModel->insertlibro();
 		if ($idlibro == -1) { // Error al insertar
-			$datos["mensaje"] = "Error al insertar el libro";
+			$datos["error"] = "Error al insertar el libro";
 		}
 		else {					// Libro insertado con éxito
-			$datos["mensaje"] = "Libro insertado con éxito. La carpeta con las imágenes debe llamarse ".$idlibro;
+			$datos["mensaje"] = "Libro insertado con éxito. La carpeta que contenga las imágenes debe llamarse: ".$idlibro;
 		}
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
         $datos["vista"] = "biblioteca/intadmin";
