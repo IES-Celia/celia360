@@ -46,29 +46,43 @@ echo "
     <a href='".site_url('welcome/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
     Escena destino: <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>";
-
+    echo '<button id="btn-bajar-piso" type="button">Bajar piso</button>
+    <button id="btn-subir-piso" type="button">Subir piso</button>';
     echo "<div id='mapa_escena_hotspot'>";
-    
+    ?>
 
     
-        
-    echo "<div id='p".$piso."' class='pisos pisos_update' style='background-image: url(".base_url($mapa[$piso]['url_img']).");'>";
-        
-        foreach ($puntos as $punto) {
-            if($punto['piso']==$piso){
-                if($punto['id_escena'] == $escena_inicial){
-                    echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
-                }else if($punto['id_escena'] == $tabla['sceneId']){
-                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%; background-color: yellow;' escena='".$punto['id_escena']."'></div>";
-                }else{
-                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+    
+            <div id="mapa_escena_hotspot" >
+            
+            <?php
+                $indice = 0;
+
+                foreach ($mapa as $imagen) {
+                
+                
+                    
+                    echo "<div id='p".$indice."' class='pisos pisos_hotspots' style='background-image: url(".base_url($imagen['url_img']).");'>";
+                    
+                    foreach ($puntos as $punto) {
+                        if($punto['piso']==$indice){
+                            if($punto['id_escena'] == $id_scene){
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }else{
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }
+                        }
+                    }
+                    echo "</div>";
+                    $indice++;
                 }
-            }
-        }
-        echo "</div>";
+                   
+                
+            ?>
+            </div>
        
     
-
+<?php
 echo "</div>";
 
     echo "Pon esto a 1 sino quieres que aparezca en Puntos Destacados (para delimitar zonas)<br><input type='number' max='1' min='0' value='".$tabla['cerrado_destacado']."' name='cerrado_destacado'>

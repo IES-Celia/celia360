@@ -178,16 +178,20 @@ function mapa_responsivo(){
 function subir_piso(){
 	if(piso<piso_maximo){
 		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
+		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").hide('fast');
 		piso++;
-		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');	
+		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');
+		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');	
 	}
 }
 
 function bajar_piso(){
 	if(piso>0){
 		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
+		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").hide('fast');	
 		piso--;
-		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');	
+		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');
+		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');		
 	}
 }
 

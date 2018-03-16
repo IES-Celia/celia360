@@ -22,12 +22,11 @@ class Hotspots extends CI_Controller {
         $this->load->view("template_admin", $datos);
     }
     
-    public function show_insert_hotspot($pitch, $yaw, $idescena,$piso) {
+    public function show_insert_hotspot($pitch, $yaw, $idescena) {
         $this->load->model('Mapa','mapa');
         $datos["documentos"]= $this->hotspotsModel->getAllDocumentos();
 	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
-        $datos["piso"]=$piso;
         $datos["id_scene"]= $idescena;
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
@@ -131,13 +130,11 @@ class Hotspots extends CI_Controller {
         }*/
     }
     
-    public function show_update_hotspot($id, $piso, $escena_inicial=null){
+    public function show_update_hotspot($id){
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
 		
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "puntos") {
             $datos["vista"]="hotspots/updateHotspot";
-            $datos["piso"] = $piso;
-            $datos["escena_inicial"]=$escena_inicial;
 		}
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "video") {
 			$datos["vista"]="hotspots/updateHotsportVideo";
