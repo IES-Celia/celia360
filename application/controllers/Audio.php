@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 class Audio extends CI_Controller {
     
-    private $audios_por_pagina = 3;
+    private $audios_por_pagina = 20;
     
     public function __construct() {
         parent::__construct();
