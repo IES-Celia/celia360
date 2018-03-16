@@ -41,6 +41,7 @@
 
     #sesion{
         color: #ffffff;
+
     }
                                                 /*        Parte de las tablas         */
 
@@ -285,7 +286,7 @@
         top: 20px;
         transition:0.4s;
         margin-left: 8px;
-        
+        float: left;
     }
         
     .sidenavmenu:hover{
@@ -776,19 +777,34 @@
     #mensajemenu{
     
         background-color:transparent;
-        
-        overflow: auto;
+        width: 60%;
+        height: 90%;
         text-align: center;
+        display: inline;
+        position: relative;
+        left: 20%;
+        top: 30%;
         
     }
 
+    #hamburguesa{
+    width: 15%;
+    display: inline;
+    }
+
+    #logueo{
+    width: 25%;
+    display: inline;
+    }
+
+    
+
 
     #mensaje_cabecera{
-    
+       
         color:greenyellow;
-        position:absolute;
-        top:20px;
         font-size: 25px;
+        display: inline;
 
     }
     
@@ -796,9 +812,9 @@
     #error_cabecera{
     
         color:red;
-        position:absolute;
-        top:20px;
-        font-size: 25px;
+     font-size: 25px;
+        display: inline;
+      
 
     }
 
