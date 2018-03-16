@@ -5,7 +5,7 @@ class Welcome extends CI_Controller {
 
   
     
-	public function cargar_escena($escenaInicial, $redireccion,$piso){
+	public function cargar_escena($escenaInicial, $redireccion,$piso= null){
         $redireccion = site_url("/hotspots/".$redireccion."/");
         $datos["redireccion_jotpoch"]= $redireccion;
 		$datos["escenaInicial"] = $escenaInicial;

@@ -7,6 +7,7 @@
     $(document).ready(function(){
       $('#open').click(function(){
         $('.modalita').toggle('slow');
+        
       });
       
       $('.pie-ventana').click(function(){
@@ -175,9 +176,9 @@
           <!--boton full screen-->
           <div class="ctrl" id="fullscreen"></div>
            <!-- VIDEO VISITA LIBRE -->
-          <div id="modal_video">  
+          <div id="modal_video" class="video">  
             <div class="overlay">
-              <a class="cerrarDocumento" href="#">&times;</a>
+              <a class="cerrarVideo" href="#">&times;</a>
             </div>
             <div id='video_visita_libre'>
               <iframe id='vimeo_video' src="" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -838,10 +839,12 @@ $("#botonDoc").click(function (e) {
   
 });
 
-$(".cerrarDocumento").click(function (e) { 
-  $(this).parent().hide()
-  
-});
+$(".cerrarVideo").click(function (e) {
+          $(this).parent().parent().hide()
+        });
+        $(".cerrarDocumento").click(function (e) {
+          $(this).parent().hide()
+        });
     
 </script>      
 <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>

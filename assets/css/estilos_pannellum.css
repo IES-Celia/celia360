@@ -955,7 +955,7 @@ display: block;
   display:none;
 }
 
-.cerrarDocumento{
+.cerrarDocumento, .cerrarVideo{
   z-index:5;
   display: block;
   position: absolute;
@@ -966,7 +966,7 @@ display: block;
   color:white;
 }
 
-.cerrarDocumento:hover {
+.cerrarDocumento:hover, .cerrarVideo:hover{
   color:crimson;
 }
 
