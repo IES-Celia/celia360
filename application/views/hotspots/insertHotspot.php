@@ -26,14 +26,14 @@
     
     </style>
 <body>
-<h1> Formulario para Insertar Hotspots </h1>
+<h1> Formulario para insertar Hotspots</h1>
     <div id="botones">
-     Pulse el botón correspondiente al hotspot que desea insertar:
-        <button class="buttonfor" id="insertarEscena" >Escena</button>
-        <button class="buttonfor" id="insertarPanel">Panel</button>
-        <button class="buttonfor" id="insertarAudio">Audio</button>
-        <button class="buttonfor" id="insertarVideo">Video</button>
-        <button class="buttonfor" id="insertarEscaleras">Escaleras</button>
+    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resultado del click, las tipos de hotspot son los siguientes:<br><br>
+        <button class="buttonfor" id="insertarEscena" >Punto de salto a otra escena</button>
+        <button class="buttonfor" id="insertarPanel">Punto de panel informativo</button>
+        <button class="buttonfor" id="insertarAudio">Punto audiodescrito</button>
+        <button class="buttonfor" id="insertarVideo">Punto video</button>
+        <button class="buttonfor" id="insertarEscaleras">Conector entre planos (escaleras)</button><br>
         <button class="buttonfor" id="modificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
     </div>
 <div id="formularios">
@@ -47,7 +47,7 @@
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
-            Escena de destino (en rojo donde estás, amarillo el seleccionado): <input type='text' name='sceneId' required><br>
+            Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
             <div id="mapa_escena_hotspot" >
             
             <?php
@@ -72,9 +72,10 @@
                    
                 
             ?>
+                
             </div>
             <br>
-
+            <input type='text' name='sceneId' required>
             <input type='submit' class="button">
         </form>
     </div>

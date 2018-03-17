@@ -21,7 +21,6 @@ div.centrado {
 }
 
 
-
 </style>
 		<title> Insert Hotspot </title>
 </head>
@@ -33,19 +32,19 @@ $tabla = $tabla[0];
 
 echo "
 
-<h1> Formulario para UPDATE Hotspots </h1>
+<h1> Formulario para actualizar un hotspot de tipo salto </h1>
 
 <fieldset class='for'>
 
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
-	Coordenadas donde se situa el punto:<br>
+	Coordenadas en las que se situa el hotspot en la imagen 360:<br>
     <a href='".site_url('welcome/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
     
-	Hacia donde estará orientada la vista en la imagen 360 a la que se salta:<br> 
+	Hacia donde se orientará la vista en la imagen 360 a la que se salta:<br> 
     <a href='".site_url('welcome/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
-    Escena destino: <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>";
+    Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>";
     echo "<div id='mapa_escena_hotspot'>";
     ?>
             
@@ -77,10 +76,18 @@ echo "
        
     
 <?php
-echo "</div>";
-
-    echo "Pon esto a 1 sino quieres que aparezca en Puntos Destacados (para delimitar zonas)<br><input type='number' max='1' min='0' value='".$tabla['cerrado_destacado']."' name='cerrado_destacado'>
-
+echo "</div><br><br><br>";
+    
+    if($tabla['cerrado_destacado']==0){
+        echo "<input type='radio' name='cerrado_destacado' value='0' checked> Aparecerá en el apartado Puntos Destacados<br>
+              <input type='radio' name='cerrado_destacado' value='1' > NO aparecerá en el apartado Puntos Destacados<br>";
+    }else{
+         echo "<input type='radio' name='cerrado_destacado' value='0' > Aparecerá en el apartado Puntos Destacados<br>
+              <input type='radio' name='cerrado_destacado' value='1' checked> NO aparecerá en el apartado Puntos Destacados<br>";
+    }
+    
+    
+    echo "
 	<input type='hidden' name='cssClass' value='".$tabla['cssClass']."'>
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
 	<input type='submit' class='button'>

@@ -174,6 +174,7 @@ class Hotspots extends CI_Controller {
         }
 	}
     
+    // trabajar los redirect
     public function process_update_hotspot(){
             $id = $_REQUEST["id_hotspot"];
             $tipoHotspot = $_REQUEST["cssClass"];
@@ -184,15 +185,13 @@ class Hotspots extends CI_Controller {
             
             if ($resultado == true) {
                 $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
-                $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-                $datos["vista"]="hotspots/hotspotsTable";
+                redirect('escenas');
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
             else {
                 $datos["error"] = "La modificaci&oacute;n ha fallado";
-                $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
-                $datos["vista"]="hotspots/hotspotsTable";
+                redirect('escenas');
                 $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
                 $this->load->view('template_admin', $datos);
             }
