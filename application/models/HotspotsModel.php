@@ -120,6 +120,12 @@ class HotspotsModel extends CI_Model {
     }
 
     ///////////////////////////ZYGIS - Cosas del CMS/////////////////////////
+
+    public function get_imgs_asociadas_al_hotspot($id_hotspot){
+        $resultado = $this->db->query("SELECT id_imagen FROM panel_imagenes WHERE id_hotspot='$id_hotspot'")->result_array();
+        return $resultado;
+
+    }
       
     public function insertarHotspotPanel() {
 
@@ -221,6 +227,16 @@ class HotspotsModel extends CI_Model {
         $listaimagenes = explode($listaArray, ",");
         $contador = 0;
 
+        //Comprobar si existe algo de antes
+        $comprobar = "SELECT * FROM panel_imagenes WHERE id_hotspot='$id_hotspot'";
+        $resultado = $this->db->query($comprobar);
+        if($resultado->num_rows()>0){
+            //al modificar borramos todos y lo reenviamos
+            $borrado = "DELETE FROM panel_imagenes WHERE id_hotspot='$id_hotspot'";
+            $this->db->query($borrado);
+        }
+        
+        //Ahora añadir
         foreach ($listaArray as $imagen_id) {
             $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen)VALUES('$id_hotspot','$imagen_id')";
             $this->db->query($sql);

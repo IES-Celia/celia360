@@ -1,8 +1,17 @@
 <?php 
 
-$id_escena = $_REQUEST["id_scene"];
+$id_escena = $_POST["id_scene"];
 $yaw = $_REQUEST["yaw"];
 $pitch = $_REQUEST["pitch"];
+$seleccionadas ="";
+//$imagenes_seleccionadas = json_encode($imagenes_seleccionadas);
+if(isset($imagenes_seleccionadas)){
+  foreach( $imagenes_seleccionadas as $img){
+    $seleccionadas =$img["id_imagen"]." ".$seleccionadas;
+  }
+}
+
+
 
 
 $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
@@ -96,8 +105,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     </div>
 <div id='panel'>
  <h2 style='color:white'>Imagenes Seleccionadas</h2><br>
- <div style='color:white'>HotSpot ID</div>
- <input type="text" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
+ <input type="hidden" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
  <ul id='img_seleccionadas'>
  
  </ul><br>
@@ -112,7 +120,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 </div>
 </div>  
 <script>
-
+  
   $("#panel_atras").on("click",function(){
     var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
     console.log(url);
@@ -159,10 +167,35 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
      $(document).ready(function () {
       $("#img_seleccionadas").sortable();
       $("#img_seleccionadas").disableSelection();
+      check_imgs_selected();
      });  
      
+  function check_imgs_selected(){
 
+    //TODOS LAS IMAGENES CON SUS ID'S
+    var all_img_ids = [];
+    //ID DEL HOTSPOT ACTUAL
+    var id_hotspot = $("#idhs").val();
+    //GET LOS ID'S DE IMAGEN ASOCIADOS A HOTSPOT ID
+    var seleccionadas = "<?php echo $seleccionadas; ?>";
+    //fruits.push("Kiwi");
+    seleccionadas = seleccionadas.split(" ");
+    $(".enlace_img").each(function (index, element) {
+      // element == this
+      var imagen = $(this).find("img");
+      var attr_idimg = imagen.attr("data-id");
+      var attr_img = imagen.attr("src");
+      var cortado_enlace = attr_img.split("/");
+      for(var i=0;i<seleccionadas.length-1;i++){
+        if(attr_idimg==seleccionadas[i]){
+          imagen.addClass("borderojo");
+          $("#img_seleccionadas").append("<li class='seleccionado ui-state-default' data-id="+attr_idimg+">"+cortado_enlace[cortado_enlace.length-1]+"</li>");
+        }
+      }
 
+      
+    }); 
+  }
   
   function add_img_to_hotspot(){
 
@@ -173,23 +206,26 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     } else {
 
     var escena = "<?php echo $escena_actual;?>";
+   
+    if(escena.length== 0){
+      escena="<?php echo $id_escena;?>";
+    }
     var prueba = [];
     //Valor temporal para probar si funciona
     var hotspot = $("#idhs").val();
-    //Aqui guardo en un array todos los ids de imagenes y lo mando al script php
     $("#img_seleccionadas li").each(function(i){
       prueba.push($(this).attr("data-id"));
       
     });
 
+    var urlCorrecta = "<?php echo base_url("hotspots/add_imgs_hotspot") ?>";
     var peticion = $.ajax({
-      url: "add_imgs_hotspot",
+      url: urlCorrecta,
       type: "POST",
       data:{listaimg : prueba, idhs : hotspot, idescena : escena }
     });
     
     peticion.done(function(resultado){
-      
       window.location.href = resultado;
      //current_url()
     });

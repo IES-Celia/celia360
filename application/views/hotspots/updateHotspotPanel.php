@@ -47,13 +47,20 @@ echo "
     <input type='hidden' name='cssClass' value='".$tabla['cssClass']."'>
     <input type='hidden' name='pitch' value='".$tabla['pitch']."'>
     <input type='hidden' name='yaw' value='".$tabla['yaw']."'>
-
+    
 	
-	<input type='submit' class='button'>
+    <input type='submit' class='button'>
+    <a href=
+    '".site_url("/hotspots/modify_panel_info/".$tabla['id_hotspot'])."'
+    >Modificar imagenes de este hotspot</a><br>
 	<a href=
     '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
     >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
 	
+</form>
+<form action=' ".site_url("hotspots/modify_panel_info/".$tabla['id_hotspot'])." ' method='post'>
+<input type='hidden' name='id_scene' value='".$codigo_escena."'>
+<input type='submit' class='button' value='modificar imagenes'>
 </form>
 </fieldset>
 
