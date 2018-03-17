@@ -1,7 +1,5 @@
 <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-3.2.1.js"); ?>"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script type="text/javascript" src="<?php echo base_url("assets/js/turn.js"); ?>"></script><link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
-<script type='text/javascript' src='<?php echo base_url("assets/js/zoom/wheelzoom.js");?>'></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/ultimo-estilo.css");?>"/>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <meta charset="UTF-8">
@@ -185,16 +183,7 @@
 				
 			</div>
 
-			<script>
-					//$(document).ready(function(){
-					<?php
-						for($i = 0;$i<$num_pag;$i++){
-							//echo "wheelzoom(document.querySelector('img#imglibro$i'));";
-						}
-					?>
-				//});
-				
-			</script>
+			
 			<div>
 				<input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>
 			</div>

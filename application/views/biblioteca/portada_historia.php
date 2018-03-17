@@ -32,7 +32,7 @@
 				position: relative;
 			    /*left: 45%;*/
 			    height: 20px;
-			    width: 30px;
+			    width: 51px;
 			    text-align: right;
 			    padding:10px;
 
@@ -41,7 +41,7 @@
 				position: relative;
 			    /*left: 45%;*/
 			    height: 20px;
-			    width: 30px;
+			    width: 51px;
 			    padding:10px;
 
 			};
@@ -199,7 +199,7 @@
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->
 						
-						<!-- <input type='text' id='numeropag'><?php echo "<input type='text' id='cantpag' value='/$num_pag' readonly>";?>  -->
+						<input type='text' id='numeropag' value="1"><?php echo "<input type='text' id='cantpag' value='$num_pag' readonly>";?> 
 						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
@@ -243,21 +243,33 @@
 
 						// add navigation events
 						config.$navNext.on( 'click touchstart', function() {
+							var pg = $("#numeropag").val();
+							var newpg = parseInt(pg)+1; 
+							$("#numeropag").val(newpg);
+
 							config.$bookBlock.bookblock( 'next' );
 							return false;
 						} );
 
 						config.$navPrev.on( 'click touchstart', function() {
+							var pg = $("#numeropag").val();
+							var newpg = parseInt(pg)-1; 
+							$("#numeropag").val(newpg);
+
 							config.$bookBlock.bookblock( 'prev' );
 							return false;
 						} );
 
 						config.$navFirst.on( 'click touchstart', function() {
+							$("#numeropag").val(1);
 							config.$bookBlock.bookblock( 'first' );
 							return false;
 						} );
 
 						config.$navLast.on( 'click touchstart', function() {
+							var ultpg = $("#cantpag").val();
+							$("#numeropag").val(ultpg);
+
 							config.$bookBlock.bookblock( 'last' );
 							return false;
 						} );
@@ -281,16 +293,27 @@
 									left : 37,
 									up : 38,
 									right : 39,
-									down : 40
+									down : 40,
+									enter : 13
 								};
 
 							switch (keyCode) {
 								case arrow.left:
+									var pg = $("#numeropag").val();
+									var newpg = parseInt(pg)-1; 
+									$("#numeropag").val(newpg); 
 									config.$bookBlock.bookblock( 'prev' );
-									break;
+								break;
 								case arrow.right:
+									var pg = $("#numeropag").val();
+									var newpg = parseInt(pg)+1; 
+									$("#numeropag").val(newpg); 
 									config.$bookBlock.bookblock( 'next' );
-									break;
+								break;
+								case arrow.enter:
+									var pag = $("#numeropag").val();
+									config.$bookBlock.bookblock('jump',pag);
+								break;
 							}
 						} );
 					};
