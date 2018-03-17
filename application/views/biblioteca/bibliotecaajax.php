@@ -18,6 +18,7 @@
 			.contenedor{
 				width:900px;
 				height:550px;
+				margin-left:15%;
 				position:relative;
 				overflow:hidden;
 			};
@@ -198,7 +199,7 @@
 			</header>
 			<div class="main clearfix">
 				<div class="bb-custom-wrapper">
-					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;margin-left:15%;">
+					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;">
 				<?php
 					$directorio = "assets/libros/$id_libro";
 					$arrayPag = scandir($directorio);
@@ -208,7 +209,29 @@
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
-				
+				if($apaisado==1){
+					?>
+					<script type="text/javascript">
+					$(".contenedor").css("width", "1200px");
+					$(".contenedor").css("height", "450px");
+					$(".contenedor").css("margin-left", "0%");
+					</script>
+					<?php
+					for($i=0;$i<$num_pag;$i++){
+						if($i==0){
+							echo " <div class='bb-item' ><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='600' height='450'></div> ";
+						}else{
+							echo " <div class='bb-item'><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='1200' height='450'></div> ";
+						 }
+					}
+				}else{
+					?>
+					<script type="text/javascript">
+					$(".contenedor").css("width", "900px");
+					$(".contenedor").css("height", "550px");
+					$(".contenedor").css("margin-left", "15%");
+					</script>
+					<?php
 					for($i=0;$i<$num_pag;$i++){
 						if($i==0){
 							echo " <div class='bb-item' ><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='450' height='550'></div> ";
@@ -216,7 +239,8 @@
 							echo " <div class='bb-item'><img class='mySlides'  src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='900' height='550'></div> ";
 						 }
 					}
-							
+				}
+
 				?>
 					</div>
 					<nav style="width:230%;">
