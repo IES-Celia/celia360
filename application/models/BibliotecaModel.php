@@ -76,7 +76,7 @@
 		        	$this->db->query("Delete from libros WHERE id_libro='$id_libro'");
 		            
 		        }
-		    return $this->db->affected_rows();
+		     return $this->db->affected_rows();
 	        }
 		
 
