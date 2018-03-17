@@ -15,6 +15,9 @@ class Guiada extends CI_Controller {
     }
 
     public function mostrarFormularioGuiada() {
+        $this->load->model("Mapa","mapa");
+        $datos["mapa"]=$this->mapa->cargar_mapa();
+        $datos["puntos"]=$this->mapa->cargar_puntos();
         //Todos los audios existentes.
         $datos["audios"]=$this->Audm->allAudios();
         //Todas las escenas existentes.

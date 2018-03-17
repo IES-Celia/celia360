@@ -48,18 +48,15 @@
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
             Escena de destino (en rojo donde estás, amarillo el seleccionado): <input type='text' name='sceneId' required><br>
-            <button id="btn-bajar-piso" type="button">Bajar piso</button>
-            <button id="btn-subir-piso" type="button">Subir piso</button>
             <div id="mapa_escena_hotspot" >
             
             <?php
-                $indice = 0;
-
-                foreach ($mapa as $imagen) {
+                $indice = $this->session->piso;
+                
                 
                 
                     
-                    echo "<div id='p".$indice."' class='pisos pisos_hotspots' style='background-image: url(".base_url($imagen['url_img']).");'>";
+                    echo "<div id='p".$indice."' class='pisos pisos_hotspots' style='background-image: url(".base_url($mapa[$indice]['url_img']).");'>";
                     
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
@@ -71,8 +68,7 @@
                         }
                     }
                     echo "</div>";
-                    $indice++;
-                }
+                    
                    
                 
             ?>

@@ -130,11 +130,14 @@ class Hotspots extends CI_Controller {
         }*/
     }
     
-    public function show_update_hotspot($id){
+    public function show_update_hotspot($id,$escena_inicial = null){
         $datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
 		
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "puntos") {
             $datos["vista"]="hotspots/updateHotspot";
+            if(isset($escena_inicial)){
+                $datos["escena_inicial"]=$escena_inicial;
+            }
 		}
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "video") {
 			$datos["vista"]="hotspots/updateHotsportVideo";

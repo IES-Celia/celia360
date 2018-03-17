@@ -11,7 +11,7 @@
     </script>
     <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
      
-    <link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
+    <link rel="shortcut_icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
