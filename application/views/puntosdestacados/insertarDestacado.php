@@ -10,6 +10,8 @@
 	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 	<script src='<?php echo base_url('assets/js/mapa_escena.js')?>'></script>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
+
 </head>
 <body>
 
