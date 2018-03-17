@@ -5,7 +5,7 @@
 		echo "<script>";
 		echo "piso_maximo = ".count($mapa).";";
         echo "piso_maximo--";
-        echo "</script>";   // maravilloso
+        echo "</script>";   
 	?>
 	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 	<script src='<?php echo base_url('assets/js/mapa_escena.js')?>'></script>
@@ -13,16 +13,17 @@
 </head>
 <body>
 
-	<h1 align="center">Update de celda</h1>
+	<h1 align="center">Modificación de punto destacado</h1>
 	
 	<fieldset class='for'>
 
 		<?php
         $tabla=$celda[0];
 			echo"<form action='".site_url("Puntos_destacados/processupdatedestacado")."' method='get'>
-                    Id de la zona:  <input type='text' name='id_celda' value='".$tabla['id_celda']."' readonly> <br/>
-                    Nombre de la zona:  <input type='text' name='titulo_celda' value='".$tabla['titulo_celda']."'> <br/>
-                    Escena de pannellum: <input type='text' name='escena_celda' value='".$tabla['escena_celda']."'> <br/>";
+                    <input type='hidden' name='id_celda' value='".$tabla['id_celda']."' readonly> <br>
+                    Nombre del punto destacado:  <input type='text' name='titulo_celda' value='".$tabla['titulo_celda']."'> <br>
+                    Seleccione un punto del mapa, que será donde salte al hacer click:
+                    <input type='text' name='escena_celda' readonly value='".$tabla['escena_celda']."'> <br><br>";
                     ?>
 
                     <button id="btn-bajar-piso" type="button">Bajar piso</button>

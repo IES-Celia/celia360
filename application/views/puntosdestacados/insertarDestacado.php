@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<h1 align="center">Insercion de celda</h1>
+	<h1 align="center">Inserción de punto destacado</h1>
 	
 	<fieldset class='for'>
 
@@ -21,10 +21,10 @@
 			echo"<form action='".site_url("Puntos_destacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";   // maravilloso
         ?>
 		    	
-				Nombre de la zona:  <input type='text' name='titulo_celda' required> <br/>
+				Nombre del punto destacado:  <input type='text' name='titulo_celda' required> <br>
                 <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-				Imagen:  <input type='file' name='imagen_celda' required> <br/>
-                Escena de pannellum: <input type='text' name='escena_celda' required> <br/>
+				Imagen del punto destacado :  <input type='file' name='imagen_celda' required> <br>
+                Seleccione un punto del mapa, que será donde salte al hacer click (se marcará en amarillo): <input type='hidden' name='escena_celda' required> <br><br>
 				<button id="btn-bajar-piso" type="button">Bajar piso</button>
 				<button id="btn-subir-piso" type="button">Subir piso</button>
 				<div id="mapa_escena" class="insertar_pd">
@@ -49,7 +49,7 @@
 					}
 				?>
 				</div><br>
-			    Fila a la que pertenece: <input type='text' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br>
+			    <input type='hidden' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br>
 			    
 				<input type='submit'> <br>
                 <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados"); ?>">Atrás</a><br>
