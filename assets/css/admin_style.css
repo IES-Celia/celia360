@@ -357,6 +357,30 @@
             margin-bottom: 13px;
 
         }
+
+        #caja input[type=text]::placeholder{
+            color:navajowhite;
+            
+        }
+
+        #caja textarea{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
+            
+        }
+
+        #caja textarea::placeholder{
+            color:navajowhite;
+            
+        }
+
         #caja input[type=number]{
             border: none;
             border-bottom:2px solid white;
@@ -485,6 +509,7 @@
         input[type="date" i]{
             color: white;
             background-color: transparent;
+            margin-bottom: 10px;
             
         }
 
@@ -608,6 +633,7 @@
             appearance: none;
             color:white;
             background-color:transparent;
+            margin-bottom: 13px;
         }
         
         option{
@@ -659,6 +685,12 @@
 
         input[type="date" i]{
             color: white;
+            background-color: transparent;
+            
+        }
+
+        input[type="file"]{
+            color:white;
             background-color: transparent;
             
         }

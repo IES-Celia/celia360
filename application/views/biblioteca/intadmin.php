@@ -22,7 +22,7 @@
         .cerrar{
             
             position:relative;
-            top:-450px;
+            top:-490px;
             left:44%;
         }
         

@@ -104,7 +104,7 @@ $du = $lista_imagenes[0];
             <input type='hidden' name='accion' value='insertar_imagen'>
             <input id= "id_imagen" name='id_imagen' type ="hidden"><br />
             <label id= "label_titulo" for="titulo">T&iacute;tulo:</label>
-            <input id="titulo" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
+            <input type="text" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
             <label for="texto_imagen">Texto:</label>
             <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
             <label for="fecha">Fecha:</label>
