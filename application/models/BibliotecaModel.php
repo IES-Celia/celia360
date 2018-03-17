@@ -63,13 +63,20 @@
 			return $res;
 		}
 
-		public function deletelibro($id_libro){
-            $directorio = "assets/libros/$id_libro/";
-            $res = $this->borrarDir($directorio);
-            
-	            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
-	            return $this->db->affected_rows();
-	        
+		public function deletelibro(){
+			$id_libro=$this->input->get_post("id_libro");
+			$bcarpeta=$this->input->get_post("bcarpeta");
+
+				if($bcarpeta==1){
+		            $directorio = "assets/libros/$id_libro/";
+		            $res = $this->borrarDir($directorio);
+	            
+		            $this->db->query("Delete from libros WHERE id_libro='$id_libro'");
+		        }else{
+		        	$this->db->query("Delete from libros WHERE id_libro='$id_libro'");
+		            
+		        }
+		    return $this->db->affected_rows();
 	        }
 		
 

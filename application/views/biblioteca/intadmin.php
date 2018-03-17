@@ -31,6 +31,11 @@
             top:-410px;
             left:44%;
         }
+        .cerrarBorrar{
+            position:relative;
+            top:-192px;
+            left:47%;
+        }
     </style>
 
     <script>
@@ -119,14 +124,35 @@
                             echo" <td>
                             <a onclick='mostrarm(".$usu['id_libro'].")'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
                             <td><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
-                            <td><a href='#' onclick='borrarlibro(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
+                            <td><a href='#' onclick='mostrarborrar(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
 
                            </tr>";
                 }
                 echo "</table>";
 
-                //MODAL MODIFICAR LIBROS
+                //Modal confirmacion eliminar libro
+                echo"<div id='eliminarLibro'>
+                      <div id='caja'>
+                          <h1>Procede a eliminar el libro: <span id='idlibroborrar' ></span> </h1>
+                          <form action='".site_url("biblioteca/deletelibro")."' method='get'>
 
+                          <label>¿Desea eliminar el directorio que contiene las imagenes?</label>
+                            <select name = 'bcarpeta'>
+                              <option value='0'selected>No</option>
+                              <option value='1'>Si</option>
+                            </select>
+                            <span class='highlight'></span>
+                            <span class='bar'></span>
+
+                            <input id='borrar_id_libro' type='hidden' name='id_libro'>
+                            <input class='boton' type='submit' value='Eliminar'>
+                          </form>
+
+                        <a class='cerrarBorrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
+                      </div>
+                    </div>";
+                //MODAL MODIFICAR LIBROS
                 echo "<div id='modificar'>";
                 echo "<div id='caja'>";
                     echo "
@@ -174,8 +200,8 @@
                                   echo"
                                   <div class='group'>      
                                     <select name='tipo'>
-                                      <option value='0'selected>Biblioteca</options>
-                                      <option value='1'>Historia</options>
+                                      <option value='0'selected>Biblioteca</option>
+                                      <option value='1'>Historia</option>
                                     </select>
                                     <span class='highlight'></span>
                                     <span class='bar'></span>
@@ -185,8 +211,8 @@
                                   echo"
                                   <div class='group'>      
                                     <select name='tipo'>
-                                      <option value='0'>Biblioteca</options>
-                                      <option value='1'selected>Historia</options>
+                                      <option value='0'>Biblioteca</option>
+                                      <option value='1'selected>Historia</option>
                                     </select>
                                     <span class='highlight'></span>
                                     <span class='bar'></span>
@@ -197,8 +223,8 @@
                                    echo"
                                   <div class='group'>      
                                     <select name='apaisado'>
-                                      <option value='0' selected>No</options>
-                                      <option value='1'>Si</options>
+                                      <option value='0' selected>No</option>
+                                      <option value='1'>Si</option>
                                     </select>
                                     <span class='highlight'></span>
                                     <span class='bar'></span>
@@ -208,8 +234,8 @@
                                     echo"
                                     <div class='group'>      
                                       <select name='apaisado'>
-                                        <option value='0'>No</options>
-                                        <option value='1' selected>Si</options>
+                                        <option value='0'>No</option>
+                                        <option value='1' selected>Si</option>
                                       </select>
                                       <span class='highlight'></span>
                                       <span class='bar'></span>
@@ -304,13 +330,7 @@
     ?>
 
      <script >
-            function borrarlibro(id_libro){
-                confirmacion=confirm("¿Estas seguro que desea borrar el libro?");
 
-                if(confirmacion==true)
-                  $.get("<?php echo base_url('biblioteca/deletelibro/');?>"+id_libro,null,respuesta);
-
-            }
 
             function respuesta(r){
                 if(r==0){
@@ -340,6 +360,26 @@
 
                 $("#modificar").show();
             }
+
+            function mostrarborrar(id_libro){
+
+                b_idlibro=id_libro;
+                $("#borrar_id_libro").val(b_idlibro);
+                $("#idlibroborrar").text(b_idlibro);
+
+                $("#eliminarLibro").show();
+            }
+
+            function borrarlibro(){
+                id_libro=$("borrar_id_libro").val();
+                alert(id_libro);
+                confirmacion=confirm("¿Estas seguro que desea borrar el libro?");
+
+                if(confirmacion==true)
+                  $.get("<?php echo base_url('biblioteca/deletelibro/');?>"+id_libro,null,respuesta);
+
+            }
+
             function mostrar(){
                 $("#insertar").show();
                 
@@ -352,6 +392,7 @@
               
                 $("#insertar").hide();
                 $("#modificar").hide();
+                $("#eliminarLibro").hide();
 
             }  
 

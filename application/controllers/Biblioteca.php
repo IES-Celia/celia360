@@ -79,10 +79,6 @@ class Biblioteca extends CI_Controller {
 
 	}
 
-	// public function abrir_phistoria(){
-	// 	$datos["tabla"] = $this->bibliotecaModel->get_info();
-	// 	$this->load->view('biblioteca/portada_historia', $datos);
-	// }
 
 	public function abrir_phistoria($idlibro = -1,$apaisado = -1,$tipo=-1){
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
@@ -99,13 +95,19 @@ class Biblioteca extends CI_Controller {
 	}
 */
 
-	public function deletelibro($id_libro){
-		$resultado=$this->bibliotecaModel->deletelibro($id_libro);	
-		if($resultado !=0) 
-			echo $id_libro;
-		else
-			echo $resultado;
+	public function deletelibro(){
+		$resultado=$this->bibliotecaModel->deletelibro();	
+		if($resultado==-1){ //Error al eliminar
+			$datos["error"] = "Error al insertar el libro";
+		}
+		else{
+			$datos["mensaje"] = "Libro eliminado con éxito";
+		}
 
+		$datos["tabla"] = $this->bibliotecaModel->get_info();
+ 		$datos["vista"]="biblioteca/intadmin";
+ 		$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+		$this->load->view('template_admin',$datos);
 	}
 
 	public function insertlibro(){
