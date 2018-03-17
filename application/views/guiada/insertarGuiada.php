@@ -8,20 +8,35 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 <form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
    
     <label for='escenaGuiada'>Selecciona una escena</label>
-    <select id='escenaGuiada' name="escenaGuiada">
-        <?php 
-            foreach ($escenas as $escena) {
-                $codEscena=$escena["cod_escena"];
-                $nombreEscena=$escena["Nombre"];
-                echo "<option value=$codEscena>$codEscena</option>";
-                /*if(empty($nombreEscena)){
-                    echo "<option value=$codEscena>$codEscena</option>";
-                } else {
-                    echo "<option value=$codEscena>$nombreEscena</option>";
-                }*/
-            }
-        ?>
-    </select>
+    <input type="text" id='escenaGuiada' name="escenaGuiada">
+    <br>
+    <button type="button" id="btn-subir-piso">Subir zona</button>
+    <button type="button" id="btn-bajar-piso">Bajar zona</button>
+    <div id="mapa_escena_hotspot">
+    <?php
+    
+    $indice = 0;
+
+    foreach ($mapa as $imagen) {
+        echo "<div id='zona".$indice."' class='pisos pisos_guiada' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
+      
+      
+        foreach ($puntos as $punto) {
+          if($punto['piso']==$indice){
+          
+            echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+            <span class='tooltip'>".$punto['id_escena']."</span>
+            </div>";
+          
+          }
+          
+        }
+      echo "</div>";
+      $indice++;
+    }
+
+    ?>
+    </div>
     <br><br>
     <label for='titulo_escena'>Nombre escena</label>
     <input id='titulo_escena' type='text' name='tituloGuiada' value='' >

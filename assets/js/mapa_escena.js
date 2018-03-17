@@ -87,7 +87,12 @@ $(document).ready(function() {
 			$(".for > form > input[name=sceneId]").val($(this).attr("escena"));
 			$(".puntos").css("background-color","white");
 			$(this).css("background-color","yellow");
-		}else{
+		}else if($(this).parent().hasClass("pisos_guiada")){
+			$("div#caja > form >input[name=escenaGuiada]").val($(this).attr("escena"))
+			$(".puntos").css("background-color", "white");
+			$(this).css("background-color","yellow");
+		
+		}else {
 			location.href = base_url + "welcome/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"+piso;
 		}
 		
