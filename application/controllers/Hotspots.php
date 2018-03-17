@@ -235,19 +235,21 @@ class Hotspots extends CI_Controller {
   
   public function add_imgs_hotspot(){
     //Añade las imagenes a la base de datos
-    
     $resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
-    if($resultado[0] > 0){
-        echo base_url("/welcome/cargar_escena/".$resultado[1]."/show_insert_hotspot/null");
-    }else{
-        //ERROR
-    echo "SE HA MATADO PACO";
-    }
-    //TODO: añadir mensaje de la situacion.
+    echo base_url("welcome/cargar_escena/".$resultado[1]."/show_insert_hotspot/null");
+   
   }
   
- public function modify_panel_info($idhs){
-   //TODO:Modificar el panel de informacion
+  public function modify_panel_info($idhs){
+    $datos["idhs"] = $idhs;
+    $datos["imagenes_seleccionadas"]=$this->hotspotsModel->get_imgs_asociadas_al_hotspot($idhs);
+    //cargar el modelo
+    $this->load->model("Img");
+    //acciones para ver el listado de imagenes
+    $datos["lista_imagenes"] = $this->Img->buscar_todo();
+    $datos["vista"]="hotspots/hotspotPanel";
+    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+    $this->load->view('template_admin', $datos); 
  }
   
  public function load_panel(){
