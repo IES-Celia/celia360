@@ -2,10 +2,13 @@
 /////////////////////PAQUILLO/////////////////////////
 var id;
 $(document).ready(function() {
-    mapa_responsivo();
     $("#boton_libre").click(function (){
         mapa_responsivo();
     })
+    $("#boton_mapa").click(function(){
+        mover();
+    })
+    mapa_responsivo()
 });
 
 /*evento de resize*/
@@ -52,47 +55,58 @@ function cambiar_piso(opcion){
             piso--;
             $("#mapa > div:eq("+piso+")").attr("class", "piso_abierto pisos");
         }
-    }   
+    }
+    mapa_responsivo();  
 }
 /*Movimiento del mapa*/
-function mover(opcion){               
-    switch (opcion.className){
-        case "cerrado":
-            opcion.className="abierto";
-        break;
-        case "abierto":
-            opcion.className="cerrado";
-        break;
-            case "cerrado_boton boton":
-            if(opcion.id=="subir_piso" || opcion.id=="bajar_piso"){
-            opcion.style.visibility="visible";
-            }
-            opcion.className="abierto_boton boton";
-            opcion.style.left="46.5%";
-        break;
-        case "abierto_boton boton":
-            if(opcion.id=="subir_piso" || opcion.id=="bajar_piso"){
-            opcion.style.visibility="hidden";
-            }
-            opcion.className="cerrado_boton boton";
-            opcion.style.left="0.5%";
-        break;
-    }                    
+function mover(){               
+    if($("#mapa").hasClass("cerrado")){
+        $("#mapa").attr("class","abierto");
+        
+        $(".cerrado_boton").attr("class","abierto_boton");
+        mapa_responsivo();
+    }else{
+        $("#mapa").attr("class","cerrado");
+        $(".abierto_boton").animate({left: "0.5%"},200);
+        $(".abierto_boton").attr("class","cerrado_boton");
+    }
+    $("#bajar_piso, #subir_piso").toggle("fast")
+
 }
 /*responsividad del mapa*/
 $(window).resize(function() {
-    clearTimeout(id);
-    id = setTimeout(mapa_responsivo, 100);
+    mapa_responsivo();
 });
 
 /*definición del tamaño del mapa y botones*/
 function mapa_responsivo(){
-    var distancia_top=window.innerHeight*0.57;
-    var anchura=window.innerWidth*0.45;
-    var altura=anchura*0.57;
-                    
-    document.getElementById("mapa").style.bottom=10+"px";
-    document.getElementById("mapa").style.height=altura+"px";
-    document.getElementById("mapa").style.width=anchura+"px"; 
-    distancia_top=window.innerHeight*0.92;
+    var altura_natural = $("#mapa > div.piso_abierto > img").get(0).naturalHeight
+    var anchura_natural =$("#mapa > div.piso_abierto > img").get(0).naturalWidth
+    var anchura, altura, anchura_ventana, altura_ventana;
+
+    anchura_maxima = window.innerWidth*0.45;
+    altura_maxima = window.innerHeight*0.80;
+
+    if(anchura_natural > altura_natural){
+        anchura=window.innerWidth*0.45;
+        altura = altura_natural*anchura/anchura_natural;
+        $(".abierto_boton").animate({left: "46.5%"},200);
+    }else{
+        altura=window.innerHeight*0.80;
+        anchura = anchura_natural*altura/altura_natural;
+        $(".abierto_boton").animate({left: anchura+20+"px"},200);
+    }
+
+    $("#mapa").css({
+        bottom: "10px",
+        height: altura+"px",
+        width: anchura+"px"
+    });
+
+    $("#mapa > div.piso_abierto > img").css({
+        width: "100%",
+        height: "100%"
+    });
+
+    console.log("anchura ventana: "+anchura_maxima+" | altura ventana: "+altura_maxima+"| altura: "+altura+" |anchura: "+anchura)
 }

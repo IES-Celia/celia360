@@ -346,7 +346,7 @@
           }
           echo "</div>";//div final de myModal
         ?>
-
+        
          <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
     <?php
       $mapa = array_reverse($mapa);
@@ -354,9 +354,11 @@
      
       foreach ($mapa as $imagen) {
         if($config_mapa["piso_inicial"]==$indice){
-          echo "<div id='zona$indice' class='piso_abierto pisos' style='background-image: url(".base_url($imagen['url_img']).");'>";
+          echo "<div id='zona$indice' class='piso_abierto pisos'>";
+          echo "<img src='".base_url($imagen['url_img'])."' alt='Zona$indice' style='max-width: 100%;'>";
         }else{
-          echo "<div id='zona$indice' class='piso_cerrado pisos' style='background-image: url(".base_url($imagen['url_img']).");'>"; 
+          echo "<div id='zona$indice' class='piso_cerrado pisos'>"; 
+          echo "<img src='".base_url($imagen['url_img'])."' alt='Zona$indice'>";
         }
         
           foreach ($puntos as $punto) {
@@ -381,11 +383,11 @@
     ?>
 
   </div>
-  <div id="boton_mapa" style="transition: left 0.5s ease 0s;left:0.5%;" class="cerrado_boton boton" onclick="mover(document.getElementById('mapa')); mover(document.getElementById('boton_mapa'));mover(document.getElementById('subir_piso')); mover(document.getElementById('bajar_piso'));"></div>
+  <div id="boton_mapa"class="cerrado_boton boton"></div>
 
-        <div id="subir_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('arriba')"></div>
+        <div id="subir_piso" style="display:none" class="cerrado_boton boton" onclick="cambiar_piso('arriba')"></div>
 
-        <div id="bajar_piso" style="transition: left 0.5s ease 0s;left:0.5%; visibility:hidden;" class="cerrado_boton boton" onclick="cambiar_piso('abajo'); this.style"></div>
+        <div id="bajar_piso" style="display:none" class="cerrado_boton boton" onclick="cambiar_piso('abajo'); this.style"></div>
         </div>
 
 	</div>
