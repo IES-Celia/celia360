@@ -80,6 +80,7 @@ z-index:100;
         <th>cambiar Imagen</th>
         <th>borrar</th>
         <th>modificar</th>
+        <th>Mover</th>
         <th>Posicion</th>
     </tr>
 <tbody>
@@ -104,7 +105,8 @@ foreach ($escenas as $escena) {
     <td><button class='change_img'>Cambiar</button></td>
     <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
     <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
-    <td class='orden'></td>";
+    <td class='orden'><span onclick='moverFila(this);'>&uarr;</span><br><span onclick='moverFila(this);'>&darr;</span></td>
+    <td class='posicion'>".$escena['orden']."</td>";
 
 
 }
@@ -297,5 +299,64 @@ function ordenarTabla(elemento){
 //Al finalizar le das a un boton y envia el orden a MYSQL
 //Se quita el sortable
 
+
+
+function moverFila(elemento){
+
+    var filaA = $(elemento).parent().parent();
+    var filaA_identificacion = $(filaA).find(".id_visita").text();
+    var filaA_posicion = $(filaA).find(".posicion").text();
+
+        if($(elemento).text()=="↑"){
+            //Buscamos el previous filaEscena!
+            var filaB = $(filaA).prev();
+        } else if($(elemento).text()=="↓"){
+            //Buscamos el previous filaEscena!
+            var filaB = $(filaA).next();
+        }
+
+        var filaB_identificacion = $(filaB).find(".id_visita").text();
+        var filaB_posicion = $(filaB).find(".posicion").text();
+
+        if(filaB_identificacion){
+
+            var urlPeticion= "<?php echo base_url("guiada/cambiarFilas");?>";
+
+            var peticion = $.ajax({
+                type: "post",
+                url: urlPeticion,
+                data: {filaAID : filaA_identificacion, filaAPOS : filaA_posicion, filaBID : filaB_identificacion, filaBPOS : filaB_posicion }
+            });
+
+            peticion.done(function(resultado){
+               
+                if(resultado > 0){
+                    //Se ha movido con exito, actualizacion visual del cambio
+                    var filaA_html = $(filaA).html();
+                    var filaB_html = $(filaB).html();
+                    $(filaA).empty();
+                    $(filaA).append(filaB_html);
+                    $(filaB).empty();
+                    $(filaB).append(filaA_html);
+
+                }else {
+                    //Error, comunicar de forma visual que no se ha podido mover
+                    console.log("Error al intentar mover la fila");
+                    console.log(resultado);
+                }
+            });
+        } else {
+            //No se puede mover en esa direccion por que no hay nada.
+            console.log("there is nothing there, sorry bud!");
+        }
+
+
+
+
+        
+        //&uarr;
+        //&darr;
+   
+}
 
 </script>

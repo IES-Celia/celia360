@@ -28,7 +28,7 @@ class ModeloGuiada extends CI_Model {
     }
 
     public function allEscenasGuiada(){
-        $sql = "SELECT * FROM visita_guiada;";
+        $sql = "SELECT * FROM visita_guiada ORDER BY orden ASC;";
         $resultado = $this->db->query($sql);
         $array = array();
         foreach ($resultado->result_array() as $fila) {
@@ -124,7 +124,27 @@ class ModeloGuiada extends CI_Model {
         
     }
 
+    public function intercambiarFilas($filaAid,$filaApos,$filaBid,$filaBpos){
 
+      
+        $sql = "UPDATE visita_guiada SET orden='$filaBpos' WHERE id_visita='$filaAid'";
+        $sql2 = "UPDATE visita_guiada SET orden='$filaApos' WHERE id_visita='$filaBid'";
+        $resultado2 = $this->db->query($sql2);
+        $resultado = $this->db->query($sql);
+        
+        return 1;
+    }
+
+    /*
+    UPDATE visita_guiada SET orden='2' WHERE id_visita='10'
+    UPDATE visita_guiada SET orden='1' WHERE id_visita='11'
+
+    UPDATE visita_guiada SET orden='3' WHERE id_visita='11'
+    UPDATE visita_guiada SET orden='2' WHERE id_visita='12'
+
+    UPDATE visita_guiada SET orden='4' WHERE id_visita='12'
+    UPDATE visita_guiada SET orden='3' WHERE id_visita='14'1
+    */
 }
 
 

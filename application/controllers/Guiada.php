@@ -114,6 +114,15 @@ class Guiada extends CI_Controller {
         echo json_encode($ordenar);
     }
 
+    public function cambiarFilas(){
+        $filaAID = $_REQUEST["filaAID"];
+        $filaAPOS = $_REQUEST["filaAPOS"];
+        $filaBID = $_REQUEST["filaBID"];
+        $filaBPOS = $_REQUEST["filaBPOS"];
+        $mover = $this->ModeloGuiada->intercambiarFilas($filaAID,$filaAPOS,$filaBID,$filaBPOS);
+        echo $mover;
+    }
+
 
 
 
