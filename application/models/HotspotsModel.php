@@ -145,35 +145,39 @@ class HotspotsModel extends CI_Model {
         $texto = $this->input->post_get("texto"); //
         //$documento = $this->input->post_get("documento");
         // insercción del punto en la tabla hotspot
-
-        $filePath = 'assets/documentos-panel/';
-        $nombreImagen="documento".$idhotspot;
-        $config['upload_path'] = $filePath;
-        $config['allowed_types'] = 'pdf';
-        $config['file_name'] = $nombreImagen;
-        $config['overwrite'] = TRUE;
-       //cargar la librería
-       $this->load->library('upload', $config);
-       //Realiza la carga según las preferencias que ha establecido.
-       $resultado_subida = $this->upload->do_upload('documento');
-
-        if ($resultado_subida == false) {
-            $malasuerte = $this->upload->display_errors("<i>", "</i>");
-            var_dump($malasuerte);
-           // $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
-            //$this->db->query($sql);
-            $resultado = -1;
-        } else {
-            //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
-            $imgFile = $this->upload->data('client_name');
-            //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
-            $tmp_dir = $this->upload->data('file_name');
-            $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','$tmp_dir')";
+        $nombreArchivo = $_FILES["documento"]["name"];
+        if($nombreArchivo==""){
+            $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','ninguno')";
             $this->db->query($sql);
-    
-            $resultado = 1;
+        } else {
+            $filePath = 'assets/documentos-panel/';
+            $nombreImagen="documento".$idhotspot;
+            $config['upload_path'] = $filePath;
+            $config['allowed_types'] = 'pdf';
+            $config['file_name'] = $nombreImagen;
+            $config['overwrite'] = TRUE;
+            //cargar la librería
+            $this->load->library('upload', $config);
+            //Realiza la carga según las preferencias que ha establecido.
+            $resultado_subida = $this->upload->do_upload('documento');
+
+            if ($resultado_subida == false) {
+                $malasuerte = $this->upload->display_errors("<i>", "</i>");
+                var_dump($malasuerte);
+                // $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
+                //$this->db->query($sql);
+                $resultado = -1;
+            } else {
+                //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
+                $imgFile = $this->upload->data('client_name');
+                //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
+                $tmp_dir = $this->upload->data('file_name');
+                $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','$tmp_dir')";
+                $this->db->query($sql);
+                $resultado = 1;
+            }
         }
-     
+        
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
 

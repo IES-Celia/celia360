@@ -93,7 +93,7 @@
             Titulo del panel: <input type='text' name='titulo' required><br> 
             Texto del panel:  <textarea id='textoareaPanel' name="texto" rows="6" cols="50" required></textarea><br>
             <label>seleccionar documento (OPCIONAL)</label>
-            <input type="file" name="documento" placeholder="Seleccionar la imagen" required><br>
+            <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />
             <!--
             <select name="documentoPanel">

@@ -238,32 +238,28 @@
                 <div id='documentoPanel'>
                   <a class="cerrarDocumento" href="#">&times;</a>            
                     <object id='mostrarDocumento' data="" type="application/pdf">
-                    Tu navegador no soporta esta funcion, intente abrirlo con el enlace.<a href="data/test.pdf">prueba.pdf</a>
-                  </object>   
+                      Tu navegador no soporta esta funcion, intente abrirlo con el enlace.</a>
+                    </object>   
                 </div>
                 <div class="modal__contents">
-                 <a class="modal__close" href="#">&times;</a>
-                 <h2 id="titulo"></h2>
-                 <hr class='mensaje_separador_negro'></hr>
-                 <div id="gallery">
-                  <div class='mas_img_div' onclick="openModal();">
-                  <div class='mas_imagenes'></div>
-                  <p style="text-align:center;">&plus; Imagenes</p>
+                  <a class="modal__close" href="#">&times;</a>
+                  <h2 id="titulo"></h2>
+                  <hr class='mensaje_separador_negro'></hr>
+                  <div id="gallery">
+                    <div class='mas_img_div' onclick="openModal();">
+                      <div class='mas_imagenes'></div>
+                      <p style="text-align:center;">&plus; Imagenes</p>
+                    </div>
+                    <img src="">
                   </div>
-                <img src="">
-                 </div>
-                 <hr class='mensaje_separador_negro'></hr>
+                  <hr class='mensaje_separador_negro'></hr>
                  
-                <div id="texto">
+                  <div id="texto">
                 
-                </div> 
-                <button id='botonDoc'>Ver mas</button>
-              
-                         
-                
-                
+                  </div> 
+                  <button id='botonDoc'>Ver mas</button>
+                </div>
               </div>
-            </div>
          
           <!-- Audio punto sensible LIBRE y GUIADA -->
                   
@@ -556,26 +552,38 @@ function panelInformacion(hotspotDiv,args){
       $(".GmySlides").each(function(){
         $(this).remove();
       });
+      //Quitamos la foto
+      $("#gallery").find("img").attr("src","");
+      //Quitamos el boton de ver mas
+      $("#botonDoc").hide();
     }
   });
     
 peticion.done(function(datos){
-  var prueba = JSON.parse(datos);
+  var resultado = JSON.parse(datos);
+  console.log(resultado);
   //Cargamos una vez los datos basicos
-  $("#titulo").html(prueba[0].titulo_panel);
-  $("#texto").html(prueba[0].texto_panel);
+  $("#titulo").html(resultado[0].titulo_panel);
+  $("#texto").html(resultado[0].texto_panel);
   //La primera imagen que sale al abrir el panel
-  var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[0].url_imagen;
+  var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[0].url_imagen;
   $("#gallery").find("img").attr("src",enlace_img);
   //Por cada indice del array creamos la imagen de la galeria
-  for(var i=0;i<prueba.length;i++){
+  for(var i=0;i<resultado.length;i++){
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
-    var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+prueba[i].url_imagen;
+    var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
     $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
   }
+  //Si tiene un pdf asociado, mostramos el boton "ver mas"
+  if(resultado[0].documento_url!="ninguno"){
+    var urlDocumento = "<?php echo base_url("assets/documentos-panel/");?>"+resultado[0].documento_url;
+    $("#mostrarDocumento").attr("data",urlDocumento);
+    $("#botonDoc").show();
 
-  var urlDocumento = "<?php echo base_url("assets/documentos-panel/");?>"+prueba[0].documento_url;
-  $("#mostrarDocumento").attr("data",urlDocumento);
+  } else {
+    $("#botonDoc").hide();
+  }
+  
   
   //Poner el indice
   var slideIndex = 1;

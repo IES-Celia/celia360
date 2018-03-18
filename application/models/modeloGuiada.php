@@ -15,7 +15,12 @@ class ModeloGuiada extends CI_Model {
         if(empty($cod_escena) || empty($audio_escena)){
             return -1;    
         }
-        $sql = "INSERT INTO visita_guiada (id_visita,cod_escena,audio_escena,titulo_escena) VALUES(NULL,'$cod_escena','$audio_escena','$titulo_escena');";
+
+        //El orden se hace automaticamente despues ordenas como te de la gana.
+        $total = $this->db->count_all('visita_guiada');
+        //$total = $total+1; 
+
+        $sql = "INSERT INTO visita_guiada (id_visita,cod_escena,audio_escena,titulo_escena,orden) VALUES(NULL,'$cod_escena','$audio_escena','$titulo_escena','$total');";
         //print_r($sql);
         $this->db->query($sql);
 

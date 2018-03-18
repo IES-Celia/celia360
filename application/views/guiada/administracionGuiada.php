@@ -9,7 +9,7 @@ if (isset($error)) {
     $urlFormulario = site_url('guiada/modificarEscena');
     
 ?>
-
+<script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.js"); ?>"></script>
 <style>
 #modalGuiada{
  z-index:100;
@@ -62,6 +62,8 @@ z-index:100;
     color:black;
 }
 
+
+
 </style>
 
 <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
@@ -78,8 +80,9 @@ z-index:100;
         <th>cambiar Imagen</th>
         <th>borrar</th>
         <th>modificar</th>
+        <th>Posicion</th>
     </tr>
-
+<tbody>
 <?php
 foreach ($escenas as $escena) {
     if(empty($escena["img_preview"])){
@@ -100,12 +103,13 @@ foreach ($escenas as $escena) {
     <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
     <td><button class='change_img'>Cambiar</button></td>
     <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
-    <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>";
+    <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
+    <td class='orden'></td>";
 
 
 }
 ?>
-
+</tbody>
 </table>
 
 <div id='modalGuiada' class='modalFondoGuiada'>
@@ -287,28 +291,11 @@ function ordenarTabla(elemento){
     });
 }
 
+//Boton activar cambios de orden
+//Se actica el sortable
+//Los mueves todos
+//Al finalizar le das a un boton y envia el orden a MYSQL
+//Se quita el sortable
 
-
-function sortTable(columnName){
- 
- var sort = $("#sort").val();
- $.ajax({
-  url:'fetch_details.php',
-  type:'post',
-  data:{columnName:columnName,sort:sort},
-  success: function(response){
- 
-   $("#empTable tr:not(:first)").remove();
- 
-   $("#empTable").append(response);
-   if(sort == "asc"){
-     $("#sort").val("desc");
-   }else{
-     $("#sort").val("asc");
-   }
- 
-  }
- });
-}
 
 </script>
