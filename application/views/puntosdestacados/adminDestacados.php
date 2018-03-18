@@ -52,20 +52,19 @@
         <script>
             function borrar_celda(id){
                 var result = confirm("¿Desea borrar la celda?");
-                alert(id);
                 if(result == true){
-                    location.href= "<?php echo site_url("Puntos_destacados/borrar_celda/")?>"+$id  
+                    location.href= "<?php echo site_url("Puntos_destacados/borrar_celda/")?>"+id  
                 }
             }
             
             function update_celda(id){
                 var result = confirm("¿Desea modificar la celda?");
                 if(result== true){
-                    location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$id  
+                    location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+id  
                 }
             }
             
-            $(".grid-item").click(function(){
+            $(".grid-itema").click(function(){
                 location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$(this).children().last().val();
             });
             
