@@ -636,16 +636,18 @@ display: block;
   }
   
   .Gmodal-content {
-    width: 100%;
-    max-width: 700px;
+    width: 75%;
+    max-width: 1000px;
   }
   #texto {
     padding:5px !Important;
     font-size: 1em;
+    height:400px;
   }
-  
+
   .modal__contents {
-    width: 40%;
+    width: 80vh;
+    height:95vh;
   } 
   
 }
@@ -660,16 +662,18 @@ display: block;
   #texto {
     padding:5px !Important;
     font-size: 0.9em;
+    height:300px;
+    
   }
   .modal__contents {
-    width: 40%;
+    width: 80vh;
     height:90vh;
 
   } 
     
   .Gmodal-content {
-    width: 70%;
-    max-width: 500px;
+    width: 65%;
+    max-width: 650px;
   }
 
   
@@ -686,10 +690,17 @@ display: block;
   #texto {
     padding:5px !Important;
     font-size: 0.8em;
+    height:250px;
   }
     .Gmodal-content {
     width: 60%;
   }
+
+  .modal__contents {
+    height:90vh;
+    width: 90vh;
+
+  } 
   
 }
 /* -----------tablet/movil ----------- */
@@ -705,6 +716,7 @@ display: block;
   #texto {
     padding:5px !Important;
     font-size: 0.7em;
+    height:450px;
   }
   
   .modal__contents {
@@ -715,7 +727,7 @@ display: block;
   }
     
   .Gmodal-content {
-    width: 60%;
+    width: 80%;
   }
   
 }
@@ -728,7 +740,6 @@ display: block;
     overflow-y:auto;
     cursor: default;
     width:95%;
-    height:150px;
     overflow-x: auto;
     font-size:0.8em;
     margin-left:5px;
