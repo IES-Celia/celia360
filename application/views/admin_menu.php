@@ -18,7 +18,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
           
         
-        <br><br><br>
+        <br><br>
         <a href="<?php echo site_url("escenas");?>" class="enlacesidenav">Mapa</a>
         <a href="<?php echo site_url("guiada/menuGuiada");?>" class="enlacesidenav">Guiada</a>
         <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados");?>" class="enlacesidenav">Destacados</a>
@@ -31,7 +31,7 @@
         <a href="<?php echo site_url("Conversorbd2json/formulario_portada");?>" class="enlacesidenav"> Portada</a>
         
         
-        <br><br><br><br>
+        <br><br>
     
         <p><a href='<?php echo site_url("usuario/cerrarSesion");?>' class="cerrarsesionbtn">Cerrar Sesión</a></p>
         
