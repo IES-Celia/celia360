@@ -102,18 +102,18 @@ class Conversorjson extends CI_Model {
         foreach ($res2->result_array() as $hotspot) {
             
             
-            if($hotspot['tipo']== "info"){
+            if($hotspot['clickHandlerFunc']== "panelInformacion"){
                 if($flagHot){
                 $json = $json . ',';
-            }
-            $flagHot= true;
-                $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
-                $json = $json . '"yaw": '.$hotspot['yaw'].',';  
-                $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
-                $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
-                $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
-                $json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
-                $json = $json . '} ';  
+                }
+                $flagHot= true;
+                    $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
+                    $json = $json . '"yaw": '.$hotspot['yaw'].',';  
+                    $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
+                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
+                    $json = $json . '"createTooltipFunc": "hotspot",';  
+                    $json = $json . '"createTooltipArgs": "'.$hotspot['titulo_panel'].'"';
+                    $json = $json . '} ';  
             }
         }
         $flagHot=false;
