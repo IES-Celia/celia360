@@ -42,7 +42,7 @@
                         $indice = 0;
                 
                         foreach ($mapa as $imagen) {
-                            echo "<div id='p".$indice."' class='pisos_config' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
+                            echo "<div id='zona".$indice."' class='pisos_config' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
                         
                         
                             foreach ($puntos as $punto) {
@@ -68,8 +68,8 @@
          $indice = 0;
    
          foreach ($mapa as $imagen) {
-             echo "<div id='p".$indice."' class='pisos' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
-           
+            echo "<div id='zona".$indice."' class='pisos' style='display: none;'>";
+            echo "<img src='".base_url($imagen['url_img'])."'  style='width:100%;height:100%;'>";
            
              foreach ($puntos as $punto) {
                if($punto['piso']==$indice){

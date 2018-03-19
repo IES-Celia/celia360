@@ -140,7 +140,7 @@ $(document).ready(function() {
 	});
 	setTimeout(() => {
 		mapa_responsivo()
-	}, 10);
+	}, 100);
 	
 });
 
