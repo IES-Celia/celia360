@@ -29,14 +29,15 @@
                 Seleccione un punto del mapa, que será donde salte al hacer click (se marcará en amarillo): <input type='hidden' name='escena_celda' required> <br><br>
 				<button id="btn-bajar-piso" type="button">Bajar piso</button>
 				<button id="btn-subir-piso" type="button">Subir piso</button>
-				<div id="mapa_escena" class="insertar_pd">
+				<div id="mapa_escena_hotspot" class="insertar_pd">
 				
 				<?php
 					$indice = 0;
 
 					foreach ($mapa as $imagen) {
 						
-						echo "<div id='zona".$indice."' class='pisos pisos_pd' style='background-image: url(".base_url($imagen['url_img']).");'>";
+						echo "<div id='zona".$indice."' class='pisos pisos_pd'>";
+						echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
 						
 						foreach ($puntos as $punto) {
 							if($punto['piso']==$indice){
