@@ -314,8 +314,6 @@
 							}else{
 								$("#numeropag").val(1);
 							}
-							
-
 							config.$bookBlock.bookblock( 'prev' );
 							return false;
 						} );
@@ -362,16 +360,14 @@
 							switch (keyCode) {
 								case arrow.left:
 									var pg = $("#numeropag").val();
-										if(pg!=1){
-											var newpg = parseInt(pg)-1; 
-											$("#numeropag").val(newpg);
-										}else{
-											$("#numeropag").val(1);
-										}
-										
-
-										config.$bookBlock.bookblock( 'prev' );
-									break;
+									if(pg!=1){
+										var newpg = parseInt(pg)-1; 
+										$("#numeropag").val(newpg);
+									}else{
+										$("#numeropag").val(1);
+									}
+									config.$bookBlock.bookblock( 'prev' );
+								break;
 								case arrow.right:
 									var tpg =$("#cantpag").val();
 									var pg = $("#numeropag").val();
@@ -382,13 +378,12 @@
 									}else{
 										$("#numeropag").val(tpg);
 									}
-
 									config.$bookBlock.bookblock( 'next' );
-									break;
+								break;
 								case arrow.enter:
 									var pag = $("#numeropag").val();
 									config.$bookBlock.bookblock('jump',pag);
-									break;
+								break;
 							}
 						} );
 					};

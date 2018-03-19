@@ -255,9 +255,16 @@
 
 						// add navigation events
 						config.$navNext.on( 'click touchstart', function() {
+
+							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
-							var newpg = parseInt(pg)+1; 
-							$("#numeropag").val(newpg);
+
+							if(pg!=tpg){
+								var newpg = parseInt(pg)+1; 
+								$("#numeropag").val(newpg); 								
+							}else{
+								$("#numeropag").val(tpg);
+							}
 
 							config.$bookBlock.bookblock( 'next' );
 							return false;
@@ -265,9 +272,13 @@
 
 						config.$navPrev.on( 'click touchstart', function() {
 							var pg = $("#numeropag").val();
-							var newpg = parseInt(pg)-1; 
-							$("#numeropag").val(newpg);
 
+							if(pg!=1){
+								var newpg = parseInt(pg)-1; 
+								$("#numeropag").val(newpg);
+							}else{
+								$("#numeropag").val(1);
+							}
 							config.$bookBlock.bookblock( 'prev' );
 							return false;
 						} );
@@ -312,14 +323,24 @@
 							switch (keyCode) {
 								case arrow.left:
 									var pg = $("#numeropag").val();
-									var newpg = parseInt(pg)-1; 
-									$("#numeropag").val(newpg); 
+									if(pg!=1){
+										var newpg = parseInt(pg)-1; 
+										$("#numeropag").val(newpg);
+									}else{
+										$("#numeropag").val(1);
+									}
 									config.$bookBlock.bookblock( 'prev' );
 								break;
 								case arrow.right:
+									ar tpg =$("#cantpag").val();
 									var pg = $("#numeropag").val();
-									var newpg = parseInt(pg)+1; 
-									$("#numeropag").val(newpg); 
+
+									if(pg!=tpg){
+										var newpg = parseInt(pg)+1; 
+										$("#numeropag").val(newpg); 								
+									}else{
+										$("#numeropag").val(tpg);
+									}
 									config.$bookBlock.bookblock( 'next' );
 								break;
 								case arrow.enter:
