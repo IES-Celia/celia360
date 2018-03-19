@@ -219,9 +219,9 @@
 					<?php
 					for($i=0;$i<$num_pag;$i++){
 						if($i==0){
-							echo " <div class='bb-item' ><img class='mySlides' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='600' height='450'></div> ";
+							echo " <div class='bb-item' ><img class='' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 300px;' width='600' height='450'></div> ";
 						}else{
-							echo " <div class='bb-item'><img class='mySlides'  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='1200' height='450'></div> ";
+							echo " <div class='bb-item'><img class='mySlides'  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='1200' height='450'></div> ";
 						 }
 					}
 				}else{
@@ -234,9 +234,9 @@
 					<?php
 					for($i=0;$i<$num_pag;$i++){
 						if($i==0){
-							echo " <div class='bb-item' ><img class='mySlides'  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='450' height='550'></div> ";
+							echo " <div class='bb-item' ><img class=''  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 224px;' width='450' height='550'></div> ";
 						}else{
-							echo " <div class='bb-item'><img class='mySlides' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='float:right;' width='900' height='550'></div> ";
+							echo " <div class='bb-item'><img class='mySlides' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
 						 }
 					}
 				}
@@ -387,17 +387,44 @@
 			                    var altura =parseInt($('.mySlides').css('height').split('px')[0]);
 			                    //anchura: 1000
 			                    //altura: 600
+			                    <?php 
+			                    	if($apaisado==1){
+			                    		echo"
+						                    if (ui.position.left < 1200 - $(this).width() )
+						                         ui.position.left = 1200 - $(this).width(); 
+						                    if (ui.position.left + $(this).width()> anchura)
+						                          ui.position.left = 0;
+						                    if (ui.position.top < -altura+450 )
+						                        ui.position.top = 450 - $(this).height();
+						                    if (ui.position.top + $(this).height() > altura)
+						                            ui.position.top = 0;
 
-			                    if (ui.position.left < 900 - $(this).width() )
-			                         ui.position.left = 900 - $(this).width(); 
-			                    if (ui.position.left + $(this).width()> anchura)
-			                          ui.position.left = 0;
-			                    if (ui.position.top < -altura+550 )
-			                        ui.position.top = 550 - $(this).height();
-			                    if (ui.position.top + $(this).height() > altura)
-			                            ui.position.top = 0;
+						                    $('html, body').scrollTop(280)";
+			                    	}else{
+			                    		echo"
+						                    if (ui.position.left < 900 - $(this).width() )
+						                         ui.position.left = 900 - $(this).width(); 
+						                    if (ui.position.left + $(this).width()> anchura)
+						                          ui.position.left = 0;
+						                    if (ui.position.top < -altura+550 )
+						                        ui.position.top = 550 - $(this).height();
+						                    if (ui.position.top + $(this).height() > altura)
+						                            ui.position.top = 0;
 
-			                    $('html, body').scrollTop(280)
+						                    $('html, body').scrollTop(280)";
+			                    	}
+			                    ?>
+			                    
+			                    // if (ui.position.left < 900 - $(this).width() )
+			                    //      ui.position.left = 900 - $(this).width(); 
+			                    // if (ui.position.left + $(this).width()> anchura)
+			                    //       ui.position.left = 0;
+			                    // if (ui.position.top < -altura+550 )
+			                    //     ui.position.top = 550 - $(this).height();
+			                    // if (ui.position.top + $(this).height() > altura)
+			                    //         ui.position.top = 0;
+
+			                    // $('html, body').scrollTop(280)
 			                  
 			                }  
 			         });
@@ -421,75 +448,219 @@
                
                 
                 
-                
-			  $('.mySlides').mousewheel(function(event, delta){
-                    x=event.pageX - $('.mySlides').offset().left;
-				    y=event.pageY - $('.mySlides').offset().top;
-					var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
-                    var altura=parseInt($('.mySlides').css('height').split('px')[0]);
-                    var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
-                    var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
-					var aux1=anchura / (500-izquierda);
-                    var aux2=altura / (325-arriba);
-                    var contador=0;
-				  if(delta>0){
+                <?php 
+                	if($apaisado==1){
+                		echo" 
+                			$('.mySlides').mousewheel(function(event, delta){
+			                    x=event.pageX;
+							    y=event.pageY;
+								var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
+			                    var altura=parseInt($('.mySlides').css('height').split('px')[0]);
+			                    var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
+			                    var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
+								var aux1=anchura / (x-izquierda);
+			                    var aux2=altura / (y-arriba);
+			                    var contador=0;
+							  if(delta>0){
+			                      
+								  anchura+=200*delta;
+								  altura+=108*delta;
+								  contador+=1*delta;
+								  
+								  if(anchura>7700 || altura>4179){
+			                            anchura=7700;
+			                          altura=4179;
+			                        }else{
+										izquierda=(izquierda-(200*delta/aux1));
+			                            arriba=(arriba-(108*delta/aux2));
+			                            }
+			                      
+			                     
+								  
+							  }else{
+			                      anchura-=200
+			                      altura-=108
+			                      
+								  if(anchura<1200 || altura<450){
+			                          altura=450;
+			                          anchura=1200;
+			                      }else{
+			                          
+			                          izquierda=(izquierda+(200/aux1));
+			                          arriba=(arriba+(108/aux2));
+			                      }
+							  }
+							  if (izquierda < 1200 - anchura ){
+								  		var antIz=izquierda	
+			                            izquierda = 1200 - anchura; 
+			                            console.log('primer left: '+antIz+' < '+izquierda);
+			                        }
+			                         
+			                        if (izquierda + anchura > anchura){
+										var antIz=izquierda+anchura
+										console.log('segundo left : '+izquierda+' < '+anchura)
+			                          	izquierda = 0;
+			                          	console.log('segundo left despues: '+izquierda)
+			                        }
+
+			                        if (arriba < 450-altura ){
+										var antAr = 450-altura;
+			                            arriba = 450 - altura;
+			                           console.log('primer top: '+arriba+' < '+antAr);
+			                        }
+			                        if (arriba + altura > altura){
+										console.log(arriba+altura>altura);
+										//console.log('arriba+altura: '+arriba+altura+' altura: '+altura);
+			                            arriba = 0;
+			                           console.log('segundo top: '+arriba)
+
+			                        }
+							  //, 
+							  $('.mySlides').css({'width':anchura+'px', 'height': altura+'px','top': arriba+'px', 'left': izquierda+'px'})
+							  
+						  	});";
+                	}else{
+                		echo"
+                			$('.mySlides').mousewheel(function(event, delta){
+			                    x=event.pageX;
+							    y=event.pageY;
+								var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
+			                    var altura=parseInt($('.mySlides').css('height').split('px')[0]);
+			                    var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
+			                    var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
+								var aux1=anchura / (x-izquierda);
+			                    var aux2=altura / (y-arriba);
+			                    var contador=0;
+							  if(delta>0){
+			                      
+								  anchura+=200*delta;
+								  altura+=108*delta;
+								  contador+=1*delta;
+								  
+								  if(anchura>7700 || altura>4179){
+			                            anchura=7700;
+			                          altura=4179;
+			                        }else{
+										izquierda=(izquierda-(200*delta/aux1));
+			                            arriba=(arriba-(108*delta/aux2));
+			                            }
+			                      
+			                     
+								  
+							  }else{
+			                      anchura-=200
+			                      altura-=108
+			                      
+								  if(anchura<900 || altura<550){
+			                          altura=550;
+			                          anchura=900;
+			                      }else{
+			                          
+			                          izquierda=(izquierda+(200/aux1));
+			                          arriba=(arriba+(108/aux2));
+			                      }
+							  }
+							  if (izquierda < 900 - anchura ){
+								  		var antIz=izquierda	
+			                            izquierda = 900 - anchura; 
+			                            console.log('primer left: '+antIz+' < '+izquierda);
+			                        }
+			                         
+			                        if (izquierda + anchura > anchura){
+										var antIz=izquierda+anchura
+										console.log('segundo left : '+izquierda+' < '+anchura)
+			                          	izquierda = 0;
+			                          	console.log('segundo left despues: '+izquierda)
+			                        }
+
+			                        if (arriba < 550-altura ){
+										var antAr = 550-altura;
+			                            arriba = 550 - altura;
+			                           console.log('primer top: '+arriba+' < '+antAr);
+			                        }
+			                        if (arriba + altura > altura){
+										console.log(arriba+altura>altura);
+										//console.log('arriba+altura: '+arriba+altura+ altura: '+altura);
+			                            arriba = 0;
+			                           console.log('segundo top: '+arriba)
+
+			                        }
+							  //, 
+							  $('.mySlides').css({'width':anchura+'px', 'height': altura+'px','top': arriba+'px', 'left': izquierda+'px'})
+							  
+						  	});
+			                		";
+                	}
+
+                ?>
+			  // $('.mySlides').mousewheel(function(event, delta){
+     //                x=event.pageX - $('.mySlides').offset().left;
+				 //    y=event.pageY - $('.mySlides').offset().top;
+					// var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
+     //                var altura=parseInt($('.mySlides').css('height').split('px')[0]);
+     //                var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
+     //                var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
+					// var aux1=anchura / (500-izquierda);
+     //                var aux2=altura / (325-arriba);
+     //                var contador=0;
+				 //  if(delta>0){
                       
-					  anchura+=200*delta;
-					  altura+=108*delta;
-					  contador+=1*delta;
+					//   anchura+=200*delta;
+					//   altura+=108*delta;
+					//   contador+=1*delta;
 					  
-					  if(anchura>7700 || altura>4179){
-                            anchura=7700;
-                          altura=4179;
-                        }else{
-							izquierda=(izquierda-(200*delta/aux1));
-                            arriba=(arriba-(108*delta/aux2));
-                            }
+					//   if(anchura>7700 || altura>4179){
+     //                        anchura=7700;
+     //                      altura=4179;
+     //                    }else{
+					// 		izquierda=(izquierda-(200*delta/aux1));
+     //                        arriba=(arriba-(108*delta/aux2));
+     //                        }
                       
                      
 					  
-				  }else{
-                      anchura-=200
-                      altura-=108
+				 //  }else{
+     //                  anchura-=200
+     //                  altura-=108
                       
-					  if(anchura<900 || altura<550){
-                          altura=550;
-                          anchura=900;
-                      }else{
+					//   if(anchura<900 || altura<550){
+     //                      altura=550;
+     //                      anchura=900;
+     //                  }else{
                           
-                          izquierda=(izquierda+(200/aux1));
-                          arriba=(arriba+(108/aux2));
-                      }
-				  }
-				  if (izquierda < 900 - anchura ){
-					  		var antIz=izquierda	
-                            izquierda = 900 - anchura; 
-                            console.log("primer left: "+antIz+" < "+izquierda);
-                        }
+     //                      izquierda=(izquierda+(200/aux1));
+     //                      arriba=(arriba+(108/aux2));
+     //                  }
+				 //  }
+				 //  if (izquierda < 900 - anchura ){
+					//   		var antIz=izquierda	
+     //                        izquierda = 900 - anchura; 
+     //                        console.log("primer left: "+antIz+" < "+izquierda);
+     //                    }
                          
-                        if (izquierda + anchura > anchura){
-							var antIz=izquierda+anchura
-							console.log("segundo left : "+izquierda+" < "+anchura)
-                          	izquierda = 0;
-                          	console.log("segundo left despues: "+izquierda)
-                        }
+     //                    if (izquierda + anchura > anchura){
+					// 		var antIz=izquierda+anchura
+					// 		console.log("segundo left : "+izquierda+" < "+anchura)
+     //                      	izquierda = 0;
+     //                      	console.log("segundo left despues: "+izquierda)
+     //                    }
 
-                        if (arriba < 550-altura ){
-							var antAr = 550-altura;
-                            arriba = 550 - altura;
-                           console.log("primer top: "+arriba+" < "+antAr);
-                        }
-                        if (arriba + altura > altura){
-							console.log(arriba+altura>altura);
-							//console.log("arriba+altura: "+arriba+altura+" altura: "+altura);
-                            arriba = 0;
-                           console.log("segundo top: "+arriba)
+     //                    if (arriba < 550-altura ){
+					// 		var antAr = 550-altura;
+     //                        arriba = 550 - altura;
+     //                       console.log("primer top: "+arriba+" < "+antAr);
+     //                    }
+     //                    if (arriba + altura > altura){
+					// 		console.log(arriba+altura>altura);
+					// 		//console.log("arriba+altura: "+arriba+altura+" altura: "+altura);
+     //                        arriba = 0;
+     //                       console.log("segundo top: "+arriba)
 
-                        }
-				  //, 
-				  $('.mySlides').css({'width':anchura+"px", 'height': altura+"px",'top': arriba+"px", 'left': izquierda+"px"})
+     //                    }
+				 //  //, 
+				 //  $('.mySlides').css({'width':anchura+"px", 'height': altura+"px",'top': arriba+"px", 'left': izquierda+"px"})
 				  
-			  	});
+			  // 	});
 
 			  	
 			  });
