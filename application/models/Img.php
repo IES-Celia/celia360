@@ -85,7 +85,7 @@ class Img extends CI_Model {
             $this->load->library('image_lib', $config);
 
             if (!$this->image_lib->resize()) {
-                @unlink($userpic);
+            //    @unlink($userpic);
                 echo $this->image_lib->display_errors();
                 exit();
             }
@@ -106,8 +106,8 @@ class Img extends CI_Model {
             $this->image_lib->initialize($config); /// <<- IMPORTANTE
 
             if (!$this->image_lib->resize()) {
-                @unlink($userpic);
-                @unlink($img_redim1);
+           //     @unlink($userpic);
+            //    @unlink($img_redim1);
                 echo $this->image_lib->display_errors();
                 exit();
             }
