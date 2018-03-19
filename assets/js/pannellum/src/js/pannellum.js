@@ -42,6 +42,7 @@ var config,
     preview,
     isUserInteracting = false,
     latestInteraction = Date.now(),
+    ultimaInteraction = Date.now(),
     onPointerDownPointerX = 0,
     onPointerDownPointerY = 0,
     onPointerDownPointerDist = -1,
@@ -111,7 +112,7 @@ var defaultConfig = {
 defaultConfig.strings = {
     // Labels
     loadButtonLabel: 'Click to<br>Load<br>Panorama',
-    loadingLabel: 'Loading...',
+    loadingLabel: 'Cargando...',
     bylineLabel: 'by %s',    // One substitution: author
 
     // Errors
@@ -152,7 +153,7 @@ uiContainer.appendChild(dragFix);
 // Display about information on right click
 var aboutMsg = document.createElement('span');
 aboutMsg.className = 'pnlm-about-msg';
-aboutMsg.innerHTML = '<a href="https://pannellum.org/" target="_blank">Pannellum</a>';
+aboutMsg.innerHTML = '<a href="https://http://iesceliaciclos.org/celia360" target="_blank">celia tour 360</a>';
 uiContainer.appendChild(aboutMsg);
 dragFix.addEventListener('contextmenu', aboutMessage);
 
@@ -249,6 +250,20 @@ controls.orientation.addEventListener('touchstart', function(e) {e.stopPropagati
 controls.orientation.addEventListener('pointerdown', function(e) {e.stopPropagation();});
 controls.orientation.className = 'pnlm-orientation-button pnlm-orientation-button-inactive pnlm-sprite pnlm-controls pnlm-control';
 var orientationSupport, startOrientationIfSupported = false;
+
+//Check si han pasado cinco segundos para ocultar los iconos
+var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
+
+function comprobarTiempo() {
+   console.log(Date.now()-ultimaInteraction);
+   if(Date.now()-ultimaInteraction > 3500){
+    $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.08);
+   } else if(Date.now()-ultimaInteraction < 3500){
+    $(".custom-hotspot-salto").css("opacity",0.6);
+   }
+}
+
+
 function deviceOrientationTest(e) {
     window.removeEventListener('deviceorientation', deviceOrientationTest);
     if (e && e.alpha !== null && e.beta !== null && e.gamma !== null) {
@@ -773,6 +788,9 @@ function onDocumentMouseMove(event) {
  * @private
  */
 function onDocumentMouseUp(event) {
+
+
+
     if (!isUserInteracting) {
         return;
     }
@@ -782,10 +800,11 @@ function onDocumentMouseUp(event) {
         // releases the mouse button
         speed.pitch = speed.yaw = 0;
     }
+     
     uiContainer.classList.add('pnlm-grab');
     uiContainer.classList.remove('pnlm-grabbing');
     latestInteraction = Date.now();
-
+    ultimaInteraction = Date.now();
     fireEvent('mouseup', event);
 }
 
@@ -825,12 +844,12 @@ function onDocumentTouchStart(event) {
     }
     isUserInteracting = true;
     latestInteraction = Date.now();
-    
     onPointerDownYaw = config.yaw;
     onPointerDownPitch = config.pitch;
 
     fireEvent('touchstart', event);
     animateInit();
+    
 }
 
 /**

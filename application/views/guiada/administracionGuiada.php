@@ -339,6 +339,9 @@ function moverFila(elemento){
                     $(filaB).empty();
                     $(filaB).append(filaA_html);
 
+                    
+
+
                 }else {
                     //Error, comunicar de forma visual que no se ha podido mover
                     console.log("Error al intentar mover la fila");

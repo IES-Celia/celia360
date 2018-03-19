@@ -421,13 +421,13 @@ display: block;
         background-repeat: no-repeat;
         background-position: center;
         transition: width 0.5s, height 0.5s;
-        opacity: 0.5;
+        opacity: 0.6;
     }
 
 .custom-hotspot-escaleras:hover {
     width: 50px;
     height: 50px;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 .custom-hotspot-info,
@@ -442,7 +442,7 @@ display: block;
         background-repeat: no-repeat;
         background-position: center;
         transition: width 0.5s, height 0.5s;
-        opacity: 0.5;
+        opacity: 0.6;
     }
 
 .custom-hotspot-info {background-image: url("svg/eyeBlanco.svg");}
@@ -460,7 +460,7 @@ display: block;
 .custom-hotspot-video:hover{
   width: 40px;
   height: 40px;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* Audio */
