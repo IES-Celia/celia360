@@ -1,5 +1,6 @@
 .pisos{
-	height: 100%;
+    height: 100%;
+    width: 100%;
 	background-size: 100% 100%;
 }
 .pisos_config{
@@ -28,8 +29,8 @@
 }
 .puntos{
     cursor: pointer;
-    width: 1.5%;
-    height: 2.5%;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: white;
     position: absolute;

@@ -108,5 +108,5 @@ function mapa_responsivo(){
         height: "100%"
     });
 
-    console.log("anchura ventana: "+anchura_maxima+" | altura ventana: "+altura_maxima+"| altura: "+altura+" |anchura: "+anchura)
+
 }
