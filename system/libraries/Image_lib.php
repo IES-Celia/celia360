@@ -117,7 +117,8 @@ class CI_Image_lib {
 	 *
 	 * @var string
 	 */
-	public $thumb_marker		= '_thumb';
+	//public $thumb_marker		= '_thumb';
+        public $thumb_marker		= '';  //cambiado LOLI
 
 	/**
 	 * Whether to maintain aspect ratio when resizing or use hard values
@@ -427,7 +428,8 @@ class CI_Image_lib {
 		$this->dynamic_output 		= FALSE;
 		$this->quality 				= 90;
 		$this->create_thumb 		= FALSE;
-		$this->thumb_marker 		= '_thumb';
+                //$this->thumb_marker 		= '_thumb';
+		$this->thumb_marker 		= ''; //cambiado LOLI
 		$this->maintain_ratio 		= TRUE;
 		$this->master_dim 			= 'auto';
 		$this->wm_type 				= 'text';

@@ -19,16 +19,16 @@ class Img extends CI_Model {
         parent::__construct();
         $this->load->database();
     }
-    
     /**
      * Inserta un registro en la tabla "imagenes" de la base de datos
-     * Sube al servidor el fichero de la imagen, crea una miniatura de la imagen en el servidor
+     * Sube al servidor el fichero de la imagen reduciendo su tamaño y el peso de la misma, crea una miniatura de la imagen en el servidor
      * 
      * @return $resultado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
      * @author: María Dolores Salmeron Sierra
      */
+    //INSERTAR REDUCIENDO LA IMAGEN
     public function insertar_imagen() {
-        
+
         $resultado = array();
 
         $id_imagen = $this->input->post_get('id_imagen');
@@ -51,38 +51,134 @@ class Img extends CI_Model {
 
         //cargar la librería
         $this->load->library('upload', $config);
-        //Realiza la carga según las preferencias que ha establecido.
-        $resultado_subida = $this->upload->do_upload('imagen');
+    
+        if (!$this->upload->do_upload('imagen')) {
 
-        if ($resultado_subida == false) {
             // ¡¡La subida del fichero ha fallado!!
             $resultado[0] = false;
-            $resultado[1] = $this->upload->display_errors("<i>", "</i>");
+            $resultado[1] = array('error' => $this->upload->display_errors());
             // Borramos el registro que habíamos creado vacío (solo con el ID)
             $this->db->query("DELETE FROM imagenes WHERE id_imagen = '$id_nuevaimagen'");
         } else {
             // ¡¡La subida del fichero ha sido un éxito!!
-            //Para devolver un elemento de la matriz: $this->upload->data('client_name'); 
-            //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
-            $imgFile = $this->upload->data('client_name');
-            //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
-            $tmp_dir = $this->upload->data('file_name');
+            //EN OTRO CASO SUBIMOS LA IMAGEN, CREAMOS LA MINIATURA 
+            $data = array('upload_data' => $this->upload->data());
+
+            $img_full_path = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+
             // Modificamos el registro en la base de datos
             $resultado[0] = true;
             $resultado[1] = $this->db->query("UPDATE imagenes SET titulo_imagen='$titulo_imagen', texto_imagen = '$texto_imagen', 
                                         url_imagen = '$userpic', fecha = '$fecha' WHERE id_imagen = '$id_nuevaimagen'");
+
+            //REDIMENSIONAR IMAGEN   
+            $config['image_library'] = 'gd2';
+            //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = TRUE;
+            //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+            $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
+            $img_redim1 = $config['new_image'];
+            $config['width'] = 150;
+            $config['height'] = 150;
+            $this->load->library('image_lib', $config);
+
+            if (!$this->image_lib->resize()) {
+                @unlink($userpic);
+                echo $this->image_lib->display_errors();
+                exit();
+            }
+
+            $this->image_lib->clear();
+    
             // Creamos una miniatura de la imagen
             $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
-            copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
+            copy('assets/imagenes/imagenes-hotspots/' . $userpic, 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura);
             $config['image_library'] = 'gd2';
-            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
+            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura;
             $config['maintain_ratio'] = TRUE;
-            $config['width'] = 200;
+            $config['width'] = 90;
+            $config['height'] = 90;
             $this->load->library('image_lib', $config);
-            $this->image_lib->resize();
+            $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
+
+            $this->image_lib->initialize($config); /// <<- IMPORTANTE
+
+            if (!$this->image_lib->resize()) {
+                @unlink($userpic);
+                @unlink($img_redim1);
+                echo $this->image_lib->display_errors();
+                exit();
+            }
         }
         return $resultado;
     }
+  
+    /**
+     * Inserta un registro en la tabla "imagenes" de la base de datos
+     * Sube al servidor el fichero de la imagen con el tamaño y dimensiones de la imagen de origen,
+     * crea una miniatura de la imagen en el servidor
+     * 
+     * @return $resultado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
+     * @author: María Dolores Salmeron Sierra
+     */
+//    public function insertar_imagen() {
+//        
+//        $resultado = array();
+//
+//        $id_imagen = $this->input->post_get('id_imagen');
+//        $titulo_imagen = $this->input->post_get('titulo_imagen');
+//        $texto_imagen = $this->input->post_get('texto_imagen');
+//        $fecha = $this->input->post_get('fecha');
+//
+//        //Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
+//        $this->db->query("INSERT INTO imagenes(id_imagen) VALUES (0)"); // Es un campo auto_increment, así que ignorará el 0
+//
+//        $resul = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes ORDER BY id_imagen DESC LIMIT 1");
+//        $id_nuevaimagen = $resul->row()->maxid;
+//
+//        //cambiar el nombre de la imagen de carga	
+//        $userpic = $id_nuevaimagen . "." . "jpg";
+//
+//        $config['upload_path'] = 'assets/imagenes/imagenes-hotspots/';
+//        $config['allowed_types'] = 'jpg';
+//        $config['file_name'] = $userpic;
+//
+//        //cargar la librería
+//        $this->load->library('upload', $config);
+//        //Realiza la carga según las preferencias que ha establecido.
+//        $resultado_subida = $this->upload->do_upload('imagen');
+//
+//        if ($resultado_subida == false) {
+//            // ¡¡La subida del fichero ha fallado!!
+//            $resultado[0] = false;
+//            $resultado[1] = $this->upload->display_errors("<i>", "</i>");
+//            // Borramos el registro que habíamos creado vacío (solo con el ID)
+//            $this->db->query("DELETE FROM imagenes WHERE id_imagen = '$id_nuevaimagen'");
+//        } else {
+//            // ¡¡La subida del fichero ha sido un éxito!!
+//            //Para devolver un elemento de la matriz: $this->upload->data('client_name'); 
+//            //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
+//            $imgFile = $this->upload->data('client_name');
+//            //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
+//            $tmp_dir = $this->upload->data('file_name');
+//            // Modificamos el registro en la base de datos
+//            $resultado[0] = true;
+//            $resultado[1] = $this->db->query("UPDATE imagenes SET titulo_imagen='$titulo_imagen', texto_imagen = '$texto_imagen', 
+//                                        url_imagen = '$userpic', fecha = '$fecha' WHERE id_imagen = '$id_nuevaimagen'");
+//            // Creamos una miniatura de la imagen
+//            $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
+//            copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
+//            $config['image_library'] = 'gd2';
+//            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
+//            $config['maintain_ratio'] = TRUE;
+//            $config['width'] = 200;
+//            $this->load->library('image_lib', $config);
+//            $this->image_lib->resize();
+//        }
+//        return $resultado;
+//    }
 
     /**
      * Modifica un registro en la tabla "imagenes" de la base de datos 
