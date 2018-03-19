@@ -269,6 +269,11 @@
 							}
 
 							config.$bookBlock.bookblock( 'next' );
+							config.$bookBlock.bookblock( 'next' );
+							
+							$("#bb-nav-next").css("pointer-events", "none");
+
+							setTimeout(function(){$("#bb-nav-next").css("pointer-events", "auto");}, 1000);
 							return false;
 						} );
 
@@ -282,6 +287,10 @@
 								$("#numeropag").val(1);
 							}
 							config.$bookBlock.bookblock( 'prev' );
+
+							$("#bb-nav-prev").css("pointer-events", "none");
+
+							setTimeout(function(){$("#bb-nav-prev").css("pointer-events", "auto");}, 1000);
 							return false;
 						} );
 

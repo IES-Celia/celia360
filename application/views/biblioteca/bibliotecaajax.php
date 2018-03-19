@@ -55,12 +55,6 @@
 		    }
 		});
 
-		//Abrir pagina libro especifica
-		$("#numeropag").change(function() {
-			var numpag=document.getElementById('numeropag').value;
-			var numpag=$("#numeropag").val();
-			$('#flipbook').turn('page', numpag);
-		});
 	}); 
 </script>
 
@@ -303,9 +297,19 @@
 								$("#numeropag").val(tpg);
 							}
 
+
+						config.$bookBlock.bookblock( 'next' );
+						
+						$("#bb-nav-next").css("pointer-events", "none");
+
+						setTimeout(function(){$("#bb-nav-next").css("pointer-events", "auto");}, 1000);
+						
+							return false;
+
 							config.$bookBlock.bookblock( 'next' );
 
 						return false;
+
 						} );
 
 						config.$navPrev.on( 'click touchstart', function() {
@@ -317,8 +321,14 @@
 							}else{
 								$("#numeropag").val(1);
 							}
-							config.$bookBlock.bookblock( 'prev' );
-						return false;
+
+						config.$bookBlock.bookblock( 'prev' );
+						
+						$("#bb-nav-prev").css("pointer-events", "none");
+
+						setTimeout(function(){$("#bb-nav-prev").css("pointer-events", "auto");}, 1000);
+						
+							return false;
 						} );
 
 						config.$navFirst.on( 'click touchstart', function() {
@@ -382,6 +392,7 @@
 										$("#numeropag").val(tpg);
 									}
 									config.$bookBlock.bookblock( 'next' );
+								
 								break;
 								case arrow.enter:
 									var pag = $("#numeropag").val();
