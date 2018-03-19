@@ -8,8 +8,7 @@ class Welcome extends CI_Controller {
 	public function cargar_escena($escenaInicial, $redireccion, $piso = null){
         $this->load->library('session');
         if(isset($piso) && is_numeric($piso)){
-            $this->session->piso=$piso;
-            echo $this->session->piso;   
+            $this->session->piso=$piso; 
         }
         
         $redireccion = site_url("/hotspots/".$redireccion."/");
