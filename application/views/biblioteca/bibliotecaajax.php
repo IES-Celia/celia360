@@ -292,6 +292,7 @@
 						// add navigation events
 						
 						config.$navNext.on( 'click touchstart', function() {
+
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
 
@@ -302,10 +303,9 @@
 								$("#numeropag").val(tpg);
 							}
 
-						config.$bookBlock.bookblock( 'next' );
-						config.$navNext.off('click touchstart');
-						
-							return false;
+							config.$bookBlock.bookblock( 'next' );
+
+						return false;
 						} );
 
 						config.$navPrev.on( 'click touchstart', function() {
@@ -318,20 +318,20 @@
 								$("#numeropag").val(1);
 							}
 							config.$bookBlock.bookblock( 'prev' );
-							return false;
+						return false;
 						} );
 
 						config.$navFirst.on( 'click touchstart', function() {
 							$("#numeropag").val(1);
 							config.$bookBlock.bookblock( 'first' );
-							return false;
+						return false;
 						} );
 
 						config.$navLast.on( 'click touchstart', function() {
 							var ultpg = $("#cantpag").val();
 							$("#numeropag").val(ultpg);
 							config.$bookBlock.bookblock( 'last' );
-							return false;
+						return false;
 						} );
 
 						
