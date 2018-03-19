@@ -21,11 +21,16 @@
 
 		<?php
         $tabla=$celda[0];
-			echo"<form action='".site_url("Puntos_destacados/processupdatedestacado")."' method='get'>
+			echo"<form action='".site_url("Puntos_destacados/processupdatedestacado")."' method='post' enctype='multipart/form-data'>
             <input type='hidden' name='id_celda' value='".$tabla['id_celda']."' readonly> <br>
             Nombre del punto destacado:  <input type='text' name='titulo_celda' value='".$tabla['titulo_celda']."'> <br>
+            Seleccione un archivo de imagen JPG para sustituir el actual:<br>
+            <input type='file' name='panorama'> <br/>
             Seleccione un punto del mapa, que será donde salte al hacer click:
-            <input type='text' name='escena_celda' readonly value='".$tabla['escena_celda']."'> <br><br>";
+            <input type='text' name='escena_celda' readonly value='".$tabla['escena_celda']."'> <br><br>
+            
+            
+            ";
                     ?>
 
                     <button id="btn-bajar-piso" type="button">Bajar piso</button>
@@ -57,8 +62,7 @@
                     <?php
                     echo "Fila en la que se encuentra la celda (modifica el valor para cambiarla) : <input type='number' min='0' max='4' name='fila_asociada' value='".$tabla['fila_asociada']."'><br>
 			    
-				    <input type='submit'><br><br>
-                    <a href='".site_url("/puntos_destacados/borrar_celda/".$tabla['id_celda'])."'>BORRAR ESTA CELDA (CUIDADO)</a>";  ?>
+				    <input type='submit'><br><br>";  ?>
 		    	     <br><br>
 				    <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados"); ?>">Atrás</a>
 			   
