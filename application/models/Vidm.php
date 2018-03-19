@@ -26,13 +26,17 @@ class Vidm extends CI_Model {
         return $tabla;
         echo $tabla;
     }
+	public function relacion($id){
+		$s="select clickHandlerFunc from hotspots where clickHandlerFunc='video' and clickHandlerArgs='$id'";
+		$r=$this->db->query($s);
+		if ($r->num_rows() > 0) {
+			return true;
+	}else return false;
+	}
 
     public function borrarvideo($id_vid) {
         $del = "delete from video where id_vid='$id_vid'";
-        $alter = "alter table video auto_increment=1;";
         $r = $this->db->query($del);
-        $this->db->query($alter);
-
         return $r;
     }
 

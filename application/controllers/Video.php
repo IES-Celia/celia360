@@ -42,12 +42,14 @@ private $videos_por_pagina = 10;
     }
 
     public function borrarvideo($id) {
-
-        $this->Vidm->borrarvideo($id);
-        $datos["tabla"] = $this->Vidm->buscarvideo();
-        $datos["vista"] = "video/Vvideos";
-        $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('template_admin', $datos);
+		$r=$this->Vidm->relacion($id);
+		if($r==false){
+			$this->Vidm->borrarvideo($id);
+			echo "1";
+		}
+		else  {
+			echo "0";
+		}
     }
 
     public function formmodificarvideo($id_vid) {
@@ -127,11 +129,7 @@ foreach ($listaVideos as $re) {
     echo"<td><a href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
 echo "</table>";
-/*$ant = $primero - $cantidad;
-if($ant<0)$ant=0;
-$sig = $primero + $cantidad;
-if($sig>$total) $sig=$total-1;
-echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideo/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("video/mostrarvideo/") ."$sig'>Siguiente</a></div></br></br>";*/
+
 		}
     }  	
 }
