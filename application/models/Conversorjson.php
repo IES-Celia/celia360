@@ -96,7 +96,8 @@ class Conversorjson extends CI_Model {
         $json = $json . '"type": "equirectangular",';   
         $json = $json . '"panorama": "'.$escena['panorama'].'",';   
         $json = $json . '"hotSpots": ['; // ese $escena[hotspot] no tiene sentido pero está gracioso        
-                
+        
+        
         $sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_escena = ".$escena['id_escena'];
         $res2 = $this->db->query($sql);
         foreach ($res2->result_array() as $hotspot) {
@@ -110,9 +111,8 @@ class Conversorjson extends CI_Model {
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
-                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
-                    $json = $json . '"createTooltipFunc": "hotspot",';  
-                    $json = $json . '"createTooltipArgs": "'.$hotspot['titulo_panel'].'"';
+                   /* $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  */
+                    $json = $json . '"text": "'.$hotspot['titulo_panel'].'"';
                     $json = $json . '} ';  
             }
         }
