@@ -290,6 +290,7 @@
 						var $slides = config.$bookBlock.children();
 
 						// add navigation events
+						
 						config.$navNext.on( 'click touchstart', function() {
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
@@ -301,7 +302,9 @@
 								$("#numeropag").val(tpg);
 							}
 
-							config.$bookBlock.bookblock( 'next' );
+						config.$bookBlock.bookblock( 'next' );
+						config.$navNext.off('click touchstart');
+						
 							return false;
 						} );
 

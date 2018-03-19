@@ -214,7 +214,7 @@
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->
 						<span style="position:relative; top:-10px;">
-						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#31a3dd;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#31a3dd;border:none;color:white;' id='cantpag' value='/ $num_pag' readonly>";?> 
+						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#31a3dd;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#31a3dd;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
 						</span>
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
