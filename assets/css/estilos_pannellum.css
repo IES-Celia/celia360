@@ -421,11 +421,13 @@ display: block;
         background-repeat: no-repeat;
         background-position: center;
         transition: width 0.5s, height 0.5s;
+        opacity: 0.5;
     }
 
 .custom-hotspot-escaleras:hover {
     width: 50px;
     height: 50px;
+    opacity: 0.8;
 }
 
 .custom-hotspot-info,
@@ -434,12 +436,13 @@ display: block;
 .custom-hotspot-audio,
 .custom-hotspot-info2,
 .custom-hotspot-video{
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         background-size:contain;
         background-repeat: no-repeat;
         background-position: center;
         transition: width 0.5s, height 0.5s;
+        opacity: 0.5;
     }
 
 .custom-hotspot-info {background-image: url("svg/eyeBlanco.svg");}
@@ -455,8 +458,9 @@ display: block;
 .custom-hotspot-atras:hover,
 .custom-hotspot-audio:hover,
 .custom-hotspot-video:hover{
-  width: 50px;
-        height: 50px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
 }
 
 /* Audio */
