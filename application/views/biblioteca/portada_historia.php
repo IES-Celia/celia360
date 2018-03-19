@@ -100,7 +100,7 @@
 		<div class="modalita" >
 	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
 	        <div class="cabecera-ventana" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');height:60px;border-radius:15px;">
-	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">I.E.S. Celia Viñas</h1>
+	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">IES Celia Viñas</h1>
 	        </div>
 	        <div class="pared" >
 	        <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
