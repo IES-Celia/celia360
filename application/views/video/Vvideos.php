@@ -122,7 +122,7 @@ echo "
     <form action='" . site_url("video/modificarvideo/" . $id) . "' method='post' enctype='multipart/form-data'>
                     URL Video:<input type='text' name='url_vid' id='url'><br/>
                     Descripcion:<input type='text' name='desc_vid'  id='desc'><br/>  					
-                    <input type='text' name='id'  id='id'<br/>
+                    <input type='hidden' name='id'  id='id'<br/>
                     
                     <input type='submit'>
                 </form>
@@ -183,7 +183,7 @@ echo"
             alert("Error al borrar el video");
         } else {
             
-            alert("Videoborrado con éxito");
+            alert("Video borrado con éxito");
             $('#contenido').remove();
         }
     }

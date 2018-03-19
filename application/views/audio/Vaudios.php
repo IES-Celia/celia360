@@ -137,7 +137,7 @@ echo "
                     URL audio:<input type='text' name='url_aud' id='url'><br/>
                     Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
 					<input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
-                    <input type='text' name='id'  id='id'><br/>
+                    <input type='hidden' name='id'  id='id'><br/>
                        Tipo<select name='tipo_aud' id='select'>
   			<option value='v-guiada'>visita guiada</option>
  			<option value='d-objeto'>definir objeto</option>
