@@ -108,6 +108,9 @@
 	</style>
 </head>
 <body style="width:100%;">
+	<div id="tutorial">
+		
+	</div>
 	<div>
 		<div class="modalita" >
 	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
@@ -210,9 +213,9 @@
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->
-						
-						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;"><?php echo "<input type='text'  style='width:40px;padding:5px;' id='cantpag' value='$num_pag' readonly>";?> 
-						
+						<span style="position:relative; top:-10px;">
+						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#31a3dd;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#31a3dd;border:none;color:white;' id='cantpag' value='/ $num_pag' readonly>";?> 
+						</span>
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>
