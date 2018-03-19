@@ -45,6 +45,18 @@
 			    padding:10px;
 
 			};
+			.cerrarBook{
+  	width: 40px;
+    height: 40px;
+  	background:#208cbf;
+  	color:white;
+  	text-align:center;
+  	font-size:30px;
+  	top: 20px;
+    left: 85%;
+    position: absolute;
+    border-radius:5px;
+  }
 
 
 		</style>
@@ -145,7 +157,7 @@
 <div class="modalita2"  >
 		<div class="container">
 			<!-- Top Navigation -->
-			<a href="#" class="cerrarBook">x</a>
+			<a href="#" class="cerrarBook" style="width: 40px;height: 40px;background:#208cbf;color:white;text-align:center;font-size:30px;top: 20px;left: 85%;position: absolute;border-radius:5px;">x</a>
 			<header>	
 			</header>
 			<div class="main clearfix">
@@ -199,7 +211,7 @@
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->
 						
-						<input type='text' id='numeropag' value="1"><?php echo "<input type='text' id='cantpag' value='$num_pag' readonly>";?> 
+						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;"><?php echo "<input type='text'  style='width:40px;padding:5px;' id='cantpag' value='$num_pag' readonly>";?> 
 						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
