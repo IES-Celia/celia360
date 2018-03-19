@@ -58,6 +58,14 @@ class AudM extends CI_Model {
         return $res;
 
         }
+		
+	public function relacion($id){
+		$s="select clickHandlerFunc from hotspots where clickHandlerFunc='audio' and clickHandlerArgs='$id'";
+		$r=$this->db->query($s);
+		if ($r->num_rows() > 0) {
+			return true;
+	}else return false;
+	}
 
     public function borraraud($id_aud) {
         $s = "select url_aud from audio where id_aud='$id_aud'";

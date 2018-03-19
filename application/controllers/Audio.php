@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 class Audio extends CI_Controller {
     
-    private $audios_por_pagina = 20;
+    private $audios_por_pagina = 10 ;
     
     public function __construct() {
         parent::__construct();
@@ -19,7 +19,8 @@ class Audio extends CI_Controller {
     }
 
     public function forminsertaraudio() {
-        $datos["vista"] = "audio/Insertaraudios";
+        $datos["vista"] = "audio/Insertaraudi
+		s";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
     }
@@ -30,9 +31,9 @@ class Audio extends CI_Controller {
 
         if ($r == true) {
             echo"el archivo ya existe en el servidor, intenta cambiarle el nombre antes de subirlo si no quieres qe se sobreescriba";
-            echo"</br><a href='" . site_url("audio/forminsertaraudio") . "'>insertar</a></br>";
-            echo"</br><a href='" . site_url("audio/mostraraudios") . "'>mostrar</a></br>";
-            echo"</br><a href='" . site_url("audio/mostraraudios") . "'>renombrar archivo en el servidor</a></br>";
+            echo"</br><a class='insert' href='" . site_url("audio/forminsertaraudio") . "'>insertar</a></br>";
+            echo"</br><a class='insert' href='" . site_url("audio/mostraraudios") . "'>mostrar</a></br>";
+            echo"</br><a class='insert' href='" . site_url("audio/mostraraudios") . "'>renombrar archivo en el servidor</a></br>";
         } else {
             $tipo = $this->input->post_get("tipo_aud");
             $desc = $this->input->post_get("desc");
@@ -56,11 +57,13 @@ class Audio extends CI_Controller {
     }
 
     public function borraraud($id) {
+		$r=$this->Audm->relacion($id);
+		if($r==false){
         $this->Audm->borraraud($id);
-        $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
-        $datos["vista"] = "audio/Vaudios";
-        $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view("template_admin", $datos);
+			echo"1";
+		}else {
+			echo"0";
+		}
     }
 
     public function formmodificarAud($id_aud) {
