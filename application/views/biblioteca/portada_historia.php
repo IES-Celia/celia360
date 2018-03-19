@@ -255,7 +255,6 @@
 
 						// add navigation events
 						config.$navNext.on( 'click touchstart', function() {
-
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
 
@@ -332,7 +331,7 @@
 									config.$bookBlock.bookblock( 'prev' );
 								break;
 								case arrow.right:
-									ar tpg =$("#cantpag").val();
+									var tpg =$("#cantpag").val();
 									var pg = $("#numeropag").val();
 
 									if(pg!=tpg){
