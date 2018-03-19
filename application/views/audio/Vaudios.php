@@ -43,7 +43,8 @@
 });
 </script> 
  <style type="text/css">
-      #modificar{
+		
+	  #modificar{
         display:none;
         z-index: 1;
         position: fixed;
@@ -208,7 +209,7 @@ echo"
     }
 
     function respuesta(r) {
-        if (r == '0') {
+        if (r.trim() == "0") {
             alert("Error al borrar el audio");
         } else {
             

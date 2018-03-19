@@ -180,10 +180,10 @@ echo"
 
     function respuesta(r) {
         if (r.trim() == "0") {
-            alert("Error al borrar el audio");
+            alert("Error al borrar el video");
         } else {
             
-            alert("Audio borrado con éxito");
+            alert("Videoborrado con éxito");
             $('#contenido').remove();
         }
     }

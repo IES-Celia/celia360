@@ -31,9 +31,8 @@ class Audio extends CI_Controller {
 
         if ($r == true) {
             echo"el archivo ya existe en el servidor, intenta cambiarle el nombre antes de subirlo si no quieres qe se sobreescriba";
-            echo"</br><a class='insert' href='" . site_url("audio/forminsertaraudio") . "'>insertar</a></br>";
-            echo"</br><a class='insert' href='" . site_url("audio/mostraraudios") . "'>mostrar</a></br>";
-            echo"</br><a class='insert' href='" . site_url("audio/mostraraudios") . "'>renombrar archivo en el servidor</a></br>";
+            echo"</br><a class='button' href='" . site_url("audio/forminsertaraudio") . "'><button>Insertar</button></a></br>";
+            echo"</br><a class='button' href='" . site_url("audio/mostraraudios") . "'><button>Mostrar</button></a></br>";
         } else {
             $tipo = $this->input->post_get("tipo_aud");
             $desc = $this->input->post_get("desc");
@@ -105,7 +104,7 @@ class Audio extends CI_Controller {
             <tr>
             <th>ID</th>
             <th>URL</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Tipo de audio</th>
             <th>Reproducir</th>
             <th>Seleccionar</th>
