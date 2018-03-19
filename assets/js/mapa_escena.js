@@ -156,12 +156,14 @@ $(window).resize(function() {
 	mapa_responsivo();
 });
 function mapa_responsivo(){
+	var anchura,altura,anchura_maxima,altura_maxima;
 	var altura_natural = $("#zona" + piso + " > img").get(0).naturalHeight;
 	var anchura_natural = $("#zona" + piso + " > img").get(0).naturalWidth;
-	var anchura,altura,anchura_maxima,altura_maxima;
 	if ($("#mapa_escena").length){
+		
+
 		anchura_maxima = window.innerWidth * 0.70;
-		altura_maxima = window.innerHeight * 1.20;
+		altura_maxima = window.innerHeight*0.9;
 
 		if (anchura_natural > altura_natural) {
 			anchura = anchura_maxima
@@ -178,8 +180,9 @@ function mapa_responsivo(){
 		});
 	}
 	if ($("#mapa_escena_hotspot").length){
-		var anchura = $("#mapa_escena_hotspot").parent().width();
-		var altura = anchura * 0.57;
+		
+		anchura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").width();
+		altura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").height();;
 
 
 		$("#mapa_escena_hotspot").css({

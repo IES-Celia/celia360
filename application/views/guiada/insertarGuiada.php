@@ -18,8 +18,8 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
     $indice = 0;
 
     foreach ($mapa as $imagen) {
-        echo "<div id='zona".$indice."' class='pisos pisos_guiada' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
-      
+        echo "<div id='zona".$indice."' class='pisos pisos_guiada' style='display: none;'>";
+        echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
       
         foreach ($puntos as $punto) {
           if($punto['piso']==$indice){

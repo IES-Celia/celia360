@@ -56,8 +56,8 @@
                 
                 
                     
-                    echo "<div id='p".$indice."' class='pisos pisos_hotspots' style='background-image: url(".base_url($mapa[$indice]['url_img']).");'>";
-                    
+                    echo "<div id='p".$indice."' class='pisos pisos_hotspots'>";
+                    echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
                             if($punto['id_escena'] == $id_scene){

@@ -50,7 +50,7 @@
    width: 90%;
     height: 350px;
 }
-   
+
 </style>
 
 <?php 
@@ -602,7 +602,7 @@ peticion.done(function(datos){
     $('.modal').css('display','none');
   });
 }
-   
+  
 function escaleras(){
   nombreEscena = viewer.getScene();
   pisoActual = nombreEscena.substring(0,2);

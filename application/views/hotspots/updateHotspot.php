@@ -54,8 +54,8 @@ echo "
                 
                 
                     
-                    echo "<div id='p".$indice."' class='pisos pisos_update' style='background-image: url(".base_url($mapa[$indice]['url_img']).");'>";
-                    
+                    echo "<div id='zona".$indice."' class='pisos pisos_update'>";
+                    echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
                             if($punto['id_escena'] == $escena_inicial){
