@@ -217,34 +217,34 @@ class Img extends CI_Model {
                 //cambiar el nombre de la imagen de carga
                 $userpic = $actualizar_id . "." . "jpg";
                 
-//---------------------------------------------- ATENCIÓN
-                $data = array('upload_data' => $this->upload->data());
-
-                $img_full_path = 'assets/imagenes/imagenes-hotspots/' . $userpic;
-                 //REDIMENSIONAR IMAGEN   
-                $config['image_library'] = 'gd2';
-                //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
-                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $userpic;
-                $config['create_thumb'] = TRUE;
-                $config['maintain_ratio'] = TRUE;
-                //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
-                $img_redim1 = $config['new_image'];
-                $config['width'] = 1200;
-                //$config['height'] = 1200;
-                $this->load->library('image_lib', $config);
-
-            if (!$this->image_lib->resize()) {
-            //    @unlink($userpic);
-                echo $this->image_lib->display_errors();
-                exit();
-            }
-
-            $this->image_lib->clear();
-                
-                
-                
-//------------------------------------                
+////---------------------------------------------- ATENCIÓN
+//                $data = array('upload_data' => $this->upload->data());
+//
+//                $img_full_path = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+//                 //REDIMENSIONAR IMAGEN   
+//                $config['image_library'] = 'gd2';
+//                //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+//                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+//                $config['create_thumb'] = TRUE;
+//                $config['maintain_ratio'] = TRUE;
+//                //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+//                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
+//                $img_redim1 = $config['new_image'];
+//                $config['width'] = 1200;
+//                //$config['height'] = 1200;
+//                $this->load->library('image_lib', $config);
+//
+//            if (!$this->image_lib->resize()) {
+//            //    @unlink($userpic);
+//                echo $this->image_lib->display_errors();
+//                exit();
+//            }
+//
+//            $this->image_lib->clear();
+//                
+//                
+//                
+////------------------------------------                
                 // Creamos una miniatura de la imagen
                 $nombre_miniatura = $actualizar_id . "_miniatura.jpg";
                 copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
