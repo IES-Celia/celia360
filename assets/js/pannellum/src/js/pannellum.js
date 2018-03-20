@@ -252,7 +252,7 @@ controls.orientation.className = 'pnlm-orientation-button pnlm-orientation-butto
 var orientationSupport, startOrientationIfSupported = false;
 
 //Check si han pasado cinco segundos para ocultar los iconos
-var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
+//var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
 
 function comprobarTiempo() {
    //console.log(Date.now()-ultimaInteraction);

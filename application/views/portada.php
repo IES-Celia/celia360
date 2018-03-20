@@ -270,6 +270,7 @@
  
             <div id="panel_audio_libre">
               <div class="botonPause"></div>
+              <div class='icono_audio_cerrar'></div>
               <audio id="audio_libre" src=""  controls> </audio>
               <div class="icono_audio"></div>
             </div>
@@ -494,6 +495,7 @@ $("#panel_audio_libre .botonPause").click(function(){
     $(".botonPause").hide();
     $("#audio_libre").hide();
     $(".icono_audio").show();
+    $(".icono_audio_cerrar").hide();
   }                  
 });
   
@@ -501,6 +503,14 @@ $("#panel_audio_libre .icono_audio").click(function(){
     $(".botonPause").show();
     $("#audio_libre").show();
     $(".icono_audio").hide();
+    $(".icono_audio_cerrar").show();
+                        
+});
+
+$("#panel_audio_libre .icono_audio_cerrar").click(function(){
+    $("#panel_audio_libre").hide();
+    $("#audio_libre")[0].pause();
+    $('#audio_libre').attr("src","");
                         
 });
 

@@ -507,6 +507,28 @@ display: block;
   width: 24px;
 }
 
+.icono_audio_cerrar {
+  position: relative;
+  float: right;
+  left: 60px;
+  top:8px;
+  z-index: 100;
+  cursor:default;
+  height: 20px;
+  width: 20px;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: width 0.5s, height 0.5s;
+  background-image: url("svg/close-audio-play.svg");
+
+}
+
+.icono_audio_cerrar:hover {
+  height: 24px;
+  width: 24px;
+}
+
 
 /*usado para visita guiada */
 #panelAudio {
@@ -1002,4 +1024,8 @@ display: block;
 
 .flecha:hover{
   color:#0d69c5;
+}
+
+.icono_audio_cerrar{
+
 }
