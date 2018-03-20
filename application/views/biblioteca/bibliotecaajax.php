@@ -304,10 +304,6 @@
 						$("#bb-nav-next").css("pointer-events", "none");
 
 						setTimeout(function(){$("#bb-nav-next").css("pointer-events", "auto");}, 1000);
-						
-							return false;
-
-							config.$bookBlock.bookblock( 'next' );
 
 						return false;
 
@@ -530,13 +526,13 @@
 			                      }
 							  }
 							  if (izquierda < 1200 - anchura ){
-								  		var antIz=izquierda	
+								  		var antIz=izquierda;
 			                            izquierda = 1200 - anchura; 
 			                            console.log('primer left: '+antIz+' < '+izquierda);
 			                        }
 			                         
 			                        if (izquierda + anchura > anchura){
-										var antIz=izquierda+anchura
+										var antIz=izquierda+anchura;
 										console.log('segundo left : '+izquierda+' < '+anchura)
 			                          	izquierda = 0;
 			                          	console.log('segundo left despues: '+izquierda)

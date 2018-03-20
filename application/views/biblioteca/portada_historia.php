@@ -267,8 +267,7 @@
 							}else{
 								$("#numeropag").val(tpg);
 							}
-
-							config.$bookBlock.bookblock( 'next' );
+							
 							config.$bookBlock.bookblock( 'next' );
 							
 							$("#bb-nav-next").css("pointer-events", "none");
