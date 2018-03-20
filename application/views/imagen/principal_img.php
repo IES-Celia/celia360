@@ -24,7 +24,7 @@ if (isset($error)) {
 //título
 //echo '<h1>IMAGEN</h1>';
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
-echo"<a class='insert' onclick='mostrar(\"insertar\")' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>";
+echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>";
 
 //he quitado la columna texto de la vista, pero sigue en la bd 
 //cabecera  <th>Texto</th>
@@ -40,15 +40,21 @@ echo "</tfoot>";
 echo "<tbody>";
 foreach ($lista_imagenes as $ima) {
     $fila = $ima["id_imagen"];
-    $nombre_archivo = $ima["id_imagen"]."_miniatura.jpg";
+    $nombre_archivo = $ima["id_imagen"] . "_miniatura.jpg";
     $url_modificar = site_url("imagen/modificar_imagen/") . $ima["id_imagen"];
     $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
-    echo "<tr id='imagen-" . $fila . "'><td>" . $ima["id_imagen"] . "</td><td>" . $ima["titulo_imagen"] . "</td><td>" . $ima["url_imagen"] . "</td><td align='center'><a href='".
-    base_url("assets/imagenes/imagenes-hotspots/" . $ima["url_imagen"])."'><img src='" .
-    base_url("assets/imagenes/imagenes-hotspots/" . $nombre_archivo) . "'></a></td><td>" .
-    $ima["fecha"] . "</td>
-        <td><a href='#' onclick='mostrar(\"modificar\")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>
-    	<td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+
+    echo "<tr id='imagen-" . $fila . "'>";
+    echo "<td class='nombre-img'>" . $ima["id_imagen"] . "</td>";
+    echo "<td class='titulo-img'>" . $ima["titulo_imagen"] . "</td>";
+    echo "<td class='url-img'>" . $ima["url_imagen"] . "</td>";
+    echo "<td class='miniatura' align='center'><a href='" .
+    base_url('assets/imagenes/imagenes-hotspots/' . $ima['url_imagen']) . "'><img class='imagen-img' src=\"" .
+    base_url('assets/imagenes/imagenes-hotspots/' . $nombre_archivo) . "\"></a></td>";
+    echo "<td class='fecha-img'>" . $ima["fecha"] . "</td>";
+    echo "<td><a href='#' onclick='mostrar(\"modificar\", " . $fila . ")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
+    echo "<td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td>";
+    echo "</tr>";
 }
 echo "</tbody>";
 echo "</table><br>";
@@ -75,14 +81,14 @@ $du = $lista_imagenes[0];
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
         <form enctype="multipart/form-data"  action='<?php echo site_url("imagen/actualizar_imagen"); ?>' method='post'>
             <?php
-            echo "<input type='hidden' name='id_imagen' value='" . $du['id_imagen'] . "'><br/>";
-            echo "T&iacute;tulo:<input type='text' name='titulo_imagen' value='" . $du['titulo_imagen'] . "'><br/>";
-            echo "<br>Texto:<input type='text' name='texto_imagen' value='" . $du['texto_imagen'] . "'><br/>";
+            echo "<input type='hidden' name='id_imagen' value=''><br/>";
+            echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
+            echo "<!--<br>Texto:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>-->";
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
-            echo "<br>Fecha:<input type='date' name='fecha'  value='" . $du['fecha'] . "'><br/>";
-            echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value='" . $du['url_imagen'] . "'><br/>";
-            echo "<input type='hidden' name='url_imagen' value='" . $du['url_imagen'] . "'>";
-            echo "<img width='100px' src='" . base_url("assets/imagenes/imagenes-hotspots/" . $du['url_imagen']) . "'><br><p>" . $du['url_imagen'] . "</p><br>";
+            echo "<br>Fecha:<input type='date' id='fecha_modificar' name='fecha'  value=''><br/>";
+            echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value=''><br/>";
+            echo "<input type='hidden' name='url_imagen' id='url_modificar' value=''>";
+            echo "<img id='foto_modificar' width='100px' src=''><br><p></p><br>";
             ?>   
             <input type='submit' name ='actualizar' value = 'Aceptar'>
         </form>
@@ -105,8 +111,8 @@ $du = $lista_imagenes[0];
             <input id= "id_imagen" name='id_imagen' type ="hidden"><br />
             <label id= "label_titulo" for="titulo">T&iacute;tulo:</label>
             <input type="text" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
-            <label for="texto_imagen">Texto:</label>
-            <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
+            <!--<label for="texto_imagen">Texto:</label>
+            <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>-->
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha" value="<?php echo date("Y-m-d"); ?>" required><br />
             <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
@@ -127,20 +133,39 @@ $du = $lista_imagenes[0];
     }
 
     function respuesta(r) {
-        if (r == '0') {
+        if (r.trim() == '0') {
             alert("Error al borrar la imagen");
         } else {
-            selector = "#imagen-" + r;
             alert("Imagen borrada con éxito");
+            selector = "#imagen-" + r;
             $(selector).remove();
         }
     }
     
-    function mostrar(capa){
+    function mostrar(capa, id){
         if (capa == "insertar") {
             $("#insertar").show();     
         }
         if (capa == "modificar") {
+            
+            titulo = $("#imagen-"+id).find(".titulo-img").text();
+            fecha  = $("#imagen-"+id).find(".fecha-img").text();
+            url = $("#imagen-"+id).find(".url-img").text();
+            miniatura = $("#imagen-"+id).find(".miniatura").text();
+            imagen = $("#imagen-"+id).find(".imagen-img").attr("src");
+          //-------------  
+            nombre = $("#imagen-"+id).find(".nombre-img").text();
+           
+            
+            
+            $("#titulo_modificar").val(titulo);
+            $("#fecha_modificar").val(fecha);
+            $("#url_modificar").val(url);
+            $("#foto_modificar").attr("src",imagen);
+            //-------------------------
+            $("#url_modificar").val(nombre);
+           
+            
             $("#modificar").show();     
         }    
     }

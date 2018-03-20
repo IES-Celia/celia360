@@ -141,9 +141,9 @@ class Imagen extends CI_Controller {
 
         //cargar el modelo
         $this->load->model("Img");
-
         //acciones para eliminar la imagen en la BD
         $resultado = $this->Img->borrar_imagen($id_imagen);
+        
         if ($resultado != 0) {
             echo $id_imagen;
         } else {
