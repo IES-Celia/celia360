@@ -87,8 +87,9 @@
 			for($i=$num_pag-1;$i>$pag_ant;$i--){
 				$oldDir="assets/libros/$id_libro/".$i.".jpg";
 				$newDir="assets/libros/$id_libro/".($i+1).".jpg";
-				rename($oldDir,$newDir);
+				$confirm=rename($oldDir,$newDir);
 			}
+			return $confirm;
 		}
 
 		//crear carpeta con el siguiente id de la base de datos
@@ -101,12 +102,14 @@
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
+			$flag = false;
 			if (move_uploaded_file($_FILES["fichero"]['tmp_name'], $target_file)) {
-			    echo "El fichero es válido y se subió con éxito.\n";
+			    $flag=true;
 			} else {
-			    echo "¡Posible ataque de subida de ficheros!\n";
+			    $flag = false;
 			}
 
+			return $flag;
 		}
 
 		public function insertarimgsLibros($id_libro) {

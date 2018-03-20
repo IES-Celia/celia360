@@ -136,10 +136,16 @@ class Biblioteca extends CI_Controller {
 		$id_libro = $_REQUEST["id"];
 		$pag_ant = $_REQUEST["pagina_ant"];
 		$num_pag = $_REQUEST["num_pag"];
-		echo "Voy a renombrar... $id_libro - $pag_ant - $num_pag<br>";
-		$this->bibliotecaModel->renomdir($id_libro,$pag_ant,$num_pag);
-		echo "Voy a insertar nueva imagen... $id_libro - $pag_ant<br>";
-		$this->bibliotecaModel->insertarimagen($id_libro, $pag_ant);
+		$confirmre=$this->bibliotecaModel->renomdir($id_libro,$pag_ant,$num_pag);
+		$confirmin=$this->bibliotecaModel->insertarimagen($id_libro, $pag_ant);
+
+		if($confirmin && $confirmre){
+			$datos["mensaje"]="Imagen subida con exito";
+		}else{
+			$datos["error"]="Fallo en la subida. Intentelo de nuevo mas tarde";
+		}
+
+
 		$datos["idlibro"] = $_REQUEST["id"];
         $datos["vista"] = "biblioteca/insertimg";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
