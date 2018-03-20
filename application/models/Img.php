@@ -80,8 +80,8 @@ class Img extends CI_Model {
             //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
             $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
             $img_redim1 = $config['new_image'];
-            $config['width'] = 150;
-            $config['height'] = 150;
+            $config['width'] = 1200;
+            //$config['height'] = 1200;
             $this->load->library('image_lib', $config);
 
             if (!$this->image_lib->resize()) {
@@ -98,8 +98,8 @@ class Img extends CI_Model {
             $config['image_library'] = 'gd2';
             $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura;
             $config['maintain_ratio'] = TRUE;
-            $config['width'] = 90;
-            $config['height'] = 90;
+            $config['width'] = 200;
+            //$config['height'] = 200;
             $this->load->library('image_lib', $config);
             $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
 
