@@ -148,7 +148,7 @@ $du = $lista_imagenes[0];
 
     function respuesta(r) {
         if (r == 0) {
-            alert("Error al borrar la imagen".r);
+            alert("Error al borrar la imagen");
         } else {
             alert("Imagen borrada con éxito");
             selector = "#imagen-" + parseInt(r);
