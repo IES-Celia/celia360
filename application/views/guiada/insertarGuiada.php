@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 ?>
 
 
-<div id='caja'>
+<div id='caja2'>
 <h1>Insertar escena guiada</h1>
 <form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
    
