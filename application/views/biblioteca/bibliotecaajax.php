@@ -286,31 +286,29 @@
 					initEvents = function() {
 						
 						var $slides = config.$bookBlock.children();
-
+						var guardado=1;
 						// add navigation events
-						
 						config.$navNext.on( 'click touchstart', function() {
-
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
+							
 							tpg = parseInt(tpg);
 							pg = parseInt(pg);
 							if(pg<tpg){
 								var newpg = parseInt(pg)+1; 
-								$("#numeropag").val(newpg); 								
+								$("#numeropag").val(newpg); 
+								guardado=newpg;								
 							}else{
 								$("#numeropag").val(tpg);
+								guardado=tpg;
 							}
 
+							config.$bookBlock.bookblock( 'next' );
+							
+							$("#bb-nav-next").css("pointer-events", "none");
 
-						config.$bookBlock.bookblock( 'next' );
-						
-						$("#bb-nav-next").css("pointer-events", "none");
-
-						setTimeout(function(){$("#bb-nav-next").css("pointer-events", "auto");}, 1000);
-
-						return false;
-
+							setTimeout(function(){$("#bb-nav-next").css("pointer-events", "auto");}, 1000);
+							return false;
 						} );
 
 						config.$navPrev.on( 'click touchstart', function() {
@@ -319,36 +317,35 @@
 							if(pg!=1){
 								var newpg = parseInt(pg)-1; 
 								$("#numeropag").val(newpg);
+								guardado=newpg;
 							}else{
 								$("#numeropag").val(1);
+								guardado=1;
 							}
+							config.$bookBlock.bookblock( 'prev' );
 
-						config.$bookBlock.bookblock( 'prev' );
-						
-						$("#bb-nav-prev").css("pointer-events", "none");
+							$("#bb-nav-prev").css("pointer-events", "none");
 
-						setTimeout(function(){$("#bb-nav-prev").css("pointer-events", "auto");}, 1000);
-						
+							setTimeout(function(){$("#bb-nav-prev").css("pointer-events", "auto");}, 1000);
 							return false;
 						} );
 
 						config.$navFirst.on( 'click touchstart', function() {
 							$("#numeropag").val(1);
 							config.$bookBlock.bookblock( 'first' );
-						return false;
+							guardado=1;
+							return false;
 						} );
 
 						config.$navLast.on( 'click touchstart', function() {
 							var ultpg = $("#cantpag").val();
 							$("#numeropag").val(ultpg);
+							guardado=ultpg;
 							config.$bookBlock.bookblock( 'last' );
-						return false;
+							return false;
 						} );
-
 						
-
-
-						// // add swipe events
+						// // CAMBIAR DE PAGINA AL ARRASTRAR
 						// $slides.on( {
 						// 	'swipeleft' : function( event ) {
 						// 		config.$bookBlock.bookblock( 'next' );
@@ -361,7 +358,7 @@
 						// } );
 
 						// add keyboard events
-						var guardado=1;
+
 						$( document ).keydown( function(e) {
 							var keyCode = e.keyCode || e.which,
 								arrow = {
@@ -372,34 +369,36 @@
 									enter : 13
 								};
 
-							
-
 							switch (keyCode) {
-								
 								case arrow.left:
 									var pg = $("#numeropag").val();
 									if(pg!=1){
 										setTimeout(function(){$("#numeropag").val(parseInt(pg)-1);}, 800);
+										guardado=parseInt(pg)-1;
 									}else{
 										$("#numeropag").val(1);
+										guardado=1;
 									}
 									config.$bookBlock.bookblock( 'prev' );
 								break;
 								case arrow.right:
 									var tpg =$("#cantpag").val();
 									var pg = $("#numeropag").val();
+
 									pg= parseInt(pg);
 									tpg = parseInt(tpg);
 									if(pg<tpg){
-										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);								
+
+										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);	
+										guardado=parseInt(pg)+1;							
 									}else{
+
 										$("#numeropag").val(tpg);
+										guardado=tpg;
 									}
 									config.$bookBlock.bookblock( 'next' );
-								
 								break;
 								case arrow.enter:
-
 									var pag = $("#numeropag").val();
 									var maxpg = $("#cantpag").val();
 									pag= parseInt(pag);

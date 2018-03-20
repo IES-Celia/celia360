@@ -258,7 +258,7 @@
 					initEvents = function() {
 						
 						var $slides = config.$bookBlock.children();
-
+						var guardado=1;
 						// add navigation events
 						config.$navNext.on( 'click touchstart', function() {
 							var tpg =$("#cantpag").val();
@@ -268,9 +268,11 @@
 							pg = parseInt(pg);
 							if(pg<tpg){
 								var newpg = parseInt(pg)+1; 
-								$("#numeropag").val(newpg); 								
+								$("#numeropag").val(newpg); 
+								guardado=newpg;								
 							}else{
 								$("#numeropag").val(tpg);
+								guardado=tpg;
 							}
 
 							config.$bookBlock.bookblock( 'next' );
@@ -287,8 +289,10 @@
 							if(pg!=1){
 								var newpg = parseInt(pg)-1; 
 								$("#numeropag").val(newpg);
+								guardado=newpg;
 							}else{
 								$("#numeropag").val(1);
+								guardado=1;
 							}
 							config.$bookBlock.bookblock( 'prev' );
 
@@ -301,13 +305,14 @@
 						config.$navFirst.on( 'click touchstart', function() {
 							$("#numeropag").val(1);
 							config.$bookBlock.bookblock( 'first' );
+							guardado=1;
 							return false;
 						} );
 
 						config.$navLast.on( 'click touchstart', function() {
 							var ultpg = $("#cantpag").val();
 							$("#numeropag").val(ultpg);
-
+							guardado=ultpg;
 							config.$bookBlock.bookblock( 'last' );
 							return false;
 						} );
@@ -325,7 +330,7 @@
 						// } );
 
 						// add keyboard events
-						var guardado=1;
+
 						$( document ).keydown( function(e) {
 							var keyCode = e.keyCode || e.which,
 								arrow = {
@@ -341,8 +346,10 @@
 									var pg = $("#numeropag").val();
 									if(pg!=1){
 										setTimeout(function(){$("#numeropag").val(parseInt(pg)-1);}, 800);
+										guardado=parseInt(pg)-1;
 									}else{
 										$("#numeropag").val(1);
+										guardado=1;
 									}
 									config.$bookBlock.bookblock( 'prev' );
 								break;
@@ -354,10 +361,12 @@
 									tpg = parseInt(tpg);
 									if(pg<tpg){
 
-										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);								
+										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);	
+										guardado=parseInt(pg)+1;							
 									}else{
 
 										$("#numeropag").val(tpg);
+										guardado=tpg;
 									}
 									config.$bookBlock.bookblock( 'next' );
 								break;
