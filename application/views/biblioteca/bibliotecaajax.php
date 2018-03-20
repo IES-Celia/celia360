@@ -229,6 +229,9 @@
 					for($i=0;$i<$num_pag;$i++){
 						if($i==0){
 							echo " <div class='bb-item' ><img class=''  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 224px;' width='450' height='550'></div> ";
+						}else if($i== $num_pag-1){
+								echo " <div class='bb-item' ><img class=''  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 224px;' width='450' height='550'></div> ";
+						
 						}else{
 							echo " <div class='bb-item'><img class='mySlides' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
 						 }
