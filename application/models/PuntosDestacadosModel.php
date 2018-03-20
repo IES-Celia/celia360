@@ -83,12 +83,22 @@ class PuntosDestacadosModel extends CI_Model {
         
         $config['upload_path'] = 'assets/imagenes/destacados/';
         $config['allowed_types'] = 'jpg';
-        $config['file_name'] = "$id_celda.JPG";
+        $config['file_name'] = "$id_celda";
         $config['overwrite'] = TRUE;
            
         $this->load->library('upload', $config);
-        $resultado=$this->upload->do_upload('imagen_celda');
         
+        $resultado_subida = $this->upload->do_upload('imagen_celda');
+
+        if ($resultado_subida == false) {
+            $malasuerte = $this->upload->display_errors("<i>", "</i>");
+            var_dump($malasuerte);
+        } else {
+            echo "ta bien";
+        }
+        
+        
+        echo $this->upload->display_errors("<i>","</i>");
         $this->db->query("UPDATE celda_pd SET 
                            escena_celda='$escena_celda',
                            titulo_celda='$titulo_celda',
