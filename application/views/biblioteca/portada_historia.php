@@ -335,8 +335,7 @@
 								case arrow.left:
 									var pg = $("#numeropag").val();
 									if(pg!=1){
-										var newpg = parseInt(pg)-1; 
-										$("#numeropag").val(newpg);
+										setTimeout(function(){$("#numeropag").val(parseInt(pg)-1);}, 800);
 									}else{
 										$("#numeropag").val(1);
 									}
@@ -347,8 +346,7 @@
 									var pg = $("#numeropag").val();
 
 									if(pg!=tpg){
-										var newpg = parseInt(pg)+1; 
-										$("#numeropag").val(newpg); 								
+										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);								
 									}else{
 										$("#numeropag").val(tpg);
 									}
