@@ -812,8 +812,16 @@
 
 
     .campomapa{
-    
-        background-color:white;
+        font-family: comic;
+        color:white;
+        position:relative;
+        text-align: center;
+        right:200px;
+        background-color:rgba(255,255,255,0.2);
+        font-size: 40px;
+        border-left: 5px solid white;
+        border-right: 5px solid white;
+        text-transform: capitalize;
     }
                                         /*           Buscador            */
 
