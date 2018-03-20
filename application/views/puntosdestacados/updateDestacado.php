@@ -24,8 +24,8 @@
 			echo"<form action='".site_url("Puntos_destacados/processupdatedestacado")."' method='post' enctype='multipart/form-data'>
             <input type='hidden' name='id_celda' value='".$tabla['id_celda']."' readonly> <br>
             Nombre del punto destacado:  <input type='text' name='titulo_celda' value='".$tabla['titulo_celda']."'> <br>
-            Seleccione un archivo de imagen JPG para sustituir el actual:<br>
-            <input type='file' name='panorama'> <br/>
+            <!-- Seleccione un archivo de imagen JPG para sustituir el actual:<br>
+            <input type='file' name='panorama'> <br/>  -->
             Seleccione un punto del mapa, que será donde salte al hacer click:
             <input type='text' name='escena_celda' readonly value='".$tabla['escena_celda']."'> <br><br>
             
