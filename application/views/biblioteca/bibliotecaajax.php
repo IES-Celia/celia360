@@ -290,7 +290,8 @@
 
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
-
+							tpg = parseInt(tpg);
+							pg = parseInt(pg);
 							if(pg<tpg){
 								var newpg = parseInt(pg)+1; 
 								$("#numeropag").val(newpg); 								
@@ -392,10 +393,15 @@
 								case arrow.enter:
 									var pag = $("#numeropag").val();
 									var maxpg = $("#cantpag").val();
-									
-									$("#numeropag").val(pag);
-									
-									config.$bookBlock.bookblock('jump',pag);
+									pag= parseInt(pag);
+									maxpag = parseInt(maxpg);
+									if(pag>maxpg){
+										$("#numeropag").val(maxpg);
+										config.$bookBlock.bookblock('jump',maxpg);
+									}else{
+										$("#numeropag").val(pag);
+										config.$bookBlock.bookblock('jump',pag);
+									}
 								break;
 							}
 						} );

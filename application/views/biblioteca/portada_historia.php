@@ -260,7 +260,9 @@
 						config.$navNext.on( 'click touchstart', function() {
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
-
+							
+							tpg = parseInt(tpg);
+							pg = parseInt(pg);
 							if(pg<tpg){
 								var newpg = parseInt(pg)+1; 
 								$("#numeropag").val(newpg); 								
@@ -354,9 +356,12 @@
 								case arrow.enter:
 									var pag = $("#numeropag").val();
 									var maxpg = $("#cantpag").val();
-
-									$("#numeropag").val(pag);
-									
+									pag= parseInt(pag);
+									maxpag = parseInt(maxpg);
+									if(pag>maxpg){
+										pag=maxpg;
+										$("#numeropag").val(pag);
+									}
 									config.$bookBlock.bookblock('jump',pag);
 								break;
 							}
