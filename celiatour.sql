@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 13-03-2018 a las 23:57:32
+-- Tiempo de generación: 20-03-2018 a las 10:18:39
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -38,14 +38,14 @@ CREATE TABLE `audio` (
 --
 
 INSERT INTO `audio` (`id_aud`, `url_aud`, `desc_aud`, `tipo_aud`) VALUES
-(4, 'audios/escalera .m4a.mp3', '', 'v-guiada'),
 (5, 'assets/audio/a.mp4', 'portico', 'v-guiada'),
 (6, 'assets/audio/holaaaaa.mp4', 'puerta cafeteria de enfrente del instituto', 'd-objeto'),
 (7, 'assets/audio/audio1.mp3', '', 'd-objeto'),
 (8, 'assets/audio/audio2.mp3', '', 'd-objeto'),
 (9, 'assets/audio/audioportico.mp3', '', 'd-objeto'),
 (10, 'assets/audio/audio4.mp3', '', 'd-objeto'),
-(11, 'assets/audio/texto1.mp3', 'Texto 1', 'v-guiada');
+(11, 'assets/audio/texto1.mp3', 'Texto 1', 'v-guiada'),
+(12, 'assets/audio/audiobar.mp3', 'audio bar puerta instituto', 'd-objeto');
 
 -- --------------------------------------------------------
 
@@ -66,11 +66,13 @@ CREATE TABLE `celda_pd` (
 --
 
 INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celda`, `fila_asociada`) VALUES
-(2, 'p2p4', 'assets/imagenes/escenas/p2p4f2.JPG', 'Biblioteca', 0),
-(3, 'p0p4f2', 'assets/imagenes/escenas/p0p4f2.JPG', 'Capilla', 1),
-(5, 'p1p5f1', 'assets/imagenes/escenas/p1p5f1.JPG', 'Dept. Geografía', 1),
-(6, 'p4p4', 'assets/imagenes/escenas/p4p2.JPG', 'Tejado', 2),
-(7, 'p0p5', 'assets/imagenes/destacados/7.jpg', 'dasasd', 3);
+(3, 'p1p2f3', 'assets/imagenes/destacados/3.jpg', 'Portón', 3),
+(4, 'p1p12', 'assets/imagenes/destacados/4.jpg', 'Zona de profesores', 3),
+(5, 'p1p5f1', 'assets/imagenes/destacados/5.jpg', 'Dept. Geografía', 3),
+(6, 'p2p2f1', 'assets/imagenes/destacados/6.jpg', 'Salón de actos', 2),
+(1, 'p0p4f2', 'assets/imagenes/destacados/1.jpg', 'Capilla', 4),
+(2, 'p0p1f1', 'assets/imagenes/destacados/2.jpg', 'Pozo', 4),
+(7, 'p2p4f3', 'assets/imagenes/destacados/7.jpg', 'Biblioteca', 2);
 
 -- --------------------------------------------------------
 
@@ -80,15 +82,16 @@ INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celd
 
 CREATE TABLE `config_mapa` (
   `piso_inicial` int(11) NOT NULL,
-  `punto_inicial` varchar(40) NOT NULL
+  `punto_inicial` varchar(40) NOT NULL,
+  `escena_inicial` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `config_mapa`
 --
 
-INSERT INTO `config_mapa` (`piso_inicial`, `punto_inicial`) VALUES
-(1, 'punto29');
+INSERT INTO `config_mapa` (`piso_inicial`, `punto_inicial`, `escena_inicial`) VALUES
+(1, 'punto29', 'p1p2f3');
 
 -- --------------------------------------------------------
 
@@ -99,7 +102,7 @@ INSERT INTO `config_mapa` (`piso_inicial`, `punto_inicial`) VALUES
 CREATE TABLE `escenas` (
   `id_escena` int(11) NOT NULL,
   `Nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `cod_escena` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `cod_escena` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `hfov` int(11) NOT NULL,
   `pitch` int(11) NOT NULL,
   `yaw` int(11) NOT NULL,
@@ -127,9 +130,9 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (16, '', 'p2p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p2p10.JPG'),
 (17, '', 'p1p1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p1.JPG'),
 (18, '', 'p1p2', 120, 0, -41, 'equirectangular', 'assets/imagenes/escenas/p1p2.JPG'),
-(19, 'Escalera Principal', 'p1p2f1', 120, 26, -174, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
-(20, 'Entrada', 'p1p2f2', 120, 31, 165, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
-(21, 'Entrada', 'p1p2f3', 120, 19, -179, 'equirectangular', 'assets/imagenes/escenas/p1p2f3.JPG'),
+(19, 'Escalera Principal', 'p1p2f1', 120, 15, -173, 'equirectangular', 'assets/imagenes/escenas/p1p2f1.JPG'),
+(20, 'Portico', 'p1p2f2', 120, 35, 174, 'equirectangular', 'assets/imagenes/escenas/p1p2f2.JPG'),
+(21, 'Entrada', 'p1p2f3', 120, 22, -171, 'equirectangular', 'assets/imagenes/escenas/p1p2f3.JPG'),
 (22, '', 'p1p22', 120, -4, 176, 'equirectangular', 'assets/imagenes/escenas/p1p22.JPG'),
 (23, '', 'p1p3', 120, -5, -181, 'equirectangular', 'assets/imagenes/escenas/p1p3.JPG'),
 (24, '', 'p1p32', 120, -4, -183, 'equirectangular', 'assets/imagenes/escenas/p1p32.JPG'),
@@ -146,11 +149,11 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (35, '', 'p1p9f1', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p9f1.JPG'),
 (36, '', 'p1p9f2', 120, 28, -31, 'equirectangular', 'assets/imagenes/escenas/p1p9f2.JPG'),
 (37, '', 'p1p11', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p11.JPG'),
-(41, '', 'p0p1', 120, -11, -165, 'equirectangular', 'assets/imagenes/escenas/p0p1.JPG'),
+(41, 'hall sotano', 'p0p1', 120, -11, -165, 'equirectangular', 'assets/imagenes/escenas/p0p1.JPG'),
 (42, '', 'p0p1f1', 120, 172, 15, 'equirectangular', 'assets/imagenes/escenas/p0p1f1.JPG'),
 (43, '', 'p0p1f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p0p1f2.JPG'),
 (44, '', 'p0p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p2.JPG'),
-(45, '', 'p0p3', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p3.JPG'),
+(45, '', 'p0p3', 120, 9, 137, 'equirectangular', 'assets/imagenes/escenas/p0p3.JPG'),
 (46, '', 'p0p4', 120, 1, 2, 'equirectangular', 'assets/imagenes/escenas/p0p4.JPG'),
 (47, '', 'p0p4f2', 120, 11, -9, 'equirectangular', 'assets/imagenes/escenas/p0p4f2.JPG'),
 (48, '', 'p0p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p5.JPG'),
@@ -178,7 +181,7 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG'),
 (89, 'Pasillo', 'p0p8', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8.JPG'),
 (90, 'Dpt. de E. Fisica', 'p0p8f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8f1.JPG'),
-(91, 'Gimnasio', 'p0p8f2', 120, -12, -31, 'equirectangular', 'assets/imagenes/escenas/p0p8f2.JPG'),
+(91, 'Gimnasio', 'p0p8f2', 120, 0, -56, 'equirectangular', 'assets/imagenes/escenas/p0p8f2.JPG'),
 (92, 'Gimnasio', 'p0p8f3', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8f3.JPG'),
 (93, 'Lab. Ciencias Naturales', 'p3p10f1', 120, -3, 82, 'equirectangular', 'assets/imagenes/escenas/p3p10f1.JPG'),
 (94, 'Lab. Ciencias Naturales', 'p3p10f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p3p10f2.JPG'),
@@ -216,7 +219,7 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (142, 'Dept. Latín y Griego', 'p1p7f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p7f2.JPG'),
 (143, 'Dept. Naturales', 'p1p7f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p7f1.JPG'),
 (144, 'Entrada Secundaria', 'p1p2f4', 120, 15, 178, 'equirectangular', 'assets/imagenes/escenas/p1p2f4.JPG'),
-(145, 'Vistas IES Celia Viñas', 'p1p2f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p2f5.JPG'),
+(145, 'Vistas IES Celia Viñas', 'p1p2f5', 120, 10, 172, 'equirectangular', 'assets/imagenes/escenas/p1p2f5.JPG'),
 (148, '', 'p1p2f0', 120, -5, 149, 'equirectangular', 'assets/imagenes/escenas/p1p2f0.JPG'),
 (149, 'Biblioteca', 'p2p4f3', 120, -6, 66, 'equirectangular', 'assets/imagenes/escenas/p2p4f3.JPG'),
 (150, 'Biblioteca', 'p2p4f2', 120, -3, -90, 'equirectangular', 'assets/imagenes/escenas/p2p4f2.JPG'),
@@ -304,11 +307,16 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (28, 60),
 (28, 61),
 (29, 63),
+(29, 290),
+(29, 291),
+(29, 292),
+(29, 293),
 (30, 64),
 (30, 65),
 (30, 66),
 (30, 202),
 (30, 226),
+(30, 287),
 (31, 67),
 (31, 68),
 (31, 219),
@@ -419,8 +427,14 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (90, 155),
 (91, 158),
 (91, 159),
+(91, 288),
 (92, 156),
 (92, 281),
+(92, 282),
+(92, 283),
+(92, 284),
+(92, 285),
+(92, 286),
 (93, 162),
 (93, 163),
 (93, 213),
@@ -520,265 +534,254 @@ CREATE TABLE `hotspots` (
   `targetPitch` int(11) NOT NULL,
   `targetYaw` int(11) NOT NULL,
   `tipo` varchar(10) CHARACTER SET latin1 NOT NULL,
-  `cerrado_destacado` int(11) NOT NULL DEFAULT '0'
+  `cerrado_destacado` int(11) NOT NULL DEFAULT '0',
+  `documento_url` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `hotspots`
 --
 
-INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcion`, `pitch`, `yaw`, `cssClass`, `clickHandlerFunc`, `clickHandlerArgs`, `sceneId`, `targetPitch`, `targetYaw`, `tipo`, `cerrado_destacado`) VALUES
-(1, NULL, NULL, '   ', -13, 2, 'custom-hotspot-salto', 'puntos', 'punto38', 'p2p3', -4, 182, 'scene', 0),
-(2, NULL, NULL, ' ', -16, 126, 'custom-hotspot-salto', 'puntos', 'punto36', 'p2p1', 0, 0, 'scene', 0),
-(3, NULL, NULL, ' ', -8, -180, 'custom-hotspot-salto', 'puntos', 'punto45', 'p2p10', 0, 0, 'scene', 0),
-(5, NULL, NULL, ' ', -10, -83, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 0, -83, 'scene', 0),
-(6, NULL, NULL, ' ', -9, 185, 'custom-hotspot-salto', 'puntos', 'punto47', 'p2p2f3', -2, -2, 'scene', 0),
-(7, NULL, NULL, ' ', -8, 3, 'custom-hotspot-salto', 'puntos', 'punto48', 'p2p2f2', -2, 3, 'scene', 0),
-(10, NULL, NULL, ' ', -21, -180, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', -6, 60, 'scene', 0),
-(11, NULL, NULL, ' ', -19, -9, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', -6, 60, 'scene', 0),
-(12, NULL, NULL, ' ', -9, 4, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', -10, 107, 'scene', 0),
-(13, NULL, NULL, ' ', -8, -178, 'custom-hotspot-salto', 'puntos', 'punto39', 'p2p4', -2, 68, 'scene', 0),
-(14, NULL, NULL, ' ', -11, 159, 'custom-hotspot-salto', 'puntos', 'punto38', 'p2p3', -6, 4, 'scene', 0),
-(15, NULL, NULL, ' ', -6, 68, 'custom-hotspot-salto', 'puntos', 'punto40', 'p2p5', -8, -89, 'scene', 0),
-(22, NULL, NULL, ' ', -10, 95, 'custom-hotspot-salto', 'puntos', 'punto39', 'p2p4', -6, 159, 'scene', 0),
-(23, NULL, NULL, ' ', -3, -90, 'custom-hotspot-salto', 'puntos', 'punto41', 'p2p6', 1, 37, 'scene', 0),
-(24, NULL, NULL, ' ', -4, 92, 'custom-hotspot-salto', 'puntos', 'punto40', 'p2p5', -2, 83, 'scene', 0),
-(25, NULL, NULL, ' ', -3, 28, 'custom-hotspot-salto', 'puntos', 'punto42', 'p2p7', -2, -1, 'scene', 0),
-(26, NULL, NULL, ' ', -16, -184, 'custom-hotspot-salto', 'puntos', 'punto41', 'p2p6', 2, 84, 'scene', 0),
-(27, NULL, NULL, ' ', -12, 0, 'custom-hotspot-salto', 'puntos', 'punto43', 'p2p72', 0, 17, 'scene', 0),
-(28, NULL, NULL, ' ', -19, 181, 'custom-hotspot-salto', 'puntos', 'punto42', 'p2p7', -7, -185, 'scene', 0),
-(29, NULL, NULL, ' ', -8, -4, 'custom-hotspot-salto', 'puntos', 'punto44', 'p2p8', -6, 162, 'scene', 0),
-(30, NULL, NULL, ' ', -11, -65, 'custom-hotspot-salto', 'puntos', 'punto43', 'p2p72', -9, 182, 'scene', 0),
-(31, NULL, NULL, ' ', -25, 158, 'custom-hotspot-salto', 'puntos', 'punto36', 'p2p1', 0, 0, 'scene', 0),
-(32, NULL, NULL, ' ', -20, -106, 'custom-hotspot-salto', 'puntos', 'punto44', 'p2p8', -3, -65, 'scene', 0),
-(33, NULL, NULL, ' ', -20, 97, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 2, -23, 'scene', 0),
-(34, NULL, NULL, ' ', -1, 2, 'custom-hotspot-escaleras', 'escaleras', ' ', ' ', 0, 0, 'info', 0),
-(35, NULL, NULL, ' ', -19, -180, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 0, 0, 'scene', 0),
-(36, NULL, NULL, ' ', -18, 115, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -11, 125, 'scene', 0),
-(37, NULL, NULL, ' ', -3, 10, 'custom-hotspot-escaleras', 'escaleras', ' ', ' ', 0, 0, 'info', 0),
-(38, NULL, NULL, ' ', -21, -111, 'custom-hotspot-salto', 'puntos', 'punto22', 'p1p8', -6, 186, 'scene', 0),
-(39, NULL, NULL, ' ', -18, 115, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 0, 0, 'scene', 0),
-(40, NULL, NULL, ' ', -10, -176, 'custom-hotspot-salto', 'puntos', 'punto35', 'p1p22', -4, 175, 'scene', 0),
-(41, NULL, NULL, ' ', 0, -71, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0),
-(42, NULL, NULL, ' ', -1, -4, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0),
-(43, NULL, NULL, ' ', -26, 8, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 0, 0, 'scene', 0),
-(44, NULL, NULL, ' ', 6, -174, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -5, -42, 'scene', 0),
-(45, NULL, NULL, ' ', -16, -2, 'custom-hotspot-salto', 'puntos', 'punto29', 'p1p2f3', 0, 0, 'scene', 0),
-(46, NULL, NULL, ' ', -12, 175, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 27, 2, 'scene', 0),
-(47, NULL, NULL, ' ', -13, -171, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 26, 28, 'scene', 0),
-(48, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', -4, 180, 'scene', 0),
-(49, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0),
-(50, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -5, 180, 'scene', 0),
-(51, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto35', 'p1p22', 0, 0, 'scene', 0),
-(52, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto18', 'p1p4', -3, -47, 'scene', 0),
-(53, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', 0, 0, 'scene', 0),
-(54, NULL, NULL, ' ', -7, 101, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', -5, -3, 'scene', 0),
-(55, NULL, NULL, ' ', -14, -88, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, -88, 'scene', 0),
-(56, NULL, NULL, ' ', -8, -2, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', 0, 0, 'scene', 0),
-(57, NULL, NULL, ' ', -15, -96, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -8, -32, 'scene', 0),
-(58, NULL, NULL, ' ', -8, -4, 'custom-hotspot-salto', 'puntos', 'punto26', 'p1p32f2', -2, 78, 'scene', 0),
-(59, NULL, NULL, ' ', -11, -106, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', -7, -95, 'scene', 0),
-(60, NULL, NULL, ' ', -3, 93, 'custom-hotspot-salto', 'puntos', 'punto18', 'p1p4', 0, 0, 'scene', 0),
-(61, NULL, NULL, ' ', -9, -87, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', -6, -34, 'scene', 0),
-(63, NULL, NULL, ' ', -1, 4, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, 0, 'scene', 0),
-(64, NULL, NULL, ' ', -7, 4, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0),
-(65, NULL, NULL, ' ', -12, 77, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', -7, 93, 'scene', 0),
-(66, NULL, NULL, ' ', -22, -97, 'custom-hotspot-salto', 'puntos', 'punto30', 'p1p9', -7, 41, 'scene', 0),
-(67, NULL, NULL, ' ', -7, -5, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', 0, 0, 'scene', 0),
-(68, NULL, NULL, ' ', -11, 177, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', -10, 47, 'scene', 0),
-(69, NULL, NULL, ' ', -7, -5, 'custom-hotspot-salto', 'puntos', 'punto22', 'p1p8', 0, 0, 'scene', 0),
-(70, NULL, NULL, ' ', -11, 177, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', -6, 175, 'scene', 0),
-(71, NULL, NULL, ' ', -22, 54, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0),
-(72, NULL, NULL, ' ', -11, 189, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', -5, 176, 'scene', 0),
-(73, NULL, NULL, ' ', -24, 91, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', 0, 0, 'scene', 0),
-(74, NULL, NULL, ' ', -12, 2, 'custom-hotspot-salto', 'puntos', 'punto31', 'p1p9f1', -5, 176, 'scene', 0),
-(75, NULL, NULL, ' ', 11, -28, 'custom-hotspot-salto', 'puntos', 'punto30', 'p1p9', 0, 0, 'scene', 0),
-(76, NULL, NULL, ' ', -46, -8, 'custom-hotspot-salto', 'puntos', 'punto14', 'p1p9f2', 0, 0, 'scene', 0),
-(77, NULL, NULL, ' ', -22, 148, 'custom-hotspot-salto', 'puntos', 'punto31', 'p1p9f1', 12, -17, 'scene', 0),
-(79, NULL, NULL, ' ', -9, -172, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0),
-(80, NULL, NULL, ' ', -21, 128, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', -11, -173, 'scene', 0),
-(81, NULL, NULL, ' ', -19, -5, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0),
-(82, NULL, NULL, ' ', -14, 168, 'custom-hotspot-salto', 'puntos', 'p1punto10', 'p1p10', -6, 134, 'scene', 0),
-(83, NULL, NULL, ' ', -27, 172, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', -12, -166, 'scene', 0),
-(84, NULL, NULL, ' ', -3, 10, 'custom-hotspot-escaleras', 'escaleras', ' ', ' ', 0, 0, 'info', 0),
-(85, NULL, NULL, ' ', -19, 196, 'custom-hotspot-salto', 'puntos', 'punto11', 'p0p1f1', 37, -179, 'scene', 0),
-(87, NULL, NULL, ' ', -25, 102, 'custom-hotspot-salto', 'puntos', 'punto3', 'p0p2', 0, 0, 'scene', 0),
-(88, NULL, NULL, ' ', -2, 10, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 2, -18, 'scene', 0),
-(89, NULL, NULL, ' ', -11, 161, 'custom-hotspot-salto', 'puntos', 'punto10', 'p0p1f2', -5, 179, 'scene', 0),
-(90, NULL, NULL, ' ', -2, 10, 'custom-hotspot-salto', 'puntos', 'punto11', 'p0p1f1', 8, 9, 'scene', 0),
-(91, NULL, NULL, ' ', -13, -184, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', 2, 100, 'scene', 0),
-(92, NULL, NULL, ' ', -21, -82, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 13, -179, 'scene', 0),
-(93, NULL, NULL, ' ', -12, -176, 'custom-hotspot-salto', 'puntos', 'punto4', 'p0p3', 0, 0, 'scene', 0),
-(94, NULL, NULL, ' ', -6, -2, 'custom-hotspot-salto', 'puntos', 'punto3', 'p0p2', 14, -129, 'scene', 0),
-(95, NULL, NULL, ' ', -11, 180, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', 0, 0, 'scene', 0),
-(96, NULL, NULL, ' ', -4, 3, 'custom-hotspot-salto', 'puntos', 'punto4', 'p0p3', 3, -3, 'scene', 0),
-(97, NULL, NULL, ' ', -9, -88, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', 0, 0, 'scene', 0),
-(98, NULL, NULL, ' ', -16, -182, 'custom-hotspot-salto', 'puntos', 'punto8', 'p0p4f2', 17, -5, 'scene', 0),
-(99, NULL, NULL, ' ', -2, 105, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', -10, -47, 'scene', 0),
-(100, NULL, NULL, ' ', -7, 87, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', -8, -45, 'scene', 0),
-(101, NULL, NULL, ' ', -5, 177, 'custom-hotspot-salto', 'puntos', 'punto12', 'p0p5f1', 0, 0, 'scene', 0),
-(102, NULL, NULL, ' ', -6, 74, 'custom-hotspot-salto', 'puntos', 'punto10', 'p0p1f2', -8, -45, 'scene', 0),
-(103, NULL, NULL, ' ', -2, -9, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', -2, 141, 'scene', 0),
-(104, NULL, NULL, ' ', -9, 165, 'custom-hotspot-salto', 'puntos', 'punto13', 'p0p5f2', 1, -13, 'scene', 0),
-(105, NULL, NULL, ' ', -3, 169, 'custom-hotspot-salto', 'puntos', 'punto12', 'p0p5f1', 9, -13, 'scene', 0),
-(106, NULL, NULL, ' ', -20, -106, 'custom-hotspot-salto', 'puntos', 'punto61', 'p3p8', -3, 172, 'scene', 0),
-(107, NULL, NULL, ' ', -20, 89, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', -147, -11, 'scene', 0),
-(108, NULL, NULL, ' ', -3, 10, 'custom-hotspot-escaleras', 'escaleras', ' ', ' ', 0, 0, 'info', 0),
-(109, NULL, NULL, ' ', -12, -185, 'custom-hotspot-salto', 'puntos', 'punto52', 'p3p3', -6, -178, 'scene', 0),
-(110, NULL, NULL, ' ', -18, -91, 'custom-hotspot-salto', 'puntos', 'punto49', 'p3p1', 0, 0, 'scene', 0),
-(111, NULL, NULL, ' ', -8, -2, 'custom-hotspot-salto', 'puntos', 'punto62', 'p3p10', 0, 0, 'scene', 0),
-(112, NULL, NULL, ' ', -4, 96, 'custom-hotspot-salto', 'puntos', 'punto51', 'p3p2f2', 0, 0, 'scene', 0),
-(113, NULL, NULL, ' ', -7, -61, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', -6, 60, 'scene', 0),
-(114, NULL, NULL, ' ', -8, -2, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', -9, -93, 'scene', 0),
-(115, NULL, NULL, ' ', -10, 180, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -2, 68, 'scene', 0),
-(116, NULL, NULL, ' ', -8, 2, 'custom-hotspot-salto', 'puntos', 'punto52', 'p3p3', 12, -3, 'scene', 0),
-(117, NULL, NULL, ' ', -10, -85, 'custom-hotspot-salto', 'puntos', 'punto56', 'p3p5', -8, -89, 'scene', 0),
-(118, NULL, NULL, ' ', -15, 164, 'custom-hotspot-salto', 'puntos', 'punto54', 'p3p4f2', -6, -118, 'scene', 0),
-(119, NULL, NULL, ' ', -13, 206, 'custom-hotspot-salto', 'puntos', 'punto55', 'p3p4f3', -10, 135, 'scene', 0),
-(120, NULL, NULL, ' ', -7, -3, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -6, 159, 'scene', 0),
-(121, NULL, NULL, ' ', -12, -42, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -6, 159, 'scene', 0),
-(122, NULL, NULL, ' ', -10, 95, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -6, 159, 'scene', 0),
-(123, NULL, NULL, ' ', -3, -90, 'custom-hotspot-salto', 'puntos', 'punto58', 'p3p6', -5, -161, 'scene', 0),
-(124, NULL, NULL, ' ', -10, -140, 'custom-hotspot-salto', 'puntos', 'punto57', 'p3p5f1', -5, -161, 'scene', 0),
-(125, NULL, NULL, ' ', -5, 42, 'custom-hotspot-salto', 'puntos', 'punto56', 'p3p5', -6, 159, 'scene', 0),
-(126, NULL, NULL, ' ', -12, 103, 'custom-hotspot-salto', 'puntos', 'punto56', 'p3p5', -2, 83, 'scene', 0),
-(127, NULL, NULL, ' ', -7, 38, 'custom-hotspot-salto', 'puntos', 'punto60', 'p3p7', -2, -1, 'scene', 0),
-(128, NULL, NULL, ' ', -13, 205, 'custom-hotspot-salto', 'puntos', 'punto59', 'p3p6f1', -18, -180, 'scene', 0),
-(129, NULL, NULL, ' ', -12, -114, 'custom-hotspot-salto', 'puntos', 'punto58', 'p3p6', -1, 37, 'scene', 0),
-(130, NULL, NULL, ' ', -16, -184, 'custom-hotspot-salto', 'puntos', 'punto58', 'p3p6', -2, 147, 'scene', 0),
-(131, NULL, NULL, ' ', -12, 0, 'custom-hotspot-salto', 'puntos', 'punto61', 'p3p8', 0, 17, 'scene', 0),
-(132, NULL, NULL, ' ', -11, 177, 'custom-hotspot-salto', 'puntos', 'punto60', 'p3p7', -9, 182, 'scene', 0),
-(133, NULL, NULL, ' ', -19, 49, 'custom-hotspot-salto', 'puntos', 'punto49', 'p3p1', 0, 0, 'scene', 0),
-(134, NULL, NULL, ' ', -19, -180, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', 0, 0, 'scene', 0),
-(135, NULL, NULL, ' ', -1, -84, 'custom-hotspot-escaleras', 'escaleras', ' ', ' ', 0, 0, 'info', 0),
-(136, NULL, NULL, ' ', -3, 10, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0),
-(137, NULL, NULL, ' ', -13, 17, 'custom-hotspot-salto', 'puntos', 'punto63', 'p4p0', -2, 141, 'scene', 0),
-(138, NULL, NULL, ' ', -3, -11, 'custom-hotspot-salto', 'puntos', 'punto65', 'p4p2', -17, -153, 'scene', 0),
-(139, NULL, NULL, ' ', -2, 31, 'custom-hotspot-salto', 'puntos', 'punto66', 'p4p3', -20, 114, 'scene', 0),
-(140, NULL, NULL, ' ', -17, 144, 'custom-hotspot-salto', 'puntos', 'punto67', 'p4p4', -26, -174, 'scene', 0),
-(141, NULL, NULL, ' ', -15, -128, 'custom-hotspot-salto', 'puntos', 'punto68', 'p4p5', -21, 176, 'scene', 0),
-(142, NULL, NULL, ' ', 0, 20, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -1, 20, 'scene', 0),
-(143, NULL, NULL, ' ', -2, -84, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -2, 19, 'scene', 0),
-(144, NULL, NULL, ' ', -3, -3, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0),
-(145, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0),
-(146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene', 0),
-(147, 'Puerta to guapa', 'La mas del sur', '', -17, -96, 'custom-hotspot-info', 'panelInformacion', '147', '', 0, 0, 'info', 0),
-(148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', 0, 0, 'scene', 0),
-(150, NULL, NULL, '', -1, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
-(151, NULL, NULL, '', -4, 29, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0),
-(152, '', '', '', 0, 0, '', '', '', '', 0, 0, '', 0),
-(153, NULL, NULL, '', -7, -94, 'custom-hotspot-salto', 'puntos', 'p0punto15', 'p0p8f2', 0, 0, 'scene', 0),
-(154, NULL, NULL, '', -8, -175, 'custom-hotspot-salto', 'puntos', 'p0punto14', 'p0p8f1', 0, 0, 'scene', 0),
-(155, NULL, NULL, '', -12, -7, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene', 0),
-(156, NULL, NULL, '', -15, -181, 'custom-hotspot-salto', 'puntos', 'p0punto15', 'p0p8f2', 0, 0, 'scene', 0),
-(158, NULL, NULL, '', -9, 77, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene', 0),
-(159, NULL, NULL, '', -11, -10, 'custom-hotspot-salto', 'puntos', 'p0punto16', 'p0p8f3', 0, 0, 'scene', 0),
-(160, NULL, NULL, '', -4, 2, 'custom-hotspot-salto', 'puntos', 'punto82', 'p3p10f1', 0, 0, 'scene', 0),
-(161, NULL, NULL, '', -11, -99, 'custom-hotspot-salto', 'puntos', 'punto82', 'p3p10f1', 0, 0, 'scene', 0),
-(162, NULL, NULL, '', -12, -177, 'custom-hotspot-salto', 'puntos', 'punto62', 'p3p10', 0, 0, 'scene', 0),
-(163, NULL, NULL, '', -11, 87, 'custom-hotspot-salto', 'puntos', 'punto83', 'p3p10f2', 0, 0, 'scene', 0),
-(164, NULL, NULL, '', -13, -100, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0),
-(165, NULL, NULL, '', -4, 6, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0),
-(166, NULL, NULL, '', -20, -6, 'custom-hotspot-salto', 'puntos', 'punto85', 'p2p10f3', 0, 0, 'scene', 0),
-(167, NULL, NULL, '', -19, 91, 'custom-hotspot-salto', 'puntos', 'punto87', 'p2p10f4', 0, 0, 'scene', 0),
-(168, NULL, NULL, '', 0, 0, '', '', '', 'p1p12', 0, 0, '', 0),
-(169, NULL, NULL, '', -25, 94, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0),
-(170, NULL, NULL, '', -30, -97, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0),
-(172, NULL, NULL, '', -32, -93, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0),
-(173, NULL, NULL, '', -19, -2, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(174, NULL, NULL, '', -20, 82, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0),
-(175, NULL, NULL, '', -18, 171, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0),
-(176, NULL, NULL, '', -29, -90, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0),
-(177, NULL, NULL, '', -17, 1, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(178, NULL, NULL, '', -20, 86, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0),
-(179, NULL, NULL, '', -20, -5, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0),
-(180, NULL, NULL, '', -33, 86, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0),
-(181, NULL, NULL, '', -16, 2, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(182, NULL, NULL, '', -11, -127, 'custom-hotspot-salto', 'puntos', 'punto92', 'p1p12f1', 0, 0, 'scene', 0),
-(183, NULL, NULL, '', -13, -112, 'custom-hotspot-salto', 'puntos', 'punto93', 'p1p12f2', 0, 0, 'scene', 0),
-(184, NULL, NULL, '', -16, -166, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0),
-(185, NULL, NULL, '', -10, 57, 'custom-hotspot-salto', 'puntos', 'punto94', 'p1p12f5', 0, 0, 'scene', 0),
-(186, NULL, NULL, '', -16, -138, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0),
-(187, NULL, NULL, '', -19, 146, 'custom-hotspot-salto', 'puntos', 'punto96', 'p1p12f6', 0, 0, 'scene', 0),
-(188, NULL, NULL, '', -6, -159, 'custom-hotspot-salto', 'puntos', 'punto96', 'p1p12f6', 0, 0, 'scene', 0),
-(189, NULL, NULL, '', -10, -127, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(190, NULL, NULL, '', -8, 1, 'custom-hotspot-salto', 'puntos', 'punto94', 'p1p12f5', 0, 0, 'scene', 0),
-(191, NULL, NULL, '', -13, -108, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(192, NULL, NULL, '', -13, -147, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0),
-(193, NULL, NULL, '', -21, -57, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0),
-(194, NULL, NULL, '', -7, 5, 'custom-hotspot-salto', 'puntos', 'punto97', 'p1p12f8', 0, 0, 'scene', 0),
-(195, NULL, NULL, '', -8, -12, 'custom-hotspot-salto', 'puntos', 'punto96', 'p1p12f6', 0, 0, 'scene', 0),
-(196, NULL, NULL, '', -17, -41, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0),
-(197, NULL, NULL, '', -12, -162, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0),
-(198, NULL, NULL, '', -15, 109, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0),
-(199, NULL, NULL, '', -9, 3, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', 0, 0, 'scene', 0),
-(200, NULL, NULL, '', -13, -82, 'custom-hotspot-salto', 'puntos', 'punto100', 'p1p6f2', 0, 0, 'scene', 0),
-(201, NULL, NULL, '', -11, 90, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0),
-(202, NULL, NULL, '', -17, -161, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0),
-(203, NULL, NULL, '', -29, -101, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0),
-(204, NULL, NULL, '', -8, 63, 'custom-hotspot-salto', 'puntos', 'punto88', 'p2p10f5', 0, 0, 'scene', 0),
-(205, NULL, NULL, '', -22, 0, 'custom-hotspot-salto', 'puntos', 'punto87', 'p2p10f4', 0, 0, 'scene', 0),
-(206, NULL, NULL, '', -22, -87, 'custom-hotspot-salto', 'puntos', 'punto85', 'p2p10f3', 0, 0, 'scene', 0),
-(207, NULL, NULL, '', -26, -183, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0),
-(208, NULL, NULL, '', -26, -183, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0),
-(209, NULL, NULL, '', -20, 163, 'custom-hotspot-salto', 'puntos', 'punto45', 'p2p10', 0, 0, 'scene', 0),
-(210, NULL, NULL, '', -21, 97, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0),
-(211, NULL, NULL, '', -22, 177, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0),
-(212, NULL, NULL, '', -9, 113, 'custom-hotspot-salto', 'puntos', 'punto88', 'p2p10f5', 0, 0, 'scene', 0),
-(213, 'Craneo', 'Un craneo grande grande prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba prueba ', '', 9, 155, 'custom-hotspot-info', 'panelInformacion', '213', '', 0, 0, 'info', 0),
-(217, NULL, NULL, '', -8, 109, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', 0, 0, 'scene', 0),
-(218, NULL, NULL, '', 14, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
-(221, NULL, NULL, '', -1, 93, 'custom-hotspot-salto', 'puntos', '', '', 0, 0, 'scene', 0),
-(222, NULL, NULL, '', 1, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
-(227, NULL, NULL, '', -9, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
-(229, NULL, NULL, '', -2, -13, 'custom-hotspot-salto', 'puntos', 'punto112', 'p0p0', 0, 0, 'scene', 0),
-(230, NULL, NULL, '', -22, 162, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 0, 0, 'scene', 0),
-(231, NULL, NULL, '', 22, 0, 'custom-hotspot-video', 'video', '2', '', 0, 0, 'info', 0),
-(233, NULL, NULL, '', -9, 7, 'custom-hotspot-salto', 'puntos', 'punto108', 'p0p2f1', 0, 0, 'scene', 0),
-(234, NULL, NULL, '', -8, 8, 'custom-hotspot-salto', 'puntos', 'punto118', 'p0p9f2', 0, 0, 'scene', 0),
-(236, NULL, NULL, '', -45, -155, 'custom-hotspot-salto', 'puntos', 'punto14', 'p1p9f2', 0, 0, 'scene', 0),
-(239, NULL, NULL, '', -15, -101, 'custom-hotspot-salto', 'puntos', 'punto108', 'p0p2f1', 0, 0, 'scene', 0),
-(240, NULL, NULL, '', -10, -43, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(241, NULL, NULL, '', -10, -43, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(242, NULL, NULL, '', -10, 95, 'custom-hotspot-salto', 'puntos', 'punto116', 'p0p9f4', 0, 0, 'scene', 0),
-(243, NULL, NULL, '', -13, -175, 'custom-hotspot-salto', 'puntos', 'punto116', 'p0p9f4', 0, 0, 'scene', 0),
-(244, NULL, NULL, '', -9, -117, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(245, NULL, NULL, '', -4, -1, 'custom-hotspot-salto', 'puntos', 'punto123', 'p0p9f3', 0, 0, 'scene', 0),
-(246, NULL, NULL, '', -16, -181, 'custom-hotspot-salto', 'puntos', 'punto124', 'p0p9f5', 0, 0, 'scene', 0),
-(247, NULL, NULL, '', -21, 0, 'custom-hotspot-salto', 'puntos', 'punto116', 'p0p9f4', 0, 0, 'scene', 0),
-(248, NULL, NULL, '', -9, -42, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(249, NULL, NULL, '', -12, -143, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(250, NULL, NULL, '', -25, 79, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(251, NULL, NULL, '', -11, -138, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0),
-(252, NULL, NULL, '', 2, 124, 'custom-hotspot-video', 'video', 'punto3', 'p0p2', 0, 0, 'info', 0),
-(253, NULL, NULL, '', 12, 152, 'custom-hotspot-audio', 'musica', 'punto5', 'p0p4', 0, 0, 'info', 0),
-(254, NULL, NULL, '', 7, 152, 'custom-hotspot-audio', 'musica', 'punto9', 'p0p5', 0, 0, 'info', 0),
-(255, NULL, NULL, '', 27, 50, 'custom-hotspot-audio', 'musica', '4', 'p0p9f4', 0, 0, 'info', 0),
-(256, NULL, NULL, '', 8, 0, 'custom-hotspot-video', 'video', 'punto4', 'p0p3', 0, 0, 'info', 0),
-(257, NULL, NULL, '', 11, -41, 'custom-hotspot-video', 'video', 'punto4', 'p0p3', 0, 0, 'info', 0),
-(258, NULL, NULL, '', 19, 39, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
-(259, NULL, NULL, '', 30, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
-(260, NULL, NULL, '', 32, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
-(262, NULL, NULL, '', 27, -96, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
-(263, NULL, NULL, '', 26, -49, 'custom-hotspot-audio', 'musica', 'punto14', 'p1p9f2', 0, 0, 'info', 0),
-(264, NULL, NULL, '', -14, 21, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0),
-(265, NULL, NULL, '', -20, -161, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(266, NULL, NULL, '', -16, -90, 'custom-hotspot-salto', 'puntos', 'punto125', 'p1p12f3', 0, 0, 'scene', 0),
-(267, NULL, NULL, '', -17, 88, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0),
-(268, NULL, NULL, '', -15, 122, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0),
-(269, NULL, NULL, '', -19, -87, 'custom-hotspot-salto', 'puntos', 'punto78', 'p0p8', 0, 0, 'scene', 0),
-(270, NULL, NULL, '', -14, 114, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0),
-(271, NULL, NULL, '', -13, 54, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0),
-(272, NULL, NULL, '', -15, -62, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', 0, 0, 'scene', 0),
-(273, NULL, NULL, '', -28, 82, 'custom-hotspot-salto', 'puntos', 'punto130', 'p1p3f4', 0, 0, 'scene', 0),
-(274, NULL, NULL, '', -23, -78, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0),
-(275, NULL, NULL, '', -12, 115, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', 0, 0, 'scene', 0),
-(276, NULL, NULL, '', -13, 10, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0),
-(277, NULL, NULL, '', -16, 155, 'custom-hotspot-salto', 'puntos', 'punto128', 'p1p3f5', 0, 0, 'scene', 0),
-(278, NULL, NULL, '', -13, -116, 'custom-hotspot-salto', 'puntos', 'punto132', 'p1p7f1', 0, 0, 'scene', 0),
-(279, NULL, NULL, '', -15, -80, 'custom-hotspot-salto', 'puntos', 'punto131', 'p1p7f2', 0, 0, 'scene', 0),
-(280, NULL, NULL, '', 41, -80, 'custom-hotspot-audio', 'musica', '4', '', 0, 0, 'info', 0),
-(281, 'Puerta', 'Una puerta muy guapa en el gimnasio', '', 1, 40, 'custom-hotspot-info', 'panelInformacion', '281', '', 0, 0, 'info', 0);
+INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcion`, `pitch`, `yaw`, `cssClass`, `clickHandlerFunc`, `clickHandlerArgs`, `sceneId`, `targetPitch`, `targetYaw`, `tipo`, `cerrado_destacado`, `documento_url`) VALUES
+(1, NULL, NULL, '   ', -13, 2, 'custom-hotspot-salto', 'puntos', 'punto38', 'p2p3', -4, 182, 'scene', 0, NULL),
+(2, NULL, NULL, ' ', -16, 126, 'custom-hotspot-salto', 'puntos', 'punto36', 'p2p1', 0, 0, 'scene', 0, NULL),
+(3, NULL, NULL, ' ', -8, -180, 'custom-hotspot-salto', 'puntos', 'punto45', 'p2p10', 0, 0, 'scene', 0, NULL),
+(5, NULL, NULL, ' ', -10, -83, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 0, -83, 'scene', 0, NULL),
+(6, NULL, NULL, ' ', -9, 185, 'custom-hotspot-salto', 'puntos', 'punto47', 'p2p2f3', -2, -2, 'scene', 0, NULL),
+(7, NULL, NULL, ' ', -8, 3, 'custom-hotspot-salto', 'puntos', 'punto48', 'p2p2f2', -2, 3, 'scene', 0, NULL),
+(10, NULL, NULL, ' ', -21, -180, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', -6, 60, 'scene', 0, NULL),
+(11, NULL, NULL, ' ', -19, -9, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', -6, 60, 'scene', 0, NULL),
+(12, NULL, NULL, ' ', -9, 4, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', -10, 107, 'scene', 0, NULL),
+(13, NULL, NULL, ' ', -8, -178, 'custom-hotspot-salto', 'puntos', 'punto39', 'p2p4', -2, 68, 'scene', 0, NULL),
+(14, NULL, NULL, ' ', -11, 159, 'custom-hotspot-salto', 'puntos', 'punto38', 'p2p3', -6, 4, 'scene', 0, NULL),
+(15, NULL, NULL, ' ', -6, 68, 'custom-hotspot-salto', 'puntos', 'punto40', 'p2p5', -8, -89, 'scene', 0, NULL),
+(22, NULL, NULL, ' ', -10, 95, 'custom-hotspot-salto', 'puntos', 'punto39', 'p2p4', -6, 159, 'scene', 0, NULL),
+(23, NULL, NULL, ' ', -3, -90, 'custom-hotspot-salto', 'puntos', 'punto41', 'p2p6', 1, 37, 'scene', 0, NULL),
+(24, NULL, NULL, ' ', -4, 92, 'custom-hotspot-salto', 'puntos', 'punto40', 'p2p5', -2, 83, 'scene', 0, NULL),
+(25, NULL, NULL, ' ', -3, 28, 'custom-hotspot-salto', 'puntos', 'punto42', 'p2p7', -2, -1, 'scene', 0, NULL),
+(26, NULL, NULL, ' ', -16, -184, 'custom-hotspot-salto', 'puntos', 'punto41', 'p2p6', 2, 84, 'scene', 0, NULL),
+(27, NULL, NULL, ' ', -12, 0, 'custom-hotspot-salto', 'puntos', 'punto43', 'p2p72', 0, 17, 'scene', 0, NULL),
+(28, NULL, NULL, ' ', -19, 181, 'custom-hotspot-salto', 'puntos', 'punto42', 'p2p7', -7, -185, 'scene', 0, NULL),
+(29, NULL, NULL, ' ', -8, -4, 'custom-hotspot-salto', 'puntos', 'punto44', 'p2p8', -6, 162, 'scene', 0, NULL),
+(30, NULL, NULL, ' ', -11, -65, 'custom-hotspot-salto', 'puntos', 'punto43', 'p2p72', -9, 182, 'scene', 0, NULL),
+(31, NULL, NULL, ' ', -25, 158, 'custom-hotspot-salto', 'puntos', 'punto36', 'p2p1', 0, 0, 'scene', 0, NULL),
+(32, NULL, NULL, ' ', -20, -106, 'custom-hotspot-salto', 'puntos', 'punto44', 'p2p8', -3, -65, 'scene', 0, NULL),
+(33, NULL, NULL, ' ', -20, 97, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 2, -23, 'scene', 0, NULL),
+(35, NULL, NULL, ' ', -19, -180, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 0, 0, 'scene', 0, NULL),
+(36, NULL, NULL, ' ', -18, 115, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -11, 125, 'scene', 0, NULL),
+(38, NULL, NULL, ' ', -21, -111, 'custom-hotspot-salto', 'puntos', 'punto22', 'p1p8', -6, 186, 'scene', 0, NULL),
+(39, NULL, NULL, ' ', -18, 115, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 0, 0, 'scene', 0, NULL),
+(40, NULL, NULL, ' ', -10, -176, 'custom-hotspot-salto', 'puntos', 'punto35', 'p1p22', -4, 175, 'scene', 0, NULL),
+(41, NULL, NULL, ' ', 0, -71, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0, NULL),
+(42, NULL, NULL, ' ', -1, -4, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0, NULL),
+(43, NULL, NULL, ' ', -26, 8, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 0, 0, 'scene', 0, NULL),
+(44, NULL, NULL, ' ', 6, -174, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -5, -42, 'scene', 1, NULL),
+(45, NULL, NULL, ' ', -16, -2, 'custom-hotspot-salto', 'puntos', 'punto29', 'p1p2f3', 0, 0, 'scene', 0, NULL),
+(46, NULL, NULL, ' ', -12, 175, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 16, -173, 'scene', 0, NULL),
+(47, NULL, NULL, ' ', -13, -171, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 34, 175, 'scene', 0, NULL),
+(48, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', -4, 180, 'scene', 0, NULL),
+(49, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0, NULL),
+(50, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -5, 180, 'scene', 0, NULL),
+(51, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto35', 'p1p22', 0, 0, 'scene', 0, NULL),
+(52, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto18', 'p1p4', -3, -47, 'scene', 0, NULL),
+(53, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', 0, 0, 'scene', 0, NULL),
+(54, NULL, NULL, ' ', -7, 101, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', -5, -3, 'scene', 0, NULL),
+(55, NULL, NULL, ' ', -14, -88, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, -88, 'scene', 0, NULL),
+(56, NULL, NULL, ' ', -8, -2, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', 0, 0, 'scene', 0, NULL),
+(57, NULL, NULL, ' ', -15, -96, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -8, -32, 'scene', 0, NULL),
+(58, NULL, NULL, ' ', -8, -4, 'custom-hotspot-salto', 'puntos', 'punto26', 'p1p32f2', -2, 78, 'scene', 0, NULL),
+(59, NULL, NULL, ' ', -11, -106, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', -7, -95, 'scene', 0, NULL),
+(60, NULL, NULL, ' ', -3, 93, 'custom-hotspot-salto', 'puntos', 'punto18', 'p1p4', 0, 0, 'scene', 0, NULL),
+(61, NULL, NULL, ' ', -9, -87, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', -6, -34, 'scene', 0, NULL),
+(63, NULL, NULL, ' ', -1, 4, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, 0, 'scene', 0, NULL),
+(64, NULL, NULL, ' ', -7, 4, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0, NULL),
+(65, NULL, NULL, ' ', -12, 77, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', -7, 93, 'scene', 0, NULL),
+(66, NULL, NULL, ' ', -22, -97, 'custom-hotspot-salto', 'puntos', 'punto30', 'p1p9', -7, 41, 'scene', 0, NULL),
+(67, NULL, NULL, ' ', -7, -5, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', 0, 0, 'scene', 0, NULL),
+(68, NULL, NULL, ' ', -11, 177, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', -10, 47, 'scene', 0, NULL),
+(69, NULL, NULL, ' ', -7, -5, 'custom-hotspot-salto', 'puntos', 'punto22', 'p1p8', 0, 0, 'scene', 0, NULL),
+(70, NULL, NULL, ' ', -11, 177, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', -6, 175, 'scene', 0, NULL),
+(71, NULL, NULL, ' ', -22, 54, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0, NULL),
+(72, NULL, NULL, ' ', -11, 189, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', -5, 176, 'scene', 0, NULL),
+(73, NULL, NULL, ' ', -24, 91, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', 0, 0, 'scene', 0, NULL),
+(74, NULL, NULL, ' ', -12, 2, 'custom-hotspot-salto', 'puntos', 'punto31', 'p1p9f1', -5, 176, 'scene', 0, NULL),
+(75, NULL, NULL, ' ', 11, -28, 'custom-hotspot-salto', 'puntos', 'punto30', 'p1p9', 0, 0, 'scene', 0, NULL),
+(76, NULL, NULL, ' ', -46, -8, 'custom-hotspot-salto', 'puntos', 'punto14', 'p1p9f2', 0, 0, 'scene', 0, NULL),
+(77, NULL, NULL, ' ', -22, 148, 'custom-hotspot-salto', 'puntos', 'punto31', 'p1p9f1', 12, -17, 'scene', 0, NULL),
+(79, NULL, NULL, ' ', -9, -172, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0, NULL),
+(80, NULL, NULL, ' ', -21, 128, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', -11, -173, 'scene', 0, NULL),
+(81, NULL, NULL, ' ', -19, -5, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0, NULL),
+(82, NULL, NULL, ' ', -14, 168, 'custom-hotspot-salto', 'puntos', 'p1punto10', 'p1p10', -6, 134, 'scene', 0, NULL),
+(83, NULL, NULL, ' ', -27, 172, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', -12, -166, 'scene', 0, NULL),
+(85, NULL, NULL, ' ', -19, 196, 'custom-hotspot-salto', 'puntos', 'punto11', 'p0p1f1', 37, -179, 'scene', 0, NULL),
+(87, NULL, NULL, ' ', -25, 102, 'custom-hotspot-salto', 'puntos', 'punto3', 'p0p2', 0, 0, 'scene', 0, NULL),
+(88, NULL, NULL, ' ', -2, 10, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 2, -18, 'scene', 1, NULL),
+(89, NULL, NULL, ' ', -11, 161, 'custom-hotspot-salto', 'puntos', 'punto10', 'p0p1f2', -5, 179, 'scene', 0, NULL),
+(90, NULL, NULL, ' ', -2, 10, 'custom-hotspot-salto', 'puntos', 'punto11', 'p0p1f1', 8, 9, 'scene', 0, NULL),
+(91, NULL, NULL, ' ', -13, -184, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', 2, 100, 'scene', 1, NULL),
+(92, NULL, NULL, ' ', -21, -82, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 13, -179, 'scene', 0, NULL),
+(93, NULL, NULL, ' ', -12, -176, 'custom-hotspot-salto', 'puntos', 'punto4', 'p0p3', 0, 0, 'scene', 0, NULL),
+(94, NULL, NULL, ' ', -6, -2, 'custom-hotspot-salto', 'puntos', 'punto3', 'p0p2', 14, -129, 'scene', 0, NULL),
+(95, NULL, NULL, ' ', -11, 180, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', 0, 0, 'scene', 0, NULL),
+(96, NULL, NULL, ' ', -4, 3, 'custom-hotspot-salto', 'puntos', 'punto4', 'p0p3', 3, -3, 'scene', 0, NULL),
+(97, NULL, NULL, ' ', -9, -88, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', 0, 0, 'scene', 0, NULL),
+(98, NULL, NULL, ' ', -16, -182, 'custom-hotspot-salto', 'puntos', 'punto8', 'p0p4f2', 17, -5, 'scene', 0, NULL),
+(99, NULL, NULL, ' ', -2, 105, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', -10, -47, 'scene', 1, NULL),
+(100, NULL, NULL, ' ', -7, 87, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', -8, -45, 'scene', 0, NULL),
+(101, NULL, NULL, ' ', -5, 177, 'custom-hotspot-salto', 'puntos', 'punto12', 'p0p5f1', 0, 0, 'scene', 0, NULL),
+(102, NULL, NULL, ' ', -6, 74, 'custom-hotspot-salto', 'puntos', 'punto10', 'p0p1f2', -8, -45, 'scene', 0, NULL),
+(103, NULL, NULL, ' ', -2, -9, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', -2, 141, 'scene', 0, NULL),
+(104, NULL, NULL, ' ', -9, 165, 'custom-hotspot-salto', 'puntos', 'punto13', 'p0p5f2', 1, -13, 'scene', 0, NULL),
+(105, NULL, NULL, ' ', -3, 169, 'custom-hotspot-salto', 'puntos', 'punto12', 'p0p5f1', 9, -13, 'scene', 0, NULL),
+(106, NULL, NULL, ' ', -20, -106, 'custom-hotspot-salto', 'puntos', 'punto61', 'p3p8', -3, 172, 'scene', 0, NULL),
+(107, NULL, NULL, ' ', -20, 89, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', -147, -11, 'scene', 0, NULL),
+(109, NULL, NULL, ' ', -12, -185, 'custom-hotspot-salto', 'puntos', 'punto52', 'p3p3', -6, -178, 'scene', 0, NULL),
+(110, NULL, NULL, ' ', -18, -91, 'custom-hotspot-salto', 'puntos', 'punto49', 'p3p1', 0, 0, 'scene', 0, NULL),
+(111, NULL, NULL, ' ', -8, -2, 'custom-hotspot-salto', 'puntos', 'punto62', 'p3p10', 0, 0, 'scene', 0, NULL),
+(112, NULL, NULL, ' ', -4, 96, 'custom-hotspot-salto', 'puntos', 'punto51', 'p3p2f2', 0, 0, 'scene', 0, NULL),
+(113, NULL, NULL, ' ', -7, -61, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', -6, 60, 'scene', 0, NULL),
+(114, NULL, NULL, ' ', -8, -2, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', -9, -93, 'scene', 0, NULL),
+(115, NULL, NULL, ' ', -10, 180, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -2, 68, 'scene', 0, NULL),
+(116, NULL, NULL, ' ', -8, 2, 'custom-hotspot-salto', 'puntos', 'punto52', 'p3p3', 12, -3, 'scene', 0, NULL),
+(117, NULL, NULL, ' ', -10, -85, 'custom-hotspot-salto', 'puntos', 'punto56', 'p3p5', -8, -89, 'scene', 0, NULL),
+(118, NULL, NULL, ' ', -15, 164, 'custom-hotspot-salto', 'puntos', 'punto54', 'p3p4f2', -6, -118, 'scene', 0, NULL),
+(119, NULL, NULL, ' ', -13, 206, 'custom-hotspot-salto', 'puntos', 'punto55', 'p3p4f3', -10, 135, 'scene', 0, NULL),
+(120, NULL, NULL, ' ', -7, -3, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -6, 159, 'scene', 0, NULL),
+(121, NULL, NULL, ' ', -12, -42, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -6, 159, 'scene', 0, NULL),
+(122, NULL, NULL, ' ', -10, 95, 'custom-hotspot-salto', 'puntos', 'punto53', 'p3p4', -6, 159, 'scene', 0, NULL),
+(123, NULL, NULL, ' ', -3, -90, 'custom-hotspot-salto', 'puntos', 'punto58', 'p3p6', -5, -161, 'scene', 0, NULL),
+(124, NULL, NULL, ' ', -10, -140, 'custom-hotspot-salto', 'puntos', 'punto57', 'p3p5f1', -5, -161, 'scene', 0, NULL),
+(125, NULL, NULL, ' ', -5, 42, 'custom-hotspot-salto', 'puntos', 'punto56', 'p3p5', -6, 159, 'scene', 0, NULL),
+(126, NULL, NULL, ' ', -12, 103, 'custom-hotspot-salto', 'puntos', 'punto56', 'p3p5', -2, 83, 'scene', 0, NULL),
+(127, NULL, NULL, ' ', -7, 38, 'custom-hotspot-salto', 'puntos', 'punto60', 'p3p7', -2, -1, 'scene', 0, NULL),
+(128, NULL, NULL, ' ', -13, 205, 'custom-hotspot-salto', 'puntos', 'punto59', 'p3p6f1', -18, -180, 'scene', 0, NULL),
+(129, NULL, NULL, ' ', -12, -114, 'custom-hotspot-salto', 'puntos', 'punto58', 'p3p6', -1, 37, 'scene', 0, NULL),
+(130, NULL, NULL, ' ', -16, -184, 'custom-hotspot-salto', 'puntos', 'punto58', 'p3p6', -2, 147, 'scene', 0, NULL),
+(131, NULL, NULL, ' ', -12, 0, 'custom-hotspot-salto', 'puntos', 'punto61', 'p3p8', 0, 17, 'scene', 0, NULL),
+(132, NULL, NULL, ' ', -11, 177, 'custom-hotspot-salto', 'puntos', 'punto60', 'p3p7', -9, 182, 'scene', 0, NULL),
+(133, NULL, NULL, ' ', -19, 49, 'custom-hotspot-salto', 'puntos', 'punto49', 'p3p1', 0, 0, 'scene', 0, NULL),
+(134, NULL, NULL, ' ', -19, -180, 'custom-hotspot-salto', 'puntos', 'punto50', 'p3p2', 0, 0, 'scene', 0, NULL),
+(136, NULL, NULL, ' ', -3, 10, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
+(137, NULL, NULL, ' ', -13, 17, 'custom-hotspot-salto', 'puntos', 'punto63', 'p4p0', -2, 141, 'scene', 0, NULL),
+(138, NULL, NULL, ' ', -3, -11, 'custom-hotspot-salto', 'puntos', 'punto65', 'p4p2', -17, -153, 'scene', 0, NULL),
+(139, NULL, NULL, ' ', -2, 31, 'custom-hotspot-salto', 'puntos', 'punto66', 'p4p3', -20, 114, 'scene', 0, NULL),
+(140, NULL, NULL, ' ', -17, 144, 'custom-hotspot-salto', 'puntos', 'punto67', 'p4p4', -26, -174, 'scene', 0, NULL),
+(141, NULL, NULL, ' ', -15, -128, 'custom-hotspot-salto', 'puntos', 'punto68', 'p4p5', -21, 176, 'scene', 0, NULL),
+(142, NULL, NULL, ' ', 0, 20, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -1, 20, 'scene', 0, NULL),
+(143, NULL, NULL, ' ', -2, -84, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -2, 19, 'scene', 0, NULL),
+(144, NULL, NULL, ' ', -3, -3, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
+(145, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
+(146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene', 0, NULL),
+(148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', 0, 0, 'scene', 0, NULL),
+(151, NULL, NULL, '', -4, 29, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0, NULL),
+(153, NULL, NULL, '', -7, -94, 'custom-hotspot-salto', 'puntos', 'p0punto15', 'p0p8f2', 0, 0, 'scene', 0, NULL),
+(154, NULL, NULL, '', -8, -175, 'custom-hotspot-salto', 'puntos', 'p0punto14', 'p0p8f1', 0, 0, 'scene', 0, NULL),
+(155, NULL, NULL, '', -12, -7, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene', 0, NULL),
+(156, NULL, NULL, '', -15, -181, 'custom-hotspot-salto', 'puntos', 'p0punto15', 'p0p8f2', 0, 0, 'scene', 0, NULL),
+(158, NULL, NULL, '', -9, 77, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene', 0, NULL),
+(159, NULL, NULL, '', -11, -10, 'custom-hotspot-salto', 'puntos', 'p0punto16', 'p0p8f3', 0, 0, 'scene', 0, NULL),
+(160, NULL, NULL, '', -4, 2, 'custom-hotspot-salto', 'puntos', 'punto82', 'p3p10f1', 0, 0, 'scene', 0, NULL),
+(161, NULL, NULL, '', -11, -99, 'custom-hotspot-salto', 'puntos', 'punto82', 'p3p10f1', 0, 0, 'scene', 0, NULL),
+(162, NULL, NULL, '', -12, -177, 'custom-hotspot-salto', 'puntos', 'punto62', 'p3p10', 0, 0, 'scene', 0, NULL),
+(163, NULL, NULL, '', -11, 87, 'custom-hotspot-salto', 'puntos', 'punto83', 'p3p10f2', 0, 0, 'scene', 0, NULL),
+(164, NULL, NULL, '', -13, -100, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0, NULL),
+(165, NULL, NULL, '', -4, 6, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0, NULL),
+(166, NULL, NULL, '', -20, -6, 'custom-hotspot-salto', 'puntos', 'punto85', 'p2p10f3', 0, 0, 'scene', 0, NULL),
+(167, NULL, NULL, '', -19, 91, 'custom-hotspot-salto', 'puntos', 'punto87', 'p2p10f4', 0, 0, 'scene', 0, NULL),
+(168, NULL, NULL, '', 0, 0, '', '', '', 'p1p12', 0, 0, '', 0, NULL),
+(169, NULL, NULL, '', -25, 94, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0, NULL),
+(170, NULL, NULL, '', -30, -97, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
+(172, NULL, NULL, '', -32, -93, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
+(173, NULL, NULL, '', -19, -2, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(174, NULL, NULL, '', -20, 82, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0, NULL),
+(175, NULL, NULL, '', -18, 171, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 1, NULL),
+(176, NULL, NULL, '', -29, -90, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
+(177, NULL, NULL, '', -17, 1, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(178, NULL, NULL, '', -20, 86, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0, NULL),
+(179, NULL, NULL, '', -20, -5, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0, NULL),
+(180, NULL, NULL, '', -33, 86, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0, NULL),
+(181, NULL, NULL, '', -16, 2, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(182, NULL, NULL, '', -11, -127, 'custom-hotspot-salto', 'puntos', 'punto92', 'p1p12f1', 0, 0, 'scene', 0, NULL),
+(183, NULL, NULL, '', -13, -112, 'custom-hotspot-salto', 'puntos', 'punto93', 'p1p12f2', 0, 0, 'scene', 0, NULL),
+(184, NULL, NULL, '', -16, -166, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0, NULL),
+(185, NULL, NULL, '', -10, 57, 'custom-hotspot-salto', 'puntos', 'punto94', 'p1p12f5', 0, 0, 'scene', 0, NULL),
+(186, NULL, NULL, '', -16, -138, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
+(187, NULL, NULL, '', -19, 146, 'custom-hotspot-salto', 'puntos', 'punto96', 'p1p12f6', 0, 0, 'scene', 0, NULL),
+(188, NULL, NULL, '', -6, -159, 'custom-hotspot-salto', 'puntos', 'punto96', 'p1p12f6', 0, 0, 'scene', 0, NULL),
+(189, NULL, NULL, '', -10, -127, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(190, NULL, NULL, '', -8, 1, 'custom-hotspot-salto', 'puntos', 'punto94', 'p1p12f5', 0, 0, 'scene', 0, NULL),
+(191, NULL, NULL, '', -13, -108, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(192, NULL, NULL, '', -13, -147, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0, NULL),
+(193, NULL, NULL, '', -21, -57, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0, NULL),
+(194, NULL, NULL, '', -7, 5, 'custom-hotspot-salto', 'puntos', 'punto97', 'p1p12f8', 0, 0, 'scene', 0, NULL),
+(195, NULL, NULL, '', -8, -12, 'custom-hotspot-salto', 'puntos', 'punto96', 'p1p12f6', 0, 0, 'scene', 0, NULL),
+(196, NULL, NULL, '', -17, -41, 'custom-hotspot-salto', 'puntos', 'punto105', 'p1p12', 0, 0, 'scene', 0, NULL),
+(197, NULL, NULL, '', -12, -162, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 1, NULL),
+(198, NULL, NULL, '', -15, 109, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
+(199, NULL, NULL, '', -9, 3, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', 0, 0, 'scene', 0, NULL),
+(200, NULL, NULL, '', -13, -82, 'custom-hotspot-salto', 'puntos', 'punto100', 'p1p6f2', 0, 0, 'scene', 0, NULL),
+(201, NULL, NULL, '', -11, 90, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0, NULL),
+(202, NULL, NULL, '', -17, -161, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0, NULL),
+(203, NULL, NULL, '', -29, -101, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0, NULL),
+(204, NULL, NULL, '', -8, 63, 'custom-hotspot-salto', 'puntos', 'punto88', 'p2p10f5', 0, 0, 'scene', 0, NULL),
+(205, NULL, NULL, '', -22, 0, 'custom-hotspot-salto', 'puntos', 'punto87', 'p2p10f4', 0, 0, 'scene', 0, NULL),
+(206, NULL, NULL, '', -22, -87, 'custom-hotspot-salto', 'puntos', 'punto85', 'p2p10f3', 0, 0, 'scene', 0, NULL),
+(207, NULL, NULL, '', -26, -183, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0, NULL),
+(208, NULL, NULL, '', -26, -183, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0, NULL),
+(209, NULL, NULL, '', -20, 163, 'custom-hotspot-salto', 'puntos', 'punto45', 'p2p10', 0, 0, 'scene', 0, NULL),
+(210, NULL, NULL, '', -21, 97, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0, NULL),
+(211, NULL, NULL, '', -22, 177, 'custom-hotspot-salto', 'puntos', 'punto86', 'p2p10f2', 0, 0, 'scene', 0, NULL),
+(212, NULL, NULL, '', -9, 113, 'custom-hotspot-salto', 'puntos', 'punto88', 'p2p10f5', 0, 0, 'scene', 0, NULL),
+(217, NULL, NULL, '', -8, 109, 'custom-hotspot-salto', 'puntos', 'punto32', 'p1p72', 0, 0, 'scene', 0, NULL),
+(229, NULL, NULL, '', -2, -13, 'custom-hotspot-salto', 'puntos', 'punto112', 'p0p0', 0, 0, 'scene', 0, NULL),
+(230, NULL, NULL, '', -22, 162, 'custom-hotspot-salto', 'puntos', 'punto2', 'p0p1', 0, 0, 'scene', 0, NULL),
+(233, NULL, NULL, '', -9, 7, 'custom-hotspot-salto', 'puntos', 'punto108', 'p0p2f1', 0, 0, 'scene', 0, NULL),
+(234, NULL, NULL, '', -8, 8, 'custom-hotspot-salto', 'puntos', 'punto118', 'p0p9f2', 0, 0, 'scene', 0, NULL),
+(236, NULL, NULL, '', -45, -155, 'custom-hotspot-salto', 'puntos', 'punto14', 'p1p9f2', 0, 0, 'scene', 0, NULL),
+(239, NULL, NULL, '', -15, -101, 'custom-hotspot-salto', 'puntos', 'punto108', 'p0p2f1', 0, 0, 'scene', 0, NULL),
+(240, NULL, NULL, '', -10, -43, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(241, NULL, NULL, '', -10, -43, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(242, NULL, NULL, '', -10, 95, 'custom-hotspot-salto', 'puntos', 'punto116', 'p0p9f4', 0, 0, 'scene', 0, NULL),
+(243, NULL, NULL, '', -13, -175, 'custom-hotspot-salto', 'puntos', 'punto116', 'p0p9f4', 0, 0, 'scene', 0, NULL),
+(244, NULL, NULL, '', -9, -117, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(245, NULL, NULL, '', -4, -1, 'custom-hotspot-salto', 'puntos', 'punto123', 'p0p9f3', 0, 0, 'scene', 0, NULL),
+(246, NULL, NULL, '', -16, -181, 'custom-hotspot-salto', 'puntos', 'punto124', 'p0p9f5', 0, 0, 'scene', 0, NULL),
+(247, NULL, NULL, '', -21, 0, 'custom-hotspot-salto', 'puntos', 'punto116', 'p0p9f4', 0, 0, 'scene', 0, NULL),
+(248, NULL, NULL, '', -9, -42, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(249, NULL, NULL, '', -12, -143, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(250, NULL, NULL, '', -25, 79, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(251, NULL, NULL, '', -11, -138, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
+(252, NULL, NULL, '', 2, 124, 'custom-hotspot-video', 'video', 'punto3', 'p0p2', 0, 0, 'info', 0, NULL),
+(253, NULL, NULL, '', 12, 152, 'custom-hotspot-audio', 'musica', 'punto5', 'p0p4', 0, 0, 'info', 0, NULL),
+(254, NULL, NULL, '', 7, 152, 'custom-hotspot-audio', 'musica', 'punto9', 'p0p5', 0, 0, 'info', 0, NULL),
+(255, NULL, NULL, '', 27, 50, 'custom-hotspot-audio', 'musica', '4', 'p0p9f4', 0, 0, 'info', 0, NULL),
+(256, NULL, NULL, '', 8, 0, 'custom-hotspot-video', 'video', 'punto4', 'p0p3', 0, 0, 'info', 0, NULL),
+(257, NULL, NULL, '', 11, -41, 'custom-hotspot-video', 'video', 'punto4', 'p0p3', 0, 0, 'info', 0, NULL),
+(258, NULL, NULL, '', 19, 39, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
+(259, NULL, NULL, '', 30, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
+(260, NULL, NULL, '', 32, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
+(262, NULL, NULL, '', 27, -96, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
+(263, NULL, NULL, '', 26, -49, 'custom-hotspot-audio', 'musica', '4', 'p1p9f2', 0, 0, 'info', 0, NULL),
+(264, NULL, NULL, '', -14, 21, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0, NULL),
+(265, NULL, NULL, '', -20, -161, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(266, NULL, NULL, '', -16, -90, 'custom-hotspot-salto', 'puntos', 'punto125', 'p1p12f3', 0, 0, 'scene', 0, NULL),
+(267, NULL, NULL, '', -17, 88, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0, NULL),
+(268, NULL, NULL, '', -15, 122, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
+(269, NULL, NULL, '', -19, -87, 'custom-hotspot-salto', 'puntos', 'punto78', 'p0p8', 0, 0, 'scene', 0, NULL),
+(270, NULL, NULL, '', -14, 114, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0, NULL),
+(271, NULL, NULL, '', -13, 54, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0, NULL),
+(272, NULL, NULL, '', -15, -62, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', 0, 0, 'scene', 0, NULL),
+(273, NULL, NULL, '', -28, 82, 'custom-hotspot-salto', 'puntos', 'punto130', 'p1p3f4', 0, 0, 'scene', 0, NULL),
+(274, NULL, NULL, '', -23, -78, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0, NULL),
+(275, NULL, NULL, '', -12, 115, 'custom-hotspot-salto', 'puntos', 'punto25', 'p1p32f1', 0, 0, 'scene', 0, NULL),
+(276, NULL, NULL, '', -13, 10, 'custom-hotspot-salto', 'puntos', 'punto129', 'p1p3f3', 0, 0, 'scene', 0, NULL),
+(277, NULL, NULL, '', -16, 155, 'custom-hotspot-salto', 'puntos', 'punto128', 'p1p3f5', 0, 0, 'scene', 0, NULL),
+(278, NULL, NULL, '', -13, -116, 'custom-hotspot-salto', 'puntos', 'punto132', 'p1p7f1', 0, 0, 'scene', 0, NULL),
+(279, NULL, NULL, '', -15, -80, 'custom-hotspot-salto', 'puntos', 'punto131', 'p1p7f2', 0, 0, 'scene', 0, NULL),
+(290, NULL, NULL, '', -14, -4, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, 0, 'scene', 0, NULL),
+(291, NULL, NULL, '', -2, -9, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, 0, 'scene', 0, NULL),
+(292, NULL, NULL, '', 7, -1, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', 0, 0, 'scene', 0, NULL),
+(293, NULL, NULL, '', 22, -183, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -888,13 +891,12 @@ CREATE TABLE `libros` (
 --
 
 INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `editorial`, `lugar_edicion`, `fecha_edicion`, `ISBN`, `tipo`, `apaisado`) VALUES
-(5, 'Apuntes para una historia del Instituto \"Celia Viñas\" de Almería', 'D.Trino Gómez Ruiz', 'I.E.S Celia Viñas', 'Almería', '2013-10-01', '565989', 1, 0),
+(5, 'Apuntes para una historia del Instituto \"Celia Viñas\" de Almería', 'D.Trino Gómez Ruiz', 'I.E.S Celia Viñas', 'Almería2', '2013-10-01', '56', 1, 0),
 (6, 'Nacimiento y primeros pasos de un edificio: el I.E.S \"Celia Viñas\"', 'D.José Luis Ruz Márquez', 'I.E.S Celia Viñas', 'Almeria', '2000-10-08', '0', 1, 0),
-(7, 'Gramática elemental de la lengua castellana', 'D.Hilario del Olmo Minguez', 'almeria', 'Almería', '1808-05-01', '2', 0, 0),
-(8, 'Sumario de psicología', 'D.Agustín Arredondo García', 'a', 'Valladolid', '2018-01-14', '46', 0, 0),
-(9, 'El esplendor de Almerï¿½a en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterrï¿½nea, Cajama.', 'Almeria', '2018-01-28', '8495531186', 0, 1),
-(10, 'Exposición y critica de la doctrina transformista', 'Agustin Arredondo', 'D. Mariano Alvares y Robles', 'Almería', '2018-01-05', '7', 0, 0),
-(11, 'Ana Maria Romero Yebra', 'Alba y Mayo', 'Almeria', '2018-03-13', '2018-03-13', '65465', 0, 0);
+(9, 'El esplendor de Almeria en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterranea, Cajama.', 'Almeria', '2018-01-28', '84', 0, 1),
+(12, 'El arte en España', '-', 'Thomas', '-', '2018-03-17', '412', 0, 0),
+(13, 'Tecnologia industrial', 'M.Tortosa', '-', '-', '2018-03-10', '632', 0, 0),
+(16, 'Levantar un plano', 'Joaquín Pérez de Rozas', 'Pértiga-Rozas', '-', '2018-03-20', '654654', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -962,7 +964,36 @@ INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
 (282, 212),
 (282, 211),
 (282, 210),
-(282, 215);
+(282, 215),
+(285, 300),
+(285, 294),
+(286, 294),
+(290, 220),
+(290, 221),
+(290, 222);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `panel_informacion`
+--
+
+CREATE TABLE `panel_informacion` (
+  `id_documento` int(11) NOT NULL,
+  `documento_url` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `panel_informacion`
+--
+
+INSERT INTO `panel_informacion` (`id_documento`, `documento_url`) VALUES
+(1, 'Mesa01-Inducción-electromagnética.pdf'),
+(2, 'Mesa01-Ley-de-Ohm-Resist-serie.pdf'),
+(3, 'Mesa02-Medida-acidez-vinagre.pdf'),
+(4, 'Mesa02-Separac-por-extracción.pdf'),
+(5, 'Mesa10-Mod-Moleculares.pdf'),
+(6, 'Mesa09-MRUA.pdf');
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1037,7 @@ CREATE TABLE `portada` (
 --
 
 INSERT INTO `portada` (`id_portada`, `tituloweb`, `imagenweb`) VALUES
-(1, 'CeliaTour', '');
+(1, 'CeliaTour360', '');
 
 -- --------------------------------------------------------
 
@@ -1019,7 +1050,7 @@ CREATE TABLE `puntos_mapa` (
   `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `left_mapa` double NOT NULL,
   `top_mapa` double NOT NULL,
-  `id_escena` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `id_escena` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `piso` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -1186,10 +1217,17 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
-(4, 'https://www.youtube.com/watch?v=Lv9o3pPTn7I', 'wewe'),
 (5, 'https://youtu.be/3TPW48bcd3Q', 'primer video celia tour'),
 (6, 'https://www.youtube.com/watch?v=oInDEX8PU9M', 'wewe'),
-(7, 'vhttps://www.youtube.com/watch?v=oInDEX8PU9M', 'wewe');
+(7, 'vhttps://www.youtube.com/watch?v=oInDEX8PU9M', 'wewe'),
+(8, 'https://player.vimeo.com/video/2910853', 'wewwwe'),
+(9, 'https://player.vimeo.com/video/2910853', 'Almería'),
+(10, 'https://player.vimeo.com/video/2910853', 'jaa'),
+(11, 'https://player.vimeo.com/video/2910853', '2'),
+(12, 'https://player.vimeo.com/video/2910853', 'ee'),
+(13, 'https://player.vimeo.com/video/2910853', 'ew'),
+(14, 'https://player.vimeo.com/video/2910853', 're'),
+(15, 'https://player.vimeo.com/video/2910853', 'aaaaaaaaa');
 
 -- --------------------------------------------------------
 
@@ -1202,7 +1240,8 @@ CREATE TABLE `visita_guiada` (
   `cod_escena` varchar(10) NOT NULL,
   `titulo_escena` varchar(100) NOT NULL,
   `audio_escena` varchar(100) NOT NULL,
-  `img_preview` varchar(100) NOT NULL
+  `img_preview` varchar(100) NOT NULL,
+  `orden` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -1254,6 +1293,12 @@ ALTER TABLE `libros`
   ADD UNIQUE KEY `ISBN` (`ISBN`);
 
 --
+-- Indices de la tabla `panel_informacion`
+--
+ALTER TABLE `panel_informacion`
+  ADD PRIMARY KEY (`id_documento`);
+
+--
 -- Indices de la tabla `pisos`
 --
 ALTER TABLE `pisos`
@@ -1299,12 +1344,12 @@ ALTER TABLE `visita_guiada`
 -- AUTO_INCREMENT de la tabla `audio`
 --
 ALTER TABLE `audio`
-  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
-  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
@@ -1314,12 +1359,17 @@ ALTER TABLE `imagenes`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT de la tabla `panel_informacion`
+--
+ALTER TABLE `panel_informacion`
+  MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
-  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
@@ -1329,12 +1379,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `visita_guiada`
 --
 ALTER TABLE `visita_guiada`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
