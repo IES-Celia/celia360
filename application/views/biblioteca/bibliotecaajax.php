@@ -291,7 +291,7 @@
 							var tpg =$("#cantpag").val();
 							var pg = $("#numeropag").val();
 
-							if(pg!=tpg){
+							if(pg<tpg){
 								var newpg = parseInt(pg)+1; 
 								$("#numeropag").val(newpg); 								
 							}else{
@@ -596,13 +596,13 @@
 			                      }
 							  }
 							  if (izquierda < 900 - anchura ){
-								  		var antIz=izquierda	
+								  		var antIz=izquierda;
 			                            izquierda = 900 - anchura; 
 			                            console.log('primer left: '+antIz+' < '+izquierda);
 			                        }
 			                         
 			                        if (izquierda + anchura > anchura){
-										var antIz=izquierda+anchura
+										var antIz=izquierda+anchura;
 										console.log('segundo left : '+izquierda+' < '+anchura)
 			                          	izquierda = 0;
 			                          	console.log('segundo left despues: '+izquierda)
