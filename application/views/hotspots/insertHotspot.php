@@ -4,25 +4,9 @@
 
     </head>
     <style>
-    #textoareaPanel{
-    outline: none;
-    display: block;
-    width: 100%;
-    padding: 7px;
-    margin-bottom: 10px;
-    height: 300px;
-    overflow-y:scroll;
-    font-family:"verdana";
-    border: 1px solid grey;
-    font-size:0.6rem;
-   
-    }
 
-     textarea {
-   font-family: inherit;
-   font-size: inherit;
-}
-    
+
+   
     
     </style>
 <body>
@@ -41,8 +25,9 @@
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
+    <div id="caja3">
         <?php
-        echo "<form class='for' action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '> 
             <input type='hidden' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '> 
@@ -53,6 +38,7 @@
             Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
             <div id="mapa_escena_hotspot" >
             
+        </div>
             <?php
                 $indice = $this->session->piso;
                 
@@ -84,8 +70,9 @@
     </div>
 
     <div id="puntoPanel"> 
+    <div id="caja3">
         <?php
-        echo "<form class='for' enctype='multipart/form-data' action='".site_url("hotspots/process_insert_panel")."' method='post'>"; ?>
+        echo "<form enctype='multipart/form-data' action='".site_url("hotspots/process_insert_panel")."' method='post'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'> 
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
             <input type='hidden' name='yaw' value='<?php echo $yaw ?>'> 
@@ -94,7 +81,7 @@
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
             Titulo del panel: <input type='text' name='titulo' required><br> 
-            Texto del panel:  <textarea id='textoareaPanel' name="texto" rows="6" cols="50" required></textarea><br>
+            Texto del panel:  <textarea  name="texto" rows="6" cols="50" required></textarea><br>
             <label>seleccionar documento (OPCIONAL)</label>
             <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />
@@ -113,11 +100,13 @@
             <br><br>-->
             <input type='submit' class="button">
         </form>
+    </div>
     </div>   
     
     <div id="puntoAudio"> 
+    <div id="caja3">
         <?php
-        echo "<form class='for' action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
             <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>
@@ -129,13 +118,15 @@
 
             <input type='submit' class="button">
         </form>
+    </div>
         
         <div id="listaAudios">Capa vacia</div>
     </div>
 
-    <div id="puntoVideo"> 
+    <div id="puntoVideo">
+    <div id="caja3">
         <?php
-        echo "<form class='for' action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
 			<input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
              <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>
@@ -146,12 +137,15 @@
 
             <input type='submit' class="button">
         </form>
+    </div>
+        
         <div id="listaVideos">Capa vacia</div>
     </div>
 
-    <div id="puntoEscaleras"> 
+    <div id="puntoEscaleras">
+    <div id="caja3">
         <?php
-        echo "<form class='for' action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
             Esto creará un punto de tipo escalera, el cual conecta las distintas zonas
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
             <input type='hidden' name='pitch' value=' <?php echo $pitch ?> '><br> 
@@ -162,6 +156,8 @@
             <input type='submit' class="button">
         </form>
     </div>
+    </div>
+    
 
     
 </div>
