@@ -88,12 +88,12 @@
    </div>
 
 <div class="botones_mapa">
-    <p id="piso_actual" style="background: white;">zona <span>0</span></p>
-    <button id="btn-subir-piso-admin" >Subir zona</button>
-    <button id="btn-bajar-piso-admin">Bajar zona</button>
-    <button id="btn-editar-mapa">Editar zona</button>
-    <button id="btn-anadir-mapa">Añadir zona</button>
-    <button id="btn-config-mapa">Config general</button>
-    <button id="btn-eliminar-mapa">Eliminar zona</button>
+    <p class="campomapa" id="piso_actual">zona <span>0</span></p>
+    <button class="botonmapa" id="btn-subir-piso-admin" >Subir zona</button>
+    <button class="botonmapa" id="btn-bajar-piso-admin">Bajar zona</button>
+    <button class="botonmapa" id="btn-editar-mapa">Editar zona</button>
+    <button class="botonmapa" id="btn-anadir-mapa">Añadir zona</button>
+    <button class="botonmapa" id="btn-config-mapa">Config general</button>
+    <button class="botonmapa" id="btn-eliminar-mapa">Eliminar zona</button>
 </div>
 
