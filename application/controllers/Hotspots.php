@@ -324,7 +324,8 @@ public function load_audio(){
  //Borra ultimo hotspot
  public function borrarUltimo(){
     $ultimo = $this->hotspotsModel->ultimo_hotspot();
-    echo "ULTIMO ".$ultimo;
-    $this->hotspotsModel->borrarHotspot($ultimo);
+    $resultado = $this->hotspotsModel->borrarHotspot($ultimo);
+    echo $resultado;
+
  }
 }

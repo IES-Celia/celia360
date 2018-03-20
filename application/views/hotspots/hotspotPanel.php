@@ -122,19 +122,28 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 <script>
   
   $("#panel_atras").on("click",function(){
-    var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
-    console.log(url);
-    var peticion = $.ajax({
-      type: "get",
-      url: url
-    });
 
-    peticion.done(function(){
-      console.log("Se ha borrado el ultimo hotspot");
-      $("#formulario_atras").submit();
+    var confirmar = confirm("¿Quieres volver atras?");
+
+    if(confirmar){
+      var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
+      var peticion = $.ajax({
+        type: "get",
+        url: url
+      });
+    }
+
+    peticion.done(function(resultado){
+      if(resultado>0){
+        console.log("Se ha borrado el ultimo hotspot");
+        $("#formulario_atras").submit();
+      } else {
+        console.log("Error al volver atras");
+      }
 
     });
   });
+  
  
    $(".enlace_img").on('click', function(evento){
      evento.preventDefault();
@@ -201,8 +210,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 
 
     if($("#img_seleccionadas").has("li").length == 0) {
-
-	  alert("Debes seleccionar alguna imagen!");
+      alert("Debes seleccionar alguna imagen!");
     } else {
 
     var escena = "<?php echo $escena_actual;?>";
