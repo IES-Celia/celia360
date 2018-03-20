@@ -29,12 +29,15 @@
 <h1> Formulario para insertar Hotspots</h1>
     <div id="botones">
     Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resultado del click, las tipos de hotspot son los siguientes:<br><br>
-        <button class="buttonfor" id="insertarEscena" >Punto de salto a otra escena</button>
-        <button class="buttonfor" id="insertarPanel">Punto de panel informativo</button>
-        <button class="buttonfor" id="insertarAudio">Punto audiodescrito</button>
-        <button class="buttonfor" id="insertarVideo">Punto video</button>
-        <button class="buttonfor" id="insertarEscaleras">Conector entre planos (escaleras)</button><br>
-        <button class="buttonfor" id="modificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
+        
+    <div id="botonesderecha">
+        <button class="botondentromapa" id="insertarEscena" >Punto de salto a otra escena</button>
+        <button class="botondentromapa" id="insertarPanel">Punto de panel informativo</button>
+        <button class="botondentromapa" id="insertarAudio">Punto audiodescrito</button>
+        <button class="botondentromapa" id="insertarVideo">Punto video</button>
+        <button class="botondentromapa" id="insertarEscaleras">Conector entre planos (escaleras)</button><br>
+        <button class="botondentromapa" id="modificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
+    </div>    
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
