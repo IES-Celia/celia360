@@ -97,10 +97,10 @@
 	}
 
 	#contenedorbiblioteca{
-	    background: url('<?php echo base_url();?>assets/imagenes/portada/portada5.jpg');
-	    background-size: cover;
+	    background: url('<?php echo base_url();?>assets/bibliocss/marc.jpeg');
+	    /*background-size: cover;*/
 	    width:100%;
-	    height:auto;
+	    height:100%;
 	    margin-top: 109px;
  	} 
 
