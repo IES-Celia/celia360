@@ -87,16 +87,28 @@
 
 <?php
 echo"<a class='insert' onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar Video</a>";
-echo'<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />';
-echo"<table  id='cont'><tr id='cabecera'>
+//echo'<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />';
+echo"<table id='cont' class='tabla' class='display'>
+<thead>
+<tr id='cabecera'>
 <th>ID</th>
 <th>URL</th>
 <th>Descripcion</th>
 <th>Ver video</th>
 <th>Modificar</th>
 <th>Eliminar</th></tr>
+</thead>
+<tfoot>
+<tr id='cabecera'>
+<th>ID</th>
+<th>URL</th>
+<th>Descripcion</th>
+<th>Ver video</th>
+<th>Modificar</th>
+<th>Eliminar</th></tr>
+</tfoot>
 ";
-
+echo"<tbody>";
 foreach ($tabla as $re) {
     $id=$re["id_vid"];
     echo'<tr id="contenido"><td id="id_vid'.$id.'">' . $re["id_vid"] . '</td>';
@@ -106,12 +118,13 @@ foreach ($tabla as $re) {
     echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
     echo"<td><a href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
+echo "</tbody>";
 echo "</table>";
-$ant = $primero - $cantidad;
+/*$ant = $primero - $cantidad;
 if($ant<0)$ant=0;
 $sig = $primero + $cantidad;
 if($sig>$total) $sig=$total;
-echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideo/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("video/mostrarvideo/") ."$sig'>Siguiente</a></div></br></br>";
+echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideo/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("video/mostrarvideo/") ."$sig'>Siguiente</a></div></br></br>";*/
 //Capa formulario modificar
 echo "
 <div id='modificar'>
@@ -187,6 +200,25 @@ echo"
             $('#contenido').remove();
         }
     }
+	$(document).ready(function() {
+        $('.tabla').dataTable({
+    	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron resultados en su búsqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+	            "first":    "Primero",
+	            "last":    "Último",
+	            "next":    "Siguiente",
+	            "previous": "Anterior"
+	    },
+        }
+        }); 
+    } );
 	
        
 </script>
