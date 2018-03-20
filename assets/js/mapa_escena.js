@@ -83,7 +83,7 @@ $(document).ready(function() {
 			$("#modalConfig > #caja > form > input[name=escena_inicial]").val($(this).attr("escena"))
 			$(this).css("background", "yellow");
 		}else if($(this).parent().hasClass("pisos_update")){
-			$(".for > form > input[name=sceneId]").val($(this).attr("escena"));
+			$("#caja2 > form > input[name=sceneId]").val($(this).attr("escena"));
 			$(".puntos").css("background-color","white");
 			$(this).css("background-color","yellow");
 		}else if($(this).parent().hasClass("pisos_guiada")){
