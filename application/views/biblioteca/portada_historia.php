@@ -325,6 +325,7 @@
 						// } );
 
 						// add keyboard events
+						var guardado=1;
 						$( document ).keydown( function(e) {
 							var keyCode = e.keyCode || e.which,
 								arrow = {
@@ -365,11 +366,18 @@
 									var maxpg = $("#cantpag").val();
 									pag= parseInt(pag);
 									maxpag = parseInt(maxpg);
-									if(pag>maxpg){
-										pag=maxpg;
-										$("#numeropag").val(pag);
+									if(Number.isNaN(pag)){
+										pag=guardado;
 									}
-									config.$bookBlock.bookblock('jump',pag);
+									if(pag>maxpg){
+										$("#numeropag").val(maxpg);
+										config.$bookBlock.bookblock('jump',maxpg);
+										guardado=maxpg;
+									}else{
+										$("#numeropag").val(pag);
+										config.$bookBlock.bookblock('jump',pag);
+										guardado=pag;
+									}
 								break;
 							}
 						} );
