@@ -62,11 +62,11 @@
                 
             ?>
                 
-            </div>
             <br>
             <input type='text' name='sceneId' required>
             <input type='submit' class="button">
         </form>
+            </div>
     </div>
 
     <div id="puntoPanel"> 
