@@ -242,7 +242,7 @@
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- <!-- AQUI  esta el numero de pagina -->
 						<span style="position:relative; top:-10px;">
-						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#303031e0;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#303031e0;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
+						<input type='text' id='numeropag' value="1" pattern="[0-9]" style="width:40px;padding:5px;background:#303031e0;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#303031e0;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
 						</span>
 						
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
