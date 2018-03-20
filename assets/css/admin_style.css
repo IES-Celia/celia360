@@ -555,18 +555,17 @@
         #caja2{
             position:relative;
             left: 50%;
-            top: 50%;
+            top: 600px;
             transform: translate(-50%, -50%);
             -webkit-transform: translate(-50%, -50%);
             font-family: comic;
             color:white;
-            width: 500px;
+            width: 1000px;
             height: auto;
             text-align: center;
             border: 2px solid grey;
             border-radius: 10px;
             box-shadow: 3px 3px 10px grey;
-            margin-top: 50px;
             background: rgb(90,163,237); 
             background: -moz-linear-gradient(to bottom, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
             background: -webkit-linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 

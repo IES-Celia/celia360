@@ -34,7 +34,7 @@ echo "
 
 <h1> Formulario para actualizar un hotspot de tipo salto </h1>
 
-<fieldset class='for'>
+<fieldset id='caja2'>
 
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
