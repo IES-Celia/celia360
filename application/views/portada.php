@@ -67,7 +67,7 @@
                  <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
                  <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
                   <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
-                 <li><a id="creditos_portada" href="<?php echo site_url("welcome"); ?>" >Creditos</a></li>
+                 <li><a id="creditos_portada" href="<?php echo site_url("welcome"); ?>" >Créditos</a></li>
              </ul>
             </nav>
             </div>
@@ -193,13 +193,13 @@
             
             <ol>
               <li>Revise y/o ponga en funcionamiento su sistema de audio.</li>
-              <li>Cuando termine la descripción de una estancia, pasaremos automaticamente a la siguiente.</li>
-              <li>En cualquier momento es posible trasladarse a la estancia deseada, mediante los botones de siguiente, anterior o por la utilidad del icono faro que nos permitirá elegir la estancia.</li>
+              <li>Cuando termine la descripción de una estancia, pasaremos automáticamente a la siguiente.</li>
+              <li>En cualquier momento es posible trasladarse a la estancia deseada mediante los botones de siguiente y anterior. El faro le permite seleccionar la estancia.</li>
               <li>Si desea permanecer en una estancia concreta indefinidamente, detenga el audio.</li>
             </ol>
             <hr class="mensaje_separador"></hr>
           </div>
-          <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el boton.</h4>
+          <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el botón.</h4>
           <div id="boton_aceptar_guiada"></div>
         </div>
           <div id="menu_guiada_show">
@@ -237,7 +237,7 @@
                 <div id='documentoPanel'>
                   <a class="cerrarDocumento" href="#">&times;</a>            
                     <object id='mostrarDocumento' data="" type="application/pdf">
-                      Tu navegador no soporta esta funcion, intente abrirlo con el enlace.</a>
+                      Su navegador no soporta esta función, intente abrirlo con el enlace.</a>
                     </object>   
                 </div>
                 <div class="modal__contents">
@@ -247,7 +247,7 @@
                   <div id="gallery">
                     <div class='mas_img_div' onclick="openModal();">
                       <div class='mas_imagenes'></div>
-                      <p style="text-align:center;">&plus; Imagenes</p>
+                      <p style="text-align:center;">&plus; Imágenes</p>
                     </div>
                     <img src="">
                   </div>
