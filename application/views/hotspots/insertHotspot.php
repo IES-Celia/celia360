@@ -25,7 +25,7 @@
     </div>
 <div id="formularios">
     <div id="puntoEscena"> 
-    <div id="caja3">
+    <div id="caja4">
         <?php
         echo "<form action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
@@ -38,14 +38,14 @@
             Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
             <div id="mapa_escena_hotspot" >
             
-        </div>
+        
             <?php
                 $indice = $this->session->piso;
                 
                 
                 
                     
-                    echo "<div id='p".$indice."' class='pisos pisos_hotspots'>";
+                    echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
                     echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
@@ -61,6 +61,7 @@
                    
                 
             ?>
+            </div>
                 
             <br>
             <input type='text' name='sceneId' required>

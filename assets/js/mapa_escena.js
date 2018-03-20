@@ -71,7 +71,7 @@ $(document).ready(function() {
 		if($(this).parent().hasClass("pisos_hotspots")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
-			$("#puntoEscena > form > input[name=sceneId]").val($(this).attr("escena"));
+			$("#caja4 > form > input[name=sceneId]").val($(this).attr("escena"));
 			$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"));
 		} else if ($(this).parent().hasClass("pisos_pd")){
 			$(".puntos").css("background", "white");
@@ -142,7 +142,7 @@ $(document).ready(function() {
 	});
 	setTimeout(() => {
 		mapa_responsivo()
-	}, 100);
+	}, 1000);
 	
 });
 
@@ -185,12 +185,12 @@ function mapa_responsivo(){
 		
 		anchura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").width();
 		altura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").height();;
+		console.log(anchura+"|"+altura)
 
-
-		$("#mapa_escena_hotspot").css({
+		/*$("#mapa_escena_hotspot").css({
 			height: altura + 'px',
 			width: anchura + 'px'
-		});
+		});*/
 	}
 
 	/*
