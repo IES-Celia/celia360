@@ -17,9 +17,10 @@
     <div id="caja">
         <form action='<?php echo site_url("MapaAdmin/crear_zona"); ?>' method="post" enctype='multipart/form-data'>
             <h1>Añadir zona</h1>
+            <label for="nombre">Nombre de zona</label>
+            <input type="text" name="nombre">
             <label for="posicion">Posición:</label>
             <input type="number" name="posicion" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas; ?>">
-            <input type="hidden" name="MAX_FILE_SIZE" value="20000000"><br>
             <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen"><br>
             <input type="submit" value="Añadir">
             <input type="button" value="Cerrar">
