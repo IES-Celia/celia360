@@ -120,7 +120,9 @@ class Guiada extends CI_Controller {
         $filaBID = $_REQUEST["filaBID"];
         $filaBPOS = $_REQUEST["filaBPOS"];
         $mover = $this->ModeloGuiada->intercambiarFilas($filaAID,$filaAPOS,$filaBID,$filaBPOS);
+
         echo $mover;
+        
     }
 
 

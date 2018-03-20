@@ -299,8 +299,6 @@ function ordenarTabla(elemento){
 //Al finalizar le das a un boton y envia el orden a MYSQL
 //Se quita el sortable
 
-
-
 function moverFila(elemento){
 
     var filaA = $(elemento).parent().parent();
@@ -311,13 +309,13 @@ function moverFila(elemento){
             //Buscamos el previous filaEscena!
             var filaB = $(filaA).prev();
         } else if($(elemento).text()=="↓"){
-            //Buscamos el previous filaEscena!
+            //Buscamos el next filaEscena!
             var filaB = $(filaA).next();
         }
 
         var filaB_identificacion = $(filaB).find(".id_visita").text();
         var filaB_posicion = $(filaB).find(".posicion").text();
-
+        console.log("1.Antes de hacer nada FILA A(SELECCIONADA) ID Y POSICION "+filaA_identificacion+" / "+filaA_posicion+" |||| FILA B(SUPERIOR O ANTERIOR) ID Y POSICION "+filaB_identificacion+" / "+filaB_posicion);
         if(filaB_identificacion){
 
             var urlPeticion= "<?php echo base_url("guiada/cambiarFilas");?>";
@@ -338,14 +336,17 @@ function moverFila(elemento){
                     $(filaA).append(filaB_html);
                     $(filaB).empty();
                     $(filaB).append(filaA_html);
-
-                    
-
+                    //Cambiar posicion en la tabla
+                    var filaAID_cambiada=$(filaA).find(".id_visita").text();
+                    var filaAPOS_cambiada=$(filaA).find(".posicion").text();
+                    var filaBID_cambiada=$(filaB).find(".id_visita").text();
+                    var filaBPOS_cambiada=$(filaB).find(".posicion").text();
+                    $(filaA).find(".posicion").text(filaBPOS_cambiada);
+                    $(filaB).find(".posicion").text(filaAPOS_cambiada);
 
                 }else {
                     //Error, comunicar de forma visual que no se ha podido mover
                     console.log("Error al intentar mover la fila");
-                    console.log(resultado);
                 }
             });
         } else {

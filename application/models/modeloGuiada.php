@@ -127,24 +127,15 @@ class ModeloGuiada extends CI_Model {
     public function intercambiarFilas($filaAid,$filaApos,$filaBid,$filaBpos){
 
       
-        $sql = "UPDATE visita_guiada SET orden='$filaBpos' WHERE id_visita='$filaAid'";
-        $sql2 = "UPDATE visita_guiada SET orden='$filaApos' WHERE id_visita='$filaBid'";
-        $resultado2 = $this->db->query($sql2);
+        $sql ="UPDATE visita_guiada SET orden='$filaBpos' WHERE id_visita='$filaAid'";
+        $sql2 ="UPDATE visita_guiada SET orden='$filaApos' WHERE id_visita='$filaBid'";
         $resultado = $this->db->query($sql);
+        $resultado2 = $this->db->query($sql2);
         
-        return 1;
+        return $this->db->affected_rows();
+
     }
 
-    /*
-    UPDATE visita_guiada SET orden='2' WHERE id_visita='10'
-    UPDATE visita_guiada SET orden='1' WHERE id_visita='11'
-
-    UPDATE visita_guiada SET orden='3' WHERE id_visita='11'
-    UPDATE visita_guiada SET orden='2' WHERE id_visita='12'
-
-    UPDATE visita_guiada SET orden='4' WHERE id_visita='12'
-    UPDATE visita_guiada SET orden='3' WHERE id_visita='14'1
-    */
 }
 
 
