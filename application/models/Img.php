@@ -21,7 +21,7 @@ class Img extends CI_Model {
     }
     /**
      * Inserta un registro en la tabla "imagenes" de la base de datos
-     * Sube al servidor el fichero de la imagen reduciendo su tamaño y el peso de la misma, crea una miniatura de la imagen en el servidor
+     * Sube al servidor el fichero de la imagen reduciendo sus dimensiones y el peso de la misma, crea una miniatura de la imagen en el servidor
      * 
      * @return $resultado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
      * @author: María Dolores Salmeron Sierra
@@ -188,6 +188,70 @@ class Img extends CI_Model {
      * @author: María Dolores Salmeron Sierra
      */
 
+//    public function modificar_imagen() {
+//
+//        $fichero_actualizado = false;
+//
+//        if ($this->input->post_get('actualizar')) {
+//
+//            $actualizar_id = $this->input->post_get('id_imagen');
+//            $actualizar_titulo = $this->input->post_get('titulo_imagen');
+//            $actualizar_texto = $this->input->post_get('texto_imagen');
+//            $actualizar_url = $this->input->post_get('url_imagen');
+//            $actualizar_fecha = $this->input->post_get('fecha');
+//
+//            //cambiar el nombre de la imagen de carga
+//            $userpic = $actualizar_id . "." . "jpg";
+//
+//            $config['upload_path'] = 'assets/imagenes/imagenes-hotspots/';
+//            $config['allowed_types'] = 'jpg';
+//            $config['file_name'] = $userpic;
+//            $config['overwrite'] = TRUE;
+//
+//            //cargar la librería
+//            $this->load->library('upload', $config);
+//
+//            $resultado_subida = $this->upload->do_upload('imagen');
+//
+//            if ($resultado_subida) {
+//                //cambiar el nombre de la imagen de carga
+//                $userpic = $actualizar_id . "." . "jpg";
+//                
+//                // Creamos una miniatura de la imagen
+//                $nombre_miniatura = $actualizar_id . "_miniatura.jpg";
+//                copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
+//                $config['image_library'] = 'gd2';
+//                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
+//                $config['maintain_ratio'] = TRUE;
+//                $config['width'] = 200;
+//                $this->load->library('image_lib', $config);
+//                $this->image_lib->resize();
+//                $fichero_actualizado = true;
+//                $resultado = true;
+//            } else {
+//                // si no se seleccionó ninguna imagen, la anterior permanecerá como está.
+//                $userpic = $actualizar_url;
+//                $nombre_miniatura = $actualizar_id . "_miniatura.jpg"; 
+//                $fichero_actualizado = false;
+//                $resultado = false;
+//            }
+//
+//            $q = "update imagenes set titulo_imagen = '$actualizar_titulo',texto_imagen='$actualizar_texto',
+//                url_imagen='$userpic',fecha='$actualizar_fecha' where id_imagen ='$actualizar_id'";
+//
+//            $resultado = $this->db->query($q);
+//
+//            return $resultado | $fichero_actualizado;
+//        }
+//    }
+    //PARA MODIFICAR REDUCIENDO LA IMAGEN
+    /**
+     * Modifica un registro en la tabla "imagenes" de la base de datos 
+     * Sube al servidor el fichero de la nueva imagen reduciendo sus dimensiones y el peso de la misma, crea una miniatura de la imagen en el servidor
+     * 
+     * @return $resultado | $fichero_actualizado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
+     * @author: María Dolores Salmeron Sierra
+     */
     public function modificar_imagen() {
 
         $fichero_actualizado = false;
@@ -210,60 +274,69 @@ class Img extends CI_Model {
 
             //cargar la librería
             $this->load->library('upload', $config);
+            
+            //Si la imagen no se ha modificado         
+            if (!$this->upload->do_upload('imagen')) {
 
-            $resultado_subida = $this->upload->do_upload('imagen');
-
-            if ($resultado_subida) {
-                //cambiar el nombre de la imagen de carga
-                $userpic = $actualizar_id . "." . "jpg";
-                
-////---------------------------------------------- ATENCIÓN
-//                $data = array('upload_data' => $this->upload->data());
-//
-//                $img_full_path = 'assets/imagenes/imagenes-hotspots/' . $userpic;
-//                 //REDIMENSIONAR IMAGEN   
-//                $config['image_library'] = 'gd2';
-//                //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
-//                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $userpic;
-//                $config['create_thumb'] = TRUE;
-//                $config['maintain_ratio'] = TRUE;
-//                //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-//                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
-//                $img_redim1 = $config['new_image'];
-//                $config['width'] = 1200;
-//                //$config['height'] = 1200;
-//                $this->load->library('image_lib', $config);
-//
-//            if (!$this->image_lib->resize()) {
-//            //    @unlink($userpic);
-//                echo $this->image_lib->display_errors();
-//                exit();
-//            }
-//
-//            $this->image_lib->clear();
-//                
-//                
-//                
-////------------------------------------                
-                // Creamos una miniatura de la imagen
-                $nombre_miniatura = $actualizar_id . "_miniatura.jpg";
-                copy('assets/imagenes/imagenes-hotspots/'.$userpic, 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura);
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/'.$nombre_miniatura;
-                $config['maintain_ratio'] = TRUE;
-                $config['width'] = 200;
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $fichero_actualizado = true;
-                $resultado = true;
-            } else {
                 // si no se seleccionó ninguna imagen, la anterior permanecerá como está.
                 $userpic = $actualizar_url;
-                $nombre_miniatura = $actualizar_id . "_miniatura.jpg"; 
+                $nombre_miniatura = $actualizar_id . "_miniatura.jpg";
                 $fichero_actualizado = false;
                 $resultado = false;
-            }
+            } else {
+                //cambiar el nombre de la imagen de carga
+                $userpic = $actualizar_id . "." . "jpg";
 
+                // ¡¡La subida del fichero ha sido un éxito!!
+                //EN OTRO CASO SUBIMOS LA IMAGEN, CREAMOS LA MINIATURA 
+                $data = array('upload_data' => $this->upload->data());
+
+                $img_full_path = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+
+                //REDIMENSIONAR IMAGEN   
+                $config['image_library'] = 'gd2';
+                //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = TRUE;
+                //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
+                $img_redim1 = $config['new_image'];
+                $config['width'] = 1200;
+                $config['height'] = 1200;
+                $this->load->library('image_lib', $config);
+
+                if (!$this->image_lib->resize()) {
+                    //    @unlink($userpic);
+                    echo $this->image_lib->display_errors();
+                    exit();
+                }
+
+                $this->image_lib->clear();
+
+                // Creamos una miniatura de la imagen
+                $nombre_miniatura = $actualizar_id . "_miniatura.jpg";
+                copy('assets/imagenes/imagenes-hotspots/' . $userpic, 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura);
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura;
+                $config['maintain_ratio'] = TRUE;
+                $config['width'] = 200;
+                $config['height'] = 200;
+                $this->load->library('image_lib', $config);
+                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
+
+                $this->image_lib->initialize($config); /// <<- IMPORTANTE
+
+                if (!$this->image_lib->resize()) {
+                    //     @unlink($userpic);
+                    //    @unlink($img_redim1);
+                    echo $this->image_lib->display_errors();
+                    exit();
+                }
+                $fichero_actualizado = true;
+                $resultado = true;
+            }
+            //Actualizamos la base de datos
             $q = "update imagenes set titulo_imagen = '$actualizar_titulo',texto_imagen='$actualizar_texto',
                 url_imagen='$userpic',fecha='$actualizar_fecha' where id_imagen ='$actualizar_id'";
 
@@ -272,6 +345,8 @@ class Img extends CI_Model {
             return $resultado | $fichero_actualizado;
         }
     }
+
+    
     /**
      * Busca todos los registros de la tabla "imagenes" de la base de datos
      * 
