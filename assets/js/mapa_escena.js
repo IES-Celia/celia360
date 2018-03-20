@@ -102,11 +102,13 @@ $(document).ready(function() {
 	$("#btn-subir-piso-admin").click(function(event) {
 		subir_piso();
 		$("#piso_actual>span").text(piso)
+		mapa_responsivo();
     });
 
     $("#btn-bajar-piso-admin").click(function(event) {
 		bajar_piso();
 		$("#piso_actual>span").text(piso)
+		mapa_responsivo();
 	});
 	
 	$("#btn-editar-mapa").click(function () {

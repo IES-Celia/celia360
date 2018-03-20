@@ -95,5 +95,6 @@
     <button id="btn-anadir-mapa">Añadir zona</button>
     <button id="btn-config-mapa">Config general</button>
     <button id="btn-eliminar-mapa">Eliminar zona</button>
+    <a href="<?php echo base_url('escenas') ?>"><button>Volver atras</button></a>
 </div>
 
