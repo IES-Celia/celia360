@@ -7,11 +7,12 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 <h1>Insertar escena guiada</h1>
 <form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
    
-    <label for='escenaGuiada'>Selecciona una escena</label>
-    <input type="text" id='escenaGuiada' name="escenaGuiada">
+    <label for='titulo_escena'>Nombre escena</label>
+    <input id='titulo_escena' type='text' name='tituloGuiada' value=''>
     <br>
     <button type="button" id="btn-subir-piso">Subir zona</button>
     <button type="button" id="btn-bajar-piso">Bajar zona</button>
+    <h2>Selecciona una escena</h2>
     <div id="mapa_escena_hotspot">
     <?php
     
@@ -38,8 +39,8 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
     ?>
     </div>
     <br><br>
-    <label for='titulo_escena'>Nombre escena</label>
-    <input id='titulo_escena' type='text' name='tituloGuiada' value='' >
+    <input type="hidden" id='escenaGuiada' name="escenaGuiada" required>
+    
     <br><br>
     <label for='audioGuiada'>Selecciona un audio</label>
     <select name="audioGuiada">
