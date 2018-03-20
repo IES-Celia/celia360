@@ -160,7 +160,7 @@
 <div class="modalita2"  >
 		<div class="container">
 			<!-- Top Navigation -->
-			<a href="#" class="cerrarBook" style="width: 40px;height: 40px;background:#208cbf;color:white;text-align:center;font-size:30px;top: 20px;left: 85%;position: absolute;border-radius:5px;">x</a>
+			<a href="#" class="cerrarBook" style="width: 40px;height: 40px;background:#303031e0;color:white;text-align:center;font-size:30px;top: 20px;left: 85%;position: absolute;border-radius:5px;">x</a>
 			<header>	
 			</header>
 			<div class="main clearfix">
@@ -214,7 +214,7 @@
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->
 						<span style="position:relative; top:-10px;">
-						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#31a3dd;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#31a3dd;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
+						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#303031e0;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#303031e0;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
 						</span>
 						<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Siguiente</a>
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
@@ -224,7 +224,7 @@
 				<?php 
 					echo " 
 						<div class='descargar' style=''> 
-							<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#31a3dd;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 93%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+							<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#303031e0;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 93%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 						</div>"; 
 				?>
 			</div>
