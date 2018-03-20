@@ -351,9 +351,11 @@
 
 									pg= parseInt(pg);
 									tpg = parseInt(tpg);
-									if(pg>tpg){
+									if(pg<tpg){
+
 										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);								
 									}else{
+
 										$("#numeropag").val(tpg);
 									}
 									config.$bookBlock.bookblock( 'next' );
