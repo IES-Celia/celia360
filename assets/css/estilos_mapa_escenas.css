@@ -25,6 +25,7 @@
     float: right;
     display: inline-grid;
     margin-right: 15px;
+    width: 20%;
 }
 .puntos{
     cursor: pointer;
