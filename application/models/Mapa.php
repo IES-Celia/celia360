@@ -165,7 +165,7 @@
  */
 		public function crear_zona(){
 			$posicion = $this->input->post_get("posicion"); //sacamos la posición donde insertaremos la zona.
-
+			$titulo = $this->input->post_get("nombre");
 			$this->load->database();
 			$config['upload_path'] = 'assets/imagenes/mapa/'; //ruta donde se suben las imagenes.
 			$config['allowed_types'] = 'jpg|png'; //Tipo de archivo permitido.
@@ -187,7 +187,7 @@
 					$this->db->query("UPDATE puntos_mapa SET piso=$piso_siguiente WHERE piso=$i");
 				}
 
-				$this->db->query("INSERT INTO pisos (piso, url_img) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida');");
+				$this->db->query("INSERT INTO pisos (piso, url_img,titulo_piso) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida',$titulo);");
 				$this->db->query("SET foreign_key_checks=1;");
 
 			}else{ //si la imagen no se ha subido nos devuelve los errores encontrados.
