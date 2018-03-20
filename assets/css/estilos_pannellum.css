@@ -688,7 +688,8 @@ display: block;
   #texto {
     padding:5px !Important;
     font-size: 0.9em;
-    height:300px;
+    height:200px;
+    
     
   }
   .modal__contents {
@@ -770,6 +771,7 @@ display: block;
     font-size:0.8em;
     margin-left:5px;
     text-align: justify;
+    vertical-align: middle;
     
   }
   #titulo{
