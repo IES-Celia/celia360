@@ -461,10 +461,7 @@ $(".boton_menu").click(function(){
     $("#audio_libre")[0].pause();
   
     if($("#mapa").attr("class") == "abierto"){
-      mover(document.getElementById('mapa')); 
-      mover(document.getElementById('boton_mapa'));
-      mover(document.getElementById('subir_piso')); 
-      mover(document.getElementById('bajar_piso'));
+      mover();
     }
 
   } else {

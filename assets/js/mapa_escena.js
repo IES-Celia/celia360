@@ -142,7 +142,7 @@ $(document).ready(function() {
 	});
 	setTimeout(() => {
 		mapa_responsivo()
-	}, 1000);
+	}, 100);
 	
 });
 
