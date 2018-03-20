@@ -255,11 +255,12 @@ var orientationSupport, startOrientationIfSupported = false;
 var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
 
 function comprobarTiempo() {
-   console.log(Date.now()-ultimaInteraction);
+   //console.log(Date.now()-ultimaInteraction);
    if(Date.now()-ultimaInteraction > 3500){
     $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.08);
    } else if(Date.now()-ultimaInteraction < 3500){
-    $(".custom-hotspot-salto").css("opacity",0.6);
+    $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.6);
+
    }
 }
 
@@ -2247,6 +2248,7 @@ function loadScene(sceneId, targetPitch, targetYaw, targetHfov, fadeDone) {
     if (workingHfov !== undefined) {
         config.hfov = workingHfov;
     }
+    ultimaInteraction = Date.now();
     fireEvent('scenechange', sceneId);
     load();
 }

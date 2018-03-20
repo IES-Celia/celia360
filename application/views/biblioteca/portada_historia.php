@@ -354,6 +354,12 @@
 								break;
 								case arrow.enter:
 									var pag = $("#numeropag").val();
+									var maxpg = $("#cantpag").val();
+
+									if(pag>maxpg){
+										pag=maxpg;
+										$("#numeropag").val(pag);
+									}
 									config.$bookBlock.bookblock('jump',pag);
 								break;
 							}
