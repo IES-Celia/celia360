@@ -346,7 +346,9 @@
 									var tpg =$("#cantpag").val();
 									var pg = $("#numeropag").val();
 
-									if(pg!=tpg){
+									pg= parseInt(pg);
+									tpg = parseInt(tpg);
+									if(pg>tpg){
 										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);								
 									}else{
 										$("#numeropag").val(tpg);
