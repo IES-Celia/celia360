@@ -992,3 +992,14 @@ display: block;
 	cursor: pointer;
 
 }
+
+.flecha{
+  font-size:1.5em;
+  font-weight: bold;
+  color:#002c59;
+  transition: all 0.5s ease;
+}
+
+.flecha:hover{
+  color:#0d69c5;
+}

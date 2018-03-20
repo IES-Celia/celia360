@@ -105,7 +105,7 @@ foreach ($escenas as $escena) {
     <td><button class='change_img'>Cambiar</button></td>
     <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
     <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
-    <td class='orden'><span onclick='moverFila(this);'>&uarr;</span><br><span onclick='moverFila(this);'>&darr;</span></td>
+    <td class='orden'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
     <td class='posicion'>".$escena['orden']."</td>";
 
 
@@ -304,18 +304,18 @@ function moverFila(elemento){
     var filaA = $(elemento).parent().parent();
     var filaA_identificacion = $(filaA).find(".id_visita").text();
     var filaA_posicion = $(filaA).find(".posicion").text();
-
-        if($(elemento).text()=="↑"){
+    var prueba = $(elemento).find("svg").attr("data-icon");
+        if($(elemento).find("svg").attr("data-icon")=="angle-up"){
             //Buscamos el previous filaEscena!
             var filaB = $(filaA).prev();
-        } else if($(elemento).text()=="↓"){
+        } else if($(elemento).find("svg").attr("data-icon")=="angle-down"){
             //Buscamos el next filaEscena!
             var filaB = $(filaA).next();
         }
 
         var filaB_identificacion = $(filaB).find(".id_visita").text();
         var filaB_posicion = $(filaB).find(".posicion").text();
-        console.log("1.Antes de hacer nada FILA A(SELECCIONADA) ID Y POSICION "+filaA_identificacion+" / "+filaA_posicion+" |||| FILA B(SUPERIOR O ANTERIOR) ID Y POSICION "+filaB_identificacion+" / "+filaB_posicion);
+
         if(filaB_identificacion){
 
             var urlPeticion= "<?php echo base_url("guiada/cambiarFilas");?>";
