@@ -71,7 +71,7 @@ class Audio extends CI_Controller {
     public function modificaraud() {
         $id = $this->input->post_get("id");
         $this->Audm->modificaraud($id);
-        $datos["tabla"] = $this->Audm->buscaraudio();
+        $datos["tabla"] = $this->Audm->allAudios();
         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
@@ -83,9 +83,8 @@ class Audio extends CI_Controller {
         $html = '<script>'
                     . '       function seleccionarAudio(idAudio) {'
                     . '             document.getElementById("idAudioForm").value = idAudio;'
-                    . '       }'
-                    . '</script>';
-        echo"<table align='center' class='tabla' class='display' id='cont' border:1>
+                    . '       }</script>';
+        $html = $html . "<table align='center' class='tabla_audio' class='display' id='cont' border:1>
             <thead>
             <tr>
             <th>ID</th>
@@ -125,8 +124,8 @@ class Audio extends CI_Controller {
                     . '</tr>'
                     . '</tbody>';          
         }
+        $html = $html . "</table>";
         echo $html; 
-        echo '</table>';
     }   
     //FIN CAMBIO LOLI
     
@@ -205,31 +204,3 @@ echo "</table>";
 }
 
 ?>
-<script>
-//PAGINACIÓN CON JQUERY LOLI
-
-    $(document).ready(function() {
-        $('.tabla').dataTable({
-    	"language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "No se encontraron resultados en su búsqueda",
-            "searchPlaceholder": "Buscar registros",
-            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
-            "infoEmpty": "No existen registros",
-            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "search": "Buscar:",
-            "paginate": {
-	            "first":    "Primero",
-	            "last":    "Último",
-	            "next":    "Siguiente",
-	            "previous": "Anterior"
-	    },
-        }
-        });
-    } );
-
-</script>
-
-
- 
-
