@@ -46,17 +46,17 @@
 
 			};
 			.cerrarBook{
-  	width: 40px;
-    height: 40px;
-  	background:#208cbf;
-  	color:white;
-  	text-align:center;
-  	font-size:30px;
-  	top: 20px;
-    left: 85%;
-    position: absolute;
-    border-radius:5px;
-  }
+			  	width: 40px;
+			    height: 40px;
+			  	background:#208cbf;
+			  	color:white;
+			  	text-align:center;
+			  	font-size:30px;
+			  	top: 20px;
+			    left: 85%;
+			    position: absolute;
+			    border-radius:5px;
+			  }
 
 
 		</style>
@@ -129,12 +129,21 @@
 	                        $i = 0;
 	                        foreach ($tabla as $ides){
 	                          if($ides['tipo']==1){
-	                            $i++;
-	                            //Sacamos las portadas de los libros
-	                            
-	                              echo "<td class='columna'>";
-	                              echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
-	                              echo "</td>";
+	                            if($ides['apaisado']==1){
+						      	  $i++;
+						         
+						          echo "<td class='tablatodo'>";
+						          echo "<a href='#' ><img id='verlibro' class='apaisado' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
+						          echo "</div></td>";
+						      	}else{
+
+							        $i++;
+							       
+							                     
+							          echo "<td class='tablatodo'>";
+							          echo "<a href='#' ><img id='verlibro' class='normal' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
+							          echo "</div></td>";
+							      }
 	                          }
 	                              if ($i%4 == 0)  echo "</tr><tr class='torre'>";
 	                                }
