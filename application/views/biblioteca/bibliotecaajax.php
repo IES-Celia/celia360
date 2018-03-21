@@ -572,8 +572,8 @@
 							    y=event.pageY;
 								var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
 			                    var altura=parseInt($('.mySlides').css('height').split('px')[0]);
-			                    var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
-			                    var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
+			                    var izquierda=parseInt($(this).css('left').split('px')[0]);
+			                    var arriba=parseInt($(this).css('top').split('px')[0]);				 
 								var aux1=anchura / (x-izquierda);
 			                    var aux2=altura / (y-arriba);
 			                    var contador=0;
