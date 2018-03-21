@@ -5,16 +5,7 @@
     </head>
     <style>
 
-#descripcion_texto{
- 
-    box-sizing: border-box;
-    border: 2px solid #ccc !important;
-    text-align:left !important;
-    background-color: #f8f8f8 !important;
-    color:black !important;
-    font-family:"verdana" !important;
-    font-size:15px !important;
-}
+
     </style>
 <body>
 <h1> Formulario para insertar Hotspots</h1>

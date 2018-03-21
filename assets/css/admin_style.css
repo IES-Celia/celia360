@@ -682,9 +682,6 @@
         
         #caja2 form a{
             text-decoration: none;
-            -webkit-appearance: button;
-            -moz-appearance: button;
-            appearance: button;
             color:white;
             width: 400px;
             height: 60px;
@@ -770,6 +767,10 @@
             width: 96%;
             font-size: 20px;
             text-align: center;
+            background-color:rgba(255,255,255,0.5);
+            border-left: 5px solid white;
+            border-right: 5px solid white;
+            border-top: 2px solid white;
         }
 
 
