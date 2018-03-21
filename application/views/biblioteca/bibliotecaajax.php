@@ -506,6 +506,7 @@
 								var aux1=anchura / (x-izquierda);
 			                    var aux2=altura / (y-arriba);
 			                    var contador=0;
+			                    console.log($apaisado)
 							  if(delta>0){
 			                      
 								  anchura+=200*delta;
@@ -576,6 +577,7 @@
 								var aux1=anchura / (x-izquierda);
 			                    var aux2=altura / (y-arriba);
 			                    var contador=0;
+			                    console.log(izquierda+' / '+arriba)
 							  if(delta>0){
 			                      
 								  anchura+=200*delta;
