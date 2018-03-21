@@ -149,6 +149,9 @@
                 $this->load->view('template_admin', $data);
 
         }
+
+            
+
          public function cerrarSesion() {
             $this->session->sess_destroy();
             $this->showloginForm();
