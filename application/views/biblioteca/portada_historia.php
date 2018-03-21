@@ -145,7 +145,7 @@
 	        </div>
 	        </div>
 	        <div class="pie-ventana" style="border-top:1px solid grey;border-radius:5px; height:75px;padding:18px;">
-	          <a href="<?php echo site_url("Conversorbd2json/index"); ?>" class="btn-2" style="float:right;">Cerrar</a>
+	          <a href="<?php echo site_url("index.php"); ?>" class="btn-2" style="float:right;">Cerrar</a>
 	        </div>
 	    </div>
 	  </div>
