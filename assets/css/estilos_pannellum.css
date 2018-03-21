@@ -590,6 +590,9 @@ display: block;
   color:white;
   font-weight: normal;
   font-size: 0.9rem;
+  padding:5px;
+  border-radius:15px;
+  background-color:rgba(0,0,0,0.4);
 }
 
 /* fondo negro cuando se abre */
