@@ -488,7 +488,7 @@ display: block;
 .botonPause {
   position: relative;
   float: right;
-  left: 10px;
+  left: 45px;
   top:8px;
   z-index: 100;
   cursor:default;
@@ -590,6 +590,9 @@ display: block;
   color:white;
   font-weight: normal;
   font-size: 0.9rem;
+  padding:5px;
+  border-radius:15px;
+  background-color:rgba(0,0,0,0.4);
 }
 
 /* fondo negro cuando se abre */
@@ -673,7 +676,7 @@ display: block;
 
   .modal__contents {
     width: 80vh;
-    height:95vh;
+    height:80vh;
   } 
   
 }
@@ -685,10 +688,11 @@ display: block;
   #gallery img{
     height: 250px;
   }
+
   #texto {
     padding:5px !Important;
     font-size: 0.9em;
-    height:300px;
+    height:200px;
     
   }
   .modal__contents {

@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 class Audio extends CI_Controller {
     
-    private $audios_por_pagina = 10 ;
+    
     
     public function __construct() {
         parent::__construct();
@@ -15,12 +15,11 @@ class Audio extends CI_Controller {
     }
 
     public function index() {
-        $this->mostraraudios($primero=0);
+        $this->mostraraudios();
     }
 
     public function forminsertaraudio() {
-        $datos["vista"] = "audio/Insertaraudi
-		s";
+        $datos["vista"] = "audio/Insertaraudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
     }
@@ -37,19 +36,16 @@ class Audio extends CI_Controller {
             $tipo = $this->input->post_get("tipo_aud");
             $desc = $this->input->post_get("desc");
             $res = $this->Audm->insertaraud($desc, $tipo);
-            $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
+            $datos["tabla"] = $this->Audm->buscaraudio();
             $datos["vista"] = "audio/Vaudios";
             $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
         }
     }
 
-    public function mostraraudios($primero=0) {
-        $datos["vista"] = "audio/Vaudios";
-        $datos["primero"] = $primero;
-        $datos["total"]=$this->Audm->buscar();
-        $datos["cantidad"] = $this->audios_por_pagina;
-        $datos["tabla"] = $this->Audm->buscaraud($primero, $this->audios_por_pagina);
+    public function mostraraudios() {
+        $datos["tabla"] = $this->Audm->buscaraudio();
+         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
         
@@ -75,7 +71,7 @@ class Audio extends CI_Controller {
     public function modificaraud() {
         $id = $this->input->post_get("id");
         $this->Audm->modificaraud($id);
-        $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
+        $datos["tabla"] = $this->Audm->allAudios();
         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
@@ -87,9 +83,8 @@ class Audio extends CI_Controller {
         $html = '<script>'
                     . '       function seleccionarAudio(idAudio) {'
                     . '             document.getElementById("idAudioForm").value = idAudio;'
-                    . '       }'
-                    . '</script>';
-        echo"<table align='center' class='tabla' class='display' id='cont' border:1>
+                    . '       }</script>';
+        $html = $html . "<table align='center' class='tabla_audio' class='display' id='cont' border:1>
             <thead>
             <tr>
             <th>ID</th>
@@ -129,8 +124,8 @@ class Audio extends CI_Controller {
                     . '</tr>'
                     . '</tbody>';          
         }
+        $html = $html . "</table>";
         echo $html; 
-        echo '</table>';
     }   
     //FIN CAMBIO LOLI
     
@@ -209,31 +204,3 @@ echo "</table>";
 }
 
 ?>
-<script>
-//PAGINACIÓN CON JQUERY LOLI
-
-    $(document).ready(function() {
-        $('.tabla').dataTable({
-    	"language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "No se encontraron resultados en su búsqueda",
-            "searchPlaceholder": "Buscar registros",
-            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
-            "infoEmpty": "No existen registros",
-            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "search": "Buscar:",
-            "paginate": {
-	            "first":    "Primero",
-	            "last":    "Último",
-	            "next":    "Siguiente",
-	            "previous": "Anterior"
-	    },
-        }
-        });
-    } );
-
-</script>
-
-
- 
-

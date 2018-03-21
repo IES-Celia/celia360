@@ -22,14 +22,14 @@
         .cerrar{
             
             position:relative;
-            top:-490px;
-            left:44%;
+            top:-428px;
+            left:45%;
         }
         
         .cerrar1{
             position:relative;
-            top:-410px;
-            left:44%;
+            top:-388px;
+            left:45%;
         }
         .cerrarBorrar{
             position:relative;

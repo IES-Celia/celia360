@@ -34,7 +34,7 @@
 
         <h1> Formulario para UPDATE Hotspots Audio </h1>
 
-        <fieldset class='for'>
+        <fieldset id='caja5'>
 
         <form action=' " . site_url("hotspots/updateHotspotAudio") . " ' method='get'>
 

@@ -11,8 +11,8 @@ if(isset($imagenes_seleccionadas)){
   }
 }
 
-
-
+//http://localhost/celia360/hotspots/show_update_hotspot/296/p1p6
+//http://localhost/celia360/welcome/cargar_escena/p1p6/show_insert_hotspot/null
 
 $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
 
@@ -122,19 +122,36 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 <script>
   
   $("#panel_atras").on("click",function(){
-    var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
-    console.log(url);
-    var peticion = $.ajax({
-      type: "get",
-      url: url
-    });
 
-    peticion.done(function(){
-      console.log("Se ha borrado el ultimo hotspot");
-      $("#formulario_atras").submit();
+    var confirmar = confirm("¿Quieres volver atras?");
+    var modificar = "<?php 
+      if(isset($imagenes_seleccionadas))echo(modificar);
+      else echo "nomodificar";
+    ?>";
+    if(confirmar){
+      if(modificar=="nomodificar"){
+        var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
+        var peticion = $.ajax({
+          type: "get",
+          url: url
+        });
+      } else{
+        window.location.href = "<?php echo base_url("hotspots/show_update_hotspot/$idhs/$id_escena"); ?>";
+      }
+     
+    }
+
+    peticion.done(function(resultado){
+      if(resultado>0){
+        console.log("Se ha borrado el ultimo hotspot");
+        $("#formulario_atras").submit();
+      } else {
+        console.log("Error al volver atras");
+      }
 
     });
   });
+  
  
    $(".enlace_img").on('click', function(evento){
      evento.preventDefault();
@@ -201,8 +218,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 
 
     if($("#img_seleccionadas").has("li").length == 0) {
-
-	  alert("Debes seleccionar alguna imagen!");
+      alert("Debes seleccionar alguna imagen!");
     } else {
 
     var escena = "<?php echo $escena_actual;?>";

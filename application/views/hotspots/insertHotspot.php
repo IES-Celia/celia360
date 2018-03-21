@@ -6,8 +6,6 @@
     <style>
 
 
-   
-    
     </style>
 <body>
 <h1> Formulario para insertar Hotspots</h1>
@@ -82,7 +80,7 @@
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
             Titulo del panel: <input type='text' name='titulo' required><br> 
-            Texto del panel:  <textarea  name="texto" rows="6" cols="50" required></textarea><br>
+            Texto del panel:  <textarea id='descripcion_texto'  name="texto" rows="6" cols="50" required></textarea><br>
             <label>seleccionar documento (OPCIONAL)</label>
             <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />
@@ -180,13 +178,20 @@
         $("#insertarAudio").click(function() {
             $("#formularios").children().hide();
             $("#puntoAudio").show();
-            $("#listaAudios").load("<?php echo site_url("audio/obtenerListaAudiosAjax");?>");
+            $.get("<?php echo site_url("audio/obtenerListaAudiosAjax");?>", null, function(respuesta) {
+                $("#listaAudios").html(respuesta);
+                activar_paginacion(".tabla_audio");
+            });
+           
         });
 
          $("#insertarVideo").click(function() {
             $("#formularios").children().hide();
             $("#puntoVideo").show();
-            $("#listaVideos").load("<?php echo site_url("video/obtenerListaVideosAjax");?>");
+            $.get("<?php echo site_url("video/obtenerListaVideosAjax");?>", null, function(respuesta) {
+                $("#listaVideos").html(respuesta);
+                 activar_paginacion(".tabla_video");
+            });
         });
           
         $("#insertarEscaleras").click(function() {
@@ -201,5 +206,27 @@
         });
           
       });
+         
+         
+        function activar_paginacion(selector_tabla) {
+            $(selector_tabla).dataTable({
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontraron resultados en su búsqueda",
+                "searchPlaceholder": "Buscar registros",
+                "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "search": "Buscar:",
+                "paginate": {
+                        "first":    "Primero",
+                        "last":    "Último",
+                        "next":    "Siguiente",
+                        "previous": "Anterior"
+                },
+            }
+            });
+        }
+         
          
     </script> 
