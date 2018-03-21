@@ -91,7 +91,7 @@
       margin-left:50px;
       margin-top:175px;
     }
-    .estanteria img{
+    .normal img{
     width: 65px;
     height: 80px;
     float: left;
@@ -113,8 +113,30 @@
     -o-transform: translate(0, 0);
     transition: transform 0.1s;
     transform: translate(0, 0);
-}
-
+  }
+.apaisado img{
+    width: 65px;
+    height: 80px;
+    float: left;
+    text-align: center;
+    position: relative;
+    margin-left: 30px;
+   -webkit-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    -moz-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    -ms-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);
+    -o-box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    box-shadow: 10px -11px 10px 4px rgba(0,0,0,0.6);;
+    -webkit-transition: -webkit-transform 0.1s;
+    -webkit-transform: translate(0, 0);
+    -moz-transition: -moz-transform 0.1s;
+    -moz-transform: translate(0, 0);
+    -ms-transition: -ms-transform 0.1s;
+    -ms-transform: translate(0, 0);
+    -o-transition: -o-transform 0.1s;
+    -o-transform: translate(0, 0);
+    transition: transform 0.1s;
+    transform: translate(0, 0);
+  }
 /*AQUIIIII*/
 /* Float Shadow */
 .efectBook {
