@@ -195,7 +195,7 @@
               <li>Revise y/o ponga en funcionamiento su sistema de audio.</li>
               <li>Cuando termine la descripción de una estancia, pasaremos automáticamente a la siguiente.</li>
               <li>En cualquier momento es posible trasladarse a la estancia deseada mediante los botones de siguiente y anterior. El faro le permite seleccionar la estancia.</li>
-              <li>Si desea permanecer en una estancia concreta indefinidamente, detenga el audio.</li>
+              <li>Si desea permanecer en una estancia indefinidamente, detenga el audio.</li>
             </ol>
             <hr class="mensaje_separador"></hr>
           </div>
