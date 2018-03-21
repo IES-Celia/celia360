@@ -491,16 +491,9 @@
 			                  "width": "1000px"
 			              });
 			         });
-
+					
 */
-		      });
-
-		      $(function(){
-                
-               
-                
-                
-                <?php 
+<?php 
                 	if($apaisado==1){
                 		echo" 
                 			$('.mySlides').mousewheel(function(event, delta){
@@ -645,6 +638,14 @@
                 	}
 
                 ?>
+		      });
+
+		      $(function(){
+                
+               
+                
+                
+                
 			  // $('.mySlides').mousewheel(function(event, delta){
      //                x=event.pageX - $('.mySlides').offset().left;
 				 //    y=event.pageY - $('.mySlides').offset().top;
