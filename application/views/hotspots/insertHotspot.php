@@ -6,8 +6,6 @@
     <style>
 
 
-   
-    
     </style>
 <body>
 <h1> Formulario para insertar Hotspots</h1>
@@ -82,7 +80,7 @@
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
             Titulo del panel: <input type='text' name='titulo' required><br> 
-            Texto del panel:  <textarea  name="texto" rows="6" cols="50" required></textarea><br>
+            Texto del panel:  <textarea id='descripcion_texto'  name="texto" rows="6" cols="50" required></textarea><br>
             <label>seleccionar documento (OPCIONAL)</label>
             <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />

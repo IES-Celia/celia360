@@ -145,7 +145,7 @@
 	        </div>
 	        </div>
 	        <div class="pie-ventana" style="border-top:1px solid grey;border-radius:5px; height:75px;padding:18px;">
-	          <a href="<?php echo site_url("Conversorbd2json/index"); ?>" class="btn-2" style="float:right;">Cerrar</a>
+	          <a href="<?php echo site_url("index.php"); ?>" class="btn-2" style="float:right;">Cerrar</a>
 	        </div>
 	    </div>
 	  </div>
@@ -258,7 +258,7 @@
 					initEvents = function() {
 						
 						var $slides = config.$bookBlock.children();
-
+						var guardado=1;
 						// add navigation events
 						config.$navNext.on( 'click touchstart', function() {
 							var tpg =$("#cantpag").val();
@@ -268,9 +268,11 @@
 							pg = parseInt(pg);
 							if(pg<tpg){
 								var newpg = parseInt(pg)+1; 
-								$("#numeropag").val(newpg); 								
+								$("#numeropag").val(newpg); 
+								guardado=newpg;								
 							}else{
 								$("#numeropag").val(tpg);
+								guardado=tpg;
 							}
 
 							config.$bookBlock.bookblock( 'next' );
@@ -287,8 +289,10 @@
 							if(pg!=1){
 								var newpg = parseInt(pg)-1; 
 								$("#numeropag").val(newpg);
+								guardado=newpg;
 							}else{
 								$("#numeropag").val(1);
+								guardado=1;
 							}
 							config.$bookBlock.bookblock( 'prev' );
 
@@ -301,13 +305,14 @@
 						config.$navFirst.on( 'click touchstart', function() {
 							$("#numeropag").val(1);
 							config.$bookBlock.bookblock( 'first' );
+							guardado=1;
 							return false;
 						} );
 
 						config.$navLast.on( 'click touchstart', function() {
 							var ultpg = $("#cantpag").val();
 							$("#numeropag").val(ultpg);
-
+							guardado=ultpg;
 							config.$bookBlock.bookblock( 'last' );
 							return false;
 						} );
@@ -325,6 +330,7 @@
 						// } );
 
 						// add keyboard events
+
 						$( document ).keydown( function(e) {
 							var keyCode = e.keyCode || e.which,
 								arrow = {
@@ -340,8 +346,10 @@
 									var pg = $("#numeropag").val();
 									if(pg!=1){
 										setTimeout(function(){$("#numeropag").val(parseInt(pg)-1);}, 800);
+										guardado=parseInt(pg)-1;
 									}else{
 										$("#numeropag").val(1);
+										guardado=1;
 									}
 									config.$bookBlock.bookblock( 'prev' );
 								break;
@@ -353,10 +361,12 @@
 									tpg = parseInt(tpg);
 									if(pg<tpg){
 
-										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);								
+										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);	
+										guardado=parseInt(pg)+1;							
 									}else{
 
 										$("#numeropag").val(tpg);
+										guardado=tpg;
 									}
 									config.$bookBlock.bookblock( 'next' );
 								break;
@@ -365,11 +375,18 @@
 									var maxpg = $("#cantpag").val();
 									pag= parseInt(pag);
 									maxpag = parseInt(maxpg);
-									if(pag>maxpg){
-										pag=maxpg;
-										$("#numeropag").val(pag);
+									if(Number.isNaN(pag)){
+										pag=guardado;
 									}
-									config.$bookBlock.bookblock('jump',pag);
+									if(pag>maxpg){
+										$("#numeropag").val(maxpg);
+										config.$bookBlock.bookblock('jump',maxpg);
+										guardado=maxpg;
+									}else{
+										$("#numeropag").val(pag);
+										config.$bookBlock.bookblock('jump',pag);
+										guardado=pag;
+									}
 								break;
 							}
 						} );
@@ -437,8 +454,8 @@
 							    y=event.pageY;
 								var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
 			                    var altura=parseInt($('.mySlides').css('height').split('px')[0]);
-			                    var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
-			                    var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
+			                    var izquierda=parseInt($(this).css('left').split('px')[0]);
+			                    var arriba=parseInt($(this).css('top').split('px')[0]);				 
 								var aux1=anchura / (x-izquierda);
 			                    var aux2=altura / (y-arriba);
 			                    var contador=0;
@@ -507,8 +524,8 @@
 							    y=event.pageY;
 								var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
 			                    var altura=parseInt($('.mySlides').css('height').split('px')[0]);
-			                    var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
-			                    var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
+			                    var izquierda=parseInt($(this).css('left').split('px')[0]);
+			                    var arriba=parseInt($(this).css('top').split('px')[0]);				 
 								var aux1=anchura / (x-izquierda);
 			                    var aux2=altura / (y-arriba);
 			                    var contador=0;

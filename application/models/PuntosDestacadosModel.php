@@ -90,11 +90,11 @@ class PuntosDestacadosModel extends CI_Model {
         
         $resultado_subida = $this->upload->do_upload('imagen_celda');
 
-        if ($resultado_subida == false) {
+        if ($resultado_subida == 1) {
+             echo "La imagen (supuestamente) ha sido subida con exito";
+        } else {
             $malasuerte = $this->upload->display_errors("<i>", "</i>");
             var_dump($malasuerte);
-        } else {
-            echo "ta bien";
         }
         
         

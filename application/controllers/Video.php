@@ -3,7 +3,7 @@
 // Este es el controlador de la aplicación
 
 class Video extends CI_Controller {
-private $videos_por_pagina = 10;
+private $videos_por_pagina = 200;
     public function __construct() {
         parent::__construct();
         $this->load->model("Vidm");
@@ -11,7 +11,7 @@ private $videos_por_pagina = 10;
     }
 
     public function index() {
-        $this->mostrarvideo($primero=0);
+        $this->mostrarvideo();
     }
 
     public function frominsertarvideo() {
@@ -30,13 +30,9 @@ private $videos_por_pagina = 10;
         $this->load->view('template_admin', $datos);
     }
 
-    public function mostrarvideo($primero=0) {
+    public function mostrarvideo() {
         $datos["tabla"] = $this->Vidm->buscarvideo();
-		$datos["primero"] = $primero;
-		$datos["total"]=$this->Vidm->buscar();
-		$datos["cantidad"] = $this->videos_por_pagina;
         $datos["vista"] = "video/Vvideos";
-		$datos["tabla"] = $this->Vidm->buscarvid($primero, $this->videos_por_pagina);
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('template_admin', $datos);
     }
@@ -71,19 +67,30 @@ private $videos_por_pagina = 10;
     }
     
     public function obtenerListaVideosAjax() {
-        $listaVideos = $this->Vidm->buscarvid(0, $this->videos_por_pagina);
+        $listaVideos = $this->Vidm->buscarvideo();
         $html = '<script>'
                     . '       function seleccionarVideo(idVideo) {'
                     . '             document.getElementById("idVideoForm").value = idVideo;'
                     . '       }'
                     . '</script>';
-        echo"<table align='center' id='cont' border:1><tr>
+        echo"<table align='center' class='tabla' class='display' id='cont' border:1>
+			<thead><tr>
             <th>ID</th>
             <th>URL</th>
             <th>Descripcion</th>
 			<th>ver video</th>
             <th>Seleccionar</th>
             </tr>
+			</thead>
+			</tfoot><tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Descripcion</th>
+			<th>ver video</th>
+            <th>Seleccionar</th>
+            </tr>
+			</tfoot>
+			<tbody>
             ";
         foreach ($listaVideos as $video) {
             $fila = $video["id_vid"];
@@ -95,7 +102,8 @@ private $videos_por_pagina = 10;
                     . '<td>' . $video["desc_vid"]. '</td>'
 					.'<td><a target="_blank" href="'. $video["url_vid"] .'">visitar enlace</a></td>'
                     . '<td onClick="seleccionarVideo('.$fila.')"><a href="#">Seleccionar</a></td>'
-                    . '</tr>';          
+                    . '</tr>'
+					. '</tbody>';       
         }
         echo $html; 
         echo '</table>';
@@ -135,3 +143,27 @@ echo "</table>";
 }
 
 ?>
+<script>
+
+
+    $(document).ready(function() {
+        $('.tabla').dataTable({
+    	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron resultados en su búsqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+	            "first":    "Primero",
+	            "last":    "Último",
+	            "next":    "Siguiente",
+	            "previous": "Anterior"
+	    },
+        }
+        });
+    } );
+
+</script>

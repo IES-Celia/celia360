@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 class Audio extends CI_Controller {
     
-    private $audios_por_pagina = 10 ;
+    
     
     public function __construct() {
         parent::__construct();
@@ -15,12 +15,11 @@ class Audio extends CI_Controller {
     }
 
     public function index() {
-        $this->mostraraudios($primero=0);
+        $this->mostraraudios();
     }
 
     public function forminsertaraudio() {
-        $datos["vista"] = "audio/Insertaraudi
-		s";
+        $datos["vista"] = "audio/Insertaraudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
     }
@@ -37,19 +36,16 @@ class Audio extends CI_Controller {
             $tipo = $this->input->post_get("tipo_aud");
             $desc = $this->input->post_get("desc");
             $res = $this->Audm->insertaraud($desc, $tipo);
-            $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
+            $datos["tabla"] = $this->Audm->buscaraudio();
             $datos["vista"] = "audio/Vaudios";
             $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("template_admin", $datos);
         }
     }
 
-    public function mostraraudios($primero=0) {
-        $datos["vista"] = "audio/Vaudios";
-        $datos["primero"] = $primero;
-        $datos["total"]=$this->Audm->buscar();
-        $datos["cantidad"] = $this->audios_por_pagina;
-        $datos["tabla"] = $this->Audm->buscaraud($primero, $this->audios_por_pagina);
+    public function mostraraudios() {
+        $datos["tabla"] = $this->Audm->buscaraudio();
+         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);
         
@@ -75,7 +71,7 @@ class Audio extends CI_Controller {
     public function modificaraud() {
         $id = $this->input->post_get("id");
         $this->Audm->modificaraud($id);
-        $datos["tabla"] = $this->Audm->buscaraud(0, $this->audios_por_pagina);
+        $datos["tabla"] = $this->Audm->buscaraudio();
         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("template_admin", $datos);

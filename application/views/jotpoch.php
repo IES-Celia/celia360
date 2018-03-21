@@ -79,6 +79,5 @@ $("#botoncico").click(function(){
 
   
 </script>
-<div><p><?php echo base_url("conversorbd2json/get_json_plataforma/".$escenaInicial); ?></p></div>
     </body>
 </html>
