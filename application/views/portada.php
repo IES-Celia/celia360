@@ -242,7 +242,7 @@
                 </div>
                 <div class="modal__contents">
                   <a class="modal__close" href="#">&times;</a>
-                  <h2 id="titulo"></h2>
+                  <h3 id="titulo"></h3>
                   <hr class='mensaje_separador_negro'></hr>
                   <div id="gallery">
                     <div class='mas_img_div' onclick="openModal();">

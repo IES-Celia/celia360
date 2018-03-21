@@ -685,10 +685,11 @@ display: block;
   #gallery img{
     height: 250px;
   }
+
   #texto {
     padding:5px !Important;
     font-size: 0.9em;
-    height:300px;
+    height:250px;
     
   }
   .modal__contents {
