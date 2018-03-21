@@ -488,7 +488,7 @@ display: block;
 .botonPause {
   position: relative;
   float: right;
-  left: 20px;
+  left: 45px;
   top:8px;
   z-index: 100;
   cursor:default;
