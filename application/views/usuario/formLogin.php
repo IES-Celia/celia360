@@ -26,7 +26,7 @@
             
     
 <?php
-echo"<form action='".site_url("Usuario/checkLogin")."' method='get'>";
+echo"<form action='".site_url("Usuario/checkLogin")."' method='post'>";
  ?> <br/>
     <label for="user"><i class="far fa-user"></i> Nick</label>
     

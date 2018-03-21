@@ -1,4 +1,8 @@
-
+<style type="text/css">
+    button{
+        st
+    }
+</style>
 
 <?php
 //Tabla usuarios
@@ -26,13 +30,45 @@ foreach ($tablaUsuarios as $usu) {
             <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
             <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
         if($usu["tipo_usuario"]==0){
-            echo "<td id='tipo_usuario".$idusu."'style='color:red;'>Usuario pendiente de asignación</td>";
+            echo "<td>  
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red' selected='true' disabled='disabled'>Pendiente asignación</option>
+                            <option value='1'>Admin</option>
+                            <option value='2'>Mapero</option>
+                            <option value='3'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
         }elseif ($usu["tipo_usuario"]==1) {
-            echo "<td id='tipo_usuario".$idusu."'>Admin</td>";
+            echo "<td>
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red' >Pendiente asignación</option>
+                            <option value='1' selected='true'>Admin</option>
+                            <option value='2'>Mapero</option>
+                            <option value='3'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
         }elseif ($usu["tipo_usuario"]==2) {
-            echo "<td id='tipo_usuario".$idusu."'>Mapero</td>";
+           echo "<td> 
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red'>Pendiente asignación</option>
+                            <option value='1'>Admin</option>
+                            <option value='2' selected='true'>Mapero</option>
+                            <option value='3'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
         }elseif ($usu["tipo_usuario"]==3) {
-            echo "<td id='tipo_usuario".$idusu."'>Bibliotecario</td>";
+           echo "<td>
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red'>Pendiente asignación</option>
+                            <option value='1'>Admin</option>
+                            <option value='2'>Mapero</option>
+                            <option value='3' selected='true'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
         }    
      
     
@@ -52,7 +88,7 @@ echo "
 <div id='modificar'>
     <div id='caja'>
     <h1>Modificar usuario</h1>
-    <form action='".site_url("usuario/modUsuario")."' method='get'>
+    <form action='".site_url("usuario/modUsuario")."' method='post'>
 
         <label for='username'>Nombre de usuario</label>
         <input type='text' name='username' id='form_modif_nick' required>
@@ -84,7 +120,7 @@ echo"
 <div id='insertar'>
     <div id='caja'>
 <h1>Registro de usuarios</h1>
-<form action='".site_url("usuario/processregisterform")."' method='get'>
+<form action='".site_url("usuario/processregisterform")."' method='post'>
 
     <label for='username'>Nombre de usuario</label>
     <input type='text' name='username' id='username' required>
@@ -114,6 +150,13 @@ echo"
             resultado=confirm("¿Desea borrar el usuario?");
             if(resultado){ 
             $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuesta);
+            }
+        }
+
+        function modTipo(idusu) {
+            resultado=confirm("¿Desea modificar el tipo de usuario?");
+            if(resultado){
+                $.get("<?php echo base_url('usuario/modtipo/');?>"+idusu,null,respuesta);
             }
         }
 

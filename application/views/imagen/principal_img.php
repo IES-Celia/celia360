@@ -29,7 +29,7 @@ echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus
 //he quitado la columna texto de la vista, pero sigue en la bd 
 //cabecera  <th>Texto</th>
 //tabla <td>" . $ima["texto_imagen"] . "</td>
-echo "<table id='cont' class='tabla' class='display'>";
+echo "<table id='cont' class='display'>";
 //****************** PAGINACIÓN CON JQUERY LOLI************\\
 echo "<thead>";
 echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
@@ -103,6 +103,7 @@ $du = $lista_imagenes[0];
             echo "<input type='hidden' name='url_imagen' id='url_modificar' value=''>";
             
             echo "<img id='foto_modificar' width='100px' src=''><br><p class='parrafo_modificar'></p><br>";
+            echo "<div id='nombre-archivo-imagen'></div>";
             ?>   
             <input type='submit' name ='actualizar' value = 'Aceptar'>
         </form>
@@ -180,6 +181,7 @@ $du = $lista_imagenes[0];
             $("#fecha_modificar").val(fecha);
             $("#url_modificar").val(url);
             $("#foto_modificar").attr("src",imagen); //la imagen
+            $("#nombre-archivo-imagen").html(url);
             
             //+++++++++++++
             $("#id_modificar").val(nombre);
@@ -204,7 +206,7 @@ $du = $lista_imagenes[0];
 //PAGINACIÓN CON JQUERY LOLI
 
     $(document).ready(function() {
-        $('.tabla').dataTable({
+        $('#cont').dataTable({
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "No se encontraron resultados en su búsqueda",

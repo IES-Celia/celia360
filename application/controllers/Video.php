@@ -3,7 +3,7 @@
 // Este es el controlador de la aplicación
 
 class Video extends CI_Controller {
-private $videos_por_pagina = 200;
+
     public function __construct() {
         parent::__construct();
         $this->load->model("Vidm");
@@ -73,7 +73,7 @@ private $videos_por_pagina = 200;
                     . '             document.getElementById("idVideoForm").value = idVideo;'
                     . '       }'
                     . '</script>';
-        echo"<table align='center' class='tabla' class='display' id='cont' border:1>
+        echo"<table align='center' class='tabla_video' class='display' id='cont' border:1>
 			<thead><tr>
             <th>ID</th>
             <th>URL</th>
@@ -82,7 +82,7 @@ private $videos_por_pagina = 200;
             <th>Seleccionar</th>
             </tr>
 			</thead>
-			</tfoot><tr>
+			<tfoot><tr>
             <th>ID</th>
             <th>URL</th>
             <th>Descripcion</th>

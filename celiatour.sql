@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 20-03-2018 a las 10:18:39
+-- Tiempo de generación: 21-03-2018 a las 12:33:47
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -42,10 +42,10 @@ INSERT INTO `audio` (`id_aud`, `url_aud`, `desc_aud`, `tipo_aud`) VALUES
 (6, 'assets/audio/holaaaaa.mp4', 'puerta cafeteria de enfrente del instituto', 'd-objeto'),
 (7, 'assets/audio/audio1.mp3', '', 'd-objeto'),
 (8, 'assets/audio/audio2.mp3', '', 'd-objeto'),
-(9, 'assets/audio/audioportico.mp3', '', 'd-objeto'),
 (10, 'assets/audio/audio4.mp3', '', 'd-objeto'),
-(11, 'assets/audio/texto1.mp3', 'Texto 1', 'v-guiada'),
-(12, 'assets/audio/audiobar.mp3', 'audio bar puerta instituto', 'd-objeto');
+(12, 'assets/audio/audiobar.mp3', 'audio fachada principal', 'v-guiada'),
+(13, 'assets/audio/audioportico.mp3', 'audio portico', 'v-guiada'),
+(14, 'assets/audio/audioescaleras.mp3', 'audio escaleras', 'v-guiada');
 
 -- --------------------------------------------------------
 
@@ -66,13 +66,14 @@ CREATE TABLE `celda_pd` (
 --
 
 INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celda`, `fila_asociada`) VALUES
+(9, 'p2p2f1', 'assets/imagenes/destacados/9.jpg', 'Salón de actos', 2),
 (3, 'p1p2f3', 'assets/imagenes/destacados/3.jpg', 'Portón', 3),
-(4, 'p1p12', 'assets/imagenes/destacados/4.jpg', 'Zona de profesores', 3),
+(4, 'p1p12', 'assets/imagenes/destacados/4.jpg', 'Zona de profesorado', 3),
 (5, 'p1p5f1', 'assets/imagenes/destacados/5.jpg', 'Dept. Geografía', 3),
-(6, 'p2p2f1', 'assets/imagenes/destacados/6.jpg', 'Salón de actos', 2),
 (1, 'p0p4f2', 'assets/imagenes/destacados/1.jpg', 'Capilla', 4),
 (2, 'p0p1f1', 'assets/imagenes/destacados/2.jpg', 'Pozo', 4),
-(7, 'p2p4f3', 'assets/imagenes/destacados/7.jpg', 'Biblioteca', 2);
+(7, 'p2p4f3', 'assets/imagenes/destacados/7.jpg', 'Biblioteca', 2),
+(10, 'p1p9f2', 'assets/imagenes/destacados/10.jpg', 'dfgdfgdfg', 0);
 
 -- --------------------------------------------------------
 
@@ -140,7 +141,6 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (26, '', 'p1p32f1', 120, 0, 5, 'equirectangular', 'assets/imagenes/escenas/p1p32f1.JPG'),
 (27, 'Dept. Inglés ', 'p1p32f2', 120, 14, 24, 'equirectangular', 'assets/imagenes/escenas/p1p3f2.JPG'),
 (28, '', 'p1p5', 120, -3, -88, 'equirectangular', 'assets/imagenes/escenas/p1p5.JPG'),
-(29, '', 'p1p5f1', 120, 22, 60, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
 (30, '', 'p1p6', 120, -2, 39, 'equirectangular', 'assets/imagenes/escenas/p1p6.JPG'),
 (31, '', 'p1p7', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p7.JPG'),
 (32, '', 'p1p72', 120, -7, -18, 'equirectangular', 'assets/imagenes/escenas/p1p72.JPG'),
@@ -150,7 +150,7 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (36, '', 'p1p9f2', 120, 28, -31, 'equirectangular', 'assets/imagenes/escenas/p1p9f2.JPG'),
 (37, '', 'p1p11', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p1p11.JPG'),
 (41, 'hall sotano', 'p0p1', 120, -11, -165, 'equirectangular', 'assets/imagenes/escenas/p0p1.JPG'),
-(42, '', 'p0p1f1', 120, 172, 15, 'equirectangular', 'assets/imagenes/escenas/p0p1f1.JPG'),
+(42, '', 'p0p1f1', 120, -1, 176, 'equirectangular', 'assets/imagenes/escenas/p0p1f1.JPG'),
 (43, '', 'p0p1f2', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p0p1f2.JPG'),
 (44, '', 'p0p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p0p2.JPG'),
 (45, '', 'p0p3', 120, 9, 137, 'equirectangular', 'assets/imagenes/escenas/p0p3.JPG'),
@@ -185,11 +185,11 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (92, 'Gimnasio', 'p0p8f3', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8f3.JPG'),
 (93, 'Lab. Ciencias Naturales', 'p3p10f1', 120, -3, 82, 'equirectangular', 'assets/imagenes/escenas/p3p10f1.JPG'),
 (94, 'Lab. Ciencias Naturales', 'p3p10f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p3p10f2.JPG'),
-(95, 'Lab. F&Q', 'p2p10f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f1.JPG'),
-(96, 'Lab. F&Q', 'p2p10f3', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f3.JPG'),
-(97, 'Lab. F&Q', 'p2p10f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f2.JPG'),
-(98, 'Lab. F&Q', 'p2p10f4', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f4.JPG'),
-(99, 'Lab. F&Q', 'p2p10f5', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p2p10f5.JPG'),
+(95, 'Lab. F&Q', 'p2p10f1', 120, -6, 31, 'equirectangular', 'assets/imagenes/escenas/p2p10f1.JPG'),
+(96, 'Lab. F&Q', 'p2p10f3', 120, -5, 139, 'equirectangular', 'assets/imagenes/escenas/p2p10f3.JPG'),
+(97, 'Lab. F&Q', 'p2p10f2', 120, -7, -26, 'equirectangular', 'assets/imagenes/escenas/p2p10f2.JPG'),
+(98, 'Lab. F&Q', 'p2p10f4', 120, -12, -152, 'equirectangular', 'assets/imagenes/escenas/p2p10f4.JPG'),
+(99, 'Lab. F&Q', 'p2p10f5', 120, -9, -17, 'equirectangular', 'assets/imagenes/escenas/p2p10f5.JPG'),
 (101, 'Antesala', 'p1p13', 120, -3, -104, 'equirectangular', 'assets/imagenes/escenas/p1p13.JPG'),
 (102, 'Antesala', 'p1p14', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p14.JPG'),
 (103, 'Sala de juntas', 'p1p12f1', 120, -30, 78, 'equirectangular', 'assets/imagenes/escenas/p1p12f1.JPG'),
@@ -202,9 +202,9 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (111, 'Aula 3', 'p1p6f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p6f2.JPG'),
 (116, 'Antesala', 'p1p12', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p12.JPG'),
 (119, 'pasillo departamentos (sotano)', 'p0p2f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p2f1.JPG'),
-(121, 'Dept. Geografía e Historia', 'p1p5f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
-(122, 'Dept. Geografía e Historia', 'p1p5f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p1p5f2.JPG'),
-(123, 'Escalera', 'p0p0', 120, -14, -187, 'equirectangular', 'assets/imagenes/escenas/20170727_210053.jpg'),
+(121, 'Dept. Geografía e Historia', 'p1p5f1', 120, -5, -161, 'equirectangular', 'assets/imagenes/escenas/p1p5f1.JPG'),
+(122, 'Dept. Geografía e Historia', 'p1p5f2', 120, 2, 6, 'equirectangular', 'assets/imagenes/escenas/p1p5f2.JPG'),
+(123, 'Escalera', 'p0p0', 120, -14, -187, 'equirectangular', 'assets/imagenes/escenas/p0p0.JPG'),
 (127, 'AulaTaller', 'p0p9f4', 120, 18, -39, 'equirectangular', 'assets/imagenes/escenas/p0p9f4.JPG'),
 (129, 'Dept. Filosofía', 'p0p9f2', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p9f2.JPG'),
 (131, 'Pasillo', 'p0p9f1', 120, -8, 8, 'equirectangular', 'assets/imagenes/escenas/p0p9f1.JPG'),
@@ -256,6 +256,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (2, 7),
 (2, 8),
 (2, 9),
+(2, 316),
 (3, 10),
 (4, 11),
 (5, 12),
@@ -263,6 +264,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (6, 14),
 (6, 15),
 (6, 16),
+(6, 306),
 (10, 22),
 (10, 23),
 (11, 24),
@@ -276,11 +278,13 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (15, 32),
 (15, 33),
 (15, 34),
+(15, 296),
 (16, 35),
 (16, 165),
 (17, 36),
 (17, 37),
 (17, 38),
+(17, 295),
 (18, 39),
 (18, 40),
 (18, 41),
@@ -306,11 +310,13 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (27, 59),
 (28, 60),
 (28, 61),
+(28, 312),
 (29, 63),
 (29, 290),
 (29, 291),
 (29, 292),
 (29, 293),
+(29, 313),
 (30, 64),
 (30, 65),
 (30, 66),
@@ -375,12 +381,16 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (48, 101),
 (48, 102),
 (48, 254),
+(48, 317),
+(48, 318),
+(48, 319),
 (49, 103),
 (49, 104),
 (50, 105),
 (51, 106),
 (51, 107),
 (51, 108),
+(51, 297),
 (52, 109),
 (52, 110),
 (52, 111),
@@ -403,7 +413,6 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (60, 128),
 (61, 129),
 (61, 149),
-(61, 151),
 (62, 130),
 (62, 131),
 (63, 132),
@@ -412,6 +421,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (64, 160),
 (65, 135),
 (65, 136),
+(65, 298),
 (66, 137),
 (66, 138),
 (66, 139),
@@ -442,15 +452,21 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (95, 166),
 (95, 209),
 (95, 210),
+(95, 301),
+(95, 302),
+(95, 303),
 (96, 167),
 (96, 207),
 (96, 208),
+(96, 299),
+(96, 300),
 (97, 203),
 (97, 204),
 (97, 205),
 (98, 206),
 (98, 211),
 (98, 212),
+(98, 304),
 (99, 164),
 (101, 180),
 (101, 181),
@@ -489,7 +505,11 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (118, 216),
 (118, 217),
 (119, 250),
+(121, 314),
+(121, 315),
+(122, 311),
 (123, 230),
+(123, 294),
 (127, 244),
 (127, 245),
 (127, 246),
@@ -512,7 +532,12 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (140, 273),
 (141, 274),
 (142, 270),
-(143, 271);
+(143, 271),
+(149, 305),
+(149, 307),
+(149, 308),
+(150, 309),
+(151, 310);
 
 -- --------------------------------------------------------
 
@@ -546,7 +571,7 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (1, NULL, NULL, '   ', -13, 2, 'custom-hotspot-salto', 'puntos', 'punto38', 'p2p3', -4, 182, 'scene', 0, NULL),
 (2, NULL, NULL, ' ', -16, 126, 'custom-hotspot-salto', 'puntos', 'punto36', 'p2p1', 0, 0, 'scene', 0, NULL),
 (3, NULL, NULL, ' ', -8, -180, 'custom-hotspot-salto', 'puntos', 'punto45', 'p2p10', 0, 0, 'scene', 0, NULL),
-(5, NULL, NULL, ' ', -10, -83, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 0, -83, 'scene', 0, NULL),
+(5, NULL, NULL, ' ', -10, -83, 'custom-hotspot-salto', 'puntos', 'punto37', 'p2p2', 0, -83, 'scene', 1, NULL),
 (6, NULL, NULL, ' ', -9, 185, 'custom-hotspot-salto', 'puntos', 'punto47', 'p2p2f3', -2, -2, 'scene', 0, NULL),
 (7, NULL, NULL, ' ', -8, 3, 'custom-hotspot-salto', 'puntos', 'punto48', 'p2p2f2', -2, 3, 'scene', 0, NULL),
 (10, NULL, NULL, ' ', -21, -180, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', -6, 60, 'scene', 0, NULL),
@@ -572,13 +597,13 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (38, NULL, NULL, ' ', -21, -111, 'custom-hotspot-salto', 'puntos', 'punto22', 'p1p8', -6, 186, 'scene', 0, NULL),
 (39, NULL, NULL, ' ', -18, 115, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 0, 0, 'scene', 0, NULL),
 (40, NULL, NULL, ' ', -10, -176, 'custom-hotspot-salto', 'puntos', 'punto35', 'p1p22', -4, 175, 'scene', 0, NULL),
-(41, NULL, NULL, ' ', 0, -71, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0, NULL),
-(42, NULL, NULL, ' ', -1, -4, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0, NULL),
+(41, NULL, NULL, ' ', -18, -77, 'custom-hotspot-salto', 'puntos', 'punto15', 'p1p1', 0, 0, 'scene', 0, NULL),
+(42, NULL, NULL, ' ', -9, -2, 'custom-hotspot-salto', 'puntos', 'punto23', 'p1p11', 0, 0, 'scene', 0, NULL),
 (43, NULL, NULL, ' ', -26, 8, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 0, 0, 'scene', 0, NULL),
 (44, NULL, NULL, ' ', 6, -174, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -5, -42, 'scene', 1, NULL),
 (45, NULL, NULL, ' ', -16, -2, 'custom-hotspot-salto', 'puntos', 'punto29', 'p1p2f3', 0, 0, 'scene', 0, NULL),
 (46, NULL, NULL, ' ', -12, 175, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 16, -173, 'scene', 0, NULL),
-(47, NULL, NULL, ' ', -13, -171, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 34, 175, 'scene', 0, NULL),
+(47, NULL, NULL, ' ', -13, -171, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 18, 175, 'scene', 0, NULL),
 (48, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', -4, 180, 'scene', 0, NULL),
 (49, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0, NULL),
 (50, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -5, 180, 'scene', 0, NULL),
@@ -665,15 +690,14 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (137, NULL, NULL, ' ', -13, 17, 'custom-hotspot-salto', 'puntos', 'punto63', 'p4p0', -2, 141, 'scene', 0, NULL),
 (138, NULL, NULL, ' ', -3, -11, 'custom-hotspot-salto', 'puntos', 'punto65', 'p4p2', -17, -153, 'scene', 0, NULL),
 (139, NULL, NULL, ' ', -2, 31, 'custom-hotspot-salto', 'puntos', 'punto66', 'p4p3', -20, 114, 'scene', 0, NULL),
-(140, NULL, NULL, ' ', -17, 144, 'custom-hotspot-salto', 'puntos', 'punto67', 'p4p4', -26, -174, 'scene', 0, NULL),
+(140, NULL, NULL, ' ', -17, 144, 'custom-hotspot-salto', 'puntos', 'punto67', 'p4p4', -15, 178, 'scene', 0, NULL),
 (141, NULL, NULL, ' ', -15, -128, 'custom-hotspot-salto', 'puntos', 'punto68', 'p4p5', -21, 176, 'scene', 0, NULL),
 (142, NULL, NULL, ' ', 0, 20, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -1, 20, 'scene', 0, NULL),
-(143, NULL, NULL, ' ', -2, -84, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -2, 19, 'scene', 0, NULL),
+(143, NULL, NULL, ' ', -2, -84, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -6, -165, 'scene', 0, NULL),
 (144, NULL, NULL, ' ', -3, -3, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
 (145, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
 (146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene', 0, NULL),
 (148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', 0, 0, 'scene', 0, NULL),
-(151, NULL, NULL, '', -4, 29, 'custom-hotspot-salto', 'puntos', 'punto21', 'p1p7', 0, 0, 'scene', 0, NULL),
 (153, NULL, NULL, '', -7, -94, 'custom-hotspot-salto', 'puntos', 'p0punto15', 'p0p8f2', 0, 0, 'scene', 0, NULL),
 (154, NULL, NULL, '', -8, -175, 'custom-hotspot-salto', 'puntos', 'p0punto14', 'p0p8f1', 0, 0, 'scene', 0, NULL),
 (155, NULL, NULL, '', -12, -7, 'custom-hotspot-salto', 'puntos', 'p0punto13', 'p0p8', 0, 0, 'scene', 0, NULL),
@@ -688,7 +712,6 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (165, NULL, NULL, '', -4, 6, 'custom-hotspot-salto', 'puntos', 'punto84', 'p2p10f1', 0, 0, 'scene', 0, NULL),
 (166, NULL, NULL, '', -20, -6, 'custom-hotspot-salto', 'puntos', 'punto85', 'p2p10f3', 0, 0, 'scene', 0, NULL),
 (167, NULL, NULL, '', -19, 91, 'custom-hotspot-salto', 'puntos', 'punto87', 'p2p10f4', 0, 0, 'scene', 0, NULL),
-(168, NULL, NULL, '', 0, 0, '', '', '', 'p1p12', 0, 0, '', 0, NULL),
 (169, NULL, NULL, '', -25, 94, 'custom-hotspot-salto', 'puntos', 'punto95', 'p1p12f7', 0, 0, 'scene', 0, NULL),
 (170, NULL, NULL, '', -30, -97, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
 (172, NULL, NULL, '', -32, -93, 'custom-hotspot-salto', 'puntos', 'punto90', 'p1p13', 0, 0, 'scene', 0, NULL),
@@ -751,17 +774,6 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (249, NULL, NULL, '', -12, -143, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
 (250, NULL, NULL, '', -25, 79, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
 (251, NULL, NULL, '', -11, -138, 'custom-hotspot-salto', 'puntos', 'punto120', 'p0p9f1', 0, 0, 'scene', 0, NULL),
-(252, NULL, NULL, '', 2, 124, 'custom-hotspot-video', 'video', 'punto3', 'p0p2', 0, 0, 'info', 0, NULL),
-(253, NULL, NULL, '', 12, 152, 'custom-hotspot-audio', 'musica', 'punto5', 'p0p4', 0, 0, 'info', 0, NULL),
-(254, NULL, NULL, '', 7, 152, 'custom-hotspot-audio', 'musica', 'punto9', 'p0p5', 0, 0, 'info', 0, NULL),
-(255, NULL, NULL, '', 27, 50, 'custom-hotspot-audio', 'musica', '4', 'p0p9f4', 0, 0, 'info', 0, NULL),
-(256, NULL, NULL, '', 8, 0, 'custom-hotspot-video', 'video', 'punto4', 'p0p3', 0, 0, 'info', 0, NULL),
-(257, NULL, NULL, '', 11, -41, 'custom-hotspot-video', 'video', 'punto4', 'p0p3', 0, 0, 'info', 0, NULL),
-(258, NULL, NULL, '', 19, 39, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
-(259, NULL, NULL, '', 30, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
-(260, NULL, NULL, '', 32, 0, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
-(262, NULL, NULL, '', 27, -96, 'custom-hotspot-video', 'video', 'punto14', 'p1p9f2', 0, 0, 'info', 0, NULL),
-(263, NULL, NULL, '', 26, -49, 'custom-hotspot-audio', 'musica', '4', 'p1p9f2', 0, 0, 'info', 0, NULL),
 (264, NULL, NULL, '', -14, 21, 'custom-hotspot-salto', 'puntos', 'punto126', 'p1p12f4', 0, 0, 'scene', 0, NULL),
 (265, NULL, NULL, '', -20, -161, 'custom-hotspot-salto', 'puntos', 'punto91', 'p1p14', 0, 0, 'scene', 0, NULL),
 (266, NULL, NULL, '', -16, -90, 'custom-hotspot-salto', 'puntos', 'punto125', 'p1p12f3', 0, 0, 'scene', 0, NULL),
@@ -781,7 +793,34 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (290, NULL, NULL, '', -14, -4, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, 0, 'scene', 0, NULL),
 (291, NULL, NULL, '', -2, -9, 'custom-hotspot-salto', 'puntos', 'punto19', 'p1p5', 0, 0, 'scene', 0, NULL),
 (292, NULL, NULL, '', 7, -1, 'custom-hotspot-salto', 'puntos', 'punto20', 'p1p6', 0, 0, 'scene', 0, NULL),
-(293, NULL, NULL, '', 22, -183, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0, NULL);
+(293, NULL, NULL, '', 22, -183, 'custom-hotspot-salto', 'puntos', 'punto98', 'p1p6f1', 0, 0, 'scene', 0, NULL),
+(294, NULL, NULL, '', -1, 15, 'custom-hotspot-escaleras', 'escaleras', '', '', 0, 0, '', 0, NULL),
+(295, NULL, NULL, '', -4, 2, 'custom-hotspot-escaleras', 'escaleras', '', '', 0, 0, '', 0, NULL),
+(296, NULL, NULL, '', -2, 3, 'custom-hotspot-escaleras', 'escaleras', '', '', 0, 0, '', 0, NULL),
+(297, NULL, NULL, '', -4, 1, 'custom-hotspot-escaleras', 'escaleras', '', '', 0, 0, '', 0, NULL),
+(298, NULL, NULL, '', -84, -90, 'custom-hotspot-escaleras', 'escaleras', '', '', 0, 0, '', 0, NULL),
+(299, NULL, NULL, '', -26, -144, 'custom-hotspot-video', 'video', '16', '', 0, 0, 'info', 0, NULL),
+(300, ' Metodo de mezclas', ' En la imagen podemos observar los preparativos para  llevar a cabo la determinación aproximada del calor específico de un anticongelante para vehículos. Dicho anticongelante, de color verde suave brillante se encuentra en un matraz erlenmeyer. Una porción de él se coloca en un calorímetro provisto de termómetro y agitador y se mide su temperatura. En el vaso se coloca agua que se calienta mediante una resistencia eléctrica hasta una temperatura en torno a 90º que se mide con termómetro.  Al mezclar el agua con el anticongelante en el calorímetro se puede medir la temperatura de equilibrio final y averiguar el calor específico del anticongelante. A partir del dato se puede discutir la utilidad y uso del mismo. <br><br><br> Las sustancias pueden absorber o ceder energía en forma de calor pudiendo sufrir tres tipos de efectos a consecuencia de ello: variaciones de temperatura, cambio de estado o contracciones-dilataciones. La cantidad de calor que un kilogramo de  sustancia necesita para aumentar su temperatura 1 ºC se denomina calor específico o capacidad calorífica específica. Cuanto mayor sea este más calor se necesita para dicho incremento de temperatura.  Esta magnitud es característica para cada tipo de sustancia química y por tanto puede emplearse para identificarla junto con otras propiedades del mismo tipo...', '', -28, 153, 'custom-hotspot-info', 'panelInformacion', '300', '', 0, 0, 'info', 0, 'documento300.pdf'),
+(301, 'Refracción de la luz', ' En la imagen observamos un montaje óptico diseñado para estudiar la marcha de los rayos luminosos al atravesar lentes convergentes (la de la imagen) o divergentes, medir su distancias focales y averiguar su potencia. Con un ligero cambio de filtro y empleando una lente semicircular podemos comprobar igualmente las leyes de la refracción luminosa. El montaje está compuesto de: -Foco luminoso conectado a un alimentador de corriente que nos produce la luz necesaria.<br><br>\r\n-Un banco óptico formado para una placa metálica (color verde) que contiene una regla graduada en un lateral para poder situar a las distancias adecuadas los diferentes elementos del montaje, y una línea guía mas centrada.<br> -Una lente convergente incrustada en su soporte (f=+100 mm) colocada junto al foco luminoso, cuyo objetivo es hacer que los rayos que salen dispersos del foco marchen paralelos hasta el resto de elementos del banco óptico.<br> -Un filtro de tres ranuras verticales sobre su soporte, que pretende formar tres rayos luminosos paralelos separados entre sí. Este filtro se sustituye por otro de una ranura si se trata de comprobar las leyes de la refracción, de este modo obtenemos un solo rayo.<br> -Un disco de Hartl sobre su soporte, con su borde graduado para poder medir ángulos y diámetros dibujados a intervalos de 30º, dos de los cuáles, que forman 90º, tiene una parte graduada en el centro para medir distancias.<br>  -Varias lentes convergentes, divergentes y semicircular para el estudio de las mismas y de las leyes de la refracción', '', -33, -61, 'custom-hotspot-info', 'panelInformacion', '301', '', 0, 0, 'info', 0, 'documento301.pdf'),
+(302, 'Reacciones de precipitacion', 'En la imagen observamos un matraz erlenmeyer que contiene una disolución en la que ha aparecido un precipitado (sólido) amarillo intenso de ioduro de plomo(II) (PbI2). Los objetivos de la experiencia son reconocer una reacción química de precipitación , identificar el precipitado sólido, aislarlo por filtración y desecarlo, y comprobar la variación de la solubilidad de dicho precipitado con la temperatura. Para ello se necesita un sistema de filtración con trompa de agua para vacío, un desecador de laboratorio y un mechero para calentar tubos de ensayo.<br><br>Cuando una sal se solubiliza en agua se disocia totalmente y se separan sus iones. Así por ejemplo: Una disolución de KI (ioduro de potasio) es en realidad una disolución de iones I- (ioduro) e iones K+ (potasio); y una disolución de Pb(NO3)2 es en realidad una disolución de iones Pb2+ (plomo) e iones NO3-  (nitrato)<br><br>Si se mezclan dos disoluciones de dos sales, tendremos una disolución que contiene los iones de las dos. Si alguna pareja de ellos forma un compuesto insoluble este aparecerá en la disolución en forma de precipitado. Así por ejemplo: Al mezclar las disoluciones de KI y Pb(NO3)2 , tenemos en realidad una disolución de los iones K+ , I- , Pb2+ , NO3-, y como los iones I-  y Pb2+, forman un compuesto insoluble: el ioduro de plomo(II), PbI2 (amarillo), se origina un precipitado de este compuesto. La reacción que tiene lugar es:  Pb(NO3)2 + KI  → PbI2  + KNO3<br>', '', -35, 81, 'custom-hotspot-info', 'panelInformacion', '302', '', 0, 0, 'info', 0, 'documento302.pdf'),
+(303, 'Desecador', ' En la imagen observamos un desecador de laboratorio para productos sólidos. Su utilidad radica en mantener limpios y deshidratados los compuestos sólidos y en ayudar a secar compuestos sólidos procedentes de filtraciones. Está compuesto de dos cavidades de vidrio grueso y resistente.<br><br> La cavidad inferior presenta un estrechamiento en su base que divide el compartimento a su vez en dos partes separadas por un soporte de porcelana blanca agujerado: en la más inferior se coloca una sustancia higroscópica (que absorbe agua) tal como gel de sílice, cloruro de calcio (CaCl2), ácido sulfúrico..., y en la superior se colocan las sustancias sólidas en vidrios de reloj, cápsulas de porcelana... sobre el soporte de porcelana blanco.<br><br> La parte superior del desecador hace de tapadera del mismo permitiendo que la sustancias en su interior queden aisladas. Sobre ella y enroscado a la misma se sitúa un codo de vidrio con llave que permite conectar un trompa de agua para hacer el vacío.<br>', '', -31, 25, 'custom-hotspot-info', 'panelInformacion', '303', '', 0, 0, 'info', 0, 'documento303.pdf'),
+(304, 'M.R.U Acelerado', ' En la imagen se visualiza el montaje realizado para el estudio del movimiento rectilíneo uniformemente  acelerado (MRUA). En el se distingues las siguientes partes: <br><br>-Un riel rectilíneo por donde puede desplazarse un carrito de ruedas en  el que se pueden colocar pesas en su parte superior para aumentar su masa y regular así su velocidad y aceleración. El riel tiene una escala graduada que permite averiguar la distancia recorrida por el carrito.<br><br>-Un portapesas que permite colocar las pesas adecuadas que van  a ejercer, debido a su peso, la fuerza necesaria para comunicar aceleración al carrito. <br><br>-Un sistema de poleas  con su soporte, por el que desliza una cuerda que une el carrito al portapesas y que sirve para la transmisión de la fuerza. <br><br>Un cuerpo se mueve cuando cambia su posición con el tiempo. Para estudiar el movimiento se emplean tres magnitudes físicas: espacio recorrido (s), velocidad (v) y aceleración (a) e interesa saber cómo varían estas magnitudes en relación con el tiempo, es decir, su relación funcional. Esta se averigua mediante la representación gráfica de los datos experimentales.<br>\r\n', '', -30, 143, 'custom-hotspot-info', 'panelInformacion', '304', '', 0, 0, 'info', 0, 'documento304.pdf'),
+(305, NULL, NULL, '', -5, -2, 'custom-hotspot-salto', 'puntos', '', 'p2p4', 0, 0, 'scene', 1, NULL),
+(306, NULL, NULL, '', -31, -16, 'custom-hotspot-salto', 'puntos', '', 'p2p4f3', 0, 0, 'scene', 0, NULL),
+(307, NULL, NULL, '', -16, 94, 'custom-hotspot-salto', 'puntos', '', 'p2p4f2', 0, 0, 'scene', 0, NULL),
+(308, NULL, NULL, '', -10, -51, 'custom-hotspot-salto', 'puntos', '', 'p2p4f4', 0, 0, 'scene', 0, NULL),
+(309, NULL, NULL, '', -15, -90, 'custom-hotspot-salto', 'puntos', '', 'p2p4f3', 0, 0, 'scene', 0, NULL),
+(310, NULL, NULL, '', -7, 40, 'custom-hotspot-salto', 'puntos', '', 'p2p4f3', 0, 0, 'scene', 0, NULL),
+(311, NULL, NULL, '', -21, 5, 'custom-hotspot-salto', 'puntos', '', 'p1p5f1', 0, 0, 'scene', 0, NULL),
+(312, NULL, NULL, '', -8, -171, 'custom-hotspot-salto', 'puntos', '', 'p1p5f1', 0, 0, 'scene', 0, NULL),
+(313, NULL, NULL, '', -14, -4, 'custom-hotspot-salto', 'puntos', '', 'p1p5', 0, 0, 'scene', 0, NULL),
+(314, NULL, NULL, '', -13, -3, 'custom-hotspot-salto', 'puntos', '', 'p1p5', 0, 0, 'scene', 1, NULL),
+(315, NULL, NULL, '', -22, -186, 'custom-hotspot-salto', 'puntos', '', 'p1p5f2', 0, 0, 'scene', 0, NULL),
+(316, 'Escudo de armas', 'Gran escudo de armas de grandes dimensiones, finalmente modelado, que constituye el blasón de Alfonso XIII, en esencia, el mismo escudo que para su dinastía organizó su cuarto abuelo el rey Carlos III: los cinco cuarteles pertenecientes a la Nación (Castilla-Castilla, León-León y Granada), uno a su linaje de Borbón-Anjou, y diez a sus demás antepasados. \r\nEn 1931 el fervor republicano le cambia la corona real cerrada por la mural de la República que, muda, se presta a acoger alrededor del de Castilla y León, los escudos de las principales casas reinantes de Europa, ancestros de nuestros reyes. Las iras contra el \"Sr. Borbón\" - que así nombraba la prensa de la época al exiliado Alfonso XIII- se dirigen al primero de sus linajes y por eso caen del escusón las tres lises borbónicas, también las mismas florecillas de los cuarteles de las casas de Borgoña (IV), de Parma (V), y Médicis-Toscana (VI), mientras deja intactos los palos de Aragón (I), los palos y Águilas de Aragón-Sicilia (II), la faja de Austria (III), el bandeado de Borgoña viejo (VII), el León rampante de Brabante (VIII) y el de Flandes (IX) y el águila del Tirol (X); así como las de Castilla y León y Granada. Es todo un enigma la relación que entre el Toisón de Oro y las lises que vio el cincelador para borrarlo.', '', 79, 224, 'custom-hotspot-info', 'panelInformacion', '316', '', 0, 0, 'info', 0, 'ninguno'),
+(317, 'dsfsdf', 'sdfsdf', '', -20, 150, 'custom-hotspot-info', 'panelInformacion', '317', '', 0, 0, 'info', 0, 'ninguno'),
+(318, 'ffdgdf', 'gdfgdf', '', -25, 177, 'custom-hotspot-info', 'panelInformacion', '318', '', 0, 0, 'info', 0, 'ninguno'),
+(319, 'nbvnvb', 'nvbnvbn', '', -24, -161, 'custom-hotspot-info', 'panelInformacion', '319', '', 0, 0, 'info', 0, 'ninguno'),
+(320, '', '', '', 0, 0, '', '', '', '', 0, 0, '', 0, 'ninguno');
 
 -- --------------------------------------------------------
 
@@ -866,7 +905,9 @@ INSERT INTO `imagenes` (`id_imagen`, `titulo_imagen`, `texto_imagen`, `url_image
 (308, 'laboratorio de ciencias naturales', '', '308.jpg', '2018-02-19'),
 (310, 'laboratorio de ciencias naturales', '', '310.jpg', '2018-02-19'),
 (312, 'laboratorio de ciencias naturales', '', '312.jpg', '2018-02-19'),
-(314, 'laboratorio de ciencias naturales', '', '314.jpg', '2018-02-19');
+(314, 'laboratorio de ciencias naturales', '', '314.jpg', '2018-02-19'),
+(343, 'escudo', '', '343.jpg', '2018-03-21'),
+(344, 'Escudo de armas salon actos', '', '344.jpg', '2018-03-18');
 
 -- --------------------------------------------------------
 
@@ -970,7 +1011,27 @@ INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
 (286, 294),
 (290, 220),
 (290, 221),
-(290, 222);
+(290, 222),
+(300, 210),
+(301, 215),
+(301, 213),
+(302, 212),
+(302, 214),
+(303, 214),
+(303, 212),
+(304, 220),
+(316, 343),
+(316, 344),
+(319, 296),
+(319, 298),
+(318, 343),
+(318, 344),
+(317, 215),
+(317, 298),
+(317, 210),
+(317, 209),
+(317, 310),
+(317, 216);
 
 -- --------------------------------------------------------
 
@@ -1037,7 +1098,7 @@ CREATE TABLE `portada` (
 --
 
 INSERT INTO `portada` (`id_portada`, `tituloweb`, `imagenweb`) VALUES
-(1, 'CeliaTour360', '');
+(1, 'CeliaTour', '');
 
 -- --------------------------------------------------------
 
@@ -1217,9 +1278,6 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
-(5, 'https://youtu.be/3TPW48bcd3Q', 'primer video celia tour'),
-(6, 'https://www.youtube.com/watch?v=oInDEX8PU9M', 'wewe'),
-(7, 'vhttps://www.youtube.com/watch?v=oInDEX8PU9M', 'wewe'),
 (8, 'https://player.vimeo.com/video/2910853', 'wewwwe'),
 (9, 'https://player.vimeo.com/video/2910853', 'Almería'),
 (10, 'https://player.vimeo.com/video/2910853', 'jaa'),
@@ -1227,7 +1285,10 @@ INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
 (12, 'https://player.vimeo.com/video/2910853', 'ee'),
 (13, 'https://player.vimeo.com/video/2910853', 'ew'),
 (14, 'https://player.vimeo.com/video/2910853', 're'),
-(15, 'https://player.vimeo.com/video/2910853', 'aaaaaaaaa');
+(15, 'https://player.vimeo.com/video/2910853', 'aaaaaaaaa'),
+(16, 'https://player.vimeo.com/video/260919387', 'Proceso de destilacion de agua'),
+(17, 'https://player.vimeo.com/video/260919387', 'video descpricion de la papa'),
+(18, 'https://player.vimeo.com/video/260919387', 'es algo normal pero temerario');
 
 -- --------------------------------------------------------
 
@@ -1243,6 +1304,14 @@ CREATE TABLE `visita_guiada` (
   `img_preview` varchar(100) NOT NULL,
   `orden` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `visita_guiada`
+--
+
+INSERT INTO `visita_guiada` (`id_visita`, `cod_escena`, `titulo_escena`, `audio_escena`, `img_preview`, `orden`) VALUES
+(5, 'p1p2f2', 'Portico', 'assets/audio/audioportico.mp3', 'prev5.jpg', 1),
+(10, 'p1p2f3', 'Fachada principal', 'assets/audio/texto1.mp3', 'prev10.jpg', 0);
 
 --
 -- Índices para tablas volcadas
@@ -1344,7 +1413,7 @@ ALTER TABLE `visita_guiada`
 -- AUTO_INCREMENT de la tabla `audio`
 --
 ALTER TABLE `audio`
-  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
@@ -1354,7 +1423,7 @@ ALTER TABLE `escenas`
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
 --
 -- AUTO_INCREMENT de la tabla `libros`
 --
@@ -1379,12 +1448,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `visita_guiada`
 --
 ALTER TABLE `visita_guiada`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Restricciones para tablas volcadas
 --

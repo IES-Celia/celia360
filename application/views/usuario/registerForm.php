@@ -4,7 +4,7 @@
 
 <?php
 echo"<p style='text-align:center; color:red;'>".$mensaje."</p>";   
-echo"<form action='".site_url("usuario/processregisterform")."' method='get'>";
+echo"<form action='".site_url("usuario/processregisterform")."' method='post'>";
 ?>
 <div id="caja">
     <h1>Registro de usuarios</h1>
