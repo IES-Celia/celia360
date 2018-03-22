@@ -116,7 +116,7 @@ class Biblioteca extends CI_Controller {
 			$datos["error"] = "Error al insertar el libro";
 		}
 		else {					// Libro insertado con éxito
-			$datos["mensaje"] = "Libro insertado con éxito. La carpeta que contenga las imágenes debe llamarse: ".$idlibro;
+			$datos["mensaje"] = "Libro insertado con éxito. Debe renombrarlo en la carpeta assets/libros/ como: ".$idlibro;
 		}
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
         $datos["vista"] = "biblioteca/intadmin";
