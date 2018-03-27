@@ -29,8 +29,8 @@ echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus
 //he quitado la columna texto de la vista, pero sigue en la bd 
 //cabecera  <th>Texto</th>
 //tabla <td>" . $ima["texto_imagen"] . "</td>
-echo "<table id='cont' class='display'>";
 //****************** PAGINACIÓN CON JQUERY LOLI************\\
+echo "<table id='cont' class='display'>";
 echo "<thead>";
 echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
 echo "</thead>";
@@ -45,20 +45,13 @@ foreach ($lista_imagenes as $ima) {
     $url_borrar = site_url("imagen/borrar_imagen/") . $ima["id_imagen"];
 
     echo "<tr id='imagen-" . $fila . "'>";
-    
     echo "<td class='nombre-img'>" . $ima["id_imagen"] . "</td>";
-    
     echo "<td class='titulo-img'>" . $ima["titulo_imagen"] . "</td>";
-    
     echo "<td class='url-img'>" . $ima["url_imagen"] . "</td>";
-    
     echo "<td class='miniatura' align='center'><a href='" .
     base_url('assets/imagenes/imagenes-hotspots/' . $ima['url_imagen']) . "'><img class='imagen-img' src=\"" .
     base_url('assets/imagenes/imagenes-hotspots/' . $nombre_archivo) . "\"></a></td>";
-    
     echo "<td class='fecha-img'>" . $ima["fecha"] . "</td>";
-    
-    
     
     echo "<td><a href='#' onclick='mostrar(\"modificar\", " . $fila . ")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
     echo "<td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td>";
@@ -76,6 +69,9 @@ echo "</table><br>";
 if (isset($mensaje)) {
     echo "<p style='color:green'>" . $mensaje . "</p>";
 }
+if (isset($error)) {
+    echo "<p style='color:red'>" . $error . "</p>";
+}
 $du = $lista_imagenes[0];
 ?>
 
@@ -90,18 +86,12 @@ $du = $lista_imagenes[0];
         <form enctype="multipart/form-data"  action='<?php echo site_url("imagen/actualizar_imagen"); ?>' method='post'>
             <?php
             echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
-            
             echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
-            
             echo "<!--<br>Texto:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>-->";
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
-            
             echo "<br>Fecha:<input type='date' id='fecha_modificar' name='fecha'  value=''><br/>";
-            
             echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value=''><br/>";
-            
             echo "<input type='hidden' name='url_imagen' id='url_modificar' value=''>";
-            
             echo "<img id='foto_modificar' width='100px' src=''><br><p class='parrafo_modificar'></p><br>";
             echo "<div id='nombre-archivo-imagen'></div>";
             ?>   
@@ -162,41 +152,23 @@ $du = $lista_imagenes[0];
             $("#insertar").show();     
         }
         if (capa == "modificar") {
-            //no tocar
-            titulo = $("#imagen-"+id).find(".titulo-img").text();
-            fecha  = $("#imagen-"+id).find(".fecha-img").text();
-            url = $("#imagen-"+id).find(".url-img").text();
-           
-           //+++++++++
-
-           nombre = $("#imagen-"+id).find(".nombre-img").text();
-//            miniatura = $("#imagen-"+id).find(".miniatura").text();
-            imagen = $("#imagen-"+id).find(".imagen-img").attr("src");//la imagen
-        //--------------------------   
-
-           
             
-          //-------------------------------------no tocar  
+           titulo = $("#imagen-"+id).find(".titulo-img").text();
+           fecha  = $("#imagen-"+id).find(".fecha-img").text();
+           url = $("#imagen-"+id).find(".url-img").text();
+           nombre = $("#imagen-"+id).find(".nombre-img").text();
+           imagen = $("#imagen-"+id).find(".imagen-img").attr("src");//la imagen
+
             $("#titulo_modificar").val(titulo);
             $("#fecha_modificar").val(fecha);
             $("#url_modificar").val(url);
             $("#foto_modificar").attr("src",imagen); //la imagen
             $("#nombre-archivo-imagen").html(url);
-            
-            //+++++++++++++
             $("#id_modificar").val(nombre);
-//            //-------------------------
-//            $("#url_modificar").val(nombre);
-            
-           
-      
-           
             
             $("#modificar").show();     
         }    
     }
-
-
 
     function cerrar(){
         $("#insertar").hide();
@@ -204,7 +176,6 @@ $du = $lista_imagenes[0];
     }  
  
 //PAGINACIÓN CON JQUERY LOLI
-
     $(document).ready(function() {
         $('#cont').dataTable({
     	"language": {
