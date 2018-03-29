@@ -53,20 +53,20 @@
             function borrar_celda(id){
                 var result = confirm("¿Desea borrar la celda?");
                 if(result == true){
-                    location.href= "<?php echo site_url("Puntos_destacados/borrar_celda/")?>"+id  
+                    location.href= "<?php echo site_url("PuntosDestacados/borrar_celda/")?>"+id  
                 }
             }
             
             function update_celda(id){
-                location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+id  
+                location.href= "<?php echo site_url("PuntosDestacados/formulario_update/")?>"+id  
             }
             /*
             $(".grid-item").click(function(){
-                location.href= "<?php echo site_url("Puntos_destacados/formulario_update/")?>"+$(this).children().last().val();
+                location.href= "<?php echo site_url("PuntosDestacados/formulario_update/")?>"+$(this).children().last().val();
             });
             */
             function anadir_celda($id){
-                 location.href= "<?php echo site_url("Puntos_destacados/anadir_celda/")?>"+$id               
+                 location.href= "<?php echo site_url("PuntosDestacados/anadir_celda/")?>"+$id               
             }
 
         </script>

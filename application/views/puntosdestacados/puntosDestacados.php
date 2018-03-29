@@ -65,7 +65,7 @@
             });
             
             $.ajax({
-                url: "<?php echo base_url("conversorbd2json/get_json_destacados"); ?>",
+                url: "<?php echo base_url("tour/get_json_destacados"); ?>",
                 type: 'GET',
                 dataType: 'json'
               }).done(function(data) {

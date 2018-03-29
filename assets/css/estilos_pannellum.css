@@ -32,7 +32,7 @@
         height: 40px;
         width: 40px;
         text-align: center;
-        background-image: url("svg/fullscreenBlanco.svg");
+        background-image: url("svg/fullscreenblanco.svg");
         cursor: pointer;
         margin-bottom: 20px;
         margin-right: 5px; 
@@ -50,7 +50,7 @@
         z-index: 2;
         height: 65px;
         width: 65px;
-        background-image: url("svg/fullscreenBlanco.svg");
+        background-image: url("svg/fullscreenblanco.svg");
         cursor: pointer;
         background-size:cover;
         background-position: center;
@@ -445,10 +445,10 @@ display: block;
         opacity: 0.6;
     }
 
-.custom-hotspot-info {background-image: url("svg/eyeBlanco.svg");}
+.custom-hotspot-info {background-image: url("svg/eyeblanco.svg");}
 .custom-hotspot-info2 {background-image: url("svg/info3.svg");}
-.custom-hotspot-salto {background-image: url("svg/saltoBlanco.svg");}
-.custom-hotspot-atras {background-image: url("svg/puertaBlanco.svg");}
+.custom-hotspot-salto {background-image: url("svg/saltoblanco.svg");}
+.custom-hotspot-atras {background-image: url("svg/puertablanco.svg");}
 .custom-hotspot-audio {background-image: url("svg/long-play-record-cover.svg");}
 .custom-hotspot-video {background-image: url("svg/video-player.svg");}
 

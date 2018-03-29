@@ -21,14 +21,14 @@
         <br><br>
         <a href="<?php echo site_url("escenas");?>" class="enlacesidenav">Mapa</a>
         <a href="<?php echo site_url("guiada/menuGuiada");?>" class="enlacesidenav">Guiada</a>
-        <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados");?>" class="enlacesidenav">Destacados</a>
+        <a href="<?php echo site_url("PuntosDestacados/cargar_admin_puntosdestacados");?>" class="enlacesidenav">Destacados</a>
         <a href="<?php echo site_url("biblioteca");?>" class="enlacesidenav"> Biblioteca</a>
         <a href="<?php echo site_url("imagen");?>" class="enlacesidenav"> Imágenes</a>
         <a href="<?php echo site_url("audio");?>" class="enlacesidenav"> Audios</a>
         <a href="<?php echo site_url("video");?>" class="enlacesidenav"> Vídeos</a>
         <!-- <a href="<?php echo site_url("hotspots");?>" class="enlacesidenav"> Hotspots</a> -->
         <a href="<?php echo site_url("usuario/usuarios");?>" class="enlacesidenav"> Usuarios</a>
-        <a href="<?php echo site_url("Conversorbd2json/formulario_portada");?>" class="enlacesidenav"> Portada</a>
+        <a href="<?php echo site_url("tour/formulario_portada");?>" class="enlacesidenav"> Portada</a>
         
         
         <br><br>

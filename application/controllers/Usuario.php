@@ -21,7 +21,7 @@
         //Muestra la ventana de login
             $data["vista"] ="usuario/formLogin";
             $data["mensaje"] = $msj; 
-            $this->load->view('template_login', $data);
+            $this->load->view('login_template', $data);
         }
 
 
@@ -31,47 +31,47 @@
         
             
              if($resultado ==1){
-                    $this->load->model("Modeloescenas");
+                    $this->load->model("EscenasModel");
                     $this->load->model("UsuarioModel");
-                    $this->load->model('Mapa','mapa');
-                    $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+                    $this->load->model("MapaModel","mapa");
+                    $datos["tablaEscenas"] = $this->EscenasModel->getAll();
                     $datos["mapa"] = $this->mapa->cargar_mapa();
                     $datos["puntos"] = $this->mapa->cargar_puntos();
                     $datos["vista"]="escenas/Escenastable";
                     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                    $this->load->view('template_admin', $datos);
+                    $this->load->view('admin_template', $datos);
              }else if($resultado ==2){
-                    $this->load->model("Modeloescenas");
+                    $this->load->model("EscenasModel");
                     $this->load->model("UsuarioModel");
-                    $this->load->model('Mapa','mapa');
-                    $datos["tablaEscenas"] = $this->Modeloescenas->getAll();
+                    $this->load->model("MapaModel","mapa");
+                    $datos["tablaEscenas"] = $this->EscenasModel->getAll();
                     $datos["mapa"] = $this->mapa->cargar_mapa();
                     $datos["puntos"] = $this->mapa->cargar_puntos();
                     $datos["vista"]="escenas/Escenastable";
                     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                    $this->load->view('template_admin', $datos);
+                    $this->load->view('admin_template', $datos);
             }else if($resultado ==3){
                 $datos["tabla"] = $libro->get_info();
                 $datos["vista"] = "libro/IntAdmin";
-                $this->load->view('template_login',$datos);
+                $this->load->view('login_template',$datos);
 
             }else if($resultado ==0){
                 $datos["error"] = "Usuario sin confirmar";
                 $datos["vista"] = "usuario/formLogin";
-                $this->load->view('template_login',$datos);
+                $this->load->view('login_template',$datos);
 
             }else{
 
                 $datos["error"] = "Usuario no registrado";
                 $datos["vista"] = "usuario/formLogin";
-                $this->load->view('template_login',$datos);
+                $this->load->view('login_template',$datos);
             }
           }
         
         public function showregisterform(){
         //Mostrar el formulario de registro
             $data["vista"] = "usuario/registerForm";
-            $this->load->view('template_login',$data);
+            $this->load->view('login_template',$data);
         }
         
 
@@ -83,12 +83,12 @@
 
                 $datos["mensaje"] = "Usuario creado correctamente";
                 $datos["vista"] = "usuario/formLogin";
-                $this->load->view('template_login', $datos);
+                $this->load->view('login_template', $datos);
             }
             else {
                 $datos["mensaje"] = "Usuario ocupado";
                 $datos["vista"] = "usuario/registerForm";
-                $this->load->view("template_login", $datos);
+                $this->load->view("login_template", $datos);
             }
      
         }
@@ -100,7 +100,7 @@
             $datos["DatosMod"]=$this->UsuarioModel->buscarusuid($id);
             $datos["vista"] = "usuario/modUsu";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            $this->load->view("template_admin",$datos);
+            $this->load->view("admin_template",$datos);
 
         }
         public function modusuario(){
@@ -113,7 +113,7 @@
             
         $datos["vista"] = "usuario/usuarios";       
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('template_admin',$datos);
+        $this->load->view('admin_template',$datos);
 
         }
 
@@ -129,7 +129,7 @@
             //$datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
             //$datos["nombreUsuario"] = "usuario borrado correctamente.";
             //$datos["vista"] = "usuario/usuarios";
-            //$this->load->view("template_admin",$datos);
+            //$this->load->view("admin_template",$datos);
 
           
         }
@@ -139,14 +139,14 @@
             $datos["tablaUsuarios"]=$this->UsuarioModel->buscartodousu();
             $datos["vista"] = "usuario/usuarios";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            $this->load->view('template_admin',$datos);
+            $this->load->view('admin_template',$datos);
         }
 
         public function mapero(){
             
             $data["vista"] = "usuario/mapero";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                $this->load->view('template_admin', $data);
+                $this->load->view('admin_template', $data);
 
         }
 

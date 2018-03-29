@@ -27,7 +27,7 @@ $(document).ready(function() {
  * Administración del mapa.
  */
 	$("#btn-admin-mapa").click(function(){
-		location.href = base_url+"MapaAdmin/"
+		location.href = base_url+"mapa/"
 	})
    	
    	$(".pisos").contextmenu(function(event){
@@ -92,7 +92,7 @@ $(document).ready(function() {
 			$(this).css("background-color","yellow");
 		
 		}else {
-			location.href = base_url + "welcome/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"+piso;
+			location.href = base_url + "escenas/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"+piso;
 		}
 		
 	})
@@ -118,7 +118,7 @@ $(document).ready(function() {
 	});
 	$("#btn-eliminar-mapa").click(function () {
 		if(confirm("Desea eliminar la zona, tambien se eliminara cualquier escena y hotspot relacionado.")){
-			location.href=base_url+"MapaAdmin/eliminar_zona/"+piso+"/"+piso_maximo;
+			location.href=base_url+"mapa/eliminar_zona/"+piso+"/"+piso_maximo;
 		}
 	});
 	$("#btn-anadir-mapa").click(function () {

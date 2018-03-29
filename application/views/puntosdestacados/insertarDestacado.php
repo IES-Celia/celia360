@@ -20,7 +20,7 @@
 	<fieldset class='for'>
 
 		<?php
-			echo"<form action='".site_url("Puntos_destacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";   
+			echo"<form action='".site_url("PuntosDestacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";   
         ?>
 		    	
 				Nombre del punto destacado:  <input type='text' name='titulo_celda' required> <br>
@@ -55,7 +55,7 @@
 			    <input type='hidden' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br>
 			    
 				<input type='submit'> <br>
-                <a href="<?php echo site_url("Puntos_destacados/cargar_admin_puntosdestacados"); ?>">Atrás</a><br>
+                <a href="<?php echo site_url("PuntosDestacados/cargar_admin_puntosdestacados"); ?>">Atrás</a><br>
 			   
 			</form>
 	

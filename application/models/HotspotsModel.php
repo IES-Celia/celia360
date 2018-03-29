@@ -4,7 +4,7 @@ class HotspotsModel extends CI_Model {
     public function __construct() {
         
         parent::__construct();
-        $this->load->model("Modeloescenas");
+        $this->load->model("EscenasModel");
         $this->load->model("UsuarioModel");
     }
 

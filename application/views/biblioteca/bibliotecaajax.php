@@ -85,9 +85,6 @@
     	padding: 20px;
     	height:54px;
 	}
-	table{
-		margin-top:30px;
-	}
 
 	.iniciologo{
 		width:90px;
@@ -101,7 +98,6 @@
 	    /*background-size: cover;*/
 	    width:100%;
 	    height:100%;
-	    margin-top: 109px;
  	} 
 
   .cerrarBook{
@@ -139,21 +135,7 @@
 
 
 <body>
-	 <header id="header_portada">
-            <div class="contenedor_portada">
-            <nav id="nav_portada">
-             <ul>
-                 <li style="margin-top:0px;"><a  href="<?php echo site_url("index.php"); ?>"><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/></a></li>
-                  <li><a id="opcionlibre_portada" onclick='visita_opcion("get_json_libre");'>Modo Libre</a></li>
-                 <li><a id="opcionguiada_portada" onclick='visita_opcion("get_json_guiada");'>Visita Guiada</a></li>
-                 <li><a href="<?php echo site_url("Puntos_destacados"); ?>" id="opciondestacada_portada">Destacados</a></li>
-                  <li><a id="clickbiblio" href="<?php echo site_url("biblioteca/vertodosloslibros"); ?>">Biblioteca</a></li>
-                 <li><a id="creditos_portada" href="<?php echo site_url("welcome"); ?>" >Creditos</a></li>
-             </ul>
-            </nav>
-            </div>
-
-        </header>
+	
 	<div id="contenedorbiblioteca">
 
 	<?php 

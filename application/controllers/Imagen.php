@@ -28,17 +28,6 @@ class Imagen extends CI_Controller {
     }
 
     /**
-     * Muestra el formulario para insertar una imagen
-     * 
-     * @author: María Dolores Salmeron Sierra     
-     */
-    public function formulario_insertar_imagen() {
-        $datos["vista"] = "imagen/formulario_insertar_imagen";
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('template_admin', $datos);
-    }
-
-    /**
      * Inserta una imagen y nos muestra el mensaje si ha sido un éxito o no
      * 
      * @author: María Dolores Salmeron Sierra    
@@ -46,24 +35,24 @@ class Imagen extends CI_Controller {
     public function insertar_imagen() {
 
         //cargar el modelo
-        $this->load->model("Img");
+        $this->load->model("ImagenModel");
         //acciones para insertar la imagen
-        $resultado = $this->Img->insertar_imagen();
+        $resultado = $this->ImagenModel->insertar_imagen();
 
         if ($resultado[0]) {
             $datos["mensaje"] = "Imagen insertada correctamente";
-            $datos["lista_imagenes"] = $this->Img->buscar_todo();
+            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
             $datos["vista"] = "imagen/principal_img";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             //cargar la vista
-            $this->load->view('template_admin', $datos);
+            $this->load->view('admin_template', $datos);
         } else {
             $datos["error"] = "Ha ocurrido un error al insertar el registro";
-            $datos["lista_imagenes"] = $this->Img->buscar_todo();
+            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
             $datos["vista"] = "imagen/principal_img";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             //cargar la vista
-            $this->load->view('template_admin', $datos);
+            $this->load->view('admin_template', $datos);
         }
     }
 
@@ -74,13 +63,13 @@ class Imagen extends CI_Controller {
      */
     public function lista_imagenes() {
         //cargar el modelo
-        $this->load->model("Img");
+        $this->load->model("ImagenModel");
         //acciones para ver el listado de imagenes
-        $datos["lista_imagenes"] = $this->Img->buscar_todo();
+        $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
         $datos["vista"] = "imagen/principal_img";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         //cargar la vista
-        $this->load->view('template_admin', $datos);
+        $this->load->view('admin_template', $datos);
     }
 
     /**
@@ -92,14 +81,14 @@ class Imagen extends CI_Controller {
     public function modificar_imagen($id) {
 
         //cargar el modelo
-        $this->load->model("Img");
+        $this->load->model("ImagenModel");
         //buscar los datos de una imagen concreta
 
-        $datos["lista_imagenes"] = $this->Img->buscar_imagen($id);
+        $datos["lista_imagenes"] = $this->ImagenModel->buscar_imagen($id);
         $datos["vista"] = "imagen/modificar_imagen";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         //muestra el formulario para modificar los datos
-        $this->load->view('template_admin', $datos);
+        $this->load->view('admin_template', $datos);
     }
 
     /**
@@ -109,7 +98,7 @@ class Imagen extends CI_Controller {
      */
     public function actualizar_imagen() {
         //cargar el modelo
-        $this->load->model("Img");
+        $this->load->model("ImagenModel");
 
         //acciones para modificar los datos de la imagen en la BD
         $actualizar_titulo = $this->input->post_get('titulo_imagen');
@@ -120,7 +109,7 @@ class Imagen extends CI_Controller {
 
         $resultado = $this->Img->modificar_imagen();
 
-        $datos["lista_imagenes"] = $this->Img->buscar_todo();
+        $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
         if ($resultado) {
             $datos["mensaje"] = "Imagen actualizada con &eacute;xito";
         } else
@@ -128,7 +117,7 @@ class Imagen extends CI_Controller {
 
         $datos["vista"] = "imagen/principal_img";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('template_admin', $datos);
+        $this->load->view('admin_template', $datos);
     }
 
     /**
@@ -140,9 +129,9 @@ class Imagen extends CI_Controller {
     public function borrar_imagen($id_imagen) {
 
         //cargar el modelo
-        $this->load->model("Img");
+        $this->load->model("ImagenModel");
         //acciones para eliminar la imagen en la BD
-        $resultado = $this->Img->borrar_imagen($id_imagen);
+        $resultado = $this->ImagenModel->borrar_imagen($id_imagen);
         
         if ($resultado != 0) {
             echo $id_imagen;
@@ -160,11 +149,11 @@ class Imagen extends CI_Controller {
      */
     public function busqueda_ajax($abuscar = "") {
         //cargar el modelo
-        $this->load->model("Img");
+        $this->load->model("ImagenModel");
 
         //si es una petición ajax y existe una variable post
         //llamada info dejamos pasar
-            $lista_imagenes = $this->Img->buscar_ajax($abuscar);
+            $lista_imagenes = $this->ImagenModel->buscar_ajax($abuscar);
 
             //si search es distinto de false significa que hay resultados
             //y los mostramos con un loop foreach

@@ -12,7 +12,7 @@ if(isset($imagenes_seleccionadas)){
 }
 
 //http://localhost/celia360/hotspots/show_update_hotspot/296/p1p6
-//http://localhost/celia360/welcome/cargar_escena/p1p6/show_insert_hotspot/null
+//http://localhost/celia360/escenas/cargar_escena/p1p6/show_insert_hotspot/null
 
 $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
 
