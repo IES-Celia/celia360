@@ -776,13 +776,17 @@ display: block;
     text-align: justify;
     
   }
-  #titulo{
+  #titulo_insercion{
     color: black;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 2px;
+    position: absolute;
+    z-index: 20;
+    left: 25%;
   }
+
   #gallery img{
     position: relative;
     max-height: 300px;
