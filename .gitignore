@@ -34,6 +34,7 @@ application/config/database.php
 .vscode
 application/views/portada.php
 
+# Directorios de imágenes
 assets/imgs/
 assets/imagenes/imagenes-hotspot/*
 .vscode
@@ -42,3 +43,7 @@ application/controllers/Audio.php
 application/controllers/Audio.php
 application/controllers/Audio.php
 application/controllers/Audio.php
+
+# Archivos de configuración
+application/config/config.php
+application/config/database.php
