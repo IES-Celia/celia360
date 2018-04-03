@@ -32,7 +32,7 @@ $tabla = $tabla[0];
 
 echo "
 
-<h1> Formulario para actualizar un hotspot de tipo salto </h1>
+<h1> Actualizar hotspot de tipo salto </h1>
 
 <fieldset id='caja2'>
 

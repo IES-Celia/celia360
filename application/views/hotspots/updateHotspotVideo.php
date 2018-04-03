@@ -37,7 +37,7 @@ echo "
 
 <fieldset class='for'>
 
-<form action=' ".site_url("hotspots/updateHotsportVideo")." ' method='get'>
+<form action=' ".site_url("hotspots/updateHotspotVideo")." ' method='get'>
 
 	Coordenadas donde se situa el punto:<br>
     <a href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>

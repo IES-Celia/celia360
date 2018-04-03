@@ -53,10 +53,12 @@ class HotspotsModel extends CI_Model {
 
     public function modificarPitchYaw($pitch, $yaw, $idhotspot) {
         $this->db->query("UPDATE hotspots SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_hotspot=" . $idhotspot);
+        return $this->db->affected_rows();
     }
 
     public function modificarPitchYawEscena($pitch, $yaw, $codescena) {
         $this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE cod_escena='" . $codescena . "'");
+        return $this->db->affected_rows();
     }
     
     public function modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot){
