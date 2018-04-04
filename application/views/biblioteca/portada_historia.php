@@ -163,7 +163,7 @@
 			<a href="#" class="cerrarBook" style="width: 40px;height: 40px;background:#303031e0;color:white;text-align:center;font-size:30px;top: 20px;left: 85%;position: absolute;border-radius:5px;">x</a>
 			<header>	
 			</header>
-			<div class="main clearfix">
+			<div class="mainBiblioteca clearfix">
 				<div class="bb-custom-wrapper">
 					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;">
 				<?php
