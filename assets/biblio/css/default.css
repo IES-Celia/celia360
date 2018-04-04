@@ -41,7 +41,7 @@ a img {
 }
 
 /* Header Style */
-.main,
+.mainBiblioteca,
 .container > header {
 	/*margin: 0 auto;
 	padding: 2em;*/
@@ -71,7 +71,7 @@ a img {
 }
 
 /* Main Content */
-.main {
+.mainBiblioteca {
 	max-width: 52%;
 	width:42%;
 }

@@ -15,7 +15,7 @@
     <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
 
 		<style type="text/css">
-			.contenedor{
+			.contenedorLibro{
 				width:900px;
 				height:550px;
 				margin-left:15%;
@@ -167,15 +167,13 @@
 	if ($id_libro != -1) {	// Si id_libro = -1 significa que no hay ningún libro seleccionado, y no cargaremos nada en la modal
 ?>
 
-<div class="modalita2"  >
+<div class="modalita2">
 		<div class="container">
 			<!-- Top Navigation -->
 			<a href="#" class="cerrarBook" style="background:#303031e0;">x</a>
-			<header>	
-			</header>
-			<div class="main clearfix">
+			<div class="mainBiblioteca clearfix">
 				<div class="bb-custom-wrapper">
-					<div id="bb-bookblock" class="bb-bookblock contenedor" style="margin-top:5%;">
+					<div id="bb-bookblock" class="bb-bookblock contenedorLibro" style="margin-top:5%;">
 				<?php
 					$directorio = "assets/libros/$id_libro";
 					$arrayPag = scandir($directorio);
@@ -188,9 +186,9 @@
 				if($apaisado==1){
 					?>
 					<script type="text/javascript">
-					$(".contenedor").css("width", "1200px");
-					$(".contenedor").css("height", "450px");
-					$(".contenedor").css("margin-left", "0%");
+					$(".contenedorLibro").css("width", "1200px");
+					$(".contenedorLibro").css("height", "450px");
+					$(".contenedorLibro").css("margin-left", "0%");
 					</script>
 					<?php
 					for($i=0;$i<$num_pag;$i++){
@@ -203,9 +201,9 @@
 				}else{
 					?>
 					<script type="text/javascript">
-					$(".contenedor").css("width", "900px");
-					$(".contenedor").css("height", "550px");
-					$(".contenedor").css("margin-left", "15%");
+					$(".contenedorLibro").css("width", "900px");
+					$(".contenedorLibro").css("height", "550px");
+					$(".contenedorLibro").css("margin-left", "15%");
 					</script>
 					<?php
 					for($i=0;$i<$num_pag;$i++){
@@ -467,7 +465,7 @@
 			              revert: true
 			             });
 
-			         $(".contenedor").mouseleave(function(e){
+			         $(".contenedorLibro").mouseleave(function(e){
 			           $(".mySlides").css({
 			                  "height": "650px",
 			                  "width": "1000px"
@@ -719,4 +717,3 @@
 <?php
 }	// Fin del if (id_libro != -1)
 ?>
-</body>
