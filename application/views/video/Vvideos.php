@@ -1,7 +1,5 @@
-  <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js'></script>
+
 <script>
-    //buscador con ajax
     $(document).ready(function(){
 		
 	//utilizamos el evento keyup para coger la información
@@ -88,7 +86,7 @@
 <?php
 echo"<a class='insert' onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar Video</a>";
 //echo'<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />';
-echo"<table id='cont' class='tabla' class='display'>
+echo"<table class='tabla' class='display' id='cont'>
 <thead>
 <tr id='cabecera'>
 <th>ID</th>
@@ -107,8 +105,7 @@ echo"<table id='cont' class='tabla' class='display'>
 <th>Modificar</th>
 <th>Eliminar</th></tr>
 </tfoot>
-";
-echo"<tbody>";
+<tbody>";
 foreach ($tabla as $re) {
     $id=$re["id_vid"];
     echo'<tr id="contenido"><td id="id_vid'.$id.'">' . $re["id_vid"] . '</td>';
@@ -201,7 +198,7 @@ echo"
         }
     }
 	$(document).ready(function() {
-        $('.tabla').dataTable({
+        $('#cont').dataTable({
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "No se encontraron resultados en su búsqueda",
@@ -217,7 +214,7 @@ echo"
 	            "previous": "Anterior"
 	    },
         }
-        }); 
+        });
     } );
 	
        
