@@ -124,11 +124,8 @@ foreach ($escenas as $escena) {
                 foreach ($escenasGuiada as $escena) {
                     $codEscena=$escena["cod_escena"];
                     $nombreEscena=$escena["Nombre"];
-                    if(empty($nombreEscena)){
+                    
                         echo "<option value=$codEscena>$codEscena</option>";
-                    } else {
-                        echo "<option value=$codEscena>$nombreEscena</option>";
-                    }
                 }
             ?>
         </select>
@@ -182,6 +179,11 @@ $(".change_img").on("click",function(){
 
 
 function modificarGuiada(elemento){
+
+//TODO:Cargar la tabla aqui.
+    $("#escenaGuiada").;
+    $("#audioGuiada");
+    $("#tituloGuiada");
 
     $("#modalGuiada").css("display","block");
     $(".closeGuiada").click(function (e) {  
@@ -245,7 +247,7 @@ function borrarGuiada(elemento){
         $(elemento).closest(".filaEscena").remove();
     });
     } 
-   
+
 }
 
 function ordenarTabla(elemento){
@@ -289,7 +291,7 @@ function ordenarTabla(elemento){
         $("#orden").val("desc");
     }else{
         $("#orden").val("asc");
-   }
+    }
     });
 }
 
@@ -327,7 +329,7 @@ function moverFila(elemento){
             });
 
             peticion.done(function(resultado){
-               
+            
                 if(resultado > 0){
                     //Se ha movido con exito, actualizacion visual del cambio
                     var filaA_html = $(filaA).html();
@@ -360,7 +362,7 @@ function moverFila(elemento){
         
         //&uarr;
         //&darr;
-   
+
 }
 
 </script>
