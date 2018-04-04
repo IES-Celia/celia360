@@ -108,7 +108,7 @@
             <div id="panel_audio_libre">
               <div class="botonPause"></div>
               <div class='icono_audio_cerrar'></div>
-              <audio id="audio_libre" src=""  controls> </audio>
+              <audio id="audio_libre" src=""  controls/>
               <div class="icono_audio"></div>
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->

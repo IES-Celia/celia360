@@ -388,6 +388,7 @@ public function process_insert_video(){
 public function load_audio(){
     $id = $_REQUEST["id_hotspot"];
     $resultado = $this->hotspotsModel->cargar_audio($id);
+    //var_dump($resultado);
     //TODO: añadir mensaje de la situacion
 }
    /**
