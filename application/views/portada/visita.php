@@ -90,7 +90,7 @@
                     <img src="">
                   </div>
                   <hr class='mensaje_separador_negro'></hr>
-                 
+                
                   <div id="texto">
                 
                   </div> 
@@ -98,14 +98,13 @@
                 </div>
               </div>
           <!-- Fin Ventana modal galería -->
-         
+        
           <!-- Inicio Audio punto sensible LIBRE y GUIADA -->
             <div id="panel_audio_guiada">
               <div class="botonPause"></div>
               <audio id="audio_guiada" src="" controls></audio>
               <div class="icono_audio"></div>
             </div>                          
- 
             <div id="panel_audio_libre">
               <div class="botonPause"></div>
               <div class='icono_audio_cerrar'></div>
@@ -113,7 +112,7 @@
               <div class="icono_audio"></div>
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
-         
+        
           <!-- Inicio mapa -->
         <?php
           $mapa = array_reverse($mapa);
@@ -128,11 +127,11 @@
           echo "</div>";//div final de myModal
         ?>
         
-         <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
+        <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
     <?php
       $mapa = array_reverse($mapa);
       $indice = 0;
-     
+    
       foreach ($mapa as $imagen) {
         if($config_mapa["piso_inicial"]==$indice){
           echo "<div id='zona$indice' class='piso_abierto pisos'>";
@@ -158,7 +157,7 @@
         $indice++;
       }
     ?>
-             
+
   </div>
   <div id="boton_mapa"class="cerrado_boton boton"></div>
 
@@ -174,7 +173,7 @@
         
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
 <script type="text/javascript">
- 
+
 /*
  * Funciones para cargar el JSON de Pannellum mediante petición Ajax y para ponerlo en marcha.
  */
@@ -192,7 +191,7 @@ function visita_opcion(nombre){
     type: 'GET',
     dataType: 'json',
     beforeSend: function(){
-       //Si el visor está indefinido, lo destruimos y creamos uno nuevo
+      //Si el visor está indefinido, lo destruimos y creamos uno nuevo
       if (typeof viewer !== 'undefined') {
         viewer.destroy();
         $("#panorama").append(panorama_html);          
@@ -243,7 +242,7 @@ $(".boton_menu").click(function(){
 
 
 //Toggle Audio boton tanto visita libre como guiada.
-   
+
 $("#panel_audio_guiada .botonPause").click(function(){
   if($("#panel_audio_guiada").css("display") == "block"){
     $(".botonPause").hide();
@@ -506,9 +505,11 @@ peticion.done(function(datos){
   var largo = datos.length;
 
   for(var i=0;i<largo;i++){
+
+    var enlace_audio_correcto = "<?php echo base_url();?>"+datos[i].audio_escena;
     array_escenas.push(datos[i].cod_escena);
     array_titulo.push(datos[i].titulo_escena);
-    array_audios.push(datos[i].audio_escena);
+    array_audios.push(enlace_audio_correcto);
     array_previews.push(datos[i].img_preview);
     var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
     var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
@@ -522,7 +523,6 @@ $('.slider-nav').slick({
   slidesToScroll: 6,
   touchMove:false,
   vertical:false
-  //focusOnSelect: true,
 });
 
 
