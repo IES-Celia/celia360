@@ -46,17 +46,17 @@
 
 			};
 			.cerrarBook{
-  	width: 40px;
-    height: 40px;
-  	background:#208cbf;
-  	color:white;
-  	text-align:center;
-  	font-size:30px;
-  	top: 20px;
-    left: 85%;
-    position: absolute;
-    border-radius:5px;
-  }
+			  	width: 40px;
+			    height: 40px;
+			  	background:#208cbf;
+			  	color:white;
+			  	text-align:center;
+			  	font-size:30px;
+			  	top: 20px;
+			    left: 96%;
+			    position: absolute;
+			    border-radius:5px;
+			  }
 
 
 		</style>
@@ -79,6 +79,7 @@
 		    apaisado = $(this).attr("apaisado");
 		    tipo = $(this).attr("tipo");
 		    location.href = '<?php echo site_url("biblioteca/abrir_phistoria");?>';
+		  
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
@@ -94,6 +95,9 @@
 			var numpag=$("#numeropag").val();
 			$('#flipbook').turn('page', numpag);
 		});
+
+		
+		
 	}); 
 </script>
 	<title>Celia Tour</title>
