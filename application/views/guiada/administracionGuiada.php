@@ -200,7 +200,7 @@ $(".change_img").on("click",function(){
 function modificarGuiada(elemento){
 
 //TODO:Cargar la tabla aqui.
-    $("#escenaGuiada").;
+    $("#escenaGuiada");
     $("#audioGuiada");
     $("#tituloGuiada");
 
