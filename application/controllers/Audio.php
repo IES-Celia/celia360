@@ -1,19 +1,17 @@
-<!--
-    Este archivo es parte de la aplicación web Celia360. 
-
-    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
-    bajo los términos de la GNU General Public License tal y como está publicada por
-    la Free Software Foundation en su versión 3.
- 
-    Celia 360 se distribuye con el propósito de resultar útil,
-    pero SIN NINGUNA GARANTÍA de ningún tipo. 
-    Véase la GNU General Public License para más detalles.
-
-    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
--->
-
-
 <?php
+/**
+    * Este archivo es parte de la aplicación web Celia360. 
+
+    * Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    * bajo los términos de la GNU General Public License tal y como está publicada por
+     *la Free Software Foundation en su versión 3.
+ 
+     *Celia 360 se distribuye con el propósito de resultar útil,
+     *pero SIN NINGUNA GARANTÍA de ningún tipo. 
+     *Véase la GNU General Public License para más detalles.
+
+     *Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+ */
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 /**
@@ -97,7 +95,7 @@ class Audio extends CI_Controller {
 	if($r==false){
             // El audio no está en uso, así que podemos borrarlo.
             $resultado = $this->AudioModel->borraraud($id);
-            if ($resultado == 1) echo "1";  // El audio se ha borrado correctamente
+            if ($resultado == 1) echo $id;  // El audio se ha borrado correctamente
             else echo "0";                  // Algo ha fallado al intentar borrar el audio
 	} else {
             // El audio está en uso: no se puede borrar
