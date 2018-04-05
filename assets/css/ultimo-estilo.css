@@ -24,6 +24,8 @@
     background:rgba(0,0,0,.5);
     /*display: none;*/
     z-index:1000000000;
+    padding-top: 60px;
+    padding-left: 140px;
   }
       .btn {
      background-color: #31a3dd;
