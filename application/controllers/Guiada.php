@@ -1,3 +1,9 @@
+
+
+<?php
+
+/*
+
 <!--
     Este archivo es parte de la aplicación web Celia360. 
 
@@ -11,7 +17,7 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 -->
 
-<?php
+*/
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 
