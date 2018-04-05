@@ -108,7 +108,7 @@ echo"<table class='tabla' class='display' id='cont'>
 <tbody>";
 foreach ($tabla as $re) {
     $id=$re["id_vid"];
-    echo'<tr id="contenido"><td id="id_vid'.$id.'">' . $re["id_vid"] . '</td>';
+    echo'<tr id="contenidovideo'.$id.'"><td id="id_vid'.$id.'">' . $re["id_vid"] . '</td>';
     echo'<td id="url_vid'.$id.'">' . $re["url_vid"] . '</td>';
     echo'<td id="desc_vid'.$id.'">' . $re["desc_vid"] . '</td>';
     echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
@@ -194,9 +194,11 @@ echo"
         } else {
             
             alert("Video borrado con éxito");
-            $('#contenido').remove();
+            selector = "#contenidovideo"+parseInt(r);
+            $(selector).remove();
         }
     }
+	 
 	$(document).ready(function() {
         $('#cont').dataTable({
     	"language": {

@@ -76,7 +76,7 @@ echo"<table class='tabla' class='display' id='cont'>
 
 foreach ($tabla as $re) {
     $id=$re["id_aud"];
-    echo'<tr id="contenido"><td id="id_aud'.$id.'">' . $re["id_aud"] . '</td>';
+    echo'<tr id="contenidoaudio'.$id.'"><td id="id_aud'.$id.'">' . $re["id_aud"] . '</td>';
     echo'<td id="url_aud'.$id.'">' . $re["url_aud"] . '</td>';
     echo'<td id="desc_aud'.$id.'">' . $re["desc_aud"] . '</td>';
     echo'<td id="tipo_aud'.$id.'">' . $re["tipo_aud"] . '</td>';
@@ -185,7 +185,11 @@ echo"
         } else {
             
             alert("Audio borrado con éxito");
-            $('#contenido').remove();
+			
+			selector = "#contenidoaudio"+parseInt(r);
+			
+            $(selector).remove();
+			
         }
     }
 	$(document).ready(function() {

@@ -515,7 +515,7 @@ display: block;
 .icono_audio_cerrar {
   position: relative;
   float: right;
-  left: 60px;
+  left: 25px;
   top:8px;
   z-index: 100;
   cursor:default;
@@ -768,17 +768,18 @@ display: block;
 }
         
   #texto{
-    padding-right: 2%;
-    padding-left: 2%;
+    padding-right: 4%;
+    padding-left: 4%;
     text-align: left;
     border:none;
     overflow-y:auto;
     cursor: default;
-    width:95%;
+    width:90%;
     overflow-x: auto;
     font-size:0.8em;
-    margin-left:5px;
+    margin:0 auto;
     text-align: justify;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     
   }
   #titulo_insercion{
@@ -1041,4 +1042,11 @@ display: block;
 
 .icono_audio_cerrar{
 
+}
+
+#titulo{
+  text-align:center;
+  font-weight: bold;
+  font-size:1.2m;
+  margin-top:3px;
 }

@@ -344,7 +344,7 @@ class Hotspots extends CI_Controller {
     * TODO: documentación.
     */
  public function load_panel(){
-  $id = $_REQUEST["id_hotspost"];
+  $id = $_REQUEST["id_hotspot"];
   $resultado = $this->hotspotsModel->cargar_imagenes_panel($id);
   //TODO: añadir mensaje de la situacion
  }
@@ -388,6 +388,7 @@ public function process_insert_video(){
 public function load_audio(){
     $id = $_REQUEST["id_hotspot"];
     $resultado = $this->hotspotsModel->cargar_audio($id);
+    //var_dump($resultado);
     //TODO: añadir mensaje de la situacion
 }
    /**

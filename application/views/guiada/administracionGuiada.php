@@ -1,4 +1,23 @@
+
+
+
 <?php
+
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+
+
+
 if (isset($error)) {
 		echo "<p style='color:red'>".$error."</p>";
 	}
@@ -124,11 +143,8 @@ foreach ($escenas as $escena) {
                 foreach ($escenasGuiada as $escena) {
                     $codEscena=$escena["cod_escena"];
                     $nombreEscena=$escena["Nombre"];
-                    if(empty($nombreEscena)){
+                    
                         echo "<option value=$codEscena>$codEscena</option>";
-                    } else {
-                        echo "<option value=$codEscena>$nombreEscena</option>";
-                    }
                 }
             ?>
         </select>
@@ -182,6 +198,11 @@ $(".change_img").on("click",function(){
 
 
 function modificarGuiada(elemento){
+
+//TODO:Cargar la tabla aqui.
+    $("#escenaGuiada");
+    $("#audioGuiada");
+    $("#tituloGuiada");
 
     $("#modalGuiada").css("display","block");
     $(".closeGuiada").click(function (e) {  
@@ -245,7 +266,7 @@ function borrarGuiada(elemento){
         $(elemento).closest(".filaEscena").remove();
     });
     } 
-   
+
 }
 
 function ordenarTabla(elemento){
@@ -289,7 +310,7 @@ function ordenarTabla(elemento){
         $("#orden").val("desc");
     }else{
         $("#orden").val("asc");
-   }
+    }
     });
 }
 
@@ -327,7 +348,7 @@ function moverFila(elemento){
             });
 
             peticion.done(function(resultado){
-               
+            
                 if(resultado > 0){
                     //Se ha movido con exito, actualizacion visual del cambio
                     var filaA_html = $(filaA).html();
@@ -360,7 +381,7 @@ function moverFila(elemento){
         
         //&uarr;
         //&darr;
-   
+
 }
 
 </script>

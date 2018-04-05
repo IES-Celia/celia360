@@ -108,7 +108,7 @@
             <div id="panel_audio_libre">
               <div class="botonPause"></div>
               <div class='icono_audio_cerrar'></div>
-              <audio id="audio_libre" src=""  controls> </audio>
+              <audio id="audio_libre" src=""  controls/>
               <div class="icono_audio"></div>
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
@@ -325,8 +325,9 @@ function panelInformacion(hotspotDiv,args){
   var peticion = $.ajax({
     url: "<?php echo site_url("hotspots/load_panel"); ?>",
     type:"post",
-    data:{id_hotspost : args},
+    data:{id_hotspot : args},
     beforeSend: function(){
+      console.log("ID HOTSPOT "+args);
       //Cambiar el valor del texto y titulo
       $("#titulo").html("Cargando...");
       $("#texto").html("Cargando...");
@@ -343,6 +344,7 @@ function panelInformacion(hotspotDiv,args){
     
 peticion.done(function(datos){
   var resultado = JSON.parse(datos);
+  console.log(datos);
   console.log(resultado);
   //Cargamos una vez los datos basicos
   $("#titulo").html(resultado[0].titulo_panel);

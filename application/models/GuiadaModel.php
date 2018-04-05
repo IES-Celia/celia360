@@ -1,3 +1,4 @@
+
 <?php
 
 class GuiadaModel extends CI_Model {
