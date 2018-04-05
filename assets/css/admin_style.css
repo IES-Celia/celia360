@@ -1200,6 +1200,194 @@
         }
 
 
+                                        /* Caja Para "Formulario de UPDATE HotsotsPanel  */
+
+
+
+        #caja6{
+            position:relative;
+            left: 50%;
+            top: 270px;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            font-family: comic;
+            color:white;
+            width: 700px;
+            height: auto;
+            text-align: center;
+            border: 2px solid grey;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px grey;
+            background: rgb(90,163,237); 
+            background: -moz-linear-gradient(to bottom, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
+            background: -webkit-linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 
+            background: linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);       
+            padding:40px;
+        }
+
+                
+        #caja6 input[type=text]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
+
+        }
+        #caja6 input[type=number]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
+
+        }
+
+        #caja6 input[type=password]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0); 
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 13px;
+
+
+        }
+
+        label{
+            float: left;
+            margin-left: 50px;
+            margin-top: 5px;
+            font-size: 15px;
+        }
+
+        #caja6 input[type=submit]{
+            width: 300px;
+            margin: 10px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            border-color: white;
+            font-family: comic;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0,0,0,0.2);
+            transition: 0.4s;
+        }
+        
+        #caja6 input[type=button]{
+            width: 300px;
+            margin: 10px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            border-color: white;
+            font-family: comic;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0,0,0,0.2);
+            transition: 0.4s;
+
+        }
+
+        #caja6 select{
+            border: none;
+            border-bottom:2px solid white;
+            background: rgba(0,0,0,0);
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            font-size: 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            color:white;
+            background-color:transparent;
+            margin-bottom: 13px;
+        }
+        
+        option{
+        
+            background-color:rgb(90,163,237);
+        }
+
+        #caja6 legend{
+            font-size: 35px;
+            margin: 0 auto;
+            line-height: 60px;
+            font-weight: bolder;
+            margin-bottom: 3px;
+            
+            
+        }
+        
+        #caja6 form a{
+            text-decoration: none;
+            color:white;
+            width: 400px;
+            height: 60px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 10px;
+            line-height: 50px;
+            
+        }
+
+        input:focus{
+            outline: 0px;
+        }
+
+        input:activate{
+            background-color: rgba(0,0,0,0.0);
+        }
+
+        #caja6 input[type=button]:hover{
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        #caja6 input[type=submit]:hover{
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        input[type="date" i]{
+            color: white;
+            background-color: transparent;
+            
+        }
+
+        input[type="file"]{
+            color:white;
+            background-color: transparent;
+            
+        }
+
+        #caja6 button{
+            width: 48%;
+            margin: 5px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            border-color: white;
+            font-family: comic;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0,0,0,0.2);
+            transition: 0.4s
+        }
+
+
+
 
     
                                         /*          Estilo ventanas modales */
