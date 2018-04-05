@@ -29,20 +29,20 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
-application/config/config.php
-application/config/database.php
 .vscode
 application/views/portada.php
 
-# Directorios de imágenes
-assets/imgs/
-assets/imagenes/imagenes-hotspot/*
+# Directorios de audios e imágenes
+assets/audio/*
+assets/imagenes/imagenes-hotspots/*
+assets/imagenes/destacados/*
+assets/imagenes/escenas/*
+assets/imagenes/generales/*
+assets/imagenes/mapa/*
+assets/imagenes/portada/*
+assets/imagenes/previews/*
+assets/imagenes/previews-guiada/*
 .vscode
-application/controllers/Audio.php
-application/controllers/Audio.php
-application/controllers/Audio.php
-application/controllers/Audio.php
-application/controllers/Audio.php
 
 # Archivos de configuración
 application/config/config.php
