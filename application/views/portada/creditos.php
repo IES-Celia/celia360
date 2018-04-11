@@ -1,25 +1,24 @@
-<?php 
-$enlace_svg = base_url("assets/css/svg/back_portada.svg");
-$enlace_volver = "background-image: url('".$enlace_svg."')";
+<script>
+$(document).ready(function(){
+   $('html, body').css({
+        overflow: 'auto',
+    });
+});
+</script>
 
-
-?>
-<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 <style>
 
-*{
-    margin:0px;
-    padding:0px;
-    box-sizing: border-box;
-}
 
 body{
     background-color: grey;
+    overflow-y: auto;
+    height:3000px;
+    width:auto;    
 }
 
 /* GALERIA CREDITOS */
 .grid_creditos{
-    display:flex;
+   display:flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
@@ -64,10 +63,6 @@ body{
     background-color:black;
     width: 100%;
     
-}
-body{
-    height:3000px;
-    width:auto;
 }
 
 
@@ -136,14 +131,30 @@ body{
     border:0;
     height: 2px;
 }
+
+
+.prueba_informacion {
+	padding: 10px;
+	margin: 10px;
+	background-color: white;
+	opacity: 0.5;
+	border-radius: 5px;
+}
+
+
 .prueba_carta{
     display:flex;
     justify-content: space-between;
 }
+
+
 #prueba_cartas{
     margin-top:100px;
 }
 
+.nombres_creditos {
+	text-align: center;
+}
 
 </style>
 
@@ -154,29 +165,34 @@ body{
 -->
 
 <div id='prueba_contenedor'>
+    <div class='prueba_informacion'>
+	Celia360 (a.k.a. CeliaTour) es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360
+	desarrollada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web en IES Celia Viñas de Almería (España)
+	durante el curso 2017/2018.
+    </div>
 
     <div id='prueba_cartas'>
 
+		<h2>
+			Equipo de desarrollo<br/>(en orden alfabético):
+		</h2>
         <hr class='separador_creditos'>
+        
 
         <div class='prueba_carta'>
-
             <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Hamza<br> Benhachmi</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Marc<br> Expósito Miras</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Manuel<br> González Mesa</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
         </div>
 
@@ -185,21 +201,18 @@ body{
         <div class='prueba_carta'>
 
             <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Francisco<br> Linares González</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Alejandro<br> López López</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Miguel Ángel López Rodríguez</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
         </div>
 
@@ -208,21 +221,18 @@ body{
         <div class='prueba_carta'>
 
             <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Miguel Ángel<br> López Segura</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>José Luis<br> Ramírez Jiménez</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>María Dolores <br>Salmerón Sierra</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
         </div>
 
@@ -231,15 +241,13 @@ body{
         <div class='prueba_carta'>
 
             <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Álvaro<br> Sánchez Casares</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
 
               <div>
-                <h2>En construcción</h2>
-                    <div class='prueba_informacion'>Informacion de la persona<br>Email:Juanpalomo@gmail.com</div>
-                    <div class='redes'>Linkedin , BADO , Vodafone</div>
+                <h2>Zygimantas<br> Sniurevicius</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
             </div>
         </div>
 
@@ -253,19 +261,26 @@ body{
 
 
   <hr class='separador_creditos'>
-    <h2 align='center'>Tour's</h2>
-
+    <h2 align='center'>Desarrollo de los tours virtuales</h2>
+	<div class='nombres_creditos'>Francisco Linares González<br>Miguel Ángel López Segura<br>Zygimantas Sniurevicius</div>
     <hr class='separador_creditos'>
     <h2 align='center'>Biblioteca</h2>
-
+	<div class='nombres_creditos'>Marc Expósito Miras<br>Manuel González Mesa<br>Alejandro López López</div>
     <hr class='separador_creditos'>
-    <h2 align='center'>Administración</h2>
+    <h2 align='center'>Panel de administración</h2>
+	<div class='nombres_creditos'>Hamza Benhachmi<br>Miguel Ángel López Rodríguez<br>María Dolores Salmerón Segura</div>
 
     <hr class='separador_creditos'>
     <h2 align='center'>Diseño</h2>
+	<div class='nombres_creditos'>Álvaro Sánchez Casares</div>
 
     <hr class='separador_creditos'>
-    <h2 align='center'>Colaboradores</h2>
+    <h2 align='center'>Locución</h2>
+	<div class='nombres_creditos'>Inas El Amrani<br>Marina Esteban Rodríguez<br>Alejandro López López<br>Ana López Valero</div>
+
+    <hr class='separador_creditos'>
+    <h2 align='center'>Edición de imágenes, audio y vídeo</h2>
+	<div class='nombres_creditos'>José Luis Ramírez Jiménez</div>
 
     <hr class='separador_creditos'>
 
@@ -317,5 +332,6 @@ $(".celda_creditos").hover(function(){
     $(this).find(".hover_nombre").fadeOut("fast");
 
 })
+
 
 </script>
