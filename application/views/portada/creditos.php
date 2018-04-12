@@ -136,24 +136,28 @@ body{
 .prueba_informacion {
 	padding: 10px;
 	margin: 10px;
-	background-color: white;
+	background-color: #aaaaaa;
 	opacity: 0.5;
 	border-radius: 5px;
+        font-family: "Lato";
 }
 
 
 .prueba_carta{
     display:flex;
-    justify-content: space-between;
+    /*ustify-content: space-between;*/
+    font-family: "Lato";
 }
 
 
 #prueba_cartas{
     margin-top:100px;
+    font-family: "Lato";
 }
 
 .nombres_creditos {
 	text-align: center;
+        font-family: "Lato";
 }
 
 </style>
@@ -172,10 +176,23 @@ body{
     </div>
 
     <div id='prueba_cartas'>
-
-		<h2>
-			Equipo de desarrollo<br/>(en orden alfabético):
-		</h2>
+	<h2>
+            Equipo de coordinación
+	</h2>
+        
+        <div class='nombres_creditos'>
+            José Barranquero Infantes<br>
+            Félix Expósito López<br>
+            Alfredo Moreno Vozmediano<br>
+        </div>
+            
+        <hr class='separador_creditos'>
+            
+            
+            
+        <h2>
+            Equipo de desarrollo<br/>(en orden alfabético):
+	</h2>
         <hr class='separador_creditos'>
         
 
@@ -251,6 +268,27 @@ body{
             </div>
         </div>
 
+        <hr class='separador_creditos'>
+
+ 	<h2>
+            Colaboradores
+	</h2>
+        
+
+        <div class='nombres_creditos'>
+                    Antonio Barrera Funes<br>
+                    María del Carmen Cuadrado Sánchez<br>
+                    María Belén Garzón<br>
+                    Trino Gómez Ruiz<br>
+                    José Luis Hurtado<br>
+                    Carmen Menéndez<br>
+                    Juan González Parra<br>
+                    Salvador Prieto<br>
+                    Luis Serrano Cortés<br>
+                    Manuela Soriano<br>
+        </div>
+            
+        <hr class='separador_creditos'>
         
         
          
@@ -276,7 +314,7 @@ body{
 
     <hr class='separador_creditos'>
     <h2 align='center'>Locución</h2>
-	<div class='nombres_creditos'>Inas El Amrani<br>Marina Esteban Rodríguez<br>Alejandro López López<br>Ana López Valero</div>
+    <div class='nombres_creditos'>Inas El Amrani<br>María Begoña Cortés Figueredo<br/>Marina Esteban Rodríguez<br>Alejandro López López<br>Ana López Valero<br/>Carmen Pérez Rozas</div>
 
     <hr class='separador_creditos'>
     <h2 align='center'>Edición de imágenes, audio y vídeo</h2>
