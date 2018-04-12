@@ -160,6 +160,11 @@ body{
         font-family: "Lato";
 }
 
+.copyleft {
+  display:inline-block;
+  transform: rotate(180deg);
+}
+
 </style>
 
 <!-- 
@@ -279,13 +284,14 @@ body{
                     Antonio Barrera Funes<br>
                     María del Carmen Cuadrado Sánchez<br>
                     María Belén Garzón<br>
-                    Trino Gómez Ruiz<br>
+                    Trinidad Gómez Ruiz<br>
+                    María José Hernández Meca<br>
                     José Luis Hurtado<br>
-                    Carmen Menéndez<br>
+                    Carmen Menéndez Suárez<br>
                     Juan González Parra<br>
-                    Salvador Prieto<br>
+                    Salvador Prieto Pérez<br>
                     Luis Serrano Cortés<br>
-                    Manuela Soriano<br>
+                    Manuela Soriano Sánchez<br>
         </div>
             
         <hr class='separador_creditos'>
@@ -297,8 +303,6 @@ body{
 
 </div>
 
-
-  <hr class='separador_creditos'>
     <h2 align='center'>Desarrollo de los tours virtuales</h2>
 	<div class='nombres_creditos'>Francisco Linares González<br>Miguel Ángel López Segura<br>Zygimantas Sniurevicius</div>
     <hr class='separador_creditos'>
@@ -318,9 +322,10 @@ body{
 
     <hr class='separador_creditos'>
     <h2 align='center'>Edición de imágenes, audio y vídeo</h2>
-	<div class='nombres_creditos'>José Luis Ramírez Jiménez</div>
+    <div class='nombres_creditos'>José Luis Ramírez Jiménez</div>
 
     <hr class='separador_creditos'>
+    <div class='nombres_creditos'><span class="copyleft">&copy;</span> 2018 IES Celia Viñas (Almería, Spain)</div>
 
 <script type='text/javascript'>
 
