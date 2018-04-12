@@ -11,9 +11,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <!-------------------------------- ENCABEZADO ------------------------------------->
         <h1>Celia360 - Guía del usuario</h1>
         <p>Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo install.txt distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo licese.txt. No deje de consultar el archivo readme.txt antes de proceder a la instalación y explotación de este software.</p>
         
+        <!-------------------------------- TABLA DE CONTENIDO ------------------------------------->
         <div class="contenido">
             <p>Contenido</p>
             <a href="#quees">1. ¿Qué es Celia360?</a><br/>
@@ -37,6 +39,7 @@ and open the template in the editor.
             <a href="#guia_rapida">Anexo. Guía de inicio rápida</a><br/>
         </div>
         
+        <!-------------------------------- 1. ¿QUÉ ES CELIA360? ------------------------------------->
         <h2><a name="quees">1. ¿Qué es Celia360?</a></h2>
         <p>
             Celia360, también conocido como CeliaTour, es una aplicación web diseñada para crear recorridos virtuales a partir de fotografías panorámicas de 360º.
@@ -61,91 +64,155 @@ and open the template in the editor.
             Por último, la aplicación permite personalizar el <i>homepage</i> para adaptarlo al lugar del cual se quiere realizar el recorrido virtual.
         </p>
         
+        <!-------------------------------- 2. INSTALACIÓN ------------------------------------->
         <h2><a name="instalacion">2. Instalación de Celia 360</a></h2>
         <p>
-            Aquí mencionaremos el proceso de despliegue en servidor, y remitiremos a un administrador de sistemas si el usuario no posee conocimientos suficientes para hacerlo.
+            Aquí mencionaremos el proceso de despliegue en servidor, y remitiremos a un administrador de sistemas si el usuario no posee conocimientos suficientes para hacerlo. Esta sección no puede redactarse hasta que hayamos terminado el script de instalación.
         </p>
 
-        <h2><a name="primerospasos">3. Primeros pasos con Celia 360</a></h2>
+         <!-------------------------------- 3. PRIMEROS PASOS ------------------------------------->
+       <h2><a name="primerospasos">3. Primeros pasos con Celia 360</a></h2>
         <p>
-            Aquí describiremos el interfaz de usuario del panel de administración
+            Celia360 proporciona dos puntos de vista al usuario:
         </p>
-
+        <ol>
+            <li>Visita virtual: es la parte que normalmente verán los visitantes de la página. Proporciona acceso a los tres modos de visita (libre, guiada y puntos destacados) así como a la biblioteca.</li>
+            <li>Panel de administración: es la parte que solo ven los administradores de la aplicación. Desde aquí podemos cargar y organizar la información que se verá en las visitas virtuales: mapas, imágenes panorámicas 360º, galerías de imágenes, audios, vídeos, biblioteca, etc.
+        </ol>
+        <p>
+            La <strong>visita virtual</strong> está organizada en torno a un menú con cuatro opciones. Su uso es bastante intuitivo y no entraremos en detalle en el mismo en este manual, sino que nos centraremos en el panel de administración. Nota: las vistas de la aplicación son personalizables, por lo que puede que encuentre diferencias entre su aplicación y las siguientes capturas de pantalla. A pesar de esas diferencias estéticas, la funcionalidad de la aplicación siempre será la misma.
+        </p>
+        <p>
+            Las cuatro opciones son:
+        </p>
+        <ol>
+            <li>Visita libre: permite al usuario moverse con libertad por todo el tour virtual.</li>
+            <li>Visita guiada: muestra solo algunos de los lugares de la visita virtual, acompañados de una audiodescripción. La visita avanza automáticamente de una zona a la siguiente, aunque el usuario puede detenerla en cualquier momento o saltar de una zona a otra con libertad.</li>
+            <li>Puntos destacados: muestra una selección con los puntos más destacados de la visita y permite al usuario acceder a la imagen 360º de ellos directamente.</li>
+            <li>Biblioteca: accede a los libros digitalizados con información sobre el lugar de la visita y permite leerlos con un visor interactivo.</li>
+        </ol>
+        <img src="imagen-requerida.jpg"/>
+        <p>
+            El <strong>panel de administración</strong> proporciona todas las funcionalidades para crear los mapas, subir las imágenes 360º, así como otras imágenes, audios y vídeos, y relacionarlos todos entre sí para componer nuestra visita virtual. También podemos crear la biblioteca online y personalizar el homepage de la aplicación.
+        </p>
+        <p>
+            Aunque el panel de admistración ha sido diseñado para facilitarle al máximo esta labor, tenga en cuenta que la creación de una visita virtual completa es un proceso largo y complejo que requiere del manejo de grandes volúmenes de información, por lo que le aconsejamos que planifique cuidadosamente el mismo antes de crearlo con nuestra aplicación. Esa planificación debería consistir en:
+        </p>
+        <ol>
+            <li>Hacerse con unos planos digitalizados y detallados del lugar que pretende virtualizar. También necesitará una copia impresa de los mismos.</li>
+            <li>Marcar en el plano los lugares en los que va a realizar una fotografía 360º. No deberían estar ni demasiado separados entre sí ni demasiado próximos. Una distancia de alrededor de diez metros entre una imagen y la adyacente puede ser apropiada en la mayoría de los casos.</li>
+            <li>Cuando vaya haciendo las fotografías, marque en el plano qué fotografías ha hecho y asígneles un nombre representativo del lugar. Tenga en cuenta que puede llegar a acumular una cantidad notable de fotografías y puede resultarle difícil saber en qué lugar exacto fueron tomadas cuando vaya a subirlas a la aplicación.</li>
+        </ol>
+        <p>
+            Con esos elementos, puede empezar a trabajar con la aplicación. En el resto de este documento entraremos en detalle en cada proceso, pero ahora le indicaremos cuáles son los primeros pasos que deberá dar para tener una primera versión de su tour virtual funcional, de manera que pueda añadirle más adelante nuevos elementos, tales como paneles de imágenes, audiodescripciones o vídeos. En el <a href="#guia_rapida"> anexo </a>encontrará una guía rápida para desplegar una aplicación completa y con todos los elementos en su servidor, aunque para ello deberá estar familiarizado antes con la aplicación.
+        </p>
+        <p>
+            Una vez que tenga las fotografías panorámicas 360º tomadas y organizadas, llega el momento de subirlas a la plataforma. La operativa es la siguiente:
+        </p>
+        <ol>
+            <li>Entre en el panel de administración escribiendo en su navegador la dirección http://servidor/usuario, donde "servidor" es la URL donde tiene usted instalada su aplicación. Si la desconoce, póngase en contacto con su administrador de sistemas.</li>
+            <li>Teclee su nombre de usuario y contraseña de administrador. Un usuario administrador se habrá creado durante el proceso de instalación. Si la instalación la realizó su administrador de sistemas, consúltele a él su nombre de usuario y contraseña.</li>
+            <li>El panel de administración se abrirá en el administrador de escenas. En primer lugar, tiene que crear sus mapas. Haga clic en "Admin. Mapa" y cree al menos una zona del mapa. Si no sabe hacer esto, consulte <a href="#mapa">la sección 4</a> de este manual.</li>
+            <li>En la administración del mapa, pulse "Volver atrás" para regresar a la administración de escenas.</li>
+            <li>Haga clic en la zona del mapa donde quiera asignar una fotografía panorámica 360º para crearla. Si tiene problemas con esto, consulte <a href="#escenas">la sección 5</a> de este manual.</li>
+            <li>Cuando haya subido todas las fotografías panorámicas, debe conectarlas unas con otras para crear el contenido. Debe entrar en cada escena y crear al menos un hotspot de tipo "enlace" en cada uno de ellos. Para más detalles sobre cómo hacer esto, consulte <a href="#enlace">la sección 7.1</a> de este manual.</li>  
+        </ol>
+        <p>
+            Cuando haya terminado este proceso ya tendrá una primera versión funcional de su tour virtual. Podrá realizar con ella una visita libre por las escenas que haya subido. Su plataforma está ahora lista para crear hotspots (puntos de interés) dentro de sus escenas, así como para subir audiodescripciones y crear una visita guiada y una visita de puntos destacados. Su visita virtual podrá crecer tanto como usted desee, utilizando como base las escenas 360º entrelazadas que usted acaba de crear.
+        </p>
+        
+        <!-------------------------------- 4. MAPA ------------------------------------->
         <h2><a name="mapa">4. Crear el mapa</a></h2>
         <p>
             Aquí contaremos cómo se crea y administra el mapa.
         </p>
 
+        <!-------------------------------- 5. ESCENAS ------------------------------------->
         <h2><a name="escenas">5. Crear las escenas</a></h2>
         <p>
             Aquí contaremos como se suben las escenas (panoramas 360) y cómo se administran (modificar, borrar, añadir más...)
         </p>
 
+        <!-------------------------------- 6. IMÁGENES, AUDIOS, VÍDEOS ------------------------------------->
         <h2><a name="subirimagenes">6. Subir imágenes, audios y vídeos</a></h2>
         <p>
             Aquí describiremos cómo se suben y administran (modificar, borrar, añadir más...) imágenes, audios y vídeos.
         </p>
 
+        <!-------------------------------- 7. HOTSPOTS ------------------------------------->
         <h2><a name="hotspots">7. Definir hotspots (puntos de interés) en las escenas</a></h2>
         <p>
             Aquí explicaremos qué son los hotspots y describiremos cómo es la pantalla para adminsitrarlos, ya que es la más confusa de la aplicación.
         </p>
 
+        <!-------------------------------- 7.1. HOTSPOTS TIPO ENLACE ------------------------------------->
             <h3><a name="enlace">7.1. Hotspots de tipo enlace entre escenas</a></h3>
             <p>
                 Aquí contaremos qué son y cómo se crean, modifican y eliminan este tipo de hotspots.
             </p>
 
+        <!-------------------------------- 7.2. HOTSPOTS TIPO PANEL ------------------------------------->
             <h3><a name="panel">7.2. Hotspots de tipo panel (galería de imágenes)</a></h3>
             <p>
                 Aquí contaremos qué son y cómo se crean, modifican y eliminan este tipo de hotspots.
             </p>
 
+        <!-------------------------------- 7.3. HOTSPOTS TIPO AUDIO ------------------------------------->
             <h3><a name="audio">7.3. Hotspots de tipo audio</a></h3>
             <p>
                 Aquí contaremos qué son y cómo se crean, modifican y eliminan este tipo de hotspots.
             </p>
 
+            
+        <!-------------------------------- 7.4. HOTSPOTS TIPO VÍDEO ------------------------------------->
             <h3><a name="video">7.4. Hotspots de tipo vídeo</a></h3>
             <p>
                 Aquí contaremos qué son y cómo se crean, modifican y eliminan este tipo de hotspots.
             </p>
 
+        <!-------------------------------- 7.5. HOTSPOTS TIPO ESCALERA ------------------------------------->
             <h3><a name="escalera">7.5. Hotspots de tipo escalera</a></h3>
             <p>
                 Aquí contaremos qué son y cómo se crean, modifican y eliminan este tipo de hotspots.
             </p>
 
+        <!-------------------------------- 7.6. CAMBIAR PUNTO DE VISTA ------------------------------------->
             <h3><a name="vistainicial">7.6. Cambiar el punto de vista inicial de una escena</a></h3>
             <p>
                 Aquí contaremos qué son y cómo se crean, modifican y eliminan este tipo de hotspots.
             </p>
         
+        <!-------------------------------- 8. VISITA GUIADA ------------------------------------->
         <h2><a name="guiada">8. Crear una visita guiada</a></h2>
         <p>
             Aquí describiremos cómo se crea y administra una visita guiada.
         </p>
         
+        <!-------------------------------- 9. PUNTOS DESTACADOS ------------------------------------->
         <h2><a name="destacados">9. Crear una visita de puntos destacados</a></h2>
         <p>
             Aquí describiremos cómo se crea y administra la vista de puntos destacados.
         </p>
         
+        <!-------------------------------- 10. CONFIGURAR PORTADA ------------------------------------->
         <h2><a name="portada">10. Configurar la portada (homepage)</a></h2>
         <p>
             Aquí mostraremos las opciones de configuración de la portada
         </p>
         
+        <!-------------------------------- 11. ADMIN. USUARIOS ------------------------------------->
         <h2><a name="usuarios">11. Administrar los usuarios</a></a></h2>
         <p>
             Aquí contaremos cómo se administran (crean, modifican y borran) los usuarios.
         </p>
         
+        <!-------------------------------- 12. CONCLUSIÓN ------------------------------------->
         <h2><a name="tour">12. ¡Su tour virtual está listo!</a></a></h2>
         <p>
             Por último, contaremos qué cabe esperar que vea el visitante de la página si hemos realizado todo lo anterior. Es decir, contaremos lo maravilloso que es nuestro frontend.
         </p>
         
+        <!-------------------------------- ANEXO. GUÍA RÁPIDA ------------------------------------->
         <h2><a name="guia_rapida">Anexo. Guía de inicio rápida</a></a></h2>
         <p>
             Aquí redactaremos una breve guía con lo mínimo para poner en marcha la plataforma en un servidor nuevo.
