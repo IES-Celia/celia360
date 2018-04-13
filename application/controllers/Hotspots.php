@@ -350,13 +350,15 @@ class Hotspots extends CI_Controller {
  }
 
    /**
-    * TODO: documentación.
+    * Recibe la petición vía Ajax para obtener la URL de un vídeo a partir de su Id.
     */
  public function load_video(){
     $id = $_REQUEST["idVideo"];
-    $resultado = $this->hotspotsModel->cargar_video($id);
-    echo $resultado;
-    //TODO: añadir mensaje de la situacion
+    $url = $this->hotspotsModel->cargar_video($id);
+    // El vídeo se almacena en la BD con la URL de Vimeo (p.ej: https://vimeo.com/2910853)
+    // pero para el reproductor embebido es necesario transformarlo (como https://player.vimeo.com/video/2910853)
+    $url_modificada = str_replace("vimeo.com", "player.vimeo.com/video", $url);
+    echo $url_modificada;
 }
 
    /**
