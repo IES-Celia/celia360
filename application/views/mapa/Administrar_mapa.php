@@ -35,35 +35,30 @@
             <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
             <input type="hidden" name="punto_inicial">
             <input type="hidden" name="escena_inicial">
+            <div id="mapa_escena_hotspot" >
+            <?php
+                $indice = 0;
+                
+                    echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
+                    echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
+                    foreach ($puntos as $punto) {
+                        if($punto['piso']==$indice){
+                            if($punto['id_escena'] == $id_scene){
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }else{
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }
+                        }
+                    }
+                    echo "</div>";
+                
+            ?>
+            </div>
             <input type="submit" value="Añadir">
             <input type="button" value="Cerrar">
         </form>
-        <?php
-                echo '<div id="mapa_escena_hotspot">';
-                        $indice = 0;
-                
-                        foreach ($mapa as $imagen) {
-                            echo "<div id='zona".$indice."' class='pisos_config' style='display: none; background-image: url(".base_url($imagen['url_img']).");'>";
-                        
-                        
-                            foreach ($puntos as $punto) {
-                                if($punto['piso']==$indice){
-                                
-                                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-                                    <span class='tooltip'>".$punto['id_escena']."</span>
-                                    </div>";
-                                
-                                }
-                            }
-                        echo "</div>";
-                        $indice++;
-                        }
-                ?>
-                </div>
     </div>
 </div>
-
-
 <?php
    echo '<div id="mapa_escena">';
          $indice = 0;

@@ -15,6 +15,12 @@
     display: inline-grid;
     margin-left: 15px;
 }
+#mapa_configuracion{
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+    display: inline-grid;
+}
 #mapa_escena_hotspot{
     z-index: 2;
     overflow: visible;
