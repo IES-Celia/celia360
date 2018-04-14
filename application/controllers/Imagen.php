@@ -107,7 +107,7 @@ class Imagen extends CI_Controller {
 
         $actualizar_url = 'assets/imagenes/imagenes-hotspots/' . $this->input->post_get('titulo_imagen') . ".jpg";
 
-        $resultado = $this->Img->modificar_imagen();
+        $resultado = $this->ImagenModel->modificar_imagen();
 
         $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
         if ($resultado) {
