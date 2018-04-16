@@ -1,5 +1,4 @@
-CELIA360 README FILE
---------------------
+# CELIA360 README FILE
 
 Celia360 es una aplicación web de software libre realizada por el alumnado
 de 2º curso del Ciclo Formativo de Grado Superior de Desarrollo de Aplicaciones
@@ -15,27 +14,23 @@ un interfaz amigable para que los visitantes puedan recorrer el mapa mediante
 un navegador web convencional.
 
 
-LICENCIA DE USO
----------------
+# LICENCIA DE USO
 
 La información sobre la licencia puede encontrarse en el archivo license.txt.
 Por favor, lea cuidadosamente ese archivo si pretende explotar este software.
 
 
-INSTALACIÓN
------------
+# INSTALACIÓN
 
 Las notas de instalación están disponibles en el archivo install.txt.
 
 
-GUÍA DEL USUARIO
-----------------
+# GUÍA DEL USUARIO
 
 La documentación de usuario está disponible en el directorio guia_usuario.
 
 
-CRÉDITOS
---------
+# CRÉDITOS
 
 La aplicación fue diseñada, codificada, probada y puesta en producción durante
 el curso 2017/2018 por el siguiente alumnado de 2º curso del Ciclo Formativo de 
@@ -54,8 +49,7 @@ Grado Superior de Desarrollo de Aplicaciones Web del IES Celia Viñas
 - Sniurevicius, Zygimantas
 
 
-CONTACTO
---------
+# CONTACTO
 
 Pueden contactar con el IES Celia Viñas a través del correo electrónico:
 admin@iescelia.org

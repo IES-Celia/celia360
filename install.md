@@ -1,4 +1,4 @@
-CELIA360 - NOTAS DE INSTALACIÓN
+# CELIA360 - NOTAS DE INSTALACIÓN
 
 Celia360 debe desplegarse en servidor como cualquier otra aplicación web.
 El procedimiento general es:
