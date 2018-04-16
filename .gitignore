@@ -42,8 +42,11 @@ assets/imagenes/mapa/*
 assets/imagenes/portada/*
 assets/imagenes/previews/*
 assets/imagenes/previews-guiada/*
-.vscode
 
 # Archivos de configuración
 application/config/config.php
-application/config/database.php
+
+# Archivos con las variables de configuración
+.env.development
+.env.production
+.env.testing
