@@ -5,10 +5,17 @@ El procedimiento general es:
 
 1. Mover todo el código fuente a un directorio del servidor accesible vía web.
 2. Crear una base de datos MySQL o MariaDB vacía.
-3. Configurar el archivo /application/config/database.php, especificando:
-    - Host de la base de datos.
+3. Crear un archivo de configuración a partir del archivo de ejemplo [`.env.example`](.env.example). El nombre  del archivo dependerá del entorno donde se esté ejecutando la aplicación. Los nombres posibles son:
+
+    - `.env.development`
+    - `.env.production`
+    - `.env.testing`
+
+    Tendrá que especificar:
+    - Host de la base de datos.  
     - Nombre de la base de datos.
     - Usuario y contraseña con privilegios suficientes para operar esa base de datos.
+
 4. Lanzar el script install.php. Este script creará la estructura necesaria de tablas en su base de datos.
 5. Lanzar la web desde cualquier navegador web. La aplicación estará ya lista para comenzar a recibir datos. 
 
