@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 21-03-2018 a las 12:33:47
+-- Tiempo de generación: 17-04-2018 a las 16:39:57
 -- Versión del servidor: 10.1.26-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -40,12 +40,15 @@ CREATE TABLE `audio` (
 INSERT INTO `audio` (`id_aud`, `url_aud`, `desc_aud`, `tipo_aud`) VALUES
 (5, 'assets/audio/a.mp4', 'portico', 'v-guiada'),
 (6, 'assets/audio/holaaaaa.mp4', 'puerta cafeteria de enfrente del instituto', 'd-objeto'),
-(7, 'assets/audio/audio1.mp3', '', 'd-objeto'),
-(8, 'assets/audio/audio2.mp3', '', 'd-objeto'),
 (10, 'assets/audio/audio4.mp3', '', 'd-objeto'),
-(12, 'assets/audio/audiobar.mp3', 'audio fachada principal', 'v-guiada'),
 (13, 'assets/audio/audioportico.mp3', 'audio portico', 'v-guiada'),
-(14, 'assets/audio/audioescaleras.mp3', 'audio escaleras', 'v-guiada');
+(14, 'assets/audio/audioescaleras.mp3', 'audio escaleras', 'v-guiada'),
+(15, 'assets/audio/audio1.mp3', 'Fachada principal', 'v-guiada'),
+(16, 'assets/audio/alejandro1.mp3', 'alexFachada', 'v-guiada'),
+(17, 'assets/audio/alejandro2.mp3', 'alexPortico', 'v-guiada'),
+(18, 'assets/audio/alejandro11.mp3', 'alexFachada2', 'v-guiada'),
+(19, 'assets/audio/alejandro3.mp3', 'alex-antesala', 'v-guiada'),
+(20, 'assets/audio/párrafo 1 alex (online-audio-converter.com).mp3', 'wewe', 'v-guiada');
 
 -- --------------------------------------------------------
 
@@ -69,11 +72,10 @@ INSERT INTO `celda_pd` (`id_celda`, `escena_celda`, `imagen_celda`, `titulo_celd
 (9, 'p2p2f1', 'assets/imagenes/destacados/9.jpg', 'Salón de actos', 2),
 (3, 'p1p2f3', 'assets/imagenes/destacados/3.jpg', 'Portón', 3),
 (4, 'p1p12', 'assets/imagenes/destacados/4.jpg', 'Zona de profesorado', 3),
-(5, 'p1p5f1', 'assets/imagenes/destacados/5.jpg', 'Dept. Geografía', 3),
+(5, 'p1p5f1', 'assets/imagenes/destacados/5.jpg', 'Dept. Geografía', 4),
 (1, 'p0p4f2', 'assets/imagenes/destacados/1.jpg', 'Capilla', 4),
 (2, 'p0p1f1', 'assets/imagenes/destacados/2.jpg', 'Pozo', 4),
-(7, 'p2p4f3', 'assets/imagenes/destacados/7.jpg', 'Biblioteca', 2),
-(10, 'p1p9f2', 'assets/imagenes/destacados/10.jpg', 'dfgdfgdfg', 0);
+(7, 'p2p4f3', 'assets/imagenes/destacados/7.jpg', 'Biblioteca', 2);
 
 -- --------------------------------------------------------
 
@@ -175,9 +177,9 @@ INSERT INTO `escenas` (`id_escena`, `Nombre`, `cod_escena`, `hfov`, `pitch`, `ya
 (64, '', 'p3p10', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p3p10.JPG'),
 (65, '', 'p4p0', 120, -8, 0, 'equirectangular', 'assets/imagenes/escenas/p4p0.JPG'),
 (66, '', 'p4p1', 120, -4, -163, 'equirectangular', 'assets/imagenes/escenas/p4p1.JPG'),
-(67, '', 'p4p2', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p2.JPG'),
-(68, '', 'p4p3', 120, -21, 115, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
-(69, '', 'p4p4', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p4.JPG'),
+(67, '', 'p4p2', 120, -15, 94, 'equirectangular', 'assets/imagenes/escenas/p4p2.JPG'),
+(68, '', 'p4p3', 120, -7, -74, 'equirectangular', 'assets/imagenes/escenas/p4p3.JPG'),
+(69, '', 'p4p4', 120, -5, -15, 'equirectangular', 'assets/imagenes/escenas/p4p4.JPG'),
 (70, '', 'p4p5', 120, -14, 175, 'equirectangular', 'assets/imagenes/escenas/p4p5.JPG'),
 (89, 'Pasillo', 'p0p8', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8.JPG'),
 (90, 'Dpt. de E. Fisica', 'p0p8f1', 120, 10, 10, 'equirectangular', 'assets/imagenes/escenas/p0p8f1.JPG'),
@@ -340,6 +342,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (34, 147),
 (35, 75),
 (35, 76),
+(35, 325),
 (36, 77),
 (36, 232),
 (36, 258),
@@ -348,6 +351,11 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (36, 262),
 (36, 263),
 (36, 280),
+(36, 341),
+(36, 342),
+(36, 343),
+(36, 344),
+(36, 345),
 (37, 79),
 (37, 168),
 (37, 169),
@@ -428,9 +436,18 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (66, 140),
 (66, 141),
 (67, 142),
-(68, 143),
-(69, 144),
+(67, 330),
+(67, 331),
+(68, 334),
+(68, 335),
+(68, 336),
+(69, 337),
+(69, 338),
+(69, 339),
+(69, 340),
 (70, 145),
+(70, 332),
+(70, 333),
 (72, 146),
 (89, 153),
 (89, 154),
@@ -445,6 +462,8 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (92, 284),
 (92, 285),
 (92, 286),
+(92, 323),
+(92, 326),
 (93, 162),
 (93, 163),
 (93, 213),
@@ -460,6 +479,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (96, 208),
 (96, 299),
 (96, 300),
+(96, 322),
 (97, 203),
 (97, 204),
 (97, 205),
@@ -477,6 +497,7 @@ INSERT INTO `escenas_hotspots` (`id_escena`, `id_hotspot`) VALUES
 (102, 186),
 (102, 187),
 (102, 264),
+(103, 329),
 (104, 198),
 (105, 188),
 (105, 189),
@@ -603,7 +624,7 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (44, NULL, NULL, ' ', 6, -174, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', -5, -42, 'scene', 1, NULL),
 (45, NULL, NULL, ' ', -16, -2, 'custom-hotspot-salto', 'puntos', 'punto29', 'p1p2f3', 0, 0, 'scene', 0, NULL),
 (46, NULL, NULL, ' ', -12, 175, 'custom-hotspot-salto', 'puntos', 'punto27', 'p1p2f1', 16, -173, 'scene', 0, NULL),
-(47, NULL, NULL, ' ', -13, -171, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 18, 175, 'scene', 0, NULL),
+(47, NULL, NULL, ' ', -13, -171, 'custom-hotspot-salto', 'puntos', 'punto28', 'p1p2f2', 21, 175, 'scene', 0, NULL),
 (48, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto17', 'p1p3', -4, 180, 'scene', 0, NULL),
 (49, NULL, NULL, ' ', -9, -5, 'custom-hotspot-salto', 'puntos', 'punto16', 'p1p2', 0, 0, 'scene', 0, NULL),
 (50, NULL, NULL, ' ', -11, 174, 'custom-hotspot-salto', 'puntos', 'punto34', 'p1p32', -5, 180, 'scene', 0, NULL),
@@ -655,7 +676,7 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (100, NULL, NULL, ' ', -7, 87, 'custom-hotspot-salto', 'puntos', 'punto5', 'p0p4', -8, -45, 'scene', 0, NULL),
 (101, NULL, NULL, ' ', -5, 177, 'custom-hotspot-salto', 'puntos', 'punto12', 'p0p5f1', 0, 0, 'scene', 0, NULL),
 (102, NULL, NULL, ' ', -6, 74, 'custom-hotspot-salto', 'puntos', 'punto10', 'p0p1f2', -8, -45, 'scene', 0, NULL),
-(103, NULL, NULL, ' ', -2, -9, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', -2, 141, 'scene', 0, NULL),
+(103, NULL, NULL, ' ', -2, -9, 'custom-hotspot-salto', 'puntos', 'punto9', 'p0p5', -2, 141, 'scene', 1, NULL),
 (104, NULL, NULL, ' ', -9, 165, 'custom-hotspot-salto', 'puntos', 'punto13', 'p0p5f2', 1, -13, 'scene', 0, NULL),
 (105, NULL, NULL, ' ', -3, 169, 'custom-hotspot-salto', 'puntos', 'punto12', 'p0p5f1', 9, -13, 'scene', 0, NULL),
 (106, NULL, NULL, ' ', -20, -106, 'custom-hotspot-salto', 'puntos', 'punto61', 'p3p8', -3, 172, 'scene', 0, NULL),
@@ -692,9 +713,7 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (139, NULL, NULL, ' ', -2, 31, 'custom-hotspot-salto', 'puntos', 'punto66', 'p4p3', -20, 114, 'scene', 0, NULL),
 (140, NULL, NULL, ' ', -17, 144, 'custom-hotspot-salto', 'puntos', 'punto67', 'p4p4', -15, 178, 'scene', 0, NULL),
 (141, NULL, NULL, ' ', -15, -128, 'custom-hotspot-salto', 'puntos', 'punto68', 'p4p5', -21, 176, 'scene', 0, NULL),
-(142, NULL, NULL, ' ', 0, 20, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -1, 20, 'scene', 0, NULL),
-(143, NULL, NULL, ' ', -2, -84, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -6, -165, 'scene', 0, NULL),
-(144, NULL, NULL, ' ', -3, -3, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
+(142, NULL, NULL, ' ', -3, -111, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', -1, 20, 'scene', 0, NULL),
 (145, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', 'puntos', 'punto64', 'p4p1', 0, 0, 'scene', 0, NULL),
 (146, NULL, NULL, ' ', -3, 40, 'custom-hotspot-salto', ' ', ' ', 'p2guia', 18, -7, 'scene', 0, NULL),
 (148, NULL, NULL, '', -11, -94, 'custom-hotspot-salto', 'puntos', 'punto46', 'p2p2f1', 0, 0, 'scene', 0, NULL),
@@ -820,7 +839,28 @@ INSERT INTO `hotspots` (`id_hotspot`, `titulo_panel`, `texto_panel`, `descripcio
 (317, 'dsfsdf', 'sdfsdf', '', -20, 150, 'custom-hotspot-info', 'panelInformacion', '317', '', 0, 0, 'info', 0, 'ninguno'),
 (318, 'ffdgdf', 'gdfgdf', '', -25, 177, 'custom-hotspot-info', 'panelInformacion', '318', '', 0, 0, 'info', 0, 'ninguno'),
 (319, 'nbvnvb', 'nvbnvbn', '', -24, -161, 'custom-hotspot-info', 'panelInformacion', '319', '', 0, 0, 'info', 0, 'ninguno'),
-(320, '', '', '', 0, 0, '', '', '', '', 0, 0, '', 0, 'ninguno');
+(320, '', '', '', 0, 0, '', '', '', '', 0, 0, '', 0, 'ninguno'),
+(322, 'Alambique', 'Es un aparato utilizado para la destilación de líquidos mediante un proceso de evaporación por calentamiento y posterior condensación por enfriamiento. Fue inventado por el sabio persa Al-Razi alrededor del siglo X de nuestra era, para producir perfumes, medicinas y el alcohol procedente de frutas fermentadas.', '', -27, -136, 'custom-hotspot-info', 'panelInformacion', '322', '', 0, 0, 'info', 0, 'documento322.pdf'),
+(323, 'Mao', 'Es un aparato utilizado para la destilación de líquidos mediante un proceso de evaporación por calentamiento y posterior condensación por enfriamiento. Fue inventado por el sabio persa Al-Razi alrededor del siglo X de nuestra era, para producir perfumes, medicinas y el alcohol procedente de frutas fermentadas.', '', -5, 54, 'custom-hotspot-info', 'panelInformacion', '323', '', 0, 0, 'info', 0, 'ninguno'),
+(325, 'Prueba', 'Esto es una prueba', '', -15, 34, 'custom-hotspot-info', 'panelInformacion', '325', '', 0, 0, 'info', 0, 'ninguno'),
+(326, NULL, NULL, '', 3, 43, 'custom-hotspot-video', 'video', '9', '', 0, 0, 'info', 0, NULL),
+(329, NULL, NULL, '', -11, 54, 'custom-hotspot-salto', 'puntos', '', 'p1p13', 0, 0, 'scene', 0, NULL),
+(330, NULL, NULL, '', -7, -175, 'custom-hotspot-salto', 'puntos', '', 'p4p3', -8, -66, 'scene', 0, NULL),
+(331, NULL, NULL, '', -5, -98, 'custom-hotspot-salto', 'puntos', '', 'p4p5', -11, -177, 'scene', 0, NULL),
+(332, NULL, NULL, '', -14, 82, 'custom-hotspot-salto', 'puntos', '', 'p4p4', -4, -14, 'scene', 0, NULL),
+(333, NULL, NULL, '', -5, 1, 'custom-hotspot-salto', 'puntos', '', 'p4p2', -9, 87, 'scene', 0, NULL),
+(334, NULL, NULL, '', -6, 79, 'custom-hotspot-salto', 'puntos', '', 'p4p4', 0, 0, 'scene', 0, NULL),
+(335, NULL, NULL, '', -8, 138, 'custom-hotspot-salto', 'puntos', '', 'p4p2', -24, 126, 'scene', 0, NULL),
+(336, NULL, NULL, '', -1, 89, 'custom-hotspot-salto', 'puntos', '', 'p4p1', 0, 0, 'scene', 0, NULL),
+(337, NULL, NULL, '', -13, 76, 'custom-hotspot-salto', 'puntos', '', 'p4p5', 0, 0, 'scene', 0, NULL),
+(338, NULL, NULL, '', -6, 173, 'custom-hotspot-salto', 'puntos', '', 'p4p3', 0, 0, 'scene', 0, NULL),
+(339, NULL, NULL, '', -22, 117, 'custom-hotspot-salto', 'puntos', '', 'p4p1', 0, 0, 'scene', 0, NULL),
+(340, NULL, NULL, '', -5, 140, 'custom-hotspot-salto', 'puntos', '', 'p4p2', 0, 0, 'scene', 0, NULL),
+(341, NULL, NULL, '', -9, -52, 'custom-hotspot-audio', 'musica', '10', '', 0, 0, 'info', 0, NULL),
+(342, NULL, NULL, '', 7, -59, 'custom-hotspot-video', 'video', '14', '', 0, 0, 'info', 0, NULL),
+(343, NULL, NULL, '', 13, -33, 'custom-hotspot-salto', 'puntos', '', 'p0p8f2', 0, 0, 'scene', 0, NULL),
+(344, NULL, NULL, '', 8, -75, 'custom-hotspot-escaleras', 'escaleras', '', '', 0, 0, '', 0, NULL),
+(345, 'Prueba', 'Esto es una prueba', '', 31, -62, 'custom-hotspot-info', 'panelInformacion', '345', '', 0, 0, 'info', 0, 'ninguno');
 
 -- --------------------------------------------------------
 
@@ -907,7 +947,11 @@ INSERT INTO `imagenes` (`id_imagen`, `titulo_imagen`, `texto_imagen`, `url_image
 (312, 'laboratorio de ciencias naturales', '', '312.jpg', '2018-02-19'),
 (314, 'laboratorio de ciencias naturales', '', '314.jpg', '2018-02-19'),
 (343, 'escudo', '', '343.jpg', '2018-03-21'),
-(344, 'Escudo de armas salon actos', '', '344.jpg', '2018-03-18');
+(344, 'Escudo de armas salon actos', '', '344.jpg', '2018-03-18'),
+(345, 'vidriera escudo central', '', '345.jpg', '2018-03-21'),
+(346, 'vidriera escudo derecha', '', '346.jpg', '2018-03-21'),
+(347, 'vidriera escudo lateral', '', '347.jpg', '2018-03-21'),
+(351, 'Mao', '', '351.jpg', '2018-03-20');
 
 -- --------------------------------------------------------
 
@@ -937,7 +981,34 @@ INSERT INTO `libros` (`id_libro`, `titulo`, `autor`, `editorial`, `lugar_edicion
 (9, 'El esplendor de Almeria en el siglo XI', 'E. Castro Guisola', 'Caja Rural Intermediterranea, Cajama.', 'Almeria', '2018-01-28', '84', 0, 1),
 (12, 'El arte en España', '-', 'Thomas', '-', '2018-03-17', '412', 0, 0),
 (13, 'Tecnologia industrial', 'M.Tortosa', '-', '-', '2018-03-10', '632', 0, 0),
-(16, 'Levantar un plano', 'Joaquín Pérez de Rozas', 'Pértiga-Rozas', '-', '2018-03-20', '654654', 0, 0);
+(16, 'Levantar un plano', 'Joaquín Pérez de Rozas', 'Pértiga-Rozas', '-', '2018-03-20', '65465', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `opciones_portada`
+--
+
+CREATE TABLE `opciones_portada` (
+  `titulo_web` varchar(200) NOT NULL,
+  `imagen_web` varchar(200) NOT NULL,
+  `subtitulo_visita_libre` varchar(200) NOT NULL,
+  `subtitulo_visita_guiada` varchar(200) NOT NULL,
+  `subtitulo_puntos_destacados` varchar(200) NOT NULL,
+  `subtitulo_biblioteca` varchar(200) NOT NULL,
+  `show_biblioteca` varchar(1) NOT NULL,
+  `show_historia` varchar(1) NOT NULL,
+  `nombre_fuente` varchar(100) NOT NULL,
+  `color_fuente` varchar(10) NOT NULL,
+  `logo_web` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `opciones_portada`
+--
+
+INSERT INTO `opciones_portada` (`titulo_web`, `imagen_web`, `subtitulo_visita_libre`, `subtitulo_visita_guiada`, `subtitulo_puntos_destacados`, `subtitulo_biblioteca`, `show_biblioteca`, `show_historia`, `nombre_fuente`, `color_fuente`, `logo_web`) VALUES
+('CeliaTour', '(campo-sin-uso)', 'Recorre el emblemático IES Celia Viñas con libertad', 'Déjate llevar y te mostraremos la historia de nuestro instituto', 'Pasea por los lugares más notables del IES Celia Viñas', 'Accede online a los libros históricos más notables de nuestra biblioteca', '1', '1', '(TODO)', '(TODO)', '(TODO)');
 
 -- --------------------------------------------------------
 
@@ -1022,6 +1093,7 @@ INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
 (304, 220),
 (316, 343),
 (316, 344),
+(322, 209),
 (319, 296),
 (319, 298),
 (318, 343),
@@ -1031,7 +1103,24 @@ INSERT INTO `panel_imagenes` (`id_hotspot`, `id_imagen`) VALUES
 (317, 210),
 (317, 209),
 (317, 310),
-(317, 216);
+(317, 216),
+(323, 351),
+(326, 231),
+(326, 219),
+(326, 214),
+(326, 209),
+(327, 215),
+(327, 351),
+(327, 347),
+(328, 214),
+(328, 213),
+(328, 209),
+(328, 210),
+(345, 209),
+(345, 210),
+(345, 211),
+(345, 212),
+(346, 351);
 
 -- --------------------------------------------------------
 
@@ -1080,25 +1169,6 @@ INSERT INTO `pisos` (`piso`, `url_img`, `punto_inicial`, `titulo_piso`, `escena_
 (2, 'assets/imagenes/mapa/planta1.png', 'punto36', 'Primera planta', 'p2p1'),
 (3, 'assets/imagenes/mapa/planta2.png', 'punto49', 'Segunda planta', 'p3p1'),
 (4, 'assets/imagenes/mapa/tejado.png', 'punto63', 'Tejado', 'p4p0');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `portada`
---
-
-CREATE TABLE `portada` (
-  `id_portada` int(11) NOT NULL,
-  `tituloweb` varchar(50) NOT NULL,
-  `imagenweb` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `portada`
---
-
-INSERT INTO `portada` (`id_portada`, `tituloweb`, `imagenweb`) VALUES
-(1, 'CeliaTour', '');
 
 -- --------------------------------------------------------
 
@@ -1259,7 +1329,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `p
 (33, 'loli', 'loli', '', '81dc9bdb52d04dc20036dbd8313ed055', '', 1),
 (34, 'Miguel', 'Miguel', 'Lopez', '81dc9bdb52d04dc20036dbd8313ed055', 'miguel@gmail.com', 0),
 (36, 'ham', 'hamza', 'ben', '81dc9bdb52d04dc20036dbd8313ed055', 'hamzabenhachmi@gmail.com', 1),
-(38, 'Felix', 'Felix', 'Exposito Lopez', '33eb30894eb347b0ea9e254f30d46cc7', 'el_otro_04@hotmail.com', 1);
+(38, 'Felix', 'Felix', 'Exposito Lopez', '33eb30894eb347b0ea9e254f30d46cc7', 'el_otro_04@hotmail.com', 1),
+(39, 'david', 'david', 'mora', '81dc9bdb52d04dc20036dbd8313ed055', 'davidmoracaceres20@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -1278,17 +1349,16 @@ CREATE TABLE `video` (
 --
 
 INSERT INTO `video` (`id_vid`, `url_vid`, `desc_vid`) VALUES
-(8, 'https://player.vimeo.com/video/2910853', 'wewwwe'),
-(9, 'https://player.vimeo.com/video/2910853', 'Almería'),
-(10, 'https://player.vimeo.com/video/2910853', 'jaa'),
-(11, 'https://player.vimeo.com/video/2910853', '2'),
-(12, 'https://player.vimeo.com/video/2910853', 'ee'),
-(13, 'https://player.vimeo.com/video/2910853', 'ew'),
-(14, 'https://player.vimeo.com/video/2910853', 're'),
-(15, 'https://player.vimeo.com/video/2910853', 'aaaaaaaaa'),
-(16, 'https://player.vimeo.com/video/260919387', 'Proceso de destilacion de agua'),
-(17, 'https://player.vimeo.com/video/260919387', 'video descpricion de la papa'),
-(18, 'https://player.vimeo.com/video/260919387', 'es algo normal pero temerario');
+(8, 'https://vimeo.com/2910853', 'wewwwe'),
+(9, 'https://vimeo.com/2910853', 'Almería'),
+(10, 'https://vimeo.com/2910853', 'jaa'),
+(12, 'https://vimeo.com/2910853', 'ee'),
+(13, 'https://vimeo.com/2910853', 'ew'),
+(14, 'https://vimeo.com/2910853', 're'),
+(15, 'https://vimeo.com/2910853', 'aaaaaaaaa'),
+(16, 'https://vimeo.com/260919387', 'Proceso de destilacion de agua'),
+(17, 'https://vimeo.com/260919387', 'video descpricion de la papa'),
+(18, 'https://vimeo.com/260919387', 'es algo normal pero temerario');
 
 -- --------------------------------------------------------
 
@@ -1310,8 +1380,12 @@ CREATE TABLE `visita_guiada` (
 --
 
 INSERT INTO `visita_guiada` (`id_visita`, `cod_escena`, `titulo_escena`, `audio_escena`, `img_preview`, `orden`) VALUES
-(5, 'p1p2f2', 'Portico', 'assets/audio/audioportico.mp3', 'prev5.jpg', 1),
-(10, 'p1p2f3', 'Fachada principal', 'assets/audio/texto1.mp3', 'prev10.jpg', 0);
+(26, 'p1p2', 'Conserjeria', 'assets/audio/holaaaaa.mp4', 'prev26.jpg', 3),
+(24, 'p1p2f2', 'Pórtico', 'assets/audio/alejandro2.mp3', 'prev24.jpg', 1),
+(25, 'p1p2f1', 'Escaleras', 'assets/audio/holaaaaa.mp4', 'prev25.jpg', 2),
+(23, 'p1p2f3', 'Fachada principal', 'assets/audio/alejandro11.mp3', 'prev23.jpg', 0),
+(27, 'p1p11', 'Puerta secretaria', 'assets/audio/a.mp4', 'prev27.jpg', 4),
+(28, 'p1p12', 'Antesala', 'assets/audio/alejandro3.mp3', 'prev28.jpg', 5);
 
 --
 -- Índices para tablas volcadas
@@ -1375,12 +1449,6 @@ ALTER TABLE `pisos`
   ADD KEY `piso` (`piso`);
 
 --
--- Indices de la tabla `portada`
---
-ALTER TABLE `portada`
-  ADD PRIMARY KEY (`id_portada`);
-
---
 -- Indices de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
@@ -1413,17 +1481,17 @@ ALTER TABLE `visita_guiada`
 -- AUTO_INCREMENT de la tabla `audio`
 --
 ALTER TABLE `audio`
-  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `escenas`
 --
 ALTER TABLE `escenas`
-  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 --
 -- AUTO_INCREMENT de la tabla `imagenes`
 --
 ALTER TABLE `imagenes`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
+  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;
 --
 -- AUTO_INCREMENT de la tabla `libros`
 --
@@ -1438,12 +1506,12 @@ ALTER TABLE `panel_informacion`
 -- AUTO_INCREMENT de la tabla `puntos_mapa`
 --
 ALTER TABLE `puntos_mapa`
-  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `video`
 --
@@ -1453,7 +1521,7 @@ ALTER TABLE `video`
 -- AUTO_INCREMENT de la tabla `visita_guiada`
 --
 ALTER TABLE `visita_guiada`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- Restricciones para tablas volcadas
 --
