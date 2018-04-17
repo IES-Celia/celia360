@@ -43,8 +43,6 @@ assets/imagenes/portada/*
 assets/imagenes/previews/*
 assets/imagenes/previews-guiada/*
 
-# Archivos de configuración
-application/config/config.php
 
 # Archivos con las variables de configuración
 .env.development
