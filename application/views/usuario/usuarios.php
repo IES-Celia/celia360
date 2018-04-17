@@ -1,8 +1,3 @@
-<style type="text/css">
-    button{
-        st
-    }
-</style>
 
 <?php
 //Tabla usuarios

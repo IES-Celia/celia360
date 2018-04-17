@@ -59,7 +59,7 @@ class Biblioteca extends CI_Controller {
 	public function vertodosloslibros($idlibro = -1,$apaisado = -1,$tipo=-1){
                 $this->load->model('BibliotecaModel', 'biblioteca');
                 $this->load->model('PortadaModel');
-                $datos["portada"]=$this->PortadaModel->info_portada();
+                $datos["portada"]=$this->PortadaModel->get_info_portada();
                 $datos["tabla"] = $this->bibliotecaModel->get_info();
 		$datos["id_libro"] = $idlibro;
 		$datos["apaisado"] = $apaisado;

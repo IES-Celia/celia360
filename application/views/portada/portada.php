@@ -5,11 +5,15 @@
         <main>
             <div id="slider1_portada" style="background-image:url('<?php echo site_url("assets/imagenes/portada/portada.jpg"); ?>')">
                  <div class="contenedor_portada">
-                     <h1 id="titulito"><?php echo $con["tituloweb"] ?></h1>
+                     <h1 id="titulito"><?php echo $con["titulo_web"] ?></h1>
                      <div id="parrafito">
                          <p id="descripcion_portada"></p>
                         <div id="separador_portada"> </div>
-                        <a href="<?php echo site_url("biblioteca/abrir_phistoria"); ?>" class="btn">HISTORIA</a>
+                        <?php if ($con["show_historia"] == "1") {
+                            // El botón "Historia" solo se muestra si está configurado así en las opciones de portada
+                            echo "<a href='".site_url("biblioteca/abrir_phistoria")."' class='btn'>HISTORIA</a>";
+                        }
+                        ?>
                      </div>
                  </div> 
             </div>

@@ -20,7 +20,7 @@ class Tour extends CI_Controller {
   public function index(){
     $this->load->model('PortadaModel');
     $datos["vista"] = "portada/portada";
-    $datos["portada"]=$this->PortadaModel->info_portada();
+    $datos["portada"]=$this->PortadaModel->get_info_portada();
     $this->load->view("main_template", $datos);
   }
 
@@ -34,7 +34,7 @@ class Tour extends CI_Controller {
     $this->load->model('PortadaModel');
     $datos["vista"] = "portada/visita";
     $datos["tipo_visita"] = $tipo_visita;
-    $datos["portada"]=$this->PortadaModel->info_portada();
+    $datos["portada"]=$this->PortadaModel->get_info_portada();
     $datos["mapa"] = $this->mapa->cargar_mapa();
     $datos["puntos"] = $this->mapa->cargar_puntos();
     $datos["config_mapa"] = $this->mapa->cargar_config();    
@@ -81,58 +81,44 @@ class Tour extends CI_Controller {
     }
 
    
+  /**
+   * Muestra la vista con los créditos de la aplicación
+   */
+  public function creditos(){
+      $this->load->model('PortadaModel');
+      $datos["portada"]=$this->PortadaModel->get_info_portada();
+      $datos["vista"] = "portada/creditos";
+      $this->load->view("main_template", $datos);
+  }
+
+  
     /**
      * Muestra la vista del formulario de modificación de datos de la portada en el panel de administración.
      */
   public function formulario_portada(){ 
       $this->load->model("PortadaModel");
-      $datos["tabla"]= $this->PortadaModel->info_portada();
+      $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
       $datos["vista"]="portada/updatePortada";
       $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
       $this->load->view("admin_template", $datos);
   }
 
   /**
-   * Muestra la vista con los créditos de la aplicación
+   * Procesa la modificación de las opciones de la portada
    */
-  public function creditos(){
-      $this->load->model('PortadaModel');
-      $datos["portada"]=$this->PortadaModel->info_portada();
-      $datos["vista"] = "portada/creditos";
-      $this->load->view("main_template", $datos);
-  }
-
-  
-  /**
-   * Procesa la modificación del título de la portada
-   */
-  public function modificar_titulo(){
+  public function modificar_portada(){
     $this->load->model("PortadaModel");
-    $resultado = $this->PortadaModel->editar_titulo();   
-    $datos["tabla"]= $this->PortadaModel->info_portada();
+    $resultado = $this->PortadaModel->update_portada();   
+    $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
     $datos["vista"]="portada/updatePortada";
-    if ($resultado) $datos["mensaje"] = "Título modificado correctamente";
-    else $datos["mensaje"] = "Error al modificar el título";
+    if ($resultado == 0) $datos["mensaje"] = "Opciones de portada modificadas correctamente";
+    if ($resultado == 1) $datos["error"] = "Error al modificar las opciones de portada";
+    if ($resultado == 2) $datos["error"] = "Datos modificados con éxito, pero no se ha cambiado la imagen de fondo";
+    if ($resultado == 3) $datos["error"] = "No se han podido modificar los datos ni se ha cambiado la imagen de fondo";
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 
     $this->load->view("admin_template", $datos);
 
   }
 
-  /**
-   * Procesa la modificación de la imagen de fondo de la portada
-   */
-  public function modificar_imagen(){
-    $this->load->model("PortadaModel");
-    $resultado = $this->PortadaModel->editar_imagen();   
-    $datos["tabla"]= $this->PortadaModel->info_portada();      
-    $datos["vista"]="portada/updatePortada";
-    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-    if ($resultado) $datos["mensaje"] = "Título modificado correctamente";
-    else $datos["mensaje"] = "Error al modificar el título";
-
-    $this->load->view("admin_template", $datos);
-
-  }    
-  
 }

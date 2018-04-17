@@ -129,9 +129,10 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-    width: 33%
+    width: 33%;
  
-  -webkit-transition: text-shadow 0.1s ease-in, -webkit-transform 0.14s ease-in;
+  -webkit-transition: text-shadow 0.1s ease-in;
+  -webkit-transform: 0.14s ease-in;
   transition: text-shadow 0.1s ease-in, -webkit-transform 0.14s ease-in;
   transition: transform 0.14s ease-in, text-shadow 0.1s ease-in;
   transition: transform 0.14s ease-in, text-shadow 0.1s ease-in, -webkit-transform 0.14s ease-in;
