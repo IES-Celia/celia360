@@ -171,7 +171,7 @@
 			return $res;
 		}
 		public function busqueda_aproximada($str_busqueda){
-					$res = $this->db->query("Select * from libros where id_libro LIKE '%".$q."%' OR titulo LIKE '%".$q."%' OR autor LIKE '%".$q."%' OR editorial LIKE '%".$q."' ");
+					$res = $this->db->query("SELECT * FROM libros WHERE id_libro LIKE '%".$str_busqueda."%' OR titulo LIKE '%".$str_busqueda."%' OR autor LIKE '%".$str_busqueda."%' OR editorial LIKE '%".$str_busqueda."' ");
 					return $res;
 		}
 
