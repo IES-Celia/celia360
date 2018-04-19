@@ -32,10 +32,10 @@ echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus
 //****************** PAGINACIÓN CON JQUERY LOLI************\\
 echo "<table id='cont' class='display'>";
 echo "<thead>";
-echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
+echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Descripción</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
 echo "</thead>";
 echo "<tfoot>";
-echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
+echo '<tr id="cabecera"><th>Id</th><th>T&iacute;tulo</th><th>Descripción</th><th>Url</th><th>Miniatura</th><th>Fecha</th><th>Modificar Imagen</th><th>Borrar Imagen</th></tr>';
 echo "</tfoot>";
 echo "<tbody>";
 foreach ($lista_imagenes as $ima) {
@@ -47,6 +47,7 @@ foreach ($lista_imagenes as $ima) {
     echo "<tr id='imagen-" . $fila . "'>";
     echo "<td class='nombre-img'>" . $ima["id_imagen"] . "</td>";
     echo "<td class='titulo-img'>" . $ima["titulo_imagen"] . "</td>";
+    echo "<td class='texto-img'>" . $ima["texto_imagen"] . "</td>";
     echo "<td class='url-img'>" . $ima["url_imagen"] . "</td>";
     echo "<td class='miniatura' align='center'><a href='" .
     base_url('assets/imagenes/imagenes-hotspots/' . $ima['url_imagen']) . "'><img class='imagen-img' src=\"" .
@@ -87,7 +88,7 @@ $du = $lista_imagenes[0];
             <?php
             echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
             echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
-            echo "<!--<br>Texto:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>-->";
+            echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
             echo "<br>Fecha:<input type='date' id='fecha_modificar' name='fecha'  value=''><br/>";
             echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value=''><br/>";
@@ -116,14 +117,14 @@ $du = $lista_imagenes[0];
             <input id= "id_imagen" name='id_imagen' type ="hidden"><br />
             <label id= "label_titulo" for="titulo">T&iacute;tulo:</label>
             <input type="text" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
-            <!--<label for="texto_imagen">Texto:</label>
-            <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>-->
+            <label for="texto_imagen">Descripción:</label>
+            <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha" value="<?php echo date("Y-m-d"); ?>" required><br />
             <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-            <label for="imagen">Imagen:</label>
-            <input type="file" name="imagen"  id="imagen" placeholder="Seleccionar la imagen" required><br />
+            <label for="imagen">Imágenes (puede seleccionar varias):</label>
+            <input type="file" name="imagen[]"  id="imagen" placeholder="Seleccionar la(s) imagen(es)" required multiple><br />
             <input type="hidden" name="accion" value="insertar_imagen"><br>
             <input type="submit" name="enviar" value="Guardar imagen"/>
         </form>

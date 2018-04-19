@@ -20,92 +20,83 @@ class ImagenModel extends CI_Model {
     /**
      * Inserta un registro en la tabla "imagenes" de la base de datos
      * Sube al servidor el fichero de la imagen reduciendo sus dimensiones y el peso de la misma, crea una miniatura de la imagen en el servidor
+     * TODO: reducir tamaño de imagen al subirla si es excesivo
      * 
-     * @return $resultado, nos devuelve si se han realizado las acciones correctamente (true) o no (false)
+     * @return $resultado, nos devuelve si se han realizado las acciones correctamente (1) o no (0). Es un array. Cada posición se refiere a cada una de las imágenes subidas.
      * @author: María Dolores Salmeron Sierra
      */
-    //INSERTAR REDUCIENDO LA IMAGEN
     public function insertar_imagen() {
 
         $resultado = array();
 
+        // Extraemos la info. de la imagen del POST del formulario
         $id_imagen = $this->input->post_get('id_imagen');
         $titulo_imagen = $this->input->post_get('titulo_imagen');
         $texto_imagen = $this->input->post_get('texto_imagen');
         $fecha = $this->input->post_get('fecha');
 
-        //Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
-        $this->db->query("INSERT INTO imagenes(id_imagen) VALUES (0)"); // Es un campo auto_increment, así que ignorará el 0
+        // Ahora vamos a subir el archivo de imagen. Como puede haber varios, lo hacemos en un bucle.
+        $num_imagenes = count($_FILES["imagen"]["name"]);
+        $array_imagenes = $_FILES["imagen"];
+        
+        print_r($array_imagenes);
+                
+        for ($i = 0; $i < count($array_imagenes['name']); $i++) {
+            // Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
+            $this->db->query("INSERT INTO imagenes(id_imagen) VALUES (0)"); // Es un campo auto_increment, así que ignorará el 0
 
-        $resul = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes ORDER BY id_imagen DESC LIMIT 1");
-        $id_nuevaimagen = $resul->row()->maxid;
+            $resul = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes ORDER BY id_imagen DESC LIMIT 1");
+            $id_img = $resul->row()->maxid;
 
-        //cambiar el nombre de la imagen de carga	
-        $userpic = $id_nuevaimagen . "." . "jpg";
+            // Cambiamos el nombre de la imagen de carga	(le asignamos como nombre el id seguido de .jpg)
+            $userpic = $id_img . ".jpg";
 
-        $config['upload_path'] = 'assets/imagenes/imagenes-hotspots/';
-        $config['allowed_types'] = 'jpg';
-        $config['file_name'] = $userpic;
+            $upload_path = 'assets/imagenes/imagenes-hotspots/'.$userpic;
+            
+            // Subimos la imagen
+            if (!move_uploaded_file($array_imagenes['tmp_name'][$i], $upload_path)) {
+                // ¡¡La subida del fichero ha fallado!!
+                $resultado[$i] = 0; // Marca de error en la subida
+                // Borramos el registro que habíamos creado vacío (solo con el ID)
+                $this->db->query("DELETE FROM imagenes WHERE id_imagen = '$id_img'");
+            } else {
+                // ¡¡La subida del fichero ha sido un éxito!!
+                // Modificamos el registro que antes insertamos en la base de datos
+                $resultado[$i] = $this->db->query("UPDATE imagenes SET titulo_imagen='$titulo_imagen', texto_imagen = '$texto_imagen', 
+                                            url_imagen = '$userpic', fecha = '$fecha' WHERE id_imagen = '$id_img'");
 
-        //cargar la librería
-        $this->load->library('upload', $config);
-    
-        if (!$this->upload->do_upload('imagen')) {
+                // Redimensionamos la imagen con la libreria imagen_lib de CodeIgniter
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = $upload_path;
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = TRUE;
+                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
+                $config['width'] = 1200;
+                $this->load->library('image_lib', $config);
 
-            // ¡¡La subida del fichero ha fallado!!
-            $resultado[0] = false;
-            $resultado[1] = array('error' => $this->upload->display_errors());
-            // Borramos el registro que habíamos creado vacío (solo con el ID)
-            $this->db->query("DELETE FROM imagenes WHERE id_imagen = '$id_nuevaimagen'");
-        } else {
-            // ¡¡La subida del fichero ha sido un éxito!!
-            //EN OTRO CASO SUBIMOS LA IMAGEN, CREAMOS LA MINIATURA 
-            $data = array('upload_data' => $this->upload->data());
+                if (!$this->image_lib->resize()) {
+                    // Ha ocurrido un error al redimensionar la imagen
+                    $resultado[$i] = 0;  // Marca de error
+                }
 
-            $img_full_path = 'assets/imagenes/imagenes-hotspots/' . $userpic;
+                $this->image_lib->clear();
 
-            // Modificamos el registro en la base de datos
-            $resultado[0] = true;
-            $resultado[1] = $this->db->query("UPDATE imagenes SET titulo_imagen='$titulo_imagen', texto_imagen = '$texto_imagen', 
-                                        url_imagen = '$userpic', fecha = '$fecha' WHERE id_imagen = '$id_nuevaimagen'");
+                // Repetimos la jugada, ahora para crear la miniatura
+                $nombre_miniatura = $id_img . "_miniatura.jpg";
+                copy('assets/imagenes/imagenes-hotspots/' . $userpic, 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura);
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura;
+                $config['maintain_ratio'] = TRUE;
+                $config['width'] = 200;
+                $this->load->library('image_lib', $config);
+                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
+                $this->image_lib->initialize($config);
 
-            //REDIMENSIONAR IMAGEN   
-            $config['image_library'] = 'gd2';
-            //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
-            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $userpic;
-            $config['create_thumb'] = TRUE;
-            $config['maintain_ratio'] = TRUE;
-            //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
-            $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
-            $img_redim1 = $config['new_image'];
-            $config['width'] = 1200;
-            //$config['height'] = 1200;
-            $this->load->library('image_lib', $config);
-
-            if (!$this->image_lib->resize()) {
-                echo $this->image_lib->display_errors();
-                exit();
-            }
-
-            $this->image_lib->clear();
-    
-            // Creamos una miniatura de la imagen
-            $nombre_miniatura = $id_nuevaimagen . "_miniatura.jpg";
-            copy('assets/imagenes/imagenes-hotspots/' . $userpic, 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura);
-            $config['image_library'] = 'gd2';
-            $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura;
-            $config['maintain_ratio'] = TRUE;
-            $config['width'] = 200;
-            //$config['height'] = 200;
-            $this->load->library('image_lib', $config);
-            $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
-
-            $this->image_lib->initialize($config); /// <<- IMPORTANTE
-
-            if (!$this->image_lib->resize()) {
-                echo $this->image_lib->display_errors();
-                exit();
-            }
+                if (!$this->image_lib->resize()) {
+                    // Ha ocurrido un error al crear la miniatura imagen
+                    $resultado[$i] = 0; // Marca de error
+                }
+            } // for
         }
         return $resultado;
     }

@@ -39,21 +39,21 @@ class Imagen extends CI_Controller {
         //acciones para insertar la imagen
         $resultado = $this->ImagenModel->insertar_imagen();
 
-        if ($resultado[0]) {
-            $datos["mensaje"] = "Imagen insertada correctamente";
-            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
-            $datos["vista"] = "imagen/principal_img";
-            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            //cargar la vista
-            $this->load->view('admin_template', $datos);
-        } else {
-            $datos["error"] = "Ha ocurrido un error al insertar el registro";
-            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
-            $datos["vista"] = "imagen/principal_img";
-            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-            //cargar la vista
-            $this->load->view('admin_template', $datos);
+        // Comprobamos cuantas imágenes se han subido correctamente
+        $correctas = 0;
+        $incorrectas = 0;
+        for ($i = 0; $i < count($resultado); $i++) {
+            if ($resultado[$i] == 0) $incorrectas++; else $correctas++;
         }
+        $total = $correctas + $incorrectas;
+        if ($incorrectas > 0)
+            $datos["error"] = $total." imágenes subidas: $correctas correctas - $incorrectas fallidas";
+        else
+            $datos["mensaje"] = $total." imágenes subidas correctamente";
+        $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+        $datos["vista"] = "imagen/principal_img";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('admin_template', $datos);
     }
 
     /**
