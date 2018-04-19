@@ -24,7 +24,6 @@ class VideoModel extends CI_Model {
             $tabla[] = $fila;
         }
         return $tabla;
-        echo $tabla;
     }
 	public function relacion($id){
 		$s="select clickHandlerFunc from hotspots where clickHandlerFunc='video' and clickHandlerArgs='$id'";
