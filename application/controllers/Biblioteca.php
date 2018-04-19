@@ -178,7 +178,7 @@ class Biblioteca extends CI_Controller {
 	}
 
 	public function buscar_libro_ajax($str_busqueda) {
-		$lista_libros = $this->bibliotecaModel->busqueda_aproximada($str_busqueda);
+		$resultado = $this->bibliotecaModel->busqueda_aproximada($str_busqueda);
 		if($resultado->num_rows > 0){
 		$salida.="
 			<table border='1px solid black' style='border-spacing: 0;' class='tabla_datos'>
