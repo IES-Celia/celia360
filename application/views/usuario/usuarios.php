@@ -143,6 +143,7 @@ echo"
 
         function borrarusuario(idusu){
             resultado=confirm("¿Desea borrar el usuario?");
+            
             if(resultado){ 
             $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuesta);
             }
