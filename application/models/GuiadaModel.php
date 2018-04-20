@@ -104,8 +104,6 @@ class GuiadaModel extends CI_Model {
 				WHERE id_visita='$idEscena'");
 		
         return $this->db->affected_rows();
-
-
     }
 
     public function ordenarTabla(){
