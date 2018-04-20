@@ -229,6 +229,7 @@ function modificarGuiada(elemento){
                 url: urlPeticion,
                 data: {id : idEscena, escena : codEscena , audio : audioEscena , titulo : tituloEscena  }
             });
+        }
 
             peticion.done(function(resultado){
                 if(resultado==1){
@@ -246,7 +247,7 @@ function modificarGuiada(elemento){
             $("#titulo_escena").val("");
             $("#escenaGuiada").val($("#escenaGuiada option:first").val());
             $("#audioGuiada").val($("#audioGuiada option:first").val());
-        }   
+           
         });
 }
 

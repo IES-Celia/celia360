@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 <script>
 $(document).ready(function(){
    $('html, body').css({
@@ -164,6 +165,23 @@ body{
   display:inline-block;
   transform: rotate(180deg);
 }
+#social{
+    width:100%;
+}
+#social li{
+    list-style-type:none;
+    float:left;
+    width: 10%;
+    text-decoration: none;
+    background-color:#fff;
+    border-radius:50%;
+    text-align:center;
+    padding: 7px;
+    margin: 5px;
+
+}
+
+
 
 </style>
 
@@ -205,16 +223,38 @@ body{
             <div>
                 <h2>Hamza<br> Benhachmi</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
 
               <div>
                 <h2>Marc<br> Expósito Miras</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+
+                </div>
             </div>
 
               <div>
                 <h2>Manuel<br> González Mesa</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
         </div>
 

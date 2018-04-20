@@ -124,8 +124,7 @@ class Guiada extends CI_Controller {
     public function actualizarEscena(){
         $id_visita = $_REQUEST["id"];
         $actualizar = $this->GuiadaModel->actualizarEscena($id_visita);
-        if($actualizar) "1";
-        else  "0";
+        echo($actualizar);
     }
 
     public function ordenarTabla(){
