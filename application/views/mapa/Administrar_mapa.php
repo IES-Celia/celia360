@@ -34,16 +34,16 @@
             <label for="piso_inicial">Piso inicial</label>
             <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
             <input type="hidden" name="punto_inicial">
-            <input type="hidden" name="escena_inicial">
-            <div id="mapa_escena_hotspot" >
+            <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
+            <div id="mapa_config_mapa" >
             <?php
-                $indice = 0;
+                $indice = $configuracion["piso_inicial"];
                 
                     echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
                     echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
-                            if($punto['id_escena'] == $id_scene){
+                            if($punto['id_escena'] == $configuracion['escena_inicial']){
                                 echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
                             }else{
                                 echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";

@@ -27,6 +27,12 @@
     position: relative;
     display: inline-grid;
 }
+#mapa_config_mapa{
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+    display: inline-grid;
+}
 .botones_mapa{
     float: right;
     display: inline-grid;

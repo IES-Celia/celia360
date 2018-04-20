@@ -144,6 +144,18 @@ $(document).ready(function() {
 		mapa_responsivo()
 	}, 100);
 	
+	$("input[name=piso_inicial]").change(function(){
+
+	})
+
+	$("#mapa_config_mapa > div > .puntos ").click(function() {
+		$("#pama_config_mapa > div > .punto_inicial").class("puntos")
+		$(this).class("puntos")
+	})
+	$("#mapa_config_mapa > div > .punto_incial ").click(function () {
+		$("#pama_config_mapa > div > .punto_inicial").class("puntos")
+		$(this).class("puntos")
+	})
 });
 
 
@@ -252,5 +264,7 @@ function bajar_piso(){
 /**
  * Administración mapa
  */
+
+
 
  
