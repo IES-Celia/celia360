@@ -118,10 +118,19 @@
     }
 
         public function borrarusu($id){
-          
-            $this->db->query("Delete from usuarios where id_usuario = '$id'");
+            
+            if($id==1){
 
-            return $this->db->affected_rows();
+               $resultado=false;
+
+            }else{
+
+                $this->db->query("Delete from usuarios where id_usuario = '$id'");
+                $resultado=true;
+               
+            }
+
+            return $resultado;
         
     }
 

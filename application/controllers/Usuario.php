@@ -119,8 +119,7 @@
 
         public function borrarusuario($idusu){ 
         //Borrar usuario
-
-    
+            
             $resultado = $this->UsuarioModel->borrarusu($idusu);
             if ($resultado != 0) 
                 echo $idusu;
