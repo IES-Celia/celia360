@@ -142,6 +142,12 @@
             return $this->db->affected_rows();
     }
 	
+    /**
+     * Comprueba si el usuario logueado tiene permisos para ver esta vista
+     *
+     * @param String vista El nombre de la vista que se pretende mostrar
+     * @return true si el usuario tiene permisos para ver esta vista, false en otro caso
+     */
 	public function comprueba_permisos($vista){
         if ($this->session->tipousr) {
             $tipo=$this->session->tipousr;
@@ -150,10 +156,15 @@
         $dir =  explode("/", $vista);
         $dir = $dir[0];
 
-        if ($tipo == 1 && ($dir == "audio" || $dir == "portada" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir== "usuario" || $dir == "guiada" || $dir == "mapa")) return true;
-        else if ($tipo == 2 && ($dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir == "guiada" || $dir == "mapa" ) )return true;
-        else if ($tipo == 3 && $dir == "biblioteca") return true;
-        else return false;
+        // El tipo 1 es adminsitrador, el tipo 2 es "mapero" y el tipo 3 es bibliotecario
+        if ($tipo == 1 && ($dir == "audio" || $dir == "portada" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "puntosdestacados" || $dir == "video" || $dir == "hotspots" || $dir== "usuario" || $dir == "guiada" || $dir == "mapa")) 
+            return true;
+        else if ($tipo == 2 && ($dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir == "mapa" ) )
+            return true;
+        else if ($tipo == 3 && $dir == "biblioteca") 
+            return true;
+        else 
+            return false;
 
     }
 
