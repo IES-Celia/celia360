@@ -119,7 +119,7 @@ class Audio extends CI_Controller {
     }
     
     /**
-     * ???
+     * Obtiene el listado de audios mediante ajax, formateados en tabla???
      */
     //ATENCIÓN CAMBIO LOLI
     public function obtenerListaAudiosAjax() {
@@ -133,7 +133,7 @@ class Audio extends CI_Controller {
             <tr>
             <th>ID</th>
             <th>URL</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Tipo de audio</th>
             <th>Reproducir</th>
             <th>Seleccionar</th>
