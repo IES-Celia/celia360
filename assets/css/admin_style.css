@@ -511,19 +511,31 @@
         
         #caja form a{
             text-decoration: none;
-            -webkit-appearance: button;
-            -moz-appearance: button;
-            appearance: button;
+            border:2px solid white;
             color:white;
-            width: 400px;
-            height: 60px;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
             cursor: pointer;
             margin-top: 10px;
             border-radius: 10px;
             line-height: 50px;
-            background-color: rgba(0,0,0,0.0);
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
             
         }
+
+        #caja form a:hover{
+            background-color:rgba(0,0,0,0.4);
+            
+        }
+
+
 
         input:focus{
             outline: 0px;
@@ -688,16 +700,29 @@
         
         #caja2 form a{
             text-decoration: none;
+            border:2px solid white;
             color:white;
-            width: 400px;
-            height: 60px;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
             cursor: pointer;
             margin-top: 10px;
             border-radius: 10px;
             line-height: 50px;
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
             
         }
 
+        #caja2 form a:hover{
+            background-color:rgba(0,0,0,0.4);
+            
+        }
         input:focus{
             outline: 0px;
         }
@@ -889,17 +914,27 @@
         
         #caja3 form a{
             text-decoration: none;
-            -webkit-appearance: button;
-            -moz-appearance: button;
-            appearance: button;
+            border:2px solid white;
             color:white;
-            width: 400px;
-            height: 60px;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
             cursor: pointer;
             margin-top: 10px;
             border-radius: 10px;
             line-height: 50px;
-            background-color: rgba(255,255,255,0.6);
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
+            
+        }
+
+        #caja3 form a:hover{
+            background-color:rgba(0,0,0,0.4);
             
         }
 
@@ -948,7 +983,7 @@
 
                                                         /* Caja 4 para el Mapa espeficicamente */
 
-    #caja4{
+        #caja4{
             position:relative;
             left: 36%;      
             top:400px;
@@ -983,6 +1018,32 @@
             color: white;
             background-color: rgba(0,0,0,0.2);
             transition: 0.4s;
+        }
+
+         #caja4 form a{
+            text-decoration: none;
+            border:2px solid white;
+            color:white;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 10px;
+            line-height: 50px;
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
+            
+        }
+
+        #caja4 form a:hover{
+            background-color:rgba(0,0,0,0.4);
+            
         }
         
         #caja4 input[type=button]{
@@ -1142,21 +1203,31 @@
             
         }
         
-        #caja5 form a{
+         #caja5 form a{
             text-decoration: none;
-            -webkit-appearance: button;
-            -moz-appearance: button;
-            appearance: button;
+            border:2px solid white;
             color:white;
-            width: 400px;
-            height: 60px;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
             cursor: pointer;
             margin-top: 10px;
             border-radius: 10px;
             line-height: 50px;
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
             
         }
 
+        #caja5 form a:hover{
+            background-color:rgba(0,0,0,0.4);
+            
+        }
         input:focus{
             outline: 0px;
         }
@@ -1332,18 +1403,31 @@
             
         }
         
-        #caja6 form a{
+         #caja6 form a{
             text-decoration: none;
+            border:2px solid white;
             color:white;
-            width: 400px;
-            height: 60px;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
             cursor: pointer;
             margin-top: 10px;
             border-radius: 10px;
             line-height: 50px;
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
             
         }
 
+        #caja6 form a:hover{
+            background-color:rgba(0,0,0,0.4);
+            
+        }
         input:focus{
             outline: 0px;
         }

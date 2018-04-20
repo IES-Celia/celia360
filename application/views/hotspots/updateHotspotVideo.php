@@ -19,6 +19,11 @@ div.centrado {
 	margin-right:25%;
 	
 }
+        
+        .rojo:hover{
+            color:red;
+            border-color:red;
+        }
 
 
 
@@ -35,7 +40,7 @@ echo "
 
 <h1> Formulario para UPDATE Hotspots Video </h1>
 
-<fieldset class='for'>
+<fieldset id='caja6'>
 
 <form action=' ".site_url("hotspots/updateHotspotVideo")." ' method='get'>
 
@@ -58,7 +63,7 @@ echo "
 	
 	
 	<input type='submit' class='button'>
-	<a href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
+	<a class='rojo' href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
     >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
 	
 </form>

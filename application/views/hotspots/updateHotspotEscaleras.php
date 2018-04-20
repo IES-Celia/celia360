@@ -36,7 +36,7 @@
 
         <fieldset id='caja5'>
 
-        <form class='for'>
+        <form>
 
         <a href='" . site_url('escenas/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificar coordenadas</a><br><br>
 	
