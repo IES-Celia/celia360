@@ -91,7 +91,7 @@ and open the template in the editor.
             <li>Puntos destacados: muestra una selección con los puntos más destacados de la visita y permite al usuario acceder a la imagen 360º de ellos directamente.</li>
             <li>Biblioteca: accede a los libros digitalizados con información sobre el lugar de la visita y permite leerlos con un visor interactivo.</li>
         </ol>
-        <img src="imagen-requerida.jpg"/>
+        <img src="imgs/imagen-requerida.jpg"/>
         <p>
             El <strong>panel de administración</strong> proporciona todas las funcionalidades para crear los mapas, subir las imágenes 360º, así como otras imágenes, audios y vídeos, y relacionarlos todos entre sí para componer nuestra visita virtual. También podemos crear la biblioteca online y personalizar el homepage de la aplicación.
         </p>
@@ -124,20 +124,106 @@ and open the template in the editor.
         <!-------------------------------- 4. MAPA ------------------------------------->
         <h2><a name="mapa">4. Crear el mapa</a></h2>
         <p>
-            Aquí contaremos cómo se crea y administra el mapa.
+            Después de la instalación, una de las primeras cosas que tendrá que hacer con la aplicación es crear el mapa. En esta sección del manual le explicaremos cómo hacerlo. También le mostraremos cómo puede modificar el mapa de su tour virtual una vez que ya está creado.
+        </p>
+        <p>
+            Para administrar el mapa, primero debe loguearse en la aplicación como un usuario con privilegios de administrador general o de administrador del mapa. Vea <a href="#usuarios">la sección de administración de usuarios</a> para aprender más acerca de los tipos de usuario y de cómo administrarlos.
+        </p>
+        <p>
+            Para loguearse en la aplicación debe escribir en un navegador web la dirección: http://servidor/directorio/usuario (también podría ser https), donde debe sustituir "servidor" por el host donde haya desplegado el software y "directorio" por la carpeta donde lo haya hecho. Esta carpeta podría estar en blanco si el despliegue se ha realizado en el directorio raíz de su servidor. Consulte con su administrador de sistemas o la persona que haya realizado el despliegue si tiene dudas a este respecto.
+        </p>
+        <p>
+            Por ejemplo, la dirección para acceder al formulario de login podría tener un aspecto como este: http://iescelia.org/celia360/usuario
+        </p>
+        <p>
+            Cuando acceda a esa dirección, podrá ver un formulario como este:<br>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Deberá teclear un nombre de usuario y una contraseña válidos para acceder a la aplicación. Una vez hecho esto, se encontrará con una pantalla semejante a esta (las opciones pueden variar dependiendo de sus privilegios de usuario):<br>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Haga clic en el botón "Admin. Mapa" para acceder a las siguientes opciones de administración del mapa:
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Las opciones de administración del mapa son las siguientes:
+            <ul>
+                <li><strong>Añadir zona</strong>: permite añadir un plano sobre el que posteriormente podrá desplazarse para diseñar su recorrido virtual. Por ejemplo, si quiere crear un recorrido virtual para un edificio, una zona podría ser cada una de las plantas del mismo, y deberá proporcionar al sistema un plano de cada una de las plantas por separado. Si, en cambio, está creando una visita virtual a, por ejemplo, el casco histórico de una ciudad, cada zona puede ser una parte diferente del callejero del mismo. Organice sus zonas antes de entrar en esta opción de la aplicación y asígneles un número de orden: eso le ayudará a no perderse si su tour virtual tiene muchas zonas. Necesitará, como mínimo, una zona (y, por lo tanto, un plano) para poder diseñar el tour virtual. No hay límite máximo en cuanto al número de zonas que puede utilizar.</li>
+                <li><strong>Editar zona</strong>: permite cambiar una zona que ya existe. Podrá tanto cambiar su posición dentro del recorrido como modificar la imagen del plano.</li>
+                <li><strong>Eliminar zona</strong>: borra la zona que actualmente se esté visualizando en la pantalla.</li>
+                <li><strong>Subir zona / Bajar zona</strong>: cambia la zona que actualmente se está visualizando en la pantalla.</li>
+                <li><strong>Config. general</strong>: le permite seleccionar cuál será su primera zona, es decir, por dónde desea que comience la visita libre. Si su tour virtual solo tiene una zona, deberá seleccionarla aquí. Si tiene varias, podrá elegir la que quiere marcar como inicial.</li>
+            </ul>
+        </p>
+        <p>
+            Una vez que haya hecho todo esto, su mapa está listo para empezar a subir escenas. Tenga presente, además, que en cualquier momento podrá volver a este punto para reconfigurar su mapa si le resultase necesario.
         </p>
 
         <!-------------------------------- 5. ESCENAS ------------------------------------->
         <h2><a name="escenas">5. Crear las escenas</a></h2>
         <p>
-            Aquí contaremos como se suben las escenas (panoramas 360) y cómo se administran (modificar, borrar, añadir más...)
+            En esta sección aprenderá cómo se suben las escenas panorámicas y cómo se administran, es decir, cómo puede usted modificarlas, borrarlas, moverlas o cambiar sus características.
         </p>
-
+        <p>
+            Las escenas deben ser fotografías panorámicas en 360º tomadas por una cámara adecuada para ello. Hay muchas cámaras de ese tipo en el mercado y no es nuestro propósito aquí detenernos en ese punto. Solo le haremos notar que, como es lógico, cuanto mejor sea la calidad de sus fotografías, más satisfactorio será su recorrido virtual.
+        </p>
+        <p>
+            Le recomendamos que organice previamente las fotografías que tiene pensado tomar, ayudándose para ello de los planos de las diferentes zonas (que ya habrá subido a la aplicacion: véase la sección <a href="#mapa">administrar el mapa</a>). Marque en los planos los puntos en los que vaya a tomar las fotografías antes de hacerlo, y asigne un nombre a cada punto siguiendo la nomenclatura que desee. La aplicación no le impondrá ninguna restricción en cuanto a los nombres de los archivos de imágenes, aunque es buena idea que ninguno se repita.
+        </p>
+        <p>
+            Cuando haya tomado todas las fotografías 360 y las haya trasladado a su ordenador, asegúrese de renombrar los archivos según los nombres que asignó a los puntos en los planos. Cuando haya hecho esto, estará usted listo para comenzar a subir las escenas a la plataforma.
+        </p>
+        <p>
+            Ingrese en la aplicación con un usuario que tenga los privilegios necesarios para administrar el mapa. Para saber más acerca de cómo loguearse, repase la sección sobre cómo <a href="#mapa">administrar el mapa</a>. Para más información sobre los privilegios de usuario, revise la sección de <a href="#usuarios">administración de usuarios</a>.
+        </p>
+        <p>
+            Una vez que esté dentro del panel de administración, debería ver una imagen como la siguiente. Si no es así, despliegue el menú de opciones y seleccione la opción "Mapa".<br>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Ahora puede comenzar a subir sus fotografías 360 a la plataforma. El procedimiento general para agregar una fotografía 360 es el siguiente:
+            <ol>
+                <li>Haga clic <i>con el botón derecho del ratón</i> en la zona del mapa a la que corresponda la fotografía que quiere subir.</li>
+                <li>Asigne un nombre a un lugar (según los nombres que haya diseñado para las distintas fotografías; utilice la nomenclatura que le resulte más cómoda para no perderse) y seleccione el archivo de imagen que contenga la fotografía 360 correspondiente a ese lugar.</li>
+                <li>Haga clic en "Enviar" o "Aceptar".</li>
+            </ol>
+        </p>
+        <p>
+            La imagen se subirá y quedará asignada al punto del mapa donde usted haya hecho clic (con el botón derecho). Usted puede comprobarlo porque apacerá un punto blanco en el lugar donde se haya creado la escena.<br>
+            <img src="imgs/imagen-requerida">
+        </p>
+        <p>
+            Repita el proceso con el resto de fotografías 360 que haya realizado para su recorrido virtual. Sea cuidadoso en este proceso, porque constituye el esqueleto de su visita virtual y, si dispone de muchas fotografías, es fácil confundirlas unas con otras. En ese sentido, volvemos a insistir en la importancia de haberlas organizado previamente mediante nombres significativos que usted pueda reconocer bien.
+        </p>
+        <p>
+            Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic <i>con el botón derecho</i> encima de un punto blanco ya existente.
+        </p>
+        <p>
+            Si su visita virtual dispone de varias zonas (varios planos), puede cambiar de uno a otro con los botones "Subir zona" y "Bajar zona" (o "Subir piso" / "Bajar piso").
+        </p>
+        <p>
+            Repita el proceso hasta que haya subido todas las fotografías. Se hace clic con el boton izquierdo en cualquiera de las escenas creadas (es decir, en cualquiera de los puntos blancos del mapa) podrá ver una previsualización de cada escena tal y como la verán sus visitantes cuando el tour virtual esté listo.
+        </p>
+        <p>
+            No es imprescindible que suba todas sus fotografías de una vez. Puede crear una parte del recorrido y más adelante volver a esta sección para crear el resto.
+        </p>
+        <p>
+            Cuando haya terminado de subir sus fotografías 360, llega el momento de conectarlas entre sí para poder navegar de una a otra y crear así el recorrido virtual para sus visitantes. También puede crear puntos de interés (hotspots) dentro de cada una de las fotografías panorámicas. De todo ello hablaremos en las siguientes secciones.
+        </p>
         <!-------------------------------- 6. IMÁGENES, AUDIOS, VÍDEOS ------------------------------------->
         <h2><a name="subirimagenes">6. Subir imágenes, audios y vídeos</a></h2>
         <p>
-            Aquí describiremos cómo se suben y administran (modificar, borrar, añadir más...) imágenes, audios y vídeos.
+            En esta sección le mostraremos como puede subir imágenes, audios y vídeos que luego puede utilizar en sus visitas virtuales, tanto en la visita libre como en la guiada o en la de puntos destacados. Estas imágenes, audios y vídeos se pueden asignar a puntos sensibles (hotspots) dentro de sus fotografías 360 para que sus visitantes puedan hacer clic en ello y acceder al contenido (galerías de imágenes, audiodescripciones u otro tipo de sonidos, y vídeos).
         </p>
+        <p>
+            Si lo que desea es crear los vínculos para enlazar unas escenas con otras y crear así su visita virtual, puede saltarse de momento esta sección e ir a <a href="#hotspots">la siguiente</a>. Siempre puede volver más tarde aquí para aprender a administrar sus imágenes, audios y vídeos.
+        </p>
+        <p>
+            En lo que sigue, nos referiremos siempre a la administración de imágenes, ya que la administración de audios y vídeos es exactamente igual. Por lo tanto, todo lo que digamos para las imágenes es aplicable a los audios y los vídeos. Solo cuando haya alguna diferencia significativa, nos referiremos a ella explícitamente.
+        </p>
+        
 
         <!-------------------------------- 7. HOTSPOTS ------------------------------------->
         <h2><a name="hotspots">7. Definir hotspots (puntos de interés) en las escenas</a></h2>
