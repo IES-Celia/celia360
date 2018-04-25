@@ -35,7 +35,7 @@ class escenas extends CI_Controller {
     
     public function processinsertscene(){
         $resultado = $this->EscenasModel->insertar();
-        if ($resultado == true) {
+        if ($resultado > 0) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["mapa"] = $this->mapa->cargar_mapa();

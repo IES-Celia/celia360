@@ -341,7 +341,7 @@ class Hotspots extends CI_Controller {
  }
   
    /**
-    * TODO: documentación.
+    * Carga la información necesaria para el panel (o galería de imágenes). La petición se hace por Ajax.
     */
  public function load_panel(){
   $id = $_REQUEST["id_hotspot"];
