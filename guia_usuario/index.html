@@ -9,6 +9,29 @@ and open the template in the editor.
         <title>Celia360 - Guía del usuario</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: arial;
+			font-size: 10pt;
+			text-align: left;
+			margin: 50px;
+		}
+
+		h1 {
+			background-color: #dddddd;
+		}
+		h2 {
+			border-style: solid;
+			border-color: #dddddd;
+			border-width: 2px 0px 2px 0px;
+		}
+		h3 {
+			border-style: solid;
+			border-color: #dddddd;
+			border-width: 0px 0px 2px 0px;
+		}
+		
+	</style>
     </head>
     <body>
         <!-------------------------------- ENCABEZADO ------------------------------------->
@@ -17,7 +40,7 @@ and open the template in the editor.
         
         <!-------------------------------- TABLA DE CONTENIDO ------------------------------------->
         <div class="contenido">
-            <p>Contenido</p>
+            <p><strong>Contenido</strong></p>
             <a href="#quees">1. ¿Qué es Celia360?</a><br/>
             <a href="#instalacion">2. Instalación de Celia360</a><br/>
             <a href="#primerospasos">3. Primeros pasos con Celia 360</a><br/>
@@ -31,6 +54,7 @@ and open the template in the editor.
             <a href="#video">7.4. Hotspots de tipo vídeo</a><br/>
             <a href="#escalera">7.5. Hotspots de tipo escalera</a><br/>
             <a href="#vistainicial">7.6. Cambiar el tipo de vista inicial de una escena</a><br/>
+            <a href="#modificarhotspot">7.7. Modificar o eliminar un hotspot que ya existe</a><br/>
             <a href="#guiada">8. Crear una visita guiada</a><br/>
             <a href="#destacados">9. Crear una visita de puntos destacados</a><br/>
             <a href="#portada">10. Configurar la portada</a><br/>
@@ -223,6 +247,24 @@ and open the template in the editor.
         <p>
             En lo que sigue, nos referiremos siempre a la administración de imágenes, ya que la administración de audios y vídeos es exactamente igual. Por lo tanto, todo lo que digamos para las imágenes es aplicable a los audios y los vídeos. Solo cuando haya alguna diferencia significativa, nos referiremos a ella explícitamente.
         </p>
+	<p>
+		Para administrar sus imágenes, audios y vídeos, debe entrar al panel de administración con un usuario con los privilegios necesarios para administrar las imágenes, audios o vídeos. Si tiene dudas respecto a cómo hacer esto, consulte antes <a href="#mapa">esta sección</a>.
+	</p>
+	<p>
+		Una vez que esté dentro del panel de administración, despliegue el menú principal de opciones y seleccione "Imágenes", "Audios" o "Vídeos", según la parte de su aplicación que vaya a administrar a continuación. Le aparecerá una pantalla semejante a esta (se muestra la pantalla de administración de imágenes):<br>
+		<img src="imgs/imagen-requerida.jpg">
+	</p>
+	<p>
+		La operativa con esa pantalla es muy sencilla. Usted puede:
+		<ul>
+			<li>Buscar una imagen/audio/vídeo escribiendo un texto en el recuadro etiquetado como "Buscar"</li>
+			<li>Elegir la cantidad de imágenes/audios/vídeos que quiere ver en cada pantallazo seleccionando otra cantidad en "Mostrar 10 registros por página".</li>
+			<li>Ordenar la tabla por cualquier campo haciendo clic en el encabezado del mismo. Por ejemplo, si hace clic en "Título", la tabla se ordenará alfabéticamente según los títulos de las imágenes/audios/vídeos.</li>
+			<li>Insertar una nueva imagen/audio/vídeo. Para ello, haga clic en "Insertar" y rellene los campos que la aplicación le pida. En el caso de la imagen y el audio, tendrá que subir el archivo desde el disco duro de su ordenador. Solo se admiten imágenes en formato JPG y audios en formato MP3, en cualquier calidad. En cuanto a los vídeos, de momento la aplicación solo soporta vídeos subidos a Vimeo. Puede usted abrirse una cuenta gratuita en esa plataforma de streaming y subir los vídeos allí. Tendrá que indicarle a Celia360 la dirección web de los vídeos, que será lo único que necesite la aplicación para reproducir esos vídeos a partir de los servidores de Vimeo.</li>
+			<li>Modificar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Modificar" de cada fila de la tabla.</li>
+			<li>Eliminar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Eliminar" de cada fila de la tabla. La aplicación le pedirá que confirme el borrado. Tenga en cuenta que no podrá eliminar una imagen/audio/vídeo si está siendo usada en algún hotspot. Primero deberá eliminar el hotspot. Consulte la <a href="#hotspots">sección 7</a> para más información sobre hotspots.</li>
+		</ul> 
+	</p>
         
 
         <!-------------------------------- 7. HOTSPOTS ------------------------------------->
@@ -262,7 +304,7 @@ and open the template in the editor.
         </p>
         <p>
             En esta captura de pantalla puede observar cómo verá su visitante cada uno de los tipos de hotspot dentro de una escena:<br>
-            <img src="imagen-requerida.jpg">
+            <img src="imgs/imagen-requerida.jpg">
         </p>
 
         <!-------------------------------- 7.1. HOTSPOTS TIPO ENLACE ------------------------------------->
@@ -272,11 +314,11 @@ and open the template in the editor.
             </p>
             <p>
                 Los hotspots de tipo enlace permiten que un visitante salte de una escena a la siguiente. Se muestran en la visita como flechas que apuntan hacia la siguiente escena:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Para crear un hotspot de tipo enlace, siga el procedimiento general para crear un hotspot cualquiera descrito en el <a href="#hotspots">apartado 7</a>. Cuando llegue a la pantalla de selección del tipo de hotspot, seleccione la opción "Punto de salto a otra escena". Le aparecerá una pantalla semejante a esta:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 En la pantalla aparecerá el mapa de la zona donde está la escena en la que está creando el hotspot. Dicha escena se mostrará con un punto de color rojo. Para crear un salto desde esa escena hasta otra, haga clic en un punto blanco adyacente. El punto se ilumnará en amarillo. Confirme que ese es el punto correcto pulsando el botón "Enviar" o "Aceptar".
@@ -292,14 +334,14 @@ and open the template in the editor.
             <h3><a name="panel">7.2. Hotspots de tipo panel (galería de imágenes)</a></h3>
             <p>
                 Los hotspots de tipo panel informativo son galerías de imágenes que puede asociar a puntos concretos de su recorrido virtual. Adicionalmente, puede asociar un texto informativo y/o un documento PDF descargable para ampliar la información sobre ese punto de su recorrido. Típicamente, los paneles informativos se utilizan para resaltar lugares concretos de su visita virtual donde desea ofrecer fotografías de detalle e información adicional a su visitante. Una vez creado, el hotspot tendrá este aspecto:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Le recomendamos que suba previamente todas las imágenes que vaya a usar en su panel informativo. Para ver cómo subir imágenes, visite la <a href="#subirimagenes">sección 6</a>. Es buena idea asignar a todas las imágenes que vayan a formar parte de un panel un mismo título genérico, aunque la información de detalle de cada una de ellas sea diferente. Eso le permitirá localizarlas con más facilidad cuando vaya a asignarlas a su panel.
             </p>
             <p>
                 Para crear un hotspot de este tipo, siga el procedimiento genérico expuesto en la <a href="#hotspots">sección 7</a>. Cuando tenga que elegir el tipo de hotspot, haga clic en "Punto panel informativo". Verá en su navegador una pantalla como esta:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 En ese formulario deberá seleccionar:
@@ -311,7 +353,7 @@ and open the template in the editor.
             </p>
             <p>
                 Cuando haya terminado, pulse "Enviar" o "Aceptar". Tendrá ahora que seleccionar las fotografías que aparecerán en este panel a través de una pantalla como esta:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Haga clic en las imágenes del panel izquierdo para agregarlas a su panel. Pulse "Enviar" o "Aceptar" para guardar los cambios, y "Volver atrás" para cancelar la operación. Cuando haya aceptado los cambios, su hotspot tipo panel informativo estará listo. Puede comprobar cómo ha quedado lanzando una visita libre desde su navegador web y saltando a la escena en cuestión por medio del mapa.
@@ -321,14 +363,14 @@ and open the template in the editor.
             <h3><a name="audio">7.3. Hotspots de tipo audio</a></h3>
             <p>
                 Los hotspots de tipo audio están pensados para asignar audiodescripciones a puntos concretos de su recorrido virtual. Por supuesto, puede utilizarlos para insertar cualquier sonido o música en ese punto, según la información que quiera ofrecer a sus visitantes. Una vez creado, el hotspot tendrá este aspecto:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Le recomendamos que suba previamente todos los sonidos que vaya a usar. Para ver cómo subir archivos de audio, visite la <a href="#subirimagenes">sección 6</a>.
             </p>
             <p>
                 Para crear un hotspot de tipo audio, siga el procedimiento genérico expuesto en la <a href="#hotspots">sección 7</a>. Cuando tenga que elegir el tipo de hotspot, haga clic en "Punto audiodescrito". Verá en su navegador una pantalla como esta:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 En ese formulario deberá seleccionar uno de los archivos de audio de la lista para asociarlo al hotspot. Puede reproducir el audio desde esta misma pantalla para asegurarse de que es el correcto. También puede usar el buscador, para localizar el audio por su título o descripción, y el paginador para navegar a lo largo de toda la lista de audios, en caso de que haya subido muchos.
@@ -341,14 +383,14 @@ and open the template in the editor.
             <h3><a name="video">7.4. Hotspots de tipo vídeo</a></h3>
             <p>
                 Los hotspots de tipo vídeo le permiten insertar vídeos en puntos concretos de su recorrido virtual. A diferencia de las imágenes o los archivos de sonido, los vídeos no estará alojados en su servidor, ya que pocos servidores pueden soportar vídeos en términos de tamaño de archivo y ancho de banda. En lugar de ello, deberá alojar los vídeos en un proveedor de streaming externo. De momento, la aplicación soporta únicamente vídeos alojados en Vimeo, que es un servicio libre de publicidad y gratuito para vídeos sin ánimo de lucro. Una vez creado, el hotspot tendrá este aspecto:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Le recomendamos que suba previamente todos los vídeos que vaya a usar. Para ver cómo subir vídeos, visite la <a href="#subirimagenes">sección 6</a>.
             </p>
             <p>
                 Para crear un hotspot de tipo vídeo, siga el procedimiento genérico expuesto en la <a href="#hotspots">sección 7</a>. Cuando tenga que elegir el tipo de hotspot, haga clic en "Punto vídeo". Verá en su navegador una pantalla como esta:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 En ese formulario deberá seleccionar uno de los vídeos dados de alta en la plataforma (y que, a su vez, deben estar subidos a Vimeo). Puede reproducir el vídeo desde esta misma pantalla para asegurarse de que es el correcto. También puede usar el buscador, para localizar el vídeo por su título o descripción, y el paginador para navegar a lo largo de toda la lista de vídeos, en caso de que disponga de muchos.
@@ -361,14 +403,14 @@ and open the template in the editor.
             <h3><a name="escalera">7.5. Hotspots de tipo escalera</a></h3>
             <p>
                 Los hotspots de tipo escalera se utilizan para que los visitantes de su tour virtual puedan cambiar de zona, es decir, puedan acceder a otro de sus mapas. Una vez creado, el hotspot tendrá este aspecto:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Le recomendamos que planifique dónde va a crear sus hotspots de tipo escalera. Suelen quedar bien haciéndolos coincidir con las escaleras y/o ascensores de sus fotografías 360, o bien con los saltos entre zonas si su recorrido es plano.
             </p>
             <p>
                 Para crear un hotspot de tipo escalera, siga el procedimiento genérico expuesto en la <a href="#hotspots">sección 7</a>. Cuando tenga que elegir el tipo de hotspot, haga clic en "Conector entre planos (escaleras)". Verá en su navegador una pantalla como esta:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Este hotspot no requiere de ninguna información adicional, por lo que solo deberá pulsar "Enviar" o "Aceptar" para confirmar la creación del hotspot. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena donde haya creado el hotspot mediante el mapa.           
@@ -381,14 +423,14 @@ and open the template in the editor.
             </p>
             <p>
                 Para asignar las coordenadas sobre las que hizo clic como punto de vista inicial de una escena, simplemente siga el mismo procedimiento genérico de creación de hotspots descrito en la <a href="#hotspots">sección 7</a> y luego haga clic en el botón "Punto hacia donde estará dirigida la cámara".
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Confirme la operación y las nuevas coordenadas iniciales de la escena se grabarán. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena en cuestión. Al entrar en ella, el punto de vista debería ser el que usted seleccionó.
             </p>
 
         <!-------------------------------- 7.7. MODIFICAR HOTSPOT ------------------------------------->
-            <h3><a name="vistainicial">7.7. Modificar un hotspot ya existente</a></h3>
+            <h3><a name="modificarhotspot">7.7. Modificar un hotspot ya existente</a></h3>
             <p>
                 Usted puede modificar y/o eliminar un hotspot ya existente, sea cual sea su tipo. Para lograrlo necesitará seguir estos pasos:
                 <ol>
@@ -399,7 +441,7 @@ and open the template in the editor.
             </p>
             <p>
                 En su navegador se abrirá una ventana nueva que le permitirá modificar algunos aspectos de su hotspot y también eliminarlo. Tenga cuidado con cualquiera de las dos opciones, pues su efecto es irreversible. Lógicamente, las opciones son diferentes según cada tipo de hotspot. Por ejemplo, la ventana para modificar un hotspot de tipo audio tiene un aspecto como este:<br>
-                <img src="imagen-requerida.jpg">
+                <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
                 Algunas ventanas de modificación de hotspot no le permitirán cambiar ciertas cosas del hotspot. Por ejemplo, no podrá cambiar las imágenes asignadas a un hotspot de tipo panel informativo, aunque sí podrá cambiar su título, su descripción o el punto de la escena donde debe aparecer. Si necesita cambiar las imágenes asociada, deberá borrar el hotspot y crearlo de nuevo. La posibilidad de editar las imágenes asignadas está contemplada entre los próximos desarrollos de la aplicación.
@@ -409,9 +451,33 @@ and open the template in the editor.
         <!-------------------------------- 8. VISITA GUIADA ------------------------------------->
         <h2><a name="guiada">8. Crear una visita guiada</a></h2>
         <p>
-            Aquí describiremos cómo se crea y administra una visita guiada.
+            La visita guiada le permite crear una visita preprogramada en la que el visitante será conducido por las escenas más interesantes o representativas de su recorrido virtual automáticamente, mientras una audiodescripción ilustra al visitante acerca de la escena que está contemplando.
         </p>
-        
+	<p>
+		Obviamente, antes de poner en marcha una visita guiada, usted necesitará haber subido previamente las escenas 360 (vea la <a href="#escenas">sección 5</a> si no tiene claro como hacerlo) y las audiodescripciones (consulte la <a href="#subirimagenes">sección 6</a> si tiene dudas sobre cómo hacerlo).
+	</p>
+	<p>
+		Cuando tenga preparadas las escenas de su visita guiada y sus respectivas audiodescripciones, el proceso para crear su visita guiada es muy sencillo:
+		<ol>
+			<li>Entre en el panel de administración utilizando un usuario con privilegios suficientes (consulte la <a href="#mapa">sección 4</a> si no sabe cómo hacerlo)</li>
+			<li>En el menú principal, elija la opción "Guiada". Se encontrará con una pantalla como esta:<br><img src="imgs/imagen-requerida.jpg"></li>
+			<li>Cree el primer punto de su visita guiada haciendo clic en "Nuevo". Se le pedirá que seleccione una escena y un archivo de audio de entre todos los subidos a la plataforma. También tendra que escribir un título descriptivo del lugar y una imagen representativa. Cuando termine, pulse "Aceptar" o "Enviar".</li>
+			<li>Añada los demás puntos de su visita guiada repitiendo el paso anterior tantas veces como sea necesario.</li>
+			<li>Si se equivoca al seleccionar alguna escena y/o audiodescripción, pulse el botón "Modificar" de la fila correspondiente en la tabla y cambie lo que sea necesario. También puede eliminar por completo ese punto de la visita guiada haciendo clic en el botón "Eliminar" de esa fila.</li>
+			<li>Si se equivoca en el orden en el que se deben mostrar las escenas en la visita guiada, o desea cambiarlo más adelante por alguna razón, pulse las flechas "Arriba" y "Abajo" de cada fila de la tabla, que provocarán una reordenación de las escenas.</li>
+		</ol>
+	</p>
+	<p>
+		Cuando haya terminado, la pantalla de administración de la visita guiada debería tener un aspecto semejante a este:<br><img src="imgs/imagen-requerida.jpg">
+	</p>
+	<p>	
+		Su visita guiada está ahora lista. Puede probarla lanzando la aplicación en un navegador web y seleccionando "Visita guiada" en la pantalla principal, como si usted fuera un visitante. La visita guiada se iniciará. Puede navegar por ella usando los botones "Siguiente" y "Anterior". También puede desplegar la lista de escenas y saltar cómodamente de una a otra. Si deja que la visita guiada fluya a su ritmo, saltará automáticamente de una escena a otra cuando se termine la audiodescripción de cada escena. Por supuesto, también puede pausar el audio y reanudarlo a voluntad.
+	</p>
+	<p>
+		Si le parece que el tiempo de espera entre el fin de un audio y el comienzo del siguiente es demasiado corto, le recomendamos que deje unos segundos de silencio al final de cada audiodescripción.
+	</p>
+			
+
         <!-------------------------------- 9. PUNTOS DESTACADOS ------------------------------------->
         <h2><a name="destacados">9. Crear una visita de puntos destacados</a></h2>
         <p>
