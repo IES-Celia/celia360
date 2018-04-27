@@ -78,7 +78,7 @@ $(document).ready(function() {
 			$(this).css("background", "yellow");
 			$(".for > form > input[name=escena_celda]").val($(this).attr("escena"));
 		} else if ($(this).parent().hasClass("pisos_config")){
-			$("#modalConfig > #caja > #mapa_escena_hotspot > .pisos_config > .puntos").css("background-color", "white")
+			$("#modalConfig > #caja > form > #mapa_config_mapa > .pisos_config > .puntos").css("background", "white")
 			$("#modalConfig > #caja > form > input[name=punto_inicial]").val($(this).attr("id"))
 			$("#modalConfig > #caja > form > input[name=escena_inicial]").val($(this).attr("escena"))
 			$(this).css("background", "yellow");
@@ -145,16 +145,7 @@ $(document).ready(function() {
 	}, 100);
 	
 	$("input[name=piso_inicial]").change(function(){
-
-	})
-
-	$("#mapa_config_mapa > div > .puntos ").click(function() {
-		$("#pama_config_mapa > div > .punto_inicial").class("puntos")
-		$(this).class("puntos")
-	})
-	$("#mapa_config_mapa > div > .punto_incial ").click(function () {
-		$("#pama_config_mapa > div > .punto_inicial").class("puntos")
-		$(this).class("puntos")
+		$("#zona"+$(this).val()).css("display","")
 	})
 });
 

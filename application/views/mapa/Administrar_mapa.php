@@ -37,10 +37,16 @@
             <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
             <div id="mapa_config_mapa" >
             <?php
-                $indice = $configuracion["piso_inicial"];
-                
-                    echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
-                    echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
+                $indice = 0;
+
+                 foreach ($mapa as $imagen) {
+                     if($indice == 0){
+                         echo "<div id='zona".$indice."' class='pisos pisos_config'>";
+                     }else{
+                        echo "<div id='zona".$indice."' class='pisos pisos_config'>";
+                     }
+                    
+                    echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
                             if($punto['id_escena'] == $configuracion['escena_inicial']){
@@ -51,6 +57,8 @@
                         }
                     }
                     echo "</div>";
+                    $indice++;
+                }
                 
             ?>
             </div>
