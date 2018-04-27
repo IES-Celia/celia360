@@ -90,7 +90,7 @@ class Audio extends CI_Controller {
      * Este método se pide por Ajax, de modo que su salida es un "0" o un "1".
      * 
      * @param int $id El id del audio que se quiere borrar.
-     * @return Devuelve a la petición Ajax un "0" si el borrado ha fallado o un "1" si ha funcionado bien.
+     * @return Devuelve a la petición Ajax un "0" si el borrado ha fallado, un "-1" si el borrado ha fallado porque el audio está en uso en un hotspot, o el id del audio si ha funcionado bien.
      */
     public function borraraud($id) {
         // Comprobamos si el audio está en uso en algún hotspot.
@@ -102,7 +102,7 @@ class Audio extends CI_Controller {
             else echo "0";                  // Algo ha fallado al intentar borrar el audio
 	} else {
             // El audio está en uso: no se puede borrar
-            echo"0";
+            echo "-1";
         }
     }
 
