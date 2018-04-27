@@ -19,7 +19,7 @@ echo"<form action='".site_url("usuario/processregisterform")."' method='post'>";
     <label for="subname">Apellidos</label>
     <input type='text' name='subname' id="subname" required>
     </select>
-    <input type='submit'>
+    <input type='submit' value='Aceptar'><input type='button' value='Cancelar' onclick='location.href="<?php echo site_url("usuario");?>"'>
 </form>
 
 </div>

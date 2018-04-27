@@ -80,15 +80,36 @@
          
             $resultado = $this->UsuarioModel->inserusu();
             if ($resultado){
-
+                // Usuario creado correctamente
                 $datos["mensaje"] = "Usuario creado correctamente";
-                $datos["vista"] = "usuario/formLogin";
-                $this->load->view('login_template', $datos);
+                if ($this->UsuarioModel->get_tipo_usuario() == -1) {
+                    // El usuario aún no está logueado: volvemos a la pantalla de login
+                    $datos["vista"] = "usuario/formLogin";
+                    $this->load->view('login_template', $datos);
+                }
+                else {
+                    // El usuario ya está logueado: volvemos al panel de administración
+                    $datos["vista"] = "usuario/usuarios";       
+                    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+                    $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
+                    $this->load->view('admin_template',$datos);
+                }
             }
             else {
-                $datos["mensaje"] = "Usuario ocupado";
-                $datos["vista"] = "usuario/registerForm";
-                $this->load->view("login_template", $datos);
+                $datos["error"] = "Error al crear el usuario";
+                if ($this->UsuarioModel->get_tipo_usuario() == -1) {
+                    // No hay usuario logueado: volvemos a la pantalla de registro
+                    $datos["vista"] = "usuario/registerForm";
+                    $this->load->view("login_template", $datos);
+                }
+                else {
+                    // El usuario ya está logueado: volvemos al panel de administración
+                    $datos["vista"] = "usuario/usuarios";       
+                    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+                    $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
+                    $this->load->view('admin_template',$datos);
+                }
+                
             }
      
         }
@@ -103,13 +124,28 @@
             $this->load->view("admin_template",$datos);
 
         }
+        
+        /**
+         * Modifica el tipo de un usuario. Petición por ajax.
+         * 
+         * Devuelve 1 si la modificación es un éxito, 0 en caso de fallo. Lo devuelve a Ajax.
+         * 
+         * @param integer $idusu El id del usuario a modificar
+         * @param integer $nuevotipo El nuevo tipo que se le debe asignar
+         * 
+         */
+        public function modtipo($idusu, $nuevotipo) {
+            $resultado = $this->UsuarioModel->modtipo($idusu, $nuevotipo);
+            echo $resultado;
+        }
+        
         public function modusuario(){
         
         //Modificar el usuario
         $id = $_REQUEST["id"];
         $this->UsuarioModel->alterarusu($id);
         $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
-        $datos["nombreUsuario"] = "usuario modificado correctamente.";
+        $datos["mensaje"] = "usuario modificado correctamente.";
             
         $datos["vista"] = "usuario/usuarios";       
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
