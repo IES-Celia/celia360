@@ -67,7 +67,7 @@ foreach ($tablaUsuarios as $usu) {
     
 
     echo"   <td>
-                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
+                <a href='#' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
             </td>
             <td>
                 <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
@@ -85,8 +85,8 @@ echo "
 
         <label for='username'>Nombre de usuario</label>
         <input type='text' name='username' id='form_modif_nick' required>
-        <label for='pass'>Password</label>
-        <input type='password' name='pass' required>
+        <label for='pass'>Password (en blanco para no modificar)</label>
+        <input type='password' name='pass'>
         <label for='email'>Correo</label>
         <input type='text' name='email' id='form_modif_email' required>
         <label for='name'>Nombre</label>
@@ -182,7 +182,7 @@ echo"
             }
         }
 
-        function modusuario(idusu){
+        function show_modusuario(idusu){
             email = "email_usuario_"+idusu;
             nick = "nick_usuario_"+idusu;
             nombre = "name_usuario_"+idusu;
@@ -192,13 +192,13 @@ echo"
             document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
             document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
             document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
-            aux = document.getElementById(tipo).innerHTML;
-            
-            if(aux=='Admin'){
+            aux = document.getElementById(tipo).value;
+
+            if(aux==1){
                 document.getElementById("form_modif_tipo").selectedIndex='1';
-            }else if(aux=='Mapero'){
+            }else if(aux==2){
                 document.getElementById("form_modif_tipo").selectedIndex='2';
-            }else if(aux=='Bibliotecario'){
+            }else if(aux==3){
                 document.getElementById("form_modif_tipo").selectedIndex='3';
             }else{
                 document.getElementById("form_modif_tipo").selectedIndex='0';

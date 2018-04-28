@@ -143,9 +143,14 @@
         
         //Modificar el usuario
         $id = $_REQUEST["id"];
-        $this->UsuarioModel->alterarusu($id);
+        $res = $this->UsuarioModel->alterarusu($id);
         $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
-        $datos["mensaje"] = "usuario modificado correctamente.";
+        if ($res > 0) {
+            $datos["mensaje"] = "Usuario modificado correctamente";
+        }
+        else {
+            $datos["error"] = "No se ha podido modificar el usuario";
+        }
             
         $datos["vista"] = "usuario/usuarios";       
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);

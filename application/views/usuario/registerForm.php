@@ -1,4 +1,8 @@
-
+<style>
+    .escondida {
+        display: none;
+    }
+</style>
 
 
 
@@ -18,6 +22,8 @@ echo"<form action='".site_url("usuario/processregisterform")."' method='post'>";
     <input type='text' name='nombre' id="nombre" required>
     <label for="subname">Apellidos</label>
     <input type='text' name='subname' id="subname" required>
+    <label class="escondida">Dejar esto en blanco (para detectar bots)</label>
+    <input class="escondida" type="text" id="dejarenblanco" name="dejarenblanco" />
     </select>
     <input type='submit' value='Aceptar'><input type='button' value='Cancelar' onclick='location.href="<?php echo site_url("usuario");?>"'>
 </form>

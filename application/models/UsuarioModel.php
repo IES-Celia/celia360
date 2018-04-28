@@ -19,26 +19,34 @@ class UsuarioModel extends CI_Model {
         $name = $this->input->get_post("nombre");
         $apellido = $this->input->get_post("subname");
         $tipo = $this->input->get_post("tipo");
+        $dejarenblanco = $this->input->get_post("dejarenblanco");
         // Si los datos vienen del formulario del panel de administración, traerán el tipo, pero si no hay que asignar un tipo = 0 (pendiente de asignar)
         if ($tipo == NULL) $tipo = 0;
 
 
-        $consulta = $this->db->query("SELECT * FROM usuarios");
+        if ($dejarenblanco != "" && $dejarenblanco != NULL) {
+            // Un bot ha intentado rellenar el campo trampa oculto
+            $resultado = false; 
+        }
+        else {        
+        
+            $consulta = $this->db->query("SELECT * FROM usuarios");
 
-        if (!$this->db->affected_rows($consulta)) {
-            // Es el primer usuario que se inserta en la BD. Siempre será un superadmin (tipo = 1)
-            $pass_encryted = md5($pass);
-            $resultado = $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','1')");
-        } else {
-            // No es el primer usuario. Vamos a comprobar si ya existe.
-            $prueba = $this->db->query("SELECT id_usuario FROM usuarios WHERE nombre_usuario = '$username' OR email = '$email'");
-            if ($this->db->affected_rows($prueba)) {
-                // El usuario ya existe. Error en el intento de inserción.
-                $resultado = false;
-            } else {
-                // El usuario no existe. Vamos a tratar de insertarlo
+            if (!$this->db->affected_rows($consulta)) {
+                // Es el primer usuario que se inserta en la BD. Siempre será un superadmin (tipo = 1)
                 $pass_encryted = md5($pass);
-                $resultado = $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','$tipo')");
+                $resultado = $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','1')");
+            } else {
+                // No es el primer usuario. Vamos a comprobar si ya existe.
+                $prueba = $this->db->query("SELECT id_usuario FROM usuarios WHERE nombre_usuario = '$username' OR email = '$email'");
+                if ($this->db->affected_rows($prueba)) {
+                    // El usuario ya existe. Error en el intento de inserción.
+                    $resultado = false;
+                } else {
+                    // El usuario no existe. Vamos a tratar de insertarlo
+                    $pass_encryted = md5($pass);
+                    $resultado = $this->db->query("insert into usuarios (nombre_usuario, password, nombre, apellido, email, tipo_usuario) VALUES('$username','$pass_encryted','$name','$apellido','$email','$tipo')");
+                }
             }
         }
 
@@ -134,14 +142,17 @@ class UsuarioModel extends CI_Model {
         $apellidos = $this->input->get_post("apellidos");
         $email = $this->input->get_post("email");
         $username = $this->input->get_post("username");
-        $pass = $this->input->get_post("pass");
         $tipo = $this->input->get_post("tipo");
-
-        $password = md5($pass);
-
-
-        $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', password = '$password', tipo_usuario='$tipo' where id_usuario = '$id'");
-
+        $pass = $this->input->get_post("pass");
+        if ($pass != NULL) { 
+            // También se va a cambiar la password
+            $password = md5($pass);
+            $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', password = '$password', tipo_usuario='$tipo' where id_usuario = '$id'");
+        }
+        else {
+            // No se va a modificar la password
+            $this->db->query("Update usuarios set nombre_usuario = '$username', nombre = '$nombre', apellido='$apellidos', email = '$email', tipo_usuario='$tipo' where id_usuario = '$id'");
+        }
         return $this->db->affected_rows();
     }
     
