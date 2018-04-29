@@ -71,23 +71,30 @@
    echo '<div id="mapa_escena">';
          $indice = 0;
    
-         foreach ($mapa as $imagen) {
-            echo "<div id='zona".$indice."' class='pisos' style='display: none;'>";
-            echo "<img src='".base_url($imagen['url_img'])."'  style='width:100%;height:100%;'>";
-           
-             foreach ($puntos as $punto) {
-               if($punto['piso']==$indice){
-               
-                 echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-                 <span class='tooltip'>".$punto['id_escena']."</span>
-                 </div>";
-               
-               }
-               
-             }
-           echo "</div>";
-           $indice++;
+         if (count($mapa) == 0) {
+             // No hay aún ningún mapa
+             echo "<div class='pisos' style='display: block; align: center; color: white'>Aún no se ha creado ningún mapa.</div>";
          }
+         else {
+            // Ya existe uno o varios mapas. Vamos a crear cada uno en una capa individual
+            foreach ($mapa as $imagen) {
+               echo "<div id='zona".$indice."' class='pisos' style='display: none;'>";
+               echo "<img src='".base_url($imagen['url_img'])."'  style='width:100%;height:100%;'>";
+
+                foreach ($puntos as $punto) {
+                  if($punto['piso']==$indice){
+
+                    echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+                    <span class='tooltip'>".$punto['id_escena']."</span>
+                    </div>";
+
+                  }
+
+                }
+              echo "</div>";
+              $indice++;
+            } // foreach
+         } // else
    ?>
    </div>
 

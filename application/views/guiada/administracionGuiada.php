@@ -1,6 +1,3 @@
-
-
-
 <?php
 
 /*
@@ -86,49 +83,55 @@ z-index:100;
 </style>
 
 <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
-<button class='insert' type='submit'><span class='fa fa-plus-circle'></span>crear Nuevo</button>
+<button class='insert' type='submit'><span class='fa fa-plus-circle'></span>Crear nuevo</button>
 <input id='orden' type='hidden' value='asc' name='orden'>
 </form>
 <table align='center' id='cont'>
     <tr id='cabecera'>
-        <th onclick='ordenarTabla("id_visita")'>id_visita<span class='ordernar'>&#8645;</span></th>
-        <th onclick='ordenarTabla("cod_escena")'>cod_escena<span class='ordernar'>&#8645;</span></th>
-        <th onclick='ordenarTabla("audio_escena")'>audio_escena<span class='ordernar'>&#8645;</span></th>
-        <th onclick='ordenarTabla("titulo_escena")'>titulo_escena<span class='ordernar'>&#8645;</span></th>
-        <th >imagen preview</th>
-        <th>cambiar Imagen</th>
-        <th>borrar</th>
-        <th>modificar</th>
+        <th <!--onclick='ordenarTabla("id_visita")'-->ID<!--<span class='ordernar'>&#8645;</span>--></th>
+        <th <!--onclick='ordenarTabla("cod_escena")'-->Cod Escena<!--<span class='ordernar'>&#8645;</span>--></th>
+        <th <!--onclick='ordenarTabla("audio_escena")'-->Audio asociado<!--<span class='ordernar'>&#8645;</span>--></th>
+        <th <!--onclick='ordenarTabla("titulo_escena")'-->Título escena<!--<span class='ordernar'>&#8645;</span>--></th>
+        <th>Imagen</th>
+        <th>Cambiar imagen</th>
+        <th>Borrar</th>
+        <th>Modificar</th>
         <th>Mover</th>
-        <th>Posicion</th>
+        <th>Posición</th>
     </tr>
 <tbody>
 <?php
-foreach ($escenas as $escena) {
-    if(empty($escena["img_preview"])){
-        //Quitarlo en un futuro no muy lejano
-        $imagen="vacio";
-    } else{
-        $imagen=$escena["img_preview"];
-        $imagen = base_url('assets/imagenes/previews-guiada/').$imagen;
-    }
-        $idEscena =$escena['id_visita'];
-        
 
-    echo "<tr class='filaEscena'>".
-    "<td class='id_visita'>".$escena['id_visita']."</td>
-    <td class='cod_escena'>".$escena['cod_escena']."</td>
-    <td class='audio_escena'>".$escena['audio_escena']."</td>
-    <td class='titulo_escena'>".$escena['titulo_escena']."</td>
-    <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
-    <td><button class='change_img'>Cambiar</button></td>
-    <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
-    <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
-    <td class='orden'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
-    <td class='posicion'>".$escena['orden']."</td>";
-
-
+if (count($escenas) == 0) {
+    echo "<tr><td colspan='10'>No hay registros para mostrar.</td></tr>";
 }
+else {
+    foreach ($escenas as $escena) {
+        if(empty($escena["img_preview"])){
+            //Quitarlo en un futuro no muy lejano
+            $imagen="vacio";
+        } else{
+            $imagen=$escena["img_preview"];
+            $imagen = base_url('assets/imagenes/previews-guiada/').$imagen;
+        }
+            $idEscena =$escena['id_visita'];
+
+
+        echo "<tr class='filaEscena'>".
+        "<td class='id_visita'>".$escena['id_visita']."</td>
+        <td class='cod_escena'>".$escena['cod_escena']."</td>
+        <td class='audio_escena'>".$escena['audio_escena']."</td>
+        <td class='titulo_escena'>".$escena['titulo_escena']."</td>
+        <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
+        <td><button class='change_img'>Cambiar</button></td>
+        <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
+        <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
+        <td class='orden'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
+        <td class='posicion'>".$escena['orden']."</td>";
+
+
+    }
+} // else
 ?>
 </tbody>
 </table>
