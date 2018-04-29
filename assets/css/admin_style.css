@@ -26,7 +26,6 @@
     }
 
 
-
                                             /* Esto hace que se vea un poco azul */
     
     #fondo{
@@ -508,7 +507,7 @@
             
             
         }
-        
+ 
         #caja form a{
             text-decoration: none;
             border:2px solid white;
@@ -529,14 +528,19 @@
             transition:0.4s;
             
         }
-
+        
         #caja form a:hover{
             background-color:rgba(0,0,0,0.4);
-            
         }
 
-
-
+        #caja form a.eliminar {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+       
+        #caja form a.eliminar:hover {
+            background-color: rgba(255, 0, 0, 1);
+        }
+       
         input:focus{
             outline: 0px;
         }
@@ -1779,5 +1783,3 @@
         border-radius: 2px solid grey;
         margin-bottom: 10px;
     }
-
-        

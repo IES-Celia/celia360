@@ -119,28 +119,34 @@ class EscenasModel extends CI_Model {
      */
     public function borrar($cod) {
 
+        $resultado = 0;
+        
         $sql = "DELETE FROM hotspots WHERE id_hotspot IN (
                 SELECT id_hotspot FROM escenas_hotspots where id_escena IN (
                     SELECT id_escena FROM escenas WHERE cod_escena = '$cod'))";
         $this->db->query($sql);
-
+        $resultado += $this->db->affected_rows();
+        
         $sql = "DELETE FROM puntos_mapa WHERE id_escena = '$cod'";
         $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
         $sql = "DELETE FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod') ";
         $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
         $sql = "DELETE FROM hotspots WHERE sceneid='$cod'";
         $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
         $sql = "DELETE FROM escenas WHERE cod_escena = '$cod' ";
         $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
         $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
-
         unlink($imagen_borrar);
 
-        return $this->db->affected_rows();
+        return $resultado;
     }
 
     public function update($cod) {

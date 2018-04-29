@@ -68,7 +68,7 @@ class escenas extends CI_Controller {
         $resultado = $this->EscenasModel->borrar($cod);
         
         if ($resultado > 1) {
-            $datos["mensaje"] = "Escena borrado correctamente";
+            $datos["mensaje"] = "Escena borrada correctamente";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["vista"]="escenas/Escenastable";
             $datos["mapa"] = $this->mapa->cargar_mapa();
