@@ -10,7 +10,6 @@ if (isset($datos["mensaje"])) {
 $con = $tabla[0];
 
 echo "
-        <head>
             <style>
                 #panorama{
                 height: auto;
@@ -27,7 +26,7 @@ echo "
 
 </script>
 <?php
-echo "</head>
+echo "
     <h1 align='center'>Modificar escenas</h1>
         <p></p>
         <div id='caja'>
