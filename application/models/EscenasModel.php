@@ -27,6 +27,7 @@ class EscenasModel extends CI_Model {
      * Inserta una escena (panorama) en la BD y sube el archivo con la imagen al directorio assets/imagenes/escenas/
      * 
      * La imagen se redimensiona a 4000 px de ancho para evitar problemas en navegadores Mozilla.
+     * La imagen se renombra como el código de escena (más ".JPG").
      * 
      * @return 1 si la escena se sube correctamente, 0 si hay un error al insertar en la BD, -1 si hay un error al subir o redimensionar la imagen.
      */
@@ -38,52 +39,74 @@ class EscenasModel extends CI_Model {
         $this->load->library('upload', $config);
 
         $resultado = $this->upload->do_upload('panorama');
+    
         if ($resultado) {
             // Imagen subida con éxito
-            // 
-            // Obtenemos el nombre del archivo de imagen y le cambiamos la extensión .jpg por .JPG
-            // (hemos tenido muchos problemas con esto y hemos decidido dejar la extensión en MAYÚSCULAS)
-            $img_cliente = $this->upload->data()["client_name"];
-            $nombre_imagen = substr($img_cliente, 0, -4).".JPG";
-            rename("assets/imagenes/escenas/$img_cliente", "assets/imagenes/escenas/$nombre_imagen");
-            
-            // *** TODO: Se tiene que comprobar que existe ya un cod_escena igual para evitar duplicados ***
 
-            // Vamos a redimensionarla para asegurarnos que su ancho es <4096px
-            // (por encima de 4096px, algunos navegadores dan problemas)
-            if ($this->upload->data()["image_width"] > 4000) {
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = 'assets/imagenes/escenas/'.$nombre_imagen;
-                $config['maintain_ratio'] = TRUE;
-                $config['new_image'] = 'assets/imagenes/escenas/';
-                $config['width'] = 4000;
-                $this->load->library('image_lib', $config);
-
-                if (!$this->image_lib->resize()) {
-                    // Ha ocurrido un error al redimensionar la imagen
-                    $resultado = -1;  // Marca de error
-                }
-            }
-
-            // Insertamos en la BD
+            // Vamos a insertar un registro en la BD para genera el id (que es AUTOINCREMENT)
             $name = $this->input->post_get("name");
-            $cod = substr($nombre_imagen, 0, -4);
+            $cod = "temp";  // Luego lo sustituiremos por el id (campo redundante; no lo eliminamos porque se usa en otros lugares de la aplicación por motivos históricos)
             $left_mapa = $_REQUEST["left_mapa"];
             $top_mapa = $_REQUEST["top_mapa"];
             $piso_mapa = $_REQUEST["piso_mapa"];
+            $nombre_imagen = "temp";   // También lo cambiaremos luego, cuando conozcamos el id asignado al registro
 
             $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$nombre_imagen')";
-
+                      VALUES('$name','$cod',120,10,10,'equirectangular','$nombre_imagen')";
             $this->db->query($insert);
+            
+            // Obtenemos el id asignado a la escena (es un campo AUTOINCREMENT)
+            $last_id = $this->db->insert_id();  
+            $cod = $last_id;    // El código será igual que el último id (campo redundante: no lo eliminamos porque se usa en otros lugares de la aplicación por motivos históricos)
+            
+            // Renombramos archivo de imagen para que su nombre sea el id (o cod de escena) seguido de ".JPG"
+            // (hemos tenido muchos problemas con esto y hemos decidido dejar la extensión en MAYÚSCULAS)
+            $img_cliente = $this->upload->data()["client_name"];
+            $nombre_imagen = $cod.".JPG";
+            rename("assets/imagenes/escenas/$img_cliente", "assets/imagenes/escenas/$nombre_imagen");
+            
+            // Actualizamos el registro con el nuevo cod y el nuevo nombre de imagen (ambos iguales a id: campos redundantes, pero no los podemos eliminar porque se usan en otros lugares de la aplicación)
+            $update = "UPDATE escenas SET cod_escena = '$cod', panorama = 'assets/imagenes/escenas/$nombre_imagen' WHERE id_escena = '$last_id'";
+            $this->db->query($update);
+            if ($this->db->affected_rows() != 1) {
+                // Ha ocurrido algún error. Devolvemos un -1 y eliminamos la imagen de la BD y del directorio de imágenes
+                $resultado = 0;
+                $delete = "DELETE FROM escenas WHERE id_escena = '$last_id'";
+                unlink("assets/imagenes/escenas/$nombre_imagen");
+    echo "Error tras UPDATE<br><br>";
+    
+            }
+            else {
+                // Todo ha ido bien. Ya tenemos la imagen subida. Su nombre es el id de la imagen (seguido de ".JPG").
+                // Sus campos id y cod son iguales.
+                // 
+                // Vamos a redimensionar la imagen para asegurarnos que su ancho es <4096px
+                // (por encima de 4096px, algunos navegadores dan problemas)
+                if ($this->upload->data()["image_width"] > 4000) {
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = 'assets/imagenes/escenas/'.$nombre_imagen;
+                    $config['maintain_ratio'] = TRUE;
+                    $config['new_image'] = 'assets/imagenes/escenas/';
+                    $config['width'] = 4000;
+                    $this->load->library('image_lib', $config);
 
-            $insert = "INSERT INTO puntos_mapa (left_mapa, top_mapa, id_escena, piso) 
-                VALUES ($left_mapa,$top_mapa,'$cod',$piso_mapa)";
+                    if (!$this->image_lib->resize()) {
+                        // Ha ocurrido un error al redimensionar la imagen
+                        $resultado = -1;  // Marca de error
+                    }
+                }
 
-            $this->db->query($insert);
 
-            $resultado = $this->db->affected_rows();
+                $insert = "INSERT INTO puntos_mapa (left_mapa, top_mapa, id_escena, piso) 
+                    VALUES ($left_mapa,$top_mapa,'$cod',$piso_mapa)";
+
+                $this->db->query($insert);
+
+                $resultado = $this->db->affected_rows();
+            } // else
         } else {
+            // La imagen ha fallado durante la subida
+            echo $this->upload->display_errors()."<br><br>";
             $resultado = -1;
         }
         return $resultado;
