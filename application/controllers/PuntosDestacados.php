@@ -11,13 +11,7 @@ class PuntosDestacados extends CI_Controller {
     
     public function index(){
         $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-        $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/puntosDestacados");
-        if ($permiso) {
-            $this->load->view("puntosdestacados/puntosDestacados", $datos);	
-        }
-        else {
-            redirect(base_url("usuario"));
-        }
+        $this->load->view("puntosdestacados/puntosDestacados", $datos);	
     }
     
     public function anadir_celda($id_fila){
