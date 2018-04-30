@@ -6,6 +6,7 @@ class PuntosDestacados extends CI_Controller {
         parent::__construct();
         $this->load->model("PuntosDestacadosModel");
         $this->load->model("UsuarioModel");
+        //$this->load->helper('funcionesHotspot');
     }
     
     public function index(){

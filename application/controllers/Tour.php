@@ -11,6 +11,7 @@ class Tour extends CI_Controller {
         parent::__construct();
         $this->load->model("TourModel");
         $this->load->model("UsuarioModel");
+        //$this->load->helper('funcionesHotspot');
     } 
 
     /**
