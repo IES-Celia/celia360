@@ -595,19 +595,101 @@ and open the template in the editor.
         <!-------------------------------- 12. BIBLIOTECA ------------------------------------->
         <h2><a name="biblioteca">12. Administrar la biblioteca</a></a></h2>
         <p>
-            Biblioteca e Historia.
+            El módulo de biblioteca es un añadido que enriquece la experiencia de los visitantes a su tour virtual ofreciéndole, en formato digitalizado, publicaciones que tengan relación con el lugar que están visitando. No es un módulo obligatorio, es decir, usted puede desactivarlo si decide no ofrecerlo a sus visitantes. En cambio, si prefiere utilizarlo, asegúrese de no infringir los derechos de propiedad intelectual de las obras que ofrezca en formato digital.
         </p>
-
+        <p>
+            En esta sección le mostraremos cómo puede crear su biblioteca virtual y cómo puede integrarla en su visita. Es una sección que aún está en desarrollo (incluso más que el resto de la aplicación), por lo que en próximas versiones pueden existir profundos cambios.
+        </p>
+        <p>
+            Para acceder a la administración de la biblioteca, debe entrar al panel de administración con un usuario con privilegios suficientes. Si no sabe cómo hacerlo, revise la <a href="#mapa">sección 4</a>. Una vez hecho esto, seleccione la opción "Biblioteca" del menú principal. Accederá a una pantalla semejante a esta:<br/>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Esta pantalla ofrece las funcionalidades habituales para la administración de cualquier conjunto de datos. Es muy semejante a la administración de imágenes, vídeos, audios o usuarios. Usted puede:
+        <ul>
+            <li><strong>Añadir un libro</strong> haciendo clic en "Insertar libro". Más abajo le explicamos algo más acerca de este proceso.</li>
+            <li><strong>Modificar libro</strong>: la información bibliográfica básica de cada un libro (título, autor, editorial, etc) puede modificarse haciendo clic en el icono "Modificar" de cada libro. Sin embargo, el contenido del libro, es decir, sus páginas, no se modifican desde aquí, sino desde la opción "Editar páginas" que describimos más abajo.</li>
+            <li><strong>Editar páginas</strong>: aquí se edita el contenido del libro, es decir, sus páginas. Más abajo le explicamos cómo subir el contenido del libro.</li>
+            <li><strong>Eliminar libro</strong>: haciendo clic en el icono de "Eliminar" en la fila de cada libro puede borrarlo de la base de datos y eliminar todos los archivos asociados del servidor. ¡Cuidado! Esta acción no se puede deshacer.</li>
+            <li><strong>Buscar libro</strong>: le permite localizar un libro por cualquier campo: título, autor, editorial, isbn, etc. Simplemente, escriba una cadena de búsqueda en el cuadro reservado para ello encima de la tabla.</li>
+            <li><strong>Ordenar tabla</strong>: haciendo clic en cualquier encabezado de campo de la tabla para ordenarla alfabéticamente por ese campo. Por ejemplo, si quiere ordenar alfabéticamente por título, haga clic en el encabezado "Título". Si hace clic una segunda vez, obtendrá un ordenado alfabético inverso.</li>
+            <li><strong>Paginar tabla</strong>: si en su base de datos hay demasiados libros no se mostrarán todos en la tabla, sino que se paginarán. Puede navegar entre las páginas con el indicador de página en la parte inferior de la tabla. También puede decidir cuántos registros desea ver por página.</li>
+        </ul>
+        </p>
+        <p>
+            El proceso de <strong>inserción de un libro</strong> en la base de datos no es trivial, por lo que necesita una explicación adicional. En general, crear un libro requiere dos pasos:
+        </p>
+        <p>
+            <ol>
+                <li>Crear el libro con la opción "Insertar libro". Esto insertará en la base de datos la información bibliográfica básica (título, autor, editorial, etc), pero <i>no</i> el contenido del libro. Se le pedirá que indique si este libro está destinado a la biblioteca general o es una publicación histórica. La diferencia es que los segundos solo aparecerán al hacer clic en el boton "Historia" del homepage, donde (optativamente) podemos colocar publicaciones que tengan que ver con la historia de nuestro edificio. También se le pedirá que indique si el libro tiene formato apaisado o vertical.</li>
+                <li>Subir las páginas con la opción "Páginas" de cada fila de la tabla. Puede subir las páginas de una en una (si el libro no es muy largo) o seleccionando varias a la vez. Por supuesto, deberá tener las páginas escaneadas previamente. Tenga en cuenta que las páginas se ordenarán en el servidor según su nombre alfabético, por lo que le recomendamos que nombre los archivos numéricamente. Por ejemplo, 001.jpg para la primera página, 002.jpg para la segunda, y así sucesivamente.</li>
+            </ol>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Una vez que haya subido tanto la información bibliográfica como el contenido de un libro, puede modificar la primera con la opción "Modificar" del panel de administración y la segunda con la opción "Páginas".
+        </p>
+        <p>
+            Tenga en cuenta que el catálogo de libros marcados como "Tipo historia" solo aparecerán al pulsar el botón "Historia" del homepage, mientras que el resto de libros aparecerán al seleccionar la opción "Biblioteca" del menú principal del homepage. Ambos enlaces son optativos y se pueden ocultar desde la personalización de la portada (si no sabe cómo hacerlo, revise la <a href="#portada">sección 10</a>), por lo que le corresponde a usted decidir dónde encaja mejor cada publicación que pretende poner a disposición de sus visitantes o si, por el contrario, no desea ofrecer libros digitalizados en absoluto.
+        </p>
+        
         <!-------------------------------- 13. CONCLUSIÓN ------------------------------------->
         <h2><a name="tour">13. ¡Su tour virtual está listo!</a></a></h2>
         <p>
-            Por último, contaremos qué cabe esperar que vea el visitante de la página si hemos realizado todo lo anterior. Es decir, contaremos lo maravilloso que es nuestro frontend.
+            Cuando haya finalizado de configurar su tour virtual, Celia360 estará preparado para mostrar a sus visitantes una inmersión completa, interactiva y plagada de información útil por el entorno que usted haya fotografiado. En esta sección pretendemos mostrarle cómo puede quedar su tour virtual una vez que lo haya terminado de configurar, ofreciéndole como ejemplo el que nosotros hemos preparado para el IES Celia Viñas de Almería y que puede visitar online en http://iesceliaciclos.org/celia360
         </p>
-        
+        <p>
+            Lo primero que verá su visitante cuando acceda a su tour virtual es el homepage o portada. En nuestro caso, tiene este aspecto:<br/>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Desde el homepage, sus visitantes pueden acceder a todas las opciones de navegación por su tour virtual. La primera de ellas es la <strong>visita libre</strong>, que permite al visitante moverse por cualquiera de las escenas de sus mapas, bien navegando de una a otra mediante los hotspots de tipo salto o bien accediendo directamente a ellas desde el mapa desplegable:
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            La siguiente opción es la <strong>visita guiada</strong>. En este tour, su visitante será dirigido a través de las escenas que usted haya seleccionado, acompañando cada escena con una audiodescripción. El visitante puede detener la visita en cualquier momento, o bien avanzar o retroceder en la misma con libertad. También puede moverse alrededor de la escena 360 mientras suena la audiodescripción:
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            A continuación tenemos la <strong>visita de puntos destacados</strong>. Esta visita mostrará al usuario un mosaico con las imágenes que usted haya seleccionado como más interesantes de su visita. Cada una de ellas dará acceso a una escena limitada, es decir: el visitante podrá moverse libremente en esa escena pero no podrá salir de allí para seguir navegando libremente por el resto del mapa (para eso ya está la visita libre):
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            La siguiente opción es la de <strong>biblioteca</strong>. Aquí se mostrará el catálogo de libros (todos menos los parcados como "Tipo historia") y su visitante podrá consultarlos online mediante un visor interactivo. Algunos libros pueden tener la opción de descarga en formato PDF. Tenga en cuenta que puede ocultar esta opción desde la <a href="#portada">configuración de la portada</a> si no le interesa ofrecer libros digitalizados a sus visitantes. También le recordamos que la obligación de asegurarse de no infringir los posibles derechos de propiedad intelectual es exclusivamente suya y de su organización. El aspecto que tiene la biblioteca para sus visitantes es este:<br/>
+            <img src="imgs/imagen-requerida.jpg"/><br/>
+            Y el visor de libros tiene esta forma:<br/>
+            <img src="imgs/imagen-requerida.jpg"/>
+        </p>
+        <p>
+            Por último, el botón <strong>Historia</strong> (que también es opcional y puede ocultarse desde <a href="#portada">la administración de la portada</a>) le dará acceso a un subconjunto de la biblioteca donde solo figurarán los libros o documentos que relaten la historia de su edificio o instalación. El catálogo, en este caso, tiene este aspecto:<br/>
+            <img src="imgs/imagen-requerida.jpg"/><br/>
+            El visor de libros digitales es igual que el que se emplea en la biblioteca general.
+        </p>
         <!-------------------------------- ANEXO. GUÍA RÁPIDA ------------------------------------->
         <h2><a name="guia_rapida">Anexo. Guía de inicio rápida</a></a></h2>
         <p>
-            Aquí redactaremos una breve guía con lo mínimo para poner en marcha la plataforma en un servidor nuevo.
+            En esta sección le ofrecemos un resumen de los pasos que debe seguir para crear su tour virtual. Le remitiremos al las secciones correspondientes del manual para ampliar la información sobre cada uno de los aspectos.
+        </p>
+        <p>
+            Los pasos generales para crear un <strong>tour virtual mínimo</strong> son los siguientes:
+            <ol>
+                <li>Desplegar una instalación limpia de la aplicación en un servidor web adecuadamente configurado (más informacion en la <a href="#instalacion">sección 2</a>).</li>
+                <li>Preparar los archivos con los planos (de su edificio, instalación, etc.) y crear el mapa (más información en la <a href="#mapa">sección 4</a>).</li>
+                <li>Preparar y organizar los archivos con sus imágenes panorámicas 360 y subirlas a la plataforma (más información en la <a href="#escenas">sección 5</a>).</li>
+                <li>Crear los hotspots de tipo salto para enlazar unas escenas con otras (más información en la <a href="#enlace">sección 7.1</a>).</li>
+                <li>Crear al menos un hotspot tipo escalera si su visita consta de más de un mapa (más información en la <a href="#mapa">sección 7.5</a>).</li>
+                <li>Configurar su portada con una imagen de fondo personalizada y ocultando, si lo desea, los enlaces de "Biblioteca" e "Historia" (más información en la <a href="#portada">sección 10</a>).</li>
+            </ol>
+        </p>
+        <p>
+            Si lo que quiere, en cambio, es ofrecerle a sus visitantes un <strong>tour virtual completo</strong> y repleto de información, explotando todas las posibilidades de nuestra plataforma, tendrá que realizar algunas tareas adicionales:
+            <ol>
+                <li>Dar de alta a usuarios adicionales que puedan echarle una mano con el trabajo de configuración y manenimiento (más información en la <a href="#usuarios">sección 11</a>).</li>
+                <li>Grabar las audiodescripciones para la visita guiada y crear la visita guiada. Puede que necesite alguna fotografía adicional de cada una de las escenas (más informacion en la <a href="#guiada">sección 8</a>).</li>
+                <li>Crear la visita de puntos destacados. Puede que necesite alguna imagen adicional de cada una de las escenas (más información en la <a href="#destacados">sección 9</a>).</li>
+                <li>Subir imágenes (convencionales), audios y vídeos sobre los puntos más importantes de su edificio o instalación, y luego asociarlos a hotspots de tipo panel, audio o vídeo incrustados dentro de sus escenas panorámicas (más información en las secciones <a href="#subirimagenes">6</a>, <a href="#panel">7.2</a>, <a href="#audio">7.3</a>, y <a href="#video">7.4</a>).</li>
+                <li>Digitalizar libros y documentos de dominio público o de los que posea los derechos y subirlos a la biblioteca, distinguiendo los que constituyen la bibliografía general de los de bibliografía histórica (más información en la <a href="#biblioteca">sección 12</a>). No olvide volver a hacer visibles los enlaces "Biblioteca" y/o "Historia" en la configuración de la portada (<a href="#portada">sección 10</a>) para poder acceder a la biblioteca.</li>
+            </ol>
         </p>
     </body>
 </html>
