@@ -3,10 +3,13 @@
 
 
 <?php
-echo"<p style='text-align:center; color:red;'>".$mensaje."</p>";   
-echo"<form action='".site_url("usuario/processregisterform")."' method='post'>";
+echo"<p style='text-align:center; color:red;'>".$mensaje."</p>";
 ?>
 <div id="caja">
+<?php   
+echo"<form action='".site_url("usuario/processregisterform")."' method='post'>";
+?>
+
     <h1>Registro de usuarios</h1>
     <label for="username">Nombre de usuario</label>
     <input type='text' name='username' id="username" required>
