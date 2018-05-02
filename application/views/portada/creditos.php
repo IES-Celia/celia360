@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 
 body{
-    background-color: grey;
+    background-color: white;
     overflow-y: auto;
     height:3000px;
     width:auto;    
@@ -121,7 +121,7 @@ body{
 
 #prueba_contenedor{
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1200px;
   padding: 10rem 1rem;
  
 }
@@ -173,12 +173,16 @@ body{
     float:left;
     width: 10%;
     text-decoration: none;
-    background-color:#fff;
+    background-color:#e6e6e6;
     border-radius:50%;
     text-align:center;
     padding: 7px;
     margin: 5px;
 
+}
+h2{
+    color:black;
+    font-size:25px;
 }
 
 
@@ -210,7 +214,6 @@ body{
         </div>
             
         <hr class='separador_creditos'>
-            
             
             
         <h2>
@@ -245,7 +248,7 @@ body{
                 </div>
             </div>
 
-              <div>
+            <div>
                 <h2>Manuel<br> González Mesa</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
                 <div class="social-media">
@@ -256,45 +259,69 @@ body{
                     </ul>
                 </div>
             </div>
+            <div>
+                <h2>Francisco<br> Linares González</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
 
         <hr class='separador_creditos'>
 
         <div class='prueba_carta'>
 
-            <div>
-                <h2>Francisco<br> Linares González</h2>
-                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
-            </div>
-
               <div>
                 <h2>Alejandro<br> López López</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
 
               <div>
-                <h2>Miguel Ángel López Rodríguez</h2>
+                <h2>Miguel Ángel <br>López Rodríguez</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-         <hr class='separador_creditos'>
-
-        <div class='prueba_carta'>
-
             <div>
                 <h2>Miguel Ángel<br> López Segura</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
 
               <div>
                 <h2>José Luis<br> Ramírez Jiménez</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
-            </div>
-
-              <div>
-                <h2>María Dolores <br>Salmerón Sierra</h2>
-                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -302,16 +329,44 @@ body{
 
         <div class='prueba_carta'>
 
+              <div>
+                <h2>María Dolores <br>Salmerón Sierra</h2>
+                <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
+            </div>
             <div>
                 <h2>Álvaro<br> Sánchez Casares</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
 
               <div>
                 <h2>Zygimantas<br> Sniurevicius</h2>
                 <div class='prueba_informacion'>En construcción<br>Email:enconstruccion@mimail.com<br>Redes</div>
+                 <div class="social-media">
+                    <ul id="social">
+                        <li class="facebook" style="margin-left: 70px;"> <a href=""><i class="fab fa-facebook-f"></i> </a></li>
+                        <li class="email"> <a href=""><i class="far fa-envelope"></i> </a></li>
+                        <li class="pdf"> <a href=""> <i class="far fa-file-pdf"></i></a> </li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+         <hr class='separador_creditos'>
+
 
         <hr class='separador_creditos'>
 

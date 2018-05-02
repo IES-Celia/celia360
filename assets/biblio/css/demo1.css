@@ -10,14 +10,17 @@
 }
 
 .bb-custom-wrapper {
-	width: 420px;
-	position: relative;
-	margin: 0 auto 40px;
-	text-align: center;
+    /* width: 420px; */
+    position: absolute;
+    /* margin: 0 auto 40px; */
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
 }
 
 .bb-custom-wrapper .bb-bookblock {
-	box-shadow: 0 12px 20px -10px rgba(81,64,49,0.6);
+	/*box-shadow: 0 12px 20px -10px rgba(81,64,49,0.6);*/
 }
 
 .bb-custom-wrapper h3 {

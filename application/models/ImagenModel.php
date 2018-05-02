@@ -245,7 +245,7 @@ class ImagenModel extends CI_Model {
 
         $consulta = $this->db->query($miconsulta);
         $archivo_imagen = $consulta->result_array()[0]["url_imagen"];
-        
+      
         // cargar directorio
         $url_imagen = "assets/imagenes/imagenes-hotspots/" . $archivo_imagen; 
         // cargar directorio de la miniatura
@@ -258,7 +258,28 @@ class ImagenModel extends CI_Model {
         $q = "delete  from imagenes where id_imagen= '$id'";
 
         $this->db->query($q);
+       
         return $this->db->affected_rows();
+    }
+    
+    /**
+     * Busca un registro en la tabla "panel_imagenes" de la base de datos,
+     * para comprobar si se está utilizando la imagen con este id
+     * 
+     * @return FALSE, no hay resultados 
+     * @return TRUE, hay resultados, la imagen está en uso 
+     * @author: María Dolores Salmeron Sierra       
+     */
+    public function buscar_imagen_panel($id) {
+
+        $miconsulta = "SELECT * FROM panel_imagenes WHERE id_imagen = '$id'";
+        $select = $this->db->query($miconsulta);
+        
+        if($select->num_rows() > 0){
+           return true; 
+        }else{
+           return false; 
+        }
     }
     
     /**
