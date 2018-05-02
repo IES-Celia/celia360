@@ -19,11 +19,11 @@
 
 		<style type="text/css">
 			.contenedor{
-    /* width: 900px; */
-    /* height: 550px; */
-    /* margin-left: 15%; */
-    position: relative;
-    overflow: hidden;
+				/* width: 900px; */
+				/* height: 550px; */
+				/* margin-left: 15%; */
+				position: relative;
+				overflow: hidden;
 			};
     		.mySlides, #persona{
     			position:absolute;
