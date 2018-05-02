@@ -1,7 +1,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-   <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
+ 
+   <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
+    	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
 		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/bookblock.css");?>" />
 		<!-- custom demo style -->
@@ -16,11 +19,11 @@
 
 		<style type="text/css">
 			.contenedorLibro{
-				width:900px;
-				height:550px;
-				margin-left:15%;
-				position:relative;
-				overflow:hidden;
+    /* width: 900px; */
+    /* height: 550px; */
+    /* margin-left: 15%; */
+    position: relative;
+    overflow: hidden;
 			};
     		.mySlides, #persona{
     			position:absolute;
@@ -97,7 +100,8 @@
 	    background: url('<?php echo base_url();?>assets/bibliocss/marc.jpeg');
 	    /*background-size: cover;*/
 	    width:100%;
-	    height:100%;
+		height:100%;
+		margin-top: -11px;
  	} 
 
   .cerrarBook{
@@ -140,7 +144,7 @@
 
 	<?php 
 	 
-            echo "<table style=''>";  
+            echo "<table id='example' class='display' style='margin:0 auto'>";  
             echo "<tr>";  
 
 		 	$i = 0;
@@ -203,7 +207,7 @@
 					<script type="text/javascript">
 					$(".contenedorLibro").css("width", "900px");
 					$(".contenedorLibro").css("height", "550px");
-					$(".contenedorLibro").css("margin-left", "15%");
+					$(".contenedorLibro").css("", "");
 					</script>
 					<?php
 					for($i=0;$i<$num_pag;$i++){
@@ -220,7 +224,7 @@
 
 				?>
 					</div>
-					<nav style="width:230%;">
+					<nav style="width:100%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- <!-- AQUI  esta el numero de pagina -->
@@ -410,7 +414,7 @@
 		<script>
 
 		      $(document).ready(function(){
-
+				$('#example').DataTable();
 			        $('.mySlides').draggable({
 
 			           drag: function(evt,ui)

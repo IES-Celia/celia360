@@ -35,7 +35,7 @@ class escenas extends CI_Controller {
     
     public function processinsertscene(){
         $resultado = $this->EscenasModel->insertar();
-        if ($resultado == true) {
+        if ($resultado > 0) {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["mapa"] = $this->mapa->cargar_mapa();
@@ -68,7 +68,7 @@ class escenas extends CI_Controller {
         $resultado = $this->EscenasModel->borrar($cod);
         
         if ($resultado > 1) {
-            $datos["mensaje"] = "Escena borrado correctamente";
+            $datos["mensaje"] = "Escena borrada correctamente";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["vista"]="escenas/Escenastable";
             $datos["mapa"] = $this->mapa->cargar_mapa();

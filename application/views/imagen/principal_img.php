@@ -154,12 +154,19 @@ $du = $lista_imagenes[0];
     }
 
     function respuesta(r) {
-        if (r == 0) {
-            alert("Error al borrar la imagen");
+        if (r.trim() == "0") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar la imagen.</span>";
+		} else if (r.trim() == "-1") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ésta imagen está en uso en un hotspot y no se puede borrar.</span>";
+            
         } else {
-            alert("Imagen borrada con éxito");
-            selector = "#imagen-" + parseInt(r);
+            
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Imagen borrada con éxito.</span>";
+			
+			selector = "#imagen-"+parseInt(r);
+			
             $(selector).remove();
+			
         }
     }
   

@@ -65,10 +65,10 @@ class Imagen extends CI_Controller {
             $datos["error"] = $total." imágenes subidas: $correctas correctas - $incorrectas fallidas";
         else
             $datos["mensaje"] = $total." imágenes subidas correctamente";
-        $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
-        $datos["vista"] = "imagen/principal_img";
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('admin_template', $datos);
+            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+            $datos["vista"] = "imagen/principal_img";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('admin_template', $datos);
     }
 
     /**
@@ -136,22 +136,36 @@ class Imagen extends CI_Controller {
     }
 
     /**
-     * Borra la imagen
+     * Borra la imagen con el id especificado
+     * Este método se pide por Ajax, de modo que su salida es un "0" o un "1".
      *  
      * @param $id_imagen, el identificador de la imagen  
+     * @return Devuelve a la petición Ajax un "0" si el borrado ha fallado,
+     * un "-1" si el borrado ha fallado porque la imagen está en uso en un hotspot,
+     * o el id de la imagen si ha funcionado bien.
+     * 
      * @author: María Dolores Salmeron Sierra  
      */
     public function borrar_imagen($id_imagen) {
 
         //cargar el modelo
         $this->load->model("ImagenModel");
-        //acciones para eliminar la imagen en la BD
-        $resultado = $this->ImagenModel->borrar_imagen($id_imagen);
         
-        if ($resultado != 0) {
-            echo $id_imagen;
-        } else {
-            echo $resultado;
+        // Comprobamos si la imagen se está utilizando en la aplicación.
+        $sql = $this->ImagenModel->buscar_imagen_panel($id_imagen);
+        
+        if ($sql == false){
+            // La imagen no está en uso, así que podemos borrarla.
+            //acciones para eliminar la imagen en la BD
+            $resultado = $this->ImagenModel->borrar_imagen($id_imagen);
+            if($resultado == 1){
+                echo $id_imagen;  // La imagen se ha borrado correctamente
+            }else{
+                echo "0"; //Ha ocurrido un error al borrar la imagen
+            }
+        }else{
+            //La imagen está en uso y no se puede borrar
+            echo "-1";
         }
     }
     /**

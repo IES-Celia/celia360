@@ -5,7 +5,6 @@
 echo "<table id='cont'>
        <tr id='cabecera'> 
         <th>Nick</th>
-        <th>Contraseña</th>
         <th>Correo</th>
         <th>Nombre</th>
         <th>Apellido</th>
@@ -20,7 +19,6 @@ foreach ($tablaUsuarios as $usu) {
    $idusu = $usu["id_usuario"];
     echo"<tr id='usu".$idusu."'>
             <td id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
-            <td>".$usu["password"]."</td>
             <td id='email_usuario_".$idusu."'>".$usu["email"]."</td>
             <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
             <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
@@ -69,7 +67,7 @@ foreach ($tablaUsuarios as $usu) {
     
 
     echo"   <td>
-                <a href='#' onclick='modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
+                <a href='#' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
             </td>
             <td>
                 <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
@@ -87,8 +85,8 @@ echo "
 
         <label for='username'>Nombre de usuario</label>
         <input type='text' name='username' id='form_modif_nick' required>
-        <label for='pass'>Password</label>
-        <input type='password' name='pass' required>
+        <label for='pass'>Password (en blanco para no modificar)</label>
+        <input type='password' name='pass'>
         <label for='email'>Correo</label>
         <input type='text' name='email' id='form_modif_email' required>
         <label for='name'>Nombre</label>
@@ -127,6 +125,13 @@ echo"
     <input type='text' name='nombre' id='nombre' required>
     <label for='subname'>Apellidos</label>
     <input type='text' name='subname' id='subname' required>
+        <label for='tipo'>Tipo de usuario</label>
+        <select name='tipo' id='form_modif_tipo'>
+                <option value='0' style='color:red'>Pendiente asignación</option>
+                <option value='1'>Admin</option>
+                <option value='2'>Mapero</option>
+                <option value='3'>Bibliotecario</option>
+        </select>
     <input type='submit'>
     <input type='button' onclick='cerrar()' value='Cerrar'>
     
@@ -145,20 +150,13 @@ echo"
             resultado=confirm("¿Desea borrar el usuario?");
             
             if(resultado){ 
-            $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuesta);
+            $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuestaBorrado);
             }
         }
 
-        function modTipo(idusu) {
-            resultado=confirm("¿Desea modificar el tipo de usuario?");
-            if(resultado){
-                $.get("<?php echo base_url('usuario/modtipo/');?>"+idusu,null,respuesta);
-            }
-        }
-
-        function respuesta(r) {
+        function respuestaBorrado(r) {
             if (r == 0) {
-                alert("Ha ocurrido un error al borrar");
+                document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Ha ocurrido un error en la eliminación</span>";
             }
             else {
                 selector = "#usu"+parseInt(r);
@@ -166,7 +164,25 @@ echo"
             }
         }
 
-        function modusuario(idusu){
+        function modTipo(idusu) {
+            nuevoTipo = $("select#tipo_usuario"+idusu).val();
+            resultado=confirm("¿Está seguro de que desea modificar el tipo de usuario?");
+            if(resultado){
+                alert("<?php echo base_url('usuario/modtipo/');?>"+idusu+'/'+nuevoTipo);
+                $.get("<?php echo base_url('usuario/modtipo/');?>"+idusu+'/'+nuevoTipo,null,respuestaModtipo);
+            }
+        }
+
+        function respuestaModtipo(r) {
+            if (r == "0") {
+                document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Usuario no modificado</span>";
+            }
+            else {
+                document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Usuario modificado con éxito</span>";
+            }
+        }
+
+        function show_modusuario(idusu){
             email = "email_usuario_"+idusu;
             nick = "nick_usuario_"+idusu;
             nombre = "name_usuario_"+idusu;
@@ -176,13 +192,13 @@ echo"
             document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
             document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
             document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
-            aux = document.getElementById(tipo).innerHTML;
-            
-            if(aux=='Admin'){
+            aux = document.getElementById(tipo).value;
+
+            if(aux==1){
                 document.getElementById("form_modif_tipo").selectedIndex='1';
-            }else if(aux=='Mapero'){
+            }else if(aux==2){
                 document.getElementById("form_modif_tipo").selectedIndex='2';
-            }else if(aux=='Bibliotecario'){
+            }else if(aux==3){
                 document.getElementById("form_modif_tipo").selectedIndex='3';
             }else{
                 document.getElementById("form_modif_tipo").selectedIndex='0';
@@ -199,7 +215,7 @@ echo"
 
         function cerrar(){
             $("#insertar").hide();
-             $("#modificar").hide();
+            $("#modificar").hide();
         }    
        
 </script>

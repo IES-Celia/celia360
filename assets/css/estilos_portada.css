@@ -58,6 +58,7 @@ h3{
    
 }
 
+
 #nav_portada img{
     width: 50px;
     margin-top: -10px; 
@@ -83,7 +84,23 @@ h3{
 
 }
 
- 
+#poweredBy{
+    position: absolute; 
+    bottom: 0%;
+    right: 0%;
+    padding: 10px;
+}
+
+#poweredBy h1{
+    font-size: 25px;
+    float:left;
+}
+
+#poweredBy img{
+    width: 25px;
+    float:right;
+}
+
 #nav_portada ul{
     list-style: none;
     display: inline;

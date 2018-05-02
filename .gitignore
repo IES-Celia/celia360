@@ -42,6 +42,7 @@ assets/imagenes/mapa/*
 assets/imagenes/portada/*
 !assets/imagenes/portada/portada.jpg
 !assets/imagenes/portada/logo.png
+!assets/imagenes/portada/header-bg2.png
 assets/imagenes/previews/*
 assets/imagenes/previews-guiada/*
 

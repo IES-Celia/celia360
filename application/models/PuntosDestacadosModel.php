@@ -109,12 +109,7 @@ class PuntosDestacadosModel extends CI_Model {
     }
    // maravilloso
     public function mover_celda($idcelda, $idfila){
-        $res = $this->db->query("SELECT COUNT(id_celda) FROM celda_pd WHERE fila_asociada=$idfila")->result_array()[0]["COUNT(id_celda)"];
-        if($res<4){
-            $this->db->query("UPDATE celda_pd SET fila_asociada=$idfila WHERE id_celda=$idcelda");
-        }else{
-            return false;
-        }
+        $this->db->query("UPDATE celda_pd SET fila_asociada=$idfila WHERE id_celda=$idcelda");
     }
 
     public function getAll() {

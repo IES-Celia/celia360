@@ -16,19 +16,17 @@
 <body>
 
 	<h1 align="center">Inserción de punto destacado</h1>
-	
-	<fieldset class='for'>
+	<div id="caja2">
+	<fieldset>
 
 		<?php
 			echo"<form action='".site_url("PuntosDestacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";   
         ?>
 		    	
-				Nombre del punto destacado:  <input type='text' name='titulo_celda' required> <br>
-                <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-				Imagen del punto destacado :  <input type='file' name='imagen_celda' required> <br>
-                Seleccione un punto del mapa, que será donde salte al hacer click (se marcará en amarillo): <input type='hidden' name='escena_celda' required> <br><br>
-				<button id="btn-bajar-piso" type="button">Bajar piso</button>
-				<button id="btn-subir-piso" type="button">Subir piso</button>
+		Nombre del punto destacado:  <input type='text' name='titulo_celda' required> <br>
+                <input type="hidden" name="MAX_FILE_SIZE" value="20000000" /><br>
+                Imagen destacada:  <input type='file' name='imagen_celda' required> <br><br><hr><br>
+                Seleccione la escena en el mapa:<br>(se sombreará en amarillo) <input type='hidden' name='escena_celda' required> <br><br>
 				<div id="mapa_escena_hotspot" class="insertar_pd">
 				
 				<?php
@@ -52,14 +50,17 @@
 					}
 				?>
 				</div><br>
-			    <input type='hidden' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br>
+				<button id="btn-bajar-piso" type="button">Bajar piso</button>
+				<button id="btn-subir-piso" type="button">Subir piso</button>
+                                <input type='hidden' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br><br><br><hr><br>
 			    
-				<input type='submit'> <br>
+                            <input type='submit' value='Enviar'><br>
                 <a href="<?php echo site_url("PuntosDestacados/cargar_admin_puntosdestacados"); ?>">Atrás</a><br>
 			   
 			</form>
 	
 	</fieldset>
+        </div>
 
 </body>
 </html>

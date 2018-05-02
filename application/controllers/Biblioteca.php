@@ -69,7 +69,10 @@ class Biblioteca extends CI_Controller {
 
 	}
 
-
+public function verLibroCelia(){
+	$datos["vista"] = "biblioteca/librocelia";
+	$this->load->view("main_template", $datos); 
+}
 	public function abrir_phistoria($idlibro = -1,$apaisado = -1,$tipo=-1){
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
 		$datos["id_libro"] = $idlibro;

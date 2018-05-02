@@ -1,133 +1,207 @@
 <?php
 
-	class EscenasModel extends CI_Model {
-				
-		public function getAll() {
-			
-            $con = $this->db->query("SELECT * FROM escenas ORDER BY cod_escena");
-            $tabla = array();
-                foreach($con->result_array() as $fila) {
-                        $tabla[] = $fila;
-                }
-			
-            return $tabla;
-		}
+class EscenasModel extends CI_Model {
 
-		public function getOne($cod) {
-			
-			$com = $this->db->query("SELECT * FROM escenas where cod_escena = '$cod'");
-            $tabla = array();
-                foreach($com->result_array() as $fila) {
-                    $tabla[] = $fila;
-                }
-			return $tabla;
-		}
-        
-        
+    public function getAll() {
 
-		public function insertar() {
+        $con = $this->db->query("SELECT * FROM escenas ORDER BY cod_escena");
+        $tabla = array();
+        foreach ($con->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
 
-            $config['upload_path'] = 'assets/imagenes/escenas/';
-            $config['allowed_types'] = 'jpg';
-           
-            $this->load->library('upload', $config);
+        return $tabla;
+    }
+
+    public function getOne($cod) {
+
+        $com = $this->db->query("SELECT * FROM escenas where cod_escena = '$cod'");
+        $tabla = array();
+        foreach ($com->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
+
+    /**
+     * Inserta una escena (panorama) en la BD y sube el archivo con la imagen al directorio assets/imagenes/escenas/
+     * 
+     * La imagen se redimensiona a 4000 px de ancho para evitar problemas en navegadores Mozilla.
+     * La imagen se renombra como el código de escena (más ".JPG").
+     * 
+     * @return 1 si la escena se sube correctamente, 0 si hay un error al insertar en la BD, -1 si hay un error al subir o redimensionar la imagen.
+     */
+    public function insertar() {
+
+        $config['upload_path'] = 'assets/imagenes/escenas/';
+        $config['allowed_types'] = 'jpg';
+
+        $this->load->library('upload', $config);
+
+        $resultado = $this->upload->do_upload('panorama');
+    
+        if ($resultado) {
+            // Imagen subida con éxito
+
+            // Vamos a insertar un registro en la BD para genera el id (que es AUTOINCREMENT)
+            $name = $this->input->post_get("name");
+            $cod = "temp";  // Luego lo sustituiremos por el id (campo redundante; no lo eliminamos porque se usa en otros lugares de la aplicación por motivos históricos)
+            $left_mapa = $_REQUEST["left_mapa"];
+            $top_mapa = $_REQUEST["top_mapa"];
+            $piso_mapa = $_REQUEST["piso_mapa"];
+            $nombre_imagen = "temp";   // También lo cambiaremos luego, cuando conozcamos el id asignado al registro
+
+            $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
+                      VALUES('$name','$cod',120,10,10,'equirectangular','$nombre_imagen')";
+            $this->db->query($insert);
             
-            $resultado=$this->upload->do_upload('panorama');
-			if($resultado) {            
-                 //////////////////////
-                 //// Se tiene que comprobar que existe ya un cod_escena igual para evitar duplicados
-                 /////////////////////
-
-                $name = $this->input->post_get("name");		
-			    $panorama = $this->upload->data()["client_name"];
-                $cod = substr($panorama, 0 , -4);
-                $left_mapa = $_REQUEST["left_mapa"];
-                $top_mapa = $_REQUEST["top_mapa"];
-                $piso_mapa = $_REQUEST["piso_mapa"];
-                
+            // Obtenemos el id asignado a la escena (es un campo AUTOINCREMENT)
+            $last_id = $this->db->insert_id();  
+            $cod = $last_id;    // El código será igual que el último id (campo redundante: no lo eliminamos porque se usa en otros lugares de la aplicación por motivos históricos)
             
-                $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
-                      VALUES('$name','$cod',120,10,10,'equirectangular','assets/imagenes/escenas/$panorama')";
-
-                $this->db->query($insert);
+            // Renombramos archivo de imagen para que su nombre sea el id (o cod de escena) seguido de ".JPG"
+            // (hemos tenido muchos problemas con esto y hemos decidido dejar la extensión en MAYÚSCULAS)
+            $img_cliente = $this->upload->data()["client_name"];
+            $nombre_imagen = $cod.".JPG";
+            rename("assets/imagenes/escenas/$img_cliente", "assets/imagenes/escenas/$nombre_imagen");
             
-                $insert = "INSERT INTO puntos_mapa (left_mapa, top_mapa, id_escena, piso) 
-                VALUES ($left_mapa,$top_mapa,'$cod',$piso_mapa)";
-
-                $this->db->query($insert);
-
-                return $this->db->affected_rows();
+            // Actualizamos el registro con el nuevo cod y el nuevo nombre de imagen (ambos iguales a id: campos redundantes, pero no los podemos eliminar porque se usan en otros lugares de la aplicación)
+            $update = "UPDATE escenas SET cod_escena = '$cod', panorama = 'assets/imagenes/escenas/$nombre_imagen' WHERE id_escena = '$last_id'";
+            $this->db->query($update);
+            if ($this->db->affected_rows() != 1) {
+                // Ha ocurrido algún error. Devolvemos un -1 y eliminamos la imagen de la BD y del directorio de imágenes
+                $resultado = 0;
+                $delete = "DELETE FROM escenas WHERE id_escena = '$last_id'";
+                unlink("assets/imagenes/escenas/$nombre_imagen");
+    echo "Error tras UPDATE<br><br>";
+    
             }
             else {
-                echo $this->upload->display_errors();
-            }
-		}
-/**
- * Función encargada de eliminar las escenas y todos los hotspots relacionados.
- * 
- * @param codigo_escena
- */
-        public function borrar($cod){
-            
-            $sql  = "DELETE FROM hotspots WHERE id_hotspot IN (
+                // Todo ha ido bien. Ya tenemos la imagen subida. Su nombre es el id de la imagen (seguido de ".JPG").
+                // Sus campos id y cod son iguales.
+                // 
+                // Vamos a redimensionar la imagen para asegurarnos que su ancho es <4096px
+                // (por encima de 4096px, algunos navegadores dan problemas)
+                if ($this->upload->data()["image_width"] > 4000) {
+                    $config['image_library'] = 'gd2';
+                    $config['source_image'] = 'assets/imagenes/escenas/'.$nombre_imagen;
+                    $config['maintain_ratio'] = TRUE;
+                    $config['new_image'] = 'assets/imagenes/escenas/';
+                    $config['width'] = 4000;
+                    $this->load->library('image_lib', $config);
+
+                    if (!$this->image_lib->resize()) {
+                        // Ha ocurrido un error al redimensionar la imagen
+                        $resultado = -1;  // Marca de error
+                    }
+                }
+
+
+                $insert = "INSERT INTO puntos_mapa (left_mapa, top_mapa, id_escena, piso) 
+                    VALUES ($left_mapa,$top_mapa,'$cod',$piso_mapa)";
+
+                $this->db->query($insert);
+
+                $resultado = $this->db->affected_rows();
+            } // else
+        } else {
+            // La imagen ha fallado durante la subida
+            echo $this->upload->display_errors()."<br><br>";
+            $resultado = -1;
+        }
+        return $resultado;
+    }
+
+    /**
+     * Función encargada de eliminar las escenas y todos los hotspots relacionados.
+     * 
+     * @param codigo_escena
+     */
+    public function borrar($cod) {
+
+        $resultado = 0;
+        
+        $sql = "DELETE FROM hotspots WHERE id_hotspot IN (
                 SELECT id_hotspot FROM escenas_hotspots where id_escena IN (
                     SELECT id_escena FROM escenas WHERE cod_escena = '$cod'))";
-            $this->db->query($sql);
-
-            $sql ="DELETE FROM puntos_mapa WHERE id_escena = '$cod'";
-            $this->db->query($sql);
-            
-            $sql = "DELETE FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod') ";
-            $this->db->query($sql);
-
-            $sql = "DELETE FROM hotspots WHERE sceneid='$cod'";
-            $this->db->query($sql);
-
-            $sql = "DELETE FROM escenas WHERE cod_escena = '$cod' ";
-            $this->db->query($sql);
-
-            $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
-            
-            unlink($imagen_borrar);
+        $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
         
-            return $this->db->affected_rows();
-        } 
+        $sql = "DELETE FROM puntos_mapa WHERE id_escena = '$cod'";
+        $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
-		public function update ($cod) {
-			
-            $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
-            
-            $config['upload_path'] = 'assets/imagenes/escenas/';
-            $config['allowed_types'] = 'jpg';
-            $config['file_name'] = "$cod.JPG";
-            $config['overwrite'] = TRUE;
-           
-            $this->load->library('upload', $config);
-            
-            $resultado=$this->upload->do_upload('panorama');
-                
+        $sql = "DELETE FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod') ";
+        $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
-                //////////////////////
-                //// Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
-                /////////////////////
+        $sql = "DELETE FROM hotspots WHERE sceneid='$cod'";
+        $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
 
+        $sql = "DELETE FROM escenas WHERE cod_escena = '$cod' ";
+        $this->db->query($sql);
+        $resultado += $this->db->affected_rows();
+
+        $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
+        unlink($imagen_borrar);
+
+        return $resultado;
+    }
+
+    public function update($cod) {
+
+        $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
+
+        $config['upload_path'] = 'assets/imagenes/escenas/';
+        $config['allowed_types'] = 'jpg';
+        $config['file_name'] = "$cod.JPG";
+        $config['overwrite'] = TRUE;
+
+        $this->load->library('upload', $config);
+
+        $resultado = $this->upload->do_upload('panorama');
+        
+        if ($resultado) {
+            // Nueva imagen subida con éxito. Vamos a redimensionarla a 4000 px para evitar problemas con Mozilla
+            if ($this->upload->data()["image_width"] > 4000) {
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = 'assets/imagenes/escenas/'.$cod.'.JPG';
+                $config['maintain_ratio'] = TRUE;
+                $config['new_image'] = 'assets/imagenes/escenas/';
+                $config['width'] = 4000;
+                $this->load->library('image_lib', $config);
+
+                if (!$this->image_lib->resize()) {
+                    // Ha ocurrido un error al redimensionar la imagen
+                    $resultado = -1;  // Marca de error
+                }
+            }
             
-                $name = $_REQUEST["name"];
-                $id = $_REQUEST["Id"];
-                $panorama = $this->upload->data()["client_name"];
-               $update = "
+        }
+
+
+        //////////////////////
+        //// TODO: Se tiene que poder modificar la imagen asociada a una cod_escena / $id manteniendo sus hotspots (subiendo la nueva escena al   server, sobrescribiendo la existente)
+        /////////////////////
+
+
+        $name = $_REQUEST["name"];
+        $id = $_REQUEST["Id"];
+        $panorama = $this->upload->data()["client_name"];
+        $update = "
                     UPDATE escenas 
                     SET Nombre = '$name'";
-                    if($resultado!=0) {
-                        $update = $update . ", panorama = 'assets/imagenes/escenas/$panorama'";
-                    }
-                $update = $update .   "WHERE id_escena = '$id'";
-                
-                
-                $this->db->query($update);
-
-                return $this->db->affected_rows();
+        if ($resultado != 0) {
+            $update = $update . ", panorama = 'assets/imagenes/escenas/$panorama'";
         }
-		
-	}
+        $update = $update . "WHERE id_escena = '$id'";
+
+
+        $this->db->query($update);
+
+        return $this->db->affected_rows();
+    }
+
+}
 ?>	

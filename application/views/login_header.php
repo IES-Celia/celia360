@@ -33,4 +33,14 @@
 </head>
 	
 <body>
+    <?php
+	if (isset($error)) {
+		echo "<p style='color:red'>".$error."</p>";
+	}
+	if (isset($mensaje)) {
+		echo "<p style='color:green'>".$mensaje."</p>";
+	}
+
+    ?>
+
 <div id="fondo">

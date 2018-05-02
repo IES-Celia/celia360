@@ -17,7 +17,6 @@
         
         $(".imagenes").click(function(){
             var enlace = base_url+"assets/imagenes/escenas/"+$(this).parent().prev().find(".cod").text()+".JPG";
-            alert(enlace)
             $(this).html("<img src='"+enlace+"' width='1250' height='470' align='center'>");
         });
                     
@@ -30,17 +29,29 @@
            
     });
     
-     function borrarscene(cod) {
-                resultado = confirm("¿Esta seguro?");
+/**
+ * Esta función se ejecuta al pulsar el boton "Papelera" (borrar) de una escena de la tabla.
+ * Lanza el borrado en el servidor mediante Ajax.
+ * @param {String} cod Código de la escena que se va a borrar.
+ **/    
+function borrarscene(cod) {
+                resultado = confirm("¿Está seguro de que quiere borrar esta escena?\n\nCUIDADO: esta acción no se puede deshacer.");
                 if (resultado) {
                     $.get("<?php echo base_url('/escenas/deletesceneajax/'); ?>" + cod, null, respuesta);
                 }
             }
     
-    function respuesta(r) {
+/**
+ * Esta función procesa la respuesta del borrado por Ajax de la escena.
+ * @param {String} cod Código de la escena que se va a borrar.
+ **/
+function respuesta(r) {
         r = r.trim();
-        if (r==" ") alert("Ha ocurrido algún error al borrar la escena.");
+        if (r==" ") {
+            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ha ocurrido un error al borrar la escena</span>";
+        }
         else {
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Escena borrada con éxito.</span>";
             selector = "#fila" + r;
             $(selector).next().remove();
             $(selector).remove();
@@ -76,8 +87,8 @@
 ?>
 </div>
 <div class="botones_mapa">
-    <button class="botonmapa" id="btn-subir-piso">Subir piso</button>
-    <button class="botonmapa" id="btn-bajar-piso">Bajar piso</button>
+    <button class="botonmapa" id="btn-subir-piso">Subir zona</button>
+    <button class="botonmapa" id="btn-bajar-piso">Bajar zona</button>
     <button class="botonmapa" id="btn-admin-mapa">Admin mapa</button>
 </div>
 <br>
@@ -85,8 +96,8 @@
 
 <?php
 
-	echo "<table align='center' id='cont'>";
-	echo "<tr id='cabecera'> 
+	echo "<table align='center' class='display' id='cont'>";
+	echo "<thead><tr id='cabecera'> 
 		  <th> IdEscena</th>
 		  <th> Nombre del lugar </th>
 		  <th> Codigo Escena </th>
@@ -94,31 +105,46 @@
 		  <th> Yaw </th>
 		  <th> Eliminar </th>
 		  <th> Modificar </th>
-		  </tr>";
+		  </tr></thead>";
+	echo "<tfoot><tr id='cabecera'> 
+		  <th> IdEscena</th>
+		  <th> Nombre del lugar </th>
+		  <th> Codigo Escena </th>
+		  <th> Pitch </th>
+		  <th> Yaw </th>
+		  <th> Eliminar </th>
+		  <th> Modificar </th>
+		  </tr></tfoot><tbody>";
 	
-	foreach ($tablaEscenas as $escenas){
-		
-        $id=$escenas["id_escena"];
-        $cod=$escenas["cod_escena"];
-		echo "<tr id='fila".$cod."'>
-            
-            <td align='center'>". $escenas['id_escena']."</td>
-            <td align='center'>".$escenas['Nombre']."</td>
-            <td align='center' class='cod'>".$escenas['cod_escena']."</td>
-            <td align='center'>".$escenas['pitch']."</td>
-            <td align='center'>".$escenas['yaw']."</td>
-            
-            <td align='center'>
-            <a onclick='borrarscene(\"".$escenas["cod_escena"]."\")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
-            </td>
-            
-            <td align='center'>
-            <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
-            </tr>";
-?>
-            <tr><th colspan='7' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
-<?php
-	}
-	echo "</table>";
+        if (count($tablaEscenas) == 0) {
+            echo "<tr><td align='center' colspan='7'>No hay registros para mostrar.</td></tr>";
+        }
+        else {
+
+            foreach ($tablaEscenas as $escenas){
+
+            $id=$escenas["id_escena"];
+            $cod=$escenas["cod_escena"];
+                    echo "<tr id='fila".$cod."'>
+
+                <td align='center'>". $escenas['id_escena']."</td>
+                <td align='center'>".$escenas['Nombre']."</td>
+                <td align='center' class='cod'>".$escenas['cod_escena']."</td>
+                <td align='center'>".$escenas['pitch']."</td>
+                <td align='center'>".$escenas['yaw']."</td>
+
+                <td align='center'>
+                <a onclick='borrarscene(\"".$escenas["cod_escena"]."\")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
+                </td>
+
+                <td align='center'>
+                <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
+                </tr>";
+    ?>
+               <tr><th colspan='7' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
+    <?php
+            }
+        } // else
+        echo "</tbody></table>";
 ?>
       

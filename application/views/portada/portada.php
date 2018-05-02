@@ -16,6 +16,10 @@
                         ?>
                      </div>
                  </div> 
+                 <div id="poweredBy">
+                    <h1>Powered by Celia Viñas</h1>
+                    <img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/>
+                 </div>
             </div>
         </main>
       

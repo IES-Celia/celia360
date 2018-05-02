@@ -1,3 +1,19 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+?>
+
 <style type="text/css">
 		
 	  #modificar{
@@ -48,6 +64,7 @@
 <!--<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />-->
 
 <?php
+
 echo"<table class='tabla' class='display' id='cont'>
 <thead>
 <tr id='cabecera'>
@@ -181,10 +198,13 @@ echo"
 
     function respuesta(r) {
         if (r.trim() == "0") {
-            alert("Error al borrar el audio");
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el audio</span>";
+		} else if (r.trim() == "-1") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese audio está en uso en un hotspot y no se puede borrar</span>";
+            
         } else {
             
-            alert("Audio borrado con éxito");
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Borrado con éxito</span>";
 			
 			selector = "#contenidoaudio"+parseInt(r);
 			
