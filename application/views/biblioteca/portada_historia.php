@@ -19,11 +19,11 @@
 
 		<style type="text/css">
 			.contenedor{
-				width:900px;
-				height:550px;
-				margin-left:15%;
-				position:relative;
-				overflow:hidden;
+    /* width: 900px; */
+    /* height: 550px; */
+    /* margin-left: 15%; */
+    position: relative;
+    overflow: hidden;
 			};
     		.mySlides, #persona{
     			position:absolute;
@@ -199,7 +199,7 @@
 						<script type="text/javascript">
 						$(".contenedor").css("width", "900px");
 						$(".contenedor").css("height", "550px");
-						$(".contenedor").css("margin-left", "15%");
+						$(".contenedor").css("", "");
 						</script>
 						<?php
 						for($i=0;$i<$num_pag;$i++){
@@ -216,7 +216,7 @@
 							
 				?>
 					</div>
-					<nav style="width:230%;">
+					<nav style="width:100%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
 						<!-- AQUI esta el numero de pagina -->

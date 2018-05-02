@@ -72,8 +72,8 @@ a img {
 
 /* Main Content */
 .mainBiblioteca {
-	max-width: 52%;
-	width:42%;
+	width:90%;
+	margin:0 auto !important;
 }
 
 .column {
