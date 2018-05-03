@@ -10,7 +10,7 @@ tags: []
 
 Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo `install.txt` distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo `licese.txt`. No deje de consultar el archivo `readme.txt` antes de proceder a la instalación y explotación de este software.
 
-**ATENCIÓN:** este documento es aún una versión de trabajo y está en desarrollo, por lo que pueden existir inconsistencias o partes sin terminar.
+> **ATENCIÓN:** este documento es aún una versión de trabajo y está en desarrollo, por lo que pueden existir inconsistencias o partes sin terminar.
 
 # ¿Qué es Celia360?
 
@@ -70,7 +70,7 @@ Las cuatro opciones de la visita virtual son:
 3. Puntos destacados: muestra una selección con los puntos más destacados de la visita y permite al usuario acceder a la imagen 360º de ellos directamente.
 4. Biblioteca: accede a los libros digitalizados con información sobre el lugar de la visita y permite leerlos con un visor interactivo.
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/03-01.jpg)
 
 Además, observe que en el centro de la pantalla aparece un botón etiquetado como "Historia". Esto da acceso directo a un subconjunto de los libros de su biblioteca. Está pensado para que incluya aquí los libros o documentos que se refieran a la historia del edificio o lugar cuya visita está virtualizando. No obstante, si usted no desea hacer uso de esta posibilidad, podrá ocultar tanto el botón "Historia" como la opción "Biblioteca" del menú principal.
 
@@ -108,15 +108,15 @@ Por ejemplo, la dirección para acceder al formulario de login podría tener un 
 
 Cuando acceda a esa dirección, podrá ver un formulario como este:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/04-01.jpg)
 
 Deberá teclear un nombre de usuario y una contraseña válidos para acceder a la aplicación. Una vez hecho esto, se encontrará con una pantalla semejante a esta (las opciones pueden variar dependiendo de sus privilegios de usuario):
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/04-02.jpg)
 
 Haga clic en el botón "Admin. Mapa" para acceder a las siguientes opciones de administración del mapa:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/04-03.jpg)
 
 Las opciones de administración del mapa son las siguientes:
 
@@ -143,7 +143,7 @@ Ingrese en la aplicación con un usuario que tenga los privilegios necesarios pa
 
 Una vez que esté dentro del panel de administración, debería ver una imagen como la siguiente. Si no es así, despliegue el menú de opciones y seleccione la opción "Mapa".
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/05-01.jpg)
 
 Ahora puede comenzar a subir sus fotografías 360 a la plataforma. El procedimiento general para agregar una fotografía 360 es el siguiente:
 
@@ -153,13 +153,13 @@ Ahora puede comenzar a subir sus fotografías 360 a la plataforma. El procedimie
 
 La imagen se subirá y quedará asignada al punto del mapa donde usted haya hecho clic (con el botón derecho). Usted puede comprobarlo porque apacerá un punto blanco en el lugar donde se haya creado la escena.
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/05-02.jpg)
 
 Repita el proceso con el resto de fotografías 360 que haya realizado para su recorrido virtual. Sea cuidadoso en este proceso, porque constituye el esqueleto de su visita virtual y, si dispone de muchas fotografías, es fácil confundirlas unas con otras. En ese sentido, volvemos a insistir en la importancia de haberlas organizado previamente mediante nombres significativos que usted pueda reconocer bien.
 
 Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic *con el botón derecho* encima de un punto blanco que la representa en el mapa. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición. Para cambiar el lugar del mapa donde la escena se posiciona, debe eliminarla por completo y volver a crearla en el lugar correcto.
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/05-03.jpg)
 
 Observe, además, que desde este mismo formulario puede eliminar la escena si necesita hacerlo. Esto eliminará también el archivo subido al servidor, así como cualquier hotspot que exista asociado a la misma. Como es una opción destructiva cuyo efecto no se puede deshacer, debería estar seguro de que desea eliminar esa escena antes de proceder a ello.
 
@@ -184,7 +184,7 @@ Para administrar sus imágenes, audios y vídeos, debe entrar al panel de admini
 
 Una vez que esté dentro del panel de administración, despliegue el menú principal de opciones y seleccione "Imágenes", "Audios" o "Vídeos", según la parte de su aplicación que vaya a administrar a continuación. Le aparecerá una pantalla semejante a esta (se muestra la pantalla de administración de imágenes):
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/06-01.jpg)
 
 La operativa con esa pantalla es muy sencilla. Usted puede:
 
@@ -355,7 +355,7 @@ Obviamente, antes de poner en marcha una visita guiada, usted necesitará haber 
 Cuando tenga preparadas las escenas de su visita guiada y sus respectivas audiodescripciones, el proceso para crear su visita guiada es muy sencillo:
 
 1. Entre en el panel de administración utilizando un usuario con privilegios suficientes (consulte la [sección 4](#mapa) si no sabe cómo hacerlo).
-2. En el menú principal, elija la opción "Guiada". Se encontrará con una pantalla como esta:<br><img src="imgs/imagen-requerida.jpg">.
+2. En el menú principal, elija la opción "Guiada". Se encontrará con una pantalla como esta: ![](imgs/08-01.jpg)
 3. Cree el primer punto de su visita guiada haciendo clic en "Nuevo". Se le pedirá que seleccione una escena y un archivo de audio de entre todos los subidos a la plataforma. También tendrá que escribir un título descriptivo del lugar y una imagen representativa. Cuando termine, pulse "Aceptar" o "Enviar".
 4. Añada los demás puntos de su visita guiada repitiendo el paso anterior tantas veces como sea necesario.
 5. Si se equivoca al seleccionar alguna escena y/o audiodescripción, pulse el botón "Modificar" de la fila correspondiente en la tabla y cambie lo que sea necesario. También puede eliminar por completo ese punto de la visita guiada haciendo clic en el botón "Eliminar" de esa fila.
@@ -376,7 +376,7 @@ Los puntos destacados le permiten crear un mosaico con las escenas más interesa
 
 Para acceder al diseño de puntos destacados, debe usted entrar en el panel de administración con un usuario con los privilegios suficientes (vea la [sección 4](#mapa) para más detalles sobre esto) y, después, desplegar el menú principal y hacer clic en "Destacados". Si es la primera vez que entra en esta sección, verá un diseño de celdas vacías semejante a este:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/09-01.jpg)
 
 A partir de esa plantilla vacía, puede usted crear su propio diseño de celdas. Para crear una de las celdas, simplemente elija en cual de las filas disponibles quiere hacerlo y haga clic en "Añadir celda". Se desplegará un formulario en el que podrá especificar:
 
@@ -384,11 +384,11 @@ A partir de esa plantilla vacía, puede usted crear su propio diseño de celdas.
 * Una imagen que representará el lugar. Puede recortar un fragmento de la fotografía panorámica 360 de ese lugar, o utilizar cualquier otra foto representativa que considere adecuada. Solo se admite el formato JPG.
 * La escena a la que enlazará esta celda, es decir, el punto de su mapa al que saltará el visitante si hace clic en la celda.
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/09-02.jpg)
 
 Al pulsar el botón de "Enviar" o "Aceptar" se creará la celda en la fila seleccionada. La aplicación regresará a la pantalla de diseño de celdas, donde le mostrará la previsualización de su diseño de celdas:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/09-03.jpg)
 
 Una aspecto importante en el diseño de los puntos destacados es que es necesario limitar el movimiento del visitante dentro de la zona del mapa a la que nos conduzcan los puntos destacados. Para ello, necesitará deshabilitar los hotspots de enlace entre escenas que permiten salir de esa zona del tour. Esto se hace en la configuración de los propios hotspots, y debe acudir allí para hacerlo. En los hotspots tipo enlace podrá seleccionar si desea que cada hotspot aparezca en la vista de puntos destacados o no. Revise el [seccion 7.1](#enlace) para más información.
 
@@ -398,7 +398,7 @@ En cambio, si el punto destacado conduce a una estancia pequeña, en cuyo interi
 
 Puede modificar cualquier aspecto de los puntos destacados que ya ha creado haciendo clic en el botón "Modificar" que aparece en la esquina superior izquierda de cada celda en la pantalla de diseño. Ahí podrá cambiar el título, la imagen asociada, la escena a la que enlaza y también el número de la fila en la que se encuentra la celda, de modo que la puede hacer subir y bajar la celda a voluntad.
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/09-04.jpg)
 
 Por último, también puede eliminar cualquier celda en cualquier momento haciendo clic en el boton "Eliminar" de cada una de ellas.
 
