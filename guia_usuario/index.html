@@ -12,7 +12,7 @@ and open the template in the editor.
 	<style>
 		body {
 			font-family: arial;
-			font-size: 10pt;
+			font-size: 11pt;
 			text-align: left;
 			margin: 50px;
 		}
@@ -47,6 +47,7 @@ and open the template in the editor.
         <!-------------------------------- ENCABEZADO ------------------------------------->
         <h1>Celia360 - Guía del usuario</h1>
         <p>Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo install.txt distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo licese.txt. No deje de consultar el archivo readme.txt antes de proceder a la instalación y explotación de este software.</p>
+        <p style="color:red"><strong>ATENCIÓN:</strong> este documento es aún una versión de trabajo y está en desarrollo, por lo que pueden existir inconsistencias o partes sin terminar.</p>
         
         <!-------------------------------- TABLA DE CONTENIDO ------------------------------------->
         <div class="contenido">
@@ -102,7 +103,29 @@ and open the template in the editor.
         <!-------------------------------- 2. INSTALACIÓN ------------------------------------->
         <h2><a name="instalacion">2. Instalación de Celia 360</a></h2>
         <p>
-            Aquí mencionaremos el proceso de despliegue en servidor, y remitiremos a un administrador de sistemas si el usuario no posee conocimientos suficientes para hacerlo. Esta sección no puede redactarse hasta que hayamos terminado el script de instalación.
+            La instalación de Celia360 implica el despliegue de la aplicación web en un servidor. Este proceso puede entrañar cierta dificultad si usted no está familiarizado con ello, por lo que puede requerir la colaboración de un administrador de sistemas para completarlo con éxito.
+        </p>
+        <p>
+            Los requerimientos de la aplicación son:
+            <ul>
+                <li>Un servidor web son soporte para PHP 5.5 o superior.</li>
+                <li>Un servidor MySQL 5.5 o MariaDB 10 o superior.</li>
+                <li>Una conexión FTP con su servidor.</li>
+            </ul>
+        </p>
+        <p>
+            Los pasos generales para la instalación son los siguientes:
+            <ol>
+                <li>Copie el código fuente de la aplicación en un directorio de su servidor accesible vía web. Puede obtener la última versión del código fuente del repositorio de GitHub.</li>
+                <li>Cree una base de datos en su servidor MySQL o MariaDB. Recuerde las credenciales de esta base de datos (nombre de la base de datos, usuario y contraseña). Su usuario debe tener privilegios suficientes para escribir y leer en esa base de datos.</li>
+                <li>Ejecute el script install.php ubicado en el directorio raíz de su instalación. Si, por ejemplo, ha desplegado el código en un directorio llamado mi-tour dentro de un servidor llamado mi-servidor.com, puede lanzar el script escribiendo en su navegador web: http://mi-servidor.com/mi-tour/install.php</li>
+                <li>Siga las instrucciones de la instalación. El programa de instalación creará las tablas necesarias en la base de datos y las dotará del contenido mínimo imprescindible para que la aplicación funcione. En particular, creará un usuario superadministrador para el panel de administración de la aplicación. Se le pedirá que introduzca un nombre de usuario y una contraseña para ese usuario. Ni que decir tiene que si ese usuario y contraseña caen en malas manos, la integridad completa de su aplicación podría verse comprometida.</li>
+                <li>El programa de instalación tratará de crear un archivo de configuración, pero este paso podría fallar por un gran número de razones que dependen de la configuración de su servidor. Si es así, el programa de instalación le informará de ello y le explicará qué archivo de configuración debe crear, dónde debe crearlo y cuál debe ser su contenido. Puede usar su conexión FTP para lograrlo. Si todo va bien, el programa de instalación se encargará de este paso y usted no tendrá que hacer nada.</li>
+                <li>Por último, y por motivos de seguridad, debería eliminar el script de instalación (install.php) de su servidor. Puede usar su conexión FTP para ello. Este paso no es imprescindible para que la aplicación funcione, pero sí muy recomendable.</li>
+            </ol>
+        </p>
+        <p>
+            Cuando la instalación haya terminado, su tour virtual estará listo para usarse en su servidor. Ahora ha llegado el momento de cargar todos los datos necesarios en la aplicación para construir su tour virtual. En las siguientes secciones de este manual le daremos las orientaciones necesarias para lograrlo.
         </p>
 
          <!-------------------------------- 3. PRIMEROS PASOS ------------------------------------->
@@ -115,10 +138,13 @@ and open the template in the editor.
             <li>Panel de administración: es la parte que solo ven los administradores de la aplicación. Desde aquí podemos cargar y organizar la información que se verá en las visitas virtuales: mapas, imágenes panorámicas 360º, galerías de imágenes, audios, vídeos, biblioteca, etc.
         </ol>
         <p>
-            La <strong>visita virtual</strong> está organizada en torno a un menú con cuatro opciones. Su uso es bastante intuitivo y no entraremos en detalle en el mismo en este manual, sino que nos centraremos en el panel de administración. Nota: las vistas de la aplicación son personalizables, por lo que puede que encuentre diferencias entre su aplicación y las siguientes capturas de pantalla. A pesar de esas diferencias estéticas, la funcionalidad de la aplicación siempre será la misma.
+            La <strong>visita virtual</strong> está organizada en torno a un menú con cuatro opciones. Su uso es bastante intuitivo y no entraremos en detalle en el mismo en este manual. Solo las mencionaremos por encima en esta sección.
         </p>
         <p>
-            Las cuatro opciones son:
+            Nota: las vistas de la aplicación son personalizables, por lo que puede que encuentre diferencias entre su aplicación y las siguientes capturas de pantalla. A pesar de esas diferencias estéticas, la funcionalidad de la aplicación siempre será la misma.
+        </p>
+        <p>
+            Las cuatro opciones de la visita virtual son:
         </p>
         <ol>
             <li>Visita libre: permite al usuario moverse con libertad por todo el tour virtual.</li>
@@ -128,32 +154,35 @@ and open the template in the editor.
         </ol>
         <img src="imgs/imagen-requerida.jpg"/>
         <p>
-            El <strong>panel de administración</strong> proporciona todas las funcionalidades para crear los mapas, subir las imágenes 360º, así como otras imágenes, audios y vídeos, y relacionarlos todos entre sí para componer nuestra visita virtual. También podemos crear la biblioteca online y personalizar el homepage de la aplicación.
+            Además, observe que en el centro de la pantalla aparece un botón etiquetado como "Historia". Esto da acceso directo a un subconjunto de los libros de su biblioteca. Está pensado para que incluya aquí los libros o documentos que se refieran a la historia del edificio o lugar cuya visita está virtualizando. No obstante, si usted no desea hacer uso de esta posibilidad, podrá ocultar tanto el botón "Historia" como la opción "Biblioteca" del menú principal.
+        </p>
+        <p>
+            En cuanto al <strong>panel de administración</strong>, es la parte de la aplicación proporciona todas las funcionalidades para crear los mapas, subir las imágenes 360º, así como otras imágenes, audios y vídeos, y relacionarlos todos entre sí para componer nuestra visita virtual. También podemos crear la biblioteca online y personalizar el homepage de la aplicación.
         </p>
         <p>
             Aunque el panel de admistración ha sido diseñado para facilitarle al máximo esta labor, tenga en cuenta que la creación de una visita virtual completa es un proceso largo y complejo que requiere del manejo de grandes volúmenes de información, por lo que le aconsejamos que planifique cuidadosamente el mismo antes de crearlo con nuestra aplicación. Esa planificación debería consistir en:
         </p>
         <ol>
-            <li>Hacerse con unos planos digitalizados y detallados del lugar que pretende virtualizar. También necesitará una copia impresa de los mismos.</li>
+            <li>Hacerse con unos planos digitalizados y detallados del lugar que pretende virtualizar. Le recomendamos que consiga una copia impresa y otra digitalizada de los mismos.</li>
             <li>Marcar en el plano los lugares en los que va a realizar una fotografía 360º. No deberían estar ni demasiado separados entre sí ni demasiado próximos. Una distancia de alrededor de diez metros entre una imagen y la adyacente puede ser apropiada en la mayoría de los casos.</li>
             <li>Cuando vaya haciendo las fotografías, marque en el plano qué fotografías ha hecho y asígneles un nombre representativo del lugar. Tenga en cuenta que puede llegar a acumular una cantidad notable de fotografías y puede resultarle difícil saber en qué lugar exacto fueron tomadas cuando vaya a subirlas a la aplicación.</li>
         </ol>
         <p>
-            Con esos elementos, puede empezar a trabajar con la aplicación. En el resto de este documento entraremos en detalle en cada proceso, pero ahora le indicaremos cuáles son los primeros pasos que deberá dar para tener una primera versión de su tour virtual funcional, de manera que pueda añadirle más adelante nuevos elementos, tales como paneles de imágenes, audiodescripciones o vídeos. En el <a href="#guia_rapida"> anexo </a>encontrará una guía rápida para desplegar una aplicación completa y con todos los elementos en su servidor, aunque para ello deberá estar familiarizado antes con la aplicación.
+            Con esos elementos, puede empezar a trabajar con la aplicación. En el resto de este documento entraremos en detalle en cada proceso, pero ahora le indicaremos cuáles son los primeros pasos que deberá dar para tener una primera versión de su tour virtual funcional, de manera que pueda añadirle más adelante nuevos elementos, tales como paneles de imágenes, audiodescripciones o vídeos. En el <a href="#guia_rapida"> anexo </a>encontrará una guía rápida para desplegar una aplicación completa y con todos los elementos en su servidor, aunque para ello deberá estar familiarizado antes con la aplicación, por lo que le recomendamos que lea antes el manual de usuario en su totalidad y haga algunas pruebas previas.
         </p>
         <p>
-            Una vez que tenga las fotografías panorámicas 360º tomadas y organizadas, llega el momento de subirlas a la plataforma. La operativa es la siguiente:
+            La operativa general para comenzar a trabajar con una instalación limpia, una vez que tenga las fotografías panorámicas 360º tomadas y organizadas, es la siguiente:
         </p>
         <ol>
-            <li>Entre en el panel de administración escribiendo en su navegador la dirección http://servidor/usuario, donde "servidor" es la URL donde tiene usted instalada su aplicación. Si la desconoce, póngase en contacto con su administrador de sistemas.</li>
+            <li>Entre en el panel de administración escribiendo en su navegador la dirección http://mi-servidor.com/mi-aplicacion/usuario, donde "mi-servidor.com" es el host donde tiene usted instalada su aplicación y "mi-aplicacion" es el directorio donde ha efectuado el despliegue del código. Si desconoce estos datos, póngase en contacto con su administrador de sistemas.</li>
             <li>Teclee su nombre de usuario y contraseña de administrador. Un usuario administrador se habrá creado durante el proceso de instalación. Si la instalación la realizó su administrador de sistemas, consúltele a él su nombre de usuario y contraseña.</li>
             <li>El panel de administración se abrirá en el administrador de escenas. En primer lugar, tiene que crear sus mapas. Haga clic en "Admin. Mapa" y cree al menos una zona del mapa. Si no sabe hacer esto, consulte <a href="#mapa">la sección 4</a> de este manual.</li>
-            <li>En la administración del mapa, pulse "Volver atrás" para regresar a la administración de escenas.</li>
+            <li>Cuando haya finalizado con la administración del mapa, pulse "Volver atrás" para regresar a la administración de escenas.</li>
             <li>Haga clic en la zona del mapa donde quiera asignar una fotografía panorámica 360º para crearla. Si tiene problemas con esto, consulte <a href="#escenas">la sección 5</a> de este manual.</li>
             <li>Cuando haya subido todas las fotografías panorámicas, debe conectarlas unas con otras para crear el contenido. Debe entrar en cada escena y crear al menos un hotspot de tipo "enlace" en cada uno de ellos. Para más detalles sobre cómo hacer esto, consulte <a href="#enlace">la sección 7.1</a> de este manual.</li>  
         </ol>
         <p>
-            Cuando haya terminado este proceso ya tendrá una primera versión funcional de su tour virtual. Podrá realizar con ella una visita libre por las escenas que haya subido. Su plataforma está ahora lista para crear hotspots (puntos de interés) dentro de sus escenas, así como para subir audiodescripciones y crear una visita guiada y una visita de puntos destacados. Su visita virtual podrá crecer tanto como usted desee, utilizando como base las escenas 360º entrelazadas que usted acaba de crear.
+            Cuando haya terminado este proceso ya tendrá una primera versión funcional de su tour virtual. Podrá realizar con ella una visita libre por las escenas que haya subido. Su plataforma está ahora lista para crear hotspots (puntos de interés) dentro de sus escenas, así como para subir audiodescripciones y crear una visita guiada o una visita de puntos destacados. Su visita virtual podrá crecer tanto como usted desee, utilizando como base las escenas 360º entrelazadas que usted acaba de crear. Le explicaremos cómo lograr todo esto en las siguientes secciones.
         </p>
         
         <!-------------------------------- 4. MAPA ------------------------------------->
@@ -221,7 +250,7 @@ and open the template in the editor.
             Ahora puede comenzar a subir sus fotografías 360 a la plataforma. El procedimiento general para agregar una fotografía 360 es el siguiente:
             <ol>
                 <li>Haga clic <i>con el botón derecho del ratón</i> en la zona del mapa a la que corresponda la fotografía que quiere subir.</li>
-                <li>Asigne un nombre a un lugar (según los nombres que haya diseñado para las distintas fotografías; utilice la nomenclatura que le resulte más cómoda para no perderse) y seleccione el archivo de imagen que contenga la fotografía 360 correspondiente a ese lugar.</li>
+                <li>Asigne un nombre a un lugar (según los nombres que haya diseñado para las distintas fotografías; utilice la nomenclatura que le resulte más cómoda para no perderse) y seleccione el archivo de imagen que contenga la fotografía 360 correspondiente a ese lugar. Por defecto, la aplicación asignará como nombre del lugar el nombre del archivo que contiene la imagen, así que, si se tomó el trabajo de nombrar las fotografías con etiquetas significativas, no tendrá la necesidad de volver a hacerlo aquí.</li>
                 <li>Haga clic en "Enviar" o "Aceptar".</li>
             </ol>
         </p>
@@ -233,15 +262,15 @@ and open the template in the editor.
             Repita el proceso con el resto de fotografías 360 que haya realizado para su recorrido virtual. Sea cuidadoso en este proceso, porque constituye el esqueleto de su visita virtual y, si dispone de muchas fotografías, es fácil confundirlas unas con otras. En ese sentido, volvemos a insistir en la importancia de haberlas organizado previamente mediante nombres significativos que usted pueda reconocer bien.
         </p>
         <p>
-            Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic <i>con el botón derecho</i> encima de un punto blanco ya existente. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición. Para cambiar el lugar del mapa donde la escena se posiciona, debe eliminarla por completo y volver a crearla en el lugar correcto.<br>
+            Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic <i>con el botón derecho</i> encima de un punto blanco que la representa en el mapa. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición. Para cambiar el lugar del mapa donde la escena se posiciona, debe eliminarla por completo y volver a crearla en el lugar correcto.<br>
             <img src="imgs/imagen-requerida"><br>
-            Observe, además, que desde este mismo formulario puede eliminar la escena si necesita hacerlo. Esto eliminará también el archivo subido al servidor, así como cualquier hotspot que exista asociado a la misma.
+            Observe, además, que desde este mismo formulario puede eliminar la escena si necesita hacerlo. Esto eliminará también el archivo subido al servidor, así como cualquier hotspot que exista asociado a la misma. Como es una opción destructiva cuyo efecto no se puede deshacer, debería estar seguro de que desea eliminar esa escena antes de proceder a ello.
         </p>
         <p>
             Si su visita virtual dispone de varias zonas (varios planos), puede cambiar de uno a otro con los botones "Subir zona" y "Bajar zona" para crear las escenas en el plano adecuado.
         </p>
         <p>
-            Repita el proceso hasta que haya subido todas las fotografías. Se hace clic con el boton izquierdo en cualquiera de las escenas creadas (es decir, en cualquiera de los puntos blancos del mapa) podrá ver una previsualización de cada escena tal y como la verán sus visitantes cuando el tour virtual esté listo.
+            Repita el proceso hasta que haya subido todas las fotografías. Si hace clic con el boton izquierdo en cualquiera de las escenas creadas (es decir, en cualquiera de los puntos blancos del mapa) podrá ver una previsualización de cada escena tal y como la verán sus visitantes cuando el tour virtual esté listo. Haga clic en el icono superior izquierdo para regresar a la administración de escenas.
         </p>
         <p>
             No es imprescindible que suba todas sus fotografías de una vez. Puede crear una parte del recorrido y más adelante volver a esta sección para crear el resto.
@@ -252,7 +281,7 @@ and open the template in the editor.
         <!-------------------------------- 6. IMÁGENES, AUDIOS, VÍDEOS ------------------------------------->
         <h2><a name="subirimagenes">6. Subir imágenes, audios y vídeos</a></h2>
         <p>
-            En esta sección le mostraremos como puede subir imágenes, audios y vídeos que luego puede utilizar en sus visitas virtuales, tanto en la visita libre como en la guiada o en la de puntos destacados. Estas imágenes, audios y vídeos se pueden asignar a puntos sensibles (hotspots) dentro de sus fotografías 360 para que sus visitantes puedan hacer clic en ello y acceder al contenido (galerías de imágenes, audiodescripciones u otro tipo de sonidos, y vídeos).
+            En esta sección le mostraremos como puede subir imágenes, audios y vídeos que luego utilizará en sus visitas virtuales, tanto en la visita libre como en la guiada o en la de puntos destacados. Estas imágenes, audios y vídeos se pueden asignar a puntos sensibles (hotspots) dentro de sus fotografías 360 para que sus visitantes puedan hacer clic en ellos y  acceder al contenido (galerías de imágenes, audiodescripciones u otro tipo de sonidos, y vídeos).
         </p>
         <p>
             Si lo que desea es crear los vínculos para enlazar unas escenas con otras y crear así su visita virtual, puede saltarse de momento esta sección e ir a <a href="#hotspots">la siguiente</a>. Siempre puede volver más tarde aquí para aprender a administrar sus imágenes, audios y vídeos.
@@ -272,7 +301,7 @@ and open the template in the editor.
 		<ul>
 			<li>Buscar una imagen/audio/vídeo escribiendo un texto en el recuadro etiquetado como "Buscar"</li>
 			<li>Elegir la cantidad de imágenes/audios/vídeos que quiere ver en cada pantallazo seleccionando otra cantidad en "Mostrar 10 registros por página".</li>
-			<li>Ordenar la tabla por cualquier campo haciendo clic en el encabezado del mismo. Por ejemplo, si hace clic en "Título", la tabla se ordenará alfabéticamente según los títulos de las imágenes/audios/vídeos.</li>
+			<li>Ordenar la tabla por cualquier campo haciendo clic en el encabezado del mismo. Por ejemplo, si hace clic en "Título", la tabla se ordenará alfabéticamente según los títulos de las imágenes/audios/vídeos. Si hace clic por segunda vez en "Título", obtendrá una ordenación alfabética inversa por ese campo.</li>
 			<li>Insertar una nueva imagen/audio/vídeo. Para ello, haga clic en "Insertar" y rellene los campos que la aplicación le pida. En el caso de la imagen y el audio, tendrá que subir el archivo desde el disco duro de su ordenador. Solo se admiten imágenes en formato JPG y audios en formato MP3, en cualquier calidad. En cuanto a los vídeos, de momento la aplicación solo soporta vídeos subidos a Vimeo. Puede usted abrirse una cuenta gratuita en esa plataforma de streaming y subir los vídeos allí. Tendrá que indicarle a Celia360 la dirección web de los vídeos, que será lo único que necesite la aplicación para reproducir esos vídeos a partir de los servidores de Vimeo.</li>
 			<li>Modificar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Modificar" de cada fila de la tabla.</li>
 			<li>Eliminar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Eliminar" de cada fila de la tabla. La aplicación le pedirá que confirme el borrado. Tenga en cuenta que no podrá eliminar una imagen/audio/vídeo si está siendo usada en algún hotspot. Primero deberá eliminar el hotspot. Consulte la <a href="#hotspots">sección 7</a> para más información sobre hotspots.</li>
@@ -308,11 +337,11 @@ and open the template in the editor.
             En las siguientes secciones, le indicaremos qué información debe proporcionar al sistema para crear cada uno de los tipos de hotspot que existen:
             <ul>    
                 <li><a href="#enlace">Hotspots de tipo enlace entre escenas</a></li>
-                <li><a href="#panel">Hotspots de tipo panel (galerías de imágenes)</a></li>
+                <li><a href="#panel">Hotspots de tipo panel informativo (galerías de imágenes)</a></li>
                 <li><a href="#audio">Hotspots de tipo audio</a></li>
                 <li><a href="#video">Hotspots de tipo vídeo</a></li>
                 <li><a href="#escalera">Hotspots de tipo escalera</a></li>
-                <li><a href="#vistainicial">Cambiar el tipo de vista inicial de una escena</a></li>
+                <li><a href="#vistainicial">Cambiar el punto de vista inicial de una escena</a></li>
             </ul>
         </p>
         <p>
@@ -330,11 +359,11 @@ and open the template in the editor.
                 <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
-                Para crear un hotspot de tipo enlace, siga el procedimiento general para crear un hotspot cualquiera descrito en el <a href="#hotspots">apartado 7</a>. Cuando llegue a la pantalla de selección del tipo de hotspot, seleccione la opción "Punto de salto a otra escena". Le aparecerá una pantalla semejante a esta:<br>
+                Para crear un hotspot de tipo enlace, siga el procedimiento general para crear un hotspot cualquiera descrito en el <a href="#hotspots">apartado 7</a>. Cuando llegue a la pantalla de selección del tipo de hotspot, haga clic en la opción "Punto de salto a otra escena". Le aparecerá una pantalla semejante a esta:<br>
                 <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
-                En la pantalla aparecerá el mapa de la zona donde está la escena en la que está creando el hotspot. Dicha escena se mostrará con un punto de color rojo. Para crear un salto desde esa escena hasta otra, haga clic en un punto blanco adyacente. El punto se ilumnará en amarillo. Confirme que ese es el punto correcto pulsando el botón "Enviar" o "Aceptar".
+                En la pantalla se le mostrará el mapa de la zona donde está la escena en la que está creando el hotspot. Dicha escena estará marcada con un punto de color rojo. Para crear un salto desde esa escena hasta otra, haga clic en un punto blanco adyacente. El punto se ilumnará en amarillo. Confirme que ese es el punto correcto pulsando el botón "Enviar" o "Aceptar".
             </p>
             <p>
                 Su enlace entre escenas se habrá creado. Puede comprobar que funciona correctamente lanzando en su navegador web una visita libre y navegando hasta la escena implicada.<br>
@@ -369,7 +398,7 @@ and open the template in the editor.
                 <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
-                Haga clic en las imágenes del panel izquierdo para agregarlas a su panel. Pulse "Enviar" o "Aceptar" para guardar los cambios, y "Volver atrás" para cancelar la operación. Cuando haya aceptado los cambios, su hotspot tipo panel informativo estará listo. Puede comprobar cómo ha quedado lanzando una visita libre desde su navegador web y saltando a la escena en cuestión por medio del mapa.
+                Haga clic en las imágenes de la izquierda para agregarlas a su panel. Pulse "Enviar" o "Aceptar" para guardar los cambios, y "Volver atrás" para cancelar la operación. Cuando haya aceptado los cambios, su hotspot tipo panel informativo estará listo. Puede comprobar cómo ha quedado lanzando una visita libre desde su navegador web y saltando a la escena en cuestión por medio del mapa.
             </p>
 
         <!-------------------------------- 7.3. HOTSPOTS TIPO AUDIO ------------------------------------->
@@ -395,7 +424,7 @@ and open the template in the editor.
         <!-------------------------------- 7.4. HOTSPOTS TIPO VÍDEO ------------------------------------->
             <h3><a name="video">7.4. Hotspots de tipo vídeo</a></h3>
             <p>
-                Los hotspots de tipo vídeo le permiten insertar vídeos en puntos concretos de su recorrido virtual. A diferencia de las imágenes o los archivos de sonido, los vídeos no estará alojados en su servidor, ya que pocos servidores pueden soportar vídeos en términos de tamaño de archivo y ancho de banda. En lugar de ello, deberá alojar los vídeos en un proveedor de streaming externo. De momento, la aplicación soporta únicamente vídeos alojados en Vimeo, que es un servicio libre de publicidad y gratuito para vídeos sin ánimo de lucro. Una vez creado, el hotspot tendrá este aspecto:<br>
+                Los hotspots de tipo vídeo le permiten insertar vídeos en puntos concretos de su recorrido virtual. A diferencia de las imágenes o los archivos de sonido, los vídeos no estarán alojados en su servidor, ya que pocos servidores pueden soportar vídeos en términos de tamaño de archivo y ancho de banda. En lugar de ello, deberá alojar los vídeos en un proveedor de streaming externo. De momento, la aplicación soporta únicamente vídeos alojados en Vimeo, que es un servicio libre de publicidad y gratuito para vídeos sin ánimo de lucro. Una vez creado, el hotspot tendrá este aspecto:<br>
                 <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
@@ -457,7 +486,7 @@ and open the template in the editor.
                 <img src="imgs/imagen-requerida.jpg">
             </p>
             <p>
-                Algunas ventanas de modificación de hotspot no le permitirán cambiar ciertas cosas del hotspot. Por ejemplo, no podrá cambiar las imágenes asignadas a un hotspot de tipo panel informativo, aunque sí podrá cambiar su título, su descripción o el punto de la escena donde debe aparecer. Si necesita cambiar las imágenes asociada, deberá borrar el hotspot y crearlo de nuevo. La posibilidad de editar las imágenes asignadas está contemplada entre los próximos desarrollos de la aplicación.
+                Algunas ventanas de modificación de hotspot no le permitirán cambiar ciertas cosas del hotspot. Por ejemplo, no podrá cambiar las imágenes asignadas a un hotspot de tipo panel informativo, aunque sí podrá cambiar su título, su descripción o el punto de la escena donde debe aparecer. Si necesita cambiar las imágenes asociadas, deberá borrar el hotspot y crearlo de nuevo. La posibilidad de editar las imágenes asignadas está contemplada entre los próximos desarrollos de la aplicación.
             </p>
             
             
@@ -467,14 +496,14 @@ and open the template in the editor.
             La visita guiada le permite crear una visita preprogramada en la que el visitante será conducido por las escenas más interesantes o representativas de su recorrido virtual automáticamente, mientras una audiodescripción ilustra al visitante acerca de la escena que está contemplando.
         </p>
 	<p>
-		Obviamente, antes de poner en marcha una visita guiada, usted necesitará haber subido previamente las escenas 360 (vea la <a href="#escenas">sección 5</a> si no tiene claro como hacerlo) y las audiodescripciones (consulte la <a href="#subirimagenes">sección 6</a> si tiene dudas sobre cómo hacerlo).
+		Obviamente, antes de poner en marcha una visita guiada, usted necesitará haber subido previamente las fotografías panorámicas de 360º (vea la <a href="#escenas">sección 5</a> si no tiene claro como hacerlo) y las audiodescripciones (consulte la <a href="#subirimagenes">sección 6</a> si tiene dudas al respecto).
 	</p>
 	<p>
 		Cuando tenga preparadas las escenas de su visita guiada y sus respectivas audiodescripciones, el proceso para crear su visita guiada es muy sencillo:
 		<ol>
 			<li>Entre en el panel de administración utilizando un usuario con privilegios suficientes (consulte la <a href="#mapa">sección 4</a> si no sabe cómo hacerlo)</li>
 			<li>En el menú principal, elija la opción "Guiada". Se encontrará con una pantalla como esta:<br><img src="imgs/imagen-requerida.jpg"></li>
-			<li>Cree el primer punto de su visita guiada haciendo clic en "Nuevo". Se le pedirá que seleccione una escena y un archivo de audio de entre todos los subidos a la plataforma. También tendra que escribir un título descriptivo del lugar y una imagen representativa. Cuando termine, pulse "Aceptar" o "Enviar".</li>
+			<li>Cree el primer punto de su visita guiada haciendo clic en "Nuevo". Se le pedirá que seleccione una escena y un archivo de audio de entre todos los subidos a la plataforma. También tendrá que escribir un título descriptivo del lugar y una imagen representativa. Cuando termine, pulse "Aceptar" o "Enviar".</li>
 			<li>Añada los demás puntos de su visita guiada repitiendo el paso anterior tantas veces como sea necesario.</li>
 			<li>Si se equivoca al seleccionar alguna escena y/o audiodescripción, pulse el botón "Modificar" de la fila correspondiente en la tabla y cambie lo que sea necesario. También puede eliminar por completo ese punto de la visita guiada haciendo clic en el botón "Eliminar" de esa fila.</li>
 			<li>Si se equivoca en el orden en el que se deben mostrar las escenas en la visita guiada, o desea cambiarlo más adelante por alguna razón, pulse las flechas "Arriba" y "Abajo" de cada fila de la tabla, que provocarán una reordenación de las escenas.</li>
@@ -484,7 +513,7 @@ and open the template in the editor.
 		Cuando haya terminado, la pantalla de administración de la visita guiada debería tener un aspecto semejante a este:<br><img src="imgs/imagen-requerida.jpg">
 	</p>
 	<p>	
-		Su visita guiada está ahora lista. Puede probarla lanzando la aplicación en un navegador web y seleccionando "Visita guiada" en la pantalla principal, como si usted fuera un visitante. La visita guiada se iniciará. Puede navegar por ella usando los botones "Siguiente" y "Anterior". También puede desplegar la lista de escenas y saltar cómodamente de una a otra. Si deja que la visita guiada fluya a su ritmo, saltará automáticamente de una escena a otra cuando se termine la audiodescripción de cada escena. Por supuesto, también puede pausar el audio y reanudarlo a voluntad.
+		Su visita guiada está ahora lista. Puede probarla lanzando la aplicación en un navegador web y seleccionando "Visita guiada" en la pantalla principal, como si usted fuera un visitante. La visita guiada se iniciará. Puede navegar por ella usando los botones "Siguiente" y "Anterior". También puede desplegar la lista de escenas haciendo clic en el icono del faro y saltar así cómodamente de una a otra. Si deja que la visita guiada fluya a su ritmo, saltará automáticamente de una escena a otra cuando se termine la audiodescripción de cada escena. Por supuesto, también puede pausar el audio y reanudarlo a voluntad.
 	</p>
 	<p>
 		Si le parece que el tiempo de espera entre el fin de un audio y el comienzo del siguiente es demasiado corto, le recomendamos que deje unos segundos de silencio al final de cada audiodescripción.
@@ -497,11 +526,11 @@ and open the template in the editor.
             Los puntos destacados le permiten crear un mosaico con las escenas más interesantes de su visita. Al hacer clic en cada una de las celdas que componen el mosaico, su visitante accederá a la escena 360 correspondiente a esa celda. Usted puede, lógicamente, decidir qué imágenes aparecerán en el mosaico y con qué escenas estarán enlazadas. Además, puede diseñar el mosaico con una libertad casi absoluta, de manera que puede destacar solo unas pocas escenas de su visita, o bien hacer una selección más amplia que incluya un buen número de ellas, todo con un interfaz amigable que le permite en todo momento tener en pantalla una previsualización del resultado. De todo ello hablaremos en esta sección. 
         </p>
         <p>
-            Para acceder al diseño de puntos destacados, debe usted entrar en el panel de administración con un usuario con los privilegios suficientes (vea la <a href="#mapa">sección 4</a> para más detalles sobre esto) y, después, desplegar el menú principal y hacer clic en "Destacados". Verá una pantalla semejante a esta. Si es la primera vez que entra en esta sección, verá un diseño de celdas vacías semejante a este:<br/>
+            Para acceder al diseño de puntos destacados, debe usted entrar en el panel de administración con un usuario con los privilegios suficientes (vea la <a href="#mapa">sección 4</a> para más detalles sobre esto) y, después, desplegar el menú principal y hacer clic en "Destacados". Si es la primera vez que entra en esta sección, verá un diseño de celdas vacías semejante a este:<br/>
             <img src="imgs/imagen-requerida.jpg"/>
         </p>
         <p>
-            A partir de esa plantilla vacía de celdas, puede usted crear su propio diseño de celdas. Para crear una de las celdas, simplemente elija en cual de las filas disponibles quiere hacerlo y haga clic en "Añadir celda". Se desplegará un formulario en el que podrá especificar:
+            A partir de esa plantilla vacía, puede usted crear su propio diseño de celdas. Para crear una de las celdas, simplemente elija en cual de las filas disponibles quiere hacerlo y haga clic en "Añadir celda". Se desplegará un formulario en el que podrá especificar:
             <ul>
                 <li>Un nombre o etiqueta identificativa para la celda. Los visitantes lo verán aparecer al situal el ratón encima de la celda.</li>
                 <li>Una imagen que representará el lugar. Puede recortar un fragmento de la fotografía panorámica 360 de ese lugar, o utilizar cualquier otra foto representativa que considere adecuada. Solo se admite el formato JPG.</li>
@@ -523,11 +552,11 @@ and open the template in the editor.
             En cambio, si el punto destacado conduce a una estancia pequeña, en cuyo interior solo ha tomado una fotografía panorámica 360, puede deshabilitar todos los hotspots tipo salto de esa escena para que no aparezcan en la visita de puntos destacados, y así el visitante, en este tipo de visita, no podrá salir de esa estancia.
         </p>
         <p>
-            Puede modificar cualquier aspecto de los puntos destacados que ya ha creado haciendo clic en el botón "Modificar" que aparece en la esquina superior izquierda de cada celda en la pantalla de diseño. Ahí podrá cambiar el título, la imagen asociada, la escena a la que enlaza y también el número de la fila en la que se encuentra la celda, de modo que la puede hacer subir y bajar a voluntad.<br/>
+            Puede modificar cualquier aspecto de los puntos destacados que ya ha creado haciendo clic en el botón "Modificar" que aparece en la esquina superior izquierda de cada celda en la pantalla de diseño. Ahí podrá cambiar el título, la imagen asociada, la escena a la que enlaza y también el número de la fila en la que se encuentra la celda, de modo que la puede hacer subir y bajar la celda a voluntad.<br/>
             <img src="imgs/imagen-requerida.jpg"/>
         </p>
         <p>
-            Por último, tambien puede eliminar cualquier celda en cualquier momento haciendo clic en el boton "Eliminar" de cada una de ellas.
+            Por último, también puede eliminar cualquier celda en cualquier momento haciendo clic en el boton "Eliminar" de cada una de ellas.
         </p>
         
         <!-------------------------------- 10. CONFIGURAR PORTADA ------------------------------------->
@@ -550,7 +579,7 @@ and open the template in the editor.
                 <li><strong>Texto biblioteca</strong>: indique aquí el texto explicativo que desea que aparezca en pantalla al poner el ratón sobre la opción "Biblioteca".</li>
                 <li><strong>Fuente</strong>: indique una fuente tipográfica diferente de la fuente por defecto. Se admite cualquier fuente instalada en su servidor, o bien fuentes disponibles en Google Fonts.</li>
                 <li><strong>Color fuente</strong>: cambie aquí el color por defecto de sus textos para adaptarlos a imágenes de fondo diferentes. Por ejemplo, si su imagen de fondo es muy clara, tal vez prefiera seleccionar un color oscuro para su fuente, y viceversa.</li>
-                <li><strong>Mostrar biblioteca</strong>: puede ocultar la opcion de menú "Biblioteca" si no tiene pensado digitalizar libros o documentos relativos a su visita virtual para ofrecerlos a sus visitantes. Consulte la <a href="#biblioteca">sección 12</a> para más información sobre la biblioteca.</li>
+                <li><strong>Mostrar biblioteca</strong>: puede ocultar la opción de menú "Biblioteca" si no tiene pensado digitalizar libros o documentos relativos a su visita virtual para ofrecerlos a sus visitantes. Consulte la <a href="#biblioteca">sección 12</a> para más información sobre la biblioteca.</li>
                 <li><strong>Mostrar historia</strong>: puede ocultar el botón "Historia" si no tiene pensado destacar algunos de sus libros digitalizados para mostrar la historia del lugar para el que está diseñando una visita virtual. Consulte la <a href="#biblioteca">sección 12</a> para más información sobre los libros históricos.</li>
             </ul>
         </p>
@@ -568,18 +597,18 @@ and open the template in the editor.
             <img src="imgs/imagen-requerida.jpg"/>
         </p>
         <p>
-            Desde esa pantalla puede visualizar los usuarios activos en ese momento, modificarlos, borrarlos o añadir uno nuevo. El funcionamiento es muy intuitivo y semejante al de otras pantallas del panel de administración, como la administración de imágenes, audios y vídeos, por ejemplo:
+            Desde esa pantalla puede visualizar los usuarios activos en ese momento, modificarlos, borrarlos o añadir uno nuevo. El funcionamiento es muy intuitivo y semejante al de otras pantallas del panel de administración, como la administración de imágenes, audios y vídeos:
             <ol>
                 <li><strong>Para añadir un nuevo usuario</strong>, haga clic en el botón "Insertar usuario" y cumplimente los campos que se le solicitan.</li>
-                <li><strong>Para modificar un usuario existente</strong>, haga clic en el botón "Modificar" de la fila correspondiente, y modifique los campos que sean necesarios. Puede dejar como están los campos que no quiera cambiar.</li>
+                <li><strong>Para modificar un usuario existente</strong>, haga clic en el botón "Modificar" de la fila correspondiente, y modifique los campos que sean necesarios. Desde aquí puede asignar una nueva contraseña a cualquier usuario que la haya perdido u olvidado. Puede dejar como están los campos que no quiera cambiar.</li>
                 <li><strong>Para eliminar un usuario existente</strong>, haga clic en el botón "Eliminar" de la fila correspondiente. Tenga cuidado: esta acción no se puede deshacer.</li>
                 <li><strong>Para cambiar el tipo de un usuario existente</strong>, elija el nuevo tipo en la lista desplegable, dentro de la fila correspondiente a ese usuario, y pulse el botón "Subir" que aparece al lado. Observe que también puede cambiar el tipo del usuario desde la ventana general de modificación de usuario.</li>
             </ol>
         </p>
         <p>
-            Existen cuatro perfiles o tipos de usuario, cada uno de los cuales tiene diferente nivel de privilegios sobre la aplicación. De menor a mayor, estos perfiles o tipos son:
+            Existen cuatro perfiles o tipos de usuario, cada uno de los cuales tiene diferente nivel de privilegios sobre la aplicación. De menor a mayor nivel de privilegios, estos perfiles o tipos son:
             <ol>
-                <li><strong>Pendiente de asignación</strong>: cuando un usuario acaba de registrarse en la aplicación, usted debe asignarle manualmente los privilegios desde el panel de administración. Hasta entonces, figurará como "pendiente de asignación" y no podrá realizar, por motivos de seguridad, ninguna operación con la aplicación hasta que un administrador le asigne otro nivel de privilegios.</li>
+                <li><strong>Pendiente de asignación</strong>: cuando un usuario acaba de registrarse en la aplicación, usted debe asignarle manualmente los privilegios desde el panel de administración. Hasta entonces, figurará como "pendiente de asignación" y no podrá realizar, por motivos de seguridad, ninguna operación con la aplicación hasta que un administrador le asigne otro nivel de privilegios superior.</li>
                 <li><strong>Bibliotecario</strong>: los usuarios con este perfil solo podrán acceder a la sección de biblioteca, subir libros digitalizados y administrarlos.</li>
                 <li><strong>Mapero</strong>: los usuarios con este perfil pueden crear mapas y administrar escenas, hotspots, imágenes, audios y vídeos.</li>
                 <li><strong>Administrador</strong>: los usuarios con este perfil pueden acceder a todas las funciones de bibliotecarios y maperos, además de a la gestión de la portada y a la administración de los propios usuarios.</li>
@@ -589,13 +618,13 @@ and open the template in the editor.
             Durante el proceso de instalación se creará un usuario de tipo administrador. Este usuario tiene un carácter especial, ya que nunca podrá ser eliminado para asegurar el acceso con nivel de administrador a la aplicación. Ni que decir tiene que las credenciales de este usuario, así como las de cualquier otro usuario de tipo administrador, deben permanencer siempre seguras para evitar comprometer la seguridad del sistema.
         </p>
         <p>
-            El <strong>registro de usuarios</strong> se puede hacer desde el panel de administración (opcion "Insertar usuario") o desde la ventana de login, haciendo clic en el botón "Darse de alta". En el primer caso, como el usuario que está haciendo el registro es un administrador, la aplicación le permitirá elegir el nivel de privilegios del usuario nuevo; en el segundo caso, en cambio, el usuario se creará siempre como "pendiente de asignación" para evitar accesos no autorizados a al panel de administración de la aplicación. Este segundo formulario de registro de usuarios tiene incorporados varios mecanismos de seguridad ocultos para filtrar los posibles intentos de registro de aplicaciones maliciosas que intenten hacerse pasar por humanos con el fin de saturar el servidor o de comprometer la seguridad de la aplicación.
+            El <strong>registro de usuarios</strong> se puede hacer desde el panel de administración (opcion "Insertar usuario") o desde la ventana de login, haciendo clic en el botón "Darse de alta". En el primer caso, como el usuario que está haciendo el registro es un administrador, la aplicación le permitirá elegir el nivel de privilegios del usuario nuevo; en el segundo caso, en cambio, el usuario se creará siempre como "pendiente de asignación" para evitar accesos no autorizados al panel de administración de la aplicación. Este segundo formulario de registro de usuarios tiene incorporados varios mecanismos de seguridad ocultos para filtrar los posibles intentos de registro de aplicaciones maliciosas que intenten hacerse pasar por humanos con el fin de saturar el servidor o de comprometer la seguridad de la aplicación.
         </p>
         
         <!-------------------------------- 12. BIBLIOTECA ------------------------------------->
         <h2><a name="biblioteca">12. Administrar la biblioteca</a></a></h2>
         <p>
-            El módulo de biblioteca es un añadido que enriquece la experiencia de los visitantes a su tour virtual ofreciéndole, en formato digitalizado, publicaciones que tengan relación con el lugar que están visitando. No es un módulo obligatorio, es decir, usted puede desactivarlo si decide no ofrecerlo a sus visitantes. En cambio, si prefiere utilizarlo, asegúrese de no infringir los derechos de propiedad intelectual de las obras que ofrezca en formato digital.
+            El módulo de biblioteca es un añadido que enriquece la experiencia de los visitantes a su tour virtual ofreciéndole, en formato digitalizado, publicaciones que tengan relación con el lugar que están visitando. No es un módulo obligatorio, es decir, usted puede desactivarlo si decide no ofrecerlo a sus visitantes. En cambio, si prefiere utilizarlo, asegúrese de no infringir los derechos de propiedad intelectual de las obras que ofrezca en formato digital. Los desarrolladores de la aplicación Celia360, como es natural, declinan toda responsabilidad sobre el uso indebido que los usuarios finales pudieran hacer de esta funcionalidad.
         </p>
         <p>
             En esta sección le mostraremos cómo puede crear su biblioteca virtual y cómo puede integrarla en su visita. Es una sección que aún está en desarrollo (incluso más que el resto de la aplicación), por lo que en próximas versiones pueden existir profundos cambios.
@@ -655,7 +684,7 @@ and open the template in the editor.
             <img src="imgs/imagen-requerida.jpg"/>
         </p>
         <p>
-            La siguiente opción es la de <strong>biblioteca</strong>. Aquí se mostrará el catálogo de libros (todos menos los parcados como "Tipo historia") y su visitante podrá consultarlos online mediante un visor interactivo. Algunos libros pueden tener la opción de descarga en formato PDF. Tenga en cuenta que puede ocultar esta opción desde la <a href="#portada">configuración de la portada</a> si no le interesa ofrecer libros digitalizados a sus visitantes. También le recordamos que la obligación de asegurarse de no infringir los posibles derechos de propiedad intelectual es exclusivamente suya y de su organización. El aspecto que tiene la biblioteca para sus visitantes es este:<br/>
+            La siguiente opción es la de <strong>biblioteca</strong>. Aquí se mostrará el catálogo de libros (todos menos los marcados como "Tipo historia") y su visitante podrá consultarlos online mediante un visor interactivo. Algunos libros pueden tener la opción de descarga en formato PDF. Tenga en cuenta que puede ocultar esta opción desde la <a href="#portada">configuración de la portada</a> si no le interesa ofrecer libros digitalizados a sus visitantes. También le recordamos que la obligación de asegurarse de no infringir los posibles derechos de propiedad intelectual es exclusivamente suya y de su organización. El aspecto que tiene la biblioteca para sus visitantes es este:<br/>
             <img src="imgs/imagen-requerida.jpg"/><br/>
             Y el visor de libros tiene esta forma:<br/>
             <img src="imgs/imagen-requerida.jpg"/>
@@ -668,7 +697,7 @@ and open the template in the editor.
         <!-------------------------------- ANEXO. GUÍA RÁPIDA ------------------------------------->
         <h2><a name="guia_rapida">Anexo. Guía de inicio rápida</a></a></h2>
         <p>
-            En esta sección le ofrecemos un resumen de los pasos que debe seguir para crear su tour virtual. Le remitiremos al las secciones correspondientes del manual para ampliar la información sobre cada uno de los aspectos.
+            En esta sección le ofrecemos un resumen de los pasos que debe seguir para crear su tour virtual. Le remitiremos a las secciones correspondientes del manual para ampliar la información sobre cada uno de los aspectos.
         </p>
         <p>
             Los pasos generales para crear un <strong>tour virtual mínimo</strong> son los siguientes:
