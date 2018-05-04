@@ -40,6 +40,9 @@
 			
 });
 </script> 
+<?php
+/** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
+?>
  <style type="text/css">
    
      #modificar{
@@ -84,8 +87,9 @@
 </style>
 
 <?php
+// aqui cojemos el array entregado por el controlador y mostramops en una tabla todos los videos de la base de datos
 echo"<a class='insert' onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar Video</a>";
-//echo'<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />';
+
 echo"<table class='tabla' class='display' id='cont'>
 <thead>
 <tr id='cabecera'>
@@ -117,11 +121,7 @@ foreach ($tabla as $re) {
 }
 echo "</tbody>";
 echo "</table>";
-/*$ant = $primero - $cantidad;
-if($ant<0)$ant=0;
-$sig = $primero + $cantidad;
-if($sig>$total) $sig=$total;
-echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideo/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("video/mostrarvideo/") ."$sig'>Siguiente</a></div></br></br>";*/
+
 //Capa formulario modificar
 echo "
 <div id='modificar'>
@@ -156,7 +156,7 @@ echo"
     </div>
 </div>";
 
-
+/** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos video por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
 ?>
 
 <script>
