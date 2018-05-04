@@ -1,20 +1,52 @@
 <?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
 
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+?>
+<?php
+/**
+ * Controlador de Biblioteca.
+ * 
+ * Esta clase contiene todos los métodos del controlador del panel de administración de la tabla Libros.
+ * Permite insertar, eliminar, modificar y consultar la tabla Libros.
+ * @author Marc Expósito 2018
+ * @author Manuel Gonzalez 2018
+ * @author Francisco Alejandro Lopez 2018
+ */
 class Biblioteca extends CI_Controller {
 
-
+ /**
+ * Constructor.
+ * 
+ * Carga los modelos que se van a usar a lo largo de los métodos de la clase.
+ */
 	public function __construct() {
 		parent::__construct();
 		$this->load->model("bibliotecaModel");
                 $this->load->model("UsuarioModel");
 	}
-
+/**
+ * Método por defecto del controlador.
+ * 
+ * Invoca automáticamente el método showintadmin() si se entra al controlador
+ * sin especificar otro método.
+ */
 	public function index() {
 		$this->showintadmin();
 	}
-
-	
-	
+/**
+ * Muestra una tabla con los datos de la tabla Libros.
+ */
 	public function showintadmin()
 	{
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
@@ -22,7 +54,13 @@ class Biblioteca extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template', $datos);
 	}
-
+ /**
+ * Muestra los datos de un libro especifico en la ventana modal en la vista intadmin
+ * 
+ * 
+ * @param int $id_libro El id del libro que se va modificar .
+ * 
+ */
 	public function showmodificarlibro($id_libro)
 	{
 		$resultado = $this->bibliotecaModel->get_info_libro($id_libro);
@@ -166,75 +204,6 @@ public function verLibroCelia(){
 		$this->load->view("admin_template", $datos);
 	}
 
-	// public function ver_biblioteca_ajax($id_libro,$apaisado,$tipo){
-	// 	$datos["id_libro"] = $id_libro;
-	// 	$datos["apaisado"] = $apaisado;
-	// 	$datos["tipo"]= $tipo;
-	// 	$this->load->view("biblioteca/libroajax", $datos);
-	// }
-	public function get_libro_modal($id_libro, $tipo_libro) {
-		$datos["id_libro"] = $id_libro;
-		$datos["tipo_libro"] = $tipo_libro;
-        $datos["vista"] ="biblioteca/libro.php";
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-		$this->load->view("admin_template", $datos);
-	}
-
-	public function buscar_libro_ajax($str_busqueda) {
-		$resultado = $this->bibliotecaModel->busqueda_aproximada($str_busqueda);
-		if($resultado->num_rows > 0){
-		$salida.="
-			<table border='1px solid black' style='border-spacing: 0;' class='tabla_datos'>
-				<thead>
-				<tr>
-					<th>IDLIBRO</th>
-					<th>TITULO</th>
-					<th>AUTOR</th>
-					<th>EDITORIAL</th>
-					<th>LUGAR EDICION</th>
-					<th>FECHA EDICION</th>
-					<th>ISBN</th>
-					<th>TIPO</th>
-					<th>APAISADO</th>
-				</tr>
-				</thead>
-				<tbody>
-		";
-
-		
-		while ($fila = $resultado->fetch_assoc()){
-
-			$salida.="<tr>
-				<td >".$fila['id_libro']."</td>
-				<td >".$fila['titulo']."</td>
-				<td >".$fila['autor']."</td>
-				<td >".$fila['editorial']."</td>
-				<td >".$fila['lugar_edicion']."</td>
-				<td >".$fila['fecha_edicion']."</td>
-				<td >".$fila['ISBN']."</td>
-				<td >".$fila['tipo']."</td>
-				<td >".$fila['apaisado']."</td>
-				<td> 
-					<a href='#'> <i title='Modificar' class='fa fa-pencil-square-o' aria-hidden='true'></i></a>
-				</td>
-				<td>
-					<a href=''><i title='Insertar Páginas' class='fa fa-file-image-o' aria-hidden='true'></i></a>
-				</td>
-				<td>
-					<a href='#' onClick='borrarlibro('')'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a>
-				</td>
-			</tr>";
-			 
-		}
-		$salida.="</tbody></table>";
-
-	} else{
-		$salida.= "no hay datos MEN :(";
-	}
-
-	echo $salida;
-
-
-	}
+	
 
 }
