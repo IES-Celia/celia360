@@ -17,7 +17,7 @@
                      </div>
                  </div> 
                  <div id="poweredBy">
-                    <h1>Powered by Celia Viñas</h1>
+                    <h1>Powered by Celia Viñas 2ºDAW 17/18&nbsp;&nbsp;</h1>
                     <img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/>
                  </div>
             </div>
