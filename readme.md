@@ -6,9 +6,9 @@
 
 # CELIA360 README FILE
 
-Celia360 es una aplicación web de software libre realizada por el alumnado
+**Celia360** es una aplicación web de software libre realizada por el **alumnado
 de 2º curso del Ciclo Formativo de Grado Superior de Desarrollo de Aplicaciones
-Web (2º DAW) del IES Celia Viñas de Almería (España).
+Web** (2º DAW) del [IES Celia Viñas de Almería (España)][1].
 
 El propósito de la aplicación es administrar y generar un tour virtual por
 cualquier espacio fotografiado con una secuencia de fotografías 360. La
@@ -22,25 +22,25 @@ un navegador web convencional.
 
 # LICENCIA DE USO
 
-La información sobre la licencia puede encontrarse en el archivo license.md.
+La información sobre la licencia puede encontrarse en el archivo [`license.md`][2].
 Por favor, lea cuidadosamente ese archivo si pretende explotar este software.
 
 
 # INSTALACIÓN
 
-Las notas de instalación están disponibles en el archivo install.md.
+Las notas de instalación están disponibles en el archivo [`install.md`][3].
 
 
 # GUÍA DEL USUARIO
 
-La documentación de usuario está disponible en el directorio docs, tanto en formato Markdown (index.md) como en formato html (html/index.html) y pdf (index.pdf).
+La documentación de usuario está disponible en el directorio `docs`, tanto en formato Markdown ([`index.md`][4]) como en formato html ([`html/index.html`][5]) y pdf ([`pdf/index.pdf`][6]).
 
 
 # CRÉDITOS
 
 La aplicación fue diseñada, codificada, probada y puesta en producción durante
-el curso 2017/2018 por el siguiente alumnado de 2º curso del Ciclo Formativo de 
-Grado Superior de Desarrollo de Aplicaciones Web del IES Celia Viñas 
+el curso 2017/2018 por el siguiente **alumnado de 2º curso del Ciclo Formativo de 
+Grado Superior de Desarrollo de Aplicaciones Web** del [IES Celia Viñas][1] 
 (por orden alfabético):
 - Benhachmi, Hamza
 - Expósito, Marc
@@ -57,5 +57,12 @@ Grado Superior de Desarrollo de Aplicaciones Web del IES Celia Viñas
 
 # CONTACTO
 
-Pueden contactar con el IES Celia Viñas a través del correo electrónico:
+Pueden contactar con el [IES Celia Viñas][1] a través del correo electrónico:
 admin@iescelia.org
+
+[1]: http://iescelia.org/web/
+[2]: https://github.com/IES-Celia/celia360/blob/master/license.md
+[3]: https://github.com/IES-Celia/celia360/blob/master/install.md
+[4]: https://github.com/IES-Celia/celia360/blob/master/docs/index.md
+[5]: https://github.com/IES-Celia/celia360/blob/master/docs/html/index.html
+[6]: https://github.com/IES-Celia/celia360/blob/master/docs/pdf/index.pdf
