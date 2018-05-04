@@ -193,9 +193,9 @@ echo"
     }
 
     function respuesta(r) {
-        if (r.trim() == "0") {
+        if (r.trim() == "-1") {
 			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el audio</span>";
-		} else if (r.trim() == "-1") {
+		} else if (r.trim() == "-2") {
 			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese audio está en uso en un hotspot y no se puede borrar</span>";
             
         } else {

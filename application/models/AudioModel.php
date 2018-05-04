@@ -71,7 +71,7 @@ class AudioModel extends CI_Model {
         }
 		/** esta funcion permite saber si el audio  esta relacionado con algun hotsot por lo cual no se permitira su borrado o modificacion**/
 	public function relacion($id){
-		$s="select clickHandlerFunc from hotspots where clickHandlerFunc='audio' and clickHandlerArgs='$id'";
+		$s="select clickHandlerFunc from hotspots where clickHandlerFunc='musica' and clickHandlerArgs='$id'";
 		$r=$this->db->query($s);
 		if ($r->num_rows() > 0) {
 			return true;
