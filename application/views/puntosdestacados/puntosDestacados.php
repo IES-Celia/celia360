@@ -1,3 +1,18 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+?>
 <!DOCTYPE html>
 <html lang="es">
  <head>
@@ -19,6 +34,7 @@
         <div id="contenedor" style="z-index:1000">
             <div class="boton_menu" id="botoncico"></div> <!--boton menu --> 
         <?php 
+            // este for saca las celdas y las va colocando según su fila
             $contador = 0 ;
             foreach($puntos_d as $fila){ 
                 $longitud = count($fila);
