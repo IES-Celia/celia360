@@ -35,6 +35,7 @@ class PuntosDestacados extends CI_Controller {
         $this->load->model("PuntosDestacadosModel");
         $this->load->model("UsuarioModel");
         //$this->load->helper('funcionesHotspot');
+        
     }
     
     /**
