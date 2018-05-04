@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/IES-Celia/celia360.svg?branch=master)](https://travis-ci.com/IES-Celia/celia360)
+
 # CELIA360 README FILE
 
 Celia360 es una aplicación web de software libre realizada por el alumnado
