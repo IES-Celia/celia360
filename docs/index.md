@@ -1,6 +1,6 @@
 ---
 title: "Celia360 - Guía del usuario"
-author: 
+author: IES Celia Viñas
 date: Almería 3 de mayo de 2018
 subject: ""
 tags: []
@@ -8,7 +8,7 @@ tags: []
 
 # Celia360 - Guía del usuario
 
-Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo `install.txt` distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo `licese.txt`. No deje de consultar el archivo `readme.txt` antes de proceder a la instalación y explotación de este software.
+Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo `install.md` distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo `licese.md`. No deje de consultar el archivo `readme.md` antes de proceder a la instalación y explotación de este software.
 
 > **ATENCIÓN:** este documento es aún una versión de trabajo y está en desarrollo, por lo que pueden existir inconsistencias o partes sin terminar.
 
@@ -269,7 +269,9 @@ Cuando haya terminado, pulse "Enviar" o "Aceptar". Tendrá ahora que seleccionar
 
 ![](imgs/imagen-requerida.jpg)
 
-Haga clic en las imágenes de la izquierda para agregarlas a su panel. Pulse "Enviar" o "Aceptar" para guardar los cambios, y "Volver atrás" para cancelar la operación. Cuando haya aceptado los cambios, su hotspot tipo panel informativo estará listo. Puede comprobar cómo ha quedado lanzando una visita libre desde su navegador web y saltando a la escena en cuestión por medio del mapa.
+Haga clic en las imágenes de la izquierda para agregarlas a su panel. Si selecciona una imagen por error, haga clic de nuevo sobre ella para eliminarla de la selección.
+
+Pulse "Enviar" o "Aceptar" para guardar los cambios, y "Volver atrás" para cancelar la operación. Cuando haya aceptado los cambios, su hotspot tipo panel informativo estará listo. Puede comprobar cómo ha quedado lanzando una visita libre desde su navegador web y saltando a la escena en cuestión por medio del mapa.
 
 ## Hotspots de tipo audio
 <a name="audio"></a>
@@ -343,7 +345,7 @@ En su navegador se abrirá una ventana nueva que le permitirá modificar algunos
 
 ![](imgs/imagen-requerida.jpg)
 
-Algunas ventanas de modificación de hotspot no le permitirán cambiar ciertas cosas del hotspot. Por ejemplo, no podrá cambiar las imágenes asignadas a un hotspot de tipo panel informativo, aunque sí podrá cambiar su título, su descripción o el punto de la escena donde debe aparecer. Si necesita cambiar las imágenes asociadas, deberá borrar el hotspot y crearlo de nuevo. La posibilidad de editar las imágenes asignadas está contemplada entre los próximos desarrollos de la aplicación.
+Algunas ventanas de modificación de hotspot no le permitirán cambiar ciertas cosas del hotspot. Si necesita modificar alguno de estos aspectos invariables, deberá borrar el hotspot y crearlo de nuevo.
 
 # Crear una visita guiada
 <a name="guiada"></a>

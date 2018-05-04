@@ -16,18 +16,18 @@ un navegador web convencional.
 
 # LICENCIA DE USO
 
-La información sobre la licencia puede encontrarse en el archivo license.txt.
+La información sobre la licencia puede encontrarse en el archivo license.md.
 Por favor, lea cuidadosamente ese archivo si pretende explotar este software.
 
 
 # INSTALACIÓN
 
-Las notas de instalación están disponibles en el archivo install.txt.
+Las notas de instalación están disponibles en el archivo install.md.
 
 
 # GUÍA DEL USUARIO
 
-La documentación de usuario está disponible en el directorio guia_usuario.
+La documentación de usuario está disponible en el directorio docs, tanto en formato Markdown (index.md) como en formato html (html/index.html) y pdf (index.pdf).
 
 
 # CRÉDITOS
