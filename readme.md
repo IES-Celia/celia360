@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.com/IES-Celia/celia360.svg?branch=master)](https://travis-ci.com/IES-Celia/celia360)
+![](https://sonarcloud.io/api/project_badges/measure?project=celia360&metric=sqale_rating)
+![](https://sonarcloud.io/api/project_badges/measure?project=celia360&metric=reliability_rating)
+![](https://sonarcloud.io/api/project_badges/measure?project=celia360&metric=alert_status)
+![](https://sonarcloud.io/api/project_badges/measure?project=celia360&metric=security_rating)
 
 # CELIA360 README FILE
 
