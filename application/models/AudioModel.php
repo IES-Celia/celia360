@@ -1,12 +1,30 @@
 <?php
 
-class AudioModel extends CI_Model {
+/*
+    Este archivo es parte de la aplicación web Celia360. 
 
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+
+class AudioModel extends CI_Model {
+ /**
+     * Constructor.
+     * 
+     * Carga llas librerias  que se van a usar a lo largo de los métodos de la clase.
+     */
     public function __construct() {
         parent::__construct();
         $this->load->database();
     }
-
+// inserta los audios en la base de datos y copia  los audios (archivo)al servidor
     public function insertaraud($desc, $tipo) {
 
         $r = "";
@@ -25,6 +43,7 @@ class AudioModel extends CI_Model {
     }
 
     //ATENCIÓN CAMBIO LOLI
+	//busca todos los audios en la base de datos y los guarda en un array 
     public function buscaraudio() {
         $sel = "select * from audio";
         $res = $this->db->query($sel);
@@ -37,15 +56,7 @@ class AudioModel extends CI_Model {
     
     //FIN CAMBIO LOLI
     
-    public function buscaraud($a, $b) {
-        $sel = "select * from audio limit $a,$b";
-        $res = $this->db->query($sel);
-        $tabla = array();
-        foreach ($res->result_array() as $fila) {
-            $tabla[] = $fila;
-        }
-        return $tabla;
-    }
+  // esta funcion cuenta cuantos audios hay en la base de datos pero no la uso en la aplicacion
      public function buscar(){
         $sel = "select count(*) from audio";
         $res = $this->db->query($sel);
@@ -58,7 +69,7 @@ class AudioModel extends CI_Model {
         return $res;
 
         }
-		
+		/** esta funcion permite saber si el audio  esta relacionado con algun hotsot por lo cual no se permitira su borrado o modificacion**/
 	public function relacion($id){
 		$s="select clickHandlerFunc from hotspots where clickHandlerFunc='audio' and clickHandlerArgs='$id'";
 		$r=$this->db->query($s);
@@ -66,7 +77,7 @@ class AudioModel extends CI_Model {
 			return true;
 	}else return false;
 	}
-
+// borra audio del servidor y de la base de datos.
     public function borraraud($id_aud) {
         $s = "select url_aud from audio where id_aud='$id_aud'";
         $res = $this->db->query($s);
@@ -80,7 +91,7 @@ class AudioModel extends CI_Model {
 
         return $resultado;
     }
-
+// permite modifical el audio y cambiar sus datos de entrada en la base de datos
     public function modificaraud($id) {
         $url = $this->input->post_get("url_aud");
         $desc = $this->input->post_get("desc_aud");
@@ -97,7 +108,7 @@ class AudioModel extends CI_Model {
 
         return $r;
     }
-
+// borra el audio especificado y devuelve una lista de todos los audios disponibles en el servidor/basedatos
     public function buscaridaud($id) {
 
         $sel = "select * from audio where id_aud='$id'";
@@ -109,7 +120,7 @@ class AudioModel extends CI_Model {
 
         return $tabla;
     }
-
+// aqui comprobamos si el audio existe en el servidor antes de subirlo
     public function existeaud($n) {
 
 
@@ -120,6 +131,7 @@ class AudioModel extends CI_Model {
         else
             return false;
     }
+	// esta funcion ya no la uso, la usaba para hacer la paginacion y el buscador antes de meter el plugin de loli
  public function buscar_ajaxaud($abuscar) {
        
         $this->db->select('*');
