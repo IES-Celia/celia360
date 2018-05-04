@@ -248,7 +248,7 @@
 			$this->load->database();
 			$query = $this->db->query('SELECT * FROM config_mapa');
 			if($query->num_rows()>0){
-				$query->result_array();
+				$query = $query->result_array();
 				$resultado["piso_inicial"]=$query[0]["piso_inicial"];
 				$resultado["punto_inicial"]=$query[0]["punto_inicial"];
 				$resultado["escena_inicial"]=$query[0]["escena_inicial"];
