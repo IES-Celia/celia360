@@ -145,7 +145,9 @@ $(document).ready(function() {
 	}, 100);
 	
 	$("input[name=piso_inicial]").change(function(){
+		$("#mapa_config_mapa > .pisos_config").css("display","none");
 		$("#zona"+$(this).val()).css("display","")
+		
 	})
 });
 

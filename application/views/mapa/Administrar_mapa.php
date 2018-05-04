@@ -32,18 +32,31 @@
         <form action='<?php echo site_url("mapa/update_config"); ?>' method="post" enctype='multipart/form-data'>
             <h1>Modificar Configuración</h1>
             <label for="piso_inicial">Piso inicial</label>
-            <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
-            <input type="hidden" name="punto_inicial">
-            <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
-            <div id="mapa_config_mapa" >
             <?php
-                $indice = 0;
+            if($configuracion!=null){
+                
+                ?>
+                <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+                <input type="hidden" name="punto_inicial">
+                <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
+                <div id="mapa_config_mapa" >
+            <?php
+            }else{
+                 
+                ?>
+                <input type="number" name="piso_inicial" value="0" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+                <input type="hidden" name="punto_inicial">
+                <input type="hidden" name="escena_inicial">
+                <div id="mapa_config_mapa" >
+                <?php
+            }
+                 $indice = 0;
 
                  foreach ($mapa as $imagen) {
-                     if($indice == 0){
-                         echo "<div id='zona".$indice."' class='pisos pisos_config'>";
+                     if($indice == $configuracion["piso_inicial"]){
+                        echo "<div id='zona".$indice."' class='pisos pisos_config' style='display:'>";
                      }else{
-                        echo "<div id='zona".$indice."' class='pisos pisos_config'>";
+                         echo "<div id='zona".$indice."' class='pisos pisos_config' style='display: none'>";
                      }
                     
                     echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
