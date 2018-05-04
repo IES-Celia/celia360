@@ -74,7 +74,7 @@ class Video extends CI_Controller {
      * Este método se pide por Ajax, de modo que su salida es un "0" o un "1".
      * 
      * @param int $id El id del video que se quiere borrar.
-     * @return Devuelve a la petición Ajax un "0" si el borrado ha fallado, un "-1" si el borrado ha fallado porque el video está en uso en un hotspot, o el id del audio si ha funcionado bien.
+     * @return Devuelve a la petición Ajax un "-1" si el borrado ha fallado, un "-2" si el borrado ha fallado porque el video está en uso en un hotspot, o el id del audio si ha funcionado bien.
      */
     public function borrarvideo($id) {
 		 // Comprobamos si el audio está en uso en algún hotspot.
@@ -83,11 +83,11 @@ class Video extends CI_Controller {
 		if($r==false){
 			$resultado=$this->Vidm->borrarvideo($id);
 			if($resultado == 1) echo $id;// El video se ha borrado correctamente
-			else echo "0";	// Algo ha fallado al intentar borrar el video
+			else echo "-1";	// Algo ha fallado al intentar borrar el video
 		}
 		else  {
 			 // El audio está en uso: no se puede borrar
-			echo "-1";
+			echo "-2";
 		}
     }
 

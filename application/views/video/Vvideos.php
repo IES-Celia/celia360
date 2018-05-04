@@ -188,14 +188,21 @@ echo"
         }
     }
 
-    function respuesta(r) {
-        if (r.trim() == "0") {
-            alert("Error al borrar el video");
+   
+	 function respuesta(r) {
+        if (r.trim() == "-1") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el video</span>";
+		} else if (r.trim() == "-2") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese video está en uso en un hotspot y no se puede borrar</span>";
+            
         } else {
             
-            alert("Video borrado con éxito");
-            selector = "#contenidovideo"+parseInt(r);
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Borrado con éxito</span>";
+			
+			selector = "#contenidovideo"+parseInt(r);
+			
             $(selector).remove();
+			
         }
     }
 	 
