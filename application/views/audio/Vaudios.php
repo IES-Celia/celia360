@@ -12,6 +12,7 @@
 
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
+// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
 
 <style type="text/css">
@@ -61,10 +62,9 @@
 <a class='insert' onclick='mostrar()'> <i class='fas fa-plus-circle'></i> Insertar audio</a>
 
     
-<!--<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />-->
 
 <?php
-
+// aqui cojemos la tabla entregada del controlador y mostramos todos los audios en una tabla
 echo"<table class='tabla' class='display' id='cont'>
 <thead>
 <tr id='cabecera'>
@@ -107,13 +107,9 @@ foreach ($tabla as $re) {
 }
 echo "</tbody>";
 echo "</table>";
-//$ant = $primero - $cantidad;
-//if($ant<0)$ant=0;
-//$sig = $primero + $cantidad;
-//if($sig>$total) $sig=$total;
-//echo "<div id='div_pag'><a class='paginacion' href='". site_url("audio/mostraraudios/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("audio/mostraraudios/") ."$sig'>Siguiente</a></div></br></br>";
 
-//Capa formulario modificar
+
+//Capa(ventana modal) formulario modificar
 echo "
 <div id='modificar'>
 
@@ -136,7 +132,7 @@ echo "
 				</div>
 </div>";
 
-//Capa formulario insertar
+//Capa (ventana modal) formulario insertar
 echo"
 <div id='insertar'>
 <div id='caja'>
@@ -158,7 +154,7 @@ echo"
 </div>";
 
         
-
+/** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
 ?>
 
 <script>
@@ -197,9 +193,9 @@ echo"
     }
 
     function respuesta(r) {
-        if (r.trim() == "0") {
+        if (r.trim() == "-1") {
 			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el audio</span>";
-		} else if (r.trim() == "-1") {
+		} else if (r.trim() == "-2") {
 			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese audio está en uso en un hotspot y no se puede borrar</span>";
             
         } else {

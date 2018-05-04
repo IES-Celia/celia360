@@ -29,17 +29,6 @@
 			return $lista;
 		}
 /**
- * Carga la configuración inicial para conocer el piso inicial y el punto/escena.
- */
-		public function cargar_config(){
-			$this->load->database();
-			$query = $this->db->query('SELECT * FROM config_mapa')->result_array();
-			$resultado["piso_inicial"]=$query[0]["piso_inicial"];
-			$resultado["punto_inicial"]=$query[0]["punto_inicial"];
-			$resultado["escena_inicial"]=$query[0]["escena_inicial"];
-			return $resultado;
-		}
-/**
  * edita la zona en cuestión, pudiendo cambiar imagen y posición.
  */
 		public function editar_zona(){
@@ -250,6 +239,23 @@
 			$sql = "UPDATE config_mapa SET piso_inicial='$piso', punto_inicial='$punto', escena_inicial='$escena'";
 			$resultado = $this->db->query($sql);
 
+			return $resultado;
+		}
+/**
+ * Carga la configuración inicial para conocer el piso inicial y el punto/escena.
+ */
+		public function cargar_config(){
+			$this->load->database();
+			$query = $this->db->query('SELECT * FROM config_mapa');
+			if($query->num_rows()>0){
+				$query->result_array();
+				$resultado["piso_inicial"]=$query[0]["piso_inicial"];
+				$resultado["punto_inicial"]=$query[0]["punto_inicial"];
+				$resultado["escena_inicial"]=$query[0]["escena_inicial"];
+			}else{
+				$resultado=NULL;
+			}
+			
 			return $resultado;
 		}
 	}
