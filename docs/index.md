@@ -6,13 +6,11 @@ subject: ""
 tags: []
 ---
 
-# Celia360 - Guía del usuario
+![](imgs/00.jpg)
 
 Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo `install.md` distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo `licese.md`. No deje de consultar el archivo `readme.md` antes de proceder a la instalación y explotación de este software.
 
 > **ATENCIÓN:** este documento es aún una versión de trabajo y está en desarrollo, por lo que pueden existir inconsistencias o partes sin terminar.
-
-# ¿Qué es Celia360?
 
 Celia360, también conocido como CeliaTour, es una aplicación web diseñada para crear recorridos virtuales a partir de fotografías panorámicas de 360º.
 
