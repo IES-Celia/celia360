@@ -69,7 +69,11 @@ class Biblioteca extends CI_Controller {
 		$this->load->view('admin_template', $datos);
 	}
 
-
+/**
+ * 
+ * Muestra el formulario para insertar un libro nuevo en la tabla libros
+ * 
+ */
 
 	public function showinsertlibro()
 	{		
@@ -77,7 +81,11 @@ class Biblioteca extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template', $datos);
 	}
-
+/**
+ * 
+ * Modifica los datos de un libro
+ * 
+ */
 	public function modifiedLibro()
 	{
 		$resultado=$this->bibliotecaModel->update();
