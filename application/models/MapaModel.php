@@ -168,19 +168,20 @@
 				$maximo = $this->db->query("SELECT COUNT(piso) from pisos")->result_array()[0]["COUNT(piso)"]; //sacamos el numero de pisos.
 				
 				$this->db->query("SET foreign_key_checks=0;"); //desactivamos la comprobacion de claves foraneas para poder modificar sin problemas.
-			
-				for ($i=$maximo-1; $i >= $posicion ; $i--) { //movemos todos las zonas una posicion hacia delante si es necesario.
+			if($maximo != $posicion){
+				for ($i=$maximo+1; $i >= $posicion ; $i--) { //movemos todos las zonas una posicion hacia delante si es necesario.
 
 					$piso_siguiente = $i+1;
 					$this->db->query("UPDATE pisos SET piso=$piso_siguiente WHERE piso=$i");
 					$this->db->query("UPDATE puntos_mapa SET piso=$piso_siguiente WHERE piso=$i");
 				}
-
-				$this->db->query("INSERT INTO pisos (piso, url_img,titulo_piso) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida',$titulo);");
+			}
+				$this->db->query("INSERT INTO pisos (piso, url_img,titulo_piso) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida','$titulo');");
 				$this->db->query("SET foreign_key_checks=1;");
 
 			}else{ //si la imagen no se ha subido nos devuelve los errores encontrados.
 				$resultado = $this->upload->display_errors();
+				return $resultado;
 			}
 		}
 /**
