@@ -12,6 +12,8 @@ $(document).ready(function() {
 		$(".pisos:eq(" + piso + ")").show();
 		var piso_config = $("#modalConfig > #caja > form > input[name=piso_inicial]").val();
 		$("#modalConfig > #caja > #mapa_escena_hotspot > .pisos_config:eq("+piso_config+")").show();	
+		$("#mapa_config_mapa > .pisos_config").hide();	
+		$("#mapa_config_mapa > .pisos_config:eq("+piso_config+")").show();	
 	
 	
     $("#btn-subir-piso").click(function(event) {
@@ -145,8 +147,8 @@ $(document).ready(function() {
 	}, 100);
 	
 	$("input[name=piso_inicial]").change(function(){
-		$("#mapa_config_mapa > .pisos_config").css("display","none");
-		$("#zona"+$(this).val()).css("display","")
+		$("#mapa_config_mapa > .pisos_config").hide();
+		$("#zona"+$(this).val()).show();
 		
 	})
 });

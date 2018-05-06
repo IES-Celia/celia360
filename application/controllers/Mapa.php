@@ -42,9 +42,13 @@ class Mapa extends CI_Controller {
         $this->load->view('admin_template',$datos);
     }
     public function update_config(){
-        $resultado = $this->mapa->update_config();
+        if($this->mapa->update_config()==0)
+            $datos["error"] = "No se ha modificado la configuración";
+        else
+            $datos["mensaje"] = "Se ha modificado la configuración";
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
+        $datos["configuracion"] = $this->mapa->cargar_config();
         $datos["vista"] = "mapa/Administrar_mapa";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template',$datos);

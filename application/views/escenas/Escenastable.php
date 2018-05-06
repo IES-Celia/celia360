@@ -86,16 +86,29 @@ function respuesta(r) {
       }
 ?>
 </div>
-<div class="botones_mapa">
-    <button class="botonmapa" id="btn-subir-piso">Subir zona</button>
-    <button class="botonmapa" id="btn-bajar-piso">Bajar zona</button>
-    <button class="botonmapa" id="btn-admin-mapa">Admin mapa</button>
-</div>
+<?php
+ if(count($mapa)==0){
+     ?>
+    <div class="botones_mapa">
+        <button class="botonmapa" id="btn-admin-mapa">Añadir mapa</button>
+    </div>
+     <?php
+ }else{
+    ?>
+    <div class="botones_mapa">
+        <button class="botonmapa" id="btn-subir-piso">Subir zona</button>
+        <button class="botonmapa" id="btn-bajar-piso">Bajar zona</button>
+        <button class="botonmapa" id="btn-admin-mapa">Admin mapa</button>
+    </div>
+     <?php
+ }
+
+?>
 <br>
 <br>
 
 <?php
-
+if(count($mapa)!=0){
 	echo "<table align='center' class='display' id='cont'>";
 	echo "<thead><tr id='cabecera'> 
 		  <th> IdEscena</th>
@@ -146,5 +159,6 @@ function respuesta(r) {
             }
         } // else
         echo "</tbody></table>";
+    }
 ?>
       
