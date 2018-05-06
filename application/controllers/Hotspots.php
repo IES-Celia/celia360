@@ -1,4 +1,20 @@
 <?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+?>
+
+<?php
       
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
@@ -102,12 +118,12 @@ class Hotspots extends CI_Controller {
     }
     
     /**
-     * TODO: documentación
+     * Actualiza los targets pitch y yaw que tiene un hotspot de tipo salto
      * 
-     * @param type $pitch
-     * @param type $yaw
-     * @param type $codescena
-     * @param type $idhotspot
+     * @param type $pitch coordenada pitch objetivo
+     * @param type $yaw coordenada yaw objetivo
+     * @param type $codescena codigo de escena al que se redirigirá trás realizar la actualización
+     * @param type $idhotspot hotspot del cual serán modificados los targets
      */
     public function update_hotspot_targets($pitch, $yaw, $codescena, $idhotspot) {
         $datos["resultado"] = $this->hotspotsModel->modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot);
@@ -142,6 +158,11 @@ class Hotspots extends CI_Controller {
         }
         redirect('escenas/cargar_escena/' . $cambio . '/show_insert_hotspot/');
     }
+    
+    /**
+     * Sorpresa... Borra un hotspot. 
+     * @param int $id El id del hotspot que será borrado
+     */
 
     public function delete_hotspot($id){
         $codigo_escena=$this->hotspotsModel->cargar_codigo_escena($id);    // Sacamos el código de escena a la que pertenece este hotspot
@@ -252,7 +273,7 @@ class Hotspots extends CI_Controller {
     }
 
    /**
-    * TODO: documentación.
+    * Procesa la creación de un hotspots de tipo salto.
     */
     public function process_insert_scene(){
         $resultado = $this->hotspotsModel->insertarHotspotEscena();

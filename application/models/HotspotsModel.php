@@ -1,12 +1,45 @@
 <?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+?>
+
+<?php
+defined('BASEPATH') OR exit('No se permite el acceso directo al script');
+/**
+ * Controlador de Hotspots.
+ * 
+ * Esta clase contiene todos los métodos del controlador del panel de administración de la tabla hotspots.
+ * Permite insertar, eliminar, modificar y consultar la tabla hotspots.
+ * @author Miguel Ángel López Segura 2018
+ */  
 class HotspotsModel extends CI_Model {
-        
-    public function __construct() {
-        
+    /**
+     * Constructor.
+     * 
+     * Carga los modelos que se van a usar a lo largo de los métodos de la clase.
+     */      
+    public function __construct() {  
         parent::__construct();
         $this->load->model("EscenasModel");
         $this->load->model("UsuarioModel");
     }
+    
+    /**
+     * Saca un todos los hotspots.
+     * 
+     * @return Devuelve un array con todos los hotspots.
+     */
 
     public function buscarHotspots() {
 
@@ -17,6 +50,11 @@ class HotspotsModel extends CI_Model {
         }
         return $tabla;
     }
+    
+    /**
+     * Metodo encargado de hacer la inserción de hotspot de tipo salto.
+     * 
+     */
 
     public function insertarHotspotEscena() {
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
@@ -50,44 +88,100 @@ class HotspotsModel extends CI_Model {
 
         return $this->db->affected_rows();
     }
+    
+    /**
+     * Modifica las coordenadas de un hotspot dentro de la escena.
+     *     
+     * @param int $pitch Una de las coordenadas nuevas.
+     * @param int $yaw Una de las coordenadas nuevas.
+     * @param int $idhotspot El id del hotspot que se quiere modificar.
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */
 
     public function modificarPitchYaw($pitch, $yaw, $idhotspot) {
         $this->db->query("UPDATE hotspots SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_hotspot=" . $idhotspot);
         return $this->db->affected_rows();
     }
 
+    /**
+     * Modifica las coordenadas a la que se dirigirá la camara al entrar a una escena DESDE el mapa. 
+     *     
+     * @param int $pitch Una de las coordenadas nuevas.
+     * @param int $yaw Una de las coordenadas nuevas.
+     * @param int $codescena El id de la escena que se quiere modificar.
+     * @return Retorna si se ha efectuado el cambio en la tabla de escena.
+     */
     public function modificarPitchYawEscena($pitch, $yaw, $codescena) {
         $this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE cod_escena='" . $codescena . "'");
         return $this->db->affected_rows();
     }
     
+    /**
+     * Modifica las coordenadas a la que se dirigirá la camara al entrar a una escena DESDE un hotspot.
+     *     
+     * @param int $pitch Una de las coordenadas nuevas.
+     * @param int $yaw Una de las coordenadas nuevas.
+     * @param int $codescena xx
+     * @param int $idhotspot El id del punto que se quiere modificar.
+     */    
     public function modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot){
         $this->db->query("UPDATE hotspots SET targetPitch=" . $pitch . ", targetYaw=" . $yaw . " WHERE id_hotspot='" . $idhotspot . "'");
     }
+    
+    /**
+     * Modifica un hotspot de tipo de video cambiando el video.
+     *     
+     * @param int $id El id del hotspot que será modificado.
+     * @param int $vid El nuevo video que enlazará el hotspot.
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
 
     public function modificarpuntovideo($id, $vid) {
         $this->db->query("UPDATE hotspots SET clickHandlerArgs=" . $vid . " WHERE id_hotspot='" . $id . "'");
         return $this->db->affected_rows();
     }
 
-///loli
+    /**
+     * Modifica un hotspot de tipo de audio cambiando el audio.
+     *     
+     * @param int $id El id del hotspot que será modificado.
+     * @param int $aud El nuevo video que enlazará el hotspot.
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
     public function modificarpuntoaudio($id, $aud) {
         $this->db->query("UPDATE hotspots SET clickHandlerArgs=" . $aud . " WHERE id_hotspot='" . $id . "'");
         return $this->db->affected_rows();
     }
     
+     /**
+     * Borra un hotspot
+     *     
+     * @param int $id El id del hotspot que será borrado.
+     * @return Retorna si se ha efectuado el cambio en las tablas.
+     */ 
     public function borrarHotspot($id) {
         $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
         $this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
 
         return $this->db->affected_rows();
     }
-
+    /**
+     * Saca un hotspot concreto para modificarlo o borrarlo
+     *     
+     * @param int $id El id del hotspot.
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
     public function buscarUnHotspot($id) {
         $res = $this->db->query("SELECT * FROM hotspots WHERE id_hotspot='$id' ");
         return $res->result_array();
     }
 
+    /**
+     * Modifica un hotspot, especialmente util para modificar si el hotspot puede o no salir en la visita de puntos destacados
+     *     
+     * @param int $id El id del hotspot que será modificado.
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
     public function modificarHotspot($id) {
         
         $id_hotspot = $this->input->post_get("id_hotspot");
@@ -100,6 +194,13 @@ class HotspotsModel extends CI_Model {
 
         return $this->db->affected_rows();
     }
+    
+    /**
+     * Modifica un hotspot de tipo de panel informativo
+     *     
+     * @param int $id El id del hotspot que será modificado.
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
 
     public function modificarHotspotPanel($id) {
 
@@ -193,6 +294,11 @@ class HotspotsModel extends CI_Model {
         $devoler = array($idhotspot, $id_scene);
         return $devoler;
     }
+    
+    /**
+     * Inserta un hotspot de tipo de escalera
+     *     
+     */ 
 
     public function insertarHotspotEscalera() {
 
@@ -284,7 +390,10 @@ class HotspotsModel extends CI_Model {
         $resultado = $this->db->query($sql)->result_array()[0]["url_vid"];
         return $resultado;
     }
-
+    /**
+     * Inserta un hotspot de tipo video 
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
     public function insertarHotspotVideo() {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
@@ -325,7 +434,10 @@ class HotspotsModel extends CI_Model {
         echo $resultado;
     }
 
-
+    /**
+     * Inserta un hotspot de tipo audio 
+     * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+     */ 
     public function insertarHotspotAudio() {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
@@ -365,7 +477,7 @@ class HotspotsModel extends CI_Model {
         return $res;
     }
 
-    // saca la escena de un punto... importante por no tener el cod_escena en el hotspot    
+    // saca la escena de un punto... importante por no tener el cod_escena en el hotspot, esto deja de tener sentido con la unificación de cod_escena e id_escena   
     public function cargar_codigo_escena($idhotspot) {
 
         $sql = "SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=" . $idhotspot;
