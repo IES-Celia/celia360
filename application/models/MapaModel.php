@@ -195,12 +195,12 @@
 			$sql = "SELECT id_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo )";
 			$resultado = $this->db->query($sql)->result_array(); //seleccionamos las escenas que esan relacionadas con la zona
 
-			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
-			$this->db->query($sql); //Se elimina el piso.
-
 			$sql = "SELECT url_img FROM pisos WHERE piso = $piso_maximo";
 			$zona_borrar = $this->db->query($sql)->result_array(); //se consigue la url del piso.
 			
+			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
+			$this->db->query($sql); //Se elimina el piso.
+
 			if (isset($zona_borrar[0]["url_img"])) { //si existe se elimina.
 				unlink($zona_borrar[0]["url_img"]);
 			}
