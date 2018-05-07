@@ -19,6 +19,7 @@ class Install extends CI_Controller {
             $data["vista"] ="install/installform";
             $data["mensaje"] = $msj; 
             $this->load->view('login_template', $data);
+    
         }
 
         public function inserdata(){

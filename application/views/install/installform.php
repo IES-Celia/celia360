@@ -15,7 +15,7 @@ echo"<form action='".site_url("install/inserbd")."' method='post'>";
     <input type='text' name='nameuse' id="nameuse" required>
     <label for="passbd">Contraseña de la base de datos</label>
     <input type='password' name='passbd' id="passbd" required>
-    <label for="base">Base URL del site</label>
+    <label for="base">Base URL del sitio</label>
     <input type='text' name='base' id="base" required>
     <input type='submit' value='Aceptar'><input type='button' value='Cancelar' onclick='location.href="<?php echo site_url("install");?>"'>
 </form>
