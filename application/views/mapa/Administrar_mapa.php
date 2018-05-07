@@ -31,20 +31,28 @@
     <div id="caja">
         <form action='<?php echo site_url("mapa/update_config"); ?>' method="post" enctype='multipart/form-data'>
             <h1>Modificar Configuración</h1>
-            <label for="piso_inicial">Piso inicial</label>
-            <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
-            <input type="hidden" name="punto_inicial">
-            <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
-            <div id="mapa_config_mapa" >
+            <label for="piso_inicial">Zona inicial</label>
             <?php
-                $indice = 0;
+            if($configuracion!=null){
+                
+                ?>
+                <input type="number" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+                <input type="hidden" name="punto_inicial" value="<?php echo $configuracion["punto_inicial"]; ?>">
+                <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
+                <div id="mapa_config_mapa" >
+            <?php
+            }else{
+                ?>                
+                <input type="number" name="piso_inicial" value="0" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+                <input type="hidden" name="punto_inicial">
+                <input type="hidden" name="escena_inicial">
+                <div id="mapa_config_mapa" >
+                <?php
+            }
+                 $indice = 0;
 
                  foreach ($mapa as $imagen) {
-                     if($indice == 0){
-                         echo "<div id='zona".$indice."' class='pisos pisos_config'>";
-                     }else{
-                        echo "<div id='zona".$indice."' class='pisos pisos_config'>";
-                     }
+                        echo "<div id='zona".$indice."' class='pisos pisos_config' style='display: none'>";
                     
                     echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
@@ -97,15 +105,28 @@
          } // else
    ?>
    </div>
+<?php 
+    if(count($mapa)==0){
+        ?>
+        <div class="botones_mapa">
+            <button class="botonmapa" id="btn-anadir-mapa">Añadir zona</button>
+            <a href="<?php echo base_url('escenas') ?>"><button class="botonmapa">Volver atras</button></a>
+        </div>
+        <?php
+    }else{
+        ?>
+        <div class="botones_mapa">
+            <p class="campomapa" id="piso_actual">zona <span>0</span></p>
+            <button class="botonmapa" id="btn-subir-piso-admin" >Subir zona</button>
+            <button class="botonmapa" id="btn-bajar-piso-admin">Bajar zona</button>
+            <button class="botonmapa" id="btn-editar-mapa">Editar zona</button>
+            <button class="botonmapa" id="btn-anadir-mapa">Añadir zona</button>
+            <button class="botonmapa" id="btn-config-mapa">Config general</button>
+            <button class="botonmapa" id="btn-eliminar-mapa">Eliminar zona</button>
+            <a href="<?php echo base_url('escenas') ?>"><button class="botonmapa">Volver atras</button></a>
+        </div>
+        <?php
+    }
+?>
 
-<div class="botones_mapa">
-    <p class="campomapa" id="piso_actual">zona <span>0</span></p>
-    <button class="botonmapa" id="btn-subir-piso-admin" >Subir zona</button>
-    <button class="botonmapa" id="btn-bajar-piso-admin">Bajar zona</button>
-    <button class="botonmapa" id="btn-editar-mapa">Editar zona</button>
-    <button class="botonmapa" id="btn-anadir-mapa">Añadir zona</button>
-    <button class="botonmapa" id="btn-config-mapa">Config general</button>
-    <button class="botonmapa" id="btn-eliminar-mapa">Eliminar zona</button>
-    <a href="<?php echo base_url('escenas') ?>"><button class="botonmapa">Volver atras</button></a>
-</div>
 

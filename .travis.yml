@@ -1,0 +1,19 @@
+language: java
+dist: trusty
+sudo: required
+
+addons:
+  sonarcloud:
+    organization: "celia360"
+    token:
+      secure: 97d5ac1b08b800edcc111e01ab6c7fa646a8cca1 
+
+jdk:
+  - oraclejdk8
+
+script:
+  - sonar-scanner
+
+cache:
+  directories:
+    - '$HOME/.sonar/cache'

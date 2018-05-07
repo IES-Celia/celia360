@@ -40,6 +40,9 @@
 			
 });
 </script> 
+<?php
+/** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
+?>
  <style type="text/css">
    
      #modificar{
@@ -84,8 +87,9 @@
 </style>
 
 <?php
+// aqui cojemos el array entregado por el controlador y mostramops en una tabla todos los videos de la base de datos
 echo"<a class='insert' onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar Video</a>";
-//echo'<input class="buscador" id="autocompletar" type="text" name="autocompletar" maxlength="15" onpaste="return false" class="autocompletar" placeholder="Escribe tu búsqueda" />';
+
 echo"<table class='tabla' class='display' id='cont'>
 <thead>
 <tr id='cabecera'>
@@ -117,11 +121,7 @@ foreach ($tabla as $re) {
 }
 echo "</tbody>";
 echo "</table>";
-/*$ant = $primero - $cantidad;
-if($ant<0)$ant=0;
-$sig = $primero + $cantidad;
-if($sig>$total) $sig=$total;
-echo "<div id='div_pag'><a class='paginacion' href='". site_url("video/mostrarvideo/") ."$ant'>Anterior</a> - <a class='paginacion' href='". site_url("video/mostrarvideo/") ."$sig'>Siguiente</a></div></br></br>";*/
+
 //Capa formulario modificar
 echo "
 <div id='modificar'>
@@ -156,7 +156,7 @@ echo"
     </div>
 </div>";
 
-
+/** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos video por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
 ?>
 
 <script>
@@ -188,14 +188,21 @@ echo"
         }
     }
 
-    function respuesta(r) {
-        if (r.trim() == "0") {
-            alert("Error al borrar el video");
+   
+	 function respuesta(r) {
+        if (r.trim() == "-1") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el video</span>";
+		} else if (r.trim() == "-2") {
+			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese video está en uso en un hotspot y no se puede borrar</span>";
+            
         } else {
             
-            alert("Video borrado con éxito");
-            selector = "#contenidovideo"+parseInt(r);
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Borrado con éxito</span>";
+			
+			selector = "#contenidovideo"+parseInt(r);
+			
             $(selector).remove();
+			
         }
     }
 	 

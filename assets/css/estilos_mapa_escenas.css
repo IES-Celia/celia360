@@ -48,8 +48,8 @@
     position: absolute;
 }
 .punto_inicial{
-    width: 1.5%;
-    height: 2.5%;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background: maroon;
     position: absolute;

@@ -119,7 +119,7 @@
 		<div class="modalita" >
 	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
 	        <div class="cabecera-ventana" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');height:60px;border-radius:15px;">
-	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">IES Celia Viñas</h1>
+	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">Biblioteca historia</h1>
 	        </div>
 	        <div class="pared" >
 	        <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
@@ -137,7 +137,14 @@
 	                            //Sacamos las portadas de los libros
 	                            
 	                              echo "<td class='columna'>";
-	                              echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
+	                              if ($ides['id_libro'] == -1) {
+	                              	// Ñapa para el libro sobre Celia Viñas con animaciones (caso particular que no va a existir en ningún otro tour virtual; se distingue porque el libro tiene id = -1)
+	                              	echo "<a href='".base_url("libro-celia-vinas/index.html")."' ><img src='".base_url("assets/libros/$ides[id_libro]/0.jpg")." ></a>";
+	                              }
+	                              else {
+	                              	// Caso general para TODOS los libros
+	                              	echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
+	                              }
 	                              echo "</td>";
 	                          }
 	                              if ($i%4 == 0)  echo "</tr><tr class='torre'>";

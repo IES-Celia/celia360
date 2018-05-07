@@ -23,28 +23,48 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 
 class Guiada extends CI_Controller {
 
-
+/**
+ * Controlador de Guiada.
+ * 
+ * Esta clase contiene todos los métodos del controlador del panel de administración de la tabla Guiada.
+ * Permite insertar, eliminar, modificar y consultar la tabla Guiada.
+ * @author Sniurevicius Zygimantas 2018
+ */    
     public function __construct() {
         parent::__construct();
         $this->load->model("UsuarioModel");
         $this->load->model("AudioModel");
         $this->load->model("EscenasModel");
         $this->load->model("GuiadaModel");
-       
     }
 
+/**
+* Método para mostrar formulario de creacion de visita guiada .
+* 
+* Carga el mapa y los puntos con cargar_mapa() y cargar_puntos()
+* Carga todos los audios existentes en la plataforma con allAudios()
+* Carga todas las escenas disponibles en la plataforma con getAll()
+* Por ultimo le paso la vista y la comprobacion de permisos
+*/
     public function mostrarFormularioGuiada() {
         $this->load->model("MapaModel","mapa");
         $datos["mapa"]=$this->mapa->cargar_mapa();
         $datos["puntos"]=$this->mapa->cargar_puntos();
-        //Todos los audios existentes.
         $datos["audios"]=$this->AudioModel->allAudios();
-        //Todas las escenas existentes.
         $datos["escenas"]=$this->EscenasModel->getAll();
         $datos["vista"]="guiada/insertarGuiada";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("admin_template", $datos);
     }
+
+/**
+* Método para insertar una escena guiada .
+* 
+* llama al metodo crearEscenaGuiada()
+* Si se realiza la insercion de datos, nos lleva al siguiente paso.
+* En caso de fallar nos lleva devuelta al formulario
+*
+*/
 
     public function insertarEscenaGuiada(){
         $resultado = $this->GuiadaModel->crearEscenaGuiada();

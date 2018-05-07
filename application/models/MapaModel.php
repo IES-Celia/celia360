@@ -29,18 +29,7 @@
 			return $lista;
 		}
 /**
- * Carga la configuración inicial para conocer el piso inicial y el punto/escena.
- */
-		public function cargar_config(){
-			$this->load->database();
-			$query = $this->db->query('SELECT * FROM config_mapa')->result_array();
-			$resultado["piso_inicial"]=$query[0]["piso_inicial"];
-			$resultado["punto_inicial"]=$query[0]["punto_inicial"];
-			$resultado["escena_inicial"]=$query[0]["escena_inicial"];
-			return $resultado;
-		}
-/**
- * edita la zona en cuestión, pudiendo cambiar imagen y posición.
+ * edita la zona en cuestión, pudiendo cambiar imagen y orden de la misma.
  */
 		public function editar_zona(){
 			$posicion = $this->input->post_get("posicion");//Sacamos la posicion a la que moveremos la zona
@@ -179,19 +168,20 @@
 				$maximo = $this->db->query("SELECT COUNT(piso) from pisos")->result_array()[0]["COUNT(piso)"]; //sacamos el numero de pisos.
 				
 				$this->db->query("SET foreign_key_checks=0;"); //desactivamos la comprobacion de claves foraneas para poder modificar sin problemas.
-			
-				for ($i=$maximo-1; $i >= $posicion ; $i--) { //movemos todos las zonas una posicion hacia delante si es necesario.
+			if($maximo != $posicion){
+				for ($i=$maximo+1; $i >= $posicion ; $i--) { //movemos todos las zonas una posicion hacia delante si es necesario.
 
 					$piso_siguiente = $i+1;
 					$this->db->query("UPDATE pisos SET piso=$piso_siguiente WHERE piso=$i");
 					$this->db->query("UPDATE puntos_mapa SET piso=$piso_siguiente WHERE piso=$i");
 				}
-
-				$this->db->query("INSERT INTO pisos (piso, url_img,titulo_piso) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida',$titulo);");
+			}
+				$this->db->query("INSERT INTO pisos (piso, url_img,titulo_piso) VALUES ($posicion,'assets/imagenes/mapa/$imagen_subida','$titulo');");
 				$this->db->query("SET foreign_key_checks=1;");
 
 			}else{ //si la imagen no se ha subido nos devuelve los errores encontrados.
 				$resultado = $this->upload->display_errors();
+				return $resultado;
 			}
 		}
 /**
@@ -205,12 +195,12 @@
 			$sql = "SELECT id_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo )";
 			$resultado = $this->db->query($sql)->result_array(); //seleccionamos las escenas que esan relacionadas con la zona
 
-			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
-			$this->db->query($sql); //Se elimina el piso.
-
 			$sql = "SELECT url_img FROM pisos WHERE piso = $piso_maximo";
 			$zona_borrar = $this->db->query($sql)->result_array(); //se consigue la url del piso.
 			
+			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
+			$this->db->query($sql); //Se elimina el piso.
+
 			if (isset($zona_borrar[0]["url_img"])) { //si existe se elimina.
 				unlink($zona_borrar[0]["url_img"]);
 			}
@@ -247,9 +237,32 @@
 			$piso = $this->input->post_get("piso_inicial");
 			$punto = $this->input->post_get("punto_inicial");
 			$escena = $this->input->post_get("escena_inicial");
-			$sql = "UPDATE config_mapa SET piso_inicial='$piso', punto_inicial='$punto', escena_inicial='$escena'";
-			$resultado = $this->db->query($sql);
+			$sql = "SELECT * FROM config_mapa";
+			if($this->db->query($sql)->num_rows()>0)
+				$sql = "UPDATE config_mapa SET piso_inicial='$piso', punto_inicial='$punto', escena_inicial='$escena'";
+			else
+				$sql = "INSERT INTO config_mapa(piso_inicial, punto_inicial, escena_inicial) VALUES ($piso,'$punto','$escena')";
+			
+			$this->db->query($sql);
+			$resultado = $this->db->affected_rows();
 
+			return $resultado;
+		}
+/**
+ * Carga la configuración inicial para conocer el piso inicial y el punto/escena.
+ */
+		public function cargar_config(){
+			$this->load->database();
+			$query = $this->db->query('SELECT * FROM config_mapa');
+			if($query->num_rows()>0){
+				$query = $query->result_array();
+				$resultado["piso_inicial"]=$query[0]["piso_inicial"];
+				$resultado["punto_inicial"]=$query[0]["punto_inicial"];
+				$resultado["escena_inicial"]=$query[0]["escena_inicial"];
+			}else{
+				$resultado=NULL;
+			}
+			
 			return $resultado;
 		}
 	}

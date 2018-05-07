@@ -89,15 +89,17 @@ h3{
     bottom: 0%;
     right: 0%;
     padding: 10px;
+    opacity: 0.8;
+
 }
 
 #poweredBy h1{
-    font-size: 25px;
+    font-size: 18px;
     float:left;
 }
 
 #poweredBy img{
-    width: 25px;
+    width: 18px;
     float:right;
 }
 
