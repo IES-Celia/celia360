@@ -17,7 +17,13 @@
 <?php
       
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
-
+/**
+ * Controlador de Hotspot.
+ * 
+ * Esta clase contiene todos los métodos del controlador del panel de administración de la tabla hotspot.
+ * Permite insertar, eliminar, modificar y consultar la tabla hotspot.
+ * @author Miguel Ángel López Segura 2018
+ */
 class Hotspots extends CI_Controller {
     
     public function __construct() {
@@ -294,7 +300,7 @@ class Hotspots extends CI_Controller {
 ////////////////////////////Zygis - MOVIDAS DEL CMS//////////////////////////
 
    /**
-    * TODO: documentación.
+    * Procesa la creación de un hotspots de tipo panel informativo.
     */
   public function process_insert_panel(){
             $joshua = $this->hotspotsModel->insertarHotspotPanel();
@@ -311,7 +317,7 @@ class Hotspots extends CI_Controller {
     }
   
    /**
-    * TODO: documentación.
+    * Procesa la creación de un hotspots de tipo escaleras.
     */
     public function process_insert_escaleras(){
             $joshua = $this->hotspotsModel->insertarHotspotEscalera();
@@ -383,7 +389,7 @@ class Hotspots extends CI_Controller {
 }
 
    /**
-    * TODO: documentación.
+    * Procesa la creación de un hotspots de tipo video.
     */
 public function process_insert_video(){
         $resultado = $this->hotspotsModel->insertarHotspotVideo();

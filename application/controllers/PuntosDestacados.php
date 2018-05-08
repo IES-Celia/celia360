@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Controlador de Puntos Destacados.
  * 
- * Esta clase contiene todos los métodos del controlador del panel de administración de la tabla Puntos Destacados.
+ * Esta clase contiene todos los métodos del controlador del panel de administración de la tabla celdapd.
  * Permite insertar, eliminar, modificar y consultar la tabla Puntos Destacados.
  * @author Miguel Ángel López Segura 2018
  */
@@ -86,7 +86,7 @@ class PuntosDestacados extends CI_Controller {
     }
     
     /**
-     * Este metodo carga los puntos destacados.
+     * Este metodo carga los puntos destacados y carga la vista puntosDestacados para el usuario.
      *
      */
     
@@ -102,7 +102,7 @@ class PuntosDestacados extends CI_Controller {
     }
     
     /**
-     * Este metodo carga la vista de los puntos destacados con la posibilidad de modificarlos.
+     * Este metodo carga la vista adminDestacados para el administrador, con la posibilidad de modificarlos, borrarlos.
      *
      */
     

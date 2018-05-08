@@ -89,7 +89,9 @@ class Tour extends CI_Controller {
     }
     
   /**
-   * ???
+   * Genera a partir de la BD el JSON que necesita Pannellum para la vista de insercción de hotspot/modificación de pitch yaw...
+   * Genera ese JSON para ser recibido en el cliente mediante una petición Ajax.
+   * @param int $escenaInicial el id de la escena en la que se cargará pannellum
    */
     
     public function get_json_plataforma($escenaInicial) {
