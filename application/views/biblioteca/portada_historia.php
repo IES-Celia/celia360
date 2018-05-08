@@ -139,7 +139,7 @@
 	                              echo "<td class='columna'>";
 	                              if ($ides['id_libro'] == -1) {
 	                              	// Ñapa para el libro sobre Celia Viñas con animaciones (caso particular que no va a existir en ningún otro tour virtual; se distingue porque el libro tiene id = -1)
-	                              	echo "<a href='".base_url("libro-celia-vinas/index.html")."' ><img src='".base_url("assets/libros/$ides[id_libro]/0.jpg")." ></a>";
+	                              	echo "<a href='".base_url("libro-celia-vinas/index.php")."' ><img class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")." ></a>";
 	                              }
 	                              else {
 	                              	// Caso general para TODOS los libros
@@ -236,10 +236,20 @@
 					
 				</div>
 				<?php 
+				$nombre_fichero = "assets/pdf/$id_libro.pdf";
+					print_r($nombre_fichero);
+				if (file_exists($nombre_fichero)) {
 					echo " 
-						<div class='descargar' style=''> 
+					<div class='descargar' style=''> 
+						<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#303031f5;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 89%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+					</div>"; 
+				} else {
+					echo " 
+						<div class='descargar' style='display:none;'> 
 							<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#303031f5;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 89%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 						</div>"; 
+				}
+					
 				?>
 			</div>
 

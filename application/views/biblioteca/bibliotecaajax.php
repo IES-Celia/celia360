@@ -236,11 +236,21 @@
 						<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Ultima Pagina</a>
 					</nav>
 				</div>
+				<!-- Comprueba si existe un fichero de tipo PDF para el libro y si es asi muestra un boton de descargar PDF, SI NO existe dicho fichero no muestra ningun boton para descargar -->
 				<?php 
-					echo " 
+				$nombre_fichero = "assets/pdf/$id_libro.pdf";
+				print_r($nombre_fichero);
+					if (file_exists($nombre_fichero)) {
+						echo " 
 						<div class='descargar' style=''> 
-							<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#303031e0;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 580px;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+							<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#303031f5;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 89%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
 						</div>"; 
+					} else {
+						echo " 
+							<div class='descargar' style='display:none;'> 
+								<a href='".base_url("assets/pdf/$id_libro.pdf")."' target='_blank' style='text-decoration: none; background:#303031f5;padding:15px;color:white;border-radius:10px;float:right;position: absolute;left: 62%;top: 89%;' >Descargar PDF &nbsp;&nbsp;<i class='far fa-file-pdf'></i></a> 
+							</div>"; 
+					}
 				?>
 			</div>
 
