@@ -54,7 +54,7 @@ class Biblioteca extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template', $datos);
 	}
- /**
+/**
  * Muestra los datos de un libro especifico en la ventana modal en la vista intadmin
  * 
  * 
@@ -70,20 +70,27 @@ class Biblioteca extends CI_Controller {
 	}
 
 /**
- * 
- * Muestra el formulario para insertar un libro nuevo en la tabla libros
+ * Inserta los datos enviados desde la ventana modal(insert) de la vista intadmin
  * 
  */
 
-	public function showinsertlibro()
-	{		
-        $datos["vista"]="biblioteca/inserlibro";
+	public function insertlibro(){
+		$idlibro=$this->bibliotecaModel->insertlibro();
+		if ($idlibro == -1) { // Error al insertar
+			$datos["error"] = "Error al insertar el libro";
+		}
+		else {					// Libro insertado con éxito
+			$datos["mensaje"] = "Libro insertado con éxito. Debe renombrarlo en la carpeta assets/libros/ como: ".$idlibro;
+		}
+		$datos["tabla"] = $this->bibliotecaModel->get_info();
+        $datos["vista"] = "biblioteca/intadmin";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-		$this->load->view('admin_template', $datos);
+		$this->load->view("admin_template",$datos);
 	}
+
+
 /**
- * 
- * Modifica los datos de un libro
+ * Modifica los datos en la base de datos de un libro
  * 
  */
 	public function modifiedLibro()
@@ -101,7 +108,11 @@ class Biblioteca extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template',$datos);
 	}
-
+	/**
+	 * 
+	 * 
+	 * 
+	 */
 	public function vertodosloslibros($idlibro = -1,$apaisado = -1,$tipo=-1){
                 $this->load->model('BibliotecaModel', 'biblioteca');
                 $this->load->model('PortadaModel');
@@ -114,11 +125,19 @@ class Biblioteca extends CI_Controller {
 		$this->load->view("main_template", $datos);  // Plantilla principal del frontend
 
 	}
-
-public function verLibroCelia(){
-	$datos["vista"] = "biblioteca/librocelia";
-	$this->load->view("main_template", $datos); 
-}
+	/**
+	 * Muestra el libro de Celia Viñas
+	 * 
+	 */
+	public function verLibroCelia(){
+		$datos["vista"] = "biblioteca/librocelia";
+		$this->load->view("main_template", $datos); 
+	}
+	/**
+	 * 
+	 * 
+	 * 
+	 */
 	public function abrir_phistoria($idlibro = -1,$apaisado = -1,$tipo=-1){
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
 		$datos["id_libro"] = $idlibro;
@@ -126,13 +145,11 @@ public function verLibroCelia(){
 		$this->load->view("biblioteca/portada_historia", $datos);
 
 	}
-/*
-	public function verLibroAjax($idlibro,$apaisado){
-		$datos["id_libro"] = $idlibro;
-		$datos["apaisado"] = $apaisado;
-		$this->load->view("biblioteca/libroajax", $datos);
-	}
-*/
+
+	/**
+	 * Elimina los datos del libro de la tabla libros y su directorio correspondiente.
+	 * 
+	 */
 
 	public function deletelibro(){
 		$resultado=$this->bibliotecaModel->deletelibro();	
@@ -148,29 +165,23 @@ public function verLibroCelia(){
  		$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template',$datos);
 	}
-
-	public function insertlibro(){
-		$idlibro=$this->bibliotecaModel->insertlibro();
-		if ($idlibro == -1) { // Error al insertar
-			$datos["error"] = "Error al insertar el libro";
-		}
-		else {					// Libro insertado con éxito
-			$datos["mensaje"] = "Libro insertado con éxito. Debe renombrarlo en la carpeta assets/libros/ como: ".$idlibro;
-		}
-		$datos["tabla"] = $this->bibliotecaModel->get_info();
-        $datos["vista"] = "biblioteca/intadmin";
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-		$this->load->view("admin_template",$datos);
-	}
+	/**
+	 * Muestra en una nueva vista las paginas del libro seleccionado
+	 * 
+	 * @param int $id_libro El id del libro que se va a mostrar .
+	 */
 
 	public function showinsertimg($id_libro){
 		$datos["idlibro"] = $id_libro;
-		//$datos = $_REQUEST["id_libro"];
         $datos["vista"] = "biblioteca/insertimg";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("admin_template",$datos);
 	}
 
+	/**
+	 * Inserta la imagen y las renombra adecuadamente en el directorio del libro seleccionado 
+	 * 
+	 */
 	public function procesarinsertimg(){
 		$id_libro = $_REQUEST["id"];
 		$pag_ant = $_REQUEST["pagina_ant"];
@@ -191,7 +202,14 @@ public function verLibroCelia(){
 		$this->load->view("admin_template",$datos);
 	}
 
-	//BORRAR PAGINAS DEL LIBRO
+	/**
+	 * Elimina y renombra la pagina seleccionada
+	 * 
+	 * @param int $id_libro El id del libro que se van a mostrar las paginas
+	 * @param int $num_pag numero de la pagina que se va a eliminar
+	 * @param int $cant_pag total de paginas que tiene el libro
+	 *
+	 */
 	public function deletepag($id_libro,$num_pag,$cant_pag){
 		$res=$this->bibliotecaModel->deletepaglibro($id_libro,$num_pag,$cant_pag);
 		if($res){
@@ -204,7 +222,11 @@ public function verLibroCelia(){
 		}
 
 	}
-
+	/**
+	 * Muestra el libro seleccionado
+	 *
+	 * @param int $id_libro El id del libro que se va a mostrar . 
+	 */
 	public function verLibro($id_libro) {
 		$datos["id_libro"] = $id_libro;
         $datos["vista"] = "biblioteca/libro";
