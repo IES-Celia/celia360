@@ -144,7 +144,7 @@
 
 	<?php 
 	 
-            echo "<table id='example' class='display' style='margin:0 auto'>";  
+            echo "<table class='display' style='margin:0 auto'>";  
             echo "<tr>";  
 
 		 	$i = 0;
@@ -424,7 +424,7 @@
 		<script>
 
 		      $(document).ready(function(){
-				$('#example').DataTable();
+				
 			        $('.mySlides').draggable({
 
 			           drag: function(evt,ui)
