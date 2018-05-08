@@ -1,17 +1,54 @@
 <?php
 
-class PuntosDestacadosModel extends CI_Model {
+/*
+    Este archivo es parte de la aplicación web Celia360. 
 
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+/*
+ * Modelo de Puntos Destacados.
+ * 
+ * Esta clase contiene todos los métodos del modelo del panel de administración de la tabla .
+ * Permite insertar, eliminar, modificar y consultar la tabla celdapd.
+ * @author Miguel Ángel López Segura 2018
+ */
+class PuntosDestacadosModel extends CI_Model {
+    /**
+     * Constructor.
+     * 
+     * Carga las librerias  que se van a usar a lo largo de los métodos de la clase.
+     */
     public function __construct() {
         parent::__construct();
         $this->load->database();
     }
-    
+    /**
+     * Metodo que saca de la tabla celdapd la información correspondiente a una celda en concreto para la vista de actualizar.
+     * 
+     * @param int $id_celda El id de la celda que se utilizará en la consulta
+     * @return el array que contiene la información de la celda
+     *
+     */
     public function info_celda($id_celda){
         $res = $this->db->query("SELECT * FROM celda_pd WHERE id_celda='$id_celda' ");
         return $res->result_array();
     }
-   
+    
+    /**
+     * Metodo que recupera la información del formulario de creación de celda y crea la tupla en la tabla celdapd.
+     * 
+     * @param int id_fila El id de la fila donde se va a añadir la celda
+     * @return TODO Parece que viene de la subida de imagen, pendiente de revisar para borrar o no 
+     *
+     */
     public function crear_celda(){
         $resultado = array();
 
@@ -67,6 +104,12 @@ class PuntosDestacadosModel extends CI_Model {
         return $resultado;
     }
     
+     /**
+     * Sorpresa. Metodo que borra una celda.
+     * 
+     * @param int id El id de la celda donde se va a borrar
+     *
+     */
     public function borrar_celda($id){
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
         $imagen_borrar = "assets/imagenes/destacados/$id.JPG";
@@ -74,7 +117,14 @@ class PuntosDestacadosModel extends CI_Model {
        /* $imagen_borrar = "assets/imagenes/destacados/$id._miniatura.JPG";
         unlink($imagen_borrar);*/
     }
+   
     
+    /**
+     * Metodo que modifica una celda.
+     *
+     * @return saca si ha habido una modificación de la bd
+     *
+     */
     public function editar_celda(){
         $id_celda = $_REQUEST["id_celda"];
         $escena_celda= $_REQUEST["escena_celda"];
@@ -107,11 +157,24 @@ class PuntosDestacadosModel extends CI_Model {
                             ");
         return $this->db->affected_rows();
     }
-   // maravilloso
+   
+    /**
+     * Metodo que mueve una celda a otra fila.
+     * @param int $idcelda El id de la celda que se va a cambiar de fila
+     * @param int id_fila El id de la fila donde se va a mover la celda
+     *
+     */
     public function mover_celda($idcelda, $idfila){
         $this->db->query("UPDATE celda_pd SET fila_asociada=$idfila WHERE id_celda=$idcelda");
     }
 
+    
+    /**
+     * Metodo que saca de la bd todas las celdas, ordenandolas por filas.
+     *
+     * @return saca el array con todas las celdas
+     *
+     */
     public function getAll() {
         $sql = "SELECT * FROM celda_pd";
         

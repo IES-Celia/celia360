@@ -1,7 +1,33 @@
-<?php 
+<?php
+
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+
+/**
+ * Modelo de Tour.
+ * 
+ * Esta clase contiene todos los métodos del modelo que extrae un JSON necesario para que panellum funcion, de los datos de la tabla escenas y hotspots.
+ * @author Miguel Ángel López Segura 2018
+ */
 
 class TourModel extends CI_Model {
 
+  /*
+  * Metodo que saca un json para la visita libre, con TODOS los hotspots y todas las escenas
+  * @param int $datos El id de la celda que se utilizará en la consulta
+  * @return el json de la visita libre
+  */
   public function get_datos_libre($datos) {
     $this->load->database();
     
@@ -75,6 +101,10 @@ class TourModel extends CI_Model {
     return $json;
   }
   
+  /*
+  * Metodo que saca un json para la visita guiada, SIN hotspots y todas las escenas
+  * @return el json de la visita guiada
+  */
    public function get_datos_guiada() {
     $this->load->database();
     $sql = "SELECT * FROM escenas";
@@ -125,7 +155,10 @@ class TourModel extends CI_Model {
     return $json;
   }
     
-    
+  /*
+  * Metodo que saca un json para los puntos destacados, con TODOS los hotspots MENOS los hotspots de tipo salto que limitan las zonas destacadas y todas las escenas
+  * @return el json de los puntos destacados
+  */
 public function get_datos_destacado() {
     $this->load->database();
     
@@ -215,7 +248,11 @@ public function get_datos_destacado() {
     return $json;
   }
     
-    
+  /*
+  * Metodo que saca un json para el modo personalizado de panellum utilizado para insertar hotspots, modificar pitch yaw...
+  * @param int $escenaInicial El id de la escena en la que se saltará al cargar este json
+  * @return el json de este pseudotour
+  */    
     public function get_datos_plataforma($escenaInicial) {
     $this->load->database();
     $sql = "SELECT * FROM escenas";
