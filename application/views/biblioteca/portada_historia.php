@@ -139,7 +139,7 @@
 	                              echo "<td class='columna'>";
 	                              if ($ides['id_libro'] == -1) {
 	                              	// Ñapa para el libro sobre Celia Viñas con animaciones (caso particular que no va a existir en ningún otro tour virtual; se distingue porque el libro tiene id = -1)
-	                              	echo "<a href='".base_url("libro-celia-vinas/index.php")."' ><img class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")." ></a>";
+	                              	echo "<a href='".base_url("libro-celia-vinas/index.php")."' ><img class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";
 	                              }
 	                              else {
 	                              	// Caso general para TODOS los libros
