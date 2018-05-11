@@ -74,7 +74,7 @@ $(document).ready(function() {
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
 			$("#caja4 > form > input[name=sceneId]").val($(this).attr("escena"));
-			$("#puntoEscena > form > input[name=clickHandlerArgs]").val($(this).attr("id"));
+			$("#puntoEscena input[name=clickHandlerArgs]").val($(this).attr("id"));
 		} else if ($(this).parent().hasClass("pisos_pd")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
