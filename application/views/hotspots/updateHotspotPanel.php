@@ -22,7 +22,7 @@ div.centrado {
 
 
     #caja6{
-        transform: translate(-50%, -45%);
+        transform: translate(-50%, -42%);
        
         }
         
