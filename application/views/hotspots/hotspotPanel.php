@@ -73,16 +73,18 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 
   </style>
 </head>
+
 <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.js"); ?>"></script>
   <body>
+  <h1> Formulario para insertar Hotspots</h1>
+  <br>
   <?php
 
 
 
   
-  echo "<h2 align='left' style='color:white;font-family:verdana; margin-left:10px;'>Imagenes disponibles</h2>
-  <div id='contenedor_img'>
+  echo "<div id='contenedor_img'>
   <br><div id='imgHS'>";
   
   foreach( $lista_imagenes as $img){
@@ -103,8 +105,10 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   }
  ?>
     </div>
+
+<title> Insert Hotspot </title>
 <div id='panel'>
- <h2 style='color:white'>Imagenes Seleccionadas</h2><br>
+
  <input type="hidden" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
  <ul id='img_seleccionadas'>
  
