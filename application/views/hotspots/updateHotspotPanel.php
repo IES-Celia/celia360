@@ -21,6 +21,31 @@ div.centrado {
 }
 
 
+    #caja6{
+        transform: translate(-50%, -45%);
+       
+        }
+        
+    #caja6 a{
+        max-width: 580px !important;
+        width: 580px !important;
+    }
+        
+    .rojo_borrar{
+        color:white;
+        border-color: white;
+        background-color:#845050 !important;
+    }
+    .rojo_borrar:hover{
+        color:white !important;
+        border-color: red !important;
+        background-color:#441b1b !important;
+    }
+
+        .button{
+            width: 580px !important;
+            border: 3px solid white;
+        }
 
 </style>
 		<title> Modificar </title>
@@ -50,17 +75,19 @@ echo "
     
 	
     <input type='submit' class='button'>
+    <br>
     <a href=
     '".site_url("/hotspots/modify_panel_info/".$tabla['id_hotspot'])."'
     >Modificar imagenes de este hotspot</a><br>
-	<a href=
+	<br>
+    <a href=
     '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
-    >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
+    class='rojo_borrar''; >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
 	
 </form>
 <form action=' ".site_url("hotspots/modify_panel_info/".$tabla['id_hotspot'])." ' method='post'>
 <input type='hidden' name='id_scene' value='".$codigo_escena."'>
-<input type='submit' class='button' value='modificar imagenes'>
+<input type='submit' class='button' value='Modificar imagenes'>
 </form>
 </fieldset>
 
