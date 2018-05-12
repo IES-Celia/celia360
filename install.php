@@ -110,7 +110,8 @@
 
             $db->query("CREATE TABLE `panel_imagenes` (
                             `id_hotspot` int(11) NOT NULL,
-                            `id_imagen` int(11) NOT NULL
+                            `id_imagen` int(11) NOT NULL,
+                            `orden` int(11) NULL
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 
             $db->query("CREATE TABLE `panel_informacion` (
