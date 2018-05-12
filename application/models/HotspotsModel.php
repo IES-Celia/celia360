@@ -225,7 +225,7 @@ class HotspotsModel extends CI_Model {
     ///////////////////////////ZYGIS - Cosas del CMS/////////////////////////
 
     public function get_imgs_asociadas_al_hotspot($id_hotspot){
-        $resultado = $this->db->query("SELECT id_imagen FROM panel_imagenes WHERE id_hotspot='$id_hotspot'")->result_array();
+        $resultado = $this->db->query("SELECT id_imagen FROM panel_imagenes WHERE id_hotspot='$id_hotspot' ORDER BY panel_imagenes.orden ASC")->result_array();
         return $resultado;
 
     }
@@ -337,6 +337,8 @@ class HotspotsModel extends CI_Model {
         $idescena = $this->input->post_get("idescena");
         //$resultado = implode(",",$listaimagenes);
         $listaimagenes = explode($listaArray, ",");
+        $orden = $this->input->post_get("listaorden");
+
         $contador = 0;
 
         //Comprobar si existe algo de antes
@@ -350,7 +352,7 @@ class HotspotsModel extends CI_Model {
         
         //Ahora añadir
         foreach ($listaArray as $imagen_id) {
-            $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen)VALUES('$id_hotspot','$imagen_id')";
+            $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen,orden)VALUES('$id_hotspot','$imagen_id','$orden[$contador]')";
             $this->db->query($sql);
             if ($this->db->affected_rows() > 0) {
                 $contador = $contador + 1;
@@ -360,7 +362,6 @@ class HotspotsModel extends CI_Model {
         return $devolver;
     }
 
-    //Aqui deberia deberia ser un parametro pero al no estar funcionando he puesto un numero fijo para hacer pruebas.
     public function cargar_imagenes_panel($id) {
 
         $id_hotspot = $id;
@@ -376,7 +377,8 @@ class HotspotsModel extends CI_Model {
         ON panel_imagenes.id_imagen = imagenes.id_imagen
         INNER JOIN hotspots
         ON panel_imagenes.id_hotspot = hotspots.id_hotspot
-        WHERE panel_imagenes.id_hotspot='$id_hotspot'");
+        WHERE panel_imagenes.id_hotspot='$id_hotspot'
+        ORDER BY panel_imagenes.orden");
         //Array donde guardamos todos los ids de imagenes.
         $lista_info_imagenes = $res->result_array();
         echo json_encode($lista_info_imagenes);

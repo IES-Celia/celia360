@@ -3,16 +3,14 @@
 $id_escena = $_POST["id_scene"];
 $yaw = $_REQUEST["yaw"];
 $pitch = $_REQUEST["pitch"];
-$seleccionadas ="";
-//$imagenes_seleccionadas = json_encode($imagenes_seleccionadas);
+
 if(isset($imagenes_seleccionadas)){
   foreach( $imagenes_seleccionadas as $img){
-    $seleccionadas =$img["id_imagen"]." ".$seleccionadas;
+    $seleccionadas .=$img["id_imagen"]." ";
   }
-}
 
-//http://localhost/celia360/hotspots/show_update_hotspot/296/p1p6
-//http://localhost/celia360/escenas/cargar_escena/p1p6/show_insert_hotspot/null
+  
+}
 
 $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
 
@@ -199,23 +197,18 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     var id_hotspot = $("#idhs").val();
     //GET LOS ID'S DE IMAGEN ASOCIADOS A HOTSPOT ID
     var seleccionadas = "<?php echo $seleccionadas; ?>";
-    //fruits.push("Kiwi");
     seleccionadas = seleccionadas.split(" ");
-    $(".enlace_img").each(function (index, element) {
-      // element == this
-      var imagen = $(this).find("img");
+    seleccionadas.forEach(element => {
+      var imagen = $('.enlace_img .imgHS[data-id='+element+']');
       var attr_idimg = imagen.attr("data-id");
       var attr_img = imagen.attr("src");
       var cortado_enlace = attr_img.split("/");
-      for(var i=0;i<seleccionadas.length-1;i++){
-        if(attr_idimg==seleccionadas[i]){
-          imagen.addClass("borderojo");
-          $("#img_seleccionadas").append("<li class='seleccionado ui-state-default' data-id="+attr_idimg+">"+cortado_enlace[cortado_enlace.length-1]+"</li>");
-        }
-      }
-
-      
-    }); 
+      imagen.addClass("borderojo");
+          $("#img_seleccionadas")
+          .append("<li class='seleccionado ui-state-default' data-id="+
+          attr_idimg+">"+cortado_enlace[cortado_enlace.length-1]+"</li>");
+    });
+    
   }
   
   function add_img_to_hotspot(){
@@ -225,30 +218,32 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       alert("Debes seleccionar alguna imagen!");
     } else {
 
-    var escena = "<?php echo $escena_actual;?>";
-   
-    if(escena.length== 0){
-      escena="<?php echo $id_escena;?>";
-    }
-    var prueba = [];
-    //Valor temporal para probar si funciona
-    var hotspot = $("#idhs").val();
-    $("#img_seleccionadas li").each(function(i){
-      prueba.push($(this).attr("data-id"));
-      
-    });
-
-    var urlCorrecta = "<?php echo base_url("hotspots/add_imgs_hotspot") ?>";
-    var peticion = $.ajax({
-      url: urlCorrecta,
-      type: "POST",
-      data:{listaimg : prueba, idhs : hotspot, idescena : escena }
-    });
+      var escena = "<?php echo $escena_actual;?>";
     
-    peticion.done(function(resultado){
-      window.location.href = resultado;
-     //current_url()
-    });
+      if(escena.length== 0){
+        escena="<?php echo $id_escena;?>";
+      }
+      var prueba = [];
+      var orden = [];
+      //Valor temporal para probar si funciona
+      var hotspot = $("#idhs").val();
+      $("#img_seleccionadas li").each(function(i){
+        prueba.push($(this).attr("data-id"));
+        orden.push(i);
+
+        
+      });
+
+      var urlCorrecta = "<?php echo base_url("hotspots/add_imgs_hotspot") ?>";
+      var peticion = $.ajax({
+        url: urlCorrecta,
+        type: "POST",
+        data:{listaimg : prueba, idhs : hotspot, idescena : escena, listaorden : orden }
+      });
+      
+      peticion.done(function(resultado){
+        window.location.href = resultado;
+      });
 
 
     }
