@@ -1,3 +1,19 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +22,7 @@
   	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
    	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
+	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/bookblock.css");?>" />
 	<!-- custom demo style -->
@@ -70,26 +87,26 @@
 		    apaisado = $(this).attr("apaisado");
 		    tipo = $(this).attr("tipo");
 		    location.href = '<?php echo site_url("biblioteca/abrir_phistoria/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo;
-		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
+
 		$('.cerrarBook').click(function(){
 		  //$('.modalita2').toggle('slow');
 		    idlibro = $(this).attr("idlibro");
 		    apaisado = $(this).attr("apaisado");
 		    tipo = $(this).attr("tipo");
 		    location.href = '<?php echo site_url("biblioteca/abrir_phistoria");?>';
-		  
-		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
+
 		$(document).keyup(function(e) {
-		    if (e.keyCode == 27) { // escape key maps to keycode `27`
+			// Salir del libro a través de la tecla Esc `27`
+		    if (e.keyCode == 27) { 
 		   	 location.href = '<?php echo site_url("biblioteca/abrir_phistoria");?>';
 		    }
 		});
 
-		//Abrir pagina libro especifica
+		//Abrir pagina del libro especifica
 		$("#numeropag").change(function() {
 			var numpag=document.getElementById('numeropag').value;
 			var numpag=$("#numeropag").val();
@@ -116,6 +133,7 @@
 		
 	</div>
 	<div>
+	<?php  /** Mostramos una vista con estilo ventana la cual tiene una estantería que servirá para mostrar las portadas de los libros dados de alta en la seccion Historia */?>
 		<div class="modalita" >
 	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
 	        <div class="cabecera-ventana" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');height:60px;border-radius:15px;">
@@ -167,7 +185,9 @@
 <?php
 	if ($id_libro != -1) {	// Si id_libro = -1 significa que no hay ningún libro seleccionado, y no cargaremos nada en la modal
 ?>
-
+<?php
+	/** A continuacion mostramos en formato libro al que se ha echo referencia haciendo click */
+?>
 <div class="modalita2"  >
 		<div class="container">
 			<!-- Top Navigation -->

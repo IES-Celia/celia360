@@ -1,29 +1,42 @@
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
-  <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
  
-   <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
 
-    	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/bookblock.css");?>" />
-		<!-- custom demo style -->
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/demo1.css");?>" />
-		<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
-
-		<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-		<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
-	    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
+?>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
+	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+   	<link rel="stylesheet" href=" https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/bookblock.css");?>" />
+	<!-- custom demo style -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/demo1.css");?>" />
+	<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
     <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
 
-		<style type="text/css">
-			.contenedorLibro{
-    /* width: 900px; */
-    /* height: 550px; */
-    /* margin-left: 15%; */
-    position: relative;
-    overflow: hidden;
+	<style type="text/css">
+		.contenedorLibro{
+		/* width: 900px; */
+		/* height: 550px; */
+		/* margin-left: 15%; */
+		position: relative;
+		overflow: hidden;
 			};
     		.mySlides, #persona{
     			position:absolute;
@@ -143,7 +156,7 @@
 	<div id="contenedorbiblioteca">
 
 	<?php 
-	 
+	 	/** Mostramos todas las portadas de los libros que estén dados de alta en la Biblioteca   */
             echo "<table class='display' style='margin:0 auto'>";  
             echo "<tr>";  
 
@@ -169,8 +182,11 @@
 
 <?php
 	if ($id_libro != -1) {	// Si id_libro = -1 significa que no hay ningún libro seleccionado, y no cargaremos nada en la modal
+		
 ?>
-
+<?php 
+/** A continuacion mostramos en formato libro al que se ha echo referencia haciendo click */
+?>
 <div class="modalita2">
 		<div class="container">
 			<!-- Top Navigation -->
@@ -636,83 +652,6 @@
                 ?>
 		      });
 
-		      $(function(){
-                
-               
-                
-                
-                
-			  // $('.mySlides').mousewheel(function(event, delta){
-     //                x=event.pageX - $('.mySlides').offset().left;
-				 //    y=event.pageY - $('.mySlides').offset().top;
-					// var anchura=parseInt($('.mySlides').css('width').split('px')[0]);
-     //                var altura=parseInt($('.mySlides').css('height').split('px')[0]);
-     //                var izquierda=parseInt($('.mySlides').css('left').split('px')[0]);
-     //                var arriba=parseInt($('.mySlides').css('top').split('px')[0]);				 
-					// var aux1=anchura / (500-izquierda);
-     //                var aux2=altura / (325-arriba);
-     //                var contador=0;
-				 //  if(delta>0){
-                      
-					//   anchura+=200*delta;
-					//   altura+=108*delta;
-					//   contador+=1*delta;
-					  
-					//   if(anchura>7700 || altura>4179){
-     //                        anchura=7700;
-     //                      altura=4179;
-     //                    }else{
-					// 		izquierda=(izquierda-(200*delta/aux1));
-     //                        arriba=(arriba-(108*delta/aux2));
-     //                        }
-                      
-                     
-					  
-				 //  }else{
-     //                  anchura-=200
-     //                  altura-=108
-                      
-					//   if(anchura<900 || altura<550){
-     //                      altura=550;
-     //                      anchura=900;
-     //                  }else{
-                          
-     //                      izquierda=(izquierda+(200/aux1));
-     //                      arriba=(arriba+(108/aux2));
-     //                  }
-				 //  }
-				 //  if (izquierda < 900 - anchura ){
-					//   		var antIz=izquierda	
-     //                        izquierda = 900 - anchura; 
-     //                        console.log("primer left: "+antIz+" < "+izquierda);
-     //                    }
-                         
-     //                    if (izquierda + anchura > anchura){
-					// 		var antIz=izquierda+anchura
-					// 		console.log("segundo left : "+izquierda+" < "+anchura)
-     //                      	izquierda = 0;
-     //                      	console.log("segundo left despues: "+izquierda)
-     //                    }
-
-     //                    if (arriba < 550-altura ){
-					// 		var antAr = 550-altura;
-     //                        arriba = 550 - altura;
-     //                       console.log("primer top: "+arriba+" < "+antAr);
-     //                    }
-     //                    if (arriba + altura > altura){
-					// 		console.log(arriba+altura>altura);
-					// 		//console.log("arriba+altura: "+arriba+altura+" altura: "+altura);
-     //                        arriba = 0;
-     //                       console.log("segundo top: "+arriba)
-
-     //                    }
-				 //  //, 
-				 //  $('.mySlides').css({'width':anchura+"px", 'height': altura+"px",'top': arriba+"px", 'left': izquierda+"px"})
-				  
-			  // 	});
-
-			  	
-			  });
 
 			  $( '.mySlides' ).on( 'mousewheel DOMMouseScroll', function ( e ) {
                 var e0 = e.originalEvent,
