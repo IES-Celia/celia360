@@ -8,7 +8,7 @@ pandoc $INPUT -o $OUTPUT_PDF\
     -V mainfont="SourceSansPro-Regular"\
     -V mainfontoptions="Scale=1.0"\
     --listings\
-    --pdf-engine=xelatex\
+    --latex-engine=xelatex\
     --number-sections\
     -V lang=es\
     --tab-stop 2 -s\

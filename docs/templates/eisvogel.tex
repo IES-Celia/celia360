@@ -71,10 +71,10 @@ $if(mathspec)$
   \ifxetex
     \usepackage{mathspec}
   \else
-    \usepackage{unicode-math}
+    \usepackage{mathspec}
   \fi
 $else$
-  \usepackage{unicode-math}
+  \usepackage{mathspec}
 $endif$
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 $for(fontfamilies)$
@@ -387,8 +387,10 @@ $endif$
 % 'default' option sets the default 
 % font family to Source Sans Pro, not \sfdefault.
 %
-\usepackage[default]{sourcesanspro}
-\usepackage{sourcecodepro}
+%\usepackage[default]{sourcesanspro}
+%\usepackage{sourcecodepro}
+%\usepackage[default]{euscript}
+\usepackage{fontenc}
 
 %
 % heading font

@@ -157,7 +157,9 @@ La imagen se subirá y quedará asignada al punto del mapa donde usted haya hech
 
 Repita el proceso con el resto de fotografías 360 que haya realizado para su recorrido virtual. Sea cuidadoso en este proceso, porque constituye el esqueleto de su visita virtual y, si dispone de muchas fotografías, es fácil confundirlas unas con otras. En ese sentido, volvemos a insistir en la importancia de haberlas organizado previamente mediante nombres significativos que usted pueda reconocer bien.
 
-Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic *con el botón derecho* encima de un punto blanco que la representa en el mapa. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición. Para cambiar el lugar del mapa donde la escena se posiciona, debe eliminarla por completo y volver a crearla en el lugar correcto.
+Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic *con el botón derecho* encima de un punto blanco que la representa en el mapa. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición. Para cambiar el lugar del mapa donde la escena se posiciona, debe eliminarla por completo y volver a crearla en el lugar correcto. 
+
+Esto también es necesario para cambiar el punto de vista por defecto asignado a cada escena. Las fotografías panorámicas 360 se crearán con un punto de vista por defecto, pero puede que usted desee cambiarlo. Este punto de vista es el lugar hacia donde "mira la cámara" al visualizar esa escena y se describe mediante dos coordenadas denominadas "Pitch" y "Yaw". Si necesita cambiarlas, puede hacerlo también desde la pantalla de modificación de escenas, haciendo clic en el botón "Modificar pitch y yaw". Eso le mostrará una previsualización de la escena en la que podrá señeccionar el nuevo pitch y yaw haciendo clic con el botón derecho del ratón sobre la escena cuando haya conseguido el punto de vista que deseaba.
 
 ![](imgs/05-03.jpg)
 
@@ -174,7 +176,7 @@ Cuando haya terminado de subir sus fotografías 360, llega el momento de conecta
 # Subir imágenes, audios y vídeos
 <a name="subirimagenes"></a>
 
-En esta sección le mostraremos como puede subir imágenes, audios y vídeos que luego utilizará en sus visitas virtuales, tanto en la visita libre como en la guiada o en la de puntos destacados. Estas imágenes, audios y vídeos se pueden asignar a puntos sensibles (hotspots) dentro de sus fotografías 360 para que sus visitantes puedan hacer clic en ellos y  acceder al contenido (galerías de imágenes, audiodescripciones u otro tipo de sonidos, y vídeos).
+En esta sección le mostraremos cómo puede subir imágenes, audios y vídeos que luego utilizará en sus visitas virtuales, tanto en la visita libre como en la guiada o en la de puntos destacados. Estas imágenes, audios y vídeos se pueden asignar a puntos sensibles (hotspots) dentro de sus fotografías 360 para que sus visitantes puedan hacer clic en ellos y  acceder al contenido (galerías de imágenes, audiodescripciones u otro tipo de sonidos, y vídeos).
 
 Si lo que desea es crear los vínculos para enlazar unas escenas con otras y crear así su visita virtual, puede saltarse de momento esta sección e ir a [la siguiente](#hotspots). Siempre puede volver más tarde aquí para aprender a administrar sus imágenes, audios y vídeos.
 
@@ -245,6 +247,12 @@ En la pantalla se le mostrará el mapa de la zona donde está la escena en la qu
 Su enlace entre escenas se habrá creado. Puede comprobar que funciona correctamente lanzando en su navegador web una visita libre y navegando hasta la escena implicada.
 
 El proceso de creación de enlaces entre escenas puede llegar a ser confuso, ya que necesitará crear muchos de estos enlaces para que sus visitantes puedan navegar con soltura entre sus escenas. Le recomendamos que planifique adecuadamente la tarea con ayuda de unos planos impresos de su recorrido, donde pueda ir señalando qué enlaces ha creado ya y cuáles le faltan por crear.
+
+Otro aspecto de estos enlaces que probablemente necesitará afinar es el punto de vista de las escenas. Recuerde que cada escena tiene un punto de vista predeterminado, definido mediante una pareja de coordenadas denominadas "pitch" y "yaw", que establece hacia dónde "mira la cámara" al entrar en esa escena. Sin embargo, cuando usted está recorriendo sus escenas mediante enlaces creados de una a la otra, es posible que ese punto de vista predeterminado resulte inadecuado. Una situación típica ocurre cuando usted recorre, por ejemplo, un pasillo de su instalación y, después de saltar de una escena A a otra escena B situada, digamos, más al sur, al visualizar la escena B la cámara aparece mirando hacia el norte, el este o el oeste. Eso puede desorientar notablemente a sus visitantes, que esperarán de forma inconsciente seguir mirando hacia el sur cuando saltan a la escena siguiente.
+
+Usted puede sobreescribir el punto de vista por defecto de cada escena en cada uno de los hotspot de tipo salto que enacen con ella. Simplemente, haga clic en el punto del mapa que representa a esa escena de origen, localice el hotspot de tipo salto que conduce a la escena de destino y haga clic en él. Aparecerá una previsualización de la escena de destino donde podrá seleccionar (haciendo clic con el botón derecho, como es habitual) el punto de vista con el que se verá esa escena *solo si se accede a ella desde ese hotspot de dicho salto*. El punto de vista predeterminado permanecerá inalterado y será el que se use para esa escena en cualquier otra circunstancia.
+
+Le recomendamos que planifique los posibles recorridos que sus visitantes podrán hacer en su tour virtual, dibujándolos (tal vez con colores diferentes) sobre un plano impreso, y que luego vaya recorriendo esos puntos en ese mismo orden para ir orientando correctamente los puntos de vista iniciales de cada escena en ese recorrido en concreto.
 
 ## Hotspots de tipo panel (galería de imágenes)
 <a name="panel"></a>
