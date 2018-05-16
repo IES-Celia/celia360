@@ -26,7 +26,9 @@
 	<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+        <!-- TODO: Revisar esta fuente que se está tomando de iescelia.org/carmen-de-burgos (un sitio web que ni siquiera existe):
 	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
+        -->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
     <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
 
