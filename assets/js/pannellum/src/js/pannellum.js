@@ -252,16 +252,14 @@ controls.orientation.className = 'pnlm-orientation-button pnlm-orientation-butto
 var orientationSupport, startOrientationIfSupported = false;
 
 //Check si han pasado cinco segundos para ocultar los iconos
-//var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
+var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
 
 function comprobarTiempo() {
-   //console.log(Date.now()-ultimaInteraction);
-   if(Date.now()-ultimaInteraction > 3500){
-    $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.08);
-   } else if(Date.now()-ultimaInteraction < 3500){
-    $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.6);
-
-   }
+//console.log(Date.now()-ultimaInteraction);
+    if(Date.now()-ultimaInteraction > 3000)
+        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.08);
+    else if(Date.now()-ultimaInteraction < 3000)
+        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.6);
 }
 
 

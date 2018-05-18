@@ -94,6 +94,7 @@
   z-index: 2;
   display: none;
   top: 5px;
+  left:20px;
 }
 
 #audio_guiada {
@@ -258,10 +259,10 @@ display: block;
 .boton_menu {
   transition: all .2s ease-in-out;
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 10px;
-  height: 70px;
-  width:70px;
+  height: 50px;
+  width:50px;
   background-image: url("../imagenes/portada/logo.png");
   background-size:contain;
   background-repeat: no-repeat;
@@ -484,8 +485,8 @@ display: block;
 #panel_audio_guiada {
   position:absolute;
   z-index: 100;
-  top: 15px;
-  left: 50px;
+  top: 20px;
+  left: 80px;
   padding: 0;
   display: none;
 }
@@ -493,7 +494,7 @@ display: block;
 .botonPause {
   position: relative;
   float: right;
-  left: 45px;
+  left: 20px;
   top:8px;
   z-index: 100;
   cursor:default;
