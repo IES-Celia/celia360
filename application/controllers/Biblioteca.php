@@ -154,7 +154,7 @@ class Biblioteca extends CI_Controller {
 	public function deletelibro(){
 		$resultado=$this->bibliotecaModel->deletelibro();	
 		if($resultado==-1){ //Error al eliminar
-			$datos["error"] = "Error al insertar el libro";
+			$datos["error"] = "Error al borrar el libro";
 		}
 		else{
 			$datos["mensaje"] = "Libro eliminado con éxito";
@@ -212,13 +212,15 @@ class Biblioteca extends CI_Controller {
 	 */
 	public function deletepag($id_libro,$num_pag,$cant_pag){
 		$res=$this->bibliotecaModel->deletepaglibro($id_libro,$num_pag,$cant_pag);
-		if($res){
+		if($res==-1){ //Error al eliminar
+			$datos["error"] = "Error al borrar página";
+		}
+		else{
+			$datos["mensaje"] = "Página eliminada con éxito";
 			$datos["idlibro"] = $id_libro;
 	        $datos["vista"] = "biblioteca/insertimg";
 	        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 			$this->load->view("admin_template",$datos);
-		}else{
-			echo "pos no";
 		}
 
 	}
