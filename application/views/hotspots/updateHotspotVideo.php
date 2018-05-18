@@ -20,10 +20,6 @@ div.centrado {
 	
 }
         
-        .rojo:hover{
-            color:red;
-            border-color:red;
-        }
 
 
 
@@ -63,8 +59,9 @@ echo "
 	
 	
 	<input type='submit' class='button'>
-	<a class='rojo' href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
-    >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
+    <br>
+	<a class='rojo_borrar' href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
+    >BORRAR ESTE HOTSPOT </a></td>
 	
 </form>
 </fieldset>

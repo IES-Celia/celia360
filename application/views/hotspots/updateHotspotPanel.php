@@ -31,16 +31,7 @@ div.centrado {
         width: 580px !important;
     }
         
-    .rojo_borrar{
-        color:white;
-        border-color: white;
-        background-color:#845050 !important;
-    }
-    .rojo_borrar:hover{
-        color:white !important;
-        border-color: red !important;
-        background-color:#441b1b !important;
-    }
+
 
         .button{
             width: 580px !important;
