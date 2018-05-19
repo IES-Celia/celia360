@@ -114,8 +114,10 @@
     </div>
     </div>   
     
+    <!-- Seccion hotspot de tipo audio -->
     <div id="puntoAudio"> 
     <div id="caja3">
+        <!-- Formulario para insertar un hotspot de tipo audio -->
         <?php
         echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
@@ -133,7 +135,8 @@
         
         <div id="listaAudios">Capa vacia</div>
     </div>
-
+    <!-- FIN sección hotspot de tipo audio -->
+    
     <div id="puntoVideo">
     <div id="caja3">
         <?php

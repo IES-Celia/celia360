@@ -55,7 +55,14 @@ class Hotspots extends CI_Controller {
      */
     
     public function show_insert_hotspot($pitch, $yaw, $idescena) {
+        //cargar los modelos
         $this->load->model("MapaModel","mapa");
+        $this->load->model("AudioModel");
+        $this->load->model("VideoModel", "Vidm");
+        //obtener los listados de audio y vídeo
+        $datos["listaAudios"] = $this->AudioModel->buscaraudio();
+        $datos["listaVideos"] = $this->Vidm->buscarvideo();
+
         $datos["documentos"]= $this->hotspotsModel->getAllDocumentos();
 	$datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
