@@ -412,16 +412,17 @@ public function process_insert_video(){
     }
 
    /**
-    * TODO: documentación.
+    * Recibe la petición vía Ajax para obtener la URL de un audio a partir de su Id.
     */
-public function load_audio(){
-    $id = $_REQUEST["id_hotspot"];
-    $resultado = $this->hotspotsModel->cargar_audio($id);
-    //var_dump($resultado);
-    //TODO: añadir mensaje de la situacion
-}
-   /**
-    * TODO: documentación.
+   public function load_audio() {
+        $id = $_REQUEST["id_hotspot"];
+        $resultado = $this->hotspotsModel->cargar_audio($id);
+        //var_dump($resultado);
+        //TODO: añadir mensaje de la situacion
+    }
+
+    /**
+    * Procesa la creación de un hotspots de tipo audio.
     */
     public function process_insert_audio() {
 
