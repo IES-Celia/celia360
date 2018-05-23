@@ -179,22 +179,22 @@ uiContainer.appendChild(infoDisplay.container);
 // Load box
 infoDisplay.load = {};
 infoDisplay.load.box = document.createElement('div');
-infoDisplay.load.box.className = 'pnlm-load-box';
-infoDisplay.load.boxp = document.createElement('p');
-infoDisplay.load.box.appendChild(infoDisplay.load.boxp);
-infoDisplay.load.lbox = document.createElement('div');
-infoDisplay.load.lbox.className = 'pnlm-lbox';
-infoDisplay.load.lbox.innerHTML = '<div class="pnlm-loading"></div>';
-infoDisplay.load.box.appendChild(infoDisplay.load.lbox);
-infoDisplay.load.lbar = document.createElement('div');
-infoDisplay.load.lbar.className = 'pnlm-lbar';
-infoDisplay.load.lbarFill = document.createElement('div');
-infoDisplay.load.lbarFill.className = 'pnlm-lbar-fill';
-infoDisplay.load.lbar.appendChild(infoDisplay.load.lbarFill);
-infoDisplay.load.box.appendChild(infoDisplay.load.lbar);
-infoDisplay.load.msg = document.createElement('p');
-infoDisplay.load.msg.className = 'pnlm-lmsg';
-infoDisplay.load.box.appendChild(infoDisplay.load.msg);
+infoDisplay.load.box.className = 'lds-default';
+// infoDisplay.load.boxp = document.createElement('p');
+// infoDisplay.load.box.appendChild(infoDisplay.load.boxp);
+// infoDisplay.load.lbox = document.createElement('div');
+// infoDisplay.load.lbox.className = 'pnlm-lbox';
+infoDisplay.load.box.innerHTML = '<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>';
+// infoDisplay.load.box.appendChild(infoDisplay.load.lbox);
+// infoDisplay.load.lbar = document.createElement('div');
+// infoDisplay.load.lbar.className = 'pnlm-lbar';
+// infoDisplay.load.lbarFill = document.createElement('div');
+// infoDisplay.load.lbarFill.className = 'pnlm-lbar-fill';
+// infoDisplay.load.lbar.appendChild(infoDisplay.load.lbarFill);
+// infoDisplay.load.box.appendChild(infoDisplay.load.lbar);
+// infoDisplay.load.msg = document.createElement('p');
+// infoDisplay.load.msg.className = 'pnlm-lmsg';
+// infoDisplay.load.box.appendChild(infoDisplay.load.msg);
 uiContainer.appendChild(infoDisplay.load.box);
 
 // Error message
@@ -252,16 +252,14 @@ controls.orientation.className = 'pnlm-orientation-button pnlm-orientation-butto
 var orientationSupport, startOrientationIfSupported = false;
 
 //Check si han pasado cinco segundos para ocultar los iconos
-//var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
+var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
 
 function comprobarTiempo() {
-   //console.log(Date.now()-ultimaInteraction);
-   if(Date.now()-ultimaInteraction > 3500){
-    $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.08);
-   } else if(Date.now()-ultimaInteraction < 3500){
-    $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.6);
-
-   }
+//console.log(Date.now()-ultimaInteraction);
+    if(Date.now()-ultimaInteraction > 3000)
+        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen").css("opacity",0.08);
+    else if(Date.now()-ultimaInteraction < 3000)
+        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen").css("opacity",0.6);
 }
 
 
@@ -1944,8 +1942,8 @@ function processOptions(isPreview) {
         infoDisplay.container.style.display = 'none';
 
     // Fill in load button label and loading box text
-    controls.load.innerHTML = '<p>' + config.strings.loadButtonLabel + '</p>';
-    infoDisplay.load.boxp.innerHTML = config.strings.loadingLabel;
+    // controls.load.innerHTML = '<p>' + config.strings.loadButtonLabel + '</p>';
+    // infoDisplay.load.boxp.innerHTML = config.strings.loadingLabel;
 
     // Process other options
     for (var key in config) {

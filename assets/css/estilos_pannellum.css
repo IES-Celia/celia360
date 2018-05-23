@@ -34,13 +34,12 @@
         text-align: center;
         background-image: url("svg/fullscreenblanco.svg");
         cursor: pointer;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         margin-right: 5px; 
         background-size:cover;
         background-position: center;
-        transition: width 0.5s, height 0.5s;
+        transition: width 0.5s, height 0.5s, opacity 0.5s;
     }
-
 
     /* iconos visita guiada */
        .icono_right,
@@ -94,6 +93,7 @@
   z-index: 2;
   display: none;
   top: 5px;
+  left:20px;
 }
 
 #audio_guiada {
@@ -258,10 +258,10 @@ display: block;
 .boton_menu {
   transition: all .2s ease-in-out;
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 10px;
-  height: 70px;
-  width:70px;
+  height: 50px;
+  width:50px;
   background-image: url("../imagenes/portada/logo.png");
   background-size:contain;
   background-repeat: no-repeat;
@@ -484,8 +484,8 @@ display: block;
 #panel_audio_guiada {
   position:absolute;
   z-index: 100;
-  top: 15px;
-  left: 50px;
+  top: 20px;
+  left: 80px;
   padding: 0;
   display: none;
 }
@@ -493,7 +493,7 @@ display: block;
 .botonPause {
   position: relative;
   float: right;
-  left: 45px;
+  left: 20px;
   top:8px;
   z-index: 100;
   cursor:default;
@@ -1049,4 +1049,10 @@ display: block;
   font-weight: bold;
   font-size:1.2m;
   margin-top:3px;
+}
+/* ICONOS VISITA LIBRE */
+
+.custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, 
+.custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen {
+  transition: width 0.5s, height 0.5s, opacity 0.5s ease;
 }

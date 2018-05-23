@@ -21,7 +21,6 @@
             }
 
 
-
         </style>
         <title> Modificar hotspot tipo Escalera </title>
     </head>
@@ -38,10 +37,10 @@
 
         <form>
 
-        <a href='" . site_url('escenas/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificar coordenadas</a><br><br>
+        <a href='" . site_url('escenas/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificar coordenadas </a><br><br>
 	
-            <a href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
-        >Borrar hotspot (CUIDADO)</a></td>
+            <a class='rojo_borrar' href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
+        >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Borrar hotspot &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</a></td>
 	
         </form>
     </fieldset>
