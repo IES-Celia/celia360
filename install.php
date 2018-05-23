@@ -4,11 +4,41 @@
 <html>
 <head>
 	<title>Install</title>
+
+    <style type="text/css">
+    
+        #caja{
+            position: relative;
+            width: 50%;
+            height: 100%;
+            top: 25%;
+            left: 25%; 
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
+
+        input{
+            display: block; 
+            margin: 5px;
+            border: none;
+            border-bottom: 0.5px solid #000;
+        }
+
+        label{
+            margin-left: 5px;
+            margin-top: 10px;
+        }
+
+        h1{
+            margin-left: 5px;
+        }
+
+    </style>
 </head>
 <body>
 
 <?php
-	if (isset($_REQUEST["host"])) {
+	if (isset($_REQUEST["host"])){
 		// Procesar el formulario
 		$host = $_REQUEST["host"];
 		$userdb = $_REQUEST["nameuse"];
@@ -187,33 +217,105 @@
         			}
  
         			fclose($archivo);
+                }
+
+            if(!file_exists('assets/biblio')){
+                mkdir('assets/biblio');
+            }
+            
+            if(!file_exists('assets/imagenes/destacados')){
+                mkdir('assets/imagenes/destacados');
+            }    
+            
+            if(!file_exists('assets/imagenes/iconos')){
+                mkdir('assets/imagenes/iconos');
+            }    
+            
+            if(!file_exists('assets/imagenes')){
+                mkdir('assets/imagenes');    
+            }  
+              
+            if(!file_exists('assets/imagenes/portada')){
+                mkdir('assets/imagenes/portada');    
+            }      
+            
+            if(!file_exists('assets/imagenes/svg')){
+                mkdir('assets/imagenes/svg');    
+            }  
+            
+            if(!file_exists('assets/bibliocss')){
+                mkdir('assets/bibliocss');    
+            }          
+            
+            if(!file_exists('assets/css')){
+                mkdir('assets/css');    
+            }   
+            
+            if(!file_exists('assets/documentos-panel')){
+                mkdir('assets/documentos-panel');    
+            }  
+            
+            if(!file_exists('assets/extras')){
+                mkdir('assets/extras');    
+            }  
+            
+            if(!file_exists('assets/fonts')){
+                mkdir('assets/fonts');    
+            }  
+            
+            if(!file_exists('assets/js')){
+                mkdir('assets/js');    
+            }  
+            
+            if(!file_exists('assets/lib')){
+                mkdir('assets/lib');    
+            }  
+            
+            if(!file_exists('assets/php')){
+                mkdir('assets/php');    
+            }  
+                
     }
+    
+    
+    
+    
+    
+    
+   
+
+
 
 		// Mensaje de resultado
 
 
-	}
+	
 	else {
 		// Mostramos formulario
 
 ?>
-<div id="caja">
-	<form action="install.php">
- 	<h1>Instalaci&oacute;n: parte 1</h1>
-    <label for="host">Nombre del host</label>
-    <input type='text' name='host' id="host" required>
-    <label for="namebd">Nombre de la base de datos</label>
-    <input type='text' id="namebd" name='namebd' required>
-    <label for="nameuse">Usuario de la base de datos</label>
-    <input type='text' name='nameuse' id="nameuse" required>
-    <label for="passbd">Contraseña de la base de datos</label>
-    <input type='password' name='passbd' id="passbd">
-    <label for="base">Base URL del sitio</label>
-    <input type='text' name='base' id="base" required>
-    <input type='submit' value='Aceptar'>
-</form>
-
-</div>
+    <div id="caja">
+	   <form action="install.php">
+ 	      <h1>Instalaci&oacute;n</h1>
+            <label for="host">Nombre del host</label>
+            <input type='text' name='host' id="host" required>
+            <label for="namebd">Nombre de la base de datos</label>
+            <input type='text' id="namebd" name='namebd' required>
+            <label for="nameuse">Usuario de la base de datos</label>
+            <input type='text' name='nameuse' id="nameuse" required>
+            <label for="passbd">Contraseña de la base de datos</label>
+            <input type='password' name='passbd' id="passbd">
+            <label for="base">Base URL del sitio</label>
+            <input type='text' name='base' id="base" placeholder="http://ejemplo.com" required>
+            <!-- <label for="username">Nombre de usuario</label> -->
+            <!-- <input type='text' name='username' id="username" required> -->
+            <!-- <label for="pass">Password</label> -->
+            <!-- <input type='password' id="pass" name='pass' required> -->
+            <!-- <label for="email">Correo</label> -->
+            <!-- <input type='text' name='email' id="email" required> -->
+            <input type='submit' value='Aceptar' style="border: none;">
+        </form>
+    </div>
 
 
 <?php
