@@ -236,6 +236,54 @@ class Biblioteca extends CI_Controller {
 		$this->load->view("admin_template", $datos);
 	}
 
+	/**
+	 * Vista para subir imagenes
+	 * 
+	 */
+	public function showSubida()
+	{
+		$datos["tabla"] = $this->bibliotecaModel->get_info();
+        $datos["vista"]="biblioteca/upload_multiple";
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+		$this->load->view('admin_template', $datos);
+	}
+
+/**
+	 * Funcion de subida de imagenes libros al servidor
+	 *
+	 */
+
+	public function upload(){
+		sleep(3);
+		if($_FILES["files"]["name"] != '')
+		{
+		$output = '';
+		$config["upload_path"] = './assets/libros/pruebasubida';
+		$config["allowed_types"] = 'gif|jpg|png';
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		for($count = 0; $count<count($_FILES["files"]["name"]); $count++)
+		{
+			$_FILES["file"]["name"] = $_FILES["files"]["name"][$count];
+			$_FILES["file"]["type"] = $_FILES["files"]["type"][$count];
+			$_FILES["file"]["tmp_name"] = $_FILES["files"]["tmp_name"][$count];
+			$_FILES["file"]["error"] = $_FILES["files"]["error"][$count];
+			$_FILES["file"]["size"] = $_FILES["files"]["size"][$count];
+			if($this->upload->do_upload('file'))
+			{
+			$data = $this->upload->data();
+			$output .= '
+			<div class="col-md-3">
+			<img src="'.base_url().'/assets/libros/pruebasubida/'.$data["file_name"].'" class="img-responsive img-thumbnail" />
+			</div>
+			';
+			}
+		}
+		echo $output;   
+		}
+ }
+
+
 	
 
 }
