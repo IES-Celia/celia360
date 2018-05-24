@@ -27,12 +27,12 @@ echo "
 </script>
 <?php
 echo "
-    <h1 align='center'>Modificar escenas</h1>
+    <h1 align='center'>Modificar escenassss</h1>
         <p></p>
         <div id='caja'>
 	<fieldset>
             <form action='" . site_url("escenas/processupdatescene/") . "' method='post' enctype='multipart/form-data'>
-		Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
+		Nombre de la Escena: <input type='text' name='name' value='" . $con['Nombre'] . "'> <br/>
                 Panorama: <input type='file' name='panorama' value=" . $con['panorama'] . ">
                 <input type='hidden' name='Id' value=" . $con['id_escena'] . ">
                 <input type='hidden' name='cod' value=" . $con['cod_escena'] . ">
