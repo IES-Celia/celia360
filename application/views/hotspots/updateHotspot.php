@@ -2,25 +2,39 @@
 	<head>
 	<style type="text/css">
 
-.button {
-    background-color: #555555; /* Black	*/
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-	
-	}
-	
-div.centrado {
-	margin-left:25%;
-	margin-right:25%;
-	
-}
+    .button {
+        background-color: #555555; /* Black	*/
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
 
+        }
 
+    div.centrado {
+        margin-left:25%;
+        margin-right:25%;
+
+    }
+
+    #caja6{
+        transform: translate(-50%, -45%);
+        background: red;
+        }
+        
+   /*#caja2 a{
+        background-color:rgba(0,0,0,0) !important;
+        width: 300px !important;
+        border-color: rgba(0,0,0,0) !important;
+    }*/
+        
+        button{
+            width: 400px;
+        }
+        
 </style>
 		<title> Insert Hotspot </title>
 </head>

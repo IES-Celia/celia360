@@ -1,7 +1,18 @@
 <html>
     <head>
         <title> Insert Hotspot </title>
+        <meta http-equiv="
+            Este archivo es parte de la aplicación web Celia360. 
 
+            Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+            bajo los términos de la GNU General Public License tal y como está publicada por
+            la Free Software Foundation en su versión 3.
+
+            Celia 360 se distribuye con el propósito de resultar útil,
+            pero SIN NINGUNA GARANTÍA de ningún tipo. 
+            Véase la GNU General Public License para más detalles.
+
+            Puede obtener una copia de la licencia en http://www.gnu.org/licenses.">
     </head>
     <style>
         .panel-informacion-texto {
@@ -15,12 +26,12 @@
     Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resultado del click, las tipos de hotspot son los siguientes:<br><br>
         
     <div id="botonesderecha">
-        <button class="botondentromapa" id="insertarEscena" >Punto de salto a otra escena</button>
-        <button class="botondentromapa" id="insertarPanel">Punto de panel informativo</button>
-        <button class="botondentromapa" id="insertarAudio">Punto audiodescrito</button>
-        <button class="botondentromapa" id="insertarVideo">Punto video</button>
-        <button class="botondentromapa" id="insertarEscaleras">Conector entre planos (escaleras)</button><br>
-        <button class="botondentromapa" id="modificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
+        <button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
+        <button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
+        <button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
+        <button class="botondentromapa" id="btnInsertarVideo">Punto video</button>
+        <button class="botondentromapa" id="btnInsertarEscaleras">Conector entre planos (escaleras)</button><br>
+        <button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
     </div>    
     </div>
 <div id="formularios">
@@ -103,8 +114,10 @@
     </div>
     </div>   
     
+    <!-- Seccion hotspot de tipo audio -->
     <div id="puntoAudio"> 
     <div id="caja3">
+        <!-- Formulario para insertar un hotspot de tipo audio -->
         <?php
         echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
@@ -122,7 +135,8 @@
         
         <div id="listaAudios">Capa vacia</div>
     </div>
-
+    <!-- FIN sección hotspot de tipo audio -->
+    
     <div id="puntoVideo">
     <div id="caja3">
         <?php
@@ -166,17 +180,17 @@
       $( document ).ready(function() {
         $("#formularios").children().hide();
           
-        $("#insertarEscena").click(function() {
+        $("#btnInsertarEscena").click(function() {
             $("#formularios").children().hide();
             $("#puntoEscena").show();
         });
           
-        $("#insertarPanel").click(function() {
+        $("#btnInsertarPanel").click(function() {
             $("#formularios").children().hide();
             $("#puntoPanel").show();
         });
           
-        $("#insertarAudio").click(function() {
+        $("#btnInsertarAudio").click(function() {
             $("#formularios").children().hide();
             $("#puntoAudio").show();
             $.get("<?php echo site_url("audio/obtenerListaAudiosAjax");?>", null, function(respuesta) {
@@ -186,7 +200,7 @@
            
         });
 
-         $("#insertarVideo").click(function() {
+         $("#btnInsertarVideo").click(function() {
             $("#formularios").children().hide();
             $("#puntoVideo").show();
             $.get("<?php echo site_url("video/obtenerListaVideosAjax");?>", null, function(respuesta) {
@@ -195,12 +209,12 @@
             });
         });
           
-        $("#insertarEscaleras").click(function() {
+        $("#btnInsertarEscaleras").click(function() {
             $("#formularios").children().hide();
             $("#puntoEscaleras").show();
         });
           
-        $("#modificarPitchYaw").click(function(){
+        $("#btnModificarPitchYaw").click(function(){
           var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
             if(resp)
                 location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
