@@ -7,7 +7,7 @@
     <body>
         <div class="container">
             <br /><br /><br />
-            <h3 align="center">Upload Multiple Files in Codeigniter using Ajax JQuery</h3><br />
+            <h3 align="center">Subida de ficheros</h3><br />
             
             <div class="col-md-6" align="right">
                 <label>Select Multiple Files</label>
