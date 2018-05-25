@@ -31,9 +31,9 @@
 
 	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
 	<script src="<?php echo base_url("assets/biblio/js/jquery-ui.js");?>"></script> 
-        <!-- TODO: Revisar esta fuente que se está cogiendo de un sitio web que ni siquiera existe:
+        <!-- TODO: Revisar esta fuente que se está cogiendo de un sitio web que ni siquiera existe: -->
 	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
-        -->
+       
 	
 
 		<style type="text/css">
@@ -259,7 +259,7 @@
 				</div>
 				<?php 
 				$nombre_fichero = "assets/pdf/$id_libro.pdf";
-					print_r($nombre_fichero);
+					
 				if (file_exists($nombre_fichero)) {
 					echo " 
 					<div class='descargar' style=''> 
