@@ -133,7 +133,50 @@
         </form>
     </div>
         
-        <div id="listaAudios">Capa vacia</div>
+        <div id="listaAudios">
+            <?php 
+                echo"<table class='tabla_audio' class='display' id='cont'>
+                        <thead>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Tipo de audio</th>
+                            <th>Reproducir</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Tipo de audio</th>
+                            <th>Reproducir</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </tfoot>
+                    <tbody>";
+
+                    foreach ($listaAudios as $re) {
+
+                        $id = $re["id_aud"];
+                        echo'<tr id="contenidoaudio' . $id . '">';
+                        echo'<td id="id_aud' . $id . '">' . $re["id_aud"] . '</td>';
+                        echo'<td id="url_aud' . $id . '">' . $re["url_aud"] . '</td>';
+                        echo'<td id="desc_aud' . $id . '">' . $re["desc_aud"] . '</td>';
+                        echo'<td id="tipo_aud' . $id . '">' . $re["tipo_aud"] . '</td>';
+                        echo"<td><audio controls='controls' preload='auto'>
+                            <source src='" . base_url($re["url_aud"]) . "' type='audio/m4a'/>
+                            <source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
+                            </audio></td>".
+                            '<td onClick="seleccionarAudio('.$id.')"><a href="#">Seleccionar</a></td>'.
+                            "</tr>";
+                    }
+                    echo "</tbody>";
+                echo "</table>";
+            ?>
+        </div>
     </div>
     <!-- FIN sección hotspot de tipo audio -->
     
@@ -153,7 +196,44 @@
         </form>
     </div>
         
-        <div id="listaVideos">Capa vacia</div>
+        <div id="listaVideos">
+            <?php
+                echo"<table class='tabla_audio' class='display' id='cont'>
+                        <thead>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Ver vídeo</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Ver vídeo</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </tfoot>
+                    <tbody>";
+
+                    foreach ($listaVideos as $re) {
+
+                        $id = $re["id_vid"];
+                        echo'<tr id="contenidovideo' . $id . '">';
+                        echo'<td id="id_aud' . $id . '">' . $re["id_vid"] . '</td>';
+                        echo'<td id="url_aud' . $id . '">' . $re["url_vid"] . '</td>';
+                        echo'<td id="desc_aud' . $id . '">' . $re["desc_vid"] . '</td>';
+                        echo'<td><a href="' . $re["url_vid"] . '" target="_blank">Visitar enlace</a></td>'.
+                            '<td onClick="seleccionarVideo('.$id.')"><a href="#">Seleccionar</a></td>'.
+                            '</tr>';
+                    }
+                    echo "</tbody>";
+                echo "</table>";
+            ?>
+        </div>
     </div>
 
     <div id="puntoEscaleras">
@@ -193,20 +273,11 @@
         $("#btnInsertarAudio").click(function() {
             $("#formularios").children().hide();
             $("#puntoAudio").show();
-            $.get("<?php echo site_url("audio/obtenerListaAudiosAjax");?>", null, function(respuesta) {
-                $("#listaAudios").html(respuesta);
-                activar_paginacion(".tabla_audio");
-            });
-           
         });
 
          $("#btnInsertarVideo").click(function() {
             $("#formularios").children().hide();
             $("#puntoVideo").show();
-            $.get("<?php echo site_url("video/obtenerListaVideosAjax");?>", null, function(respuesta) {
-                $("#listaVideos").html(respuesta);
-                 activar_paginacion(".tabla_video");
-            });
         });
           
         $("#btnInsertarEscaleras").click(function() {
@@ -219,12 +290,9 @@
             if(resp)
                 location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
         });
-          
-      });
-         
-         
-        function activar_paginacion(selector_tabla) {
-            $(selector_tabla).dataTable({
+
+       // Activamos la paginación y la búsqueda en la tabla de audios
+       $(".tabla_audio,.tabla_video").dataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros por página",
                 "zeroRecords": "No se encontraron resultados en su búsqueda",
@@ -241,7 +309,20 @@
                 },
             }
             });
+
+
+
+      }); // fin document.ready
+         
+         
+        function seleccionarAudio(idAudio) {
+            document.getElementById("idAudioForm").value = idAudio;
         }
+        
+        function seleccionarVideo(idVideo) {
+            document.getElementById("idVideoForm").value = idVideo;
+        }
+         
          
          
     </script> 

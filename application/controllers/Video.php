@@ -114,7 +114,7 @@ class Video extends CI_Controller {
                     . '       }'
                     . '</script>';
         echo"<table align='center' class='tabla_video' class='display' id='cont' border:1>
-			<thead><tr>
+            <thead><tr>
             <th>ID</th>
             <th>URL</th>
             <th>Descripcion</th>
