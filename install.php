@@ -204,21 +204,19 @@
     			}
 
     			if($archivo = fopen($nombre_archivo, "w")){
-        			if(fwrite($archivo, "DB_HOSTNAME='".$host."'\n 
+        			fwrite($archivo, "DB_HOSTNAME='".$host."'\n 
         								DB_USERNAME='".$userdb."'\n 
         								DB_PASSWORD='".$passdb."'\n 
         								DB_DATABASE='".$nombredb."'\n 
         								BASE_URL='".$baseurl."'\n 
-        								SESSION_DIR='/tmp'")){
-            				
-            			echo "Se ha ejecutado correctamente";
-        			}
+        								SESSION_DIR='/tmp'");}	
+        			
         			else{
             			echo "Ha habido un problema al crear el archivo";
         			}
  
         			fclose($archivo);
-                }
+        
 
             if(!file_exists('assets/biblio')){
                 mkdir('assets/biblio');
@@ -275,13 +273,10 @@
             if(!file_exists('assets/php')){
                 mkdir('assets/php');    
             }  
-                
+            echo "Se ha ejecutado correctamente";    
     }
-    
+
 		// Mensaje de resultado
-
-
-	
 	else {
 		// Mostramos formulario
 
