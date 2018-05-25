@@ -28,6 +28,7 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
         <!-- TODO: Revisar esta fuente que se está tomando de iescelia.org/carmen-de-burgos (un sitio web que ni siquiera existe): -->
 	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
        
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
     <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
@@ -245,7 +246,7 @@
 					<nav style="width:100%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
-						<!-- <!-- AQUI  esta el numero de pagina -->
+						<!--  AQUI  esta el numero de pagina -->
 						<span style="position:relative; top:-10px;">
 						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#303031e0;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#303031e0;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
 						</span>

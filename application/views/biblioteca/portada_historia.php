@@ -18,9 +18,9 @@
 <html>
 <head>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
-  	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+  	<script src="<?php //echo base_url("assets/js/jquery.js"); ?>"></script>
    	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
@@ -30,9 +30,10 @@
 	<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
 
 	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
-	<script src="<?php echo base_url("assets/biblio/js/jquery-ui.js");?>"></script> 
+	<script src="<?php //echo base_url("assets/biblio/js/jquery-ui.js");?>"></script> 
         <!-- TODO: Revisar esta fuente que se está cogiendo de un sitio web que ni siquiera existe: -->
 	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
        
 	
 
