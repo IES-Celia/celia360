@@ -32,7 +32,7 @@ echo "
         <div id='caja'>
 	<fieldset>
             <form action='" . site_url("escenas/processupdatescene/") . "' method='post' enctype='multipart/form-data'>
-		Nombre de la Escena: <input type='text' name='name' value=" . $con['Nombre'] . "> <br/>
+		Nombre de la Escena: <input type='text' name='name' value='" . $con['Nombre'] . "'> <br/>
                 Panorama: <input type='file' name='panorama' value=" . $con['panorama'] . ">
                 <input type='hidden' name='Id' value=" . $con['id_escena'] . ">
                 <input type='hidden' name='cod' value=" . $con['cod_escena'] . ">
