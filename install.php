@@ -38,6 +38,7 @@
 <body>
 
 <?php
+    ini_set("display_errors",0);
 	if (isset($_REQUEST["host"])){
 		// Procesar el formulario
 		$host = $_REQUEST["host"];
@@ -277,15 +278,6 @@
                 
     }
     
-    
-    
-    
-    
-    
-   
-
-
-
 		// Mensaje de resultado
 
 
