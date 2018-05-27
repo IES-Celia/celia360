@@ -291,7 +291,7 @@
                 location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
         });
 
-       // Activamos la paginación y la búsqueda en la tabla de audios
+       // Activamos la paginación y la búsqueda en la tabla de audios/videos
        $(".tabla_audio,.tabla_video").dataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros por página",

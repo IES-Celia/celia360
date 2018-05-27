@@ -398,7 +398,7 @@ class Hotspots extends CI_Controller {
    /**
     * Procesa la creación de un hotspots de tipo video.
     */
-public function process_insert_video(){
+    public function process_insert_video(){
         $resultado = $this->hotspotsModel->insertarHotspotVideo();
 		$anda=$this->input->post_get("id_scene");
         if ($resultado == true) {
