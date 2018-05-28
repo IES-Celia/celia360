@@ -53,10 +53,10 @@ echo "
 <form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
 
 	Coordenadas en las que se situa el hotspot en la imagen 360:<br>
-    <a href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'><button type='button'>Modificarlos</button></a><br><br>
+    <a href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
     
 	Hacia donde se orientará la vista en la imagen 360 a la que se salta:<br> 
-    <a href='".site_url('escenas/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'><button type='button'>Modificarlos</button></a><br><br>
+    <a href='".site_url('escenas/cargar_escena_modificar/'.$tabla['sceneId'].'/'."update_hotspot_targets/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
 	
     Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <input type='text' value='".$tabla['sceneId']."' name='sceneId'> </br> </br>";
     echo "<div id='mapa_escena_hotspot'>";
@@ -105,7 +105,7 @@ echo "</div><br><br><br>";
 	<input type='hidden' name='cssClass' value='".$tabla['cssClass']."'>
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
 	<input type='submit'>
-	<a href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'><button type='button'>BORRAR HOTSPOT</button></a></td>
+	<a class='rojo_borrar' href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'>BORRAR HOTSPOT</a></td>
 	
 </form>
 </fieldset>

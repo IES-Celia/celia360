@@ -26,9 +26,10 @@
 	<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-        <!-- TODO: Revisar esta fuente que se está tomando de iescelia.org/carmen-de-burgos (un sitio web que ni siquiera existe):
+        <!-- TODO: Revisar esta fuente que se está tomando de iescelia.org/carmen-de-burgos (un sitio web que ni siquiera existe): -->
 	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
-        -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+       
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
     <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
 
@@ -245,7 +246,7 @@
 					<nav style="width:100%;">
 						<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">Primera Pagina</a>
 						<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Anterior</a>
-						<!-- <!-- AQUI  esta el numero de pagina -->
+						<!--  AQUI  esta el numero de pagina -->
 						<span style="position:relative; top:-10px;">
 						<input type='text' id='numeropag' value="1" style="width:40px;padding:5px;background:#303031e0;border:none;color:white;"><?php echo "<input type='text'  style='width:40px;padding:5px;background:#303031e0;border:none;color:white;' id='cantpag' value=' $num_pag' readonly>";?> 
 						</span>
@@ -257,7 +258,7 @@
 				<!-- Comprueba si existe un fichero de tipo PDF para el libro y si es asi muestra un boton de descargar PDF, SI NO existe dicho fichero no muestra ningun boton para descargar -->
 				<?php 
 				$nombre_fichero = "assets/pdf/$id_libro.pdf";
-				print_r($nombre_fichero);
+				// print_r($nombre_fichero);
 					if (file_exists($nombre_fichero)) {
 						echo " 
 						<div class='descargar' style=''> 

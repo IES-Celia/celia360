@@ -18,9 +18,9 @@
 <html>
 <head>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
   	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
-  	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+  	<script src="<?php //echo base_url("assets/js/jquery.js"); ?>"></script>
    	<link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/biblio/css/default.css");?>" /> 
@@ -30,10 +30,11 @@
 	<script src="<?php echo base_url("assets/biblio/js/modernizr.custom.js");?>"></script>
 
 	<script type="text/javascript" src="<?php echo base_url("assets/biblio/js/jquery-3.2.1.js");?>"></script>
-	<script src="<?php echo base_url("assets/biblio/js/jquery-ui.js");?>"></script> 
-        <!-- TODO: Revisar esta fuente que se está cogiendo de un sitio web que ni siquiera existe:
+	<script src="<?php //echo base_url("assets/biblio/js/jquery-ui.js");?>"></script> 
+        <!-- TODO: Revisar esta fuente que se está cogiendo de un sitio web que ni siquiera existe: -->
 	<script src="http://iescelia.org/carmen-de-burgos/mapa/js/libs/jquery-mousewheel/jquery.mousewheel.min.js" type="text/javascript"></script>
-        -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+       
 	
 
 		<style type="text/css">
@@ -139,7 +140,7 @@
 		<div class="modalita" >
 	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
 	        <div class="cabecera-ventana" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');height:60px;border-radius:15px;">
-	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">Biblioteca historia</h1>
+	          <h1 style="font-family: 'MedievalSharp', cursive; text-align:center;border-bottom:1px solid grey;color:black;font-size:55px;padding:10px;">Biblioteca Hist&oacute;rica</h1>
 	        </div>
 	        <div class="pared" >
 	        <div class="cuerpo-ventana fondo" style="margin-top:19px;height:450px; ">
@@ -259,7 +260,7 @@
 				</div>
 				<?php 
 				$nombre_fichero = "assets/pdf/$id_libro.pdf";
-					print_r($nombre_fichero);
+					
 				if (file_exists($nombre_fichero)) {
 					echo " 
 					<div class='descargar' style=''> 
