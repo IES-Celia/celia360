@@ -105,13 +105,13 @@ class TourModel extends CI_Model {
   * Metodo que saca un json para la visita guiada, SIN hotspots y todas las escenas
   * @return el json de la visita guiada
   */
-   public function get_datos_guiada() {
+   public function get_datos_guiada($datos) {
     $this->load->database();
     $sql = "SELECT * FROM escenas";
     $res = $this->db->query($sql);
     $flagObj=false;
     $flagHot=false;
-    $json = ' {"default": {"firstScene": "p1p2f3","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "assets/imagenes/generales/preview22.png","hotSpotDebug": false }, "scenes": {';
+    $json = ' {"default": {"firstScene": "'.$datos["inicio"]["escena_inicial"].'","sceneFadeDuration": 1000,"autoLoad": true,"showControls": false,"compass":false,"preview": "assets/imagenes/generales/preview22.png","hotSpotDebug": false }, "scenes": {';
     foreach ($res->result_array() as $escena) {
         if($flagObj){ // con esta comprobacion pondrá coma entre objetos escenas sin ponerla en el primero
             $json = $json . ',';
