@@ -38,7 +38,7 @@
 <body>
 
 <?php
-    ini_set("display_errors",0);
+        ini_set("display_errors",0);
 	if (isset($_REQUEST["host"])){
 		// Procesar el formulario
 		$host = $_REQUEST["host"];
@@ -192,6 +192,9 @@
                             `orden` int(11) NOT NULL
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 
+                // Creamos el usuario administrador
+            $db->query("INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) 
+                            VALUES ('1', '$username', 'Administrador', '', '".md5($pass)."', '$emailadmin', '1')");
 
 		// Creamos el archivo de configuración
 		$nombre_archivo = ".env.development";
@@ -212,7 +215,15 @@
         								SESSION_DIR='/tmp'");}	
         			
         			else{
-            			echo "Ha habido un problema al crear el archivo";
+                                    echo "El programa de instalación no ha podido crear el archivo de configuración. Debe crearlo usted manualmente en el directorio raíz de su aplicación.<br>"
+                                            . "Se trata de un archivo de texto con el nombre .env.develpment que debe tener este contenido (copiélo y péguelo para evitar errores):<br><br>"
+                                            . "DB_HOSTNAME='".$host."'<br> 
+        								DB_USERNAME='".$userdb."'<br> 
+        								DB_PASSWORD='".$passdb."'<br>
+        								DB_DATABASE='".$nombredb."<br> 
+        								BASE_URL='".$baseurl."'<br>
+        								SESSION_DIR='/tmp'<br><br><br>
+                                                                        Cuando haya creado el archivo puede visitar <a href='$baseurl/usuario'>$baseurl/usuario</a> para comenzar a administrar su visita virtual. Pida ayuda a su administrador de sistemas si no sabe cómo hacer todo esto.";
         			}
  
         			fclose($archivo);
@@ -222,22 +233,50 @@
                 mkdir('assets/biblio');
             }
             
+            if(!file_exists('assets/imagenes')){
+                mkdir('assets/imagenes');    
+            }  
+              
+            if(!file_exists('assets/imagenes/biblioteca')){
+                mkdir('assets/imagenes/destacados');
+            }    
+            
             if(!file_exists('assets/imagenes/destacados')){
                 mkdir('assets/imagenes/destacados');
+            }    
+            
+            if(!file_exists('assets/imagenes/escenas')){
+                mkdir('assets/imagenes/escenas');
+            }    
+            
+             if(!file_exists('assets/imagenes/generales')){
+                mkdir('assets/imagenes/generales');
             }    
             
             if(!file_exists('assets/imagenes/iconos')){
                 mkdir('assets/imagenes/iconos');
             }    
             
-            if(!file_exists('assets/imagenes')){
-                mkdir('assets/imagenes');    
-            }  
-              
-            if(!file_exists('assets/imagenes/portada')){
+            if(!file_exists('assets/imagenes/imagenes-hotspots')){
+                mkdir('assets/imagenes/imagenes-hotspots');
+            }    
+            
+             if(!file_exists('assets/imagenes/portada')){
                 mkdir('assets/imagenes/portada');    
             }      
             
+            if(!file_exists('assets/imagenes/mapa')){
+                mkdir('assets/imagenes/mapa');    
+            }      
+
+            if(!file_exists('assets/imagenes/previews')){
+                mkdir('assets/imagenes/previews');
+            }    
+
+            if(!file_exists('assets/imagenes/previews-guiada')){
+                mkdir('assets/imagenes/previews-guiada');
+            }                
+             
             if(!file_exists('assets/imagenes/svg')){
                 mkdir('assets/imagenes/svg');    
             }  
@@ -273,17 +312,19 @@
             if(!file_exists('assets/php')){
                 mkdir('assets/php');    
             }  
-            echo "Se ha ejecutado correctamente";    
-    }
-
-		// Mensaje de resultado
-	else {
+            echo "<br><br>La instalación ha finalizado. <strong>IMPORTANTE: elimine ahora el archivo de instalación (install.php) del servidor para evitar posibles ataques a su base de datos.</strong>.<br>"
+                    . "Visite <a href='$baseurl/usuario'>$baseurl/usuario</a> para comenzar a introducir los datos de su visita virtual.<br>";
+    } // fin del if
+    else {
 		// Mostramos formulario
 
 ?>
     <div id="caja">
 	   <form action="install.php">
- 	      <h1>Instalaci&oacute;n</h1>
+ 	     <h1>Instalaci&oacute;n de Celia 360</h1>
+             <p>Este programa de instalación le ayudará a desplegar la aplicación CeliaTour/Celia360 en su servidor. Si no sabe como proceder, le recomendamos que se ponga en contacto con su administrador de sistemas.</p>
+
+             <h3>Configuración del host</h3>
             <label for="host">Nombre del host</label>
             <input type='text' name='host' id="host" required>
             <label for="namebd">Nombre de la base de datos</label>
@@ -294,12 +335,14 @@
             <input type='password' name='passbd' id="passbd">
             <label for="base">Base URL del sitio</label>
             <input type='text' name='base' id="base" placeholder="http://ejemplo.com" required>
-            <!-- <label for="username">Nombre de usuario</label> -->
-            <!-- <input type='text' name='username' id="username" required> -->
-            <!-- <label for="pass">Password</label> -->
-            <!-- <input type='password' id="pass" name='pass' required> -->
-            <!-- <label for="email">Correo</label> -->
-            <!-- <input type='text' name='email' id="email" required> -->
+            
+            <h3>Configuración del usuario administrador</h3>
+            <label for="username">Nombre de usuario administrador</label>
+            <input type='text' name='username' id="username" required>
+            <label for="pass">Password</label>
+            <input type='password' id="pass" name='pass' required> 
+            <label for="email">Correo</label>
+            <input type='text' name='emailadmin' id="email" required> 
             <input type='submit' value='Aceptar' style="border: none;">
         </form>
     </div>
