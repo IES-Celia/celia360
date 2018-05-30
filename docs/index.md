@@ -1,7 +1,7 @@
 ---
 title: "Celia 360 - Guía del usuario"
 author: IES Celia Viñas
-date: Almería, 1 de junio de 2018
+date: Almería, 30 de mayo de 2018
 subject: ""
 tags: []
 ---
