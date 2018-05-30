@@ -75,7 +75,7 @@ function respuesta(r) {
             if($punto['piso']==$indice){
               if ($punto["nombre_punto"] == "") $nombre_punto = $punto["id_escena"];
               else $nombre_punto = $punto["nombre_punto"];
-              echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."' alt='".$nombre_punto."'>
+              echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
               <span class='tooltip'>".$nombre_punto."</span>
               </div>";
             
