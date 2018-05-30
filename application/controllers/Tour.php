@@ -86,7 +86,9 @@ class Tour extends CI_Controller {
    * Genera ese JSON para ser recibido en el cliente mediante una petición Ajax.
    */
     public function get_json_destacados() {
-        $json = $this->TourModel->get_datos_destacado();
+        $this->load->model("MapaModel","mapa");
+        $datos["inicio"] = $this->mapa->cargar_config();
+        $json = $this->TourModel->get_datos_destacado($datos);
         echo $json;
     }
     
