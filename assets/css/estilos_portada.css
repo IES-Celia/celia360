@@ -181,7 +181,7 @@ h3{
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 450px;
+    height: 100vh;
     margin: 0;
     padding: 250px 0 260px 0;
     background-size: cover;
@@ -205,3 +205,44 @@ h3{
     text-align: center; 
 }
 
+
+
+#responsividad{
+    background: black;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column ;
+    display: none;
+}
+
+#responsividad a{
+    font-family:"Lato";
+    display: block;
+    font-size: 1.6em;
+    padding: 22px 16px;
+    color:white;
+    width: 100%;
+    background-color: #3b3b3b;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 2;
+    height: 200px;
+    text-decoration-line: none;
+}
+
+#responsividad a:hover{
+    text-decoration-line: underline;
+}
+
+@media screen and (max-width: 700px) {
+    #responsividad{
+        display: flex;
+    }
+}
