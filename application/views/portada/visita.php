@@ -317,7 +317,7 @@ $( ".menu_slider" ).click(function() {
 } // fin function cargar_panellum()
 
 /*
- * ???
+ * Metodo que pone a visible el panel de información de los hotspots de este tipo, cargando además la información correspondiente * al punto pulsado. 
  */
 function panelInformacion(hotspotDiv,args){
     
@@ -387,7 +387,7 @@ peticion.done(function(datos){
 } //fin function panelInformacion()
   
 /*
- * ??? 
+ * Metodo que activa la ventana modal de las escaleras al clickar en un hotspot de tipo escalera. 
  */
 function escaleras(){
   nombreEscena = viewer.getScene();
@@ -480,7 +480,7 @@ function audio_guiada(indice){
 } // fin function audio_guiada()
   
 /*
- * ??? 
+ * Metodo que sirve de toggle/accionador del audio de la visita guiada, si está el audio pausado pasa a reproducirlo y viceversa
  */
 function estado_audio(){
   var audio_boton = document.getElementById("audio_guiada");
@@ -570,7 +570,7 @@ $("#boton_mapa").show();
 } // fin function iniciar_visita_libre()
 
 /*
- * ???
+ * Metodo anterior para la visita guiada. Carga la anterior escena respecto a la escena en la que estes situado.
  */
 function anterior(){
   indice_escenas--;
@@ -582,7 +582,7 @@ function anterior(){
 } // fin function anterior()
 
 /*
- * ???
+ * Metodo siguiente para la visita guiada. Carga la siguiente escena respecto a la escena en la que estes situado.
  */
 function siguiente(){
   indice_escenas++;
