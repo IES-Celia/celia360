@@ -50,6 +50,12 @@
 <script >
 	$(document).ready(function(){
 
+		<?php
+		/**
+		* Función encargada de abrir el libro
+		*/
+		?>
+
 		$('.efectBook').click(function(){
 		  //$('.modalita2').toggle('slow');
 		    idlibro = $(this).attr("idlibro");
@@ -59,6 +65,13 @@
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
+
+		<?php
+		/**
+		* Función encargada de cerrar el libro
+		*/
+		?>
+
 		$('.cerrarBook').click(function(){
 		  //$('.modalita2').toggle('slow');
 		    idlibro = $(this).attr("idlibro");
@@ -68,6 +81,13 @@
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
 		          
 		});
+
+		<?php
+		/**
+		* Función encargada de cerrar el libro con la tecla Esc '27'
+		*/
+		?>
+		
 		$(document).keyup(function(e) {
 		    if (e.keyCode == 27) { // escape key maps to keycode `27`
 		   	 location.href = '<?php echo site_url("biblioteca/vertodosloslibros/");?>';

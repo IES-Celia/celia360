@@ -56,6 +56,7 @@
                             <th>Modificar</th>
                             <th>Páginas</th>
                             <th>Eliminar</th>
+                            <th>Subir</th>
                             
                            </tr></thead>";
 

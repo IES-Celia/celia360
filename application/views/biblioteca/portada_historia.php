@@ -84,6 +84,12 @@
 <script >
 	$(document).ready(function(){
 
+		<?php
+		/**
+		* Función encargada de abrir el libro
+		*/
+		?>
+
 		$('.efectBook').click(function(){
 		  //$('.modalita2').toggle('slow');
 		    idlibro = $(this).attr("idlibro");
@@ -92,6 +98,12 @@
 		    location.href = '<?php echo site_url("biblioteca/abrir_phistoria/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo;
 		          
 		});
+
+		<?php
+		/**
+		* Función encargada de cerrar el libro
+		*/
+		?>
 
 		$('.cerrarBook').click(function(){
 		  //$('.modalita2').toggle('slow');
@@ -102,14 +114,25 @@
 		          
 		});
 
+		<?php
+		/**
+		* Función encargada de cerrar el libro con la tecla Esc '27'
+		*/
+		?>
+
 		$(document).keyup(function(e) {
-			// Salir del libro a través de la tecla Esc `27`
 		    if (e.keyCode == 27) { 
 		   	 location.href = '<?php echo site_url("biblioteca/abrir_phistoria");?>';
 		    }
 		});
 
-		//Abrir pagina del libro especifica
+		<?php
+		/**
+		* Abrir pagina del libro especifica
+		*
+		*/
+		?>
+
 		$("#numeropag").change(function() {
 			var numpag=document.getElementById('numeropag').value;
 			var numpag=$("#numeropag").val();
@@ -136,7 +159,14 @@
 		
 	</div>
 	<div>
-	<?php  /** Mostramos una vista con estilo ventana la cual tiene una estantería que servirá para mostrar las portadas de los libros dados de alta en la seccion Historia */?>
+
+	<?php  
+	/** 
+	* Mostramos una vista con estilo ventana la cual tiene una estantería que servirá para mostrar las portadas 
+	* de los libros dados de alta  en la seccion Historia 
+	*/
+	?>
+
 		<div class="modalita" >
 	      <div class="contenido" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');width:600px;margin:0 auto;margin-top:40px;border-radius:15px;">
 	        <div class="cabecera-ventana" style="background:url('<?php echo base_url();?>assets/css/textura.jpg');height:60px;border-radius:15px;">
@@ -183,14 +213,23 @@
 	  </div>
 	 </div>
 	
-	<!-- ******************* Capa modal para mostrar el libro ****************** --> 
+	<?php  
+	/** 
+	* Capa modal para mostrar el libro
+	*/
+	?>
 
 <?php
 	if ($id_libro != -1) {	// Si id_libro = -1 significa que no hay ningún libro seleccionado, y no cargaremos nada en la modal
 ?>
+
 <?php
-	/** A continuacion mostramos en formato libro al que se ha echo referencia haciendo click */
+	/** 
+	* A continuacion mostramos en formato libro al que se ha echo referencia haciendo click 
+	*
+	*/
 ?>
+
 <div class="modalita2"  >
 		<div class="container">
 			<!-- Top Navigation -->
@@ -375,6 +414,12 @@
 
 						// add keyboard events
 
+						<?php  
+						/** 
+						* Control mediante las flechas de dirección y el formulario de entrada
+						*/
+						?>
+
 						$( document ).keydown( function(e) {
 							var keyCode = e.keyCode || e.which,
 								arrow = {
@@ -444,6 +489,12 @@
 				Page.init();
 		</script>
 		<script>
+
+				<?php  
+				/** 
+				* Implantación y configuración del zoom, tanto para normal como libros apaisados
+				*/
+				?>
 
 		      $(document).ready(function(){
 
