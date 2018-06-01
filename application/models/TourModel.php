@@ -103,6 +103,7 @@ class TourModel extends CI_Model {
   
   /*
   * Metodo que saca un json para la visita guiada, SIN hotspots y todas las escenas
+  * @param array $datos Array que trae información relativa al tour. En este caso nos interesa el campo inicio > escena inicial para generar el json correctamente
   * @return el json de la visita guiada
   */
    public function get_datos_guiada($datos) {
@@ -157,6 +158,7 @@ class TourModel extends CI_Model {
     
   /*
   * Metodo que saca un json para los puntos destacados, con TODOS los hotspots MENOS los hotspots de tipo salto que limitan las zonas destacadas y todas las escenas
+  * @param array $datos Array que trae información relativa al tour. En este caso nos interesa el campo inicio > escena inicial para generar el json correctamente
   * @return el json de los puntos destacados
   */
 public function get_datos_destacado($datos) {

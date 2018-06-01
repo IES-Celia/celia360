@@ -88,16 +88,6 @@
                 $resultado_imagen = 0;   // Sin error en la subida de imagen
             }
             return $resultado_imagen + $resultado_update;
-        }
-            
-            
-            
-            
-       
-       
+        }  
     }
-        
-       
-        
-        
 ?> 

@@ -1,3 +1,19 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
+?>
 <html>
     <head>
         <title> Insert Hotspot </title>
@@ -23,7 +39,7 @@
 <body>
 <h1> Formulario para insertar Hotspots</h1>
     <div id="botones">
-    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resultado del click, las tipos de hotspot son los siguientes:<br><br>
+    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br>
         
     <div id="botonesderecha">
         <button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
