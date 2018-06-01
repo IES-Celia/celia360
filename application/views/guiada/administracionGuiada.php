@@ -119,7 +119,7 @@ else {
 
         echo "<tr class='filaEscena'>".
         "<td class='id_visita'>".$escena['id_visita']."</td>
-        <td class='cod_escena'>".$escena['cod_escena']."</td>
+        <td class='cod_escena'> <a href='".$base_url."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a></td> 
         <td class='audio_escena'>".$escena['audio_escena']."</td>
         <td class='titulo_escena'>".$escena['titulo_escena']."</td>
         <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
