@@ -36,6 +36,7 @@ class Guiada extends CI_Controller {
         $this->load->model("AudioModel");
         $this->load->model("EscenasModel");
         $this->load->model("GuiadaModel");
+        $this->load->model("MapaModel","mapa");
     }
 
 /**
@@ -84,6 +85,8 @@ class Guiada extends CI_Controller {
         //Todas las escenas existentes.
         $datos["escenasGuiada"]=$this->EscenasModel->getAll();
         $datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
+        $datos["mapa"] = $this->mapa->cargar_mapa();
+        $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["vista"]="guiada/administracionGuiada";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("admin_template", $datos);

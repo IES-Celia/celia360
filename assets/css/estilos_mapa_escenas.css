@@ -27,6 +27,12 @@
     position: relative;
     display: inline-grid;
 }
+#mapa_guiada{
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+    display: inline-grid;
+}
 #mapa_config_mapa{
     z-index: 2;
     overflow: visible;

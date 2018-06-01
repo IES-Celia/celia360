@@ -32,7 +32,7 @@ $(document).ready(function() {
 		location.href = base_url+"mapa/"
 	})
    	
-   	$(".pisos").contextmenu(function(event){
+   	$("#mapa_escena .pisos").contextmenu(function(event){
    		
 		if (!$(this).hasClass("pisos_hotspots")) {			
 			var id =$(this).attr("id");
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			event.preventDefault();
 		}
 	});
-	$(".puntos").contextmenu(function(event) {
+	$("#mapa_escena .puntos").contextmenu(function(event) {
 		event.stopImmediatePropagation();
 		location.href=base_url+"escenas/showUpdateScene/"+$(this).attr("escena");
 			//location.href=base_url+"escenas/deletescene/"+$(this).attr("escena");
@@ -237,12 +237,15 @@ function mapa_responsivo(){
  * Subida y Bajada de piso.
  */
 function subir_piso(){
+	console.log(piso);
 	if(piso<piso_maximo){
 		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").hide('fast');
+		$("#mapa_guiada > .pisos:eq(" + piso + ")").hide('fast');
 		piso++;
 		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');	
+		$("#mapa_guiada > .pisos:eq(" + piso + ")").show('fast');
 	}
 }
 
@@ -250,9 +253,11 @@ function bajar_piso(){
 	if(piso>0){
 		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").hide('fast');	
+		$("#mapa_guiada > .pisos:eq(" + piso + ")").hide('fast');
 		piso--;
 		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');
-		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');		
+		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');	
+		$("#mapa_guiada > .pisos:eq(" + piso + ")").show('fast');	
 	}
 }
 
