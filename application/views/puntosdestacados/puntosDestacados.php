@@ -93,50 +93,9 @@
                   });
                   viewer = pannellum.viewer("panorama", data);
             });
+
             
-            function musica(hotspotDiv,args){
-                  var peticion = $.ajax({
-                  type: "post",
-                  url: "<?php echo base_url("hotspots/load_audio"); ?>",
-                  data: {id_hotspot : args}
-                });
 
-                peticion.done(function(resultado){
-                  var prueba = JSON.parse(resultado);
-                  var enlace_audio = prueba.result_array[0].url_aud;
-                  alert(enlace_audio);
-                  var enlace_audio_correcto = "<?php echo current_url() ?>"+enlace_audio;
-                  $("#audio_libre").attr("src",enlace_audio_correcto);
-                  var pantalleo = $("#panel_audio_libre").css("display");
-
-                  if(pantalleo=="block")
-                    $('#panel_audio_libre').hide();
-                  else
-                    $('#panel_audio_libre').show();
-                });
-            }
-            
-            function video(hotspotDiv,args){
-               /* var peticion = $.ajax({
-                    type: "post",
-                    url: "<?php echo base_url("hotspots/load_video"); ?>",
-                    data: {idVideo : args},
-                    beforeSend: function(){
-                      $("#vimeo_video").attr(src,"");
-                    }
-                });
-
-                peticion.done(function(resultado){
-                    $("#vimeo_video").attr(src,resultado);
-                    var pantalleo = $("#video_visita_libre").css("display");
-                    if(pantalleo=="block")
-                      $('#video_visita_libre').hide();
-                      //PAUSE
-                    else
-                      $('#video_visita_libre').fadeIn();
-                });
-                */
-            }
             
             function panelInformacion(hotspotDiv,args){
                   $(".modal").css("visibility","visible");
@@ -192,5 +151,6 @@
               viewer.toggleFullscreen();
             });
         </script>
+        <script src="<?php echo base_url("assets/js/metodosHotspots.js");?>"></script>
 </body>
 </html>

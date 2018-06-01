@@ -188,8 +188,8 @@ public function get_datos_destacado($datos) {
         $res2 =  $this->db->query($sql);
         foreach ($res2->result_array() as $hotspot) {
             
-            if($hotspot['tipo']=="info"){ // si es de info pues te mete to esto
-                if($hotspot['cssClass']=="custom-hotspot-escaleras"){
+            if($hotspot['tipo']=="info"){ // si es de INFO pues te mete to esto
+                if($hotspot['cssClass']=="custom-hotspot-escaleras"){ // si es de tipo escalera le mete esto:
                     if($flagHot){
                         $json = $json . ',';
                     }
@@ -202,9 +202,9 @@ public function get_datos_destacado($datos) {
                     $json = $json . '} '; 
                 }else{
                     if($flagHot){
-                $json = $json . ',';
-            }
-            $flagHot= true;
+                        $json = $json . ',';
+                    }
+                    $flagHot= true;
                     $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
                     $json = $json . '"yaw": '.$hotspot['yaw'].',';  
                     $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -214,7 +214,7 @@ public function get_datos_destacado($datos) {
                     $json = $json . '} '; 
                 }
                  
-            }else{ // si es de escena pues te mete to esto
+            }else{ // si es de saltoescena pues te mete to esto
                 if($hotspot['cerrado_destacado']==0){
                     if($flagHot){
                         $json = $json . ',';
