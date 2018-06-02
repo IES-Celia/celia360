@@ -317,6 +317,7 @@ class Hotspots extends CI_Controller {
             $datos["escena_actual"]=$joshua[1];
             //cargar el modelo
             $this->load->model("ImagenModel");
+            
             //acciones para ver el listado de imagenes
             $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -348,6 +349,38 @@ class Hotspots extends CI_Controller {
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view('admin_template', $datos); 
   }
+///////////////////////////////////////////////////  
+    /**** ATENCIÓN INSERTAR IMÁGENES EN HOSTPOT DE TIPO PANEL ****\
+    /**
+     * Inserta una imagen y nos muestra el mensaje si ha sido un éxito o no
+     * 
+     * @author: María Dolores Salmeron Sierra    
+     */
+    public function insertar_imagen() {
+
+        //cargar el modelo
+        $this->load->model("ImagenModel");
+        //acciones para insertar la imagen
+        $resultado = $this->ImagenModel->insertar_imagen();
+
+        // Comprobamos cuantas imágenes se han subido correctamente
+        $correctas = 0;
+        $incorrectas = 0;
+        for ($i = 0; $i < count($resultado); $i++) {
+            if ($resultado[$i] == 0) $incorrectas++; else $correctas++;
+        }
+        $total = $correctas + $incorrectas;
+        if ($incorrectas > 0)
+            $datos["error"] = $total." imágenes subidas: $correctas correctas - $incorrectas fallidas";
+        else
+            $datos["mensaje"] = $total." imágenes subidas correctamente";
+            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+            $datos["vista"] = "hotspots/hotspotPanel";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('admin_template', $datos);
+    }
+
+///////////////////////////////////////////  
   
    /**
     * TODO: documentación.

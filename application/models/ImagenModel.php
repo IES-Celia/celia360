@@ -54,7 +54,7 @@ class ImagenModel extends CI_Model {
         $num_imagenes = count($_FILES["imagen"]["name"]);
         $array_imagenes = $_FILES["imagen"];
         
-        print_r($array_imagenes);
+        //print_r($array_imagenes);
                 
         for ($i = 0; $i < count($array_imagenes['name']); $i++) {
             // Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
