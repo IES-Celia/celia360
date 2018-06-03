@@ -89,19 +89,64 @@ $(document).ready(function(){
         padding-left: 4px;
     }
     
-.contenedor-modal {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
+    #popup {
+		visibility: hidden;
+		opacity: 0;
+		margin-top: -200px;
+	}
+	#popup:target {
+		visibility:visible;
+		opacity: 1;
+		background-color: rgba(0,0,0,0.8);
+		position: fixed;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		margin:0;
+		z-index: 999;
+		-webkit-transition:all 1s;
+		-moz-transition:all 1s;
+		transition:all 1s;
+	}
+	.popup-contenedor {
+		position: relative;
+		margin:7% auto;
+		padding:30px 50px;
+		background-color: #fafafa;
+		color:#333;
+		border-radius: 3px;
+		width:50%;
+	}
+	a.popup-cerrar {
+		position: absolute;
+		top:3px;
+		right:3px;
+		background-color: #333;
+		padding:7px 10px;
+		font-size: 20px;
+		text-decoration: none;
+		line-height: 1;
+		color:#fff;
+	}
+ 
+    /* estilos para el enlace */
+    
+	a.popup-link {
+	    text-align: center;
+	    display: block;
+	    margin: 30px 0;
+	}
+    
+    .popup-contenedor li{
+        font-size: 20px;
+    }
+
 
 </style>
 
-
 <div class='container'>
-    <div id="cuerpo">
-
+  <div id="cuerpo">
     <div class="cabecera">
         <h4>CeliaTour</h4>
         Es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360
@@ -109,8 +154,6 @@ $(document).ready(function(){
         durante el curso 2017/2018.
     </div>
         
-
-     
     <h2 class="display-3">Equipo de desarrollo</h2>
 
         <div class='row'>
@@ -127,7 +170,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                        <a href="#popup"><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -144,7 +187,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup"><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -161,7 +204,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup"><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
             
@@ -178,7 +221,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                        <a href="#popup"><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
             
@@ -195,7 +238,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                        <a href="#popup"><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -336,43 +379,19 @@ $(document).ready(function(){
 </div>
 </div>
 
-    <br> <br> <br> 
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  +info
-</button>
-Cada desarrollador tendrá su ventana modal con todo lo que haya hecho, se accede en el botón más info, tras hacer click en este cambiará el contenido de la modal
-
-<!-- Modal por mejorar -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nombre</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Aportaciones
-          <ul>
-            <li>Desarrollo de tal</li>
-            <li>Desarrollo de cual</li>
-            <li>Desarrollador de la parte del backend: audio</li>  
-            <li>blablabla</li>  
-            <li>tal y cual</li>
-          </ul>
-      </div>
-      <div class="modal-footer">
-        <div class="d-flex flex-row justify-content-around">
-             <a href=""><i class="fab fa-linkedin-in"></i> </a>
-             <a href=""><i class="far fa-envelope"></i> </a>
-             <a href=""> <i class="far fa-file-pdf"></i></a> 
-            <a href=""> <i class="fab fa-github"></i></a>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <br> <br> 
+   	<div class="modal-wrapper" id="popup">
+		<div class="popup-contenedor">
+			
+			<h2 id="titulomodal" class="display-4">Ventana en desarrollo WIP</h2>
+            <h5>Desarrollo realizado:</h5>
+			<ul>
+                <li>Matar moscas a cañonazos</li> 
+                <li>Montar cirios pascuales</li> 
+                <li>Disparar con polvora de rey</li>   
+                <li>Adorar a Zeus</li>  
+            </ul>
+			
+			<a class="popup-cerrar" href="#">X</a>
+		</div>
+	</div> 
