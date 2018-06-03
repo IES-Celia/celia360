@@ -114,7 +114,7 @@ $(document).ready(function(){
     <h2 class="display-3">Equipo de desarrollo</h2>
 
         <div class='row'>
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Miguel Ángel López Segura</h2>
@@ -131,7 +131,7 @@ $(document).ready(function(){
                 </div>
             </div>
 
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Francisco Linares González</h2>
@@ -148,7 +148,7 @@ $(document).ready(function(){
                 </div>
             </div>
 
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Zygimantas Sniurevicius</h2>
@@ -165,12 +165,7 @@ $(document).ready(function(){
                 </div>
             </div>
             
-
-
-        </div>
-
-        <div class='row'>
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Marc Expósito Miras</h2>
@@ -187,7 +182,7 @@ $(document).ready(function(){
                 </div>
             </div>
             
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Manuel González Mesa</h2>
@@ -204,7 +199,7 @@ $(document).ready(function(){
                 </div>
             </div>
 
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Alejandro López López</h2>
@@ -220,10 +215,8 @@ $(document).ready(function(){
                     <a href=""><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
-           </div> 
             
-         <div class='row'>
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Hamza Benhachmi</h2>
@@ -240,7 +233,7 @@ $(document).ready(function(){
                 </div>
             </div>
 
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Miguel Ángel López Rodríguez</h2>
@@ -259,7 +252,7 @@ $(document).ready(function(){
         
 
 
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>María Dolores Salmerón Segura</h2>
@@ -275,10 +268,8 @@ $(document).ready(function(){
                     <a href=""><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
-         </div>   
-        <div class='row'>
  
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>Álvaro Sánchez Casares</h2>
@@ -295,7 +286,7 @@ $(document).ready(function(){
                 </div>
             </div>
 
-            <div class="perfil col-4 ">
+            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
                     <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
                     <h2>José Luis Ramírez Jiménez</h2>
@@ -314,7 +305,6 @@ $(document).ready(function(){
         </div>
 <br>        
 <hr class='separador_creditos'>
-<br>  
     <h2 class="display-4">Profesores</h2>
         <div class="center-block" style="width:400px; margin:auto;">
             <ul class="list-group">
