@@ -18,7 +18,6 @@
 <!-- PORTADA PRINCIPAL DE HOMEPAGE -->
 <!-- Crea la capa main y el slider de la portada con la imagen de portada de fondo-->
 <!-- También se inserta aquí el botón para visualizar los libros de historia -->
-
         <main>
             <div id="responsividad"> <!-- WIP. Su css está en estilos_portada.css -->
                 <a href="<?php echo site_url();?>">Home</a> 
@@ -33,7 +32,7 @@
                  ?>
                  <a id="creditos_portada" href="<?php echo site_url("tour/creditos"); ?>" >Créditos</a>
             </div>
-            <div id="slider1_portada" style="background-image:url('<?php echo site_url("assets/imagenes/portada/portada.jpg"); ?>')">
+            <div id="slider1_portada" style="background-image:url('<?php echo site_url("assets/imagenes/portada/".$portada[0]["imagen_web"]); ?>')">
                  <div class="contenedor_portada">
                      <h1 id="titulito"><?php echo $con["titulo_web"] ?></h1>
                      <div id="parrafito">
