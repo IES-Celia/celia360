@@ -167,13 +167,13 @@ $(document).ready(function(){
                     <h2>Miguel Ángel López Segura</h2>
                 </div>
                 <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+                    migueldevelopez@gmail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/miguelille"> <i class="fab fa-github"></i></a>
                         <a href="#popup" class="inform" alumno='0'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -187,10 +187,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -204,10 +204,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/heremias22"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='2'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -221,10 +221,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/MarcWotofok"> <i class="fab fa-github"></i></a>
                         <a href="#popup" class="inform" alumno='3'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -238,10 +238,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/mgonzalezmesa"> <i class="fab fa-github"></i></a>
                         <a href="#popup" class="inform" alumno='4'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -255,10 +255,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/Alfrik"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='5'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -272,10 +272,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/jamudi"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='6'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -289,10 +289,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/MickeyLopez091"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='7'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -308,10 +308,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/lolisalmeron"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='8'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -325,10 +325,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/Dansberg"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='9'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
@@ -342,10 +342,10 @@ $(document).ready(function(){
                     enconstruccion@mimail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a href=""><i class="far fa-envelope"></i> </a>
-                        <a href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a href=""> <i class="fab fa-github"></i></a>
+                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://github.com/pepeluchan"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
