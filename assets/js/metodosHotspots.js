@@ -41,7 +41,7 @@ function musica(hotspotDiv,args){
 peticion.done(function(resultado){
   var enlace_audio = resultado;
   enlace_audio=enlace_audio.trim(enlace_audio);
-  var enlace_audio_correcto = "<?php echo base_url();?>"+enlace_audio;
+  var enlace_audio_correcto = baseurl+enlace_audio;
   $("#audio_libre").attr("src",enlace_audio_correcto);
   var pantalleo = $("#panel_audio_libre").css("display");
   $("#audio_libre")[0].play();

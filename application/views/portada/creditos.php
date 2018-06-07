@@ -141,6 +141,10 @@ $(document).ready(function(){
     .popup-contenedor li{
         font-size: 20px;
     }
+    
+    .display-4{
+        font-size: 36px;
+    }
 
 
 </style>
@@ -170,7 +174,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                        <a href="#popup"><i class="fas fa-plus"></i> info </a>
+                        <a href="#popup" class="inform" alumno='0'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -187,7 +191,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href="#popup"><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -204,7 +208,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href="#popup"><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='2'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
             
@@ -221,7 +225,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                        <a href="#popup"><i class="fas fa-plus"></i> info </a>
+                        <a href="#popup" class="inform" alumno='3'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
             
@@ -238,7 +242,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                        <a href="#popup"><i class="fas fa-plus"></i> info </a>
+                        <a href="#popup" class="inform" alumno='4'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -255,7 +259,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='5'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
             
@@ -272,7 +276,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='6'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -289,7 +293,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='7'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
         
@@ -308,7 +312,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='8'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
  
@@ -325,7 +329,7 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='9'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
 
@@ -342,13 +346,13 @@ $(document).ready(function(){
                         <a href=""><i class="far fa-envelope"></i> </a>
                         <a href=""> <i class="far fa-file-pdf"></i></a> 
                         <a href=""> <i class="fab fa-github"></i></a>
-                    <a href=""><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
         </div>
 <br>        
 <hr class='separador_creditos'>
-    <h2 class="display-4">Profesores</h2>
+    <h2 class="display-3">Profesores</h2>
         <div class="center-block" style="width:400px; margin:auto;">
             <ul class="list-group">
                 <li class="list-group-item">Alfredo Moreno Vozmediano</li>
@@ -359,7 +363,7 @@ $(document).ready(function(){
 <br>        
 <hr class='separador_creditos'>
 <br>         
- 	<h2 class="display-4">Colaboradores</h2>
+ 	<h2 class="display-3">Colaboradores</h2>
         <div class="center-block" style="width:400px; margin:auto;">
             <ul class="list-group">
                 <li class="list-group-item">Antonio Barrera Funes</li>
@@ -385,7 +389,7 @@ $(document).ready(function(){
 			
 			<h2 id="titulomodal" class="display-4">Ventana en desarrollo WIP</h2>
             <h5>Desarrollo realizado:</h5>
-			<ul>
+			<ul id="listaGoals">
                 <li>Matar moscas a cañonazos</li> 
                 <li>Montar cirios pascuales</li> 
                 <li>Disparar con polvora de rey</li>   
@@ -395,3 +399,24 @@ $(document).ready(function(){
 			<a class="popup-cerrar" href="#">X</a>
 		</div>
 	</div> 
+
+<script>
+    var Miguel1 = ["Miguel Ángel López Segura", "<li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li>"];
+    var Fran = ["Francisco Linares", "<li>Ser Zeus</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li>"];
+    var Zygis = ["Zygimantas Sniurevicius", "Lorem impsun 3"];
+    var Marc = ["Marc Expósito Miras", "Lorem impsun 4"];
+    var Manu = ["Manuel González Mesa", "Lorem impsun 5"];
+    var Alejandro = ["Alejandro López López", "Lorem impsun 6"];
+    var Hamza = ["Hamza Benhachmi", "Lorem impsun 7"];
+    var Miguel2 = ["Miguel Ángel López Rodríguez", "Lorem impsun 8"];
+    var Loli =["María Dolores Salmerón Segura", "Lorem impsun 9"];
+    var Alvaro = ["Álvaro Sánchez Casares", "Lorem impsun 10"];
+    var Jose = ["José Luis Ramírez Jiménez", "Lorem impsun 11"];
+    
+    var alumnos2018 = [Miguel1, Fran, Zygis, Marc, Manu, Alejandro, Hamza, Miguel2, Loli, Alvaro, Jose];
+    $(".inform").click(function(){
+        var alumno = $(this).attr("alumno");
+        $('#titulomodal').html(alumnos2018[alumno][0]);
+        $('#listaGoals').html(alumnos2018[alumno][1]);
+    });
+</script>

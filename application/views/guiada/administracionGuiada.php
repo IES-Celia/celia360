@@ -116,11 +116,13 @@ else {
         }
             $idEscena =$escena['id_visita'];
 
-
         echo "<tr class='filaEscena'>".
         "<td class='id_visita'>".$escena['id_visita']."</td>
-        <td class='cod_escena'> <a href='".$base_url."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a></td> 
-        <td class='audio_escena'>".$escena['audio_escena']."</td>
+        <td class='cod_escena'> <a href='".base_url()."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a></td> 
+        <td class='audio_escena'><audio controls='controls' preload='auto'>
+        <source src='" . base_url().$escena['audio_escena'] . "' type='audio/m4a'/>
+        <source src='" . base_url().$escena['audio_escena'] . "' type='audio/mp3'/>
+        </audio></td>
         <td class='titulo_escena'>".$escena['titulo_escena']."</td>
         <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
         <td><button class='change_img'>Cambiar</button></td>
@@ -128,7 +130,6 @@ else {
         <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
         <td class='orden'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
         <td class='posicion'>".$escena['orden']."</td>";
-
 
     }
 } // else

@@ -106,6 +106,8 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     "class" => "imgHS",
     "width" => "120",
     "height" => "120",
+    "title" => $img["titulo_imagen"],
+    "alt" => $img["titulo_imagen"],
     "data-id" => $img["id_imagen"]
     
   ); 
