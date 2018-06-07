@@ -86,16 +86,16 @@
          else {
             // Ya existe uno o varios mapas. Vamos a crear cada uno en una capa individual
             foreach ($mapa as $imagen) {
-               echo "<div id='zona".$indice."' class='pisos' style='display: none;'>";
+               echo "<div id='zona".$indice."' class='pisos-admin' style='display: none;'>";
                echo "<img src='".base_url($imagen['url_img'])."'  style='width:100%;height:100%;'>";
 
                 foreach ($puntos as $punto) {
                   if($punto['piso']==$indice){
 
                     echo "<div id='".$punto['nombre']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-                    <span class='tooltip'>".$punto['id_escena']."</span>
+                    
                     </div>";
-
+                    //<span class='tooltip'>".$punto['id_escena']."</span>                    
                   }
 
                 }
@@ -123,6 +123,7 @@
             <button class="botonmapa" id="btn-anadir-mapa">Añadir zona</button>
             <button class="botonmapa" id="btn-config-mapa">Config general</button>
             <button class="botonmapa" id="btn-eliminar-mapa">Eliminar zona</button>
+            <button class="botonmapa" id="btn-mover-puntos">Mover escenas</button>
             <a href="<?php echo base_url('escenas') ?>"><button class="botonmapa">Volver atras</button></a>
         </div>
         <?php

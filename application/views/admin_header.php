@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
+    <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     
     <!--ATENCIÓN LOLI  PARA PAGINACIÓN (varias funcionalidades)-->
    <link rel="stylesheet" href="<?php echo base_url("assets/css/jquery.dataTables.min.css"); ?>">

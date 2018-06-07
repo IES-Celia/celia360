@@ -1,5 +1,6 @@
 var id;
 var piso = 0;
+var draggable = 0;
 
 
 $(document).ready(function() {
@@ -10,6 +11,7 @@ $(document).ready(function() {
 		$(".pisos").hide();
 		$("#mapa_escena > .pisos:eq(" + piso + ")").show();
 		$(".pisos:eq(" + piso + ")").show();
+		$(".pisos-admin:eq(" + piso + ")").show();
 		var piso_config = $("#modalConfig > #caja > form > input[name=piso_inicial]").val();
 		$("#modalConfig > #caja > #mapa_escena_hotspot > .pisos_config:eq("+piso_config+")").show();	
 		$("#mapa_config_mapa > .pisos_config").hide();	
@@ -151,6 +153,35 @@ $(document).ready(function() {
 		$("#zona"+$(this).val()).show();
 		
 	})
+
+	$("#btn-mover-puntos").click(function(){
+		if(draggable==0){
+			draggable = 1;
+			$(".puntos").off("click");
+			$(".puntos").off("contextmenu");
+			$(".puntos").attr("class","puntos-draggables");
+			$(".puntos-draggables").draggable({
+				stop: function(event, ui){
+					var posicion = $(this).position();
+					
+				},
+				containment: "parent"
+			})
+
+		}else{
+			draggable = 0;
+			$(".puntos-draggables").draggable("destroy")
+			$(".puntos-draggables").attr("class","puntos")
+			$(".puntos").click(function(){
+				location.href = base_url + "escenas/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"+piso;
+			})
+			$("#mapa_escena .puntos").contextmenu(function(event) {
+				event.stopImmediatePropagation();
+				location.href=base_url+"escenas/showUpdateScene/"+$(this).attr("escena");
+				event.preventDefault();
+			})
+		}
+	});
 });
 
 
@@ -177,12 +208,12 @@ function mapa_responsivo(){
 		if (anchura_natural > altura_natural) {
 			anchura = anchura_maxima
 			altura = altura_natural * anchura / anchura_natural;
-			console.log("Hello || altura : " + altura + " |tipo anchura: " + typeof (anchura) + " |anchura: " + anchura+" |piso"+piso)
+		
 		} else {
 			altura = altura_maxima
 			anchura = anchura_natural * altura / altura_natural;
 		}
-		console.log("altura natural : " + altura_natural + " |anchura natural: " + anchura_natural + " |piso" + piso)
+		
 		$("#mapa_escena").css({
 			height: altura + 'px',
 			width: anchura + 'px'
@@ -191,46 +222,8 @@ function mapa_responsivo(){
 	if ($("#mapa_escena_hotspot").length){
 		
 		anchura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").width();
-		altura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").height();;
-		console.log(anchura+"|"+altura)
-
-		/*$("#mapa_escena_hotspot").css({
-			height: altura + 'px',
-			width: anchura + 'px'
-		});*/
-	}
-
-	/*
-	 var altura_natural = $("#mapa > div.piso_abierto > img").get(0).naturalHeight
-    var anchura_natural =$("#mapa > div.piso_abierto > img").get(0).naturalWidth
-    var anchura, altura, anchura_ventana, altura_ventana;
-
-    anchura_maxima = window.innerWidth*0.45;
-    altura_maxima = window.innerHeight*0.80;
-
-    if(anchura_natural > altura_natural){
-        anchura=window.innerWidth*0.45;
-        altura = altura_natural*anchura/anchura_natural;
-        $(".abierto_boton").animate({left: "46.5%"},200);
-    }else{
-        altura=window.innerHeight*0.80;
-        anchura = anchura_natural*altura/altura_natural;
-        $(".abierto_boton").animate({left: anchura+20+"px"},200);
-    }
-
-    $("#mapa").css({
-        bottom: "10px",
-        height: altura+"px",
-        width: anchura+"px"
-    });
-
-    $("#mapa > div.piso_abierto > img").css({
-        width: "100%",
-        height: "100%"
-    });
-	 */
-	
-	
+		altura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").height();		
+	}	
 }
 	
 /**
@@ -242,10 +235,12 @@ function subir_piso(){
 		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").hide('fast');
 		$("#mapa_guiada > .pisos:eq(" + piso + ")").hide('fast');
+		$("#mapa_escena > .pisos-admin:eq(" + piso + ")").hide('fast');
 		piso++;
 		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');	
 		$("#mapa_guiada > .pisos:eq(" + piso + ")").show('fast');
+		$("#mapa_escena > .pisos-admin:eq(" + piso + ")").show('fast');
 	}
 }
 
@@ -254,10 +249,12 @@ function bajar_piso(){
 		$("#mapa_escena > .pisos:eq("+piso+")").hide('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").hide('fast');	
 		$("#mapa_guiada > .pisos:eq(" + piso + ")").hide('fast');
+		$("#mapa_escena > .pisos-admin:eq(" + piso + ")").hide('fast');
 		piso--;
 		$("#mapa_escena > .pisos:eq("+piso+")").show('fast');
 		$("#mapa_escena_hotspot > .pisos:eq("+piso+")").show('fast');	
 		$("#mapa_guiada > .pisos:eq(" + piso + ")").show('fast');	
+		$("#mapa_escena > .pisos-admin:eq(" + piso + ")").show('fast');
 	}
 }
 
