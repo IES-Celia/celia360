@@ -78,7 +78,7 @@ $(document).ready(function() {
 		} else if ($(this).parent().hasClass("pisos_pd")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
-			$(".for > form > input[name=escena_celda]").val($(this).attr("escena"));
+			$("input[name=escena_celda]").val($(this).attr("escena"));
 		} else if ($(this).parent().hasClass("pisos_config")){
 			$("#modalConfig > #caja > form > #mapa_config_mapa > .pisos_config > .puntos").css("background", "white")
 			$("#modalConfig > #caja > form > input[name=punto_inicial]").val($(this).attr("id"))
