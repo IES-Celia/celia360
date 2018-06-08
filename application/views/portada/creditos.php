@@ -409,7 +409,7 @@ $(document).ready(function(){
     var Alejandro = ["Alejandro López López", "Lorem impsun 6"];
     var Hamza = ["Hamza Benhachmi", "Lorem impsun 7"];
     var Miguel2 = ["Miguel Ángel López Rodríguez", "Lorem impsun 8"];
-    var Loli =["María Dolores Salmerón Segura", "Lorem impsun 9"];
+    var Loli =["María Dolores Salmerón Sierra", "Lorem impsun 9"];
     var Alvaro = ["Álvaro Sánchez Casares", "Lorem impsun 10"];
     var Jose = ["José Luis Ramírez Jiménez", "Lorem impsun 11"];
     
