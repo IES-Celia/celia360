@@ -337,7 +337,7 @@ class Hotspots extends CI_Controller {
     
   
    /**
-    * TODO: documentación.
+    * muestra todas las imagenes que podemos añadir a un panel.
     */
   public function show_panel_info(){
     //cargar el modelo
@@ -383,7 +383,7 @@ class Hotspots extends CI_Controller {
 ///////////////////////////////////////////  
   
    /**
-    * TODO: documentación.
+    * Añade las imagenes seleccionadas al hotspot y redirige.
     */
   public function add_imgs_hotspot(){
     //Añade las imagenes a la base de datos
@@ -393,7 +393,7 @@ class Hotspots extends CI_Controller {
   }
   
    /**
-    * TODO: documentación.
+    * Permite modificar el panel de informacion, recibe el id y las imagenes asociadas a ese panel
     */
   public function modify_panel_info($idhs){
     $datos["idhs"] = $idhs;
@@ -483,7 +483,8 @@ class Hotspots extends CI_Controller {
     }
 
    /**
-    * TODO: documentación.
+    * Te trae los datos del formulario y los mete
+    * Miguel Angel 08/06/2018
     */
     public function process_insert_hotspot(){
     $res=$this->hotspotsModel->process_insert_hotspot();

@@ -8,6 +8,11 @@ class GuiadaModel extends CI_Model {
         $this->load->database();
     }
 
+    /** 
+     * Recibe datos del formulario y crea la entrada en la base de datos
+     * 
+    */
+
     public function crearEscenaGuiada() {
 
         $cod_escena = $_REQUEST['escenaGuiada'];
@@ -28,6 +33,11 @@ class GuiadaModel extends CI_Model {
         return $this->db->affected_rows();
     }
 
+  /** 
+     * Carga todas las escenas en order ascendente
+     *
+    */
+
     public function allEscenasGuiada(){
         $sql = "SELECT * FROM visita_guiada ORDER BY orden ASC;";
         $resultado = $this->db->query($sql);
@@ -38,12 +48,22 @@ class GuiadaModel extends CI_Model {
         return $array;
     }
 
+      /** 
+     * Carga la ultima escena creada
+     * 
+    */
+
     public function lastEscenaGuiada() {
 
             $resultado = $this->db->query("SELECT id_visita FROM visita_guiada ORDER BY id_visita DESC LIMIT 1")->result_array()[0]["id_visita"];
             return $resultado;
         
     }
+
+      /** 
+     * Recibe una imagen del formulario y la sube al servidor 
+     * 
+    */
 
     public function asociarImagen($idEscena){
 
@@ -60,9 +80,6 @@ class GuiadaModel extends CI_Model {
 
         if ($resultado_subida == false) {
             $malasuerte = $this->upload->display_errors("<i>", "</i>");
-            var_dump($malasuerte);
-           // $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
-            //$this->db->query($sql);
             $resultado = -1;
         } else {
             //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
@@ -75,6 +92,11 @@ class GuiadaModel extends CI_Model {
         }
         return $resultado;
     }
+
+      /** 
+     * Recibe un ID y borra esa escena
+     * 
+    */
     
     public function borrarEscenaGuiada($idEscena) {
         $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
@@ -83,12 +105,22 @@ class GuiadaModel extends CI_Model {
         return $this->db->affected_rows();
     }
 
+      /** 
+     * Borra la imagen del servidor
+     * 
+    */
+
     public function borrarImagen($idEscena){
         $sql ="SELECT img_preview  FROM visita_guiada WHERE id_visita='$idEscena'";
         $resultado = $this->db->query($sql)->result_array()[0]["img_preview"];
         $enlace ="assets/imagenes/previews-guiada/" . $resultado;
         unlink($enlace);
     }
+
+      /** 
+     * Actualiza la escena guiada desde el panel de administracion
+     * 
+    */
 
     public function actualizarEscena($idEscena){
         $id_visita = $_REQUEST["id"];
@@ -106,6 +138,12 @@ class GuiadaModel extends CI_Model {
         return $this->db->affected_rows();
     }
 
+      /** 
+     * 
+     * DEPRICATED 
+     * 
+    */
+
     public function ordenarTabla(){
         $nombreColumna = $_POST['nombreColumna'];
         $orden = $_POST['orden'];
@@ -122,6 +160,11 @@ class GuiadaModel extends CI_Model {
         return $array;
         
     }
+
+  /** 
+     * Intercambia dos filas por la superior o anterior
+     * 
+    */
 
     public function intercambiarFilas($filaAid,$filaApos,$filaBid,$filaBpos){
 
