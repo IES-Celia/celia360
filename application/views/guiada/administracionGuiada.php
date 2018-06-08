@@ -125,7 +125,7 @@ else {
         </audio></td>
         <td class='titulo_escena'>".$escena['titulo_escena']."</td>
         <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
-        <td><button class='change_img'>Cambiar</button></td>
+        <td><button id='boton_guiada' class='change_img'>Cambiar</button></td>
         <td><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
         <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
         <td class='orden'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
@@ -138,7 +138,7 @@ else {
 </table>
 
 <div id='modalGuiada' class='modalFondoGuiada'>
-    <div class="modal-contenidoGuiada">
+    <div id='caja4' class="modal-contenidoGuiada">
         <span class="closeGuiada">&times;</span>
         <h2>Modificar</h2>
         Selecciona una escena:
@@ -172,8 +172,8 @@ else {
                 
             ?>
             </div>
-            <button id="btn-bajar-piso" type="button">Bajar piso</button>
-				<button id="btn-subir-piso" type="button">Subir piso</button>
+            <button id="boton_guiada_modificar" id="btn-bajar-piso" type="button">Bajar piso</button>
+				<button id="boton_guiada_modificar" id="btn-subir-piso" type="button">Subir piso</button>
         <br><br>
         Titulo escena:<input id='titulo_escena' type='text' name='tituloGuiada' value='' >
         <br><br>
@@ -193,11 +193,11 @@ else {
 
 
 <div id='modalGuiadaImagen' class='modalFondoGuiada'>
-    <div class="modal-contenidoGuiada">
+    <div id='caja' class="modal-contenidoGuiada">
         <span class="closeGuiada">&times;</span>
         <h2>Modificar Imagen</h2>
         Selecciona una imagen:
-        <form id='guiadaImagen' class="for" enctype="multipart/form-data" action='' method="post">
+        <form id='guiadaImagen' id='caja' enctype="multipart/form-data" action='' method="post">
             <input type="file" name="imagenPreview" placeholder="Seleccionar la imagen" required><br>
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000"/>
             <input type="hidden" name="id_visita" value=""/>

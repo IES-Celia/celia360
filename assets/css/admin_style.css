@@ -1786,16 +1786,57 @@
     }
 
 
+                                   /*               Boton del Menu de la visita guiada           */    
+
+
+    #boton_guiada{
+            height: 30px;
+            border-radius: 5px;
+            background-color:#1C6EA4;          
+            font-size:18px;
+            color:white;
+            transition: 0.4s;
+    }
+        
+    #boton_guiada:hover{            
+            box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.75);    
+    }
+
+    #boton_guiada_modificar{
+            text-decoration: none;
+            border:2px solid white;
+            color:white;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 60px;
+            width:100%;
+            max-width: 400px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 10px;
+            line-height: 50px;
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
+            
+        }
+
+    #boton_guiada_modificar:hover{
+            background-color:rgba(0,0,0,0.4);
+            
+        }
 
                                   /*  El rojo de los botones de borrado de los formularios   */
 
-        .rojo_borrar{
-            color:white;
-            border-color: white;
-            background-color:#845050 !important;
-        }
-        .rojo_borrar:hover{
-            color:white !important;
-            border-color: red !important;
-            background-color:#441b1b !important;
-        }
+    .rojo_borrar{
+        color:white;
+        border-color: white;
+        background-color:#845050 !important;
+    }
+    .rojo_borrar:hover{
+        color:white !important;
+        border-color: red !important;
+        background-color:#441b1b !important;
+    }
