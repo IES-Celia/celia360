@@ -53,4 +53,10 @@ class Mapa extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template',$datos);
     }
+    public function update_punto(){
+        $id = $this->input->post("id_punto");
+        $left =  $this->input->post("left");
+        $top = $this->input->post("top");
+        $resultado = $this->mapa->update_punto($id,$left,$top);
+    }
 }

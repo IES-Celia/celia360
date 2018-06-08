@@ -265,4 +265,15 @@
 			
 			return $resultado;
 		}
+/**
+ * Modifica la posición del punto
+ */
+		public function update_punto($id, $left, $top){
+			$this->load->database();
+			$query = "UPDATE puntos_mapa SET left_mapa=$left , top_mapa=$top WHERE nombre =\"$id\"";
+			$this->db->query($query); 
+			$resultado = $this->db->affected_rows();
+			
+			return $resultado;
+		}
 	}

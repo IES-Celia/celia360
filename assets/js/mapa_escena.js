@@ -163,7 +163,14 @@ $(document).ready(function() {
 			$(".puntos-draggables").draggable({
 				stop: function(event, ui){
 					var posicion = $(this).position();
-					
+					var identificador = $(this).attr("id");
+					console.log(posicion.left +" | | "+posicion.top);
+
+					/*$.ajax({
+						type: "post",
+						url: base_url + "mapa/update_punto",
+						data: { id_punto: identificador , left: posicion.left , top: posicion.top }
+					})*/
 				},
 				containment: "parent"
 			})
