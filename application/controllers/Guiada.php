@@ -78,6 +78,13 @@ class Guiada extends CI_Controller {
         }
     }
 
+/**
+* Método que carga las vistas de la adminisrtacion de la guiada.
+*
+* Carga todos los audios y escenas
+* nos lleva a la vista administracion
+*/
+
     public function menuGuiada(){
         //Todos los audios existentes.
         $datos["audios"]=$this->AudioModel->allAudios();
@@ -88,6 +95,14 @@ class Guiada extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("admin_template", $datos);
     }
+
+/**
+* Método para asociar un thumbnail a la escena guiada.
+* 
+* Si es la primera vez que introducimos una imagen coge la ultima entrada de tabla guiada y le asocia la imagen
+* Si ya tenia una imagen en la base de datos borra la imagen y la cambia por la nueva, una modificacion simple
+*
+*/
 
     public function asociarImagenPreview(){
         //Si es una modificacion de imagen existente
@@ -104,17 +119,7 @@ class Guiada extends CI_Controller {
             }
           }
           redirect('/guiada/menuGuiada', 'refresh');
-         /*
-          if($asociar){
-            //ir menuGuiada, donde puede ver el ultimo punto introducido
-            $this->menuGuiada();
-
-          } else {
-            //Borrar ultima escena
-            $this->GuiadaModel->borrarEscenaGuiada($idEscena);
-            $this->mostrarFormularioGuiada();   
-      }
-      */
+        
     }
 
     public function modificarImagenPreview(){
@@ -128,18 +133,37 @@ class Guiada extends CI_Controller {
     }
   }
 
+/**
+* Método que selecciona todas las entradas de tabla visita guiada.
+* 
+* El resultado de ese select lo envia en JSON.
+*
+*/
+
     public function getGuiada(){
         $resultado = $this->GuiadaModel->allEscenasGuiada();
         echo json_encode($resultado);
     }
 
+/**
+* Método para borrar una escena en el panel de administracion.
+* 
+* Recibe el id de la escena guiada para borrar esa imagen y luego borra la guiada de la base de datos
+*
+*/
+
     public function borrarEscena(){
         $idEscena = $_REQUEST["id"];
         $this->GuiadaModel->borrarImagen($idEscena);
         $this->GuiadaModel->borrarEscenaGuiada($idEscena);
-        //$this->menuGuiada();
-       
     }
+
+/**
+* Método metodo para actualizar una escena desde el panel de administracion guiada.
+* 
+* Recibe el id de la escena guiada y la actualiza con los datos correspondientes.
+*
+*/
     
     public function actualizarEscena(){
         $id_visita = $_REQUEST["id"];
@@ -147,11 +171,24 @@ class Guiada extends CI_Controller {
         echo($actualizar);
     }
 
+/**
+* metodo para ordenar la tabla de la administracion visita guiada.
+* 
+* DEPRICATED.
+*
+*/
+
     public function ordenarTabla(){
         $ordenar= $this->GuiadaModel->ordenarTabla();
         echo json_encode($ordenar);
     }
 
+/**
+* metodo para ordenar las filas de la adminsitracion guiada.
+* 
+* intercambia la fila seleccionaba por la fila de abajo o arriba
+*
+*/
     public function cambiarFilas(){
         $filaAID = $_REQUEST["filaAID"];
         $filaAPOS = $_REQUEST["filaAPOS"];
