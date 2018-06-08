@@ -34,13 +34,12 @@
         text-align: center;
         background-image: url("svg/fullscreenblanco.svg");
         cursor: pointer;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         margin-right: 5px; 
         background-size:cover;
         background-position: center;
-        transition: width 0.5s, height 0.5s;
+        transition: width 0.5s, height 0.5s, opacity 0.5s;
     }
-
 
     /* iconos visita guiada */
        .icono_right,
@@ -1050,4 +1049,10 @@ display: block;
   font-weight: bold;
   font-size:1.2m;
   margin-top:3px;
+}
+/* ICONOS VISITA LIBRE */
+
+.custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, 
+.custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen {
+  transition: width 0.5s, height 0.5s, opacity 0.5s ease;
 }

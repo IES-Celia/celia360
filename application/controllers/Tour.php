@@ -75,7 +75,9 @@ class Tour extends CI_Controller {
    * Genera ese JSON para ser recibido en el cliente mediante una petición Ajax.
    */
    public function get_json_guiada() {
-        $json = $this->TourModel->get_datos_guiada();
+        $this->load->model("MapaModel","mapa");
+        $datos["inicio"] = $this->mapa->cargar_config();
+        $json = $this->TourModel->get_datos_guiada($datos);
         echo $json;
   }
   
@@ -84,7 +86,9 @@ class Tour extends CI_Controller {
    * Genera ese JSON para ser recibido en el cliente mediante una petición Ajax.
    */
     public function get_json_destacados() {
-        $json = $this->TourModel->get_datos_destacado();
+        $this->load->model("MapaModel","mapa");
+        $datos["inicio"] = $this->mapa->cargar_config();
+        $json = $this->TourModel->get_datos_destacado($datos);
         echo $json;
     }
     
@@ -131,9 +135,9 @@ class Tour extends CI_Controller {
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
     $datos["vista"]="portada/updatePortada";
     if ($resultado == 0) $datos["mensaje"] = "Opciones de portada modificadas correctamente";
-    if ($resultado == 1) $datos["error"] = "Error al modificar las opciones de portada";
-    if ($resultado == 2) $datos["error"] = "Datos modificados con éxito, pero no se ha cambiado la imagen de fondo";
-    if ($resultado == 3) $datos["error"] = "No se han podido modificar los datos ni se ha cambiado la imagen de fondo";
+    if ($resultado == 1) $datos["error"] = "Error al modificar las opciones de portada. Imagen portada OK.";
+    if ($resultado == 2) $datos["error"] = "No se ha cambiado la imagen de portada";
+    if ($resultado == 3) $datos["error"] = "No se han modificado los datos ni se ha cambiado la imagen de portada";
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 
     $this->load->view("admin_template", $datos);

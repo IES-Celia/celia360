@@ -163,24 +163,31 @@ class EscenasModel extends CI_Model {
         return $resultado;
     }
 
+    /**
+     * Función encargada de actualizar una escena. Los datos llegan por POST.
+     * 
+     * @cod Código de la escena a modificar.
+     * @return 0 si todo va bien, 1 si falla la subida de la imagen, 2 si falla la actualización de la BD
+     */
     public function update($cod) {
 
-        $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
-
+        $nombre_fichero = "$cod.JPG";
+        $resultado = 0; // Para el return. Suponemos que todo va a ir OK de entrada.
+        
         $config['upload_path'] = 'assets/imagenes/escenas/';
         $config['allowed_types'] = 'jpg';
-        $config['file_name'] = "$cod.JPG";
+        $config['file_name'] = $nombre_fichero;
         $config['overwrite'] = TRUE;
 
         $this->load->library('upload', $config);
 
-        $resultado = $this->upload->do_upload('panorama');
+        $res_upload = $this->upload->do_upload('panorama');
         
-        if ($resultado) {
+        if ($res_upload) {
             // Nueva imagen subida con éxito. Vamos a redimensionarla a 4000 px para evitar problemas con Mozilla
             if ($this->upload->data()["image_width"] > 4000) {
                 $config['image_library'] = 'gd2';
-                $config['source_image'] = 'assets/imagenes/escenas/'.$cod.'.JPG';
+                $config['source_image'] = 'assets/imagenes/escenas/'.$nombre_fichero;
                 $config['maintain_ratio'] = TRUE;
                 $config['new_image'] = 'assets/imagenes/escenas/';
                 $config['width'] = 4000;
@@ -188,10 +195,12 @@ class EscenasModel extends CI_Model {
 
                 if (!$this->image_lib->resize()) {
                     // Ha ocurrido un error al redimensionar la imagen
-                    $resultado = -1;  // Marca de error
+                    $resultado = 1;  // Marca de error en upload
                 }
             }
-            
+        } else {
+            // Ha fallado el upload de la imagen
+            $resultado = 1;  // Marca de error en upload
         }
 
 
@@ -206,15 +215,18 @@ class EscenasModel extends CI_Model {
         $update = "
                     UPDATE escenas 
                     SET Nombre = '$name'";
-        if ($resultado != 0) {
-            $update = $update . ", panorama = 'assets/imagenes/escenas/$panorama'";
+        if ($res_upload) {
+            $update = $update . ", panorama = 'assets/imagenes/escenas/$nombre_fichero'";
         }
         $update = $update . "WHERE id_escena = '$id'";
 
-
+        // Lanzamos el update de la base de datos
         $this->db->query($update);
+        if ($this->db->affected_rows() == 0 && !$res_upload) {
+            $resultado = 2;     // Marca de error en actualización de la BD
+        }
 
-        return $this->db->affected_rows();
+        return $resultado;
     }
 
 }

@@ -34,11 +34,9 @@
                 
                 $longitud = count($fila);
                 echo '<div class="slider_admin">
-                      <div id="opciones_fila">';
-                         // if($longitud<4) 
-                              echo '<button onclick="anadir_celda('.$contador.')">Añadir celda</button>';
-                          
-                      echo '</div>';
+                        <div id="opciones_fila">';
+                            echo '<button onclick="anadir_celda('.$contador.')">Añadir celda</button>';
+                        echo '</div>';
                       $contador = $contador + 1;
                       foreach($fila as $celda){
                           echo '
@@ -65,6 +63,7 @@
         <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 
         <script>
+            // metodo que borra un correspondiente punto destacado
             function borrar_celda(id){
                 var result = confirm("¿Desea borrar la celda?");
                 if(result == true){
@@ -72,14 +71,12 @@
                 }
             }
             
+            // metodo que actualiza un correspondiente punto destacado, redireccionando a la vista que carga el formulario de update
             function update_celda(id){
                 location.href= "<?php echo site_url("PuntosDestacados/formulario_update/")?>"+id  
             }
-            /*
-            $(".grid-item").click(function(){
-                location.href= "<?php echo site_url("PuntosDestacados/formulario_update/")?>"+$(this).children().last().val();
-            });
-            */
+
+            // metodo que añade un punto destacado, redireccionando a la vista que carga el formulario de insercción
             function anadir_celda($id){
                  location.href= "<?php echo site_url("PuntosDestacados/anadir_celda/")?>"+$id               
             }

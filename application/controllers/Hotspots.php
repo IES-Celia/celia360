@@ -55,7 +55,14 @@ class Hotspots extends CI_Controller {
      */
     
     public function show_insert_hotspot($pitch, $yaw, $idescena) {
+        //cargar los modelos
         $this->load->model("MapaModel","mapa");
+        $this->load->model("AudioModel");
+        $this->load->model("VideoModel", "Vidm");
+        //obtener los listados de audio y vídeo
+        $datos["listaAudios"] = $this->AudioModel->buscaraudio();
+        $datos["listaVideos"] = $this->Vidm->buscarvideo();
+
         $datos["documentos"]= $this->hotspotsModel->getAllDocumentos();
 	$datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
@@ -310,6 +317,7 @@ class Hotspots extends CI_Controller {
             $datos["escena_actual"]=$joshua[1];
             //cargar el modelo
             $this->load->model("ImagenModel");
+            
             //acciones para ver el listado de imagenes
             $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -341,6 +349,38 @@ class Hotspots extends CI_Controller {
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view('admin_template', $datos); 
   }
+///////////////////////////////////////////////////  
+    /**** ATENCIÓN INSERTAR IMÁGENES EN HOSTPOT DE TIPO PANEL ****\
+    /**
+     * Inserta una imagen y nos muestra el mensaje si ha sido un éxito o no
+     * 
+     * @author: María Dolores Salmeron Sierra    
+     */
+    public function insertar_imagen() {
+
+        //cargar el modelo
+        $this->load->model("ImagenModel");
+        //acciones para insertar la imagen
+        $resultado = $this->ImagenModel->insertar_imagen();
+
+        // Comprobamos cuantas imágenes se han subido correctamente
+        $correctas = 0;
+        $incorrectas = 0;
+        for ($i = 0; $i < count($resultado); $i++) {
+            if ($resultado[$i] == 0) $incorrectas++; else $correctas++;
+        }
+        $total = $correctas + $incorrectas;
+        if ($incorrectas > 0)
+            $datos["error"] = $total." imágenes subidas: $correctas correctas - $incorrectas fallidas";
+        else
+            $datos["mensaje"] = $total." imágenes subidas correctamente";
+            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+            $datos["vista"] = "hotspots/hotspotPanel";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('admin_template', $datos);
+    }
+
+///////////////////////////////////////////  
   
    /**
     * TODO: documentación.
@@ -391,7 +431,7 @@ class Hotspots extends CI_Controller {
    /**
     * Procesa la creación de un hotspots de tipo video.
     */
-public function process_insert_video(){
+    public function process_insert_video(){
         $resultado = $this->hotspotsModel->insertarHotspotVideo();
 		$anda=$this->input->post_get("id_scene");
         if ($resultado == true) {
@@ -412,16 +452,17 @@ public function process_insert_video(){
     }
 
    /**
-    * TODO: documentación.
+    * Recibe la petición vía Ajax para obtener la URL de un audio a partir de su Id.
     */
-public function load_audio(){
-    $id = $_REQUEST["id_hotspot"];
-    $resultado = $this->hotspotsModel->cargar_audio($id);
-    //var_dump($resultado);
-    //TODO: añadir mensaje de la situacion
-}
-   /**
-    * TODO: documentación.
+   public function load_audio() {
+        $id = $_REQUEST["id_hotspot"];
+        $resultado = $this->hotspotsModel->cargar_audio($id);
+        //var_dump($resultado);
+        //TODO: añadir mensaje de la situacion
+    }
+
+    /**
+    * Procesa la creación de un hotspots de tipo audio.
     */
     public function process_insert_audio() {
 

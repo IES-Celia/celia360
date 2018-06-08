@@ -1,7 +1,7 @@
 ---
 title: "Celia 360 - Guía del usuario"
 author: IES Celia Viñas
-date: Almería, 3 de mayo de 2018
+date: Almería, 30 de mayo de 2018
 subject: ""
 tags: []
 ---
@@ -227,7 +227,7 @@ En las siguientes secciones, le indicaremos qué información debe proporcionar 
 
 En esta captura de pantalla puede observar cómo verá su visitante cada uno de los tipos de hotspot dentro de una escena:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-01.jpg)
 
 ## Hotspots de tipo enlace entre escenas
 <a name="enlace"></a>
@@ -236,11 +236,11 @@ Estos son los primeros hotspots que necesitará crear, ya que son imprescindible
 
 Los hotspots de tipo enlace permiten que un visitante salte de una escena a la siguiente. Se muestran en la visita como flechas que apuntan hacia la siguiente escena:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-02.jpg)
 
 Para crear un hotspot de tipo enlace, siga el procedimiento general para crear un hotspot cualquiera descrito en el [apartado 7](#hotspots). Cuando llegue a la pantalla de selección del tipo de hotspot, haga clic en la opción "Punto de salto a otra escena". Le aparecerá una pantalla semejante a esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-03.jpg)
 
 En la pantalla se le mostrará el mapa de la zona donde está la escena en la que está creando el hotspot. Dicha escena estará marcada con un punto de color rojo. Para crear un salto desde esa escena hasta otra, haga clic en un punto blanco adyacente. El punto se ilumnará en amarillo. Confirme que ese es el punto correcto pulsando el botón "Enviar" o "Aceptar".
 
@@ -259,13 +259,13 @@ Le recomendamos que planifique los posibles recorridos que sus visitantes podrá
 
 Los hotspots de tipo panel informativo son galerías de imágenes que puede asociar a puntos concretos de su recorrido virtual. Adicionalmente, puede asociar un texto informativo y/o un documento PDF descargable para ampliar la información sobre ese punto de su recorrido. Típicamente, los paneles informativos se utilizan para resaltar lugares concretos de su visita virtual donde desea ofrecer fotografías de detalle e información adicional a su visitante. Una vez creado, el hotspot tendrá este aspecto:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-04.jpg)
 
 Le recomendamos que suba previamente todas las imágenes que vaya a usar en su panel informativo. Para ver cómo subir imágenes, visite la [sección 6](#subirimagenes). Es buena idea asignar a todas las imágenes que vayan a formar parte de un panel un mismo título genérico, aunque la información de detalle de cada una de ellas sea diferente. Eso le permitirá localizarlas con más facilidad cuando vaya a asignarlas a su panel.
 
 Para crear un hotspot de este tipo, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Punto panel informativo". Verá en su navegador una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-05.jpg)
 
 En ese formulario deberá seleccionar:
 
@@ -275,7 +275,7 @@ En ese formulario deberá seleccionar:
 
 Cuando haya terminado, pulse "Enviar" o "Aceptar". Tendrá ahora que seleccionar las fotografías que aparecerán en este panel a través de una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-06.jpg)
 
 Haga clic en las imágenes de la izquierda para agregarlas a su panel. Si selecciona una imagen por error, haga clic de nuevo sobre ella para eliminarla de la selección.
 
@@ -286,13 +286,13 @@ Pulse "Enviar" o "Aceptar" para guardar los cambios, y "Volver atrás" para canc
 
 Los hotspots de tipo audio están pensados para asignar audiodescripciones a puntos concretos de su recorrido virtual. Por supuesto, puede utilizarlos para insertar cualquier sonido o música en ese punto, según la información que quiera ofrecer a sus visitantes. Una vez creado, el hotspot tendrá este aspecto:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-07.jpg)
 
 Le recomendamos que suba previamente todos los sonidos que vaya a usar. Para ver cómo subir archivos de audio, visite la [sección 6](#subirimagenes).
 
 Para crear un hotspot de tipo audio, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Punto audiodescrito". Verá en su navegador una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-08.jpg)
 
 En ese formulario deberá seleccionar uno de los archivos de audio de la lista para asociarlo al hotspot. Puede reproducir el audio desde esta misma pantalla para asegurarse de que es el correcto. También puede usar el buscador, para localizar el audio por su título o descripción, y el paginador para navegar a lo largo de toda la lista de audios, en caso de que haya subido muchos.
 
@@ -303,13 +303,13 @@ Cuando haya terminado, pulse "Enviar" o "Aceptar". Su hotspot de tipo audio esta
 
 Los hotspots de tipo vídeo le permiten insertar vídeos en puntos concretos de su recorrido virtual. A diferencia de las imágenes o los archivos de sonido, los vídeos no estarán alojados en su servidor, ya que pocos servidores pueden soportar vídeos en términos de tamaño de archivo y ancho de banda. En lugar de ello, deberá alojar los vídeos en un proveedor de streaming externo. De momento, la aplicación soporta únicamente vídeos alojados en Vimeo, que es un servicio libre de publicidad y gratuito para vídeos sin ánimo de lucro. Una vez creado, el hotspot tendrá este aspecto:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-09.jpg)
 
 Le recomendamos que suba previamente todos los vídeos que vaya a usar. Para ver cómo subir vídeos, visite la [sección 6](#subirimagenes)</a>.
 
 Para crear un hotspot de tipo vídeo, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Punto vídeo". Verá en su navegador una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-10.jpg)
 
 En ese formulario deberá seleccionar uno de los vídeos dados de alta en la plataforma (y que, a su vez, deben estar subidos a Vimeo). Puede reproducir el vídeo desde esta misma pantalla para asegurarse de que es el correcto. También puede usar el buscador, para localizar el vídeo por su título o descripción, y el paginador para navegar a lo largo de toda la lista de vídeos, en caso de que disponga de muchos.
 
@@ -320,13 +320,13 @@ Cuando haya terminado, pulse "Enviar" o "Aceptar". Su hotspot de tipo vídeo est
 
 Los hotspots de tipo escalera se utilizan para que los visitantes de su tour virtual puedan cambiar de zona, es decir, puedan acceder a otro de sus mapas. Una vez creado, el hotspot tendrá este aspecto:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-11.jpg)
 
 Le recomendamos que planifique dónde va a crear sus hotspots de tipo escalera. Suelen quedar bien haciéndolos coincidir con las escaleras y/o ascensores de sus fotografías 360, o bien con los saltos entre zonas si su recorrido es plano.
 
 Para crear un hotspot de tipo escalera, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Conector entre planos (escaleras)". Verá en su navegador una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-12.jpg)
 
 Este hotspot no requiere de ninguna información adicional, por lo que solo deberá pulsar "Enviar" o "Aceptar" para confirmar la creación del hotspot. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena donde haya creado el hotspot mediante el mapa.
 
@@ -337,7 +337,7 @@ Por último, desde la misma pantalla de creación de hotspots puede modificar el
 
 Para asignar las coordenadas sobre las que hizo clic como punto de vista inicial de una escena, simplemente siga el mismo procedimiento genérico de creación de hotspots descrito en la [sección 7](#hotspots) y luego haga clic en el botón "Punto hacia donde estará dirigida la cámara".
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-13.jpg)
 
 Confirme la operación y las nuevas coordenadas iniciales de la escena se grabarán. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena en cuestión. Al entrar en ella, el punto de vista debería ser el que usted seleccionó.
 
@@ -349,9 +349,9 @@ Usted puede modificar y/o eliminar un hotspot ya existente, sea cual sea su tipo
 2. Seleccione la escena en la que está el hotspot que quiere modificar o borrar. Bastará con que haga clic sobre el punto del mapa correspondiente. Recuerde que puede cambiar de mapa con los botones "Subir zona" y "Bajar zona".
 3. Se abrirá la previsualización de la escena, y en ella aparecerán todos los hotspot activos en esa escena. Haga clic en cualquiera de ellos para modificarlo o eliminarlo.
 
-En su navegador se abrirá una ventana nueva que le permitirá modificar algunos aspectos de su hotspot y también eliminarlo. Tenga cuidado con cualquiera de las dos opciones, pues su efecto es irreversible. Lógicamente, las opciones son diferentes según cada tipo de hotspot. Por ejemplo, la ventana para modificar un hotspot de tipo audio tiene un aspecto como este:
+En su navegador se abrirá una ventana nueva que le permitirá modificar algunos aspectos de su hotspot y también eliminarlo. Tenga cuidado con cualquiera de las dos opciones, pues su efecto es irreversible. Lógicamente, las opciones son diferentes según cada tipo de hotspot. Por ejemplo, la ventana para modificar un hotspot de tipo salto entre escenas tiene un aspecto como este:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/07-14.jpg)
 
 Algunas ventanas de modificación de hotspot no le permitirán cambiar ciertas cosas del hotspot. Si necesita modificar alguno de estos aspectos invariables, deberá borrar el hotspot y crearlo de nuevo.
 
@@ -366,14 +366,14 @@ Cuando tenga preparadas las escenas de su visita guiada y sus respectivas audiod
 
 1. Entre en el panel de administración utilizando un usuario con privilegios suficientes (consulte la [sección 4](#mapa) si no sabe cómo hacerlo).
 2. En el menú principal, elija la opción "Guiada". Se encontrará con una pantalla como esta: ![](imgs/08-01.jpg)
-3. Cree el primer punto de su visita guiada haciendo clic en "Nuevo". Se le pedirá que seleccione una escena y un archivo de audio de entre todos los subidos a la plataforma. También tendrá que escribir un título descriptivo del lugar y una imagen representativa. Cuando termine, pulse "Aceptar" o "Enviar".
+3. Cree el primer punto de su visita guiada haciendo clic en "Nuevo". Se le pedirá que seleccione una escena y un archivo de audio de entre todos los subidos a la plataforma. También tendrá que escribir un título descriptivo del lugar y una imagen representativa. Cuando termine, pulse "Aceptar" o "Enviar": ![](imgs/08-02.jpg)
 4. Añada los demás puntos de su visita guiada repitiendo el paso anterior tantas veces como sea necesario.
 5. Si se equivoca al seleccionar alguna escena y/o audiodescripción, pulse el botón "Modificar" de la fila correspondiente en la tabla y cambie lo que sea necesario. También puede eliminar por completo ese punto de la visita guiada haciendo clic en el botón "Eliminar" de esa fila.
 6. Si se equivoca en el orden en el que se deben mostrar las escenas en la visita guiada, o desea cambiarlo más adelante por alguna razón, pulse las flechas "Arriba" y "Abajo" de cada fila de la tabla, que provocarán una reordenación de las escenas.
 
 Cuando haya terminado, la pantalla de administración de la visita guiada debería tener un aspecto semejante a este:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/08-03.jpg)
 
 Su visita guiada está ahora lista. Puede probarla lanzando la aplicación en un navegador web y seleccionando "Visita guiada" en la pantalla principal, como si usted fuera un visitante. La visita guiada se iniciará. Puede navegar por ella usando los botones "Siguiente" y "Anterior". También puede desplegar la lista de escenas haciendo clic en el icono del faro y saltar así cómodamente de una a otra. Si deja que la visita guiada fluya a su ritmo, saltará automáticamente de una escena a otra cuando se termine la audiodescripción de cada escena. Por supuesto, también puede pausar el audio y reanudarlo a voluntad.
 
@@ -419,7 +419,7 @@ Muchos aspectos de la portada (homepage) de su visita virtual son configurables,
 
 Para acceder a la configuración de la portada, debe entrar al panel de administración con un usuario que tenga los privilegios adecuados. Una vez hecho esto, seleccione "Portada" en el menú principal. Accederá a una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/10-01.jpg)
 
 En esa pantalla puede modificar los siguientes aspectos de su portada:
 
@@ -443,7 +443,7 @@ La gestión de usuarios es crucial para la seguridad de su aplicación. En esta 
 
 Para administrar los usuarios, debe acceder al panel de administración de su aplicación con un usuario con los privilegios suficientes. Consulte la [sección 4](#mapa) si no recuerda cómo hacer esto. Una vez que haya accedido al panel de administración, seleccione la opción "Usuarios" del menú principal. Accederá a una pantalla como esta:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/11-01.jpg)
 
 Desde esa pantalla puede visualizar los usuarios activos en ese momento, modificarlos, borrarlos o añadir uno nuevo. El funcionamiento es muy intuitivo y semejante al de otras pantallas del panel de administración, como la administración de imágenes, audios y vídeos:
 
@@ -472,7 +472,7 @@ En esta sección le mostraremos cómo puede crear su biblioteca virtual y cómo 
 
 Para acceder a la administración de la biblioteca, debe entrar al panel de administración con un usuario con privilegios suficientes. Si no sabe cómo hacerlo, revise la [sección 4](#mapa). Una vez hecho esto, seleccione la opción "Biblioteca" del menú principal. Accederá a una pantalla semejante a esta:<br/>
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/12-01.jpg)
 
 Esta pantalla ofrece las funcionalidades habituales para la administración de cualquier conjunto de datos. Es muy semejante a la administración de imágenes, vídeos, audios o usuarios. Usted puede:
 
@@ -487,9 +487,13 @@ Esta pantalla ofrece las funcionalidades habituales para la administración de c
 El proceso de **inserción de un libro** en la base de datos no es trivial, por lo que necesita una explicación adicional. En general, crear un libro requiere dos pasos:
 
 1. Crear el libro con la opción "Insertar libro". Esto insertará en la base de datos la información bibliográfica básica (título, autor, editorial, etc), pero <i>no</i> el contenido del libro. Se le pedirá que indique si este libro está destinado a la biblioteca general o es una publicación histórica. La diferencia es que los segundos solo aparecerán al hacer clic en el boton "Historia" del homepage, donde (optativamente) podemos colocar publicaciones que tengan que ver con la historia de nuestro edificio. También se le pedirá que indique si el libro tiene formato apaisado o vertical.
+
+![](imgs/12-02.jpg)
+
+
 2. Subir las páginas con la opción "Páginas" de cada fila de la tabla. Puede subir las páginas de una en una (si el libro no es muy largo) o seleccionando varias a la vez. Por supuesto, deberá tener las páginas escaneadas previamente. Tenga en cuenta que las páginas se ordenarán en el servidor según su nombre alfabético, por lo que le recomendamos que nombre los archivos numéricamente. Por ejemplo, 001.jpg para la primera página, 002.jpg para la segunda, y así sucesivamente.
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/12-03.jpg)
 
 Una vez que haya subido tanto la información bibliográfica como el contenido de un libro, puede modificar la primera con la opción "Modificar" del panel de administración y la segunda con la opción "Páginas".
 
@@ -501,31 +505,31 @@ Cuando haya finalizado de configurar su tour virtual, Celia360 estará preparado
 
 Lo primero que verá su visitante cuando acceda a su tour virtual es el homepage o portada. En nuestro caso, tiene este aspecto:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-01.jpg)
 
 Desde el homepage, sus visitantes pueden acceder a todas las opciones de navegación por su tour virtual. La primera de ellas es la **visita libre**, que permite al visitante moverse por cualquiera de las escenas de sus mapas, bien navegando de una a otra mediante los hotspots de tipo salto o bien accediendo directamente a ellas desde el mapa desplegable:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-02.jpg)
 
 La siguiente opción es la **visita guiada**. En este tour, su visitante será dirigido a través de las escenas que usted haya seleccionado, acompañando cada escena con una audiodescripción. El visitante puede detener la visita en cualquier momento, o bien avanzar o retroceder en la misma con libertad. También puede moverse alrededor de la escena 360 mientras suena la audiodescripción:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-03.jpg)
 
 A continuación tenemos la **visita de puntos destacados**. Esta visita mostrará al usuario un mosaico con las imágenes que usted haya seleccionado como más interesantes de su visita. Cada una de ellas dará acceso a una escena limitada, es decir: el visitante podrá moverse libremente en esa escena pero no podrá salir de allí para seguir navegando libremente por el resto del mapa (para eso ya está la visita libre):
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-04.jpg)
 
 La siguiente opción es la de **biblioteca**. Aquí se mostrará el catálogo de libros (todos menos los marcados como "Tipo historia") y su visitante podrá consultarlos online mediante un visor interactivo. Algunos libros pueden tener la opción de descarga en formato PDF. Tenga en cuenta que puede ocultar esta opción desde la [configuración de la portada](#portada) si no le interesa ofrecer libros digitalizados a sus visitantes. También le recordamos que la obligación de asegurarse de no infringir los posibles derechos de propiedad intelectual es exclusivamente suya y de su organización. El aspecto que tiene la biblioteca para sus visitantes es este:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-05.jpg)
 
 Y el visor de libros tiene esta forma:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-06.jpg)
 
 Por último, el botón **Historia** (que también es opcional y puede ocultarse desde [la administración de la portada](#portada)) le dará acceso a un subconjunto de la biblioteca donde solo figurarán los libros o documentos que relaten la historia de su edificio o instalación. El catálogo, en este caso, tiene este aspecto:
 
-![](imgs/imagen-requerida.jpg)
+![](imgs/13-07.jpg)
 
 El visor de libros digitales es igual que el que se emplea en la biblioteca general.
 

@@ -317,7 +317,7 @@ $( ".menu_slider" ).click(function() {
 } // fin function cargar_panellum()
 
 /*
- * ???
+ * Metodo que pone a visible el panel de información de los hotspots de este tipo, cargando además la información correspondiente * al punto pulsado. 
  */
 function panelInformacion(hotspotDiv,args){
     
@@ -387,7 +387,7 @@ peticion.done(function(datos){
 } //fin function panelInformacion()
   
 /*
- * ??? 
+ * Metodo que activa la ventana modal de las escaleras al clickar en un hotspot de tipo escalera. 
  */
 function escaleras(){
   nombreEscena = viewer.getScene();
@@ -480,7 +480,7 @@ function audio_guiada(indice){
 } // fin function audio_guiada()
   
 /*
- * ??? 
+ * Metodo que sirve de toggle/accionador del audio de la visita guiada, si está el audio pausado pasa a reproducirlo y viceversa
  */
 function estado_audio(){
   var audio_boton = document.getElementById("audio_guiada");
@@ -570,7 +570,7 @@ $("#boton_mapa").show();
 } // fin function iniciar_visita_libre()
 
 /*
- * ???
+ * Metodo anterior para la visita guiada. Carga la anterior escena respecto a la escena en la que estes situado.
  */
 function anterior(){
   indice_escenas--;
@@ -582,7 +582,7 @@ function anterior(){
 } // fin function anterior()
 
 /*
- * ???
+ * Metodo siguiente para la visita guiada. Carga la siguiente escena respecto a la escena en la que estes situado.
  */
 function siguiente(){
   indice_escenas++;
@@ -594,55 +594,7 @@ function siguiente(){
   } 
 } // fin function siguiente();
 
-/*
- * Video visita libre
- */
-function video(hotspotDiv,args){
-  $.ajax({
-    type: "post",
-    url: "<?php echo site_url("hotspots/load_video"); ?>",
-    data: {idVideo : args},
-    beforeSend: function(){
-      $("#vimeo_video").attr("src","");
-    }
-  }).done(function(resultado){
-      console.log(resultado);
-      $("#vimeo_video").attr("src",resultado);
-      var pantalleo = $("#modal_video").css("display");
-      if(pantalleo=="block")
-        $('#modal_video').hide();
-        //PAUSE
-      else
-        $('#modal_video').fadeIn();
-    }).fail(function(){
-      console.log("Error en carga de video ;)")
-    });
 
-} // function video()
-
-/*
- * Ajax audio visita libre
- */
-function musica(hotspotDiv,args){
-  var peticion = $.ajax({
-  type: "post",
-  url: "<?php echo site_url("hotspots/load_audio"); ?>",
-  data: {id_hotspot : args}
-});
-
-peticion.done(function(resultado){
-  var enlace_audio = resultado;
-  enlace_audio=enlace_audio.trim(enlace_audio);
-  var enlace_audio_correcto = "<?php echo base_url();?>"+enlace_audio;
-  $("#audio_libre").attr("src",enlace_audio_correcto);
-  var pantalleo = $("#panel_audio_libre").css("display");
-  $("#audio_libre")[0].play();
-  if(pantalleo=="block")
-    $('#panel_audio_libre').hide();
-  else
-    $('#panel_audio_libre').show();
-});
-} // fin function musica()
 
 
 
@@ -661,6 +613,13 @@ $(".cerrarDocumento").click(function (e) {
 </script>      
 <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
+
+<script>
+var baseurl = '<?php echo base_url("");?>';
+//alert(baseurl);
+</script>
+
+<script src="<?php echo base_url("assets/js/metodosHotspots.js");?>"></script>
 
 
 

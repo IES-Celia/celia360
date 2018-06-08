@@ -49,6 +49,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   padding:20px;
   font-family:"verdana";
 }
+
   .borderojo{
    border: 2px solid white;
 }
@@ -67,7 +68,19 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     margin: 5px 0; 
     }
 
-   
+    .img-cerrar{
+        width: 20px;
+        height: 20px;
+    }
+    .cerrar{
+        position: relative;
+        top:15px;
+        left:44%;
+    }
+    .derec{
+        width:500px;
+        float:left;
+    }
 
   </style>
 </head>
@@ -93,6 +106,8 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     "class" => "imgHS",
     "width" => "120",
     "height" => "120",
+    "title" => $img["titulo_imagen"],
+    "alt" => $img["titulo_imagen"],
     "data-id" => $img["id_imagen"]
     
   ); 
@@ -112,15 +127,53 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
  
  </ul><br>
   <div style='color:white; font-weight:bold; font-size: 1.2rem;'>
-    Nota: Puedes ordenar las imagenes arrastrandolas en la lista.
+    Nota: Puedes ordenar las imagenes arrastrandolas en la lista. 
   </div>
   <button onclick='add_img_to_hotspot()'>Enviar</button>
   <br>
   <form id='formulario_atras' action="<?php echo $urlAtras; ?>" method='get'>
-    <input id='panel_atras' type='button' value='volver atras'>
+      <input id='panel_atras' type='button' value='volver atras'><br/><br/>
   </form>
+
+    <!--**************************LOLI Insertar más imágenes  -->
+    <div>
+        <div class='derec'>
+        <?php
+        echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>";
+        ?>
+        </div>
+        <!--Capa formulario insertar-->
+        <div id='insertar'>
+            <div id='caja'>
+                <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
+                <!-- AQUI EMPIEZA LA VISTA -->
+                <?php
+                echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+                base_url("assets/css/cerrar_icon.png") . "'></img></a>";
+                ?>
+                <h1>Insertar imagen</h1>
+                <form enctype="multipart/form-data" action='<?php echo site_url("hotspots/insertar_imagen"); ?>' method="post">
+                    <input type='hidden' name='accion' value='insertar_imagen'>
+                    <input id= "id_imagen" name='id_imagen' type ="hidden"><br />
+                    <label id= "label_titulo" for="titulo">T&iacute;tulo:</label>
+                    <input type="text" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
+                    <label for="texto_imagen">Descripción:</label>
+                    <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha" value="<?php echo date("Y-m-d"); ?>" required><br />
+                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+                    <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+                    <label for="imagen">Imágenes (puede seleccionar varias):</label>
+                    <input type="file" name="imagen[]"  id="imagen" placeholder="Seleccionar la(s) imagen(es)" required multiple><br />
+                    <input type="hidden" name="accion" value="insertar_imagen"><br>
+                    <input type="submit" name="enviar" value="Guardar imagen"/>
+                </form>
+            </div>
+        </div>
+        <!--    fin insertar más imágenes-->       
+    </div>           
 </div>
-</div>  
+
 <script>
   
   $("#panel_atras").on("click",function(){
@@ -244,17 +297,22 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       peticion.done(function(resultado){
         window.location.href = resultado;
       });
-
-
     }
   }
-  
-  
-  
-
-
-  
-
+    /* 
+    * Mostrar el formulario para insertar nuevas imágenes en una modal
+    * 
+    * */
+    function mostrar(){
+        $("#insertar").show();      
+    }
+    /*
+    * Cerrar la ventana modal de insertar nuevas imágenes
+    * 
+    */
+    function cerrar(){
+        $("#insertar").hide();
+    }  
 </script>  
 </body>	
 </html>

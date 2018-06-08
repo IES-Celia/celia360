@@ -427,10 +427,16 @@ class HotspotsModel extends CI_Model {
 
         return $this->db->affected_rows();
     }
-
+    /**
+     * Obtiene la ruta y el nombre del audio correspondiente con el id pasado por parámetro
+     * 
+     * @param int $id El id del audio
+     * @return devuelve la url del audio   
+     */
     public function cargar_audio($id) {
 
         $id_hotspot = $id;
+        //Sacar la ruta donde se encuentra el audio con el id que le hemos pasado
         $sql ="SELECT url_aud FROM audio WHERE id_aud='$id_hotspot'";
         $resultado = $this->db->query($sql)->result_array()[0]["url_aud"];
         echo $resultado;

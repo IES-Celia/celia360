@@ -1,7 +1,34 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
+?>
 <html>
     <head>
         <title> Insert Hotspot </title>
+        <meta http-equiv="
+            Este archivo es parte de la aplicación web Celia360. 
 
+            Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+            bajo los términos de la GNU General Public License tal y como está publicada por
+            la Free Software Foundation en su versión 3.
+
+            Celia 360 se distribuye con el propósito de resultar útil,
+            pero SIN NINGUNA GARANTÍA de ningún tipo. 
+            Véase la GNU General Public License para más detalles.
+
+            Puede obtener una copia de la licencia en http://www.gnu.org/licenses.">
     </head>
     <style>
         .panel-informacion-texto {
@@ -12,15 +39,15 @@
 <body>
 <h1> Formulario para insertar Hotspots</h1>
     <div id="botones">
-    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resultado del click, las tipos de hotspot son los siguientes:<br><br>
+    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br>
         
     <div id="botonesderecha">
-        <button class="botondentromapa" id="insertarEscena" >Punto de salto a otra escena</button>
-        <button class="botondentromapa" id="insertarPanel">Punto de panel informativo</button>
-        <button class="botondentromapa" id="insertarAudio">Punto audiodescrito</button>
-        <button class="botondentromapa" id="insertarVideo">Punto video</button>
-        <button class="botondentromapa" id="insertarEscaleras">Conector entre planos (escaleras)</button><br>
-        <button class="botondentromapa" id="modificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
+        <button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
+        <button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
+        <button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
+        <button class="botondentromapa" id="btnInsertarVideo">Punto video</button>
+        <button class="botondentromapa" id="btnInsertarEscaleras">Conector entre planos (escaleras)</button><br>
+        <button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
     </div>    
     </div>
 <div id="formularios">
@@ -103,8 +130,10 @@
     </div>
     </div>   
     
+    <!-- Seccion hotspot de tipo audio -->
     <div id="puntoAudio"> 
     <div id="caja3">
+        <!-- Formulario para insertar un hotspot de tipo audio -->
         <?php
         echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
@@ -120,9 +149,53 @@
         </form>
     </div>
         
-        <div id="listaAudios">Capa vacia</div>
-    </div>
+        <div id="listaAudios">
+            <?php 
+                echo"<table class='tabla_audio' class='display' id='cont'>
+                        <thead>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Tipo de audio</th>
+                            <th>Reproducir</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Tipo de audio</th>
+                            <th>Reproducir</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </tfoot>
+                    <tbody>";
 
+                    foreach ($listaAudios as $re) {
+
+                        $id = $re["id_aud"];
+                        echo'<tr id="contenidoaudio' . $id . '">';
+                        echo'<td id="id_aud' . $id . '">' . $re["id_aud"] . '</td>';
+                        echo'<td id="url_aud' . $id . '">' . $re["url_aud"] . '</td>';
+                        echo'<td id="desc_aud' . $id . '">' . $re["desc_aud"] . '</td>';
+                        echo'<td id="tipo_aud' . $id . '">' . $re["tipo_aud"] . '</td>';
+                        echo"<td><audio controls='controls' preload='auto'>
+                            <source src='" . base_url($re["url_aud"]) . "' type='audio/m4a'/>
+                            <source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
+                            </audio></td>".
+                            '<td onClick="seleccionarAudio('.$id.')"><a href="#">Seleccionar</a></td>'.
+                            "</tr>";
+                    }
+                    echo "</tbody>";
+                echo "</table>";
+            ?>
+        </div>
+    </div>
+    <!-- FIN sección hotspot de tipo audio -->
+    
     <div id="puntoVideo">
     <div id="caja3">
         <?php
@@ -139,7 +212,44 @@
         </form>
     </div>
         
-        <div id="listaVideos">Capa vacia</div>
+        <div id="listaVideos">
+            <?php
+                echo"<table class='tabla_audio' class='display' id='cont'>
+                        <thead>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Ver vídeo</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr id='cabecera'>
+                            <th>ID</th>
+                            <th>URL</th>
+                            <th>Descripcion</th>
+                            <th>Ver vídeo</th>
+                            <th>Seleccionar</th>
+                            </tr>
+                        </tfoot>
+                    <tbody>";
+
+                    foreach ($listaVideos as $re) {
+
+                        $id = $re["id_vid"];
+                        echo'<tr id="contenidovideo' . $id . '">';
+                        echo'<td id="id_aud' . $id . '">' . $re["id_vid"] . '</td>';
+                        echo'<td id="url_aud' . $id . '">' . $re["url_vid"] . '</td>';
+                        echo'<td id="desc_aud' . $id . '">' . $re["desc_vid"] . '</td>';
+                        echo'<td><a href="' . $re["url_vid"] . '" target="_blank">Visitar enlace</a></td>'.
+                            '<td onClick="seleccionarVideo('.$id.')"><a href="#">Seleccionar</a></td>'.
+                            '</tr>';
+                    }
+                    echo "</tbody>";
+                echo "</table>";
+            ?>
+        </div>
     </div>
 
     <div id="puntoEscaleras">
@@ -166,51 +276,39 @@
       $( document ).ready(function() {
         $("#formularios").children().hide();
           
-        $("#insertarEscena").click(function() {
+        $("#btnInsertarEscena").click(function() {
             $("#formularios").children().hide();
             $("#puntoEscena").show();
         });
           
-        $("#insertarPanel").click(function() {
+        $("#btnInsertarPanel").click(function() {
             $("#formularios").children().hide();
             $("#puntoPanel").show();
         });
           
-        $("#insertarAudio").click(function() {
+        $("#btnInsertarAudio").click(function() {
             $("#formularios").children().hide();
             $("#puntoAudio").show();
-            $.get("<?php echo site_url("audio/obtenerListaAudiosAjax");?>", null, function(respuesta) {
-                $("#listaAudios").html(respuesta);
-                activar_paginacion(".tabla_audio");
-            });
-           
         });
 
-         $("#insertarVideo").click(function() {
+         $("#btnInsertarVideo").click(function() {
             $("#formularios").children().hide();
             $("#puntoVideo").show();
-            $.get("<?php echo site_url("video/obtenerListaVideosAjax");?>", null, function(respuesta) {
-                $("#listaVideos").html(respuesta);
-                 activar_paginacion(".tabla_video");
-            });
         });
           
-        $("#insertarEscaleras").click(function() {
+        $("#btnInsertarEscaleras").click(function() {
             $("#formularios").children().hide();
             $("#puntoEscaleras").show();
         });
           
-        $("#modificarPitchYaw").click(function(){
+        $("#btnModificarPitchYaw").click(function(){
           var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
             if(resp)
                 location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
         });
-          
-      });
-         
-         
-        function activar_paginacion(selector_tabla) {
-            $(selector_tabla).dataTable({
+
+       // Activamos la paginación y la búsqueda en la tabla de audios/videos
+       $(".tabla_audio,.tabla_video").dataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros por página",
                 "zeroRecords": "No se encontraron resultados en su búsqueda",
@@ -227,7 +325,20 @@
                 },
             }
             });
+
+
+
+      }); // fin document.ready
+         
+         
+        function seleccionarAudio(idAudio) {
+            document.getElementById("idAudioForm").value = idAudio;
         }
+        
+        function seleccionarVideo(idVideo) {
+            document.getElementById("idVideoForm").value = idVideo;
+        }
+         
          
          
     </script> 

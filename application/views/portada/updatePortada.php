@@ -9,7 +9,7 @@
             echo"<form action='".site_url("tour/modificar_portada")."' method='post' enctype='multipart/form-data'>";
         ?>
             Titulo de la web:<br/>  <input type='text' name='titulo_web' value='<?php echo $datosPortada['titulo_web'];?>'><br/>
-	    Imagen de portada:<br/> <img src='<?php echo base_url("assets/imagenes/portada/portada.jpg");?>' width='200'><br/><input type='file' name='imagen_web'><br/><br/>
+	    Imagen de portada:<br/> <img src='<?php echo base_url("assets/imagenes/portada/").$datosPortada['imagen_web'];?>' width='200'><br/><input type='file' name='nueva_imagen_web' ><br/><br/>
             Texto visita libre:<br/>  <input type='text' name='subtitulo_visita_libre' value='<?php echo $datosPortada['subtitulo_visita_libre'];?>'><br/>
             Texto visita guiada:<br/>  <input type='text' name='subtitulo_visita_guiada' value='<?php echo $datosPortada['subtitulo_visita_guiada'];?>'><br/>
             Texto puntos destacados:<br/>  <input type='text' name='subtitulo_puntos_destacados' value='<?php echo $datosPortada['subtitulo_puntos_destacados'];?>'><br/>

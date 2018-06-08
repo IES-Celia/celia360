@@ -35,7 +35,10 @@
 
             }
 
-
+            #caja5 input[type=submit]{
+                width:430px;
+            }
+            
 
         </style>
         <title> Modificar Hotspot </title>
@@ -73,9 +76,10 @@
             <input type='hidden' name='id_hotspot' value='" . $tabla['id_hotspot'] . "'>
 	
 	
-            <input type='submit' class='button'>
-            <a href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
-        >BORRAR ESTE HOTSPOT (CUIDADO)</a></td>
+            <input type='submit'>
+            <br>
+            <a class='rojo_borrar' href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
+        >BORRAR ESTE HOTSPOT </a></td>
 	
         </form>
     </fieldset>

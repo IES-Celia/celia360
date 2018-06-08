@@ -20,7 +20,7 @@
 
 		public function cargar_puntos(){
 			$this->load->database();
-			$query = $this->db->query('SELECT * FROM puntos_mapa'); 
+			$query = $this->db->query('SELECT puntos_mapa.id_punto_mapa as id_punto_mapa, puntos_mapa.nombre as nombre, puntos_mapa.left_mapa as left_mapa, puntos_mapa.top_mapa as top_mapa, puntos_mapa.id_escena as id_escena, puntos_mapa.piso as piso, escenas.Nombre as nombre_punto FROM puntos_mapa, escenas WHERE puntos_mapa.id_escena = escenas.cod_escena'); 
 			$lista=array();
 
 			foreach ($query->result_array() as $fila) {

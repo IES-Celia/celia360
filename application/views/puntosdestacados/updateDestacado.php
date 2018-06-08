@@ -69,7 +69,7 @@
                 <button id="btn-bajar-piso" type="button">Bajar piso</button>
                 <button id="btn-subir-piso" type="button">Subir piso</button>
                 <br><br><br><hr>
-                <input type='submit' value='Enviar cambios'><br><br>
+                <input type='submit' value='Guardar cambios'><br><br>
                 <a href="<?php echo site_url("PuntosDestacados/cargar_admin_puntosdestacados"); ?>">Atrás</a>
                 </form>
             </fieldset>

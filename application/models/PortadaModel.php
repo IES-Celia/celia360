@@ -26,7 +26,7 @@
          * Actualiza en la base de datos las opciones de la portada.
          * Los datos se reciben por POST.
          * 
-         * @return int 0 si la actualización ha funcionado, 1 si ha fallado el update de los datos, 2 si ha fallado la subida de la nueva imagen, 3 si han fallado ambas cosas
+         * @return int en binario: 000 (0) = actualización OK, 001 (1) = error en update, 010 (2) = error en subida de imagen, 100 (4) = error en update de imagen
          */
         public function update_portada(){
             // Actualizamos todos los campos de la tabla (menos la imagen)
@@ -53,51 +53,39 @@
                                 . "nombre_fuente = '$nombre_fuente' WHERE 1=1");
                     
             if ($this->db->affected_rows() != 0)
-                $resultado_update = 0;  // Update correcto
+                $resultado_update = 0;  // Update correcto (000)
             else
-                $resultado_update = 1;  // Error en update
+                $resultado_update = 1;  // Error en update (001)
 
             // Actualizamos la imagen
-            $userpic = "portada.jpg";  // Nombre del archivo de imagen
 
+            $userpic = $_FILES["nueva_imagen_web"]["name"];  // Nombre del archivo de imagen
             $config['upload_path'] = 'assets/imagenes/portada/';
             $config['allowed_types'] = 'jpg';
             $config['file_name'] = $userpic;
+            $config['overwrite'] = TRUE;
 
             // Cargar la librería
             $this->load->library('upload', $config);
             
-            // Renombra el archivo actual (añadiéndole el string "-backup")
-            $imagen_borrar = "assets/imagenes/portada/portada.jpg";
-            rename($imagen_borrar, $imagen_borrar."-backup");
-            
-            $resultado_subida = $this->upload->do_upload('imagenweb');
+            $resultado_subida = $this->upload->do_upload('nueva_imagen_web');
 
             if ($resultado_subida == false) {
                 // ¡¡La subida del fichero ha fallado!!
-                // Restauramos la imagen anterior
-                rename($imagen_borrar."-backup", $imagen_borrar);
-                $resultado_imagen = 2;  // Error en subida de imagen
+                echo $this->upload->display_errors();
+                $resultado_imagen = 2;  // Error en subida de imagen (010)
             } else {
                 // ¡¡La subida del fichero ha sido un éxito!!
-                // Borramos el fichero antiguo
-                unlink($imagen_borrar."-backup");
-                // NO actualizamos nada en la BD porque el campo imagen_portada no se está usando
-                // (la imagen de la portada siempre se llama portada.jpg)
                 // Modificamos el registro en la base de datos
-                $resultado_imagen = 0;   // Sin error en la subida de imagen
+                $sql = "UPDATE opciones_portada SET imagen_web = '$userpic' WHERE 1=1";
+                $this->db->query($sql);
+                if ($this->db->affected_rows() == 0) {
+                    $resultado_imagen = 4;  // Marca de error al actualizar BD (100)
+                } else {
+                    $resultado_imagen = 0;  // Subida de nueva imagen OK (000)
+                }
             }
             return $resultado_imagen + $resultado_update;
-        }
-            
-            
-            
-            
-       
-       
+        }  
     }
-        
-       
-        
-        
 ?> 

@@ -1,4 +1,21 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
+?>
 <!DOCTYPE html>
+<!-- Esta vista es la que carga el modo especial para introducir hotspots, cambiar pitch/yaw... la joya de la corona -->
 <html>
 <head>
 <meta charset="UTF-8">
@@ -38,14 +55,15 @@ escena_base="";
 
     
 $(document).ready(function() {
-    
+    // boton de la esquina superior izquierda que nos manda para atrás, posiblemente de algún problema cuando no accedamos aqui desde escenas (hola visita guiada), pero bueno, gl
 $("#botoncico").click(function(){
     location.href="<?php echo site_url("escenas");?>"
 }); 
     
-  function ayax(){
+    // carga el json por ajax y lo prepara para pannellum
+  function ayax(){ 
     $.ajax({
-        url: '<?php echo base_url("tour/get_json_plataforma/".$escenaInicial) ?>',
+        url: '<?php echo base_url("tour/get_json_plataforma/".$escenaInicial) ?>', 
         type: 'GET',
         dataType: 'json',
     }).done(function(data) {
@@ -62,10 +80,9 @@ $("#botoncico").click(function(){
         console.log("error");
     })
 } 
- 
+    // este metodo es el que se le mete a todos los hotspots en este modo especial. Gracias a él cuando clickeemos en un jotpoch en esta vista se abrirá una vista para modificar susodicho hotspot
     function modificarHotspot(hotspotDiv, idjotpoch){
         location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch+"/"+escena_base;
-
     }
 
   //boton fullscreen.
@@ -75,9 +92,6 @@ $("#botoncico").click(function(){
   ayax();
 });
     
-// meter en json en un string para poder modificarlo   
-
-  
 </script>
     </body>
 </html>

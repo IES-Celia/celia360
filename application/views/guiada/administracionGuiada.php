@@ -116,11 +116,13 @@ else {
         }
             $idEscena =$escena['id_visita'];
 
-
         echo "<tr class='filaEscena'>".
         "<td class='id_visita'>".$escena['id_visita']."</td>
-        <td class='cod_escena'>".$escena['cod_escena']."</td>
-        <td class='audio_escena'>".$escena['audio_escena']."</td>
+        <td class='cod_escena'> <a href='".base_url()."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a></td> 
+        <td class='audio_escena'><audio controls='controls' preload='auto'>
+        <source src='" . base_url().$escena['audio_escena'] . "' type='audio/m4a'/>
+        <source src='" . base_url().$escena['audio_escena'] . "' type='audio/mp3'/>
+        </audio></td>
         <td class='titulo_escena'>".$escena['titulo_escena']."</td>
         <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
         <td><button class='change_img'>Cambiar</button></td>
@@ -128,7 +130,6 @@ else {
         <td><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
         <td class='orden'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
         <td class='posicion'>".$escena['orden']."</td>";
-
 
     }
 } // else
@@ -141,18 +142,40 @@ else {
         <span class="closeGuiada">&times;</span>
         <h2>Modificar</h2>
         Selecciona una escena:
-        <select id='escenaGuiada' name="escenaGuiada">
-            <?php 
-                foreach ($escenasGuiada as $escena) {
-                    $codEscena=$escena["cod_escena"];
-                    $nombreEscena=$escena["Nombre"];
+        <input type="text" id='escenaGuiada' name="escenaGuiada">
+            
+
+        <div id="mapa_guiada" >
+                <?php
+            
+                 $indice = 0;
+
+                 foreach ($mapa as $imagen) {
+                    if($indice == 0)
+                        echo "<div id='zona".$indice."' class='pisos pisos_guiada'>";
+                    else 
+                        echo "<div id='zona".$indice."' class='pisos pisos_guiada' style='display: none'>";
                     
-                        echo "<option value=$codEscena>$codEscena</option>";
+                    echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
+                    foreach ($puntos as $punto) {
+                        if($punto['piso']==$indice){
+                            if($punto['id_escena'] == $configuracion['escena_inicial']){
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }else{
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }
+                        }
+                    }
+                    echo "</div>";
+                    $indice++;
                 }
+                
             ?>
-        </select>
+            </div>
+            <button id="btn-bajar-piso" type="button">Bajar piso</button>
+				<button id="btn-subir-piso" type="button">Subir piso</button>
         <br><br>
-        Nombre escena:<input id='titulo_escena' type='text' name='tituloGuiada' value='' >
+        Titulo escena:<input id='titulo_escena' type='text' name='tituloGuiada' value='' >
         <br><br>
         Selecciona un audio:
         <select id='audioGuiada' name="audioGuiada">

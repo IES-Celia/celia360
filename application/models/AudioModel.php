@@ -43,8 +43,14 @@ class AudioModel extends CI_Model {
     }
 
     //ATENCIÓN CAMBIO LOLI
-	//busca todos los audios en la base de datos y los guarda en un array 
+    /**
+     * Busca todos los audios en la base de datos y los guarda en un array 
+     * 
+     * @return $tabla, nos devuelve todos los registros de la tabla "audio" 
+     * @author: María Dolores Salmeron Sierra  
+     */
     public function buscaraudio() {
+        
         $sel = "select * from audio";
         $res = $this->db->query($sel);
         $tabla = array();
@@ -53,7 +59,6 @@ class AudioModel extends CI_Model {
         }
         return $tabla;
     }
-    
     //FIN CAMBIO LOLI
     
   // esta funcion cuenta cuantos audios hay en la base de datos pero no la uso en la aplicacion

@@ -54,7 +54,7 @@ class ImagenModel extends CI_Model {
         $num_imagenes = count($_FILES["imagen"]["name"]);
         $array_imagenes = $_FILES["imagen"];
         
-        print_r($array_imagenes);
+        //print_r($array_imagenes);
                 
         for ($i = 0; $i < count($array_imagenes['name']); $i++) {
             // Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
@@ -98,13 +98,12 @@ class ImagenModel extends CI_Model {
 
                 // Repetimos la jugada, ahora para crear la miniatura
                 $nombre_miniatura = $id_img . "_miniatura.jpg";
-                copy('assets/imagenes/imagenes-hotspots/' . $userpic, 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura);
                 $config['image_library'] = 'gd2';
-                $config['source_image'] = 'assets/imagenes/imagenes-hotspots/' . $nombre_miniatura;
+                $config['source_image'] = $upload_path;
                 $config['maintain_ratio'] = TRUE;
                 $config['width'] = 200;
                 $this->load->library('image_lib', $config);
-                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';
+                $config['new_image'] = 'assets/imagenes/imagenes-hotspots/'. $nombre_miniatura;
                 $this->image_lib->initialize($config);
 
                 if (!$this->image_lib->resize()) {
