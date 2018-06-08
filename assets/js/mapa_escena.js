@@ -164,13 +164,20 @@ $(document).ready(function() {
 				stop: function(event, ui){
 					var posicion = $(this).position();
 					var identificador = $(this).attr("id");
-					console.log(posicion.left +" | | "+posicion.top);
+					
+					var left = (posicion.left*100)/$(this).parent().width() ;
+					var top = (posicion.top*100)/$(this).parent().height() ;
+					$(this).css({
+						"left": left+"%",
+						"top": top+"%"
+					})
 
-					/*$.ajax({
+
+					$.ajax({
 						type: "post",
 						url: base_url + "mapa/update_punto",
-						data: { id_punto: identificador , left: posicion.left , top: posicion.top }
-					})*/
+						data: { id_punto: identificador , left: left , top: top }
+					})
 				},
 				containment: "parent"
 			})
