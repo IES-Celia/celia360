@@ -10,14 +10,26 @@ tags: []
 
 Este documento constituye la guía del usuario de la aplicación web Celia 360. Para las notas técnicas sobre instalación, remítase al archivo `install.md` distribuido junto con su código fuente. Para consultar la licencia de uso, remítase al archivo `licese.md`. No deje de consultar el archivo `readme.md` antes de proceder a la instalación y explotación de este software.
 
-> **ATENCIÓN:** este documento es aún una versión de trabajo y está en desarrollo, por lo que pueden existir inconsistencias o partes sin terminar.
+> **ATENCIÓN:** este documento, como la propia aplicación, aún está en desarrollo.
 
 # Qué es Celia 360
 
-Celia360, también conocido como CeliaTour, es una aplicación web diseñada para crear recorridos virtuales a partir de fotografías panorámicas de 360º.
+Celia360, también conocido como CeliaTour, es una aplicación web creada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web del IES Celia Viñas de Almería durante el año académico 2017/2018 bajo la dirección de los profesores D. Félix Expósito, D. Alfredo Moreno y D. José Barranquero. El alumnado autor del proyecto es, por orden alfabético:
+- Benhachmi, Hamza
+- Expósito, Marc
+- González, Manuel
+- Linares, Francisco Miguel
+- López, Alejandro
+- López Rodríguez, Miguel Ángel
+- Lopez Segura, Miguel Ángel
+- Ramírez, José Luis
+- Salmerón, María Dolores
+- Sánchez, Álvaro
+- Sniurevicius, Zygimantas
+
+Celia360/CeliaTour es una aplicación diseñada para crear recorridos virtuales a partir de fotografías panorámicas de 360º. 
 
 La aplicación permite definir los mapas del lugar por donde va a transcurrir el recorrido virtual y asignar las fotografías panorámicas a los puntos exactos del mapa donde han sido tomadas. También permite conectar unas fotografías con otras para crear la sensación de "avance" de una escena a la siguiente.
-
 Podemos crear puntos de interés (hotspots) dentro de las fotografías panorámicas. Los hotspots pueden ser de varios tipos:
 
 * Paneles: son galerías de imágenes de un lugar concreto del recorrido. Pueden usarse para mostrar detalles que no se aprecien bien en la imagen 360.
@@ -25,6 +37,8 @@ Podemos crear puntos de interés (hotspots) dentro de las fotografías panorámi
 * Vídeos: vídeos relativos a ese lugar.
 * Enlaces: puntos de salto de una escena a otra para crear el recorrido virtual.
 * Escalera: puntos de selección de los distintos planos, para saltar de una planta a otra del mismo edificio, por ejemplo.
+
+La aplicación no se limita a eso, sino que además permite crear una visita guiada que traslade al visitante automáticamente a través de los lugares más destacados del tour virtual, acompañado de una audiodescripción. Existe un tercer tipo de visita, la de puntos destacados, donde usted podrá seleccionar algunos lugares importantes de su visita que se mostrarán en una sola pantalla mediante un mosaico para que el usuario pueda elegir a dónde quiere ir.
 
 También podemos poner online una biblioteca de libros y/o documentos digitalizados con información sobre el lugar que estamos virtualizando. Los libros podrán consultarse y leerse online.
 
@@ -126,7 +140,9 @@ Las opciones de administración del mapa son las siguientes:
 * **Subir zona / Bajar zona**: cambia la zona que actualmente se está visualizando en la pantalla.
 * **Config. general**: le permite seleccionar cuál será su primera zona, es decir, por dónde desea que comience la visita libre. Si su tour virtual solo tiene una zona, deberá seleccionarla aquí. Si tiene varias, podrá elegir la que quiere marcar como inicial.
 
-Una vez que haya hecho todo esto, su mapa está listo para empezar a subir escenas. Tenga presente, además, que en cualquier momento podrá volver a este punto para reconfigurar su mapa si le resultase necesario.
+En una instalación nueva de la aplicación no existirá ningún mapa. Lo primero que debe hacer, por lo tanto, es crear uno haciendo clic en el botón "Añadir zona". Asigne un nombre a la zona (por ejemplo, "Planta baja" si se trata de un edificio y ha empezado por esa planta). Asígnele un número de orden (típicamente "0" o "1") y seleccione el archivo de imagen donde tiene el plano de esa planta almacenado. Le aconsejamos que el fondo del plano sea de color negro y las líneas blancas, pero esto es una cuestión estética que no afecta a la funcionalidad de la aplicación. Necesitará conocer los rudimentos de la edición de imágenes con programas como Photoshop o Gimp para cambiar los colores de las imágenes.
+
+Una vez que haya hecho todo esto, su mapa está listo para empezar a subir escenas como se indica en la <a href="#escenas">sección 5</a>. Tenga presente, además, que en cualquier momento podrá volver a este punto para reconfigurar su mapa si le resultase necesario. De hecho, cuando haya subido la escena inicial de su recorrido (es decir, aquella que quiere que aparezca en primer lugar durante la visita libre), deberá volver a la configuración del mapa y, haciendo clic en "Configuración general", indicarle a la aplicación qué escena es la inicial. Si no, su visita libre producirá un error "No panorama selected" cuando los visitantes la lancen.
 
 # Crear las escenas
 <a name="escenas"></a>
