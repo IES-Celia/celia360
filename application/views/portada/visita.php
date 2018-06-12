@@ -356,8 +356,8 @@ peticion.done(function(datos){
   for(var i=0;i<resultado.length;i++){
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
-    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'>");
-    $(".Gmodal-content").append("<div style='aling:center'>"+resultado[0].descripcion_imagen+"</div>");
+    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%'><div style='aling:center'>"+resultado[0].descripcion_imagen+"</div>");
+    //$(".Gmodal-content").append("<div style='aling:center'>"+resultado[0].texto_imagen+"</div>");
   }
   //Si tiene un pdf asociado, mostramos el boton "ver mas"
   if(resultado[0].documento_url!="ninguno"){
