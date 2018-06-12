@@ -73,6 +73,9 @@
             $db->query("ALTER TABLE `audio`
                         ADD PRIMARY KEY (`id_aud`),
                         ADD KEY `id_aud` (`id_aud`);");
+             $db->query("ALTER TABLE `audio`
+                        MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;");
+
 
 
             $db->query("CREATE TABLE `celda_pd` (
@@ -103,6 +106,8 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `escenas`
                         ADD PRIMARY KEY (`id_escena`);");
+            $db->query("ALTER TABLE `escenas`
+                         MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;");
 
             $db->query("CREATE TABLE `escenas_hotspots` (
                             `id_escena` int(11) NOT NULL,
@@ -140,6 +145,8 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `imagenes`
                         ADD PRIMARY KEY (`id_imagen`);");
+            $db->query("ALTER TABLE `imagenes`
+                            MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;");
 
             $db->query("CREATE TABLE `libros` (
                             `id_libro` int(11) NOT NULL,
@@ -155,6 +162,8 @@
             $db->query("ALTER TABLE `libros`
                         ADD PRIMARY KEY (`id_libro`),
                         ADD UNIQUE KEY `ISBN` (`ISBN`);");
+            $db->query("ALTER TABLE `libros`
+                        MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;")
 
             $db->query("CREATE TABLE `opciones_portada` (
                             `titulo_web` varchar(200) NOT NULL,
@@ -184,6 +193,7 @@
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
             $db->query("ALTER TABLE `panel_informacion`
                         ADD PRIMARY KEY (`id_documento`);");
+            $db->query("ALTER TABLE `panel_informacion` MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;");
 
             $db->query("CREATE TABLE `pisos` (
                             `piso` int(1) NOT NULL,
@@ -207,6 +217,8 @@
             $db->query("ALTER TABLE `puntos_mapa`
                         ADD PRIMARY KEY (`id_punto_mapa`),
                         ADD KEY `piso` (`piso`);");
+            $db->query("ALTER TABLE `puntos_mapa`
+            MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;");
 
             $db->query("CREATE TABLE `usuarios` (
                             `id_usuario` int(11) NOT NULL,
@@ -219,6 +231,8 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `usuarios`
                         ADD PRIMARY KEY (`id_usuario`);");
+            $db->query("ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;");
 
             $db->query("CREATE TABLE `video` (
                             `id_vid` int(11) NOT NULL,
@@ -227,6 +241,8 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `video`
                         ADD PRIMARY KEY (`id_vid`);");
+            $db->query("ALTER TABLE `video`
+  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;");
 
             $db->query("CREATE TABLE `visita_guiada` (
                             `id_visita` int(11) NOT NULL,
@@ -238,6 +254,8 @@
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
             $db->query("ALTER TABLE `visita_guiada`
                         ADD PRIMARY KEY (`id_visita`);");
+            $db->query("ALTER TABLE `visita_guiada`
+  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;");
 
             // Creamos el usuario administrador
             $db->query("INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) 
