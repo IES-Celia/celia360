@@ -104,7 +104,8 @@ $du = $lista_imagenes[0];
             <?php
             echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
             echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
-            echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
+            //echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
+            echo "<br>Descripción:<br><textarea id='texto_imagen_modificar' name='texto_imagen'></textarea><br/>";
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
             echo "<br>Fecha:<input type='date' id='fecha_modificar' name='fecha'  value=''><br/>";
             echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value=''><br/>";
@@ -178,12 +179,14 @@ $du = $lista_imagenes[0];
         if (capa == "modificar") {
             
            titulo = $("#imagen-"+id).find(".titulo-img").text();
+           texto = $("#imagen-"+id).find(".texto-img").text();
            fecha  = $("#imagen-"+id).find(".fecha-img").text();
            url = $("#imagen-"+id).find(".url-img").text();
            nombre = $("#imagen-"+id).find(".nombre-img").text();
            imagen = $("#imagen-"+id).find(".imagen-img").attr("src");//la imagen
 
             $("#titulo_modificar").val(titulo);
+            $("#texto_imagen_modificar").html(texto);
             $("#fecha_modificar").val(fecha);
             $("#url_modificar").val(url);
             $("#foto_modificar").attr("src",imagen); //la imagen
