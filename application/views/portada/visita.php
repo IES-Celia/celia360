@@ -356,8 +356,10 @@ peticion.done(function(datos){
   for(var i=0;i<resultado.length;i++){
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
-    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' texto_imagen='"+resultado[0].texto_imagen+"'>");
+    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' textoImagen='"+resultado[i].texto_imagen+"'>");
   }
+  $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'></div>");
+
   //Si tiene un pdf asociado, mostramos el boton "ver mas"
   if(resultado[0].documento_url!="ninguno"){
     var urlDocumento = "<?php echo base_url("assets/documentos-panel/");?>"+resultado[0].documento_url;
@@ -439,12 +441,15 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = $(".GmySlides");
+
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
+  $("#textoImagenGaleria").empty();
+  $("#textoImagenGaleria").html(slides[slideIndex-1].getAttribute("textoImagen"));
 }
   //Si le das click fuera de la ventana quitarlo.
 $( ".overlay" ).on( "click", function() {
