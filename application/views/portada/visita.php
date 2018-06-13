@@ -350,7 +350,7 @@ peticion.done(function(datos){
   $("#titulo").html(resultado[0].titulo_panel);
   $("#texto").html(resultado[0].texto_panel);
   //La primera imagen que sale al abrir el panel
-  var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[0].url_imagen;
+  var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[0].id_imagen+"_miniatura.jpg";
   $("#gallery").find("img").attr("src",enlace_img);
   //Por cada indice del array creamos la imagen de la galeria
   for(var i=0;i<resultado.length;i++){
