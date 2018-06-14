@@ -1,5 +1,5 @@
 //alert("la base url es: "+baseurl);
-
+// buena suerte, promoción 18/19
 
 /*
  * Video visita libre

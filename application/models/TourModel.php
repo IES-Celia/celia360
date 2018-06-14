@@ -191,6 +191,9 @@ public function get_datos_destacado($datos) {
         foreach ($res2->result_array() as $hotspot) {
             
             if($hotspot['tipo']=="info"){ // si es de INFO pues te mete to esto
+                /*
+                Quien entre en este territorio que acepte las consecuencias de sus actos.
+                Descomentar esto permitirá la carga de los hotspots de tipo info (panel de información, audio, video0), tienes que meterle a la vista puntosdestacados todos los metodos de visita necesarios para que corran los hotspots correctamente. suerte
                 if($hotspot['cssClass']=="custom-hotspot-escaleras"){ // si es de tipo escalera le mete esto:
                     if($flagHot){
                         $json = $json . ',';
@@ -215,7 +218,7 @@ public function get_datos_destacado($datos) {
                     $json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
                     $json = $json . '} '; 
                 }
-                 
+                 */
             }else{ // si es de saltoescena pues te mete to esto
                 if($hotspot['cerrado_destacado']==0){
                     if($flagHot){

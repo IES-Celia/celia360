@@ -20,7 +20,7 @@
 <!-- También se inserta aquí el botón para visualizar los libros de historia -->
         <main>
             <div id="responsividad"> <!-- WIP. Su css está en estilos_portada.css -->
-                <a href="<?php echo site_url();?>">Home</a> 
+                <a href="<?php echo site_url();?>"><?php echo $con["titulo_web"] ?></a> 
                 <a id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre"); ?>" onclick="visita_opcion('get_json_libre')" >Visita libre</a>
                 <a id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada"); ?>" onclick="visita_opcion('get_json_guiada')" >Visita Guiada</a>
                 <a id="opciondestacada_portada" href="<?php echo site_url("PuntosDestacados"); ?>">Destacados</a>
