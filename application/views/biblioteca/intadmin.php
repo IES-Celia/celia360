@@ -87,7 +87,7 @@
                             <a onclick='mostrarm(".$usu['id_libro'].")'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
                             <td><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
                             <td><a href='#' onclick='mostrarborrar(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
-                            <td><a href='".site_url("/biblioteca/showsubida/")."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
+                            <td><a href='".site_url("/biblioteca/showsubida/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
                             
 
                            </tr>";

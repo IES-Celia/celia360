@@ -41,7 +41,7 @@
         }
         if(error == ''){
             $.ajax({
-                url:"<?php echo base_url(); ?>biblioteca/upload", //base_url() return http://localhost/tutorial/codeigniter/
+                url:"<?php echo base_url(); ?>biblioteca/upload/<?php echo $id_libro?>", //base_url() return http://localhost/tutorial/codeigniter/
                 method:"POST",
                 data:form_data,
                 contentType:false,

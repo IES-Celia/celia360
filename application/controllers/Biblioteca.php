@@ -80,7 +80,7 @@ class Biblioteca extends CI_Controller {
 			$datos["error"] = "Error al insertar el libro";
 		}
 		else {					// Libro insertado con éxito
-			$datos["mensaje"] = "Libro insertado con éxito. Debe renombrarlo en la carpeta assets/libros/ como: ".$idlibro;
+			$datos["mensaje"] = "Libro insertado con éxito.";
 		}
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
         $datos["vista"] = "biblioteca/intadmin";
@@ -240,10 +240,11 @@ class Biblioteca extends CI_Controller {
 	 * Vista para subir imagenes
 	 * 
 	 */
-	public function showSubida()
+	public function showSubida($id_libro)
 	{
 		$datos["tabla"] = $this->bibliotecaModel->get_info();
-        $datos["vista"]="biblioteca/upload_multiple";
+		$datos["vista"]="biblioteca/upload_multiple";
+		$datos["id_libro"]=$id_libro;
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template', $datos);
 	}
@@ -253,12 +254,12 @@ class Biblioteca extends CI_Controller {
 	 *
 	 */
 
-	public function upload(){
+	public function upload($id_libro){
 		sleep(3);
 		if($_FILES["files"]["name"] != '')
 		{
 		$output = '';
-		$config["upload_path"] = './assets/libros/pruebasubida';
+		$config["upload_path"] = './assets/libros/'.$id_libro;
 		$config["allowed_types"] = 'gif|jpg|png';
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);

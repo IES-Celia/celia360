@@ -201,6 +201,12 @@
             return $fila[0]["maximo"];
 		}
 
+
+		public function carpeta($id){
+			$ruta = "assets/libros/$id";
+			mkdir($ruta);
+		}
+
 		/**
 		 * Inserta en la tabla libros los datos de un nuevo libro
 		 * 
@@ -221,7 +227,8 @@
             $res = $this->db->query("INSERT INTO libros(titulo,autor,editorial,lugar_edicion,fecha_edicion,ISBN,tipo,apaisado) VALUES ('$titulo','$autor','$editorial','$lugar','$fecha','$isbn','$tipo','$apaisado')");
 
          	$id_libro=$this->getmaxidlibro();
-            return $id_libro;
+         	$conf = $this->carpeta($id_libro);
+            return $conf;
 		}
 
 
