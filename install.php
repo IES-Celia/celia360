@@ -60,6 +60,10 @@
             $passdb = $_REQUEST["passbd"];
             $nombredb = $_REQUEST["namebd"];
             $baseurl = $_REQUEST["base"];
+            $username = $_REQUEST["username"];
+            $pass = $_REQUEST["pass"];
+            $emailadmin = $_REQUEST["emailadmin"];
+
 
             // Creamos la estructura de la BD
             $db = new mysqli($host, $userdb, $passdb, $nombredb);
@@ -163,7 +167,7 @@
                         ADD PRIMARY KEY (`id_libro`),
                         ADD UNIQUE KEY `ISBN` (`ISBN`);");
             $db->query("ALTER TABLE `libros`
-                        MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;")
+                        MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;");
 
             $db->query("CREATE TABLE `opciones_portada` (
                             `titulo_web` varchar(200) NOT NULL,
@@ -263,6 +267,8 @@
             // Creamos una entrada genérica en la tabla opciones_portada
             $db->query("INSERT INTO `opciones_portada` (`titulo_web`, `imagen_web`, `subtitulo_visita_libre`, `subtitulo_visita_guiada`, `subtitulo_puntos_destacados`, `subtitulo_biblioteca`, `show_biblioteca`, `show_historia`, `color_fuente`, `nombre_fuente`, `logo_web`) "
                     . "     VALUES ('Mi Tour Virtual', 'portada.jpg', 'Visita libre al tour virtual', 'Visita guiada al tour virtual', 'Visita de puntos destacados al tour virtual', 'Biblioteca del tour virtual', '1', '1', '#ffffff', 'Lato', 'sin-uso')");
+        
+
 
             // Creamos el archivo de configuración
             $nombre_archivo = ".env.development";
