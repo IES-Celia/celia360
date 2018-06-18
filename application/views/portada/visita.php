@@ -608,7 +608,8 @@ $("#botonDoc").click(function (e) {
 });
 
 $(".cerrarVideo").click(function (e) {
-    $(this).parent().parent().hide()
+    $(this).parent().parent().hide("fast")
+    $(this).parent().next().children("iframe").attr("src","")
 });
 
 $(".cerrarDocumento").click(function (e) {
