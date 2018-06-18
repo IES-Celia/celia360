@@ -171,7 +171,7 @@ $(document).ready(function(){
                 </div>
                 <div class="d-flex flex-row justify-content-around">
                         <a target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href="mailto:migueldevelopez@gmail.com"><i class="far fa-envelope"></i> </a>
                         <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                         <a target="_blank" href="https://github.com/miguelille"> <i class="fab fa-github"></i></a>
                         <a href="#popup" class="inform" alumno='0'><i class="fas fa-plus"></i> info </a>
@@ -184,11 +184,11 @@ $(document).ready(function(){
                     <h2>Francisco Linares González</h2>
                 </div>
                 <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+                    franlg.alm@gmail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
                         <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href="mailto:franlg.alm@gmail.com"><i class="far fa-envelope"></i> </a>
                         <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                         <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
@@ -201,11 +201,11 @@ $(document).ready(function(){
                     <h2>Zygimantas Sniurevicius</h2>
                 </div>
                 <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+                    zygis.1415@gmail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
                         <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href="mailto:zygis.1415@gmail.com"><i class="far fa-envelope"></i> </a>
                         <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                         <a target="_blank" href="https://github.com/heremias22"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='2'><i class="fas fa-plus"></i> info </a>
@@ -401,17 +401,17 @@ $(document).ready(function(){
 	</div> 
 
 <script>
-    var Miguel1 = ["Miguel Ángel López Segura", "<li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li>"];
-    var Fran = ["Francisco Linares", "<li>Ser Zeus</li><li>Lorem impsun 1</li><li>Lorem impsun 1</li>"];
-    var Zygis = ["Zygimantas Sniurevicius", "Lorem impsun 3"];
-    var Marc = ["Marc Expósito Miras", "Lorem impsun 4"];
-    var Manu = ["Manuel González Mesa", "Lorem impsun 5"];
-    var Alejandro = ["Alejandro López López", "Lorem impsun 6"];
-    var Hamza = ["Hamza Benhachmi", "Lorem impsun 7"];
-    var Miguel2 = ["Miguel Ángel López Rodríguez", "Lorem impsun 8"];
-    var Loli =["María Dolores Salmerón Sierra", "Lorem impsun 9"];
-    var Alvaro = ["Álvaro Sánchez Casares", "Lorem impsun 10"];
-    var Jose = ["José Luis Ramírez Jiménez", "Lorem impsun 11"];
+    var Miguel1 = ["Miguel Ángel López Segura", "<li>Coordinador</li><li>Desarrollo de los puntos destacados, frontend y backend</li><li>Desarrollo de la portada de la web, la cual se puede personalizar en el panel de administración</li><li>Desarrollo de los creditos</li><li>Desarrollo de la herramienta para crear hotspots (puntos de acción para saltar entre imagenes 360º, panel de información...)</li>"];
+    var Fran = ["Francisco Linares", "<li>Encargado de todo el backend relacionado con el mapa y subida de las escenas</li><li>Ser Zeus</li><li>Desarrollo de los hotspots de tipo vídeo</li><li>Ser Zeus</li>"];
+    var Zygis = ["Zygimantas Sniurevicius", "<li>Desarrollo de la visita guiada, frontend and backend</li><li>Encargado </li><li>Creación de todos los metodos encargados de que los hotspots (puntos de accion para saltar entre imagenes 360º, panel de información...) funcionen</li>"];
+    var Marc = ["Marc Expósito Miras", "<li>Desarrollo de la biblioteca</li>"];
+    var Manu = ["Manuel González Mesa", "<li>Desarrollo de la biblioteca</li>"];
+    var Alejandro = ["Alejandro López López", "<li>Desarrollo de la biblioteca</li>"];
+    var Hamza = ["Hamza Benhachmi", "<li>Encargado del backend relacionado con audio</li>"];
+    var Miguel2 = ["Miguel Ángel López Rodríguez", "<li>Desarrollo del instalable del tour</li>"];
+    var Loli =["María Dolores Salmerón Sierra", "<li>Encargada del backend relacionadas con las imagenes</li>"];
+    var Alvaro = ["Álvaro Sánchez Casares", "<li>Diseño del dashboard</li>"];
+    var Jose = ["José Luis Ramírez Jiménez", "<li>Captura de fotografias y audios</li>"];
     
     var alumnos2018 = [Miguel1, Fran, Zygis, Marc, Manu, Alejandro, Hamza, Miguel2, Loli, Alvaro, Jose];
     $(".inform").click(function(){
