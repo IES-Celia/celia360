@@ -218,21 +218,24 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
        var enlace_final = cortado_enlace[cortado_enlace.length-1];
        console.log(enlace_final);
        $(".seleccionado").each(function(){
-         if(enlace_final==$(this).text()){
+         if(enlace_final==$(this).find("span").text()){
            $(this).remove();
          }
        });
      } else {
-       
       var imagen = $(this).find("img");
       //Aqui guardaria el data-id y el src
       var attr_idimg = imagen.attr("data-id");
       var attr_img = imagen.attr("src");
+      var attr_title = imagen.attr("title");
       var cortado_enlace = attr_img.split("/");
-      imagen.addClass("borderojo");
-      $("#img_seleccionadas").append("<li class='seleccionado ui-state-default' data-id="+attr_idimg+">"+cortado_enlace[cortado_enlace.length-1]+"</li>");
 
-      //TODO:confirm
+      var dirrecion = "<?php echo base_url("assets/imagenes/imagenes-hotspots/") ?>"+cortado_enlace[cortado_enlace.length-1];
+      var img_min = "<img style='height:120px; width:120px' src='"+dirrecion+"'>";
+
+      imagen.addClass("borderojo");
+      $("#img_seleccionadas").append("<li class='seleccionado ui-state-default' data-id="+attr_idimg+"> "+img_min+" "+attr_title+" <span style='display:none;'>"+cortado_enlace[cortado_enlace.length-1]+"</span></li>");
+
      }
     });
 
