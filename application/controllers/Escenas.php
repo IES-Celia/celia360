@@ -70,12 +70,12 @@ class escenas extends CI_Controller {
         }
     }
 
-    public function deletesceneajax($cod){
+    // public function deletescene($cod){
 
-        $resultado = $this->EscenasModel->borrar($cod);
-        if ($resultado != 0) echo $cod;
-        else echo " ";
-    }
+    //     $resultado = $this->EscenasModel->borrar($cod);
+    //     if ($resultado != 0) echo $cod;
+    //     else echo " ";
+    // }
     
     
     public function deletescene($cod){
@@ -173,6 +173,12 @@ class escenas extends CI_Controller {
 	$datos["escenaInicial"] = $escenaInicial;
         $datos["idhotspot"]= $idhotspot;
 	$this->load->view("escenas/jotpoch", $datos);	
+    }
+
+    public function cargar_versiones_escena () {
+        $cod_escena = $_REQUEST["codigo_escena"];
+        $resultado = $this->EscenasModel->get_versiones($cod_escena);
+        echo json_encode($resultado);
     }
 
 

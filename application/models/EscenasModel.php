@@ -229,5 +229,19 @@ class EscenasModel extends CI_Model {
         return $resultado;
     }
 
+    function get_versiones($cod) {
+
+        $sql = $this->db->query(
+            "SELECT escenas_versiones.titulo_version, escenas_versiones.cod_escena_version 
+            FROM escenas
+            INNER JOIN escenas_versiones ON escenas.cod_escena = escenas_versiones.cod_escena_original
+            WHERE escenas.cod_escena = '$cod'");
+        $versiones = array();
+        foreach ($sql->result_array() as $fila) {
+            $versiones[] = $fila;
+        }
+        return $versiones;
+    }
+
 }
 ?>	

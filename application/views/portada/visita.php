@@ -6,6 +6,9 @@
     <div class="boton_menu">
         
     </div>
+          <!-- Boton Versiones -->
+          <div class='version-icono'></div>
+          <ul class='version-lista'></ul>
           <!-- Botón full screen-->
           <div class="ctrl" id="fullscreen"></div>
            <!-- Vídeo visita libre -->
@@ -212,6 +215,7 @@ function visita_opcion(nombre){
               
       viewer = pannellum.viewer("panorama", data);
 
+
 if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         $("#boton_mapa").hide();        // Esta visita no tiene mapa.
         iniciar_visita_guiada();
@@ -222,6 +226,8 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         $("#panel_audio_guiada").hide();
         $('#audio_guiada').attr("src","");
         iniciar_visita_libre();
+        //Event listener del pannellum, ejecuta codigo dentro del bloque cada vez que cambia de escena.
+        //viewer.on('scenechange',versiones);
       }
         console.log("success");
       })
@@ -571,6 +577,7 @@ $("#nav_menu").hide();
 $("#menu_guiada_show").hide();
 $(".menu_libre_show").show();
 $("#boton_mapa").show();
+//versiones();
 
 } // fin function iniciar_visita_libre()
 
@@ -615,6 +622,49 @@ $(".cerrarVideo").click(function (e) {
 $(".cerrarDocumento").click(function (e) {
     $(this).parent().hide()
 });
+
+
+$(".version-icono").click(function (e) {
+    if($(".version-lista").css("display")=="none"){
+        $(".version-lista").show();
+    }else {
+        $(".version-lista").hide();
+    }
+    
+});
+
+
+function versiones(){
+
+    var cod_escena = viewer.getScene();
+    $(".version-lista").hide();
+
+    var peticion = $.ajax({
+        url: "<?php echo site_url("Escenas/cargar_versiones_escena"); ?>",
+        type:"post",
+        data:{codigo_escena : cod_escena},
+    });
+    
+    peticion.done(function(datos){
+        var resultado = JSON.parse(datos);
+        $(".version-lista").empty();
+        if (resultado.length != 0){
+            
+            for(var i = 0; i<resultado.length; i++){
+                var cadena_cargar = "'"+resultado[i].cod_escena_version+"'";
+                $(".version-lista").append("<li onclick=viewer.loadScene("+cadena_cargar+")>"+resultado[i].titulo_version+"</li>");
+            }
+
+            $(".version-icono").show();
+
+            
+        } else {
+            $(".version-icono").hide();
+        }
+    
+    
+    });
+}
     
 </script>      
 <script src="<?php echo base_url("assets/js/tilt.js");?>"></script>
@@ -647,3 +697,4 @@ $(document).ready(function(){
 ?>
     });
 </script>
+
