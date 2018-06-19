@@ -507,11 +507,11 @@ El proceso de **inserción de un libro** tiene unos pasos a respetar para que se
 ![](imgs/12-02.jpg)
 
 
-2. Subir las páginas con la opción "Subir". Puede subir las páginas de una en una (si el libro no es muy largo) o seleccionando varias a la vez. Por supuesto, deberá tener las páginas escaneadas previamente y a doble cara del libro cada imagen, excluyendo la portada y contraportada. Tenga en cuenta que las páginas se ordenarán en el servidor según su nombre, es totalmente necesario que se renombren desde 0.jpg, siendo la portada la 0, 1.jpg, 2.jpg... y así sucesivamente.
+2. Subir las páginas con la opción "Subir". Puede subir las páginas de una en una (si el libro no es muy largo) o seleccionando varias a la vez. Por supuesto, deberá tener las páginas escaneadas previamente y a doble cara del libro cada imagen, excluyendo la portada y contraportada. Tenga en cuenta que las páginas se ordenarán en el servidor según su nombre, es totalmente necesario que se renombren desde 0.jpg, siendo la portada la 0, 1.jpg, 2.jpg... y así sucesivamente. 
+
+Una vez que haya subido tanto la información bibliográfica como el contenido de un libro, puede modificar la primera con la opción "Modificar" del panel de administración y la segunda con la opción "Páginas", como se muestra en la siguiente imagen:
 
 ![](imgs/12-03.jpg)
-
-Una vez que haya subido tanto la información bibliográfica como el contenido de un libro, puede modificar la primera con la opción "Modificar" del panel de administración y la segunda con la opción "Páginas".
 
 Tenga en cuenta que el catálogo de libros marcados como "Tipo historia" solo aparecerán al pulsar el botón "Historia" del homepage, mientras que el resto de libros aparecerán al seleccionar la opción "Biblioteca" del menú principal del homepage. Ambos enlaces son optativos y se pueden ocultar desde la personalización de la portada (si no sabe cómo hacerlo, revise la [sección 10](#portada)), por lo que le corresponde a usted decidir dónde encaja mejor cada publicación que pretende poner a disposición de sus visitantes o si, por el contrario, no desea ofrecer libros digitalizados en absoluto.
 
