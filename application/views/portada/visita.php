@@ -358,7 +358,7 @@ peticion.done(function(datos){
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
     $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' textoImagen='"+resultado[i].texto_imagen+"'>");
   }
-  $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'></div>");
+  // $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'></div>");
 
   //Si tiene un pdf asociado, mostramos el boton "ver mas"
   if(resultado[0].documento_url!="ninguno"){
@@ -448,8 +448,8 @@ function showSlides(n) {
       slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
-  $("#textoImagenGaleria").empty();
-  $("#textoImagenGaleria").html(slides[slideIndex-1].getAttribute("textoImagen"));
+  // $("#textoImagenGaleria").empty();
+  // $("#textoImagenGaleria").html(slides[slideIndex-1].getAttribute("textoImagen"));
 }
   //Si le das click fuera de la ventana quitarlo.
 $( ".overlay" ).on( "click", function() {
