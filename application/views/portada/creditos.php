@@ -252,11 +252,11 @@ $(document).ready(function(){
                     <h2>Alejandro López López</h2>
                 </div>
                 <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+                    f.alejandrolopez92@gmail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
                         <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                        <a target="_blank" href="mailto:f.alejandrolopez92@gmail.com"><i class="far fa-envelope"></i> </a>
                         <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                         <a target="_blank" href="https://github.com/Alfrik"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='5'><i class="fas fa-plus"></i> info </a>
