@@ -122,7 +122,9 @@ else {
         <td class='audio_escena'><audio controls='controls' preload='auto'>
         <source src='" . base_url().$escena['audio_escena'] . "' type='audio/m4a'/>
         <source src='" . base_url().$escena['audio_escena'] . "' type='audio/mp3'/>
-        </audio></td>
+        </audio>
+        ".$escena['audio_escena']."
+        </td>
         <td class='titulo_escena'>".$escena['titulo_escena']."</td>
         <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
         <td><button id='boton_guiada' class='change_img'>Cambiar</button></td>
