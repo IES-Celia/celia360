@@ -257,9 +257,9 @@ var Comparar = setInterval(function(){ comprobarTiempo() }, 500);
 function comprobarTiempo() {
 //console.log(Date.now()-ultimaInteraction);
     if(Date.now()-ultimaInteraction > 3000)
-        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen").css("opacity",0.08);
+        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.08);
     else if(Date.now()-ultimaInteraction < 3000)
-        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen").css("opacity",0.6);
+        $(".custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, .custom-hotspot-audio, .custom-hotspot-escaleras").css("opacity",0.6);
 }
 
 
@@ -702,6 +702,7 @@ function onDocumentMouseDown(event) {
 
     isUserInteracting = true;
     latestInteraction = Date.now();
+    ultimaInteraction = Date.now();
     
     onPointerDownPointerX = pos.x;
     onPointerDownPointerY = pos.y;
@@ -765,6 +766,7 @@ function mouseEventToCoords(event) {
 function onDocumentMouseMove(event) {
     if (isUserInteracting && loaded) {
         latestInteraction = Date.now();
+        ultimaInteraction = Date.now();
         var canvas = renderer.getCanvas();
         var canvasWidth = canvas.clientWidth,
             canvasHeight = canvas.clientHeight;
@@ -843,6 +845,7 @@ function onDocumentTouchStart(event) {
     }
     isUserInteracting = true;
     latestInteraction = Date.now();
+    ultimaInteraction = Date.now();
     onPointerDownYaw = config.yaw;
     onPointerDownPitch = config.pitch;
 
@@ -866,6 +869,7 @@ function onDocumentTouchMove(event) {
     event.preventDefault();
     if (loaded) {
         latestInteraction = Date.now();
+        ultimaInteraction = Date.now();
     }
     if (isUserInteracting && loaded) {
         var pos0 = mousePosition(event.targetTouches[0]);
@@ -912,6 +916,7 @@ function onDocumentTouchEnd() {
     }
     onPointerDownPointerDist = -1;
     latestInteraction = Date.now();
+    ultimaInteraction = Date.now();
 
     fireEvent('touchend', event);
 }
@@ -992,6 +997,7 @@ function onDocumentMouseWheel(event) {
     // Turn off auto-rotation if enabled
     stopAnimation();
     latestInteraction = Date.now();
+    ultimaInteraction = Date.now();
 
     if (event.wheelDeltaY) {
         // WebKit
@@ -1019,6 +1025,7 @@ function onDocumentKeyPress(event) {
     // Turn off auto-rotation if enabled
     stopAnimation();
     latestInteraction = Date.now();
+    ultimaInteraction = Date.now();
 
     stopOrientation();
     config.roll = 0;
