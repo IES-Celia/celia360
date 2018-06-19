@@ -16,7 +16,7 @@
 <?php
 /** 
   * Las operaciones de la base de datos se deben colocar en un modelo, para que puedan reutilizarse fácilmente más adelante.
-  * Clase Img que extiende del Modelo base de Codeigniter, que carga la librería de base de datos.
+  * Clase ImagenModel que extiende del Modelo base de Codeigniter, que carga la librería de base de datos.
   * Esto hará que la clase de base de datos esté disponible a través del $this->dbobjeto.
   * 
   * @author: María Dolores Salmeron Sierra
@@ -34,7 +34,8 @@ class ImagenModel extends CI_Model {
     }
     /**
      * Inserta un registro en la tabla "imagenes" de la base de datos
-     * Sube al servidor el fichero de la imagen reduciendo sus dimensiones y el peso de la misma, crea una miniatura de la imagen en el servidor
+     * Sube al servidor el fichero de la imagen reduciendo sus dimensiones y el peso de la misma, 
+     * vuelve a reducir más la imagen y le cambia el nombre añadiendo al nombre de la primera imágen "_miniatura", guarda las dos imágenes en una carpeta del servidor.
      * TODO: reducir tamaño de imagen al subirla si es excesivo
      * 
      * @return $resultado, nos devuelve si se han realizado las acciones correctamente (1) o no (0). Es un array. Cada posición se refiere a cada una de las imágenes subidas.
