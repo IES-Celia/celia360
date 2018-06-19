@@ -484,7 +484,7 @@ El **registro de usuarios** se puede hacer desde el panel de administración (op
 
 El módulo de biblioteca es un añadido que enriquece la experiencia de los visitantes a su tour virtual ofreciéndole, en formato digitalizado, publicaciones que tengan relación con el lugar que están visitando. No es un módulo obligatorio, es decir, usted puede desactivarlo si decide no ofrecerlo a sus visitantes. En cambio, si prefiere utilizarlo, asegúrese de no infringir los derechos de propiedad intelectual de las obras que ofrezca en formato digital. Los desarrolladores de la aplicación Celia360, como es natural, declinan toda responsabilidad sobre el uso indebido que los usuarios finales pudieran hacer de esta funcionalidad.
 
-En esta sección le mostraremos cómo puede crear su biblioteca virtual y cómo puede integrarla en su visita. Es una sección que aún está en desarrollo (incluso más que el resto de la aplicación), por lo que en próximas versiones pueden existir profundos cambios.
+En esta sección le mostraremos cómo puede crear su biblioteca virtual y cómo puede integrarla en su visita.
 
 Para acceder a la administración de la biblioteca, debe entrar al panel de administración con un usuario con privilegios suficientes. Si no sabe cómo hacerlo, revise la [sección 4](#mapa). Una vez hecho esto, seleccione la opción "Biblioteca" del menú principal. Accederá a una pantalla semejante a esta:<br/>
 
@@ -493,21 +493,21 @@ Para acceder a la administración de la biblioteca, debe entrar al panel de admi
 Esta pantalla ofrece las funcionalidades habituales para la administración de cualquier conjunto de datos. Es muy semejante a la administración de imágenes, vídeos, audios o usuarios. Usted puede:
 
 * **Añadir un libro** haciendo clic en "Insertar libro". Más abajo le explicamos algo más acerca de este proceso.
-* **Modificar libro**: la información bibliográfica básica de cada un libro (título, autor, editorial, etc) puede modificarse haciendo clic en el icono "Modificar" de cada libro. Sin embargo, el contenido del libro, es decir, sus páginas, no se modifican desde aquí, sino desde la opción "Editar páginas" que describimos más abajo.
+* **Modificar libro**: la información bibliográfica básica de cada libro (título, autor, editorial, etc) puede modificarse haciendo clic en el icono "Modificar" de cada libro. Sin embargo, el contenido del libro, es decir, sus páginas, no se modifican desde aquí, sino desde la opción "Editar páginas" que describimos más abajo.
 * **Editar páginas**: aquí se edita el contenido del libro, es decir, sus páginas. Más abajo le explicamos cómo subir el contenido del libro.
 * **Eliminar libro**: haciendo clic en el icono de "Eliminar" en la fila de cada libro puede borrarlo de la base de datos y eliminar todos los archivos asociados del servidor. ¡Cuidado! Esta acción no se puede deshacer.
 * **Buscar libro**: le permite localizar un libro por cualquier campo: título, autor, editorial, isbn, etc. Simplemente, escriba una cadena de búsqueda en el cuadro reservado para ello encima de la tabla.
 * **Ordenar tabla**: haciendo clic en cualquier encabezado de campo de la tabla para ordenarla alfabéticamente por ese campo. Por ejemplo, si quiere ordenar alfabéticamente por título, haga clic en el encabezado "Título". Si hace clic una segunda vez, obtendrá un ordenado alfabético inverso.
 * **Paginar tabla**: si en su base de datos hay demasiados libros no se mostrarán todos en la tabla, sino que se paginarán. Puede navegar entre las páginas con el indicador de página en la parte inferior de la tabla. También puede decidir cuántos registros desea ver por página.
 
-El proceso de **inserción de un libro** en la base de datos no es trivial, por lo que necesita una explicación adicional. En general, crear un libro requiere dos pasos:
+El proceso de **inserción de un libro** tiene unos pasos a respetar para que se puedan insertar satisfactoriamente, por lo que necesita una explicación adicional. En general, crear un libro requiere de dos pasos obligatorios: 
 
 1. Crear el libro con la opción "Insertar libro". Esto insertará en la base de datos la información bibliográfica básica (título, autor, editorial, etc), pero <i>no</i> el contenido del libro. Se le pedirá que indique si este libro está destinado a la biblioteca general o es una publicación histórica. La diferencia es que los segundos solo aparecerán al hacer clic en el boton "Historia" del homepage, donde (optativamente) podemos colocar publicaciones que tengan que ver con la historia de nuestro edificio. También se le pedirá que indique si el libro tiene formato apaisado o vertical.
 
 ![](imgs/12-02.jpg)
 
 
-2. Subir las páginas con la opción "Páginas" de cada fila de la tabla. Puede subir las páginas de una en una (si el libro no es muy largo) o seleccionando varias a la vez. Por supuesto, deberá tener las páginas escaneadas previamente. Tenga en cuenta que las páginas se ordenarán en el servidor según su nombre alfabético, por lo que le recomendamos que nombre los archivos numéricamente. Por ejemplo, 001.jpg para la primera página, 002.jpg para la segunda, y así sucesivamente.
+2. Subir las páginas con la opción "Subir". Puede subir las páginas de una en una (si el libro no es muy largo) o seleccionando varias a la vez. Por supuesto, deberá tener las páginas escaneadas previamente y a doble cara del libro cada imagen, excluyendo la portada y contraportada. Tenga en cuenta que las páginas se ordenarán en el servidor según su nombre, es totalmente necesario que se renombren desde 0.jpg, siendo la portada la 0, 1.jpg, 2.jpg... y así sucesivamente.
 
 ![](imgs/12-03.jpg)
 
