@@ -1,3 +1,27 @@
+<?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
+?>
+<style>
+    .cerrar{
+        position: relative;
+        top:15px;
+        left:44%;
+    }
+    .img-cerrar{
+        width: 20px;
+        height: 20px;
+    }
+</style>
 
 <?php
 //Tabla usuarios
@@ -80,7 +104,10 @@ echo "</table>";
 echo "
 <div id='modificar'>
     <div id='caja'>
-    <h1>Modificar usuario</h1>
+<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+        base_url("assets/css/cerrar_icon.png") . "'></img></a>
+    
+<h1>Modificar usuario</h1>
     <form action='".site_url("usuario/modUsuario")."' method='post'>
 
         <label for='username'>Nombre de usuario</label>
@@ -102,7 +129,6 @@ echo "
         </select>
         <input type='hidden' name='id' id='form_modif_id'>
         <input type=submit value='Modificar'>
-         <input type='button' onclick='cerrar()' value='Cerrar'>
     </form>
    
     </div>
@@ -112,6 +138,8 @@ echo "
 echo"
 <div id='insertar'>
     <div id='caja'>
+    <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+        base_url("assets/css/cerrar_icon.png") . "'></img></a>
 <h1>Registro de usuarios</h1>
 <form action='".site_url("usuario/processregisterform")."' method='post'>
 
@@ -133,7 +161,6 @@ echo"
                 <option value='3'>Bibliotecario</option>
         </select>
     <input type='submit'>
-    <input type='button' onclick='cerrar()' value='Cerrar'>
     
 </form>
     </div>    
