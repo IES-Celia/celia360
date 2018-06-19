@@ -48,7 +48,7 @@
             border: none;
             border-bottom:2px solid white;
             background-color: rgba(0,0,0,0.0);  
-            width: 88%;
+            width: 89%;
             word-wrap: break-word;
             text-align: center;
             color:white;
