@@ -179,10 +179,13 @@
 	<div id="contenedorbiblioteca">
 	<?php 
 	echo "
+	<div style='width: 280px;margin-left: 40%;padding-top: 1%;'>
 		<form method='POST' action='".site_url("biblioteca/vertodosloslibros/-1/-1/-1/0")."'>
-			<input type='text' name='libro'>
-			<input type='submit'>
-		</form>"
+			<input style='padding: 2%;border-radius: 5px;border: none;' type='text' name='libro' placeholder='Buscar...'>
+			<input style='border-radius: 5px;padding: 2%;background: beige;margin-left: 3%;' type='submit' value='Buscar'>
+		</form>
+	</div>"
+		
 	?>
 
 	
@@ -198,13 +201,15 @@
 		        $i++;
 		          echo "<td class='tablatodo'>";
 		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1b1b1bd4;color:white;margin-top:20px;height:auto;overflow:hidden;padding:10px;'>'".$ides['titulo']."'";
-		          echo "</div></td>";
+		          echo "</td>";
 		      }
 		          if ($i%4 == 0)  echo "</tr><tr class=''>";
 		            }
-		            echo "</tr></table>";
+					echo "</tr></table> <div style='clear:both;'></div>";
+		
+					
 		  //otro cambio
-		echo "</div></div>";
+		// echo "</div></div>";
 
 ?>
 
