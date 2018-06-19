@@ -108,20 +108,55 @@ class Biblioteca extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view('admin_template',$datos);
 	}
+
+
+	// Pruebas depurar codigo 
+
+// public function verUnLibro($idlibro, $apaisado) {
+// 	$datos["tabla"] = $this->bibliotecaModel->getLibro($idlibro);
+// 	$this->mostrarLibros($datos);
+// }
+
+// public function verTodosLibro($apaisado) {
+// 	$datos["tabla"] = $this->bibliotecaModel->getTodosLibros();
+// 	$this->mostrarLibros($datos);
+// }
+
+// public function buscarLibros($strBuscar, $apaisado) {
+// 		$datos["tabla"] = $this->bibliotecaModel->buscarLibros($strBuscar);
+// 		$this->mostrarLibros($datos, $apaisado);
+	
+// }
+
+// private function mostrarLibros($datos, $apaisado){
+// 	$this->load->model('PortadaModel');
+// 	$datos["portada"]=$this->PortadaModel->get_info_portada();
+// 	$datos["apaisado"] = $apaisado;
+// 	$datos["showBiblioteca"] = 1;  // Indica a la plantilla que debe mostrar la capa modal de la biblioteca
+// 	$datos["vista"] = "biblioteca/bibliotecaajax";
+// 	$this->load->view("main_template", $datos);  // Plantilla principal del frontend
+
+// }
+
+
 	/**
 	 * 
 	 * 
 	 * 
 	 */
-	public function vertodosloslibros($idlibro = -1,$apaisado = -1,$tipo=-1){
-                $this->load->model('BibliotecaModel', 'biblioteca');
-                $this->load->model('PortadaModel');
-                $datos["portada"]=$this->PortadaModel->get_info_portada();
-                $datos["tabla"] = $this->bibliotecaModel->get_info();
+	public function vertodosloslibros($idlibro = -1,$apaisado = -1,$tipo = -1,$busqueda = -1){
+		$this->load->model('BibliotecaModel', 'biblioteca');
+		$this->load->model('PortadaModel');
+		$datos["portada"]=$this->PortadaModel->get_info_portada();
+		if($busqueda == -1){
+			$datos["tabla"] = $this->bibliotecaModel->get_info();
+		}else{
+			$datos["tabla"] = $this->bibliotecaModel->busqueda_libros();
+		}
 		$datos["id_libro"] = $idlibro;
 		$datos["apaisado"] = $apaisado;
-                $datos["showBiblioteca"] = 1;  // Indica a la plantilla que debe mostrar la capa modal de la biblioteca
-                $datos["vista"] = "biblioteca/bibliotecaajax";
+		$datos["showBiblioteca"] = 1;  // Indica a la plantilla que debe mostrar la capa modal de la biblioteca
+		$datos["vista"] = "biblioteca/bibliotecaajax";
 		$this->load->view("main_template", $datos);  // Plantilla principal del frontend
 
 	}
@@ -282,8 +317,13 @@ class Biblioteca extends CI_Controller {
 		}
 		echo $output;   
 		}
- }
+ 	}
 
+
+	public function buscador(){
+		$resultado=$this->bibliotecaModel->busqueda_libros();
+		
+	}
 
 	
 

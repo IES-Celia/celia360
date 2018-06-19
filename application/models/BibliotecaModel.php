@@ -79,6 +79,13 @@
 			return $res;
 		}
 
+		/**
+		 * Elimina los datos de un libro de la tabla libros y su directorio correspondiente(Si el usuario lo ha indicado)
+		 * 
+		 * $directorio ruta del directorio a borrar
+		 * 
+		 * @return Devuelve un booleano, 1 si se ha realizado la query con exito y 0 si ha fallado
+		 */
 
 		public function borrarDir($directorio){
 			$archivos = scandir($directorio); 
@@ -254,11 +261,27 @@
 			}
 			return $res;
 		}
+
+
+		public function busqueda_libros(){
+			$libro=$this->input->get_post("libro");
+			$res = $this->db->query("SELECT * FROM libros WHERE titulo LIKE '%".$libro."%' OR autor LIKE '%".$libro."%'");
+
+			$tabla = array();
+            foreach($res->result_array() as $fila) {
+            	$tabla[] = $fila;
+			}
+			return $tabla;
+		}
+
+
 		
 		public function busqueda_aproximada($str_busqueda){
-					$res = $this->db->query("SELECT * FROM libros WHERE id_libro LIKE '%".$str_busqueda."%' OR titulo LIKE '%".$str_busqueda."%' OR autor LIKE '%".$str_busqueda."%' OR editorial LIKE '%".$str_busqueda."' ");
-					return $res;
+			$res = $this->db->query("SELECT * FROM libros WHERE id_libro LIKE '%".$str_busqueda."%' OR titulo LIKE '%".$str_busqueda."%' OR autor LIKE '%".$str_busqueda."%' OR editorial LIKE '%".$str_busqueda."' ");
+			return $res;
 		}
+
+		
 
 		//Renombrar archivos de una carpeta
 		/*public function rename_cont($id_libro){
