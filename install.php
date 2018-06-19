@@ -21,30 +21,233 @@
 
         <style type="text/css">
 
-            #caja{
-                position: relative;
-                width: 50%;
-                height: 100%;
-                top: 25%;
-                left: 25%; 
-                border: 1px solid #000;
-                border-radius: 5px;
-            }
+                #caja{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            font-family: comic;
+            color:white;
+            width: 50%;
+            height: 80%;
+            text-align: center;
+            border: 2px solid grey;
+            border-radius: 10px;
+            overflow-y: scroll;
+            box-shadow: 3px 3px 10px grey;
+            background: rgb(90,163,237); 
+            background: -moz-linear-gradient(to bottom, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
+            background: -webkit-linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 
+            background: linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);       
+           
+        }
+        
+        
+        #caja input[type=text]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 88%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
 
-            input{
-                display: block; 
-                margin: 5px;
-                border: none;
-                border-bottom: 0.5px solid #000;
-            }
+        }
 
-            label{
-                margin-left: 5px;
-                margin-top: 10px;
-            }
+        #caja input[type=text]::placeholder{
+            color:navajowhite;
+            
+        }
+
+        #caja textarea{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
+            
+        }
+
+        #caja textarea::placeholder{
+            color:navajowhite;
+            
+        }
+
+        #caja input[type=number]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0);  
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            color:white;
+            font-size: 20px;
+            margin-bottom: 13px;
+
+        }
+
+        #caja input[type=password]{
+            border: none;
+            border-bottom:2px solid white;
+            background-color: rgba(0,0,0,0.0); 
+            width: 88%;
+            word-wrap: break-word;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            margin-bottom: 13px;
+
+
+        }
+
+        label{
+            float: left;
+            margin-left: 50px;
+            margin-top: 5px;
+            font-size: 15px;
+        }
+
+        #caja input[type=submit]{
+            width: 300px;
+            margin: 10px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            border-color: white;
+            font-family: comic;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0,0,0,0.2);
+            transition: 0.4s;
+        }
+        
+        #caja input[type=button]{
+             width: 300px;
+            margin: 10px;
+            height: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            border-color: white;
+            font-family: comic;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0,0,0,0.2);
+            transition: 0.4s;
+
+        }
+
+        #caja select{
+            border: none;
+            border-bottom:2px solid white;
+            background: rgba(0,0,0,0);
+            width: 80%;
+            word-wrap: break-word;
+            text-align: center;
+            font-size: 20px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            color:white;
+            background-color:transparent;
+        }
+        
+        option{
+        
+            background-color:rgb(90,163,237);
+        }
+
+        #caja legend{
+            font-size: 35px;
+            margin: 0 auto;
+            line-height: 60px;
+            font-weight: bolder;
+            margin-bottom: 3px;
+            
+            
+        }
+ 
+        #caja form a{
+            text-decoration: none;
+            border:2px solid white;
+            color:white;
+            font-size: 24px;
+            padding-top:5px;
+            padding-bottom: 5px;
+            padding-left: 80px;
+            padding-right: 80px;  
+            height: 40px;
+            width:100%;
+            max-width: 400px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 10px;
+            line-height: 50px;
+            background-color: rgba(0,0,0,0.2);
+            transition:0.4s;
+            
+        }
+        
+        #caja form a:hover{
+            background-color:rgba(0,0,0,0.4);
+        }
+
+        #caja form a.eliminar {
+            background-color: rgba(255, 0, 0, 0.5);
+        }
+       
+        #caja form a.eliminar:hover {
+            background-color: rgba(255, 0, 0, 1);
+        }
+       
+        input:focus{
+            outline: 0px;
+        }
+
+        input:activate{
+            background-color: rgba(0,0,0,0.0);
+        }
+
+         #caja input[type=button]:hover{
+            background-color: rgba(0,0,0,0.4);
+        }
+
+          #caja input[type=submit]:hover{
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        input[type="date" i]{
+            color: white;
+            background-color: transparent;
+            margin-bottom: 10px;
+            
+        }
 
             h1{
                 margin-left: 5px;
+            }
+
+        
+            ::-webkit-scrollbar {
+            width: 1.5%;
+            margin: 1%;
+            }
+
+
+            ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey; 
+            border-radius: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+            background:rgba(35,101,132,1); 
+            border-radius: 10px;
             }
 
         </style>
@@ -410,9 +613,12 @@
                     <h3>Configuración del usuario administrador</h3>
                     <label for="username">Nombre de usuario administrador</label>
                     <input type='text' name='username' id="username" required>
-                    <label for="pass">Password</label>
+                    <label for="pass">Contrase&ntilde;a</label>
                     <input type='password' id="pass" name='pass' required> 
-                    <label for="email">Correo</label>
+                    <br/>
+
+                    <label for="email">Email</label>
+                    <br/>
                     <input type='text' name='emailadmin' id="email" required> 
                     <input type='submit' value='Aceptar' style="border: none;">
                 </form>
