@@ -1075,6 +1075,7 @@ display: block;
   background-position: center;
   background-image: url("svg/shuffle.svg");
   cursor:pointer;
+  display:none;
 }
 
 .version-lista{
