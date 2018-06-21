@@ -290,33 +290,32 @@ class Biblioteca extends CI_Controller {
 	 */
 
 	public function upload($id_libro){
-		sleep(3);
+		$output = '';
 		if($_FILES["files"]["name"] != '')
 		{
-		$output = '';
-		$config["upload_path"] = './assets/libros/'.$id_libro;
-		$config["allowed_types"] = 'gif|jpg|png';
-		$this->load->library('upload', $config);
-		$this->upload->initialize($config);
-		for($count = 0; $count<count($_FILES["files"]["name"]); $count++)
-		{
-			$_FILES["file"]["name"] = $_FILES["files"]["name"][$count];
-			$_FILES["file"]["type"] = $_FILES["files"]["type"][$count];
-			$_FILES["file"]["tmp_name"] = $_FILES["files"]["tmp_name"][$count];
-			$_FILES["file"]["error"] = $_FILES["files"]["error"][$count];
-			$_FILES["file"]["size"] = $_FILES["files"]["size"][$count];
-			if($this->upload->do_upload('file'))
+			print_r($_FILES);
+			$config["upload_path"] = './assets/libros/'.$id_libro;
+			$config["allowed_types"] = 'gif|jpg|png';
+			$this->load->library('upload', $config);
+			$this->upload->initialize($config);
+			$_FILES["files"]["name"] = $_FILES["files"]["name"];
+			$_FILES["files"]["type"] = $_FILES["files"]["type"];
+			$_FILES["files"]["tmp_name"] = $_FILES["files"]["tmp_name"];
+			$_FILES["files"]["error"] = $_FILES["files"]["error"];
+			$_FILES["files"]["size"] = $_FILES["files"]["size"];
+			if($this->upload->do_upload('files'))
 			{
-			$data = $this->upload->data();
-			$output .= '
-			<div class="col-md-3">
-			<img src="'.base_url().'/assets/libros/pruebasubida/'.$data["file_name"].'" class="img-responsive img-thumbnail" />
-			</div>
-			';
+				$data = $this->upload->data();
+				$output .= '1';
 			}
+			else
+			{
+				$output .= '0';
+			}
+			echo $output;   
 		}
-		echo $output;   
-		}
+		else { $output .= '0'; }
+		echo $output;
  	}
 
 
