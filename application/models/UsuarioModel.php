@@ -1,4 +1,17 @@
 <?php
+/*
+    Este archivo es parte de la aplicación web Celia360. 
+
+    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    bajo los términos de la GNU General Public License tal y como está publicada por
+    la Free Software Foundation en su versión 3.
+ 
+    Celia 360 se distribuye con el propósito de resultar útil,
+    pero SIN NINGUNA GARANTÍA de ningún tipo. 
+    Véase la GNU General Public License para más detalles.
+
+    Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
+*/
 
 class UsuarioModel extends CI_Model {
     /*     * *****************************************************************
@@ -52,6 +65,11 @@ class UsuarioModel extends CI_Model {
 
         return $resultado;
     }
+      /**
+     * Comprueba que los datos al hacer login esten en la base de datos.
+     * 
+     * @return int con el tipo de usuario que realiza el login.
+     */
 
     public function login($usr, $pass) {
 
@@ -89,6 +107,11 @@ class UsuarioModel extends CI_Model {
 
         return $resultado;
     }
+      /**
+     * 
+     * 
+     * @return 
+     */
 
     public function buscarusu($usr, $pass) {
 
@@ -109,6 +132,11 @@ class UsuarioModel extends CI_Model {
         }
         return $tabla;
     }
+        /**
+     * Busca todos los usuarios de de la base de datos para mostrarlos
+     * 
+     * @return array con todos los usuarios de la base de datos 
+     */
 
     public function buscartodousu() {
 
