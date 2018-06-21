@@ -18,7 +18,9 @@
 <html>
     <head>
         <title>Install</title>
-
+<?php
+//estilos del formulario de 
+?>
         <style type="text/css">
 
                 #caja{
@@ -503,7 +505,7 @@
 
             fclose($archivo);
 
-
+            //creación de directorios 
             if (!file_exists('assets/biblio')) {
                 mkdir('assets/biblio');
             }

@@ -170,7 +170,9 @@ echo"
 
 
 
-
+<?php
+//script para las ventanas modales
+?>
 <script>
 
         function borrarusuario(idusu){
