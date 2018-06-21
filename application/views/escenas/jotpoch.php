@@ -44,7 +44,7 @@
 	<div class="contenedor">
 		<div id="panorama">   
            <div class="boton_menu" id="botoncico"></div> <!--boton menu --> 
-         <div id="titulo_insercion">MODO INSERCIÓN DE HOTSPOT / MODIFICADOR DE COORDENADAS</div> 
+         <div id="titulo_insercion">MODO INSERCIÓN DE HOTSPOT / MODIFICADOR DE COORDENADAS (click derecho para generar una acción)</div> 
          <div class="ctrl" id="fullscreen"></div>
         </div>
 	</div>
