@@ -258,7 +258,8 @@
 
         <?php
         ini_set("display_errors", 0);
-        if (isset($_REQUEST["host"])) {
+       
+      if (isset($_REQUEST["host"])) {
             // Procesar el formulario
             $host = $_REQUEST["host"];
             $userdb = $_REQUEST["nameuse"];
@@ -267,8 +268,12 @@
             $baseurl = $_REQUEST["base"];
             $username = $_REQUEST["username"];
             $pass = $_REQUEST["pass"];
+            $pass2 = $_REQUEST["pass2"];
             $emailadmin = $_REQUEST["emailadmin"];
-
+            //Comprobamos que las dos contraseñas sean iguales
+            if (strcmp($pass, $pass2) !== 0) {
+            echo 'Las dos contraseñas no son iguales, son consideradas mayúsculas y minúsculas';
+            }else{
 
             // Creamos la estructura de la BD
             $db = new mysqli($host, $userdb, $passdb, $nombredb);
@@ -465,6 +470,7 @@
                         ADD PRIMARY KEY (`id_visita`);");
             $db->query("ALTER TABLE `visita_guiada`
   MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;");
+          
 
             // Creamos el usuario administrador
             $db->query("INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) 
@@ -591,7 +597,9 @@
             }
             echo "<br><br>La instalación ha finalizado. <strong>IMPORTANTE: elimine ahora el archivo de instalación (install.php) del servidor para evitar posibles ataques a su base de datos.</strong>.<br>"
             . "Visite <a href='$baseurl/usuario'>$baseurl/usuario</a> para comenzar a introducir los datos de su visita virtual.<br>";
-        } // fin del if
+         }
+     }
+         // fin del if
         else {
             // Mostramos formulario
             ?>
@@ -616,7 +624,9 @@
                     <label for="username">Nombre de usuario administrador</label>
                     <input type='text' name='username' id="username" required>
                     <label for="pass">Contrase&ntilde;a</label>
-                    <input type='password' id="pass" name='pass' required> 
+                    <input type='password' id="pass" name='pass' required>
+                    <label for="pass2">Repita Contrase&ntilde;a</label>
+                    <input type='password' id="pass2" name='pass2' required>  
                     <br/>
 
                     <label for="email">Email</label>
