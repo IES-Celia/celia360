@@ -70,12 +70,12 @@ class escenas extends CI_Controller {
         }
     }
 
-    // public function deletescene($cod){
+    public function deletescene($cod){
 
-    //     $resultado = $this->EscenasModel->borrar($cod);
-    //     if ($resultado != 0) echo $cod;
-    //     else echo " ";
-    // }
+        $resultado = $this->EscenasModel->borrar($cod);
+        if ($resultado != 0) echo $cod;
+        else echo " ";
+    }
     
     
     public function deletescene($cod){

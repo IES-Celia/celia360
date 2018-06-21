@@ -66,10 +66,6 @@ echo "
     
 	
     <input type='submit' class='button'>
-    <br>
-    <a href=
-    '".site_url("/hotspots/modify_panel_info/".$tabla['id_hotspot'])."'
-    >Modificar imagenes de este hotspot</a><br>
 	<br>
     <a href=
     '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
@@ -78,7 +74,7 @@ echo "
 </form>
 <form action=' ".site_url("hotspots/modify_panel_info/".$tabla['id_hotspot'])." ' method='post'>
 <input type='hidden' name='id_scene' value='".$codigo_escena."'>
-<input type='submit' class='button' value='Modificar imagenes'>
+<input type='submit' class='button' value='Modificar imagenes de este hotspot'>
 </form>
 </fieldset>
 

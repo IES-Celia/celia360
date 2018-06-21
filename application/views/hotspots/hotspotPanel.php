@@ -18,7 +18,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 <html>
 <head>
   <style>
- 
+
   #contenedor_img {
   display:flex;
   align-items: flex-end;
@@ -129,11 +129,11 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   <div style='color:white; font-weight:bold; font-size: 1.2rem;'>
     Nota: Puedes ordenar las imagenes arrastrandolas en la lista. 
   </div>
-  <button onclick='add_img_to_hotspot()'>Enviar</button>
+  <a class='insert' onclick='add_img_to_hotspot()'>Enviar</a>
   <br>
-  <form id='formulario_atras' action="<?php echo $urlAtras; ?>" method='get'>
+  <!-- <form id='formulario_atras' action="<?php echo $urlAtras; ?>" method='get'>
       <input id='panel_atras' type='button' value='volver atras'><br/><br/>
-  </form>
+  </form> -->
 
     <!--**************************LOLI Insertar más imágenes  -->
     <div>
@@ -247,22 +247,27 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
      
   function check_imgs_selected(){
 
-    //TODOS LAS IMAGENES CON SUS ID'S
-    var all_img_ids = [];
     //ID DEL HOTSPOT ACTUAL
     var id_hotspot = $("#idhs").val();
     //GET LOS ID'S DE IMAGEN ASOCIADOS A HOTSPOT ID
     var seleccionadas = "<?php echo $seleccionadas; ?>";
+    
     seleccionadas = seleccionadas.split(" ");
+    console.log(seleccionadas);
     seleccionadas.forEach(element => {
       var imagen = $('.enlace_img .imgHS[data-id='+element+']');
       var attr_idimg = imagen.attr("data-id");
       var attr_img = imagen.attr("src");
+      var attr_title = imagen.attr("title");
       var cortado_enlace = attr_img.split("/");
+
+      var dirrecion = "<?php echo base_url("assets/imagenes/imagenes-hotspots/") ?>"+cortado_enlace[cortado_enlace.length-1];
+      var img_min = "<img style='height:120px; width:120px' src='"+dirrecion+"'>";
+
       imagen.addClass("borderojo");
           $("#img_seleccionadas")
           .append("<li class='seleccionado ui-state-default' data-id="+
-          attr_idimg+">"+cortado_enlace[cortado_enlace.length-1]+"</li>");
+          attr_idimg+"> "+img_min+" "+attr_title+" <span style='display:none;'>"+cortado_enlace[cortado_enlace.length-1]+"</span></li>");
     });
     
   }
@@ -274,11 +279,8 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       alert("Debes seleccionar alguna imagen!");
     } else {
 
-      var escena = "<?php echo $escena_actual;?>";
+      var escena = "<?php echo $id_escena;?>";
     
-      if(escena.length== 0){
-        escena="<?php echo $id_escena;?>";
-      }
       var prueba = [];
       var orden = [];
       //Valor temporal para probar si funciona
@@ -290,6 +292,8 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
         
       });
 
+      alert(escena);
+
       var urlCorrecta = "<?php echo base_url("hotspots/add_imgs_hotspot") ?>";
       var peticion = $.ajax({
         url: urlCorrecta,
@@ -298,6 +302,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       });
       
       peticion.done(function(resultado){
+        //http://localhost/celia360/escenas/cargar_escena/p0p8f3/show_insert_hotspot/null
         window.location.href = resultado;
       });
     }
