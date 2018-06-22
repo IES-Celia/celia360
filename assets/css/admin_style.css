@@ -1,5 +1,14 @@
-    
-                                            /*         Fondo de la Página        */
+                                                        /********  Admin Style CSS  ********/    
+
+
+                                    /* Este es el Archivo principal del CSS de el Backend, no se utiliza 
+                                    boostrap ni ningun tipo de libreria, parte esta levemente descrita y
+                                    cada apertura de comentarios significa que entras en otro "bloque" de
+                                                        css que va mendianamente unido*/
+
+
+
+                                                        /*         Fondo de la Página        */
 
     body{
         background: url(fondo.JPG) no-repeat center center fixed;
@@ -26,7 +35,6 @@
     }
 
 
-                                            /* Esto hace que se vea un poco azul */
     
     #fondo{
         background-color: rgba(39, 152, 231,0.2);
@@ -61,7 +69,7 @@
         color: #ffffff;
 
     }
-                                                /*        Parte de las tablas         */
+                        /*       Tablas de cualquier vista del panel de administración (escenas,usuario,imagenes...)        */
 
     #cont{
         width:96%;
@@ -126,7 +134,7 @@
     text-decoration: none;
     }
         
-                                                /*        Botón de Insertar         */
+                                     /*      Botón de Insertar de las vistas del panel de administración      */
 
 	.insert{            
         color: white;
@@ -151,7 +159,7 @@
     }
         
 
-                                                /*        Parte del Formulario         */
+                    /*        Parte del Formulario "NO ESTA EN USO" se deja unicamente para poder identificar vistas viejas        */
      
     .for{
     
@@ -354,7 +362,7 @@
         }
 
 
-                                    /*          Caja de las Modales en absoluto                 */
+                                    /*          Caja de las Modales en "position:absolute"                 */
        
 
         #caja{
@@ -1716,7 +1724,7 @@
 
     
 
-    /* Parte de la Paginación, es de Hamza pero para que no esten cosa sueltas en las vistas si son comunes */
+                            /* Parte de la Paginación, es de Hamza pero para que no esten cosa sueltas en las vistas si son comunes */
 
 
     .paginacion{
