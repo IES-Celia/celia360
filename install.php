@@ -19,7 +19,7 @@
     <head>
         <title>Install</title>
 <?php
-//estilos del formulario de 
+//Estilos del formulario de instalación 
 ?>
         <style type="text/css">
 
