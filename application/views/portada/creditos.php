@@ -301,16 +301,16 @@ $(document).ready(function(){
 
             <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+                    <img src="<?php echo base_url("assets/imagenes/portada/foto_loli.jpg"); ?>"/>
                     <h2>María Dolores Salmerón Sierra</h2>
                 </div>
                 <div class='prueba_informacion'>
                     salmeron.loli@gmail.com<br>
                 </div>
                 <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                        <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><i class="fab fa-linkedin-in"></i> </a>
                         <a target="_blank" href="mailto:salmeron.loli@gmail.com"><i class="far fa-envelope"></i> </a>                       
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                        <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"> <i class="far fa-file-pdf"></i></a> 
                         <a target="_blank" href="https://github.com/lolisalmeron"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='8'><i class="fas fa-plus"></i> info </a>
                 </div>
