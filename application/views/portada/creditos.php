@@ -163,7 +163,7 @@ $(document).ready(function(){
         <div class='row'>
             <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
                     <h2>Miguel Ángel López Segura</h2>
                 </div>
                 <div class='prueba_informacion'>
