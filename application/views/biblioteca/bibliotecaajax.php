@@ -31,7 +31,6 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
        
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
-    <script src="<?php echo base_url("assets/js/efectos_portada.js"); ?>"></script>
 
 	<style type="text/css">
 		.contenedorLibro{
