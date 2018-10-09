@@ -12,7 +12,6 @@
 
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
-// a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
@@ -48,13 +47,9 @@
 
 <script >
 	$(document).ready(function(){
-
-		<?php
 		/**
 		* Función encargada de abrir el libro
 		*/
-		?>
-
 		$('.efectBook').click(function(){
 		  //$('.modalita2').toggle('slow');
 		    idlibro = $(this).attr("idlibro");
@@ -62,15 +57,11 @@
 		    tipo = $(this).attr("tipo");
 		    location.href = '<?php echo site_url("biblioteca/vertodosloslibros/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo;
 		    //$('.modalita2').load('<?php //echo site_url("biblioteca/ver_biblioteca_ajax/");?>'+parseInt(idlibro)+'/'+apaisado+'/'+tipo);
-		          
 		});
 
-		<?php
 		/**
 		* Función encargada de cerrar el libro
 		*/
-		?>
-
 		$('.cerrarBook').click(function(){
 		  //$('.modalita2').toggle('slow');
 		    idlibro = $(this).attr("idlibro");
@@ -81,12 +72,9 @@
 		          
 		});
 
-		<?php
 		/**
 		* Función encargada de cerrar el libro con la tecla Esc '27'
 		*/
-		?>
-		
 		$(document).keyup(function(e) {
 		    if (e.keyCode == 27) { // escape key maps to keycode `27`
 		   	 location.href = '<?php echo site_url("biblioteca/vertodosloslibros/");?>';
@@ -97,27 +85,29 @@
 </script>
 
 <style>
-
-
 	td img{
 		width:200px;
 		height:250px;
 	}
+
 	td{
 		margin-right:15px;
 		margin-left:15px;
 	}
+
 	.tablatodo{
 		width:200px !important;
 		height:200px !important;
 		padding:30px;
 	}
+
 	.headerbiblioteca{
 		width:100%;
 		height:115px;
 		color:white;
 		background:#000000d9;
 	}
+
 	.headerbiblioteca h1{
 		width: 90%;
     	padding: 20px;
@@ -139,55 +129,47 @@
 		margin-top: -11px;
  	} 
 
-  .cerrarBook{
-  	width: 40px;
-    height: 40px;
-  	background:#208cbf;
-  	color:white;
-  	text-align:center;
-  	font-size:30px;
-  	top: 20px;
-    left: 85%;
-    position: absolute;
-    border-radius:5px;
-  }
-  			#numeropag{
-				position: relative;
-			    /*left: 45%;*/
-			    height: 20px;
-			    width: 51px;
-			    text-align: right;
-			    padding:10px;
+	.cerrarBook{
+		width: 40px;
+		height: 40px;
+		background:#208cbf;
+		color:white;
+		text-align:center;
+		font-size:30px;
+		top: 20px;
+		left: 85%;
+		position: absolute;
+		border-radius:5px;
+	}
 
-			}
-			#cantpag{
-				position: relative;
-			    /*left: 45%;*/
-			    height: 20px;
-			    width: 51px;
-			    padding:10px;
+	#numeropag{
+		position: relative;
+		/*left: 45%;*/
+		height: 20px;
+		width: 51px;
+		text-align: right;
+		padding:10px;
+	}
 
-			}
-
+	#cantpag{
+		position: relative;
+		/*left: 45%;*/
+		height: 20px;
+		width: 51px;
+		padding:10px;
+	}
 </style>
-
-
 
 <body>
 	
 	<div id="contenedorbiblioteca">
-	<?php 
-	echo "
+	
 	<div style='width: 280px;margin-left: 40%;padding-top: 1%;'>
-		<form method='POST' action='".site_url("biblioteca/vertodosloslibros/-1/-1/-1/0")."'>
+		<form method='POST' action='<?php echo site_url("biblioteca/vertodosloslibros/-1/-1/-1/0") ?>'>
 			<input style='padding: 2%;border-radius: 5px;border: none;' type='text' name='libro' placeholder='Buscar...'>
 			<input style='border-radius: 5px;padding: 2%;background: beige;margin-left: 3%;' type='submit' value='Buscar'>
 		</form>
-	</div>"
-		
-	?>
-
-	
+	</div>
 
 	<?php 
 	 	/** Mostramos todas las portadas de los libros que estén dados de alta en la Biblioteca   */
@@ -198,29 +180,24 @@
 		    foreach ($tabla as $ides){
 		      if($ides['tipo']==0){
 		        $i++;
-		          echo "<td class='tablatodo'>";
-		          echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1b1b1bd4;color:white;margin-top:20px;height:auto;overflow:hidden;padding:10px;'>'".$ides['titulo']."'";
-		          echo "</td>";
+		        echo "<td class='tablatodo'>";
+		        echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1b1b1bd4;color:white;margin-top:20px;height:auto;overflow:hidden;padding:10px;'>'".$ides['titulo']."'";
+		        echo "</td>";
 		      }
-		          if ($i%4 == 0)  echo "</tr><tr class=''>";
-		            }
-					echo "</tr></table> <div style='clear:both;'></div>";
-		
-					
-		  //otro cambio
-		// echo "</div></div>";
-
-?>
+			
+			  if ($i%4 == 0)  echo "</tr><tr class=''>";
+		    }
+			echo "</tr></table><div style='clear:both;'></div>";
+	?>
 
 <!-- ******************* Capa modal para mostrar el libro ****************** --> 
 
 <?php
-	if ($id_libro != -1) {	// Si id_libro = -1 significa que no hay ningún libro seleccionado, y no cargaremos nada en la modal
-		
+// Si no hay ningún libro seleccionado, no cargaremos nada en la modal
+if ($id_libro == -1) return;		
 ?>
-<?php 
-/** A continuacion mostramos en formato libro al que se ha echo referencia haciendo click */
-?>
+
+<!-- Mostramos el libro que se ha seleccionado -->
 <div class="modalita2">
 		<div class="container">
 			<!-- Top Navigation -->
@@ -237,7 +214,7 @@
 					$arrayPDF = scandir($directorio_PDF);
 					$num_pdf = count($arrayPDF)-1;
 					
-				if($apaisado==1){
+				if($apaisado == 1){
 					?>
 					<script type="text/javascript">
 					$(".contenedorLibro").css("width", "1200px");
@@ -245,11 +222,15 @@
 					$(".contenedorLibro").css("margin-left", "0%");
 					</script>
 					<?php
-					for($i=0;$i<$num_pag;$i++){
-						if($i==0){
-							echo " <div class='bb-item' ><img class='' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 300px;' width='600' height='450'></div> ";
-						}else{
-							echo " <div class='bb-item'><img class='mySlides'  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='1200' height='450'></div> ";
+					for($i = 0; $i < $num_pag; $i++){
+						if($i == 0){
+							echo "<div class='bb-item'>";
+							echo "<img class='book-page-image' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' data-src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01' style='left:300px;' width='600' height='450'>";
+							echo "</div>";
+						} else {
+							echo " <div class='bb-item'>";
+							echo "<img class='mySlides book-page-image' id='".($i+1)."' src='".base_url("assets/libros/blank.jpg")."' data-src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01' style='' width='1200' height='450'>";
+							echo "</div>";
 						 }
 					}
 				}else{
@@ -260,14 +241,15 @@
 					$(".contenedorLibro").css("", "");
 					</script>
 					<?php
-					for($i=0;$i<$num_pag;$i++){
-						if($i==0){
-							echo " <div class='bb-item' ><img class=''  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 224px;' width='450' height='550'></div> ";
-						}else if($i== $num_pag-1){
-								echo " <div class='bb-item' ><img class=''  id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='left: 224px;' width='450' height='550'></div> ";
-						
-						}else{
-							echo " <div class='bb-item'><img class='mySlides' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01'/ style='' width='900' height='550'></div> ";
+					for($i = 0; $i < $num_pag; $i++){
+						if($i == 0 || $i == $num_pag-1){
+							echo "<div class='bb-item'>";
+							echo "<img class='book-page-image' id='".($i+1)."' src='".base_url("assets/libros/$id_libro/$i.jpg")."' data-src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01' style='left:224px;' width='450' height='550'>";
+							echo "</div> ";
+						} else {
+							echo " <div class='bb-item'>";
+							echo "<img class='mySlides book-page-image' id='".($i+1)."' src='".base_url("assets/libros/blank.jpg")."' data-src='".base_url("assets/libros/$id_libro/$i.jpg")."' alt='image01' style='' width='900' height='550'>";
+							echo "</div> ";
 						 }
 					}
 				}
@@ -288,8 +270,7 @@
 				</div>
 				<!-- Comprueba si existe un fichero de tipo PDF para el libro y si es asi muestra un boton de descargar PDF, SI NO existe dicho fichero no muestra ningun boton para descargar -->
 				<?php 
-				$nombre_fichero = "assets/pdf/$id_libro.pdf";
-				// print_r($nombre_fichero);
+					$nombre_fichero = "assets/pdf/$id_libro.pdf";
 					if (file_exists($nombre_fichero)) {
 						echo " 
 						<div class='descargar' style=''> 
@@ -310,8 +291,25 @@
 		<script src="<?php echo base_url("assets/biblio/js/jquerypp.custom.js");?>"></script>
 		<script src="<?php echo base_url("assets/biblio/js/jquery.bookblock.js");?>"></script>
 		<script>
-			var Page = (function() {
+			const NUMBER_OF_PREFETCHED_PAGES = 4;
+
+			function loadBookImages(currentPage){
+				console.log(currentPage);
+
+				let bookImages = document.getElementsByClassName('book-page-image');
 				
+				let firstPage = currentPage - NUMBER_OF_PREFETCHED_PAGES;
+				if (firstPage < 0) firstPage = 0;
+
+				let lastPage = currentPage + NUMBER_OF_PREFETCHED_PAGES;
+				if (lastPage >= bookImages.length) lastPage = bookImages.length - 1;
+
+				for(let i = firstPage; i < lastPage + 1; i++){
+					bookImages[i].src = bookImages[i].getAttribute('data-src');
+				}
+			}
+
+			var Page = (function() {
 				var config = {
 						$bookBlock : $( '#bb-bookblock' ),
 						$navNext : $( '#bb-nav-next' ),
@@ -328,26 +326,29 @@
 						initEvents();
 					},
 					initEvents = function() {
-						
-						var $slides = config.$bookBlock.children();
-						var guardado=1;
-						// add navigation events
-						config.$navNext.on( 'click touchstart', function() {
-							var tpg =$("#cantpag").val();
+						var guardado = 1;
+
+						// Add navigation events
+						config.$navNext.on('click touchstart', function() {
 							var pg = $("#numeropag").val();
-							
-							tpg = parseInt(tpg);
+							var maxpg =$("#cantpag").val();							
+
 							pg = parseInt(pg);
-							if(pg<tpg){
-								var newpg = parseInt(pg)+1; 
-								$("#numeropag").val(newpg); 
-								guardado=newpg;								
+							maxpg = parseInt(maxpg);
+
+							// Desargamos algunas de las imágenes del libro
+							loadBookImages(pg);
+
+							if (pg < maxpg) {
+								var newpg = parseInt(pg) + 1;
+								$("#numeropag").val(newpg);
+								guardado = newpg;
 							}else{
-								$("#numeropag").val(tpg);
-								guardado=tpg;
+								$("#numeropag").val(maxpg);
+								guardado = maxpg;
 							}
 
-							config.$bookBlock.bookblock( 'next' );
+							config.$bookBlock.bookblock('next');
 							
 							$("#bb-nav-next").css("pointer-events", "none");
 
@@ -358,15 +359,18 @@
 						config.$navPrev.on( 'click touchstart', function() {
 							var pg = $("#numeropag").val();
 
-							if(pg!=1){
-								var newpg = parseInt(pg)-1; 
+							// Desargamos algunas de las imágenes del libro
+							loadBookImages(pg);
+
+							if (pg != 1) {
+								var newpg = parseInt(pg) - 1; 
 								$("#numeropag").val(newpg);
-								guardado=newpg;
-							}else{
+								guardado = newpg;
+							} else {
 								$("#numeropag").val(1);
-								guardado=1;
+								guardado = 1;
 							}
-							config.$bookBlock.bookblock( 'prev' );
+							config.$bookBlock.bookblock('prev');
 
 							$("#bb-nav-prev").css("pointer-events", "none");
 
@@ -378,31 +382,22 @@
 							$("#numeropag").val(1);
 							config.$bookBlock.bookblock( 'first' );
 							guardado=1;
+							// Desargamos algunas de las imágenes del libro
+							loadBookImages(0);
 							return false;
 						} );
 
 						config.$navLast.on( 'click touchstart', function() {
-							var ultpg = $("#cantpag").val();
-							$("#numeropag").val(ultpg);
-							guardado=ultpg;
+							var maxpg = $("#cantpag").val();
+							$("#numeropag").val(maxpg);
+							guardado = maxpg;
 							config.$bookBlock.bookblock( 'last' );
+							// Desargamos algunas de las imágenes del libro
+							loadBookImages(ultpg);
 							return false;
 						} );
 						
-						// // CAMBIAR DE PAGINA AL ARRASTRAR
-						// $slides.on( {
-						// 	'swipeleft' : function( event ) {
-						// 		config.$bookBlock.bookblock( 'next' );
-						// 		return false;
-						// 	},
-						// 	'swiperight' : function( event ) {
-						// 		config.$bookBlock.bookblock( 'prev' );
-						// 		return false;
-						// 	}
-						// } );
-
-						// add keyboard events
-
+						// Add keyboard events
 						$( document ).keydown( function(e) {
 							var keyCode = e.keyCode || e.which,
 								arrow = {
@@ -416,63 +411,78 @@
 							switch (keyCode) {
 								case arrow.left:
 									var pg = $("#numeropag").val();
-									if(pg!=1){
-										setTimeout(function(){$("#numeropag").val(parseInt(pg)-1);}, 800);
-										guardado=parseInt(pg)-1;
-									}else{
-										$("#numeropag").val(1);
-										guardado=1;
-									}
-									config.$bookBlock.bookblock( 'prev' );
-								break;
-								case arrow.right:
-									var tpg =$("#cantpag").val();
-									var pg = $("#numeropag").val();
-
 									pg= parseInt(pg);
-									tpg = parseInt(tpg);
-									if(pg<tpg){
-
-										setTimeout(function(){$("#numeropag").val(parseInt(pg)+1);}, 800);	
-										guardado=parseInt(pg)+1;							
-									}else{
-
-										$("#numeropag").val(tpg);
-										guardado=tpg;
+									
+									if (pg != 1) {
+										setTimeout(function(){$("#numeropag").val(parseInt(pg)-1);}, 800);
+										guardado = parseInt(pg) - 1;
+									} else {
+										$("#numeropag").val(1);
+										guardado = 1;
 									}
-									config.$bookBlock.bookblock( 'next' );
-								break;
-								case arrow.enter:
-									var pag = $("#numeropag").val();
-									var maxpg = $("#cantpag").val();
-									pag= parseInt(pag);
-									maxpag = parseInt(maxpg);
-									if(Number.isNaN(pag)){
-										pag=guardado;
-									}
-									if(pag>maxpg){
+
+									// Desargamos algunas de las imágenes del libro
+									loadBookImages(pg);
+
+									config.$bookBlock.bookblock( 'prev' );
+									break;
+
+								case arrow.right:
+									var pg = $("#numeropag").val();
+									var maxpg =$("#cantpag").val();
+
+									pg = parseInt(pg);
+									maxpg = parseInt(maxpg);
+									
+									if (pg < maxpg) {
+										setTimeout(function(){$("#numeropag").val(parseInt(pg) + 1);}, 800);
+										guardado = parseInt(pg) + 1;
+									} else {
 										$("#numeropag").val(maxpg);
-										config.$bookBlock.bookblock('jump',maxpg);
-										guardado=maxpg;
-									}else{
-										$("#numeropag").val(pag);
-										config.$bookBlock.bookblock('jump',pag);
-										guardado=pag;
+										guardado = maxpg;
 									}
-								break;
+
+									// Desargamos algunas de las imágenes del libro
+									loadBookImages(pg);
+
+									config.$bookBlock.bookblock( 'next' );
+									break;
+
+								case arrow.enter:
+									var pg = $("#numeropag").val();
+									var maxpg = $("#cantpag").val();
+									
+									pg = parseInt(pg);
+									maxpag = parseInt(maxpg);
+									
+									if (Number.isNaN(pg)) {
+										pg = guardado;
+									}
+
+									if (pg > maxpg) {
+										$("#numeropag").val(maxpg);
+										config.$bookBlock.bookblock('jump', maxpg);
+										guardado = maxpg;
+									} else {
+										$("#numeropag").val(pg);
+										config.$bookBlock.bookblock('jump', pg);
+										guardado = pg;
+									}
+
+									// Desargamos algunas de las imágenes del libro
+									loadBookImages(pg);
+									break;
 							}
 						} );
 					};
 
 					return { init : init };
-
 			})();
 		</script>
 		<script>
 				Page.init();
 		</script>
 		<script>
-
 		      $(document).ready(function(){
 				
 			        $('.mySlides').draggable({
@@ -480,10 +490,9 @@
 			           drag: function(evt,ui)
 			                {
 			                    var anchura = parseInt($('.mySlides').css('width').split('px')[0]);
-			                    var altura =parseInt($('.mySlides').css('height').split('px')[0]);
-			                    //anchura: 1000
-			                    //altura: 600
-			                    <?php 
+			                    var altura = parseInt($('.mySlides').css('height').split('px')[0]);
+			                    
+								<?php 
 			                    	if($apaisado==1){
 			                    		echo"
 						                    if (ui.position.left < 1200 - $(this).width() )
@@ -509,34 +518,9 @@
 
 						                    $('html, body').scrollTop(280)";
 			                    	}
-			                    ?>
-			                    
-			                    // if (ui.position.left < 900 - $(this).width() )
-			                    //      ui.position.left = 900 - $(this).width(); 
-			                    // if (ui.position.left + $(this).width()> anchura)
-			                    //       ui.position.left = 0;
-			                    // if (ui.position.top < -altura+550 )
-			                    //     ui.position.top = 550 - $(this).height();
-			                    // if (ui.position.top + $(this).height() > altura)
-			                    //         ui.position.top = 0;
-
-			                    // $('html, body').scrollTop(280)
-			                  
+			                    ?>			                    
 			                }  
 			         });
-/*
-			        $(".mySlides").draggable({
-			              revert: true
-			             });
-
-			         $(".contenedorLibro").mouseleave(function(e){
-			           $(".mySlides").css({
-			                  "height": "650px",
-			                  "width": "1000px"
-			              });
-			         });
-					
-*/
 <?php 
                 	if($apaisado==1){
                 		echo" 
@@ -634,9 +618,7 @@
 			                        }else{
 										izquierda=(izquierda-(200*delta/aux1));
 			                            arriba=(arriba-(108*delta/aux2));
-			                            }
-			                      
-			                     
+			                            }			                     
 								  
 							  }else{
 			                      anchura-=200
@@ -686,7 +668,6 @@
                 ?>
 		      });
 
-
 			  $( '.mySlides' ).on( 'mousewheel DOMMouseScroll', function ( e ) {
                 var e0 = e.originalEvent,
                     delta = e0.wheelDelta || -e0.detail;
@@ -694,13 +675,7 @@
                 this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
                 e.preventDefault();
             	});
-			
 
   </script>   
 
-
-
 </div>
-<?php
-}	// Fin del if (id_libro != -1)
-?>
