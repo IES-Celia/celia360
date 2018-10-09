@@ -68,10 +68,10 @@
             $("#descripcion_portada").siblings().fadeIn('fast');
         });
 
-            $('html, body').css({
-                overflow: 'hidden',
-                height: '100%'
-            });
+        $('html, body').css({
+            overflow: 'auto',
+            height: '100%'
+        });
 
         // para que cambie el background a LIBRE al hacer hover
 

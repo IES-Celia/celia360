@@ -33,17 +33,14 @@
 
 	<style type="text/css">
 		.contenedorLibro{
-		/* width: 900px; */
-		/* height: 550px; */
-		/* margin-left: 15%; */
-		position: relative;
-		overflow: hidden;
-			};
-    		.mySlides, #persona{
-    			position:absolute;
-    		};
-
-		</style>
+			position: relative;
+			overflow: auto;
+		};
+		
+		.mySlides, #persona{
+    		position:absolute;
+    	};
+	</style>
 
 <script >
 	$(document).ready(function(){
@@ -125,7 +122,7 @@
 	    background: url('<?php echo base_url();?>assets/bibliocss/marc.jpeg');
 	    /*background-size: cover;*/
 	    width:100%;
-		height:100%;
+		/*height:100%;*/
 		margin-top: -11px;
  	} 
 
@@ -171,19 +168,19 @@
 		</form>
 	</div>
 
-	<?php 
-	 	/** Mostramos todas las portadas de los libros que estén dados de alta en la Biblioteca   */
+	<?php
+		/** Mostramos todas las portadas de los libros que estén dados de alta en la Biblioteca   */
             echo "<table class='display' style='margin:0 auto'>";  
-            echo "<tr>";  
+			echo "<tr>";  
 
 		 	$i = 0;
 		    foreach ($tabla as $ides){
-		      if($ides['tipo']==0){
+		      //if($ides['tipo']==0){
 		        $i++;
 		        echo "<td class='tablatodo'>";
 		        echo "<a href='#' ><img id='verlibro' idlibro='".$ides['id_libro']."' apaisado='".$ides['apaisado']."' tipo='".$ides['tipo']."' class='efectBook ocultar' src='".base_url("assets/libros/$ides[id_libro]/0.jpg")."' ></a>";echo "<div style='text-align:center;background:#1b1b1bd4;color:white;margin-top:20px;height:auto;overflow:hidden;padding:10px;'>'".$ides['titulo']."'";
 		        echo "</td>";
-		      }
+		      //}
 			
 			  if ($i%4 == 0)  echo "</tr><tr class=''>";
 		    }
