@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
     Este archivo es parte de la aplicación web Celia360. 
 

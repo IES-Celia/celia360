@@ -34,7 +34,11 @@ class Usuario extends CI_Controller {
     }
 
     public function index() {
-        $this->showloginform();
+        if($this->UsuarioModel->get_tipo_usuario() != -1){ // si estas logueado no puedes ir al login
+            redirect(base_url("escenas"));
+        }else{
+            $this->showloginform();
+        }
     }
 
     public function showloginForm($msj = "") {
@@ -85,32 +89,16 @@ class Usuario extends CI_Controller {
         if ($resultado) {
             // Usuario creado correctamente
             $datos["mensaje"] = "Usuario creado correctamente";
-            if ($this->UsuarioModel->get_tipo_usuario() == -1) {
-                // El usuario aún no está logueado: volvemos a la pantalla de login
-                $datos["vista"] = "usuario/formLogin";
-                $this->load->view('login_template', $datos);
-            } else {
-                // El usuario ya está logueado: volvemos al panel de administración
-                $datos["vista"] = "usuario/usuarios";
-                $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
-                $this->load->view('admin_template', $datos);
-            }
+            $datos["vista"] = "usuario/formLogin";
+            $this->load->view('login_template', $datos); 
         } else {
             $datos["error"] = "Error al crear el usuario";
-            if ($this->UsuarioModel->get_tipo_usuario() == -1) {
-                // No hay usuario logueado: volvemos a la pantalla de registro
-                $datos["vista"] = "usuario/registerForm";
-                $this->load->view("login_template", $datos);
-            } else {
-                // El usuario ya está logueado: volvemos al panel de administración
-                $datos["vista"] = "usuario/usuarios";
-                $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                $datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
-                $this->load->view('admin_template', $datos);
+            // No hay usuario logueado: volvemos a la pantalla de registro
+            $datos["vista"] = "usuario/registerForm";
+            $this->load->view("login_template", $datos);
             }
         }
-    }
+        
 
     public function modificar($id) {
 

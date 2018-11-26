@@ -106,29 +106,28 @@ class escenas extends CI_Controller {
     public function processupdatescene(){
     
         $cod=$_REQUEST['cod'];
-            $resultado = $this->EscenasModel->update($cod);
+        $resultado = $this->EscenasModel->update($cod);
             
-            if ($resultado == 0) {
-                $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
-                $datos["tablaEscenas"] = $this->EscenasModel->getAll();
-                $datos["vista"]="escenas/Escenastable";
-                $datos["mapa"] = $this->mapa->cargar_mapa();
-                $datos["puntos"] = $this->mapa->cargar_puntos();
-                $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                $this->load->view('admin_template', $datos);
-            }
-            else {
-                if ($resultado == 1) $datos["error"] = "Ha fallado la subida y/o escalado de la imagen";
-                else if ($resultado == 2) $datos["error"] = "Ha fallado la actualización de la base de datos";
-                else $datos["error"] = "Ha fallado la actualización";
-                $datos["tablaEscenas"] = $this->EscenasModel->getAll();
-                $datos["vista"]="escenas/Escenastable";
-                $datos["mapa"] = $this->mapa->cargar_mapa();
-                $datos["puntos"] = $this->mapa->cargar_puntos();
-                $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                $this->load->view('admin_template', $datos);
-            }
-        
+        if ($resultado == 0) {
+            $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
+            $datos["tablaEscenas"] = $this->EscenasModel->getAll();
+            $datos["vista"]="escenas/Escenastable";
+            $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('admin_template', $datos);
+        }
+        else {
+            if ($resultado == 1) $datos["error"] = "Ha fallado la subida y/o escalado de la imagen";
+            else if ($resultado == 2) $datos["error"] = "Ha fallado la actualización de la base de datos";
+            else $datos["error"] = "Ha fallado la actualización";
+            $datos["tablaEscenas"] = $this->EscenasModel->getAll();
+            $datos["vista"]="escenas/Escenastable";
+            $datos["mapa"] = $this->mapa->cargar_mapa();
+            $datos["puntos"] = $this->mapa->cargar_puntos();
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view('admin_template', $datos);
+        }
     }
 
     
@@ -146,8 +145,8 @@ class escenas extends CI_Controller {
         }
         
         $redireccion = site_url("/hotspots/".$redireccion."/");
-        $datos["redireccion_jotpoch"]= $redireccion;
-	$datos["escenaInicial"] = $escenaInicial;
+        $datos["redireccion_joptoch"]= $redireccion;
+	    $datos["escenaInicial"] = $escenaInicial;
         $datos["idhotspot"]= "vacio";
 		$this->load->view("escenas/jotpoch", $datos);	
 	}
@@ -162,9 +161,9 @@ class escenas extends CI_Controller {
         $redireccion = site_url("/hotspots/".$redireccion."/");
         echo $redireccion;
         $datos["redireccion_jotpoch"]= $redireccion;
-	$datos["escenaInicial"] = $escenaInicial;
+	    $datos["escenaInicial"] = $escenaInicial;
         $datos["idhotspot"]= $idhotspot;
-	$this->load->view("escenas/jotpoch", $datos);	
+	    $this->load->view("escenas/jotpoch", $datos);	
     }
 
     public function cargar_versiones_escena () {
@@ -172,9 +171,6 @@ class escenas extends CI_Controller {
         $resultado = $this->EscenasModel->get_versiones($cod_escena);
         echo json_encode($resultado);
     }
-
-
-
 }
 
 ?>

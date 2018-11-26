@@ -14,6 +14,7 @@
     <link rel="shortcut_icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css");?>">
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     
