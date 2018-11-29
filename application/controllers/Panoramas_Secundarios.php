@@ -5,22 +5,28 @@ public function __construct() {
     parent::__construct();
     $this->load->model("EscenasModel");
     $this->load->model("UsuarioModel");
-    $this->load->model("MapaModel","mapa");
+    $this->load->model("PanoramasSecundariosModel");
 }
 
 public function show_panoramas_secundarios($codigo_escena){ //cargo la vista para insertar panoramas secundarios
-    $datos['datos_escena'] = $this->EscenasModel->getOne($codigo_escena);
+    $datos['datos_escena'] = $this->EscenasModel->getOneId($codigo_escena);
     $datos["vista"]="escenas/panoramas_secundarios";
-    $datos['permiso'] = true; //preguntar a alfredo
+    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template",$datos);
 }
 
-/*public function insertSecondaryPanorama($datos){ //datos es un array
- 
-    move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/'.$_FILES['file']['name']);
-    echo "File uploaded successfully.";
-}*/
 
+public function insertSecondaryPanorama($id){ //datos es un array
+    $res = $this->PanoramasSecundariosModel->insertSecondaryPanoramas($id);
+    $incorrectas = 0;
+        for($i=0;$i<count($res);$i++){
+            if($res[$i] == 0){
+                $incorrectas++;
+            }
+        }
+        echo $incorrectas; //devuelvo incorrectas y gestiono con ajax si es 0 o no
+            
+    }
 }
 
 ?>
