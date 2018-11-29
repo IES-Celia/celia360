@@ -148,11 +148,11 @@ if(count($mapa)!=0){
                 <td align='center'>".$escenas['yaw']."</td>
 
                 <td align='center'>
-                <a onclick='borrarscene(\"".$escenas["cod_escena"]."\")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
+                <a onclick='borrarscene(\"".$escenas["id_escena"]."\")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
                 </td>
 
                 <td align='center'>
-                <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
+                <a href= '".site_url("/escenas/showUpdateScene/".$escenas['id_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
                 </tr>";
     ?>
                <tr><th colspan='7' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
