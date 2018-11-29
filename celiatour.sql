@@ -1388,6 +1388,22 @@ INSERT INTO `visita_guiada` (`id_visita`, `cod_escena`, `titulo_escena`, `audio_
 (28, 'p1p12', 'Antesala', 'assets/audio/alejandro3.mp3', 'prev28.jpg', 5);
 
 --
+-- Estructura de tabla para la tabla `panoramas_secundarios`
+--
+
+CREATE TABLE `panoramas_secundarios` (
+  `id_panorama_secundario` int(10) UNSIGNED DEFAULT NULL,
+  `id_escena` int(10) UNSIGNED DEFAULT NULL,
+  `titulo` varchar(75) DEFAULT NULL,
+  `fecha_acontecimiento` date DEFAULT NULL,
+  `ruta_imagen` varchar(150) DEFAULT NULL,
+  `hfov` int(11) DEFAULT NULL,
+  `pitch` int(11) DEFAULT NULL,
+  `yaw` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
 -- Índices para tablas volcadas
 --
 
