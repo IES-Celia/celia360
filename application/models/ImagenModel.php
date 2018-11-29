@@ -60,7 +60,6 @@ class ImagenModel extends CI_Model {
         for ($i = 0; $i < count($array_imagenes['name']); $i++) {
             // Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
             $this->db->query("INSERT INTO imagenes(id_imagen) VALUES (0)"); // Es un campo auto_increment, así que ignorará el 0
-
             $resul = $this->db->query("SELECT MAX(id_imagen) AS maxid FROM imagenes ORDER BY id_imagen DESC LIMIT 1");
             $id_img = $resul->row()->maxid;
 
