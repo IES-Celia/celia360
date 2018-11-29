@@ -176,7 +176,15 @@ $(document).ready(function() {
 					$.ajax({
 						type: "post",
 						url: base_url + "mapa/update_punto",
-						data: { id_punto: identificador , left: left , top: top }
+						data: { id_punto: identificador , left: left , top: top },
+						success:function(result){
+							if(result == 1){
+								document.getElementById("mensaje_cabecera").innerHTML = "El punto se ha movido con éxito";
+							}else{
+								document.getElementById("error_cabecera").innerHTML = "Error al mover el punto";
+
+							}
+						}
 					})
 				},
 				containment: "parent"
