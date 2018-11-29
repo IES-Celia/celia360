@@ -270,7 +270,7 @@
  */
 		public function update_punto($id, $left, $top){
 			$this->load->database();
-			$query = "UPDATE puntos_mapa SET left_mapa=$left , top_mapa=$top WHERE nombre =\"$id\"";
+			$query = "UPDATE puntos_mapa SET left_mapa=$left , top_mapa=$top WHERE id_punto_mapa =\"$id\"";
 			$this->db->query($query); 
 			$resultado = $this->db->affected_rows();
 			
