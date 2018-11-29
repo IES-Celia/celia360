@@ -65,10 +65,12 @@ class Imagen extends CI_Controller {
             $datos["error"] = $total." imágenes subidas: $correctas correctas - $incorrectas fallidas";
         else
             $datos["mensaje"] = $total." imágenes subidas correctamente";
+            
             $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
             $datos["vista"] = "imagen/principal_img";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('admin_template', $datos);
+        
     }
 
     /**
