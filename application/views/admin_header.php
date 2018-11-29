@@ -32,7 +32,7 @@
                 echo "piso_maximo = ".count($mapa).";";
                 echo "piso_maximo--";
                 echo "</script>";
-                echo "<script src='".base_url('assets/js/mapa_escena.js')."'></script>";
+                echo "<script src='".base_url('assets/js/mapa_escena.js')."' defer></script>";
             }
         ?>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -63,6 +63,9 @@
         <div id="mensajemenu">
             <?php  if (isset($mensaje)) echo "<span id='mensaje_cabecera'>$mensaje</span>"; ?>
             <?php  if (isset($error)) echo "<span id='error_cabecera'>$error</span>"; ?>
+            
+            <span id='mensaje_cabecera'></span>
+            <span id='error_cabecera'></span>
         </div>
         <div id="logueo">    
         <p id="sesion" align="center">Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></p>
