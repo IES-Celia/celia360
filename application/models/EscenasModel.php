@@ -37,6 +37,16 @@ class EscenasModel extends CI_Model {
         return $tabla;
     }
 
+    public function getOneId($cod) {
+
+        $com = $this->db->query("SELECT * FROM escenas where id_escena = '$cod'");
+        $tabla = array();
+        foreach ($com->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
+
     /**
      * Inserta una escena (panorama) en la BD y sube el archivo con la imagen al directorio assets/imagenes/escenas/
      * 
