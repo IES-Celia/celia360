@@ -42,7 +42,7 @@
           display: none;
       }
   
-      img{
+      img.imagenesDragDrop{
         border-radius: 20px;
         margin: 0 auto;
         padding: 10px;
