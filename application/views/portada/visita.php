@@ -148,9 +148,9 @@
             if($punto['piso']==$indice){
               
               if ("punto".$punto['id_punto_mapa']==$config_mapa["punto_inicial"]) {
-              echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+              echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_seleccionado' style='left: ".$punto['left_mapa']."%; top: calc(".$punto['top_mapa']."% - 1.57%);' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }else{
-                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
+                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: calc(".$punto['top_mapa']."% - 1.57%);' onclick='puntosMapa(\"punto".$punto['id_punto_mapa']."\"); viewer.loadScene(\"".$punto['id_escena']."\")'></div>";
               }
               
             }
