@@ -27,7 +27,7 @@
           <div id="mensaje_guiada">
           <h3 style="text-align: center;">Visita guiada</h3>
           <div class='mensaje_guiada_inicio_recomendacion'>
-            <hr class="mensaje_separador"></hr>  
+            <hr class="mensaje_separador"> 
             <p>Consejos antes de empezar 👵🏻</p>
             
             <ol>
@@ -36,7 +36,7 @@
               <li>En cualquier momento es posible trasladarse a la estancia deseada mediante los botones de siguiente y anterior. El faro le permite seleccionar la estancia.</li>
               <li>Si desea permanecer en una estancia indefinidamente, detenga el audio.</li>
             </ol>
-            <hr class="mensaje_separador"></hr>
+            <hr class="mensaje_separador">
           </div>
           <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el botón.</h4>
           <div id="boton_aceptar_guiada"></div>
