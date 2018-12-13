@@ -51,7 +51,8 @@
         if(file[i].name.includes("jpg")){
           var reader = new FileReader();
           reader.onload = function (event) {
-            var image = new Image();
+						var image = new Image();
+						image.setAttribute("class","imagenesDragDrop");
             var inputName = document.createElement("input");
             var label = document.createElement("label");
             var label2 = document.createElement("label");
