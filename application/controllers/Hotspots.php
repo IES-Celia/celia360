@@ -489,7 +489,7 @@ class Hotspots extends CI_Controller {
     public function process_insert_hotspot(){
     $res=$this->hotspotsModel->process_insert_hotspot();
      if($res){
-         echo"se a insertado correctamente";
+         echo"Se ha insertado correctamente";
          $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
          $datos["vista"]="hotspots/hotspotsTable";
          $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
