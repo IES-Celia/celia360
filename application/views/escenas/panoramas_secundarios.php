@@ -124,7 +124,7 @@
         fileobj = [];
         contador = 1;
         acumulable = 0;
-        form_data: "";
+        form_data = "";
     }
 
     

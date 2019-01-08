@@ -8,15 +8,20 @@ public function __construct() {
     $this->load->model("PanoramasSecundariosModel");
 }
 
-public function show_panoramas_secundarios($codigo_escena){ //cargo la vista para insertar panoramas secundarios
-    $datos['datos_escena'] = $this->EscenasModel->getOneId($codigo_escena);
-    $datos["vista"]="escenas/panoramas_secundarios";
+	public function index(){ // Redirige al index del controlador Escenas
+		redirect('Escenas/');
+	}
+
+public function show_panoramas_secundarios($codigo_escena, $datos = null){ //cargo la vista para insertar panoramas secundarios
+	$datos['datos_escena'] = $this->EscenasModel->getOneId($codigo_escena);
+	$datos['tabla_escena_secundaria'] = $this->PanoramasSecundariosModel->getById($codigo_escena);
+	$datos["vista"]="escenas/admin_pan_sec";
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template",$datos);
 }
 
 
-public function insertSecondaryPanorama($id){ //datos es un array
+public function insertSecondaryPanorama($id){
     $res = $this->PanoramasSecundariosModel->insertSecondaryPanoramas($id);
     $incorrectas = 0;
         for($i=0;$i<count($res);$i++){
@@ -24,9 +29,29 @@ public function insertSecondaryPanorama($id){ //datos es un array
                 $incorrectas++;
             }
         }
-        echo $incorrectas; //devuelvo incorrectas y gestiono con ajax si es 0 o no
-            
-    }
+        echo $incorrectas; //devuelvo incorrectas y gestiono con ajax si es 0 o no       
+	}
+	
+	public function deletePanorama($id){
+		$res = $this->PanoramasSecundariosModel->delete($id);
+		echo $res; //capturo por ajax
+	}
+
+	public function updatePanorama(){ //actualización de imagenes
+		$id = $this->input->get_post('id_imagen');
+		$tituloImagen = $this->input->get_post('titulo_imagen');
+		$fecha = $this->input->get_post('fecha');
+		$codigo_escena = $this->input->get_post('id_escena_principal');
+		$res = $this->PanoramasSecundariosModel->updatePanorama($id,$tituloImagen,$fecha);
+
+		if($res == 1){
+			$datos['mensaje'] = 'Actualizado con éxito';
+		}else{
+			$datos['error'] = 'Error al actualizar';
+		}
+
+		$this->show_panoramas_secundarios($codigo_escena,$datos);
+	}
 }
 
 ?>

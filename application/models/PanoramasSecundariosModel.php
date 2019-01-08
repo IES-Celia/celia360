@@ -61,6 +61,30 @@
 
             return $resultado;
             
-        }
+		}
+		
+		public function getById($id){
+			$query = $this->db->query("SELECT id_escena, id_panorama_secundario, titulo, fecha_acontecimiento, ruta_imagen FROM panoramas_secundarios WHERE id_escena = '$id';");
+			return $query->result_array();
+		}
+
+		public function delete($id){
+			$devuelve = false;
+			
+			if(unlink(getcwd()."\assets/imagenes/panoramasSecundarios/".$id.".jpg")){
+				$this->db->query("DELETE FROM panoramas_secundarios WHERE id_panorama_secundario = '$id'");
+				$devuelve = $this->db->affected_rows();
+			}else{
+				$devuelve = -1;
+			}
+
+			return $devuelve;
+		}
+
+		public function updatePanorama($id,$titulo,$fecha){
+			$this->db->query("UPDATE panoramas_secundarios SET titulo = '$titulo', fecha_acontecimiento = '$fecha' WHERE id_panorama_secundario = '$id' ");
+			
+			return $this->db->affected_rows();
+		}
     }
 ?>

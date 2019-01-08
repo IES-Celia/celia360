@@ -25,11 +25,12 @@
         margin: 0 auto;
           background-color: #EEE; 
           border: #999 5px dashed;
-          width: 50%; 
-          height: 500px;
+          width: 80%; 
+          height: 300px;
           padding: 8px;
           font-size: 18px;
-          overflow:scroll;
+		  overflow:scroll;
+		  margin-bottom: 10px;
       }
       #drag_upload_file {
           width:50%;
