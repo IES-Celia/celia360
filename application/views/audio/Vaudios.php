@@ -112,24 +112,22 @@ echo "</table>";
 //Capa(ventana modal) formulario modificar
 echo "
 <div id='modificar'>
-
 	<div id='caja'>
-	<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                base_url("assets/css/cerrar_icon.png") . "'></img></a>
-    <h1>Modificar Audio</h1>
-    <form  action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
-                    URL audio:<input type='text' name='url_aud' id='url'><br/>
-                    Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
-					<input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
-                    <input type='hidden' name='id'  id='id'><br/>
-                       Tipo<select name='tipo_aud' id='select'>
-  			<option value='v-guiada'>visita guiada</option>
- 			<option value='d-objeto'>definir objeto</option>
-		</select><br/><br/>
-                    <input type='submit'>
-                    
-                </form>
-				</div>
+        <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" . base_url("assets/css/cerrar_icon.png") . "'></img></a>
+        <h1>Modificar Audio</h1>
+        <form  action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
+                URL audio:<input type='text' name='url_aud' id='url' readonly><br/>
+                Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
+                <input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
+                <input type='hidden' name='id'  id='id'><br/>
+                Tipo
+                <select name='tipo_aud' id='select'>
+                    <option value='v-guiada'>visita guiada</option>
+                    <option value='d-objeto'>definir objeto</option>
+                </select><br/><br/>
+                <input type='submit'> 
+        </form>
+	</div>
 </div>";
 
 //Capa (ventana modal) formulario insertar
@@ -154,39 +152,36 @@ echo"
 </div>";
 
         
-/** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
+/* A continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script incluimos un plugin para la paginacion y buscador */
 ?>
 
 <script>
-        
-        function mostrarm(id){
-            url = "url_aud"+id;
-            desc = "desc_aud"+id;
-            tipo = "tipo_aud"+id; 
-            url1=document.getElementById(url).innerHTML;
-            u=url1.substring(13, url1.length-4);
-            
-            document.getElementById("url").value = document.getElementById(url).innerHTML;
-            document.getElementById("desc").value = document.getElementById(desc).innerHTML;
-            document.getElementById("select").value = document.getElementById(tipo).innerHTML;
-            document.getElementById("id").value = id;
-            
-            $("#contenedor").show();
-            $("#modificar").show();
-        }
 
-        function mostrar(){
-            $("#insertar").show();
+    function mostrarm(id){
+        url = "url_aud"+id;
+        desc = "desc_aud"+id;
+        tipo = "tipo_aud"+id;
+           
+        document.getElementById("url").value = document.getElementById(url).innerHTML;
+        document.getElementById("desc").value = document.getElementById(desc).innerHTML;
+        document.getElementById("select").value = document.getElementById(tipo).innerHTML;
+        document.getElementById("id").value = id;
             
-        }
+        $("#contenedor").show();
+        $("#modificar").show();
+    }
 
-        function cerrar(){
-            $("#insertar").hide();
-             $("#modificar").hide();
-        }    
+    function mostrar(){
+        $("#insertar").show();    
+    }
+
+    function cerrar(){
+        $("#insertar").hide();
+        $("#modificar").hide();
+    }    
         
-        //confirmacion al borrar
-        function borraraud(id) {
+    //confirmacion al borrar
+    function borraraud(id) {
         if (confirm("¿Estás seguro?")) {
             $.get("<?php echo site_url('audio/borraraud/'); ?>" + id, null, respuesta);
         }
@@ -208,24 +203,25 @@ echo"
 			
         }
     }
+
 	$(document).ready(function() {
         $('#cont').dataTable({
-    	"language": {
-            "lengthMenu": "Mostrar _MENU_ registros por página",
-            "zeroRecords": "No se encontraron resultados en su búsqueda",
-            "searchPlaceholder": "Buscar registros",
-            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
-            "infoEmpty": "No existen registros",
-            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "search": "Buscar:",
-            "paginate": {
-	            "first":    "Primero",
-	            "last":    "Último",
-	            "next":    "Siguiente",
-	            "previous": "Anterior"
-	    },
-        }
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontraron resultados en su búsqueda",
+                "searchPlaceholder": "Buscar registros",
+                "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+                "infoEmpty": "No existen registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "search": "Buscar:",
+                "paginate": {
+                    "first":    "Primero",
+                    "last":    "Último",
+                    "next":    "Siguiente",
+                    "previous": "Anterior"
+                },
+            }
         });
-    } );
+    });
        
 </script>
