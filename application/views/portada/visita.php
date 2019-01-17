@@ -68,7 +68,9 @@
               <div class="Gmodal-content">
                 <a class="Gprev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="Gnext" onclick="plusSlides(1)">&#10095;</a>
+                
               </div>
+              <p id=descripcion></p>
           </div>
           <!-- Fin galería -->
             
@@ -363,8 +365,9 @@ peticion.done(function(datos){
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
     $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' textoImagen='"+resultado[i].texto_imagen+"'>");
+    $(".Gmodal-content").append("<div class='GmyDescr' id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'>"+resultado[i].texto_imagen+"</div>");
   }
-  // $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'></div>");
+   // $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'>"+resultado[i].texto_imagen+"</div>");
 
   //Si tiene un pdf asociado, mostramos el boton "ver mas"
   if(resultado[0].documento_url!="ninguno"){
@@ -447,15 +450,23 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = $(".GmySlides");
-
+  var descr = $(".GmyDescr");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
   }
   slides[slideIndex-1].style.display = "block";
-  // $("#textoImagenGaleria").empty();
+  //$("#textoImagenGaleria").empty();
   // $("#textoImagenGaleria").html(slides[slideIndex-1].getAttribute("textoImagen"));
+  
+  for (i = 0; i < descr.length; i++) {
+      descr[i].style.display = "none";
+  }
+  descr[slideIndex-1].style.display = "block";
+  
+  
+
 }
   //Si le das click fuera de la ventana quitarlo.
 $( ".overlay" ).on( "click", function() {

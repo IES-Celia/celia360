@@ -339,11 +339,13 @@ class HotspotsModel extends CI_Model {
         $listaimagenes = explode($listaArray, ",");
         $orden = $this->input->post_get("listaorden");
 
+       
         $contador = 0;
 
         //Comprobar si existe algo de antes
         $comprobar = "SELECT * FROM panel_imagenes WHERE id_hotspot='$id_hotspot'";
         $resultado = $this->db->query($comprobar);
+        
         if($resultado->num_rows()>0){
             //al modificar borramos todos y lo reenviamos
             $borrado = "DELETE FROM panel_imagenes WHERE id_hotspot='$id_hotspot'";
@@ -352,8 +354,9 @@ class HotspotsModel extends CI_Model {
         
         //Ahora añadir
         foreach ($listaArray as $imagen_id) {
-            $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen,orden)VALUES('$id_hotspot','$imagen_id','$orden[$contador]')";
-            $this->db->query($sql);
+           $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen,orden)VALUES('$id_hotspot','$imagen_id','$orden[$contador]')";
+           
+             $this->db->query($sql);
             if ($this->db->affected_rows() > 0) {
                 $contador = $contador + 1;
             }
