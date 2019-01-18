@@ -224,7 +224,7 @@ class UsuarioModel extends CI_Model {
         $dir = $dir[0];
 
         // El tipo 1 es adminsitrador, el tipo 2 es "mapero" y el tipo 3 es bibliotecario
-        if ($tipo == 1 && ($dir == "audio" || $dir == "portada" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "puntosdestacados" || $dir == "video" || $dir == "hotspots" || $dir == "usuario" || $dir == "guiada" || $dir == "mapa") || $dir == "panoramas_secundarios")
+        if ($tipo == 1 && ($dir == "audio" || $dir == "portada" || $dir == "imagen" || $dir == "biblioteca" || $dir == "escenas" || $dir == "puntosdestacados" || $dir == "video" || $dir == "hotspots" || $dir == "usuario" || $dir == "guiada" || $dir == "mapa") || $dir == "panoramas_secundarios" || $dir == "Backup")
             return true;
         else if ($tipo == 2 && ($dir == "audio" || $dir == "imagen" || $dir == "escenas" || $dir == "video" || $dir == "hotspots" || $dir == "mapa" ))
             return true;
