@@ -18,6 +18,11 @@
 <!-- PORTADA PRINCIPAL DE HOMEPAGE -->
 <!-- Crea la capa main y el slider de la portada con la imagen de portada de fondo-->
 <!-- También se inserta aquí el botón para visualizar los libros de historia -->
+
+        <!-- FUENTES CONFIGURABLES -->
+        <link rel="stylesheet" href="./assets/fonts/Ubuntu-Regular.ttf">
+        <link rel="stylesheet" href="./assets/fonts/Oswald-Regular.ttf">
+        
         <main>
             <div id="responsividad"> <!-- WIP. Su css está en estilos_portada.css -->
                 <a href="<?php echo site_url();?>"><?php echo $con["titulo_web"] ?></a> 
@@ -34,9 +39,9 @@
             </div>
             <div id="slider1_portada" style="background-image:url('<?php echo site_url("assets/imagenes/portada/".$portada[0]["imagen_web"]); ?>')">
                  <div class="contenedor_portada">
-                     <h1 id="titulito"><?php echo $con["titulo_web"] ?></h1>
+                     <h1 style="color:<?php echo $portada[0]['color_fuente'];?>; font-family: <?php echo $portada[0]['nombre_fuente'] ;?>, sans-serif;" id="titulito"><?php echo  $con["titulo_web"] ?></h1>
                      <div id="parrafito">
-                         <p id="descripcion_portada"></p>
+                         <p style="color:<?php echo $portada[0]['color_fuente'];?>; font-family: <?php echo $portada[0]['nombre_fuente'] ;?>, sans-serif;" id="descripcion_portada"></p>
                         <div id="separador_portada"> </div>
                         <?php if ($con["show_historia"] == "1") {
                             // El botón "Historia" solo se muestra si está configurado así en las opciones de portada
@@ -46,7 +51,7 @@
                      </div>
                  </div> 
                  <div id="poweredBy">
-                    <h1>Powered by Celia Viñas 2ºDAW 17/18&nbsp;&nbsp;</h1>
+                    <h1 style="color:<?php echo $portada[0]['color_fuente'];?>; font-family: <?php echo $portada[0]['nombre_fuente'] ;?>, sans-serif;">Powered by Celia Viñas 2ºDAW 17/18&nbsp;&nbsp;</h1>
                     <img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/>
                  </div>
             </div>

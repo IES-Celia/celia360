@@ -42,7 +42,7 @@ class BackupModel extends CI_Model {
         $this->load->library('zip');
 
         //Ruta del directorio que vamos a comprimir
-        $path = "./assets/biblio";
+        $path = "./assets/imagenes";
 
         $this->zip->read_dir($path, false);
     
@@ -53,14 +53,15 @@ class BackupModel extends CI_Model {
     
     //Borrar directorio assets
     public function deleteAssets(){
-        $path = "./assets/biblio"; //Ruta del directorio que vamos a eliminar
+        $path = "./assets/imagenes"; //Ruta del directorio que vamos a eliminar
+        rmdir($path);//Elimina el directorio imagenes
         $this->load->helper("file"); // load the helper
         delete_files($path, true); // delete all files/folders
     }
 
     //Restaurar directorio assets
     public function restoreAssets(){
-        $config['upload_path'] = "./assets/biblio"; //Ruta donde se guarda el zip
+        $config['upload_path'] = "./assets"; //Ruta donde se guarda el zip
         $config['allowed_types'] = '*'; //Tipo de fichero permitido, si especificamos zip, no funciona, nos da error al subir el archivo
         
         $this->load->library('upload', $config);//Cargamos la libreria y pasamos parametros 
@@ -75,8 +76,8 @@ class BackupModel extends CI_Model {
 
             $zip = new ZipArchive;
 
-            if($zip->open("./assets/biblio/$file_name")){
-                if($zip->extractTo('./assets/biblio')){
+            if($zip->open("./assets/$file_name")){
+                if($zip->extractTo('./assets')){
                     return true;
                 }else{
                     return false;

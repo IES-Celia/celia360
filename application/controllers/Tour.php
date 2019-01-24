@@ -120,7 +120,7 @@ class Tour extends CI_Controller {
      */
   public function formulario_portada(){ 
       $this->load->model("PortadaModel");
-      $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
+      $datos["opcionesPortada"] = $this->PortadaModel->get_info_portada();
       $datos["vista"]="portada/updatePortada";
       $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
       $this->load->view("admin_template", $datos);
@@ -131,15 +131,18 @@ class Tour extends CI_Controller {
    */
   public function modificar_portada(){
     $this->load->model("PortadaModel");
-    $resultado = $this->PortadaModel->update_portada();   
+    $resultado = $this->PortadaModel->update_portada();
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
     $datos["vista"]="portada/updatePortada";
-    if ($resultado == 0) $datos["mensaje"] = "Opciones de portada modificadas correctamente";
-    if ($resultado == 1) $datos["error"] = "Error al modificar las opciones de portada. Imagen portada OK.";
-    if ($resultado == 2) $datos["error"] = "No se ha cambiado la imagen de portada";
-    if ($resultado == 3) $datos["error"] = "No se han modificado los datos ni se ha cambiado la imagen de portada";
-    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-
+    if ($resultado == "0-0-0") $datos["mensaje"] = "Opciones de portada modificadas correctamente)";
+    if ($resultado == "0-1-0") $datos["error"] = "Error al modificar la portada.";
+    if ($resultado == "0-0-1") $datos["error"] = "Error al modificar el icono.";
+    if ($resultado == "1-0-0") $datos["error"] = "Error al modificar los datos.";
+    if ($resultado == "1-1-0") $datos["error"] = "Error al modificar los datos y la portada";
+    if ($resultado == "1-1-1") $datos["error"] = "Error al modificar datos, portada y icono";
+    if ($resultado == "0-1-1") $datos["error"] = "Error al modificar la portada y el icono";
+    if ($resultado == "1-0-1") $datos["error"] = "Error al modificar los datos y el icono.";
+    $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template", $datos);
 
   }
