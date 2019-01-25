@@ -562,6 +562,10 @@
 
             if (!file_exists('assets/imagenes/svg')) {
                 mkdir('assets/imagenes/svg');
+			}
+			
+			if (!file_exists('assets/imagenes/panoramasSecundarios')) {
+                mkdir('assets/imagenes/panoramasSecundarios');
             }
 
             if (!file_exists('assets/bibliocss')) {
@@ -594,7 +598,8 @@
 
             if (!file_exists('assets/php')) {
                 mkdir('assets/php');
-            }
+			}
+			
             echo "<br><br>La instalación ha finalizado. <strong>IMPORTANTE: elimine ahora el archivo de instalación (install.php) del servidor para evitar posibles ataques a su base de datos.</strong>.<br>"
             . "Visite <a href='$baseurl/usuario'>$baseurl/usuario</a> para comenzar a introducir los datos de su visita virtual.<br>";
          }
