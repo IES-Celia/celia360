@@ -29,7 +29,7 @@
         <!-- <a href="<?php echo site_url("hotspots");?>" class="enlacesidenav"> Hotspots</a> -->
         <a href="<?php echo site_url("usuario/usuarios");?>" class="enlacesidenav"> Usuarios</a>
         <a href="<?php echo site_url("tour/formulario_portada");?>" class="enlacesidenav"> Portada</a>
-        
+        <a href="<?php echo site_url("backup");?>" class="enlacesidenav">Backup</a>
         
         <br><br>
     

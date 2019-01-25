@@ -5,8 +5,8 @@
             <div class="contenedor_portada">
             <nav id="nav_portada">
              <ul>
-                 <li><a href="<?php echo site_url();?>"><img src="<?php echo base_url("assets/imagenes/portada/logo.png"); ?>"/></a> </li>
-                  <li><a id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre"); ?>" onclick="visita_opcion('get_json_libre')" >Visita libre</a></li>
+                 <li><a href="<?php echo site_url();?>"><img src="<?php echo site_url("assets/imagenes/portada/".$con["logo_web"]); ?>"/></a> </li>
+                 <li><a id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre"); ?>" onclick="visita_opcion('get_json_libre')" >Visita libre</a></li>
                  <li><a id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada"); ?>" onclick="visita_opcion('get_json_guiada')" >Visita Guiada</a></li>
                  <li><a id="opciondestacada_portada" href="<?php echo site_url("PuntosDestacados"); ?>">Destacados</a></li>
                  <?php 

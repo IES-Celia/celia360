@@ -292,7 +292,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
         
       });
 
-      alert(escena);
+      alert(escena); //este es el alert que te dice la escena cuando le das a enviar 
 
       var urlCorrecta = "<?php echo base_url("hotspots/add_imgs_hotspot") ?>";
       var peticion = $.ajax({
@@ -302,6 +302,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       });
       
       peticion.done(function(resultado){
+      
         //http://localhost/celia360/escenas/cargar_escena/p0p8f3/show_insert_hotspot/null
         window.location.href = resultado;
       });

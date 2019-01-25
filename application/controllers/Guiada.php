@@ -5,6 +5,8 @@
 /*
 
 <!--
+
+
     Este archivo es parte de la aplicación web Celia360. 
 
     Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo

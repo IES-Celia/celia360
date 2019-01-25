@@ -30,15 +30,15 @@
          */
         public function update_portada(){
             // Actualizamos todos los campos de la tabla (menos la imagen)
-            $titulo_web = $_REQUEST["titulo_web"];
-            $subtitulo_visita_libre = $_REQUEST["subtitulo_visita_libre"];
-            $subtitulo_visita_guiada = $_REQUEST["subtitulo_visita_guiada"];
-            $subtitulo_puntos_destacados = $_REQUEST["subtitulo_puntos_destacados"];
-            $subtitulo_biblioteca = $_REQUEST["subtitulo_biblioteca"];
-            $show_biblioteca = $_REQUEST["show_biblioteca"];
-            $show_historia = $_REQUEST["show_historia"];
-            $color_fuente = $_REQUEST["color_fuente"];
-            $nombre_fuente = $_REQUEST["nombre_fuente"];
+            $titulo_web = $this->input->get_post("titulo_web");
+            $subtitulo_visita_libre = $this->input->get_post("subtitulo_visita_libre");
+            $subtitulo_visita_guiada = $this->input->get_post("subtitulo_visita_guiada");
+            $subtitulo_puntos_destacados = $this->input->get_post("subtitulo_puntos_destacados");
+            $subtitulo_biblioteca = $this->input->get_post("subtitulo_biblioteca");
+            $show_biblioteca = $this->input->get_post("show_biblioteca");
+            $show_historia = $this->input->get_post("show_historia");
+            $color_fuente = $this->input->get_post("color_fuente");
+            $nombre_fuente = $this->input->get_post("nombre_fuente");
 
             
             $this->db->query("UPDATE opciones_portada "
@@ -57,35 +57,72 @@
             else
                 $resultado_update = 1;  // Error en update (001)
 
-            // Actualizamos la imagen
-
-            $userpic = $_FILES["nueva_imagen_web"]["name"];  // Nombre del archivo de imagen
-            $config['upload_path'] = 'assets/imagenes/portada/';
-            $config['allowed_types'] = 'jpg';
-            $config['file_name'] = $userpic;
-            $config['overwrite'] = TRUE;
-
-            // Cargar la librería
-            $this->load->library('upload', $config);
-            
-            $resultado_subida = $this->upload->do_upload('nueva_imagen_web');
-
-            if ($resultado_subida == false) {
-                // ¡¡La subida del fichero ha fallado!!
-                echo $this->upload->display_errors();
-                $resultado_imagen = 2;  // Error en subida de imagen (010)
-            } else {
-                // ¡¡La subida del fichero ha sido un éxito!!
-                // Modificamos el registro en la base de datos
-                $sql = "UPDATE opciones_portada SET imagen_web = '$userpic' WHERE 1=1";
-                $this->db->query($sql);
-                if ($this->db->affected_rows() == 0) {
-                    $resultado_imagen = 4;  // Marca de error al actualizar BD (100)
+            // Actualizamos la imagen de la portada
+            if($_FILES['nueva_imagen_web']['name'] != null) {
+                $userpic = $_FILES["nueva_imagen_web"]["name"];  // Nombre del archivo de imagen
+                $config['upload_path'] = 'assets/imagenes/portada/';
+                $config['allowed_types'] = 'jpg|png';
+                $config['file_name'] = $userpic;
+                $config['overwrite'] = TRUE;
+    
+                // Cargar la librería
+                $this->load->library('upload', $config);
+                
+                $resultado_subida = $this->upload->do_upload('nueva_imagen_web');
+    
+                if ($resultado_subida == false) {
+                    // ¡¡La subida del fichero ha fallado!!
+                    echo $this->upload->display_errors();
+                    $resultado_imagen = 1;  // Error en subida de imagen (010)
                 } else {
-                    $resultado_imagen = 0;  // Subida de nueva imagen OK (000)
+                    // ¡¡La subida del fichero ha sido un éxito!!
+                    // Modificamos el registro en la base de datos
+                    $sql = "UPDATE opciones_portada SET imagen_web = '$userpic' WHERE 1=1";
+                    $this->db->query($sql);
+                    if ($this->db->affected_rows() == 0) {
+                        $resultado_imagen = 1;  // Marca de error al actualizar BD (100)
+                    } else {
+                        $resultado_imagen = 0;  // Subida de nueva imagen OK (000)
+                    }
                 }
+            }else{
+                $resultado_imagen = 0; //No se a subido ninguna imagen de fondo 
             }
-            return $resultado_imagen + $resultado_update;
-        }  
+
+            // Actualizamos la imagen del logo
+            if($_FILES['nuevo_logo_web']['name'] != null) {
+                $nuevo_icono = $_FILES["nuevo_logo_web"]["name"];  // Nombre del archivo de imagen
+                $config['upload_path'] = 'assets/imagenes/portada/';
+                $config['allowed_types'] = 'jpg|png';
+                $config['file_name'] = $nuevo_icono;
+                $config['overwrite'] = TRUE;
+    
+                // Cargar la librería
+                $this->load->library('upload', $config);
+                
+                $resultado_subida = $this->upload->do_upload('nuevo_logo_web');
+    
+                if ($resultado_subida == false) {
+                    // ¡¡La subida del fichero ha fallado!!
+                    echo $this->upload->display_errors();
+                    $resultado_logo = 1;  // Error en subida de imagen (010)
+                } else {
+                    // ¡¡La subida del fichero ha sido un éxito!!
+                    // Modificamos el registro en la base de datos
+                    $sql = "UPDATE opciones_portada SET logo_web = '$nuevo_icono' WHERE 1=1";
+                    $this->db->query($sql);
+                    if ($this->db->affected_rows() == 0) {
+                        $resultado_logo = 1;  // Marca de error al actualizar BD (100)
+                    } else {
+                        $resultado_logo = 0;  // Subida de nueva imagen OK (000)
+                    }
+                }
+            }else{
+                $resultado_logo = 0; //No se a subido ninguna imagen de icono  
+            }
+            
+            return $resultado_update."-".$resultado_imagen."-".$resultado_logo;
+        }
+        
     }
 ?> 

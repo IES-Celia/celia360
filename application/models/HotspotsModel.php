@@ -529,3 +529,5 @@ class HotspotsModel extends CI_Model {
     }
 
 }
+
+?>

@@ -101,16 +101,9 @@ class AudioModel extends CI_Model {
         $url = $this->input->post_get("url_aud");
         $desc = $this->input->post_get("desc_aud");
         $tipo = $this->input->post_get("tipo_aud");
-        
-        $url1 = "assets/audio/" . $url . ".mp4";
 
-        $s = "select url_aud from audio where id_aud='$id'";
-        $res = $this->db->query($s);
-        $n = $res->result_array()[0]["url_aud"];
-        rename($n, $url1);
-        $del = "update audio set url_aud='$url1', desc_aud='$desc', tipo_aud='$tipo' where id_aud='$id'";
+        $del = "update audio set desc_aud='$desc', tipo_aud='$tipo' where id_aud='$id'";
         $r = $this->db->query($del);
-
         return $r;
     }
 // borra el audio especificado y devuelve una lista de todos los audios disponibles en el servidor/basedatos

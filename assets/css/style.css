@@ -1,0 +1,99 @@
+/* HOJA DE ESTILOS PARA MAQUETAR, SIMILAR A BOOTSTRAP */
+
+    /*TEXT-ALIGN*/
+    .text-center{
+        text-align: center!important;
+    }
+    .text-left{
+        text-align: left!important;
+    }
+
+    /* COLOR-TEXT*/
+    .text-dark{
+        color: black!important;
+    }
+
+    /* ROW, COL Y CONTAINER */
+
+    .container{
+        margin: 0 auto!important;
+        max-width: 1300px!important;
+    }
+    .row{
+        margin-top: 5px!important;
+        display: block!important;
+        width: 100%!important;
+    }
+    .col-md-1{
+        margin: 0 auto!important;
+        width: 8.33%!important;
+    }
+    .col-md-2{
+        margin: 0 auto!important;
+        width: 16.6%!important;
+    }
+    .col-md-3{
+        margin: 0 auto!important;
+        width: 25%!important;
+    }
+    .col-md-4{
+        margin: 0 auto!important;
+        width: 33.33%!important;
+    }
+    .col-md-5{
+        margin: 0 auto!important;
+        width: 41.66%!important;
+    }
+    .col-md-6{
+        margin: 0 auto!important;
+        width: 50%!important;
+    }
+    .col-md-7{
+        margin: 0 auto!important;
+        width: 58.33%!important;
+    }
+    .col-md-8{
+        margin: 0 auto!important;
+        width: 66.66%!important;
+    }
+    .col-md-9{
+        margin: 0 auto!important;
+        width: 75%!important;
+    }
+    .col-md-10{
+        margin: 0 auto!important;
+        width: 83.33%!important;
+    }
+    .col-md-11{
+        margin: 0 auto!important;
+        width: 91.66%!important;
+    }
+    .col-md-12{
+        margin: 0 auto!important;
+        width: 100%!important;
+    }
+
+    /* MARGIN Y PADDING Y CENTRAR UN DIV */
+    .mx-auto{
+        margin: 0 auto!important;
+    }
+    .mr-1{
+        margin-right: 10px!important;
+    }
+    .mt-3{
+        margin-top: 30px!important;
+    }
+    .pb-3{
+        padding-bottom: 30px!important;
+    }
+    .pt-2{
+        padding-top: 20px!important;
+    }
+    .pt-3{
+        padding-top: 30px!important;
+    }
+
+    /* BACKGROUND-COLOR */
+    .bg-secondary{
+        background-color: #D2D4D3!important;
+    }
