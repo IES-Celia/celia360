@@ -98,8 +98,8 @@ class Tour extends CI_Controller {
    * @param int $escenaInicial el id de la escena en la que se cargará pannellum
    */
     
-    public function get_json_plataforma($escenaInicial) {
-        $json = $this->TourModel->get_datos_plataforma($escenaInicial);
+    public function get_json_plataforma($valor,$escenaInicial) {
+        $json = $this->TourModel->get_datos_plataforma($valor,$escenaInicial);
         echo $json;
     }
 
