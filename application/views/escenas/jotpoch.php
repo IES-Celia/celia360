@@ -23,8 +23,9 @@
  <!-- Javascript de pannellum framework -->
     <script>
       ruta_base = '<?php echo $redireccion_joptoch; ?>';
-      hotspot_base = "<?php echo $idhotspot; ?>"; 
-      
+	  hotspot_base = "<?php echo $idhotspot; ?>"; 
+	  pan_secundario = "<?php echo $panorama_secundario; ?>";
+
     </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
@@ -62,24 +63,31 @@ $("#botoncico").click(function(){
     
     // carga el json por ajax y lo prepara para pannellum
   function ayax(){ 
-    $.ajax({
-        url: '<?php echo base_url("tour/get_json_plataforma/".$escenaInicial) ?>', 
-        type: 'GET',
-        dataType: 'json',
-    }).done(function(data) {
-                
-        $.each(data.scenes, function(i){
-          var escenas = data.scenes[i];
-          $.each(escenas.hotSpots, function(j){
-            escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
-          });
-        });
-        viewer = pannellum.viewer("panorama", data);
-        escena_base = data.default.firstScene;
-    }).fail(function() {
-        console.log("error");
-    })
-} 
+	  var ruta = '';
+	  if (pan_secundario != 1){
+		  	ruta = '<?php echo base_url("tour/get_json_plataforma/0/".$escenaInicial) ?>';
+	  }else{
+			ruta = '<?php echo base_url("tour/get_json_plataforma/1/".$escenaInicial) ?>';
+		}
+		  //es una escena
+		$.ajax({
+			url: ruta, 
+			type: 'GET',
+			dataType: 'json',
+		}).done(function(data) {
+					
+			$.each(data.scenes, function(i){
+			var escenas = data.scenes[i];
+			$.each(escenas.hotSpots, function(j){
+				escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
+			});
+			});
+			viewer = pannellum.viewer("panorama", data);
+			escena_base = data.default.firstScene;
+		}).fail(function() {
+			console.log("error");
+		})
+	}
     // este metodo es el que se le mete a todos los hotspots en este modo especial. Gracias a él cuando clickeemos en un jotpoch en esta vista se abrirá una vista para modificar susodicho hotspot
     function modificarHotspot(hotspotDiv, idjotpoch){
         location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch+"/"+escena_base;

@@ -621,12 +621,18 @@ function onDocumentMouseDown(event) {
     if (config.hotSpotDebug) {
         var coords = mouseEventToCoords(event);
     var pitch = coords[0];
-    var yaw = coords[1];
+	var yaw = coords[1];
          if(event.which == 3){
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
 
              if(coso==true){
-                location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base+"/"+hotspot_base;
+				 if(pan_secundario == 1){
+					location.href= ruta_base +""+pitch+"/"+yaw+"/null/"+escena_base;
+				 }else{
+					location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base;
+				 }
+				
+				
             }
         }
         
@@ -1602,7 +1608,7 @@ function createHotSpot(hs) {
         if (hs.sceneId) {
             div.onclick = function() {
                 loadScene(hs.sceneId, hs.targetPitch, hs.targetYaw, hs.targetHfov);
-                return false;
+				return false;
             };
             div.ontouchend = function() {
                 loadScene(hs.sceneId, hs.targetPitch, hs.targetYaw, hs.targetHfov);
@@ -1625,7 +1631,7 @@ function createHotSpot(hs) {
     }
     if (hs.clickHandlerFunc) {
         div.addEventListener('click', function(e) {
-            hs.clickHandlerFunc(e, hs.clickHandlerArgs);
+			hs.clickHandlerFunc(e, hs.clickHandlerArgs);
         }, 'false');
         div.style.cursor = 'pointer';
         span.style.cursor = 'pointer';
@@ -2026,7 +2032,7 @@ function load() {
  */
 function loadScene(sceneId, targetPitch, targetYaw, targetHfov, fadeDone) {
     loaded = false;
-    animatedMove = {};
+	animatedMove = {};
     
     // Set up fade if specified
     var fadeImg, workingPitch, workingYaw, workingHfov;
@@ -2037,7 +2043,7 @@ function loadScene(sceneId, targetPitch, targetYaw, targetHfov, fadeDone) {
         fadeImg.style.width = '100%';
         fadeImg.style.height = '100%';
         fadeImg.onload = function() {
-            loadScene(sceneId, targetPitch, targetYaw, targetHfov, true);
+			loadScene(sceneId, targetPitch, targetYaw, targetHfov, true);
         };
         var data = renderer.render(config.pitch * Math.PI / 180, config.yaw * Math.PI / 180, config.hfov * Math.PI / 180, {returnImage: true});
         if (data !== undefined) {
