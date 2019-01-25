@@ -5,7 +5,7 @@ public function __construct() {
     parent::__construct();
     $this->load->model("EscenasModel");
     $this->load->model("UsuarioModel");
-    $this->load->model("PanoramasSecundariosModel");
+	$this->load->model("PanoramasSecundariosModel");
 }
 
 	public function index(){ // Redirige al index del controlador Escenas
@@ -49,8 +49,28 @@ public function insertSecondaryPanorama($id){
 		}else{
 			$datos['error'] = 'Error al actualizar';
 		}
-
 		$this->show_panoramas_secundarios($codigo_escena,$datos);
+	}
+
+	public function cargar_escena($escenaInicial, $redireccion, $piso = null){
+        $this->load->library('session');
+        if(isset($piso) && is_numeric($piso)){
+            $this->session->piso=$piso; 
+        }
+        
+        $redireccion = site_url("/hotspots/".$redireccion."/");
+        $datos["redireccion_joptoch"]= $redireccion;
+		$datos["escenaInicial"] = $escenaInicial;
+		$datos['panorama_secundario'] = '1';
+        $datos["idhotspot"]= "vacio";
+		$this->load->view("escenas/jotpoch", $datos);	
+	}
+	
+	public function consultaPanoramas($id_escena){
+		$res = $this->PanoramasSecundariosModel->consultaPanoramas($id_escena);
+
+		echo $res;
+
 	}
 }
 
