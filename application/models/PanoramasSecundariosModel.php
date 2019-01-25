@@ -30,8 +30,7 @@
                 $upload_path = 'assets/imagenes/panoramasSecundarios/'.$userpic;
                 
             if(move_uploaded_file($arrayImagenes['tmp_name'][$i],$upload_path)){
-                $this->db->query("INSERT INTO panoramas_secundarios VALUES ($id_pan_sec,$id,'$titulo_pan_sec','$fechatop','$upload_path',null,null,null);"); //Insertamos la nueva imagen
-            
+                $this->db->query("INSERT INTO panoramas_secundarios VALUES ($id_pan_sec,$id,'$titulo_pan_sec','$fechatop','$upload_path',120,200,200);"); //Insertamos la nueva imagen
                 
             
                 // Redimensionamos la imagen con la libreria imagen_lib de CodeIgniter
@@ -64,7 +63,7 @@
 		}
 		
 		public function getById($id){
-			$query = $this->db->query("SELECT id_escena, id_panorama_secundario, titulo, fecha_acontecimiento, ruta_imagen FROM panoramas_secundarios WHERE id_escena = '$id';");
+			$query = $this->db->query("SELECT id_escena, id_panorama_secundario, titulo, fecha_acontecimiento, panorama FROM panoramas_secundarios WHERE id_escena = '$id';");
 			return $query->result_array();
 		}
 
@@ -85,6 +84,26 @@
 			$this->db->query("UPDATE panoramas_secundarios SET titulo = '$titulo', fecha_acontecimiento = '$fecha' WHERE id_panorama_secundario = '$id' ");
 			
 			return $this->db->affected_rows();
+		}
+
+		public function consultaPanoramas($cod_escena){
+
+			$devuelve = '';
+
+			$panoramas_secundarios = $this->db->query("SELECT panoramas_secundarios.id_panorama_secundario, panoramas_secundarios.titulo, panoramas_secundarios.panorama, panoramas_secundarios.pitch, panoramas_secundarios.yaw, panoramas_secundarios.hfov 
+			FROM panoramas_secundarios INNER JOIN escenas
+			ON escenas.id_escena = panoramas_secundarios.id_escena WHERE cod_escena = '$cod_escena'
+			ORDER BY panoramas_secundarios.fecha_acontecimiento DESC;");
+
+			if($panoramas_secundarios->num_rows() > 0){
+				$devuelve = json_encode($panoramas_secundarios->result_array());
+			}else{
+				$devuelve = 0;
+			}
+
+			return $devuelve;
+
+
 		}
     }
 ?>
