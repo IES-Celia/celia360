@@ -147,7 +147,8 @@ class escenas extends CI_Controller {
         $redireccion = site_url("/hotspots/".$redireccion."/");
         $datos["redireccion_joptoch"]= $redireccion;
 	    $datos["escenaInicial"] = $escenaInicial;
-        $datos["idhotspot"]= "vacio";
+		$datos["idhotspot"]= "vacio";
+		$datos['panorama_secundario'] = '0';
 		$this->load->view("escenas/jotpoch", $datos);	
 	}
     
