@@ -111,9 +111,16 @@ class HotspotsModel extends CI_Model {
      * @param int $codescena El id de la escena que se quiere modificar.
      * @return Retorna si se ha efectuado el cambio en la tabla de escena.
      */
-    public function modificarPitchYawEscena($pitch, $yaw, $codescena) {
-        $this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE cod_escena='" . $codescena . "'");
-        return $this->db->affected_rows();
+    public function modificarPitchYawEscena($pitch, $yaw, $idescena, $id_pan_sec) {
+		$devuelve = '';
+		if($id_pan_sec == null){
+			$this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_escena='" . $idescena . "'");
+			$devuelve =  $this->db->affected_rows();
+		}else{
+			$this->db->query("UPDATE panoramas_secundarios SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_panorama_secundario ='" . $id_pan_sec . "'");
+        	$devuelve = $this->db->affected_rows();
+		}
+        return $devuelve;
     }
     
     /**
