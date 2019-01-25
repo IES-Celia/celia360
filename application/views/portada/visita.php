@@ -1,7 +1,18 @@
 
 <div class="contenedor">
     <!--div donde se carga pannellum --> 
+
   <div id="panorama">
+
+	<!-- carga de panoramas secundarios -->
+
+	<div id="panoramaSecundario" style="position: absolute; z-index:100; margin-left: 70%">
+
+</div>
+
+<!-- </fin carga panorama secundarios -->
+
+
     <!-- Botón menú --> 
     <div class="boton_menu">
         
@@ -11,7 +22,17 @@
           <ul class='version-lista'></ul>
           <!-- Botón full screen-->
           <div class="ctrl" id="fullscreen"></div>
+
+					<!-- Select option panoramas_secundarios -->
+
+					
+	
+
+
+					<!-- ./Fin select option panoramas_secundarios -->
+
            <!-- Vídeo visita libre -->
+		
           <div id="modal_video" class="video">  
             <div class="overlay">
               <a class="cerrarVideo" href="#">&times;</a>
@@ -202,18 +223,21 @@ function visita_opcion(nombre){
       cargarPannellum();
     }
   }).done(function(data) {
-      // ¡Hecho! El JSON completo está en data. Vamos a hacerle un par de transformaciones necesarias para que funcione OK.
-      $.each(data.scenes, function(i){
+			// ¡Hecho! El JSON completo está en data. Vamos a hacerle un par de transformaciones necesarias para que funcione OK.
+			$.each(data.scenes, function(i){
         // En la BD tenemos rutas relativas a la imagen del panorama. Las sutituimos por rutas absolutas con base_url()
         data.scenes[i].panorama = "<?php echo base_url();?>"+data.scenes[i].panorama;
-        var escenas = data.scenes[i];
+				var escenas = data.scenes[i];
+				
         // Convertimos las funciones manejadoras (clickHandlerFunc) de String a función javascript con eval()
         $.each(escenas.hotSpots, function(j){
           escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
         });
-      });
-              
-      viewer = pannellum.viewer("panorama", data);
+			});
+		
+			viewer = pannellum.viewer("panorama", data);
+
+			console.log(data);
 
 
 if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
@@ -221,24 +245,54 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         iniciar_visita_guiada();
         $("#panel_audio_libre").hide(); 
         $('#audio_libre').attr("src","");
-      } else {                          // Arrancar visita libre.
+			} else {// Arrancar visita libre.
+				
         $("#boton_mapa").show();        // Esta visita sí tiene mapa.
         $("#panel_audio_guiada").hide();
         $('#audio_guiada').attr("src","");
         iniciar_visita_libre();
         //Event listener del pannellum, ejecuta codigo dentro del bloque cada vez que cambia de escena.
-        //viewer.on('scenechange',versiones);
+        viewer.on('load',function(){
+					var idEscena = viewer.getScene();
+					$.ajax({
+						url: "<?php echo site_url('Panoramas_Secundarios/consultaPanoramas/'); ?>"+idEscena,
+						type: 'GET',
+						dataType: 'json',
+  				}).done(function(data) { // cuando la escena cambia consulto si la escena tiene panoramas_secundarios
+
+						if(data.length > 0){ //si tiene...
+
+							divPanSec = $("#panoramaSecundario");
+							divPanSec.html("");
+							divPanSec.css("display","block");
+							
+							for(i=0;i<data.length;i++){
+									loc_imagen = data[i].panorama;
+									id_pan_sec = data[i].id_panorama_secundario;
+									divPanSec.append("<img onclick='viewer.loadScene("+id_pan_sec+")' class='pan_sec_img' src='<?php echo site_url(); ?>"+loc_imagen+"' style='width:200px; display:block; margin:10px;' />");
+								}							
+
+						}else{
+							$('#panoramaSecundario').css("display","none");
+						}
+						
+					});
+				});
       }
         console.log("success");
       })
-      .fail(function() {
-        console.log("error");
+      .fail(function(err) {
+        console.log(err.responseText);
       })
 } //fin function visita_opcion()
+
+
 
  /*
   * Asigna eventos necesarios al html del id panorama
   */
+
+
 function cargarPannellum(){
 
 // Si pulsamos en el botón del menú regresamos al homepage
@@ -321,6 +375,7 @@ $( ".menu_slider" ).click(function() {
 });     
   
 } // fin function cargar_panellum()
+
 
 /*
  * Metodo que pone a visible el panel de información de los hotspots de este tipo, cargando además la información correspondiente * al punto pulsado. 
