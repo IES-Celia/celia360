@@ -122,7 +122,8 @@ class Hotspots extends CI_Controller {
         	redirect('escenas/');
 		}else{
 			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, null, $id_pan_sec);
-        	redirect('Panoramas_Secundarios/cargar_escena/' . $id_pan_sec . '/show_insert_hotspot/');
+        	//redirect('Panoramas_Secundarios/cargar_escena/' . $id_pan_sec . '/show_insert_hotspot/');
+			redirect('Escenas/');
 		}
         /*
         $datos["pitch"]= $pitch;

@@ -325,7 +325,8 @@
 
             $db->query("CREATE TABLE `escenas_hotspots` (
                             `id_escena` int(11) NOT NULL,
-                            `id_hotspot` int(11) NOT NULL
+                            `id_hotspot` int(11) NOT NULL,
+							`id_panorama_secundario` VARCHAR(100)
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `escenas_hotspots`
                         ADD PRIMARY KEY (`id_escena`,`id_hotspot`);");
@@ -470,6 +471,8 @@
                         ADD PRIMARY KEY (`id_visita`);");
             $db->query("ALTER TABLE `visita_guiada`
   MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;");
+
+  $this->db->query('CREATE TABLE IF NOT EXISTS panoramas_secundarios (id_panorama_secundario VARCHAR(100),id_escena int,titulo VARCHAR(75),fecha_acontecimiento DATE,panorama VARCHAR(250),hfov INT,pitch INT,yaw INT)ENGINE = InnoDB;');
           
 
             // Creamos el usuario administrador

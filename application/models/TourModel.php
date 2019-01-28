@@ -45,7 +45,6 @@ class TourModel extends CI_Model {
 			$json = $json . ',';
 		}
 		$flagObj= true;
-		
 		$json = $json . ' "' .$escena['cod_escena'].'"'; 
 		$json = $json . ': { ';
 		$json = $json . '"hfov": 120,'; 
@@ -331,7 +330,7 @@ public function get_datos_destacado($datos) {
 				$json = $json . '"panorama": "'.base_url($pan_sec['panorama']).'",';
 				$json = $json . '"hotSpots": ['; // ese $escena[hotspot] no tiene sentido pero está gracioso        
 						
-				$sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_panorama_secundario = ".$pan_sec['id_panorama_secundario'];
+				$sql = "SELECT * FROM hotspots INNER JOIN escenas_hotspots ON hotspots.id_hotspot = escenas_hotspots.id_hotspot WHERE escenas_hotspots.id_panorama_secundario = '".$pan_sec['id_panorama_secundario']."'";
 				$res2 = $this->db->query($sql);
 				foreach ($res2->result_array() as $hotspot) {
 					if($flagHot){

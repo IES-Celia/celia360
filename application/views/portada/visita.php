@@ -5,10 +5,13 @@
   <div id="panorama">
 
 	<!-- carga de panoramas secundarios -->
+	<div id="addBoton">
+		
+		</div>
+			<div class='nav oculto'>
 
-	<div id="panoramaSecundario" style="position: absolute; z-index:100; margin-left: 70%">
+			</div>
 
-</div>
 
 <!-- </fin carga panorama secundarios -->
 
@@ -22,14 +25,6 @@
           <ul class='version-lista'></ul>
           <!-- Botón full screen-->
           <div class="ctrl" id="fullscreen"></div>
-
-					<!-- Select option panoramas_secundarios -->
-
-					
-	
-
-
-					<!-- ./Fin select option panoramas_secundarios -->
 
            <!-- Vídeo visita libre -->
 		
@@ -263,19 +258,27 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
   				}).done(function(data) { // cuando la escena cambia consulto si la escena tiene panoramas_secundarios
 
 						if(data.length > 0){ //si tiene...
-
-							divPanSec = $("#panoramaSecundario");
-							divPanSec.html("");
-							divPanSec.css("display","block");
-							
+							divBtn = $('#addBoton');
+							navContent = $('.nav');
+							divBtn.removeClass('oculto');
+							navContent.html('');
+							divBtn.html('');
+							divBtn.append("<i class='fas fa-images spanImgs'></i>");
 							for(i=0;i<data.length;i++){
 									loc_imagen = data[i].panorama;
 									id_pan_sec = data[i].id_panorama_secundario;
-									divPanSec.append("<img onclick='viewer.loadScene("+id_pan_sec+")' class='pan_sec_img' src='<?php echo site_url(); ?>"+loc_imagen+"' style='width:200px; display:block; margin:10px;' />");
-								}							
+									titulo = data[i].titulo;
+									
+									navContent.append("<div class='contentNav'><h3>"+titulo+"</h3><img class='pan_sec_img' onclick='viewer.loadScene(\""+id_pan_sec+"\")' alt='no disponible' class='pan_sec_img' src='<?php echo site_url(); ?>"+loc_imagen+"'></div>");
+								}	
+								
+								$('.spanImgs').click(function(){
+                	$('.nav').toggle('oculto');
+            		});
 
 						}else{
-							$('#panoramaSecundario').css("display","none");
+							$('#addBoton').addClass('oculto')
+							$('.nav').css('display','none');
 						}
 						
 					});

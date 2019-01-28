@@ -24,13 +24,15 @@
 
                 // Cambiamos el nombre de la imagen de carga	(le asignamos como nombre el id seguido de .jpg)
                 
-                $resul = $this->db->query("SELECT MAX(id_panorama_secundario) AS maxid FROM panoramas_secundarios;");
-                $id_pan_sec = $resul->row()->maxid+1;
-                $userpic = $id_pan_sec . ".jpg";
+                $resul = $this->db->query("SELECT COUNT(id_panorama_secundario) AS maxid FROM panoramas_secundarios;");
+				$id_pan_sec = $resul->row()->maxid+1;
+				
+				$id_string = 'pan_sec_'.$id_pan_sec;
+                $userpic = $id_string . ".jpg";
                 $upload_path = 'assets/imagenes/panoramasSecundarios/'.$userpic;
                 
             if(move_uploaded_file($arrayImagenes['tmp_name'][$i],$upload_path)){
-                $this->db->query("INSERT INTO panoramas_secundarios VALUES ($id_pan_sec,$id,'$titulo_pan_sec','$fechatop','$upload_path',120,200,200);"); //Insertamos la nueva imagen
+                $this->db->query("INSERT INTO panoramas_secundarios VALUES ('$id_string',$id,'$titulo_pan_sec','$fechatop','$upload_path',120,200,200);"); //Insertamos la nueva imagen
                 
             
                 // Redimensionamos la imagen con la libreria imagen_lib de CodeIgniter
@@ -63,7 +65,8 @@
 		}
 		
 		public function getById($id){
-			$query = $this->db->query("SELECT id_escena, id_panorama_secundario, titulo, fecha_acontecimiento, panorama FROM panoramas_secundarios WHERE id_escena = '$id';");
+			
+			$query = $this->db->query("SELECT id_escena, id_panorama_secundario, titulo, fecha_acontecimiento, panorama FROM panoramas_secundarios WHERE id_escena = '".$id."'");
 			return $query->result_array();
 		}
 
@@ -81,6 +84,8 @@
 		}
 
 		public function updatePanorama($id,$titulo,$fecha){
+
+
 			$this->db->query("UPDATE panoramas_secundarios SET titulo = '$titulo', fecha_acontecimiento = '$fecha' WHERE id_panorama_secundario = '$id' ");
 			
 			return $this->db->affected_rows();

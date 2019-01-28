@@ -13,7 +13,7 @@ public function __construct() {
 	}
 
 public function show_panoramas_secundarios($codigo_escena, $datos = null){ //cargo la vista para insertar panoramas secundarios
-	$datos['datos_escena'] = $this->EscenasModel->getOneId($codigo_escena);
+	$datos['datos_escena'] = $this->EscenasModel->getOne($codigo_escena);
 	$datos['tabla_escena_secundaria'] = $this->PanoramasSecundariosModel->getById($codigo_escena);
 	$datos["vista"]="escenas/admin_pan_sec";
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);

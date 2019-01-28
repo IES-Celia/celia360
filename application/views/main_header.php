@@ -41,18 +41,20 @@
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
     <!-- Css y JS de la portada -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
-
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
     <!-- Fuentes externas -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo base_url("assets/imagenes/portada/icono.ico"); ?>">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">	
     <!-- CSS Biblioteca -->
     <link href="assets/css/hover.css" rel="stylesheet" media="all"/>
     <link rel="stylesheet" href="assets/css/animate.css"/>
     <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
  
-    <!-- Efectos JS de la portada -->
+	<!-- Efectos JS de la portada -->
+	
+	
     
     <script>
     

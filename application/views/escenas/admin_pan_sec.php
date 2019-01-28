@@ -12,9 +12,7 @@
     }
 
 </style>
-<?php 
-	echo "Panel de administración de escenas secundarias";
-?>
+<h1>Panel de administración Panoramas Secundarios</h1>
 <a class="insert" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
 
 
@@ -23,7 +21,7 @@
 	<tr id="cabecera">
 		<th>Título</th>
 		<th>Fecha</th>
-		<th>Imagen - Modificar Pith-Yaw</th>
+		<th>Imagen</th>
 		<th>Modificar</th>
 		<th>Eliminar</th>
 	</tr>
@@ -32,7 +30,7 @@
 		<tr id="cabecera">
 			<th>Título</th>
 			<th>Fecha</th>
-			<th>Imagen - Modificar Pith-Yaw</th>
+			<th>Imagen</th>
 			<th>Modificar</th>
 			<th>Eliminar</th>
 		</tr>
@@ -45,7 +43,7 @@
 			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
-				<td class='url-img'> <a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><img src='". base_url($info['panorama'])."' class='imagen-img'></a></td>
+				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button>Add Hotspot</button></a></td>
 				<td><i class='fa fa-edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
 				<td><i class='fa fa-trash delete' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
 			</tr>";
@@ -145,7 +143,7 @@
 		   imagen = $("#imagen-"+id).find(".imagen-img").attr("src");//la imagen
 		   id_pan_sec = $("#imagen-"+id).find(".delete").attr("id");
 
-		   id_escena = <?php echo $tabla_escena_secundaria[0]["id_escena"] ?>
+		   id_escena = <?php echo $tabla_escena_secundaria[0]['id_escena'] ?>
 
             $("#titulo_modificar").val(titulo);
             $("#fecha_modificar").val(fecha);

@@ -97,7 +97,7 @@ class escenas extends CI_Controller {
     
     public function showupdatescene($cod){
     
-        $datos["tabla"]= $this->EscenasModel->getOneId($cod);
+        $datos["tabla"]= $this->EscenasModel->getOne($cod);
         $datos["vista"]="escenas/Modificar";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
