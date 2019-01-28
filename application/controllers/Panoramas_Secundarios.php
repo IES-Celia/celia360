@@ -62,6 +62,7 @@ public function insertSecondaryPanorama($id){
         $datos["redireccion_joptoch"]= $redireccion;
 		$datos["escenaInicial"] = $escenaInicial;
 		$datos['panorama_secundario'] = '1';
+		$datos['cod_escena'] = $this->PanoramasSecundariosModel->getCodEscena($escenaInicial);
         $datos["idhotspot"]= "vacio";
 		$this->load->view("escenas/jotpoch", $datos);	
 	}

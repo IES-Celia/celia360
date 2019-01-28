@@ -627,7 +627,7 @@ function onDocumentMouseDown(event) {
 
              if(coso==true){
 				 if(pan_secundario == 1){
-					location.href= ruta_base +""+pitch+"/"+yaw+"/null/"+escena_base;
+					location.href= ruta_base +""+pitch+"/"+yaw+"/"+cod_escena+"/"+escena_base;
 				 }else{
 					location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base;
 				 }

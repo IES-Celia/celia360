@@ -25,6 +25,7 @@
       ruta_base = '<?php echo $redireccion_joptoch; ?>';
 	  hotspot_base = "<?php echo $idhotspot; ?>"; 
 	  pan_secundario = "<?php echo $panorama_secundario; ?>";
+	  cod_escena = "<?php echo $cod_escena[0]['cod_escena']; ?>";
 
     </script>
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum2.js"); ?>"></script>

@@ -143,12 +143,12 @@
 		   imagen = $("#imagen-"+id).find(".imagen-img").attr("src");//la imagen
 		   id_pan_sec = $("#imagen-"+id).find(".delete").attr("id");
 
-		   id_escena = <?php echo $tabla_escena_secundaria[0]['id_escena'] ?>
+		   cod_escena = '<?php echo $tabla_escena_secundaria[0]['cod_escena'] ?>';
 
             $("#titulo_modificar").val(titulo);
             $("#fecha_modificar").val(fecha);
 			$("#id_modificar").val(id_pan_sec);
-			$("#id_escena_principal").val(id_escena);
+			$("#id_escena_principal").val(cod_escena);
             
             $("#modificar").show();     
         }    
@@ -291,7 +291,7 @@
             }
             $.ajax({
                 type: 'POST',
-                url: '<?php echo site_url('Panoramas_Secundarios/insertSecondaryPanorama/'.$datos_escena[0]['id_escena']); ?>',
+                url: '<?php echo site_url('Panoramas_Secundarios/insertSecondaryPanorama/'.$datos_escena[0]['cod_escena']); ?>',
                 contentType: false,
                 processData: false,
                 data: form_data,
