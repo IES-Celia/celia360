@@ -147,224 +147,397 @@ $(document).ready(function(){
     }
 
 
+    img{
+        width: 100px;
+    }
+    a{
+        padding: 10px;
+    }
 </style>
 
 <div class='container'>
-  <div id="cuerpo">
-    <div class="cabecera">
-        <h4>CeliaTour</h4>
-        Es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360
-        desarrollada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web en IES Celia Viñas de Almería (España)
-        durante el curso 2017/2018.
+
+    <div class="row">
+        <div class="col-md-8">
+            <h1>CeliaTour</h1>
+            <p>Es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360 desarrollada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web en IES Celia Viñas de Almería (España) durante el curso 2017/2018.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto mb-3">
+            <h2 class="text-center">Equipo de desarrollo</h2>
+        </div>
     </div>
         
-    <h2 class="display-3">Equipo de desarrollo</h2>
+    <div class='row'>
 
-        <div class='row'>
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                    <h2>Miguel Ángel López Segura</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    migueldevelopez@gmail.com<br>
-                </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href="mailto:migueldevelopez@gmail.com"><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/miguelille"> <i class="fab fa-github"></i></a>
-                        <a href="#popup" class="inform" alumno='0'><i class="fas fa-plus"></i> info </a>
+                <div class="col-md-8">
+                    <h2>Francisco Linares González</h2> 
                 </div>
             </div>
-
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
-                    <h2>Francisco Linares González</h2>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>franlg.alm@gmail.com</p>
                 </div>
-                <div class='prueba_informacion'>
-                    franlg.alm@gmail.com<br>
-                </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href="mailto:franlg.alm@gmail.com"><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href="mailto:franlg.alm@gmail.com"><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
+        </div>
 
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>Miguel Ángel López Segura</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>migueldevelopez@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><i class="fab fa-linkedin-in"></i></a>
+                    <a target="_blank" href="mailto:migueldevelopez@gmail.com"><i class="far fa-envelope"></i></a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/miguelille"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='0'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Zygimantas Sniurevicius</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    zygis.1415@gmail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>zygis.1415@gmail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href="mailto:zygis.1415@gmail.com"><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/heremias22"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href="mailto:zygis.1415@gmail.com"><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/heremias22"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='2'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
-            
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Marc Expósito Miras</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
-                </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/MarcWotofok"> <i class="fab fa-github"></i></a>
-                        <a href="#popup" class="inform" alumno='3'><i class="fas fa-plus"></i> info </a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>enconstruccion@mimail.com</p>
                 </div>
             </div>
-            
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/MarcWotofok"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='3'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Manuel González Mesa</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
-                </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/mgonzalezmesa"> <i class="fab fa-github"></i></a>
-                        <a href="#popup" class="inform" alumno='4'><i class="fas fa-plus"></i> info </a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>enconstruccion@mimail.com</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/mgonzalezmesa"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='4'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
 
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Alejandro López López</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    f.alejandrolopez92@gmail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>f.alejandrolopez92@gmail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href="mailto:f.alejandrolopez92@gmail.com"><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/Alfrik"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href="mailto:f.alejandrolopez92@gmail.com"><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/Alfrik"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='5'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
-            
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Hamza Benhachmi</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>enconstruccion@mimail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/jamudi"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/jamudi"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='6'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
+        </div>
 
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Miguel Ángel López Rodríguez</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>enconstruccion@mimail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/MickeyLopez091"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/MickeyLopez091"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='7'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
-        
+        </div>
 
-
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/foto_loli.jpg"); ?>"/>
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>María Dolores Salmerón Sierra</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    salmeron.loli@gmail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>salmeron.loli@gmail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href="mailto:salmeron.loli@gmail.com"><i class="far fa-envelope"></i> </a>                       
-                        <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/lolisalmeron"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href="mailto:salmeron.loli@gmail.com"><i class="far fa-envelope"></i> </a>                       
+                    <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/lolisalmeron"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='8'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
- 
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>Álvaro Sánchez Casares</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>enconstruccion@mimail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/Dansberg"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/Dansberg"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='9'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
+        </div>
 
-            <div class="perfil col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <div class="nombrefoto d-flex flex-row ">
-                    <img src="<?php echo base_url("assets/imagenes/portada/unnamed.jpg"); ?>"/>
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
                     <h2>José Luis Ramírez Jiménez</h2>
                 </div>
-                <div class='prueba_informacion'>
-                    enconstruccion@mimail.com<br>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>enconstruccion@mimail.com</p>
                 </div>
-                <div class="d-flex flex-row justify-content-around">
-                        <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                        <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                        <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                        <a target="_blank" href="https://github.com/pepeluchan"> <i class="fab fa-github"></i></a>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/pepeluchan"> <i class="fab fa-github"></i></a>
                     <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
         </div>
-<br>        
-<hr class='separador_creditos'>
-    <h2 class="display-3">Profesores</h2>
-        <div class="center-block" style="width:400px; margin:auto;">
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>Daniel Sanchez Gil</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>danielsanchezgil95@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>David Ramón Casanova</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>DavidRamonCasanova98@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3 shadow">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>David Mora Caceres</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>danielsanchezgil95@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-center">Profesores</h2>
             <ul class="list-group">
                 <li class="list-group-item">Alfredo Moreno Vozmediano</li>
                 <li class="list-group-item">Félix Expósito López</li>
                 <li class="list-group-item">José Barranquero Infantes</li>
             </ul>
-       </div> 
-<br>        
-<hr class='separador_creditos'>
-<br>         
- 	<h2 class="display-3">Colaboradores</h2>
-        <div class="center-block" style="width:400px; margin:auto;">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="text-center">Colaboradores</h2>
             <ul class="list-group">
                 <li class="list-group-item">Antonio Barrera Funes</li>
                 <li class="list-group-item">María del Carmen Cuadrado Sánchez</li>
@@ -378,15 +551,13 @@ $(document).ready(function(){
                 <li class="list-group-item">Luis Serrano Cortés</li>
                 <li class="list-group-item">Manuela Soriano Sánchez</li>
             </ul>
-       </div>         
-       <br> <br> 
-</div>
-</div>
+        </div>
+    </div>
 
-    <br> <br> 
+<!-- FINAL DE CONTAINER -->
+
    	<div class="modal-wrapper" id="popup">
 		<div class="popup-contenedor">
-			
 			<h2 id="titulomodal" class="display-4">Ventana en desarrollo WIP</h2>
             <h5>Desarrollo realizado:</h5>
 			<ul id="listaGoals">
@@ -395,11 +566,10 @@ $(document).ready(function(){
                 <li>Disparar con polvora de rey</li>   
                 <li>Adorar a Zeus</li>  
             </ul>
-			
 			<a class="popup-cerrar" href="#">X</a>
 		</div>
-	</div> 
-
+    </div> 
+    
 <script>
     var Miguel1 = ["Miguel Ángel López Segura", "<li>Coordinador</li><li>Desarrollo de los puntos destacados, frontend y backend</li><li>Desarrollo de la portada de la web, la cual se puede personalizar en el panel de administración</li><li>Desarrollo de los creditos</li><li>Desarrollo de la herramienta para crear hotspots (puntos de acción para saltar entre imagenes 360º, panel de información...)</li>"];
     var Fran = ["Francisco Linares", "<li>Encargado de todo el backend relacionado con el mapa y subida de las escenas</li><li>Ser Zeus</li><li>Desarrollo de los hotspots de tipo vídeo</li><li>Ser Zeus</li>"];
