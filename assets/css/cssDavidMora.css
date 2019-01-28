@@ -48,4 +48,47 @@
         margin: 0 auto;
         padding: 10px;
         display: block;
-      }
+	  }
+	  
+	  .nav{
+		padding: 10px;
+		width: 20%;
+		position: relative;
+		float:right;
+		background-color: rgba(208, 208, 208, 0.2);;
+		color: white;
+		height: 100vh;
+		overflow:scroll;
+		z-index: 200;
+	}
+
+	img.pan_sec_img {
+		width: 250px;
+		border-radius: 5px;
+	}
+
+	.nav .contentNav {
+	   text-align: center;   
+	}
+
+	.oculto {
+		display: none;
+	}
+
+	.spanImgs{
+	transition: all .2s ease-in-out;
+	position: absolute;
+	top: 20px;
+	left: 80px;
+	font-size: 1.5em;
+	background-size:contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: 3;
+	cursor: pointer;
+	opacity: 0.8;
+	}
+
+	.spanImgs:hover{
+		color:white;
+	}

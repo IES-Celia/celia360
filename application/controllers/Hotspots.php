@@ -115,9 +115,16 @@ class Hotspots extends CI_Controller {
      * @param double $yaw Coordenada yaw
      * @param String $codescena Código de escena
      */
-    public function update_escena_pitchyaw($pitch, $yaw, $codescena) {
-        $datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $codescena);
-        redirect('escenas/cargar_escena/' . $codescena . '/show_insert_hotspot/');
+    public function update_escena_pitchyaw($pitch, $yaw, $idescena = null, $id_pan_sec = null) {
+
+		if($id_pan_sec == null){
+			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $idescena, null);
+        	redirect('escenas/');
+		}else{
+			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, null, $id_pan_sec);
+        	//redirect('Panoramas_Secundarios/cargar_escena/' . $id_pan_sec . '/show_insert_hotspot/');
+			redirect('Escenas/');
+		}
         /*
         $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;

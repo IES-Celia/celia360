@@ -34,7 +34,7 @@
                         <?php
                         $this->load->helper('form');
                         echo '<a class="insert mr-1" href='.site_url("Backup/backupSql").' role="button">Backup base de datos</a>';
-                        echo '<a class="insert mr-1" href='.site_url("Backup/backupAssets").' role="button">Backup imagnes</a>';
+                        echo '<a class="insert mr-1" href='.site_url("Backup/backupAssets").' role="button">Backup imagenes</a>';
                         ?>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="col-md-8 mx-auto text-center">
                         <h2>Restaurar backup assets</h2>
                         <?php echo form_open_multipart('Backup/restoreAssets'); ?>
-                            <input class="text-dark" id="assetsZip" type='file' name='assetsZip'>
+                            <input class="text-dark" id="assetsZip" type='file' name='assetsZip' accept=".sql">
                             <input id='restaurarAssets' type='submit' value='Restaurar imagenes'>
                         </form>
                     </div>
@@ -52,7 +52,7 @@
                         <h2>Restaurar base datos</h2>
                         <p class="text-left">Puede tardar algunos minutos, una vez iniciado el proceso de restauración debe dejar que finalice, en ningún momento cambie de viste mientras el proceso se está ejecutando.</p>
                         <?php echo form_open_multipart('Backup/restoreSql'); ?>
-                            <input class="text-dark" id="sqlZip" type='file' name='sqlZip'>
+                            <input class="text-dark" id="sqlZip" type='file' name='sqlZip' accept=".sql">
                             <input id='restaurarSql' type='submit' value='Restaurar bd'>
                         </form>
                     </div>

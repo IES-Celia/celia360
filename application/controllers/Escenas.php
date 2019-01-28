@@ -97,7 +97,7 @@ class escenas extends CI_Controller {
     
     public function showupdatescene($cod){
     
-        $datos["tabla"]= $this->EscenasModel->getOneId($cod);
+        $datos["tabla"]= $this->EscenasModel->getOne($cod);
         $datos["vista"]="escenas/Modificar";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
@@ -147,7 +147,8 @@ class escenas extends CI_Controller {
         $redireccion = site_url("/hotspots/".$redireccion."/");
         $datos["redireccion_joptoch"]= $redireccion;
 	    $datos["escenaInicial"] = $escenaInicial;
-        $datos["idhotspot"]= "vacio";
+		$datos["idhotspot"]= "vacio";
+		$datos['panorama_secundario'] = '0';
 		$this->load->view("escenas/jotpoch", $datos);	
 	}
     

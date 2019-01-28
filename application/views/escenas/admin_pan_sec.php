@@ -12,9 +12,7 @@
     }
 
 </style>
-<?php 
-	echo "Panel de administración de escenas secundarias";
-?>
+<h1>Panel de administración Panoramas Secundarios</h1>
 <a class="insert" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
 
 
@@ -23,7 +21,7 @@
 	<tr id="cabecera">
 		<th>Título</th>
 		<th>Fecha</th>
-		<th>Imágen</th>
+		<th>Imagen</th>
 		<th>Modificar</th>
 		<th>Eliminar</th>
 	</tr>
@@ -32,7 +30,7 @@
 		<tr id="cabecera">
 			<th>Título</th>
 			<th>Fecha</th>
-			<th>Imágen</th>
+			<th>Imagen</th>
 			<th>Modificar</th>
 			<th>Eliminar</th>
 		</tr>
@@ -45,7 +43,7 @@
 			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
-				<td class='url-img'> <img src='". base_url($info['ruta_imagen'])."' class='imagen-img'></td>
+				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button>Add Hotspot</button></a></td>
 				<td><i class='fa fa-edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
 				<td><i class='fa fa-trash delete' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
 			</tr>";
@@ -145,7 +143,7 @@
 		   imagen = $("#imagen-"+id).find(".imagen-img").attr("src");//la imagen
 		   id_pan_sec = $("#imagen-"+id).find(".delete").attr("id");
 
-		   id_escena = <?php echo $tabla_escena_secundaria[0]["id_escena"] ?>
+		   id_escena = <?php echo $tabla_escena_secundaria[0]['id_escena'] ?>
 
             $("#titulo_modificar").val(titulo);
             $("#fecha_modificar").val(fecha);
@@ -181,9 +179,8 @@
         }
         });
     });
-</script>
 
-<script>
+
 	    var fileobj = [];
     function upload_file(e) {
         e.preventDefault();
@@ -192,19 +189,31 @@
           }
 		  previewfile(fileobj);
           ajax_file_upload(fileobj);
-        }
+		}
 
  
     function file_explorer() {
-        document.getElementById('selectfile').click();
+		salir = false;
+		document.getElementById('selectfile').click();
         itemPadre = document.getElementById("drag_upload_file");
         document.getElementById('selectfile').onchange = function() {
 
           for(i=0;i<document.getElementById('selectfile').files.length;i++){
             fileobj.push(document.getElementById('selectfile').files[i]);
+
+			if(fileobj[i].name.includes('png')){
+				salir = true;
+			}
           }
-          previewfile(fileobj);
-          ajax_file_upload(fileobj);
+
+		  if(salir){
+			fileobj = [];
+			document.getElementById("error_cabecera").innerHTML = "Solo se aceptan formatos jpg";
+
+		  }else{
+          	previewfile(fileobj);
+          	ajax_file_upload(fileobj);
+		  }
         };
     }
     var contador = 1;
@@ -212,7 +221,7 @@
 
     function previewfile(file) {
       for(i = 0;i<file.length;i++){
-        if(file[i].name.includes("jpg")){
+        if(file[i].name.includes("JPG") || file[i].name.includes('jpg')){
           var reader = new FileReader();
           reader.onload = function (event) {
 			var image = new Image();
@@ -291,7 +300,7 @@
 
                   if(result == 0){
                     document.getElementById("mensaje_cabecera").innerHTML = "Imágenes subidas con éxito";
-                   
+                    document.getElementById("error_cabecera").innerHTML= '';
                   }else{
                     document.getElementById("error_cabecera").innerHTML = "Error al insertar todas las imágenes";
                    
@@ -308,10 +317,6 @@
 		form_data = "";
 	}
 
-</script>
-
-
-<script>
  //DELETE POR AJAX
 
  $(document).ready(function(){

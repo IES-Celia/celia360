@@ -376,7 +376,7 @@ function init() {
             if (config.basePath && !absoluteURL(p)) {
                 p = config.basePath + p;
             }
-            panoImage[i].src = encodeURI(p);
+			panoImage[i].src = encodeURI(p);
         }
     } else if (config.type == 'multires') {
         onImageLoad();
@@ -2207,7 +2207,7 @@ function loadScene(sceneId, targetPitch, targetYaw, targetHfov, fadeDone) {
             fadeImg.onload = function() {
                 loadScene(sceneId, targetPitch, targetYaw, targetHfov, true);
             };
-            fadeImg.src = data;
+			fadeImg.src = data;
             renderContainer.appendChild(fadeImg);
             renderer.fadeImg = fadeImg;
             return;
@@ -2237,7 +2237,7 @@ function loadScene(sceneId, targetPitch, targetYaw, targetHfov, fadeDone) {
     destroyHotSpots();
     
     // Create the new config for the scene
-    mergeConfig(sceneId);
+	mergeConfig(sceneId);
 
     // Stop motion
     speed.yaw = speed.pitch = speed.hfov = 0;
@@ -2695,7 +2695,7 @@ this.getScene = function() {
  * @returns {Viewer} `this`
  */
 this.addScene = function(sceneId, config) {
-    initialConfig.scenes[sceneId] = config;
+	initialConfig.scenes[sceneId] = config;
     return this;
 };
 

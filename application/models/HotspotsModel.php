@@ -111,9 +111,16 @@ class HotspotsModel extends CI_Model {
      * @param int $codescena El id de la escena que se quiere modificar.
      * @return Retorna si se ha efectuado el cambio en la tabla de escena.
      */
-    public function modificarPitchYawEscena($pitch, $yaw, $codescena) {
-        $this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE cod_escena='" . $codescena . "'");
-        return $this->db->affected_rows();
+    public function modificarPitchYawEscena($pitch, $yaw, $idescena, $id_pan_sec) {
+		$devuelve = '';
+		if($id_pan_sec == null){
+			$this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_escena='" . $idescena . "'");
+			$devuelve =  $this->db->affected_rows();
+		}else{
+			$this->db->query("UPDATE panoramas_secundarios SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_panorama_secundario ='" . $id_pan_sec . "'");
+        	$devuelve = $this->db->affected_rows();
+		}
+        return $devuelve;
     }
     
     /**
@@ -339,13 +346,11 @@ class HotspotsModel extends CI_Model {
         $listaimagenes = explode($listaArray, ",");
         $orden = $this->input->post_get("listaorden");
 
-       
         $contador = 0;
 
         //Comprobar si existe algo de antes
         $comprobar = "SELECT * FROM panel_imagenes WHERE id_hotspot='$id_hotspot'";
         $resultado = $this->db->query($comprobar);
-        
         if($resultado->num_rows()>0){
             //al modificar borramos todos y lo reenviamos
             $borrado = "DELETE FROM panel_imagenes WHERE id_hotspot='$id_hotspot'";
@@ -354,9 +359,8 @@ class HotspotsModel extends CI_Model {
         
         //Ahora añadir
         foreach ($listaArray as $imagen_id) {
-           $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen,orden)VALUES('$id_hotspot','$imagen_id','$orden[$contador]')";
-           
-             $this->db->query($sql);
+            $sql = "INSERT INTO panel_imagenes (id_hotspot,id_imagen,orden)VALUES('$id_hotspot','$imagen_id','$orden[$contador]')";
+            $this->db->query($sql);
             if ($this->db->affected_rows() > 0) {
                 $contador = $contador + 1;
             }
@@ -525,3 +529,5 @@ class HotspotsModel extends CI_Model {
     }
 
 }
+
+?>

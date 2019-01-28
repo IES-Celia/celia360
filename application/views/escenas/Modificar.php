@@ -38,7 +38,7 @@ echo "
                 <input type='hidden' name='cod' value=" . $con['cod_escena'] . ">
 		<p align='center'><input type='submit' value='Enviar cambios'>
                 <br><hr><br>
-        <a href='" . site_url('Panoramas_Secundarios/show_panoramas_secundarios/' . $con['id_escena']) . "'>Imágenes secundarias</a><br>
+        <a href='" . site_url('Panoramas_Secundarios/show_panoramas_secundarios/' . $con['cod_escena']) . "'>Imágenes secundarias</a><br>
         <a href='" . site_url('escenas/cargar_escena/' . $con['cod_escena'] . '/' . "update_escena_pitchyaw/") . "'>Modificar pitch y yaw</a><br>
 		<a href='#' id='eliminar' class='eliminar'>Eliminar esta escena</a>
             </form>
