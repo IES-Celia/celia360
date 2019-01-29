@@ -31,6 +31,7 @@ class Hotspots extends CI_Controller {
         $this->load->model("hotspotsModel");
         $this->load->model("UsuarioModel");
 		$this->load->model("MapaModel","mapa");
+		$this->load->model('PanoramasSecundariosModel');
     }
     
     /**
@@ -122,10 +123,11 @@ class Hotspots extends CI_Controller {
         	redirect('escenas/');
 		}else{
 			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, null, $id_pan_sec);
-        	//redirect('Panoramas_Secundarios/cargar_escena/' . $id_pan_sec . '/show_insert_hotspot/');
 			$datos['mensaje'] = 'Pitch-Yaw actualizado con éxito';
-			redirect('Panoramas_Secundarios/show_panoramas_secundarios/'.$idescena);
-			// IMPORTAR EL CONTROLADOR Panoramas_secundarios;
+			$datos['vista'] = 'escenas/admin_pan_sec';
+			$datos['tabla_escena_secundaria'] = $this->PanoramasSecundariosModel->getById($idescena);
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view('admin_template', $datos);
 		}
         /*
         $datos["pitch"]= $pitch;

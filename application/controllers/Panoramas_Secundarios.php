@@ -16,7 +16,8 @@ public function show_panoramas_secundarios($codigo_escena, $datos = null){ //car
 	$datos['datos_escena'] = $this->EscenasModel->getOne($codigo_escena);
 	$datos['tabla_escena_secundaria'] = $this->PanoramasSecundariosModel->getById($codigo_escena);
 	$datos["vista"]="escenas/admin_pan_sec";
-    $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+
+	$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template",$datos);
 }
 
@@ -69,8 +70,13 @@ public function insertSecondaryPanorama($id){
 	
 	public function consultaPanoramas($id_escena){
 		$res = $this->PanoramasSecundariosModel->consultaPanoramas($id_escena);
-
 		echo $res;
+
+	}
+
+	public function getCodEscena($cod){
+
+		echo json_encode($this->PanoramasSecundariosModel->getCodEscena($cod));
 
 	}
 }

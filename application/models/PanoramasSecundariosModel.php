@@ -111,7 +111,9 @@
 
 		public function getCodEscena($id){
 			$query = $this->db->query('SELECT cod_escena FROM panoramas_secundarios WHERE id_panorama_secundario = "'.$id.'"');
+			
 			return $query->result_array();
 		}
+
     }
 ?>

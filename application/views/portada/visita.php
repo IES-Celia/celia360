@@ -8,6 +8,9 @@
 	<div id="addBoton">
 		
 		</div>
+
+		<div id="btnVolver">
+		</div>
 			<div class='nav oculto'>
 
 			</div>
@@ -251,6 +254,24 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         //Event listener del pannellum, ejecuta codigo dentro del bloque cada vez que cambia de escena.
         viewer.on('load',function(){
 					var idEscena = viewer.getScene();
+
+					if(idEscena.includes('pan_sec')){
+						$.ajax({
+						url: "<?php echo site_url('Panoramas_Secundarios/getCodEscena/'); ?>"+idEscena,
+						type: 'GET',
+						dataType: 'json',
+  				}).done(function(data) { 
+
+						btnVolver = $('#btnVolver');
+						btnVolver.html('');
+						btnVolver.removeClass('oculto');
+						btnVolver.append("<button class='btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\")'>Volver</button>");
+
+
+					});
+				}
+
+					
 					$.ajax({
 						url: "<?php echo site_url('Panoramas_Secundarios/consultaPanoramas/'); ?>"+idEscena,
 						type: 'GET',
@@ -258,6 +279,7 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
   				}).done(function(data) { // cuando la escena cambia consulto si la escena tiene panoramas_secundarios
 
 						if(data.length > 0){ //si tiene...
+							$('#btnVolver').addClass('oculto');
 							divBtn = $('#addBoton');
 							navContent = $('.nav');
 							divBtn.removeClass('oculto');
