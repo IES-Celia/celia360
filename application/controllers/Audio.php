@@ -53,23 +53,30 @@ class Audio extends CI_Controller {
     public function insertaraud() {
         // Primero comprobaremos si el fichero ya está en el servidor
         // (para no sobreescribirlo por error)
-        $f_def = "assets/audio/" . $_FILES["audio"]["name"];
-        $r = $this->AudioModel->existeaud($f_def);
+     $arrayAudio = $_FILES["audio"];
+     
+        $file_count = count($arrayAudio["name"]);
+      
+         for ($i=0 ; $i<$file_count ;$i++){
 
-        if ($r == true) {
-            // El archivo ya está en el servidor: preparamos un mensaje de error para la vista
-            $datos["error"] = "El archivo ya existe en el servidor. Intenta cambiarle el nombre antes de subirlo si no quieres que se sobreescriba";
-        } else {
-            // El archivo no está en el servidor: le pedimos al modelo que lo suba y lo inserte en la BD
-            $tipo = $this->input->post_get("tipo_aud");
-            $desc = $this->input->post_get("desc");
-            $res = $this->AudioModel->insertaraud($desc, $tipo);
+            $f_def = "assets/audio/" . $_FILES["audio"]["name"][$i];
+           
+            $r = $this->AudioModel->existeaud($f_def);
+            if ($r == true) {
+                // El archivo ya está en el servidor: preparamos un mensaje de error para la vista
+                $datos["error"] = "El archivo ya existe en el servidor. Intenta cambiarle el nombre antes de subirlo si no quieres que se sobreescriba";
+            } else {
+                // El archivo no está en el servidor: le pedimos al modelo que lo suba y lo inserte en la BD
+                $tipo = $this->input->post_get("tipo_aud");
+                $desc = $this->input->post_get("desc");
+                $res = $this->AudioModel->insertaraud($desc, $tipo,$f_def,$i);
+            }
+            // Preparamos la vista
+            $datos["tabla"] = $this->AudioModel->buscaraudio();
+            $datos["vista"] = "audio/Vaudios";
+            $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view("admin_template", $datos);
         }
-        // Preparamos la vista
-        $datos["tabla"] = $this->AudioModel->buscaraudio();
-        $datos["vista"] = "audio/Vaudios";
-        $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view("admin_template", $datos);
     }
 
     /**

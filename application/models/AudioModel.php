@@ -25,20 +25,19 @@ class AudioModel extends CI_Model {
         $this->load->database();
     }
 // inserta los audios en la base de datos y copia  los audios (archivo)al servidor
-    public function insertaraud($desc, $tipo) {
+    public function insertaraud($desc, $tipo,$f_def ,$i) {
 
         $r = "";
-
-        $st = $_FILES["audio"]["name"];
-        $f_def = "assets/audio/" . $_FILES["audio"]["name"];
-        if (move_uploaded_file($_FILES['audio']['tmp_name'], $f_def)) {
-            echo "El fichero es válido y se subió con éxito.\n";
-            $insrt = "insert into audio (url_aud,desc_aud, tipo_aud)values('$f_def','$desc','$tipo')";
-            $r = $this->db->query($insrt);
-        } else {
-            echo "¡Posible ataque de subida de ficheros!\n" . $_FILES["audio"]["error"];
-        }
-
+        echo $_FILES['audio']['tmp_name'][$i]."<-";
+            if (move_uploaded_file($_FILES['audio']['tmp_name'][$i], $f_def)) {
+                echo "El fichero es válido y se subió con éxito.\n";
+                $insrt = "insert into audio (url_aud,desc_aud, tipo_aud)values('$f_def','$desc','$tipo')";
+                $r = $this->db->query($insrt);
+            } else {
+                echo $f_def;
+                echo "¡Posible ataque de subida de ficheros!\n" . $_FILES["audio"]["error"][$i];
+            }
+        
         return $r;
     }
 
@@ -121,7 +120,7 @@ class AudioModel extends CI_Model {
 // aqui comprobamos si el audio existe en el servidor antes de subirlo
     public function existeaud($n) {
 
-
+           
         $s = "select url_aud from audio where url_aud='$n'";
         $a = $this->db->query($s);
         if ($a->num_rows())

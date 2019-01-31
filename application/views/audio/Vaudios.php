@@ -139,7 +139,7 @@ echo"
 <h1>Insertar audio</h1>
 <form action='". site_url("/audio/insertarAud") ."'  method='Post' enctype='multipart/form-data' >
     Descripcion:<input id='desc' type='text' name='desc'><br/>
-	Inserte audio<input type='file' name ='audio' id='audio'><br/>
+	Inserte audio<input type='file' name ='audio[]' id='audio' multiple><br/>
 	Tipo<select name='tipo_aud' id='tipo'>
   			<option value='v-guiada'>Visita guiada</option>
  			<option value='d-objeto' selected>Definir un objeto</option>
