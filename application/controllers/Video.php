@@ -48,10 +48,19 @@ class Video extends CI_Controller {
      */
 
     public function insertarvideo() {
-        $f_def = $this->input->post_get("video");
+        $numeroVideos = $this->input->post_get("numeroVideos");   
+        for($i=0;$i<$numeroVideos;$i++){
+        $url  = $this->input->post_get("video".$i);
         $desc = $this->input->post_get("desc");
 		//recojemos las variables del formulario y las insertamos en la base de datos
-        $res = $this->Vidm->insertarvideo($desc, $f_def);
+        $res = $this->Vidm->insertarvideo($desc, $url);
+
+        if($res){
+            echo"<script>alert('insercion correcta');</script>";
+        }else{
+            echo"<script>alert('insercion incorrecta');</script>";
+         }
+        }
 		//preparamos un array con los datos que contiene esa tabla de videos y se los mandamos ala vida para ser visualizados en pantalla
         $datos["tabla"] = $this->Vidm->buscarvideo();
         $datos["vista"] = "video/Vvideos";
@@ -105,4 +114,5 @@ class Video extends CI_Controller {
     }
 
 }
+    
 ?>

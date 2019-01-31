@@ -146,12 +146,14 @@ echo"
 <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
                 base_url("assets/css/cerrar_icon.png") . "'></img></a>
 <h1>Insertar Video</h1>
-    <form action='". site_url('/video/insertarvideo') ."' method='Post' enctype='multipart/form-data' >
+    <form action='". site_url('/video/insertarvideo') ."' method='Post' enctype='multipart/form-data' id='insercion' >
+        Numero de videos : <input type='number' name='numeroVideos' id='numeroVideos' min='0' value='0' onchange='crearCamposInsercion()'><br>
         Desc:<input type='text' name='desc'><br/>
-        Inserte video<input type='text' name ='video' id='video'></br>
-        <input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'> 
-
-        <input type='submit'>
+        <div id='camposInsercion'>
+             
+        </div>
+        <input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'>
+        <input type='submit' id='enviar'>
     </form>
     </div>
 </div>";
@@ -205,6 +207,31 @@ echo"
 			
         }
     }
+    function crearCamposInsercion(){
+        numeroVideos = document.getElementById("numeroVideos").value;
+        $("#camposInsercion").html("");
+
+        
+       // var textnode = document.createTextNode("Insertar Video ");
+        for(i=0;i<numeroVideos;i++){
+        //creamos el titulo del campo de insercion 
+            var p = document.createElement("p");
+            var textnode = document.createTextNode("Insertar Video ");
+            p.setAttribute("id", "texto"+i);
+            p.appendChild(textnode); 
+            document.getElementById("camposInsercion").appendChild(p); 
+        //fin de la creacion del campo de inserción 
+            // creamos los campos de insercion de forma dinamica 
+            
+            var x = document.createElement("INPUT");
+                x.setAttribute("type", "text");
+                x.setAttribute("id", "video"+i);
+                x.setAttribute("name", "video"+i);
+                document.getElementById("camposInsercion").appendChild(x); 
+            //fin de creacion de campos de insercion
+           
+        }
+    }
 	 
 	$(document).ready(function() {
         $('#cont').dataTable({
@@ -226,5 +253,5 @@ echo"
         });
     } );
 	
-       
+    
 </script>

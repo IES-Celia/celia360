@@ -25,7 +25,7 @@ class VideoModel extends CI_Model {
     }
 // inserta los videos en la base de datos devuelve true o false
     public function insertarvideo($desc, $url) {
-
+        
         $r;
         $insrt = "insert into video (url_vid,desc_vid)values('$url','$desc')";
         $r = $this->db->query($insrt);
