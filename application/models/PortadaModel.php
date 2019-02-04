@@ -17,12 +17,6 @@
 
     class PortadaModel extends CI_Model {
 
-        //obtener toda la informacion de la tabla ascensor_mapa
-        public function get_info_ascensorMapa(){
-            $res = $this->db->query("SELECT * FROM ascensor_mapa");
-            return $res->result_array();
-        }
-        
         public function get_info_portada(){
             $res = $this->db->query("SELECT * FROM opciones_portada");
             return $res->result_array();

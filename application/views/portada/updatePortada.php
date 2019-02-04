@@ -84,7 +84,7 @@
                 </p>
                 <!-- Div que ocultamos o mostramos segun el select option de ascensor_mapa -->
                 <div class="ascensor_mapa">
-                    Imagen de mapa:<br/><img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesAscensorMapa[0]['src'];?>' width='200'><br/><input type='file' name='nueva_imagen_mapa' ><br/><br/>
+                    Imagen de mapa:<br/><img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor'];?>' width='200'><br/><input type='file' name='nueva_imagen_mapa' ><br/><br/>
                 </div>
                 <input type='submit' value='Enviar'><br><br>
             </form>  
