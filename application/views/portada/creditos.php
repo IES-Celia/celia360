@@ -14,15 +14,9 @@
 */
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
 <script>
 $(document).ready(function(){
@@ -37,58 +31,9 @@ $(document).ready(function(){
         overflow-y: auto;
         background-color: #F9F9F9;
     }
-    #header_portada {
-        height: 110px;
-        position: fixed;
-        margin-top: 0px;
-        background-color:black;
-        width: 100%;    
-    }
 
-    #cuerpo{
-       top: 100px;
-       position: relative;
-        
-    }
-    
-    .cabecera {
-        padding: 20px;
-        margin: 20px 0;
-        border: 1px solid #eee;
-        border-left-width: 5px;
-        border-radius: 3px;
-        border-left-color: #428bca;
-    }
+    /* Estilos de la ventana modal */
 
-    .cabecera h4 {
-        color: #428bca;
-    }
-    
-    .perfil{
-        border: 1px solid #eee;
-        border-radius: 3px;
-        margin-bottom: 10px;
-    }
-    
-    .perfil img{
-        height: 120px;
-        border-radius: 10px;
-
-    }
-   
-    .nombrefoto{
-        margin-bottom: 4px;
-        margin-top: 10px;
-    }
-    
-    .nombrefoto h2{
-        font-size: 1.8rem;
-        font-weight: 300;
-        line-height: 1.4;
-        text-align: left;
-        padding-left: 4px;
-    }
-    
     #popup {
 		visibility: hidden;
 		opacity: 0;
@@ -130,7 +75,7 @@ $(document).ready(function(){
 		color:#fff;
 	}
  
-    /* estilos para el enlace */
+    /* Estilos para el enlace */
     
 	a.popup-link {
 	    text-align: center;
@@ -146,19 +91,23 @@ $(document).ready(function(){
         font-size: 36px;
     }
 
+    /* Estilos de las cajas del equipo de desarrollo */
 
     img{
-        width: 100px;
+        width: 100%;
     }
     a{
         padding: 10px;
+    }
+    .margen-superior{
+        margin-top: 110px;
     }
 </style>
 
 <div class='container'>
 
-    <div class="row">
-        <div class="col-md-8">
+    <div class="row margen-superior">
+        <div class="col-md-8 mx-auto">
             <h1>CeliaTour</h1>
             <p>Es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360 desarrollada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web en IES Celia Viñas de Almería (España) durante el curso 2017/2018.</p>
         </div>
@@ -172,32 +121,7 @@ $(document).ready(function(){
         
     <div class='row'>
 
-        <div class="col-md-4 mt-3 shadow">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Francisco Linares González</h2> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>franlg.alm@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href="mailto:franlg.alm@gmail.com"><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -222,7 +146,32 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
+                </div>
+                <div class="col-md-8">
+                    <h2>Francisco Linares González</h2> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>franlg.alm@gmail.com</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
+                    <a target="_blank" href="mailto:franlg.alm@gmail.com"><i class="far fa-envelope"></i> </a>
+                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
+                    <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
+                    <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -247,7 +196,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -272,7 +221,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -297,7 +246,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -322,7 +271,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -347,7 +296,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -372,7 +321,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -397,7 +346,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -422,7 +371,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -447,7 +396,7 @@ $(document).ready(function(){
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -467,12 +416,12 @@ $(document).ready(function(){
                     <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
                     <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                     <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='11'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -492,12 +441,12 @@ $(document).ready(function(){
                     <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
                     <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                     <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='12'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 mt-3 shadow">
+        <div class="col-md-4 mt-3">
             <div class="row">
                 <div class="col-md-4">
                     <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
@@ -517,7 +466,7 @@ $(document).ready(function(){
                     <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
                     <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
                     <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
+                    <a href="#popup" class="inform" alumno='13'><i class="fas fa-plus"></i> info </a>
                 </div>
             </div>
         </div>
@@ -563,14 +512,17 @@ $(document).ready(function(){
 			<ul id="listaGoals">
                 <li>Matar moscas a cañonazos</li> 
                 <li>Montar cirios pascuales</li> 
-                <li>Disparar con polvora de rey</li>   
-                <li>Adorar a Zeus</li>  
+                <li>Disparar con polvora de rey</li>
+                <li>Es lo que nos diferencia de uno de la calle</li>   
             </ul>
 			<a class="popup-cerrar" href="#">X</a>
 		</div>
     </div> 
     
 <script>
+
+    /* Script para el funcionamiento de las ventanas modales */
+
     var Miguel1 = ["Miguel Ángel López Segura", "<li>Coordinador</li><li>Desarrollo de los puntos destacados, frontend y backend</li><li>Desarrollo de la portada de la web, la cual se puede personalizar en el panel de administración</li><li>Desarrollo de los creditos</li><li>Desarrollo de la herramienta para crear hotspots (puntos de acción para saltar entre imagenes 360º, panel de información...)</li>"];
     var Fran = ["Francisco Linares", "<li>Encargado de todo el backend relacionado con el mapa y subida de las escenas</li><li>Ser Zeus</li><li>Desarrollo de los hotspots de tipo vídeo</li><li>Ser Zeus</li>"];
     var Zygis = ["Zygimantas Sniurevicius", "<li>Desarrollo de la visita guiada, frontend and backend</li><li>Encargado </li><li>Creación de todos los metodos encargados de que los hotspots (puntos de accion para saltar entre imagenes 360º, panel de información...) funcionen</li>"];
@@ -582,8 +534,11 @@ $(document).ready(function(){
     var Loli =["María Dolores Salmerón Sierra", "<li>Encargada del backend relacionadas con las imagenes</li>"];
     var Alvaro = ["Álvaro Sánchez Casares", "<li>Diseño del dashboard</li>"];
     var Jose = ["José Luis Ramírez Jiménez", "<li>Captura de fotografias y audios</li>"];
+    var DanielS = [];
+    var DavidR = [];
+    var DavidM = [];
     
-    var alumnos2018 = [Miguel1, Fran, Zygis, Marc, Manu, Alejandro, Hamza, Miguel2, Loli, Alvaro, Jose];
+    var alumnos2018 = [Miguel1, Fran, Zygis, Marc, Manu, Alejandro, Hamza, Miguel2, Loli, Alvaro, Jose, DanielS, DavidR, DavidM];
     $(".inform").click(function(){
         var alumno = $(this).attr("alumno");
         $('#titulomodal').html(alumnos2018[alumno][0]);

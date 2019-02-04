@@ -21,7 +21,7 @@
         }
   ?>
         // Prepara el título de la portada (extraído de la BD)
-        base_titulo = '<?php if (isset($portada)) echo $portada[0]["titulo_web"]; else echo "''";  ?>';
+        base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
 
     </script>
     <!-- CSS SLICK -->
@@ -42,6 +42,7 @@
     <!-- Css y JS de la portada -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
     <!-- Fuentes externas -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
@@ -79,7 +80,7 @@
 
         $('#opcionlibre_portada').mouseenter(function(){
             $("#titulito").text("Visita Libre");
-            $("#descripcion_portada").text("<?php echo $portada[0]["subtitulo_visita_libre"];?>");
+            $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>");
             $("#descripcion_portada").fadeIn('fast');
             $("#descripcion_portada").siblings().fadeOut('fast');
             // $("#descripcion_portada").siblings().css('visibility', 'hidden');; con mantiene el mismo flujo pero no tiene animación
@@ -97,7 +98,7 @@
 
         $('#opcionguiada_portada').mouseenter(function(){
             $("#titulito").text("Visita Guiada");
-            $("#descripcion_portada").text("<?php echo $portada[0]["subtitulo_visita_guiada"];?>");
+            $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>");
             $("#descripcion_portada").fadeIn('fast');
             $("#descripcion_portada").siblings().fadeOut();
 
@@ -107,7 +108,7 @@
 
         $('#opciondestacada_portada').mouseenter(function(){
             $("#titulito").text("Zonas Destacadas");
-            $("#descripcion_portada").text("<?php echo $portada[0]["subtitulo_puntos_destacados"];?>");
+            $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>");
             $("#descripcion_portada").fadeIn('fast');
             $("#descripcion_portada").siblings().fadeOut();
 
@@ -118,7 +119,7 @@
 
         $('#clickbiblio').mouseenter(function(){
             $("#titulito").text("Biblioteca");
-            $("#descripcion_portada").text("<?php echo $portada[0]["subtitulo_biblioteca"];?>");
+            $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>");
             $("#descripcion_portada").fadeIn('fast');
             $("#descripcion_portada").siblings().fadeOut();
 
@@ -178,8 +179,3 @@
 <body>
     
 
-<?php 
-    // Contenido de la portada (extraído de la BD)
-    if (isset($portada)) $con = $portada[0]; 
-    else $con = "";
-?>

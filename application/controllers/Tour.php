@@ -134,14 +134,13 @@ class Tour extends CI_Controller {
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
     $datos["vista"]="portada/updatePortada";
-    if ($resultado == 0) $datos["mensaje"] = "Opciones de portada modificadas correctamente";
-    if ($resultado == 1) $datos["error"] = "Error al modificar las opciones de portada. Imagen portada OK.";
-    if ($resultado == 2) $datos["error"] = "No se ha cambiado la imagen de portada";
-    if ($resultado == 3) $datos["error"] = "No se han modificado los datos ni se ha cambiado la imagen de portada";
+    if ($resultado == 0-0-0){
+        $datos["mensaje"] = "Opciones de portada modificadas correctamente";
+    }else{
+        $datos["error"] = "Error al modificar la portada";
+    }
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-
     $this->load->view("admin_template", $datos);
-
   }
 
 }

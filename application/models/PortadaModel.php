@@ -40,29 +40,58 @@
             $color_fuente = $this->input->get_post("color_fuente");
             $nombre_fuente = $this->input->get_post("nombre_fuente");
 
-            
-            $this->db->query("UPDATE opciones_portada "
-                            . "SET titulo_web = '$titulo_web', "
-                                . "subtitulo_visita_libre = '$subtitulo_visita_libre', "
-                                . "subtitulo_visita_guiada = '$subtitulo_visita_guiada', "
-                                . "subtitulo_puntos_destacados = '$subtitulo_puntos_destacados', "
-                                . "subtitulo_biblioteca = '$subtitulo_biblioteca', "
-                                . "show_biblioteca = '$show_biblioteca', "
-                                . "show_historia = '$show_historia', "
-                                . "color_fuente = '$color_fuente', "
-                                . "nombre_fuente = '$nombre_fuente' WHERE 1=1");
+            $contador_update = 0; //Contador del total de Update que se han realizado correctamente
+
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$titulo_web."' WHERE id_opcion = 0");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$subtitulo_visita_libre."' WHERE id_opcion = 2");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$subtitulo_visita_guiada."' WHERE id_opcion = 3");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$subtitulo_puntos_destacados."' WHERE id_opcion = 4");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$subtitulo_biblioteca."' WHERE id_opcion = 5");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$show_biblioteca."' WHERE id_opcion = 6");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$show_historia."' WHERE id_opcion = 7");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$nombre_fuente."' WHERE id_opcion = 8");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$color_fuente."' WHERE id_opcion = 9");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }
                     
-            if ($this->db->affected_rows() != 0)
-                $resultado_update = 0;  // Update correcto (000)
-            else
-                $resultado_update = 1;  // Error en update (001)
+            //Comprobamos que el numero de update sea correcto
+            if ($contador_update > 0){
+                $resultado_update = 0;  // Update correcto (0)
+            }else{
+                $resultado_update = 1;  // Error en update (1)
+            }
 
             // Actualizamos la imagen de la portada
             if($_FILES['nueva_imagen_web']['name'] != null) {
-                $userpic = $_FILES["nueva_imagen_web"]["name"];  // Nombre del archivo de imagen
+                $nueva_imagen_fondo = $_FILES["nueva_imagen_web"]["name"];  // Nombre del archivo de imagen
                 $config['upload_path'] = 'assets/imagenes/portada/';
                 $config['allowed_types'] = 'jpg|png';
-                $config['file_name'] = $userpic;
+                $config['file_name'] = $nueva_imagen_fondo;
                 $config['overwrite'] = TRUE;
     
                 // Cargar la librería
@@ -77,7 +106,7 @@
                 } else {
                     // ¡¡La subida del fichero ha sido un éxito!!
                     // Modificamos el registro en la base de datos
-                    $sql = "UPDATE opciones_portada SET imagen_web = '$userpic' WHERE 1=1";
+                    $sql = "UPDATE opciones_portada SET opcion_valor = '".$nueva_imagen_fondo."' WHERE id_opcion = 1";
                     $this->db->query($sql);
                     if ($this->db->affected_rows() == 0) {
                         $resultado_imagen = 1;  // Marca de error al actualizar BD (100)
@@ -109,7 +138,7 @@
                 } else {
                     // ¡¡La subida del fichero ha sido un éxito!!
                     // Modificamos el registro en la base de datos
-                    $sql = "UPDATE opciones_portada SET logo_web = '$nuevo_icono' WHERE 1=1";
+                    $sql = "UPDATE opciones_portada SET opcion_valor = '".$nuevo_icono."' WHERE id_opcion = 10";
                     $this->db->query($sql);
                     if ($this->db->affected_rows() == 0) {
                         $resultado_logo = 1;  // Marca de error al actualizar BD (100)

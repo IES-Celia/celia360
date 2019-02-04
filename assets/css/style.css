@@ -1,5 +1,30 @@
 /* HOJA DE ESTILOS PARA MAQUETAR, SIMILAR A BOOTSTRAP */
 
+    /* IMPORTART FUENTES QUE UTILIZAMOS */
+    @font-face {
+        font-family: "Oswald";
+        src: url("../fonts/Oswald-Regular.ttf");
+    }
+    @font-face {
+        font-family: "Ubuntu";
+        src: url("../fonts/Ubuntu-Regular.ttf");
+    }
+    @font-face {
+        font-family: "Aleo";
+        src: url("../fonts/Aleo-Regular.ttf");
+    }
+    @font-face {
+        font-family: "Comfortaa";
+        src: url("../fonts/Comfortaa-Regular.ttf");
+    }
+    @font-face {
+        font-family: "PatrickHand";
+        src: url("../fonts/PatrickHand-Regular.ttf");
+    }
+    @font-face {
+        font-family: "Roboto";
+        src: url("../fonts/Roboto-Regular.ttf");
+    }
     /*TEXT-ALIGN*/
     .text-center{
         text-align: center!important;
@@ -16,66 +41,65 @@
     /* ROW, COL Y CONTAINER */
 
     .container{
-        margin: 0 auto!important;
+        margin: auto;
         max-width: 1300px!important;
     }
     .row{
-        margin-top: 5px!important;
-        display: block!important;
-        width: 100%!important;
+        display: flex;
+        flex-wrap: wrap;
     }
     .col-md-1{
-        margin: 0 auto!important;
+        float: left;
         width: 8.33%!important;
     }
     .col-md-2{
-        margin: 0 auto!important;
+        float: left;
         width: 16.6%!important;
     }
     .col-md-3{
-        margin: 0 auto!important;
+        float: left;
         width: 25%!important;
     }
     .col-md-4{
-        margin: 0 auto!important;
-        width: 33.33%!important;
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
     }
     .col-md-5{
-        margin: 0 auto!important;
+        float: left;
         width: 41.66%!important;
     }
     .col-md-6{
-        margin: 0 auto!important;
+        float: left;
         width: 50%!important;
     }
     .col-md-7{
-        margin: 0 auto!important;
-        width: 58.33%!important;
+        float: left;
+        width: 58.33%;
     }
     .col-md-8{
-        margin: 0 auto!important;
-        width: 66.66%!important;
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
     }
     .col-md-9{
-        margin: 0 auto!important;
+        float: left;
         width: 75%!important;
     }
     .col-md-10{
-        margin: 0 auto!important;
+        float: left;
         width: 83.33%!important;
     }
     .col-md-11{
-        margin: 0 auto!important;
+        float: left;
         width: 91.66%!important;
     }
     .col-md-12{
-        margin: 0 auto!important;
+        float: left;
         width: 100%!important;
     }
 
     /* MARGIN Y PADDING Y CENTRAR UN DIV */
     .mx-auto{
-        margin: 0 auto!important;
+        margin: auto!important;
     }
     .m-0{
         margin: 5px!important;
