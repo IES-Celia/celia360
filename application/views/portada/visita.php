@@ -415,7 +415,6 @@ function panelInformacion(hotspotDiv,args){
     type:"post",
     data:{id_hotspot : args},
     beforeSend: function(){
-      console.log("ID HOTSPOT "+args);
       //Cambiar el valor del texto y titulo
       $("#titulo").html("Cargando...");
       $("#texto").html("Cargando...");
@@ -432,8 +431,6 @@ function panelInformacion(hotspotDiv,args){
     
 peticion.done(function(datos){
   var resultado = JSON.parse(datos);
-  console.log(datos);
-  console.log(resultado);
   //Cargamos una vez los datos basicos
   $("#titulo").html(resultado[0].titulo_panel);
   $("#texto").html(resultado[0].texto_panel);

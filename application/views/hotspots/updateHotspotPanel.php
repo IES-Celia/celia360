@@ -52,7 +52,7 @@ echo "
 
 <fieldset id='caja6'>
 
-<form action=' ".site_url("hotspots/process_update_hotspot")." ' method='get'>
+<form action=' ".site_url("hotspots/process_update_hotspot/".$escena_inicial.'/'.$tipo_update)." ' method='get'>
 
 	Coordenadas donde se situa el punto:<br> 
     <a href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
@@ -68,11 +68,11 @@ echo "
     <input type='submit' class='button'>
 	<br>
     <a href=
-    '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'
-    class='rojo_borrar''; >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
+    '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot']."/".$tipo_update)."'
+    class='rojo_borrar' >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
 	
 </form>
-<form action=' ".site_url("hotspots/modify_panel_info/".$tabla['id_hotspot'])." ' method='post'>
+<form action=' ".site_url("hotspots/modify_panel_info/".$tabla['id_hotspot'].'/'.$tipo_update.'/'.$escena_inicial)." ' method='post'>
 <input type='hidden' name='id_scene' value='".$codigo_escena."'>
 <input type='submit' class='button' value='Modificar imagenes de este hotspot'>
 </form>

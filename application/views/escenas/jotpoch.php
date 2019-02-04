@@ -91,7 +91,7 @@ $("#botoncico").click(function(){
 	}
     // este metodo es el que se le mete a todos los hotspots en este modo especial. Gracias a él cuando clickeemos en un jotpoch en esta vista se abrirá una vista para modificar susodicho hotspot
     function modificarHotspot(hotspotDiv, idjotpoch){
-        location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch+"/"+escena_base;
+        location.href= "<?php echo site_url("/hotspots/show_update_hotspot/"); ?>"+idjotpoch+"/"+escena_base+"/"+pan_secundario;
     }
 
   //boton fullscreen.
