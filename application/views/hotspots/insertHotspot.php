@@ -39,7 +39,7 @@
 <body>
 <h1> Formulario para insertar Hotspots</h1>
     <div id="botones">
-    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br>
+    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br><br><br><br>
         
     <div id="botonesderecha">
         <button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
@@ -47,7 +47,9 @@
         <button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
         <button class="botondentromapa" id="btnInsertarVideo">Punto video</button>
         <button class="botondentromapa" id="btnInsertarEscaleras">Conector entre planos (escaleras)</button><br>
-        <button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
+        <button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br>
+        <button class="botondentromapa" id="btnHibrido">Hibrido entre escaleras y ascensor</button><br><br>
+        
     </div>    
     </div>
 <div id="formularios">
@@ -69,9 +71,6 @@
             <?php
                 $indice = $this->session->piso;
                 
-                
-                
-                    
                     echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
                     echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
                     foreach ($puntos as $punto) {
@@ -267,9 +266,72 @@
         </form>
     </div>
     </div>
+    <!-- selecion de planta -->
+    <div id="puntoHibrido">
+        <div id="caja3">
+        <?php
+                $mapa = array_reverse($mapa);
+                
+                foreach ($mapa as $imagen) {
+                $piso = $imagen["piso"];
+                $escena_inicial = $imagen["escena_inicial"];
+                $punto_inicial = $imagen["punto_inicial"];
+                $titulo_piso = $imagen["titulo_piso"];
+                echo '<button id="p'.$piso.'" class="plantas" value="'.$piso.'" >'.$titulo_piso.'</button>';
+                }
+                echo "</div>";//div final de myModal
+            ?>
+    </div>
     
+    <!-- fin de seleccion de planta-->
+    
+<!--hibrido entre escaleras y salto de escena -->
+<div id="puntoHibridoMapa"> 
+    <div id="caja4">
+        <?php
+        echo "<form action='".   site_url("hotspots/process_insert_scene")   ."' method='get'>"; ?>
+            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
+            <input type='hidden' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '> 
+            <input type='hidden' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '> 
+            <input type='hidden' name='cssClass' value='custom-hotspot-salto' readonly="readonly">
+            <input type='hidden' name='tipo' value='scene' readonly="readonly">
+            <input type='hidden' name='clickHandlerFunc' value='puntosEspec' readonly="readonly">
+            <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
+            Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
+            <div id="mapa_escena_hotspot" >
+            
+        
+            <?php
+         
+           for($i=0;$i<=4;$i++){
+                    echo "<div id='planta".$i."' class=' pisos_hotspots' style='display :none;'>";
+                   
+                    echo "<img src='".base_url($mapa[$i]['url_img'])."' style='width:100%;'>";
+                    foreach ($puntos as $punto) {
+                        
+                        
+                        if($punto['piso']==$i){
+                            if($punto['id_escena'] == $id_scene){
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }else{
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }
+                        }
+                    }
+                    echo "</div>";
+                }
+            ?>
+            </div>
+                
+            <br>
+            <input type='text' name='sceneId' required>
+            <input type='submit' class="button">
+        </form>
+            </div>
+              
+<!-- FIN hibrido entre escaleras y dalto de escena -->
 
-    
+                </div>
 </div>
 
     <script>
@@ -300,12 +362,33 @@
             $("#formularios").children().hide();
             $("#puntoEscaleras").show();
         });
+        $("#btnHibrido").click(function() {
+            $("#formularios").children().hide();
+            $("#puntoHibrido").show();
+            clase = document.getElementsByClassName("plantas"); 
+            numeroPlanta = clase.length; 
+        });
           
         $("#btnModificarPitchYaw").click(function(){
           var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
             if(resp)
                 location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
         });
+
+        $(".plantas").click(function(){
+          
+            indice = $(this).attr("value");
+                $("#puntoHibrido").hide();
+                $("#puntoHibridoMapa").show();
+                indice = numeroPlanta-indice;
+                indice = indice-1;
+               for(i=0;i<numeroPlanta;i++){
+                    $("#planta"+i).hide();
+                }
+                $("#planta"+indice).show();
+               
+        });
+        
 
        // Activamos la paginación y la búsqueda en la tabla de audios/videos
        $(".tabla_audio,.tabla_video").dataTable({

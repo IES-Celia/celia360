@@ -65,7 +65,7 @@ class Hotspots extends CI_Controller {
         $datos["listaVideos"] = $this->Vidm->buscarvideo();
 
         $datos["documentos"]= $this->hotspotsModel->getAllDocumentos();
-	$datos["pitch"]= $pitch;
+	    $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;
         $datos["id_scene"]= $idescena;
         $datos["mapa"] = $this->mapa->cargar_mapa();
