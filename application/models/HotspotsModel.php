@@ -167,8 +167,9 @@ class HotspotsModel extends CI_Model {
      * @return Retorna si se ha efectuado el cambio en las tablas.
      */ 
     public function borrarHotspot($id) {
-        $this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
-        $this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
+			$this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
+			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
+
 
         return $this->db->affected_rows();
     }
@@ -236,8 +237,10 @@ class HotspotsModel extends CI_Model {
         return $resultado;
 
     }
-      
-    public function insertarHotspotPanel() {
+	  
+	// $tabla es un 0 o 1, si es 0 se inserta un hotspot en la escena principal
+	// si es 1, se inserta un hotspot en la escena secundaria
+    public function insertarHotspotPanel($tabla) {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
         $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
@@ -291,14 +294,25 @@ class HotspotsModel extends CI_Model {
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
 
-        $cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
-        $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+		if ($tabla == '0'){
+			$cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
+			$res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+	
+			$insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+	
+			$this->db->query($insrt2);
+			//
+			$devoler = array($idhotspot, $id_scene);
+		}else{
+	
+			$insrt2 = "INSERT INTO escenas_hotspots (id_hotspot, id_panorama_secundario) VALUES ($idhotspot, '$id_scene');";
+	
+			$this->db->query($insrt2);
+			//
+			$devoler = array($idhotspot, $id_scene);
+		}
 
-        $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
-
-        $this->db->query($insrt2);
-        //
-        $devoler = array($idhotspot, $id_scene);
+        
         return $devoler;
     }
     
@@ -493,17 +507,25 @@ class HotspotsModel extends CI_Model {
     }
 
     // saca la escena de un punto... importante por no tener el cod_escena en el hotspot, esto deja de tener sentido con la unificación de cod_escena e id_escena   
-    public function cargar_codigo_escena($idhotspot) {
+	// $tabla vale 0 si es un hotspot escena principal y 1 si es una escena secundaria
+	public function cargar_codigo_escena($idhotspot, $tabla) {
 
-        $sql = "SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=" . $idhotspot;
-        $res = $this->db->query($sql)->result_array()[0]["id_escena"];
-        $sql2 = "SELECT cod_escena FROM escenas WHERE id_escena=" . $res;
-        $res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
-        return $res;
+		if($tabla == 0){
+			$sql = "SELECT id_escena FROM escenas_hotspots WHERE id_hotspot=" . $idhotspot;
+			$res = $this->db->query($sql)->result_array()[0]["id_escena"];
+			$sql2 = "SELECT cod_escena FROM escenas WHERE id_escena=" . $res;
+			$res = $this->db->query($sql2)->result_array()[0]["cod_escena"];
+		}else{
+			$sql = "SELECT id_panorama_secundario FROM escenas_hotspots WHERE id_hotspot=" . $idhotspot;
+			$res = $this->db->query($sql)->result_array()[0]["id_panorama_secundario"];
+			$sql2 = "SELECT id_panorama_secundario FROM panoramas_secundarios WHERE id_panorama_secundario= '".$res."'";
+			$res = $this->db->query($sql2)->result_array()[0]["id_panorama_secundario"];
+		}
+		return $res;
+        
     }
 
     public function process_insert_hotspot() {
-        
         $pitch = $this->input->post_get("pitch");
         $yaw = $this->input->post_get("yaw");
         $cssClass = $this->input->post_get("cssClass");

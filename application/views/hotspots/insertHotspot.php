@@ -42,12 +42,20 @@
     Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br>
         
     <div id="botonesderecha">
-        <button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
-        <button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
-        <button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
-        <button class="botondentromapa" id="btnInsertarVideo">Punto video</button>
-        <button class="botondentromapa" id="btnInsertarEscaleras">Conector entre planos (escaleras)</button><br>
-        <button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>
+	<?php
+		if($tabla == 1){
+			echo '<button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
+			<button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
+			<button class="botondentromapa" id="btnInsertarVideo">Punto video</button>';
+		}else{
+			echo '<button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
+			<button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
+			<button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
+			<button class="botondentromapa" id="btnInsertarVideo">Punto video</button>
+			<button class="botondentromapa" id="btnInsertarEscaleras">Conector entre planos (escaleras)</button><br>
+			<button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button><br><br>';
+		}
+	?>
     </div>    
     </div>
 <div id="formularios">
@@ -68,8 +76,6 @@
         
             <?php
                 $indice = $this->session->piso;
-                
-                
                 
                     
                     echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
@@ -98,8 +104,11 @@
     <div id="puntoPanel"> 
     <div id="caja3">
         <?php
-        echo "<form enctype='multipart/form-data' action='".site_url("hotspots/process_insert_panel")."' method='post'>"; ?>
+        echo "<form enctype='multipart/form-data' action='".site_url("hotspots/process_insert_panel/".$tabla)."' method='post'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'> 
+			<?php  if(isset($escena_principal))
+				echo "<input type='hidden' name='escena_principal'  readonly='readonly' value='$escena_principal'>"
+			?>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
             <input type='hidden' name='yaw' value='<?php echo $yaw ?>'> 
             <input type='hidden' name='cssClass' value='custom-hotspot-info' readonly="readonly">

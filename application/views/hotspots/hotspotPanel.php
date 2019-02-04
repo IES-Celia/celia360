@@ -123,6 +123,11 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 <div id='panel'>
 
  <input type="hidden" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
+ <?php
+	if(isset($escena_principal)){
+		echo '<input type="hidden" id="escena_pr" value="'.$escena_principal.'" disabled/><br>';
+	}
+ ?>
  <ul id='img_seleccionadas'>
  
  </ul><br>
@@ -179,10 +184,8 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
   $("#panel_atras").on("click",function(){
 
     var confirmar = confirm("¿Quieres volver atras?");
-    var modificar = "<?php 
-      if(isset($imagenes_seleccionadas))echo(modificar);
-      else echo "nomodificar";
-    ?>";
+    var modificar = "<?php if(isset($imagenes_seleccionadas))echo 'modificar';else echo 'nomodificar'; ?>;";
+			
     if(confirmar){
       if(modificar=="nomodificar"){
         var url = "<?php echo site_url('hotspots/borrarUltimo'); ?>";
@@ -285,6 +288,9 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       var orden = [];
       //Valor temporal para probar si funciona
       var hotspot = $("#idhs").val();
+			if($('#escena_pr') != null){
+				var escena_principal = $('#escena_pr').val();
+			}
       $("#img_seleccionadas li").each(function(i){
         prueba.push($(this).attr("data-id"));
         orden.push(i);
@@ -292,19 +298,21 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
         
       });
 
-      alert(escena); //este es el alert que te dice la escena cuando le das a enviar 
+      //alert(escena); //este es el alert que te dice la escena cuando le das a enviar 
 
       var urlCorrecta = "<?php echo base_url("hotspots/add_imgs_hotspot") ?>";
       var peticion = $.ajax({
         url: urlCorrecta,
         type: "POST",
-        data:{listaimg : prueba, idhs : hotspot, idescena : escena, listaorden : orden }
+        data:{listaimg : prueba, idhs : hotspot, idescena : escena, listaorden : orden, escena_pr: escena_principal  }
       });
       
       peticion.done(function(resultado){
-      
+
+
         //http://localhost/celia360/escenas/cargar_escena/p0p8f3/show_insert_hotspot/null
-        window.location.href = resultado;
+				console.log(resultado);
+				window.location = resultado;
       });
     }
   }
