@@ -1,8 +1,20 @@
 <script>
     $(document).ready(function(){
-        $("select[name="ascensor_mapa"]").click(function(){
-            alert($(this).val())
-        })
+        //Comprobamos si el select ascensor_mapa tiene seleccionado el mapa
+        if($("#ascensor_mapa").val() == "mapa"){
+            $(".ascensor_mapa").show();//Si esta seleccionado el mapa lo mostramos
+        }else{
+            $(".ascensor_mapa").hide();//Si no esta seleccionado el mapa lo ocultamos
+        }
+        //Comprobamos si se a producido algun cambio en el select ascensor_mapa
+        $("#ascensor_mapa").change(function(){
+            let ascensor_mapa = $("#ascensor_mapa").val();
+            if($("#ascensor_mapa").val() == "mapa"){
+                $(".ascensor_mapa").show();//Si esta seleccionado el mapa lo mostramos                
+            }else{
+                $(".ascensor_mapa").hide();//Si no esta seleccionado el mapa lo ocultamos 
+            }
+        });
     });
 </script>
 
@@ -17,7 +29,8 @@
             <?php
             echo"<form action='".site_url("tour/modificar_portada")."' method='post' enctype='multipart/form-data'>";
             ?>
-                Imagen de icono:<br/><img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[10]['opcion_valor'];?>' width='200'><br/><input type='file' name='nuevo_logo_web' ><br/><br/>           
+                <br/>
+                Imagen de icono:<br/><img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[10]['opcion_valor'];?>' width='100'><br/><input type='file' name='nuevo_logo_web' ><br/><br/>           
                 Titulo de la web:<br/>  <input type='text' name='titulo_web' value='<?php echo $opcionesPortada[0]['opcion_valor'];?>'><br/>
                 Imagen de portada:<br/> <img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[1]['opcion_valor'];?>' width='200'><br/><input type='file' name='nueva_imagen_web' ><br/><br/>         
                 Texto visita libre:<br/>  <input type='text' name='subtitulo_visita_libre' value='<?php echo $opcionesPortada[2]['opcion_valor'];?>'><br/>
@@ -64,11 +77,15 @@
                     soy el mapa!  
                 -->
                 Seleccionar ascensor o mapa:  
-                <select name='ascensor_mapa'>
-                    <option value="ascensor" selected>Ascensor</option>
-                    <option value="mapa">Mapa</option>
+                <select name="ascensor_mapa" id="ascensor_mapa">
+                    <option value="ascensor" <?php if ($opcionesPortada[11]['opcion_valor'] == "ascensor") echo "selected";?>>Ascensor</option>
+                    <option value="mapa" <?php if ($opcionesPortada[11]['opcion_valor'] == "mapa") echo "selected";?>>Mapa</option>
                 </select>
                 </p>
+                <!-- Div que ocultamos o mostramos segun el select option de ascensor_mapa -->
+                <div class="ascensor_mapa">
+                    Imagen de mapa:<br/><img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesAscensorMapa[0]['src'];?>' width='200'><br/><input type='file' name='nueva_imagen_mapa' ><br/><br/>
+                </div>
                 <input type='submit' value='Enviar'><br><br>
             </form>  
         </div>
