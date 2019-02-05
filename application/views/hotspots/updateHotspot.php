@@ -50,6 +50,9 @@
         button{
             width: 400px;
         }
+        #caja2{
+            margin : 0 auto ;
+        }
         
 </style>
 		<title> Insert Hotspot </title>
