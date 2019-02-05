@@ -37,6 +37,15 @@ class Zonas extends CI_Controller {
         $this->load->view('admin_template', $datos);
     }
     
+    public function insertarZonas(){
+        $datos["vista"] = "zonas/insertarZonas";
+        $datos["leftZona"] = $this->input->post_get("leftZona");
+        $datos["topZona"] = $this->input->post_get("topZona");
+        $datos["opcionesPortada"] = $this->PortadaModel->get_info_portada();
+        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $this->load->view('admin_template', $datos);
+    }
+
 }
 
 ?>
