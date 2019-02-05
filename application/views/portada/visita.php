@@ -265,8 +265,7 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 						btnVolver = $('#btnVolver');
 						btnVolver.html('');
 						btnVolver.removeClass('oculto');
-						btnVolver.append("<button class='btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\")'>Volver</button>");
-
+						btnVolver.append("<i class='fas fa-sign-out-alt btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\")'></i>");
 
 					});
 				}
@@ -285,7 +284,7 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 							divBtn.removeClass('oculto');
 							navContent.html('');
 							divBtn.html('');
-							divBtn.append("<i class='fas fa-images spanImgs'></i>");
+							divBtn.append('<i class="fas fa-bars spanImgs"></i>');
 							for(i=0;i<data.length;i++){
 									loc_imagen = data[i].panorama;
 									id_pan_sec = data[i].id_panorama_secundario;
