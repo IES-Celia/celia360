@@ -28,7 +28,6 @@ class AudioModel extends CI_Model {
     public function insertaraud($desc, $tipo,$f_def ,$i) {
 
         $r = "";
-        echo $_FILES['audio']['tmp_name'][$i]."<-";
             if (move_uploaded_file($_FILES['audio']['tmp_name'][$i], $f_def)) {
                 echo "El fichero es válido y se subió con éxito.\n";
                 $insrt = "insert into audio (url_aud,desc_aud, tipo_aud)values('$f_def','$desc','$tipo')";

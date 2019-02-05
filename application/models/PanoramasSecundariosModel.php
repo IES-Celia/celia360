@@ -24,15 +24,18 @@
 
                 // Cambiamos el nombre de la imagen de carga	(le asignamos como nombre el id seguido de .jpg)
                 
-                $resul = $this->db->query("SELECT COUNT(id_panorama_secundario) AS maxid FROM panoramas_secundarios;");
-				$id_pan_sec = $resul->row()->maxid+1;
-				
-				$id_string = 'pan_sec_'.$id_pan_sec;
+                $resul = $this->db->query("SELECT MAX(id_panorama_secundario) AS maxid FROM panoramas_secundarios;");
+				$cadena_id = $resul->row()->maxid;
+
+				$id_pan_sec = substr($cadena_id,8); //numero
+
+			
+				$id_string = 'pan_sec_'.($id_pan_sec+1);
                 $userpic = $id_string . ".jpg";
                 $upload_path = 'assets/imagenes/panoramasSecundarios/'.$userpic;
                 
             if(move_uploaded_file($arrayImagenes['tmp_name'][$i],$upload_path)){
-                $this->db->query("INSERT INTO panoramas_secundarios VALUES ('$id_string','$id','$titulo_pan_sec','$fechatop','$upload_path',120,200,200);"); //Insertamos la nueva imagen
+                $this->db->query("INSERT INTO panoramas_secundarios VALUES ('$id_string','$id','$titulo_pan_sec','$fechatop','$upload_path',120,-3,-84);"); //Insertamos la nueva imagen
                 
             
                 // Redimensionamos la imagen con la libreria imagen_lib de CodeIgniter

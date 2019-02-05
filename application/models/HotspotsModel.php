@@ -170,7 +170,6 @@ class HotspotsModel extends CI_Model {
 			$this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
 			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
 
-
         return $this->db->affected_rows();
     }
     /**
@@ -417,7 +416,7 @@ class HotspotsModel extends CI_Model {
      * Inserta un hotspot de tipo video 
      * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
      */ 
-    public function insertarHotspotVideo() {
+    public function insertarHotspotVideo($tabla) {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
         $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
@@ -439,12 +438,16 @@ class HotspotsModel extends CI_Model {
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
 
-        $cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
-        $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
-
-        $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
-
-        $this->db->query($insrt2);
+		if($tabla == 0){
+			$cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
+			$res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+			$insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+			$this->db->query($insrt2);
+		}else{
+			$insrt2 = "INSERT INTO escenas_hotspots (id_panorama_secundario, id_hotspot) VALUES ('$id_scene',$idhotspot);";
+			$this->db->query($insrt2);
+		}
+        
 
         return $this->db->affected_rows();
     }
@@ -466,8 +469,9 @@ class HotspotsModel extends CI_Model {
     /**
      * Inserta un hotspot de tipo audio 
      * @return Retorna si se ha efectuado el cambio en la tabla de hotspot.
+	 * @param int $tabla si es 0 insertamos un hotspot que pertenece a un panorama secundario, si es 1 pertenece a una escena principal
      */ 
-    public function insertarHotspotAudio() {
+    public function insertarHotspotAudio($tabla) {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
         $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
@@ -489,12 +493,16 @@ class HotspotsModel extends CI_Model {
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert
 
-        $cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
-        $res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+		if ($tabla == 0){
+			$cadenaconsulta = "SELECT id_escena FROM escenas WHERE cod_escena='" . $id_scene . "'";
+			$res2 = $this->db->query($cadenaconsulta)->result_array()[0]["id_escena"];
+			$insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
+			$this->db->query($insrt2);
+		}else{
+			$insrt2 = "INSERT INTO escenas_hotspots (id_panorama_secundario, id_hotspot) VALUES ('$id_scene',$idhotspot);";
+			$this->db->query($insrt2);
+		}
 
-        $insrt2 = "INSERT INTO escenas_hotspots (id_escena, id_hotspot) VALUES ($res2,$idhotspot);";
-
-        $this->db->query($insrt2);
 
         return $this->db->affected_rows();
     }

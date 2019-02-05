@@ -8,7 +8,7 @@
   
     <div id='caja'>
 	
-			<h1 align="center">Insercion de lugares</h1>
+			<h1 class="text-center">Insercion de lugares</h1>
    
 
 		<?php

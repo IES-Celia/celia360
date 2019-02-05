@@ -12,7 +12,7 @@
     }
 
 </style>
-<h1>Panel de administración Panoramas Secundarios</h1>
+<h1>Panel de administración Imágenes Secundarias</h1>
 <a class="insert" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
 
 
@@ -64,11 +64,7 @@
         <h1>Insertar imagen</h1>
         <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
         <div id="drag_upload_file">
-        <?php 
-         if(isset($resultado))
-             echo "<h1>". $resultado."</h1>"; 
-
-         ?>
+        
             <p>Arrastra los archivos</p>
             <p>o</p>
             <p><button class="btn btn-primary" value="Selecciona archivos" onclick="file_explorer();">Selecciona las imágenes</button></p>

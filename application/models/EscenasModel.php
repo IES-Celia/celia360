@@ -167,7 +167,26 @@ class EscenasModel extends CI_Model {
         $this->db->query($sql);
         $resultado += $this->db->affected_rows();
 
-        $imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
+		$imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
+		
+		$consulta = $this->db->query("SELECT * FROM panoramas_secundarios WHERE cod_escena = '$cod'");
+		
+
+		for($i=0;$i<count($consulta->result_array());$i++){
+			$imagen = $consulta->result_array()[$i]['panorama'];
+			$id_pan_sec = $consulta->result_array()[$i]['id_panorama_secundario'];
+			unlink(getcwd().'/'.$imagen);
+			$this->db->query("DELETE FROM escenas_hotspots WHERE id_panorama_secundario = '$id_pan_sec'");
+			$resultado += $this->db->affected_rows();
+		}
+
+		/* BORRAR HOTSPOTS ASOCIADOS A LA ESCENA SECUNDARIA */
+
+		$sql = "DELETE FROM panoramas_secundarios WHERE cod_escena = '$cod'";
+		$this->db->query($sql);
+		$resultado += $this->db->affected_rows();
+
+
         unlink($imagen_borrar);
 
         return $resultado;
