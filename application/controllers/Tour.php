@@ -121,7 +121,6 @@ class Tour extends CI_Controller {
   public function formulario_portada(){ 
       $this->load->model("PortadaModel");
       $datos["opcionesPortada"] = $this->PortadaModel->get_info_portada();
-      $datos["opcionesAscensorMapa"] = $this->PortadaModel->get_info_ascensorMapa();
       $datos["vista"]="portada/updatePortada";
       $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
       $this->load->view("admin_template", $datos);
@@ -134,7 +133,6 @@ class Tour extends CI_Controller {
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
-    $datos["opcionesAscensorMapa"] = $this->PortadaModel->get_info_ascensorMapa();
     $datos["vista"]="portada/updatePortada";
     if ($resultado == 0-0-0-0){
         $datos["mensaje"] = "Opciones de portada modificadas correctamente";

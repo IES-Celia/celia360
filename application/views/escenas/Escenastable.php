@@ -26,6 +26,9 @@
             $(this).html("<i class='fa fa-eye' style='font-size:40px;'></i>");
         });
         
+        $("#btn-admin-selector-zonas").click(function(){
+		    location.href = base_url+"zonas/"
+	    })
            
     });
     
@@ -100,6 +103,7 @@ function respuesta(r) {
         <button class="botonmapa" id="btn-subir-piso">Subir zona</button>
         <button class="botonmapa" id="btn-bajar-piso">Bajar zona</button>
         <button class="botonmapa" id="btn-admin-mapa">Admin mapa</button>
+        <button class="botonmapa" id="btn-admin-selector-zonas">Admin selector de zonas</button>
     </div>
      <?php
  }
