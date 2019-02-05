@@ -78,11 +78,7 @@ class Hotspots extends CI_Controller {
         $datos["listaVideos"] = $this->Vidm->buscarvideo();
 
         $datos["documentos"]= $this->hotspotsModel->getAllDocumentos();
-<<<<<<< HEAD
 	    $datos["pitch"]= $pitch;
-=======
-		$datos["pitch"]= $pitch;
->>>>>>> b5a9fb162de97c52967e8f6e66b6270999dda1a2
         $datos["yaw"]= $yaw;
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
@@ -276,6 +272,13 @@ class Hotspots extends CI_Controller {
 					$datos["escena_inicial"]=$escena_inicial;
 				}
 		 }
+
+		 if ($datos["tabla"][0]["clickHandlerFunc"] == "puntosEspec") {
+            $datos["vista"]="hotspots/updateHotspot";
+            if(isset($escena_inicial)){
+                $datos["escena_inicial"]=$escena_inicial;
+            }
+    }
 			// Hotspot de tipo escelera
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "escaleras") {
 				$datos["vista"]="hotspots/updateHotspotEscaleras";
