@@ -23,10 +23,10 @@
   }
       #drop_file_zone {
         margin: 0 auto;
-          background-color: #EEE; 
+          background-color: gray; 
           border: #999 5px dashed;
           width: 80%; 
-          height: 300px;
+          height: 400px;
           padding: 8px;
           font-size: 18px;
 		  overflow:scroll;
@@ -45,9 +45,9 @@
   
       img.imagenesDragDrop{
         border-radius: 20px;
-        margin: 0 auto;
-        padding: 10px;
-        display: block;
+		display: block;
+		position: relative;
+		right: 30px;
 	  }
 	  
 	  .nav{
@@ -60,11 +60,6 @@
 		height: 100vh;
 		overflow:scroll;
 		z-index: 200;
-	}
-
-	img.pan_sec_img {
-		width: 250px;
-		border-radius: 5px;
 	}
 
 	.nav .contentNav {
@@ -92,6 +87,16 @@
 	.spanImgs:hover{
 		color:white;
 	}
+
+	#imagenesView label{
+		margin-right: 40px;
+	}
+
+	.pan_sec_img { /*estilo imagenes vista*/
+		width: 200px;
+		border-radius: 5px;
+	}
+	
 
 
 	button.btnVolver{

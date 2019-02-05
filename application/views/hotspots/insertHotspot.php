@@ -144,7 +144,7 @@
     <div id="caja3">
         <!-- Formulario para insertar un hotspot de tipo audio -->
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_audio")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_audio/".$tabla)   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
             <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>
@@ -208,7 +208,7 @@
     <div id="puntoVideo">
     <div id="caja3">
         <?php
-        echo "<form action='".   site_url("hotspots/process_insert_video")   ."' method='get'>"; ?>
+        echo "<form action='".   site_url("hotspots/process_insert_video/").$tabla   ."' method='get'>"; ?>
 			<input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
              <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>

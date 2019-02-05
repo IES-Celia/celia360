@@ -54,7 +54,7 @@
 
         <fieldset id='caja5'>
 
-        <form action=' " . site_url("hotspots/updateHotspotAudio") . " ' method='get'>
+        <form action=' " . site_url("hotspots/updateHotspotAudio/".$tipo_update) . " ' method='get'>
 
 	Coordenadas donde se situa el punto:<br>
         <a href='" . site_url('escenas/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificarlos</a><br><br>
@@ -69,16 +69,27 @@
             <input type='hidden' name='tipo' value='info' readonly='readonly'> <br>
             <input type='hidden' name='clickHandlerFunc' value='audio' readonly='readonly'><br> 
 			
-            Audio que se reproducirá al clickar en el punto: <input type='text' name='clickHandlerArgs' id='idAudioForm' value='" . $tabla['clickHandlerArgs'] . "'><br> 
+			Audio que se reproducirá al clickar en el punto:
+			<select id='idAudioForm' name='clickHandlerArgs'>";
+			for($i=0;$i<count($allAudios);$i++){
+				$info = $allAudios[$i];
+				if($info['id_aud'] == $tabla['clickHandlerArgs']){
+					echo '<option value="'.$info['id_aud'].'" selected>'.$info['desc_aud'].'</option>';
+				}else{
+					echo '<option value="'.$info['id_aud'].'">'.$info['desc_aud'].'</option>';
+				}
+			}
+			
+			echo "</select>";
         
         
-        </div>
+        echo "</div>
             <input type='hidden' name='id_hotspot' value='" . $tabla['id_hotspot'] . "'>
 	
 	
             <input type='submit'>
             <br>
-            <a class='rojo_borrar' href='" . site_url("/hotspots/delete_hotspot/" . $tabla['id_hotspot']) . "'
+            <a class='rojo_borrar' href='" . site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot']."/".$tipo_update) . "'
         >BORRAR ESTE HOTSPOT </a></td>
 	
         </form>

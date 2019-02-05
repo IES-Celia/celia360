@@ -181,18 +181,21 @@ class Hotspots extends CI_Controller {
      * Actualiza un hostpot de tipo audio.
      * 
      * Asigna un nuevo audio a este hotspot. Los ids del audio y del hotspot se recibe por POST.
+	 * @param int $tabla es 0 si es un hotspot que pertenece a una escena principal, si es uno pertenece a una escena secundaria
      */
-    public function updateHotspotAudio() {
+    public function updateHotspotAudio($tabla) {
         $id = $this->input->post_get("id_hotspot");
         $aud = $this->input->post_get("clickHandlerArgs");
         $resultado = $this->hotspotsModel->modificarpuntoaudio($id, $aud);
         $cambio = $this->input->post_get("sceneId");
         if ($resultado == true) {
-            $mensaje = "Hotspot modificado con éxito";
-        } else {
-            $mensaje = "Error al modificar el hotspot";
-        }
-        redirect('escenas/cargar_escena/' . $cambio . '/_hotspot/');
+			if($tabla == 0){
+				redirect('escenas/cargar_escena/' . $cambio . '/show_insert_hotspot/');
+			}else{
+				redirect('panoramas_secundarios/cargar_escena/' . $cambio . '/show_insert_hotspot/');
+			} 
+        } 
+        
     }
     
     /**
@@ -204,10 +207,12 @@ class Hotspots extends CI_Controller {
     public function delete_hotspot($id, $tabla){
         $codigo_escena=$this->hotspotsModel->cargar_codigo_escena($id,$tabla);    // Sacamos el código de escena a la que pertenece este hotspot
 		$resultado = $this->hotspotsModel->borrarHotspot($id);
-		if($tabla == 0){
-		redirect('escenas/cargar_escena/' . $codigo_escena. '/show_insert_hotspot/');
-		}else{
-			redirect('Panoramas_secundarios/cargar_escena/' . $codigo_escena. '/show_insert_hotspot/');
+		if($resultado == 1){
+			if($tabla == 0){
+				redirect('escenas/cargar_escena/' . $codigo_escena. '/show_insert_hotspot/');
+			}else{
+				redirect('Panoramas_secundarios/cargar_escena/' . $codigo_escena. '/show_insert_hotspot/');
+			}
 		}
 
        /* if ($resultado == 1) {
@@ -240,6 +245,7 @@ class Hotspots extends CI_Controller {
 			
 			$datos["tabla"]= $this->hotspotsModel->buscarUnHotspot($id);
 			
+			
 			// TODO: comentario
 			if ($datos["tabla"][0]["clickHandlerFunc"] == "puntos") {
 				$datos["vista"]="hotspots/updateHotspot";
@@ -250,10 +256,14 @@ class Hotspots extends CI_Controller {
 			// Hotspot de tipo video
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "video") {
 				$datos["vista"]="hotspots/updateHotspotVideo";
+				$this->load->model('VideoModel');
+				$datos['allVideos'] = $this->VideoModel->buscarvideo();
 		 }
 			// Hotspot de tipo audio
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "musica") {
 				$datos["vista"]="hotspots/updateHotspotAudio";
+				$this->load->model('AudioModel');
+				$datos['allAudios'] = $this->AudioModel->allAudios();
 		 }
 			// Hotspot de tipo panel (galería de imágenes con información)
 		if ($datos["tabla"][0]["clickHandlerFunc"] == "panelInformacion") {
@@ -283,11 +293,15 @@ class Hotspots extends CI_Controller {
 	}
         // Hotspot de tipo video
 	if ($datos["tabla"][0]["clickHandlerFunc"] == "video") {
-            $datos["vista"]="hotspots/updateHotspotVideo";
+			$datos["vista"]="hotspots/updateHotspotVideo";
+			$this->load->model('VideoModel');
+			$datos['allVideos'] = $this->VideoModel->buscarvideo();
  	}
         // Hotspot de tipo audio
 	if ($datos["tabla"][0]["clickHandlerFunc"] == "musica") {
-            $datos["vista"]="hotspots/updateHotspotAudio";
+			$datos["vista"]="hotspots/updateHotspotAudio";
+			$this->load->model('AudioModel');
+			$datos['allAudios'] = $this->AudioModel->allAudios();
  	}
         // Hotspot de tipo panel (galería de imágenes con información)
 	if ($datos["tabla"][0]["clickHandlerFunc"] == "panelInformacion") {
@@ -312,17 +326,19 @@ class Hotspots extends CI_Controller {
     /**
      * Procesa el UPDATE de un hotspot de tipo vídeo
      */
-    public function updateHotspotVideo() {
+    public function updateHotspotVideo($tabla) {
         $id = $this->input->post_get("id_hotspot");
 	$vid = $this->input->post_get("clickHandlerArgs");
 	$resultado=$this->hotspotsModel->modificarpuntovideo($id, $vid);
 	$anda=$this->input->post_get("sceneId");
 	if ($resultado == true)
-            $mensaje = "Hotspot modificado con éxito";
-        else
-            $mensaje = "Ha fallado la actualización del hotspot";
+		if($tabla == 0){
+			redirect('escenas/cargar_escena/'.$anda.'/show_insert_hotspot/');
+		}else{
+			redirect('panoramas_secundarios/cargar_escena/'.$anda.'/show_insert_hotspot/');
+		}
 
-        redirect('escenas/cargar_escena/'.$anda.'/_hotspot/');
+       
             /*
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
@@ -369,7 +385,7 @@ class Hotspots extends CI_Controller {
         $resultado = $this->hotspotsModel->insertarHotspotEscena();
         if ($resultado == true) {
             $anda=$this->input->post_get("id_scene");
-            redirect('escenas/cargar_escena/'.$anda.'/_hotspot/');
+            redirect('escenas/cargar_escena/'.$anda.'/show_insert_hotspot/');
         }else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
@@ -523,24 +539,27 @@ class Hotspots extends CI_Controller {
    /**
     * Procesa la creación de un hotspots de tipo video.
     */
-    public function process_insert_video(){
-        $resultado = $this->hotspotsModel->insertarHotspotVideo();
+    public function process_insert_video($tabla){
+        $resultado = $this->hotspotsModel->insertarHotspotVideo($tabla);
 		$anda=$this->input->post_get("id_scene");
         if ($resultado == true) {
-			echo $anda;
-			redirect('escenas/cargar_escena/'.$anda.'/_hotspot/');
+			if($tabla == 0){
+				redirect('escenas/cargar_escena/'.$anda.'/show_insert_hotspot/');
+			}else{
+				redirect('panoramas_secundarios/cargar_escena/'.$anda.'/show_insert_hotspot/');
+			}
             /*$datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('admin_template', $datos);*/
-        }else {
+		}/*else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaHotspots"] = $this->hotspotsModel->buscarHotspots();
             $datos["vista"]="hotspots/hotspotsTable";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('admin_template', $datos);
-        }
+        }*/
     }
 
    /**
@@ -554,16 +573,21 @@ class Hotspots extends CI_Controller {
     }
 
     /**
-    * Procesa la creación de un hotspots de tipo audio.
+	* Procesa la creación de un hotspots de tipo audio.
+	* @param int $tabla es 0 si es un hotspot de panorama secundario o 1 si es de una escena principal
     */
-    public function process_insert_audio() {
+    public function process_insert_audio($tabla) {
 
-        $resultado = $this->hotspotsModel->insertarHotspotAudio();
+        $resultado = $this->hotspotsModel->insertarHotspotAudio($tabla);
         $cambio = $this->input->post_get("id_scene");
 
         if ($resultado == true) {
 
-            redirect('escenas/cargar_escena/' . $cambio . '/_hotspot/');
+			if($tabla == 0){
+				redirect('escenas/cargar_escena/' . $cambio . '/show_insert_hotspot/');
+			}else{
+				redirect('panoramas_secundarios/cargar_escena/' . $cambio . '/show_insert_hotspot/');
+			}
 
         } else {
             $datos["error"] = "La inserci&oacute;n ha fallado";
