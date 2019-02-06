@@ -265,7 +265,12 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 						btnVolver = $('#btnVolver');
 						btnVolver.html('');
 						btnVolver.removeClass('oculto');
-						btnVolver.append("<i class='fas fa-sign-out-alt btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\")'></i>");
+
+						myButton = "<img src='<?php echo base_url('assets/imagenes/svg/back-arrow.svg'); ?>' class='btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\");'>";
+
+						btnVolver.append(myButton);
+
+
 
 					});
 				}
@@ -284,13 +289,13 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 							divBtn.removeClass('oculto');
 							navContent.html('');
 							divBtn.html('');
-							divBtn.append('<i class="fas fa-bars spanImgs"></i>');
+							divBtn.append('<img src="<?php echo base_url("assets/imagenes/svg/menu.svg"); ?>" class="spanImgs">');
 							for(i=0;i<data.length;i++){
 									loc_imagen = data[i].panorama;
 									id_pan_sec = data[i].id_panorama_secundario;
 									titulo = data[i].titulo;
 									
-									navContent.append("<div class='contentNav'><h3>"+titulo+"</h3><img class='pan_sec_img' onclick='viewer.loadScene(\""+id_pan_sec+"\")' alt='no disponible' class='pan_sec_img' src='<?php echo site_url(); ?>"+loc_imagen+"'></div>");
+									navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><button class='pan_sec_button'>"+titulo+"</button></div>");
 								}	
 								
 								$('.spanImgs').click(function(){

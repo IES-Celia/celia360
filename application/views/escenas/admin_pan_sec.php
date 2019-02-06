@@ -299,8 +299,14 @@
                     document.getElementById("error_cabecera").innerHTML= '';
                   }else{
                     document.getElementById("error_cabecera").innerHTML = "Error al insertar todas las imágenes";
-                   
+					document.getElementById("mensaje_cabecera").innerHTML = "";
                   }
+
+				  cod_escena = '<?php echo $cod_escena; ?>';
+				  setTimeout(function(){
+					window.location = '<?php echo base_url("panoramas_secundarios/show_panoramas_secundarios/'+cod_escena+'"); ?>';
+				   }, 1500);
+				  
 				}
             });
 		}else{
