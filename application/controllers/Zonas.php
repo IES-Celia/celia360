@@ -33,15 +33,24 @@ class Zonas extends CI_Controller {
     public function showZonas() {   
         $datos["vista"] = "mapa/Zonas";
         $datos["opcionesPortada"] = $this->PortadaModel->get_info_portada();
+        $datos["pisos"] = $this->ZonasModel->getAll();
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
     }
     
     public function insertarZonas(){
-        $datos["vista"] = "zonas/insertarZonas";
-        $datos["leftZona"] = $this->input->post_get("leftZona");
-        $datos["topZona"] = $this->input->post_get("topZona");
+        $datos["vista"] = "mapa/Zonas";
         $datos["opcionesPortada"] = $this->PortadaModel->get_info_portada();
+        $datos["pisos"] = $this->ZonasModel->getAll();
+        $left_zona = $this->input->post_get("leftZona");
+        $top_zona = $this->input->post_get("topZona");
+        $piso = $this->input->post_get("piso");
+        $result = $this->ZonasModel->insertarZonas($top_zona, $left_zona, $piso);
+        if($result >= 0){
+            $datos["mensaje"] = "Zona introducida correctamente";
+        }else{
+            $datos["error"] = "Error al insertar zona";
+        }
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
     }

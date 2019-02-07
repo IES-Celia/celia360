@@ -16,5 +16,18 @@
 
 class ZonasModel extends CI_Model {
 
+    public function getAll() {
+        $sql = $this->db->query("SELECT * FROM pisos");
+        $tabla = array();
+        foreach ($sql->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
+
+    public function insertarZonas($top_zona, $left_zona, $piso){
+        $this->db->query("UPDATE pisos SET top_zona = '".$top_zona."' , left_zona = '".$left_zona."' WHERE piso = '".$piso."'");
+        return $this->db->affected_rows();
+    }
 }
 ?>
