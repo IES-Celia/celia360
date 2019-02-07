@@ -105,6 +105,27 @@
 		cursor: pointer;
 		width: 30%;
 	}
+
+	button.admin { /*estilo botones admin_pan_sec*/
+		background-color: rgb(58, 142, 175);
+		border: none;
+		color: white;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 14px;
+		margin: 10px 2px;
+		cursor: pointer;
+		transition: all 0.5s;
+		
+	}
+
+	button.admin:hover { /*estilo botones admin_pan_sec:hover*/
+		background-color: rgb(18, 117, 156);
+		
+		
+	}
 	
 
 
@@ -124,5 +145,13 @@
 
 	img.btnVolver:hover{
 		width: 35px;
+	}
+
+	svg.edit{
+		cursor: pointer;
+	}
+
+	svg.del{
+		cursor: pointer;
 	}
 	
