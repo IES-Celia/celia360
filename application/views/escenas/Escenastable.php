@@ -68,26 +68,43 @@ function respuesta(r) {
 
 <div id="mapa_escena">
 <?php
-      $indice = 0;
+	  $indice = 0;
+
 
       foreach ($mapa as $imagen) {
+
             echo "<div id='zona".$indice."' class='pisos' style='display: none;'>";
-            echo "<img src='".base_url($imagen['url_img'])."' alt='zona$indice' style='width:100%;height:100%;'>";
-        
+			echo "<img src='".base_url($imagen['url_img'])."' alt='zona$indice' style='width:100%;height:100%;'>";
+			
           foreach ($puntos as $punto) {
+
             if($punto['piso']==$indice){
-              if ($punto["nombre_punto"] == "") $nombre_punto = $punto["id_escena"];
-              else $nombre_punto = $punto["nombre_punto"];
-              echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-              <span class='tooltip'>".$punto['id_punto_mapa']." - ".$nombre_punto."</span>
-              </div>";
-            
+
+			  $nombre_punto = $punto["id_escena"];
+			  $salida = false;
+			  foreach ($escenas_secundarias as $pan_sec){
+				if($pan_sec['id_punto_mapa'] == $punto['id_punto_mapa']){
+					$salida = true;
+				}
+			  }
+			  
+			  if($salida){
+				echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos tienePanoramas' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+				<span class='tooltip'>".$punto['id_punto_mapa']." - ".$nombre_punto."</span>
+				</div>";
+			  }else{
+
+				echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+				<span class='tooltip'>".$punto['id_punto_mapa']." - ".$nombre_punto."</span>
+				</div>";
+			  }
+			
+              
             }
-            
           }
         echo "</div>";
         $indice++;
-      }
+	  }
 ?>
 </div>
 <?php
@@ -103,7 +120,8 @@ function respuesta(r) {
         <button class="botonmapa" id="btn-subir-piso">Subir zona</button>
         <button class="botonmapa" id="btn-bajar-piso">Bajar zona</button>
         <button class="botonmapa" id="btn-admin-mapa">Admin mapa</button>
-        <button class="botonmapa" id="btn-admin-selector-zonas">Admin selector de zonas</button>
+		<button class="botonmapa" id="btn-admin-selector-zonas">Admin selector de zonas</button>
+		<button class="botonmapa" id="btn-show-pan-sec">Ver panoramas asociados</button>
     </div>
      <?php
  }
@@ -166,4 +184,20 @@ if(count($mapa)!=0){
         echo "</tbody></table>";
     }
 ?>
+
+<script>
+	$(document).ready(function(){
+		$("#btn-show-pan-sec").click(function(){
+			if ($('.puntos.tienePanoramas').css('color') == 'rgb(0, 0, 0)'){
+				$('.puntos.tienePanoramas').css('color','gray');
+				$('.puntos.tienePanoramas').css('background','red');
+				$(this).css('background-color','rgba(0,0,0,0.8)');
+			}else{
+				$('.puntos.tienePanoramas').css('background','white');
+				$('.puntos.tienePanoramas').css('color','rgb(0, 0, 0)');
+				$(this).css('background-color','rgba(0,0,0,0.2)');
+			}
+		});
+	});
+</script>
       

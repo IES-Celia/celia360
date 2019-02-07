@@ -43,9 +43,9 @@
 			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
-				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button>Hotspots</button></a></td>
-				<td><i class='fa fa-edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
-				<td><i class='fa fa-trash delete' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
+				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button class='admin'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin'>Hotspots</button></a></td>
+				<td><i class='fa fa-edit edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
+				<td><i class='fa fa-trash delete del' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
 			</tr>";
 		}
 	}
@@ -326,9 +326,8 @@
 
 		respuesta = confirm("¿Estás seguro?");
 		if(respuesta == true){
-
+		fila = $(this).parent().parent();
 		id = $(this).attr("id");
-		eliminar = $(this).parent().parent().remove();
 		url = "<?php echo base_url('Panoramas_secundarios/deletePanorama/');?>"+id;
 		$.get( url, function( data ) {
 			switch (data.trim()) {
@@ -337,8 +336,8 @@
 				break;
 
 				case "1": 
-					$("#mensaje_cabecera").html("Imagen borrada con éxito");
-					eliminar;
+					$("#mensaje_cabecera").html("Imagen eliminada con éxito");
+					fila.remove();
 				break;
 			
 			}

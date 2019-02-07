@@ -23,7 +23,8 @@ class escenas extends CI_Controller {
         parent::__construct();
         $this->load->model("EscenasModel");
         $this->load->model("UsuarioModel");
-        $this->load->model("MapaModel","mapa");
+		$this->load->model("MapaModel","mapa"); //alias
+		$this->load->model('PanoramasSecundariosModel','Pansec'); //alias
     }
     
     public function index(){
@@ -33,7 +34,8 @@ class escenas extends CI_Controller {
     public function showescenas() {   
         $datos["tablaEscenas"] = $this->EscenasModel->getAll();
         $datos["mapa"] = $this->mapa->cargar_mapa();
-        $datos["puntos"] = $this->mapa->cargar_puntos();
+		$datos["puntos"] = $this->mapa->cargar_puntos();
+		$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
         $datos["vista"]="escenas/Escenastable";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);

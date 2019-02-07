@@ -130,10 +130,10 @@
               <div class="icono_audio"></div>
             </div>                          
             <div id="panel_audio_libre">
-              <div class="botonPause"></div>
-              <div class='icono_audio_cerrar'></div>
-              <audio id="audio_libre" src=""  controls/>
-              <div class="icono_audio"></div>
+              <div class="botonPause" title="Ocultar Audio"></div>
+              <div class='icono_audio_cerrar' title="Cerrar Audio"></div>
+              <audio id="audio_libre" src=""  controls></audio>
+              <div class="icono_audio" title="Mostrar Audio"></div>
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
         
@@ -272,7 +272,7 @@ function visita_opcion(nombre){
 		
 			viewer = pannellum.viewer("panorama", data);
 
-			console.log(data);
+			//console.log(data);
 
 
 if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
@@ -290,6 +290,14 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         viewer.on('load',function(){
 					var idEscena = viewer.getScene();
 
+					audio = document.getElementById('audio_libre');
+					if(audio.paused == false){
+						$("#panel_audio_libre").hide();
+    				$("#audio_libre")[0].pause();
+    				$('#audio_libre').attr("src","");
+						$('#icono_audio').hide();
+					}
+
 					if(idEscena.includes('pan_sec')){
 						$.ajax({
 						url: "<?php echo site_url('Panoramas_Secundarios/getCodEscena/'); ?>"+idEscena,
@@ -297,20 +305,19 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 						dataType: 'json',
   				}).done(function(data) { 
 
-						btnVolver = $('#btnVolver');
-						btnVolver.html('');
-						btnVolver.removeClass('oculto');
+						arrowId = $('#btnVolver');
+						arrowId.html('');
+						arrowId.removeClass('oculto');
 
-						myButton = "<img src='<?php echo base_url('assets/imagenes/svg/back-arrow.svg'); ?>' class='btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\");'>";
+						arrow = "<img src='<?php echo base_url('assets/imagenes/svg/back-arrow.svg'); ?>' class='btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\");'>";
 
-						btnVolver.append(myButton);
+						arrowId.append(arrow);
 
 
 
 					});
 				}
 
-					
 					$.ajax({
 						url: "<?php echo site_url('Panoramas_Secundarios/consultaPanoramas/'); ?>"+idEscena,
 						type: 'GET',
