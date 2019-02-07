@@ -1,3 +1,22 @@
+<!-- Estilos para el mapa de zona -->
+<style>
+  /* Posicion relativa de los puntos en el mapa de zona */
+  .mapa_zona{
+    float: none;
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+  }
+</style>
+<!-- Script para el mapa de zona -->
+<script>
+  $(document).ready(function(){
+    //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
+    $(".punto_mapa_zona").click(function(){
+      $("#myModal").hide();
+    })
+  });
+</script>
 
 <div class="contenedor">
     <!--div donde se carga pannellum --> 
@@ -137,23 +156,6 @@
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
         
-        <style>
-            /* Posicion relativa de los puntos en el mapa de zona */
-            .mapa_zona{
-              z-index: 2;
-              overflow: visible;
-              position: relative;
-              display: inline-grid;
-          }
-        </style>
-        <script>
-          $(document).ready(function(){
-            //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
-            $(".punto_mapa_zona").click(function(){
-              $("#myModal").hide();
-            })
-          });
-        </script>
           <!-- Inicio mapa -->
         <?php
           $mapa = array_reverse($mapa);
@@ -161,7 +163,7 @@
 
           /*
               Si en la portada tienes seleccionado el mapa, aparece un mapa, si tienes seleccionado el ascensor, aparece un ascensor.
-              Si no entiendes esto eres mas tonto que Pablo Mezquitas presidente de Unidos Potemos          
+              Si no entiendes esto eres mas tonto que Echenique         
           */
 
           if($portada[11]["opcion_valor"] == "mapa"){

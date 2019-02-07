@@ -76,7 +76,7 @@ $(document).ready(function(){
                 $("#select_pisos").prop("disabled", false);
             }
         });
-        return true; //Deshabilita el click derecho del raton
+        return false; //Deshabilita el click derecho del raton
     });
 
 });
