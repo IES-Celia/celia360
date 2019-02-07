@@ -137,16 +137,51 @@
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
         
+        <style>
+            /* Posicion relativa de los puntos en el mapa de zona */
+            .mapa_zona{
+              z-index: 2;
+              overflow: visible;
+              position: relative;
+              display: inline-grid;
+          }
+        </style>
+        <script>
+          $(document).ready(function(){
+            //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
+            $(".punto_mapa_zona").click(function(){
+              $("#myModal").hide();
+            })
+          });
+        </script>
           <!-- Inicio mapa -->
         <?php
           $mapa = array_reverse($mapa);
-          echo "<div id='myModal' class='modalEscaleras'>";
-          foreach ($mapa as $imagen) {
-            $piso = $imagen["piso"];
-            $escena_inicial = $imagen["escena_inicial"];
-            $punto_inicial = $imagen["punto_inicial"];
-            $titulo_piso = $imagen["titulo_piso"];
-            echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+          echo "<div id='myModal' class='modalEscaleras mx-auto'>";
+
+          /*
+              Si en la portada tienes seleccionado el mapa, aparece un mapa, si tienes seleccionado el ascensor, aparece un ascensor.
+              Si no entiendes esto eres mas tonto que Pablo Mezquitas presidente de Unidos Potemos          
+          */
+
+          if($portada[11]["opcion_valor"] == "mapa"){
+            //Como diria Dora la exploradora, soy un MAPA!!
+            echo '<div class="mapa_zona col-md-7 mx-auto" style="height: 400px;">';
+            echo "<img src='".base_url("assets/imagenes/mapa/".$portada[12]['opcion_valor'])."' alt='imagen del mapa de zona' style='width:100%; height:100%'>";
+            /* Coloca los puntos en la imagen del mapa */ 
+            foreach ($mapa as $piso) {
+              echo '<div id="'.$piso["piso"].'" class="puntos punto_mapa_zona" style="left: '.$piso["left_zona"].'%; top: '.$piso["top_zona"].'%;" escena="'.$piso["piso"].'" onclick="viewer.loadScene(&#039;'.$piso["escena_inicial"].'&#039;); piso_escalera(&#039;'.$piso["piso"].'&#039;); puntosMapa(&#039;'.$piso["punto_inicial"].'&#039;);"></div>';                
+            }
+            echo '</div>';
+          }else{
+            //Ascensor
+            foreach ($mapa as $imagen) {
+              $piso = $imagen["piso"];
+              $escena_inicial = $imagen["escena_inicial"];
+              $punto_inicial = $imagen["punto_inicial"];
+              $titulo_piso = $imagen["titulo_piso"];
+              echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+            }
           }
           echo "</div>";//div final de myModal
         ?>

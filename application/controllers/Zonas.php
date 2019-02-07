@@ -55,6 +55,16 @@ class Zonas extends CI_Controller {
         $this->load->view('admin_template', $datos);
     }
 
+    public function deletePunto($id_piso){
+        $result = $this->ZonasModel->deletePunto($id_piso);
+        //Devuelve 0 si se a eliminado correctamente el punto en la base de datos y 1 si ha dado error
+        if($result >= 0){
+            echo "0";
+        }else{
+            echo "1";
+        }
+    }
+
 }
 
 ?>

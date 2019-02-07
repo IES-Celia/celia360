@@ -49,9 +49,11 @@ class Tour extends CI_Controller {
   public function visita($tipo_visita) {
     $this->load->model("MapaModel","mapa");
     $this->load->model('PortadaModel');
+    $this->load->model("ZonasModel");
     $datos["vista"] = "portada/visita";
     $datos["tipo_visita"] = $tipo_visita;
-    $datos["portada"]=$this->PortadaModel->get_info_portada();
+    $datos["portada"] = $this->PortadaModel->get_info_portada();
+    $datos["pisos"] = $this->ZonasModel->getAll();
     $datos["mapa"] = $this->mapa->cargar_mapa();
     $datos["puntos"] = $this->mapa->cargar_puntos();
     $datos["config_mapa"] = $this->mapa->cargar_config();    
