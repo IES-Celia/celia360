@@ -191,9 +191,11 @@ if(count($mapa)!=0){
 			if ($('.puntos.tienePanoramas').css('color') == 'rgb(0, 0, 0)'){
 				$('.puntos.tienePanoramas').css('color','gray');
 				$('.puntos.tienePanoramas').css('background','red');
+				$(this).css('background-color','rgba(0,0,0,0.8)');
 			}else{
 				$('.puntos.tienePanoramas').css('background','white');
 				$('.puntos.tienePanoramas').css('color','rgb(0, 0, 0)');
+				$(this).css('background-color','rgba(0,0,0,0.2)');
 			}
 		});
 	});
