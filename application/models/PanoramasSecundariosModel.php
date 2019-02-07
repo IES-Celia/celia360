@@ -78,7 +78,7 @@
 		public function delete($id){
 			$devuelve = 0;
 			
-			if(unlink(getcwd()."\assets/imagenes/panoramasSecundarios/".$id.".jpg")){
+			if(unlink(getcwd()."/assets/imagenes/panoramasSecundarios/".$id.".jpg")){
 				$this->db->query("DELETE FROM panoramas_secundarios WHERE id_panorama_secundario = '$id'");
 				$devuelve = $this->db->affected_rows();
 				$this->db->query("DELETE FROM hotspots WHERE id_hotspot IN (SELECT id_hotspot FROM escenas_hotspots WHERE id_panorama_secundario = '$id');");
