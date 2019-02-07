@@ -88,7 +88,7 @@
         ?>
         <h1>Modificar Imagen</h1>
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
-        <form enctype="multipart/form-data"  action='<?php echo site_url("Panoramas_secundarios/updatePanorama"); ?>' method='post'>
+        <form enctype="multipart/form-data"  action='<?php echo site_url("Panoramas_Secundarios/updatePanorama"); ?>' method='post'>
             <?php
 			echo "<input type='hidden' name='id_escena_principal' id='id_escena_principal' value=''><br/>";
             echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
@@ -304,7 +304,7 @@
 
 				  cod_escena = '<?php echo $cod_escena; ?>';
 				  setTimeout(function(){
-					window.location = '<?php echo base_url("Panoramas_secundarios/show_panoramas_secundarios/'+cod_escena+'"); ?>';
+					window.location = '<?php echo base_url("Panoramas_Secundarios/show_panoramas_secundarios/'+cod_escena+'"); ?>';
 				   }, 1500);
 				  
 				}
@@ -328,7 +328,7 @@
 		if(respuesta == true){
 		fila = $(this).parent().parent();
 		id = $(this).attr("id");
-		url = "<?php echo base_url('Panoramas_secundarios/deletePanorama/');?>"+id;
+		url = "<?php echo base_url('Panoramas_Secundarios/deletePanorama/');?>"+id;
 		$.get( url, function( data ) {
 			switch (data.trim()) {
 				case "-1":
