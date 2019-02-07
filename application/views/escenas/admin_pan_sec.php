@@ -304,7 +304,7 @@
 
 				  cod_escena = '<?php echo $cod_escena; ?>';
 				  setTimeout(function(){
-					window.location = '<?php echo base_url("panoramas_secundarios/show_panoramas_secundarios/'+cod_escena+'"); ?>';
+					window.location = '<?php echo base_url("Panoramas_secundarios/show_panoramas_secundarios/'+cod_escena+'"); ?>';
 				   }, 1500);
 				  
 				}
