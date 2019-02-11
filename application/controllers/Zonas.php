@@ -38,21 +38,14 @@ class Zonas extends CI_Controller {
         $this->load->view('admin_template', $datos);
     }
     
-    public function insertarZonas(){
-        $datos["vista"] = "mapa/Zonas";
-        $datos["opcionesPortada"] = $this->PortadaModel->get_info_portada();
-        $datos["pisos"] = $this->ZonasModel->getAll();
-        $left_zona = $this->input->post_get("leftZona");
-        $top_zona = $this->input->post_get("topZona");
-        $piso = $this->input->post_get("piso");
+    public function insertarZonas($top_zona, $left_zona, $piso){
         $result = $this->ZonasModel->insertarZonas($top_zona, $left_zona, $piso);
+        //Devuelve 0 si se a insertado correctamente el punto en la base de datos y 1 si ha dado error
         if($result >= 0){
-            $datos["mensaje"] = "Zona introducida correctamente";
+            echo "0";
         }else{
-            $datos["error"] = "Error al insertar zona";
+            echo "1";
         }
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-        $this->load->view('admin_template', $datos);
     }
 
     public function deletePunto($id_piso){
