@@ -133,7 +133,9 @@
     .bg-secondary{
         background-color: #D2D4D3!important;
     }
-
+    .bg-primary{
+        background-color:  rgba(90,163,237,1)!important;
+    }
     /* SHADOW */
     .shadow{
         -webkit-box-shadow: 3px 3px 7px 0px rgba(0,0,0,0.75);
