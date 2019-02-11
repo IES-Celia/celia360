@@ -363,25 +363,16 @@ class Hotspots extends CI_Controller {
                 $resultado = $this->hotspotsModel->modificarHotspotPanel($id);
             else if($tipoHotspot == "custom-hotspot-salto")
                 $resultado = $this->hotspotsModel->modificarHotspot($id);
-            
-            if ($resultado == true) {
+			
 				if($tabla == 1){
-                $mensaje = "La modificaci&oacute;n ha sido un &eacute;xito";
-				redirect('Panoramas_Secundarios/cargar_escena/'.$id_escena.'/show_insert_hotspot/');
-				}else{
-					$mensaje = "La modificaci&oacute;n ha sido un &eacute;xito";
+					redirect('Panoramas_Secundarios/cargar_escena/'.$id_escena.'/show_insert_hotspot/');
+                //$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+                //$this->load->view('admin_template', $datos);
+				}else {
 					redirect('escenas/cargar_escena/'.$id_escena.'/show_insert_hotspot/');
+					//$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+					//$this->load->view('admin_template', $datos);
 				}
-				
-                //$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                //$this->load->view('admin_template', $datos);
-            }
-            else {
-                $mensaje = "La modificaci&oacute;n ha fallado";
-                redirect('escenas/cargar_escena/'.$anda.'/show_insert_hotspot/');
-                //$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-                //$this->load->view('admin_template', $datos);
-            }
         
     }
 

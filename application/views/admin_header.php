@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
 
-<link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
-    <script type="text/javascript" src="https://cdn.pannellum.org/2.4/pannellum.js"></script>
 
-
+    <!-- Javascript de pannellum framework -->
+    <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
+	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
+    <!-- Css de pannellum framework -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
+    
     <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
@@ -33,6 +36,16 @@
    <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
 	<!--FIN LOLI-->
 
+	<!-- QUILL Library -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.snow.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.core.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.bubble.css'); ?>">
+
+	<script src="<?php echo base_url('assets/js/quill/js/quill.core.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
+	<!-- ./FIN QUILL Library -->
+	
 	<?php 
             if(isset($mapa)){
                 echo "<script>";

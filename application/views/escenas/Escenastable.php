@@ -6,7 +6,7 @@
     }
 
     .panoramas{
-        width: 300px;
+        width: 500px;
         height: 300px;
 		margin-top:10px;
     }
