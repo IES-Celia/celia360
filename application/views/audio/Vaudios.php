@@ -144,7 +144,6 @@ echo"
   			<option value='v-guiada'>Visita guiada</option>
  			<option value='d-objeto' selected>Definir un objeto</option>
 		</select><br/><br/>
-		<input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'> 
     <input type='submit'>
     
       </form>

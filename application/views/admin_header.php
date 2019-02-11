@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
 
+<link rel="stylesheet" href="https://cdn.pannellum.org/2.4/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.pannellum.org/2.4/pannellum.js"></script>
+
+
     <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
@@ -27,9 +31,9 @@
     
     <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
    <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
-    <!--FIN LOLI-->
-    
-    <?php 
+	<!--FIN LOLI-->
+
+	<?php 
             if(isset($mapa)){
                 echo "<script>";
                 echo "piso_maximo = ".count($mapa).";";

@@ -1,4 +1,25 @@
  <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
+ <style>
+    #panorama {
+        width: 300px;
+        height: 250px;
+    }
+
+    .panoramas{
+        width: 300px;
+        height: 300px;
+		margin-top:10px;
+    }
+
+    .oculto{
+        display: none;
+    }
+
+    .activo {
+        display: block;
+    }
+
+    </style>
 <?php 
 	if (isset($datos["error"])) {
 			echo "<p style='color:red'>".$datos["error"]."</p>";
@@ -135,6 +156,7 @@ if(count($mapa)!=0){
 	echo "<table align='center' class='display' id='cont'>";
 	echo "<thead><tr id='cabecera'> 
 		  <th> IdEscena</th>
+		  <th>Previsualizar</th>
 		  <th> Nombre del lugar </th>
 		  <th> Codigo Escena </th>
 		  <th> Pitch </th>
@@ -144,6 +166,7 @@ if(count($mapa)!=0){
 		  </tr></thead>";
 	echo "<tfoot><tr id='cabecera'> 
 		  <th> IdEscena</th>
+		  <th>Previsualizar</th>
 		  <th> Nombre del lugar </th>
 		  <th> Codigo Escena </th>
 		  <th> Pitch </th>
@@ -163,7 +186,15 @@ if(count($mapa)!=0){
             $cod=$escenas["cod_escena"];
                     echo "<tr id='fila".$cod."'>
 
-                <td align='center'>".$escenas['id_escena']."</td>
+				<td align='center'>".$escenas['id_escena']."</td>
+				<th>
+				<button class='btn' id='".$escenas['cod_escena']."'>Escena ".$escenas['cod_escena']." 
+					<span class='oculto'>".base_url($escenas['panorama'])."</span>
+				</button>
+
+				<div id='panorama-".$escenas['cod_escena']."' class='panoramas oculto'>
+				</div>
+				</th>
                 <td align='center'>".$escenas['Nombre']."</td>
                 <td align='center' class='cod'>".$escenas['cod_escena']."</td>
                 <td align='center'>".$escenas['pitch']."</td>
@@ -177,7 +208,6 @@ if(count($mapa)!=0){
                 <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
                 </tr>";
     ?>
-               <tr><th colspan='7' class="imagenes"><i class="fa fa-eye" style="font-size:40px;"></i></th></tr>
     <?php
             }
         } // else
@@ -186,6 +216,27 @@ if(count($mapa)!=0){
 ?>
 
 <script>
+
+$(document).ready(function() {
+        $('#cont').dataTable({
+    	"language": {
+            "lengthMenu": "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron resultados en su búsqueda",
+            "searchPlaceholder": "Buscar registros",
+            "info": "Mostrando registros de _START_ al _END_ de un total de  _TOTAL_ registros",
+            "infoEmpty": "No existen registros",
+            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+            "search": "Buscar:",
+            "paginate": {
+	            "first":    "Primero",
+	            "last":    "Último",
+	            "next":    "Siguiente",
+	            "previous": "Anterior"
+	    },
+        }
+        });
+    });
+
 	$(document).ready(function(){
 		$("#btn-show-pan-sec").click(function(){
 			if ($('.puntos.tienePanoramas').css('color') == 'rgb(0, 0, 0)'){
@@ -199,5 +250,24 @@ if(count($mapa)!=0){
 			}
 		});
 	});
+</script>
+
+<script>
+
+    $(document).ready(function(){
+		$("#cont").on("click", ".btn", function(){
+            id = $(this).attr('id');
+            img = $(this).find('span').text();
+
+            pannellum.viewer('panorama-'+id, {
+                "type": "equirectangular",
+                "panorama": img,
+                "autoLoad": true
+            });
+            $('#panorama-'+id).toggleClass('oculto');
+        });
+    });
+
+
 </script>
       
