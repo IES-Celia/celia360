@@ -307,7 +307,7 @@
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '> 
             <input type='hidden' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '> 
-            <input type='hidden' name='cssClass' value='custom-hotspot-info' readonly="readonly">
+            <input type='hidden' name='cssClass' value='custom-hotspot-saltoEspec' readonly="readonly">
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntosEspec' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>

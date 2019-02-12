@@ -26,6 +26,11 @@ function puntos(hotspotDiv,identificador){
     document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
     document.getElementById(identificador).className="punto_seleccionado";            
 }
+function puntosEspec(hotspotDiv,identificador){
+   
+    document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
+    document.getElementById(identificador).className="punto_seleccionado";            
+}
 /*cambio de punto seleccionado mediante jotpoch*/
 function puntosMapa(identificador){          
     document.getElementsByClassName("punto_seleccionado")[0].className="puntos";

@@ -228,10 +228,12 @@ function visita_opcion(nombre){
         // En la BD tenemos rutas relativas a la imagen del panorama. Las sutituimos por rutas absolutas con base_url()
         data.scenes[i].panorama = "<?php echo base_url();?>"+data.scenes[i].panorama;
 				var escenas = data.scenes[i];
+        
 				
         // Convertimos las funciones manejadoras (clickHandlerFunc) de String a función javascript con eval()
         $.each(escenas.hotSpots, function(j){
           escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
+          console.log( escenas.hotSpots[j].clickHandlerFunc);
         });
 			});
 		
