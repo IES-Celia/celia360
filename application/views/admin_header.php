@@ -11,26 +11,27 @@
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
     <!-- Css de pannellum framework -->
     <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
-    
-    <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
+    <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
-    <!-- CSS SLICK -->
+     CSS SLICK -->
     <script>
         base_url = '<?php echo base_url() ?>';
-    </script>
-    <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
+	</script>
+	
+    <!-- <link href="<?php // base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">-->
      
-    <link rel="shortcut_icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
+    <!-- <link rel="shortcut_icon" href="<?php //base_url("assets/imagenes/portada/icono.ico"); ?>">-->
+    
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css");?>">
+    <!--<link rel="stylesheet" href="<?php //echo base_url("assets/css/cssDavidMora.css");?>">-->
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     
     <!--ATENCIÓN LOLI  PARA PAGINACIÓN (varias funcionalidades)-->
-   <link rel="stylesheet" href="<?php echo base_url("assets/css/jquery.dataTables.min.css"); ?>">
-     <!--<link rel="stylesheet" href="<?php //echo base_url("assets/css/jquery.dataTables.bootstrap.min.css"); ?>">-->
+   <!-- <link rel="stylesheet" href="<?php //echo base_url("assets/css/jquery.dataTables.min.css"); ?>"> -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/jquery.dataTables.bootstrap.min.css"); ?>">
     
     <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
    <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
@@ -59,11 +60,11 @@
     <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
-
+		<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
        
     <!-- CSS CMS -->
     
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
+    <!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url("assets/css/admin_style.css"); ?>"/> -->
     </head>
     
     <body>

@@ -86,7 +86,8 @@ function respuesta(r) {
                             
 </script>
 
-
+<div class="container">
+	<div class="row">
 <div id="mapa_escena">
 <?php
 	  $indice = 0;
@@ -148,12 +149,12 @@ function respuesta(r) {
  }
 
 ?>
-<br>
-<br>
+</div>
+
 
 <?php
 if(count($mapa)!=0){
-	echo "<table align='center' class='display' id='cont'>";
+	echo "<table class='table table-hover' id='cont'>";
 	echo "<thead><tr id='cabecera'> 
 		  <th> IdEscena</th>
 		  <th>Previsualizar</th>
@@ -214,6 +215,8 @@ if(count($mapa)!=0){
         echo "</tbody></table>";
     }
 ?>
+
+</div>
 
 <script>
 

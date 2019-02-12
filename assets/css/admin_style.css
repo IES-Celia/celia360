@@ -797,7 +797,6 @@
             border: 2px solid grey;
             border-radius: 10px;
             box-shadow: 3px 3px 10px grey;
-            margin-top: 50px;
             background: rgb(90,163,237); 
             background: -moz-linear-gradient(to bottom, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
             background: -webkit-linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 
