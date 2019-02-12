@@ -16,5 +16,26 @@
 
 class ZonasModel extends CI_Model {
 
+    //Mostrar toda la informacion de la tabla pisos
+    public function getAll() {
+        $sql = $this->db->query("SELECT * FROM pisos");
+        $tabla = array();
+        foreach ($sql->result_array() as $fila) {
+            $tabla[] = $fila;
+        }
+        return $tabla;
+    }
+
+    //Insertar puntos en el mapa
+    public function insertarZonas($top_zona, $left_zona, $piso){
+        $this->db->query("UPDATE pisos SET top_zona = '".$top_zona."' , left_zona = '".$left_zona."' WHERE piso = '".$piso."'");
+        return $this->db->affected_rows();
+    }
+
+    //Eliminar puntos del mapa
+    public function deletePunto($id_piso){
+        $this->db->query("UPDATE pisos SET top_zona = 'null', left_zona = 'null' WHERE piso = '".$id_piso."'");
+        return $this->db->affected_rows();
+    }
 }
 ?>

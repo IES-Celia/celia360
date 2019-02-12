@@ -84,8 +84,6 @@ echo "
             <?php
                 $indice = $this->session->piso;
 
-                
-                
                     
                     echo "<div id='zona".$indice."' class='pisos pisos_update'>";
                     echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";

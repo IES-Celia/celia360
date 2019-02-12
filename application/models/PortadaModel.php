@@ -174,7 +174,7 @@
                 } else {
                     // ¡¡La subida del fichero ha sido un éxito!!
                     // Modificamos el registro en la base de datos
-                    $sql = "UPDATE ascensor_mapa SET src = '".$nueva_imagen_mapa."' WHERE id_ascensor_mapa = 0";
+                    $sql = "UPDATE opciones_portada SET opcion_valor = '".$nueva_imagen_mapa."' WHERE id_opcion = 12";
                     $this->db->query($sql);
                     if ($this->db->affected_rows() == 0) {
                         $resultado_mapa = 1;  // Marca de error al actualizar BD

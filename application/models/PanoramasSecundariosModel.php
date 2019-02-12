@@ -39,13 +39,15 @@
                 
             
                 // Redimensionamos la imagen con la libreria imagen_lib de CodeIgniter
-                $config['image_library'] = 'gd2';
+				
+				$config['image_library'] = 'gd2';
                 $config['source_image'] = $upload_path;
                 $config['create_thumb'] = TRUE;
                 $config['maintain_ratio'] = TRUE;
                 $config['new_image'] = 'assets/imagenes/panoramasSecundarios/';  
-                $config['width'] = 1200;
-                $this->load->library('image_lib', $config);
+                $config['width'] = 4000;
+				$this->load->library('image_lib', $config);
+				
                 
                 $resultado[$i] = 1;
 
@@ -74,11 +76,16 @@
 		}
 
 		public function delete($id){
-			$devuelve = false;
+			$devuelve = 0;
 			
-			if(unlink(getcwd()."\assets/imagenes/panoramasSecundarios/".$id.".jpg")){
+			if(unlink(getcwd()."/assets/imagenes/panoramasSecundarios/".$id.".jpg")){
 				$this->db->query("DELETE FROM panoramas_secundarios WHERE id_panorama_secundario = '$id'");
 				$devuelve = $this->db->affected_rows();
+				$this->db->query("DELETE FROM hotspots WHERE id_hotspot IN (SELECT id_hotspot FROM escenas_hotspots WHERE id_panorama_secundario = '$id');");
+				$devuelve += $this->db->affected_rows();
+				$this->db->query("DELETE FROM escenas_hotspots WHERE id_panorama_secundario = '$id'");
+				$devuelve += $this->db->affected_rows();
+
 			}else{
 				$devuelve = -1;
 			}
@@ -116,6 +123,15 @@
 			$query = $this->db->query('SELECT cod_escena FROM panoramas_secundarios WHERE id_panorama_secundario = "'.$id.'"');
 			
 			return $query->result_array();
+		}
+
+		// obtiene los panoramas asociados a una escena en concreto,
+		// se utiliza para marcar en la vista escenaStable.php los puntos
+		// que contienen panoramas secundarios
+		public function getPanoramasAsociados(){
+			$consulta = $this->db->query("SELECT id_punto_mapa FROM `puntos_mapa`WHERE id_escena IN (SELECT cod_escena FROM panoramas_secundarios);");
+			
+			return $consulta->result_array();
 		}
 
     }

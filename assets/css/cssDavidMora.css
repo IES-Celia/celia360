@@ -73,9 +73,9 @@
 	.spanImgs{
 	transition: all .2s ease-in-out;
 	position: absolute;
-	top: 20px;
+	top: 15px;
 	left: 80px;
-	font-size: 1.5em;
+	width: 32px;
 	background-size:contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -85,26 +85,56 @@
 	}
 
 	.spanImgs:hover{
-		color:white;
+		width: 35px;
 	}
 
 	#imagenesView label{
 		margin-right: 40px;
 	}
 
-	.pan_sec_img { /*estilo imagenes vista*/
-		width: 200px;
-		border-radius: 5px;
+	button.pan_sec_button { /*estilo imagenes vista*/
+		background-color: rgba(76, 173, 79,0.6);
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 15px 2px;
+		cursor: pointer;
+		width: 30%;
+	}
+
+	button.admin { /*estilo botones admin_pan_sec*/
+		background-color: rgb(58, 142, 175);
+		border: none;
+		color: white;
+		padding: 10px 20px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 14px;
+		margin: 10px 2px;
+		cursor: pointer;
+		transition: all 0.5s;
+		
+	}
+
+	button.admin:hover { /*estilo botones admin_pan_sec:hover*/
+		background-color: rgb(18, 117, 156);
+		
+		
 	}
 	
 
 
-	i.btnVolver{
+	img.btnVolver{
 		transition: all .2s ease-in-out;
 		position: absolute;
-		top: 20px;
+		top: 15px;
 		left: 80px;
-		font-size: 1.5em;
+		width:32px;
 		background-size:contain;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -113,7 +143,15 @@
 		opacity: 0.8;
 	}
 
-	i.btnVolver:hover{
-		color: white;
+	img.btnVolver:hover{
+		width: 35px;
+	}
+
+	svg.edit{
+		cursor: pointer;
+	}
+
+	svg.del{
+		cursor: pointer;
 	}
 	

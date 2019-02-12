@@ -119,10 +119,10 @@
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
             Titulo del panel: <input type='text' name='titulo' required><br> 
-            Texto del panel:  <textarea id='descripcion_texto'  name="texto" rows="6" cols="50" required></textarea><br>
+            Texto del panel:  <div id="editor"></div><br>
             <label style='text-justify: auto;'>seleccionar PDF (OPCIONAL)<br><span class='panel-informacion-texto'>Permite visionar el documento PDF en el panel</span></label>
             <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
-            
+            <input type="hidden" name="texto" id="descripcion_texto">
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />
             <!--
             <select name="documentoPanel">
@@ -140,7 +140,40 @@
             <input type='submit' class="button">
         </form>
     </div>
-    </div>   
+	</div>   
+	
+	<script>
+        var quill = new Quill('#editor', {
+            modules: {
+        toolbar: [
+           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+           ['blockquote', 'code-block', 'link'],
+
+           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+           [{ 'direction': 'rtl' }],                         // text direction
+
+           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+           [{ 'font': [] }],
+           [{ 'align': [] }],
+
+           ['clean']                                         // remove formatting button
+       ]
+    },
+  theme: 'snow'
+});
+
+        Quill.prototype.getHtml = function() {
+            return this.container.firstChild.innerHTML;
+        };
+
+        quill.on('text-change',function(a,b,c){
+            document.getElementById('descripcion_texto').value = quill.getHtml();
+        });
+
+      </script>
     
     <!-- Seccion hotspot de tipo audio -->
     <div id="puntoAudio"> 

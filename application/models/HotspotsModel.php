@@ -216,7 +216,7 @@ class HotspotsModel extends CI_Model {
         $yaw = $this->input->post_get("yaw");
         $cssClass = $this->input->post_get("cssClass");
         $titulo_panel = $this->input->post_get("titulo_panel");
-        $texto_panel = $this->input->post_get("texto_panel");
+        $texto_panel = $this->input->post_get("texto_panel",FALSE);
 
         $this->db->query("UPDATE hotspots
                     SET 
@@ -254,7 +254,7 @@ class HotspotsModel extends CI_Model {
         $tipo = $this->input->post_get("tipo");
         //Panel
         $titulo = $this->input->post_get("titulo"); //
-        $texto = $this->input->post_get("texto"); //
+		$texto = $this->input->post_get("texto", FALSE); //
         //$documento = $this->input->post_get("documento");
         // insercción del punto en la tabla hotspot
         $nombreArchivo = $_FILES["documento"]["name"];

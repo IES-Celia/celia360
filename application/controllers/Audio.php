@@ -53,9 +53,12 @@ class Audio extends CI_Controller {
     public function insertaraud() {
         // Primero comprobaremos si el fichero ya está en el servidor
         // (para no sobreescribirlo por error)
-     $arrayAudio = $_FILES["audio"];
+	 $arrayAudio = $_FILES["audio"];
+	 
+	 $tamano = $_FILES['audio']['size'];
      
-        $file_count = count($arrayAudio["name"]);
+		$file_count = count($arrayAudio["name"]);
+		
       
          for ($i=0 ; $i<$file_count ;$i++){
 
@@ -66,10 +69,15 @@ class Audio extends CI_Controller {
                 // El archivo ya está en el servidor: preparamos un mensaje de error para la vista
                 $datos["error"] = "El archivo ya existe en el servidor. Intenta cambiarle el nombre antes de subirlo si no quieres que se sobreescriba";
             } else {
+
+				if($tamano[$i] < 10000000){ //comprobamos que el archivo subido no pasa los 10 mbs
                 // El archivo no está en el servidor: le pedimos al modelo que lo suba y lo inserte en la BD
                 $tipo = $this->input->post_get("tipo_aud");
                 $desc = $this->input->post_get("desc");
-                $res = $this->AudioModel->insertaraud($desc, $tipo,$f_def,$i);
+				$res = $this->AudioModel->insertaraud($desc, $tipo,$f_def,$i);
+				}else{
+					$datos['error'] = 'El audio supera los 10 MB';
+				}
             }
             // Preparamos la vista
             $datos["tabla"] = $this->AudioModel->buscaraudio();

@@ -43,9 +43,9 @@
 			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
-				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button>Hotspots</button></a></td>
-				<td><i class='fa fa-edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
-				<td><i class='fa fa-trash delete' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
+				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button class='admin'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin'>Hotspots</button></a></td>
+				<td><i class='fa fa-edit edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
+				<td><i class='fa fa-trash delete del' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
 			</tr>";
 		}
 	}
@@ -88,7 +88,7 @@
         ?>
         <h1>Modificar Imagen</h1>
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
-        <form enctype="multipart/form-data"  action='<?php echo site_url("Panoramas_secundarios/updatePanorama"); ?>' method='post'>
+        <form enctype="multipart/form-data"  action='<?php echo site_url("Panoramas_Secundarios/updatePanorama"); ?>' method='post'>
             <?php
 			echo "<input type='hidden' name='id_escena_principal' id='id_escena_principal' value=''><br/>";
             echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
@@ -299,8 +299,14 @@
                     document.getElementById("error_cabecera").innerHTML= '';
                   }else{
                     document.getElementById("error_cabecera").innerHTML = "Error al insertar todas las imágenes";
-                   
+					document.getElementById("mensaje_cabecera").innerHTML = "";
                   }
+
+				  cod_escena = '<?php echo $cod_escena; ?>';
+				  setTimeout(function(){
+					window.location = '<?php echo base_url("Panoramas_Secundarios/show_panoramas_secundarios/'+cod_escena+'"); ?>';
+				   }, 1500);
+				  
 				}
             });
 		}else{
@@ -320,10 +326,9 @@
 
 		respuesta = confirm("¿Estás seguro?");
 		if(respuesta == true){
-
+		fila = $(this).parent().parent();
 		id = $(this).attr("id");
-		eliminar = $(this).parent().parent().remove();
-		url = "<?php echo base_url('Panoramas_secundarios/deletePanorama/');?>"+id;
+		url = "<?php echo base_url('Panoramas_Secundarios/deletePanorama/');?>"+id;
 		$.get( url, function( data ) {
 			switch (data.trim()) {
 				case "-1":
@@ -331,8 +336,8 @@
 				break;
 
 				case "1": 
-					$("#mensaje_cabecera").html("Imagen borrada con éxito");
-					eliminar;
+					$("#mensaje_cabecera").html("Imagen eliminada con éxito");
+					fila.remove();
 				break;
 			
 			}

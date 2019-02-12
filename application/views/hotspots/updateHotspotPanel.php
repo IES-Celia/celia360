@@ -57,8 +57,11 @@ echo "
 	Coordenadas donde se situa el punto:<br> 
     <a href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
     
-	titulo_panel : <input type='text' value='".$tabla['titulo_panel']."' name='titulo_panel'> </br> </br>
-    texto_panel : <input type='text' value='".$tabla['texto_panel']."' name='texto_panel'> </br> </br>
+	Título panel:<br> <input style='margin-top:5px;' type='text' value='".$tabla['titulo_panel']."' name='titulo_panel'> </br> </br>
+    Texto panel: <input type='hidden' id='texto_panel' value='' name='texto_panel'> </br> </br>
+	<div id='editor'>
+		".$tabla['texto_panel']."
+	</div>
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
     <input type='hidden' name='cssClass' value='".$tabla['cssClass']."'>
     <input type='hidden' name='pitch' value='".$tabla['pitch']."'>
@@ -81,3 +84,40 @@ echo "
 "; /**  Cierre echo **/
 
 ?>
+
+<script>
+        var quill = new Quill('#editor', {
+            modules: {
+        toolbar: [
+           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+           ['blockquote', 'code-block', 'link'],
+
+           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+           [{ 'direction': 'rtl' }],                         // text direction
+
+           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+           [{ 'font': [] }],
+           [{ 'align': [] }],
+
+           ['clean']                                         // remove formatting button
+       ]
+    },
+  theme: 'snow'
+});
+
+        Quill.prototype.getHtml = function() {
+            return this.container.firstChild.innerHTML;
+        };
+
+		window.addEventListener("load", function(event) {
+    		document.getElementById('texto_panel').value = quill.getHtml();
+  		});
+
+        quill.on('text-change',function(a,b,c){
+            document.getElementById('texto_panel').value = quill.getHtml();
+        });
+
+      </script>

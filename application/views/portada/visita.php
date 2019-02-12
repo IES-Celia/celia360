@@ -1,3 +1,22 @@
+<!-- Estilos para el mapa de zona -->
+<style>
+  /* Posicion relativa de los puntos en el mapa de zona */
+  .mapa_zona{
+    float: none;
+    z-index: 2;
+    overflow: visible;
+    position: relative;
+  }
+</style>
+<!-- Script para el mapa de zona -->
+<script>
+  $(document).ready(function(){
+    //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
+    $(".punto_mapa_zona").click(function(){
+      $("#myModal").hide();
+    })
+  });
+</script>
 
 <div class="contenedor">
     <!--div donde se carga pannellum --> 
@@ -130,23 +149,41 @@
               <div class="icono_audio"></div>
             </div>                          
             <div id="panel_audio_libre">
-              <div class="botonPause"></div>
-              <div class='icono_audio_cerrar'></div>
-              <audio id="audio_libre" src=""  controls/>
-              <div class="icono_audio"></div>
+              <div class="botonPause" title="Ocultar Audio"></div>
+              <div class='icono_audio_cerrar' title="Cerrar Audio"></div>
+              <audio id="audio_libre" src=""  controls></audio>
+              <div class="icono_audio" title="Mostrar Audio"></div>
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
         
           <!-- Inicio mapa -->
         <?php
           $mapa = array_reverse($mapa);
-          echo "<div id='myModal' class='modalEscaleras'>";
-          foreach ($mapa as $imagen) {
-            $piso = $imagen["piso"];
-            $escena_inicial = $imagen["escena_inicial"];
-            $punto_inicial = $imagen["punto_inicial"];
-            $titulo_piso = $imagen["titulo_piso"];
-            echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+          echo "<div id='myModal' class='modalEscaleras mx-auto'>";
+
+          /*
+              Si en la portada tienes seleccionado el mapa, aparece un mapa, si tienes seleccionado el ascensor, aparece un ascensor.
+              Si no entiendes esto eres mas tonto que Echenique         
+          */
+
+          if($portada[11]["opcion_valor"] == "mapa"){
+            //Como diria Dora la exploradora, soy un MAPA!!
+            echo '<div class="mapa_zona col-md-7 mx-auto" style="height: 400px;">';
+            echo "<img src='".base_url("assets/imagenes/mapa/".$portada[12]['opcion_valor'])."' alt='imagen del mapa de zona' style='width:100%; height:100%'>";
+            /* Coloca los puntos en la imagen del mapa */ 
+            foreach ($mapa as $piso) {
+              echo '<div id="'.$piso["piso"].'" class="puntos punto_mapa_zona" style="left: '.$piso["left_zona"].'%; top: '.$piso["top_zona"].'%;" escena="'.$piso["piso"].'" onclick="viewer.loadScene(&#039;'.$piso["escena_inicial"].'&#039;); piso_escalera(&#039;'.$piso["piso"].'&#039;); puntosMapa(&#039;'.$piso["punto_inicial"].'&#039;);"></div>';                
+            }
+            echo '</div>';
+          }else{
+            //Ascensor
+            foreach ($mapa as $imagen) {
+              $piso = $imagen["piso"];
+              $escena_inicial = $imagen["escena_inicial"];
+              $punto_inicial = $imagen["punto_inicial"];
+              $titulo_piso = $imagen["titulo_piso"];
+              echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+            }
           }
           echo "</div>";//div final de myModal
         ?>
@@ -239,7 +276,7 @@ function visita_opcion(nombre){
 		
 			viewer = pannellum.viewer("panorama", data);
 
-			console.log(data);
+			//console.log(data);
 
 
 if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
@@ -257,6 +294,14 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         viewer.on('load',function(){
 					var idEscena = viewer.getScene();
 
+					audio = document.getElementById('audio_libre');
+					if(audio.paused == false){
+						$("#panel_audio_libre").hide();
+    				$("#audio_libre")[0].pause();
+    				$('#audio_libre').attr("src","");
+						$('#icono_audio').hide();
+					}
+
 					if(idEscena.includes('pan_sec')){
 						$.ajax({
 						url: "<?php echo site_url('Panoramas_Secundarios/getCodEscena/'); ?>"+idEscena,
@@ -264,15 +309,19 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 						dataType: 'json',
   				}).done(function(data) { 
 
-						btnVolver = $('#btnVolver');
-						btnVolver.html('');
-						btnVolver.removeClass('oculto');
-						btnVolver.append("<i class='fas fa-sign-out-alt btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\")'></i>");
+						arrowId = $('#btnVolver');
+						arrowId.html('');
+						arrowId.removeClass('oculto');
+
+						arrow = "<img src='<?php echo base_url('assets/imagenes/svg/back-arrow.svg'); ?>' class='btnVolver' onclick='viewer.loadScene(\""+data[0].cod_escena+"\");'>";
+
+						arrowId.append(arrow);
+
+
 
 					});
 				}
 
-					
 					$.ajax({
 						url: "<?php echo site_url('Panoramas_Secundarios/consultaPanoramas/'); ?>"+idEscena,
 						type: 'GET',
@@ -286,13 +335,13 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 							divBtn.removeClass('oculto');
 							navContent.html('');
 							divBtn.html('');
-							divBtn.append('<i class="fas fa-bars spanImgs"></i>');
+							divBtn.append('<img src="<?php echo base_url("assets/imagenes/svg/menu.svg"); ?>" class="spanImgs">');
 							for(i=0;i<data.length;i++){
 									loc_imagen = data[i].panorama;
 									id_pan_sec = data[i].id_panorama_secundario;
 									titulo = data[i].titulo;
 									
-									navContent.append("<div class='contentNav'><h3>"+titulo+"</h3><img class='pan_sec_img' onclick='viewer.loadScene(\""+id_pan_sec+"\")' alt='no disponible' class='pan_sec_img' src='<?php echo site_url(); ?>"+loc_imagen+"'></div>");
+									navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><button class='pan_sec_button'>"+titulo+"</button></div>");
 								}	
 								
 								$('.spanImgs').click(function(){

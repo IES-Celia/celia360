@@ -98,8 +98,7 @@
   background-position: center;
   z-index: 2;
   display: none;
-  top: 5px;
-  left:20px;
+  left:80px;
 }
 
 #audio_guiada {
@@ -507,7 +506,7 @@ display: block;
 .botonPause {
   position: relative;
   float: right;
-  left: 20px;
+  left: 380px;
   top:8px;
   z-index: 100;
   cursor:default;
@@ -529,7 +528,7 @@ display: block;
 .icono_audio_cerrar {
   position: relative;
   float: right;
-  left: 25px;
+  left: 370px;
   top:8px;
   z-index: 100;
   cursor:default;
@@ -1054,10 +1053,6 @@ display: block;
   color:#0d69c5;
 }
 
-.icono_audio_cerrar{
-
-}
-
 #titulo{
   text-align:center;
   font-weight: bold;
@@ -1101,4 +1096,16 @@ display: block;
   margin:5px 0;
   border-bottom:1px solid black;
   list-style: none;
+}
+
+
+audio#audio_libre {
+	position: absolute;
+	top: 2px;
+	left: 90px;
+}
+
+audio#audio_guiada {
+	position: absolute;
+	left: 90px;
 }
