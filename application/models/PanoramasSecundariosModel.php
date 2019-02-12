@@ -81,10 +81,20 @@
 			if(unlink(getcwd()."/assets/imagenes/panoramasSecundarios/".$id.".jpg")){
 				$this->db->query("DELETE FROM panoramas_secundarios WHERE id_panorama_secundario = '$id'");
 				$devuelve = $this->db->affected_rows();
-				$this->db->query("DELETE FROM hotspots WHERE id_hotspot IN (SELECT id_hotspot FROM escenas_hotspots WHERE id_panorama_secundario = '$id');");
-				$devuelve += $this->db->affected_rows();
+
+				//consultar id_hotspot para borrarlo despues de la tabla hotspots (fuck claves primarias :( ))
+
+				$query = $this->db->query("SELECT id_hotspot FROM escenas_hotspots WHERE id_panorama_secundario = '$id'");
+				$fila = $query->row();
+				$idHotspot = $fila->id_hotspot;
+
 				$this->db->query("DELETE FROM escenas_hotspots WHERE id_panorama_secundario = '$id'");
 				$devuelve += $this->db->affected_rows();
+				
+				$this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$idHotspot';");
+				$devuelve += $this->db->affected_rows();
+
+				
 
 			}else{
 				$devuelve = -1;
