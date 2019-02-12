@@ -122,7 +122,7 @@ echo "</div><br><br><br>";
 	<input type='hidden' name='cssClass' value='".$tabla['cssClass']."'>
 	<input type='hidden' name='id_hotspot' value='".$tabla['id_hotspot']."'>
 	<input type='submit'>
-	<a class='rojo_borrar' href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'>BORRAR HOTSPOT</a></td>
+	<a class='rojo_borrar link' href='".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot'])."'>BORRAR HOTSPOT</a></td>
 	
 </form>
 </fieldset>

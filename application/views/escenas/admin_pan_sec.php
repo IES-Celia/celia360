@@ -9,10 +9,14 @@
     .img-cerrar{
         width: 20px;
         height: 20px;
-    }
+	}
+	
+	.blanco{
+		color:white;
+	}
 
 </style>
-<h1>Panel de administración Imágenes Secundarias</h1>
+<h1 class="blanco">Panel de administración Imágenes Secundarias</h1>
 <a class="insert" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
 
 
@@ -330,16 +334,12 @@
 		id = $(this).attr("id");
 		url = "<?php echo base_url('Panoramas_Secundarios/deletePanorama/');?>"+id;
 		$.get( url, function( data ) {
-			switch (data.trim()) {
-				case "-1":
-					$("#error_cabecera").html("Hubo problemas al eliminar la imagen.");
-				break;
+			if (data.trim() < "0") {
+				$("#error_cabecera").html("Hubo problemas al eliminar la imagen.");
 
-				case "1": 
-					$("#mensaje_cabecera").html("Imagen eliminada con éxito");
-					fila.remove();
-				break;
-			
+			}else if(data.trim() > "0"){
+				$("#mensaje_cabecera").html("Imagen eliminada con éxito");
+				fila.remove();
 			}
 			});
 		}

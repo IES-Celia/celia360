@@ -36,7 +36,11 @@ div.centrado {
         .button{
             width: 580px !important;
             border: 3px solid white;
-        }
+		}
+		
+		.blanco {
+			color:white;
+		}
 
 </style>
 		<title> Modificar </title>
@@ -48,14 +52,14 @@ div.centrado {
 $tabla = $tabla[0];
 echo "
 
-<h1> Formulario para UPDATE HotspotsPanel </h1>
+<h1 class='blanco'> Formulario para UPDATE HotspotsPanel </h1>
 
 <fieldset id='caja6'>
 
 <form action=' ".site_url("hotspots/process_update_hotspot/".$escena_inicial.'/'.$tipo_update)." ' method='get'>
 
 	Coordenadas donde se situa el punto:<br> 
-    <a href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
+    <a class='link' href='".site_url('escenas/cargar_escena_modificar/'.$codigo_escena.'/'."update_hotspot_pitchyaw/".$tabla['id_hotspot'])."'>Modificarlos</a><br><br>
     
 	Título panel:<br> <input style='margin-top:5px;' type='text' value='".$tabla['titulo_panel']."' name='titulo_panel'> </br> </br>
     Texto panel: <input type='hidden' id='texto_panel' value='' name='texto_panel'> </br> </br>
@@ -72,7 +76,7 @@ echo "
 	<br>
     <a href=
     '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot']."/".$tipo_update)."'
-    class='rojo_borrar' >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
+    class='rojo_borrar link' >BORRAR ESTE HOTSPOT (CUIDADO!)</a></td>
 	
 </form>
 <form action=' ".site_url("hotspots/modify_panel_info/".$tabla['id_hotspot'].'/'.$tipo_update.'/'.$escena_inicial)." ' method='post'>

@@ -635,16 +635,6 @@ display: block;
   border-radius: 5px;
 }
 
-/* titulo */
-.modal__contents h1 {
-   z-index: 4;
-  margin: 0;
-  padding: 0;
-  line-height: 32rem;
-  text-align: center;
-  display: block;
-  
-}
 /* icono de cierre */
 .modal__close {
    z-index: 4;

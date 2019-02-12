@@ -481,7 +481,7 @@ peticion.done(function(datos){
   var resultado = JSON.parse(datos);
   //Cargamos una vez los datos basicos
   $("#titulo").html(resultado[0].titulo_panel);
-  $("#texto").html(resultado[0].texto_panel);
+  $("#texto").html('<div class="ql-editor">'+resultado[0].texto_panel+'</div>');
   //La primera imagen que sale al abrir el panel
   var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[0].id_imagen+"_miniatura.jpg";
   $("#gallery").find("img").attr("src",enlace_img);

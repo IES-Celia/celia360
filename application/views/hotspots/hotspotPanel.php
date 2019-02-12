@@ -80,7 +80,11 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
     .derec{
         width:500px;
         float:left;
-    }
+		}
+		
+		.blanco {
+			color:white;
+		}
 
   </style>
 </head>
@@ -88,7 +92,7 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
 <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
 <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.js"); ?>"></script>
   <body>
-  <h1> Formulario para insertar Hotspots</h1>
+  <h1 class="blanco"> Formulario para insertar Hotspots</h1>
   <br>
   <?php
 
