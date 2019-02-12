@@ -270,7 +270,7 @@ function visita_opcion(nombre){
         // Convertimos las funciones manejadoras (clickHandlerFunc) de String a función javascript con eval()
         $.each(escenas.hotSpots, function(j){
           escenas.hotSpots[j].clickHandlerFunc = eval(escenas.hotSpots[j].clickHandlerFunc);
-          console.log( escenas.hotSpots[j].clickHandlerFunc);
+          
         });
 			});
 		
