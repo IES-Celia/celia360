@@ -27,7 +27,7 @@ echo "
 </script>
 <?php
 echo "
-    <h1 align='center'>Modificar escenas</h1>
+    <h1 align='center;' style='color:white;'>Modificar escenas</h1>
         <p></p>
         <div id='caja' style='margin-top:100px;'>
 	<fieldset>

@@ -55,6 +55,15 @@
  
 	<!-- Efectos JS de la portada -->
 	
+	<!-- QUILL Library -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.snow.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.core.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.bubble.css'); ?>">
+
+	<script src="<?php echo base_url('assets/js/quill/js/quill.core.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
+	<!-- ./FIN QUILL Library -->
 	
     
     <script>

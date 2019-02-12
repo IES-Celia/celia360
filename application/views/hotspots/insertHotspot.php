@@ -34,10 +34,13 @@
         .panel-informacion-texto {
             font-size:0.65em;
             font-weight: lighter;
-        }
+		}
+		.blanco{
+			color:white;
+		}
     </style>
 <body>
-<h1> Formulario para insertar Hotspots</h1>
+<h1 class="blanco"> Formulario para insertar Hotspots</h1>
     <div id="botones">
     Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br>
         
@@ -120,9 +123,9 @@
             <input type='hidden' name='tipo' value='info' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
-            Titulo del panel: <input type='text' name='titulo' required><br> 
-            Texto del panel:  <div id="editor"></div><br>
-            <label style='text-justify: auto;'>seleccionar PDF (OPCIONAL)<br><span class='panel-informacion-texto'>Permite visionar el documento PDF en el panel</span></label>
+            <p class="blanco">Titulo del panel:</p> <input class="input-text" type='text' name='titulo' required><br> 
+            <p class="blanco">Texto del panel:</p>  <div id="editor"></div><br>
+            <label  class="blanco" style='text-justify: auto;'>seleccionar PDF (OPCIONAL)<br><span class='panel-informacion-texto'>Permite visionar el documento PDF en el panel</span></label>
             <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
             <input type="hidden" name="texto" id="descripcion_texto">
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />
