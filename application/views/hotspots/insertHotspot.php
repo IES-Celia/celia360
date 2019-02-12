@@ -76,6 +76,7 @@
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
+            
             Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
             <div id="mapa_escena_hotspot" >
             
@@ -96,12 +97,13 @@
                         }
                     }
                     echo "</div>";
-                
+                   
             ?>
             </div>
                 
             <br>
             <input type='text' name='sceneId' required>
+            
             <input type='submit' class="button">
         </form>
             </div>
@@ -347,11 +349,12 @@
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntosEspec' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
+            
             Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
             <div id="mapa_escena_hotspot" >
 <?php
             $numeroPlanta= count($mapa);
-                echo $numeroPlanta;
+               
            for($i=0;$i<=$numeroPlanta-1;$i++){
 
                     echo "<div id='planta".$i."' class=' pisos_hotspots' style='display :none;'>";
@@ -362,6 +365,7 @@
                         $indice = $numeroPlanta - $i;
                         $indice = $indice -1;
                         if($punto['piso']==$indice){
+                            
                             if($punto['id_escena'] == $id_scene){
                                 echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
                             }else{
@@ -370,12 +374,19 @@
                         }
                     }
                     echo "</div>";
+                
+                   
+
                 }
+                echo" </div>";
+                
             ?>
-            </div>
+           
 
             <br>
-            <input type='text' name='sceneId' required>
+            <input type='text' name='sceneId' required><br>
+            <input  id="plantaDestino" type='text' name='plantaDestino' required>
+           
             <input type='submit' class="button">
         </form>
             </div>
@@ -429,6 +440,8 @@
             clase = document.getElementsByClassName("plantas"); 
             numeroPlanta = clase.length; 
             indice = $(this).attr("value");
+            texto = $(this).text();
+          
                 $("#puntoHibrido").hide();
                 $("#puntoHibridoMapa").show();
                 indice = numeroPlanta-indice;
@@ -437,6 +450,7 @@
                     $("#planta"+i).hide();
                 }
                 $("#planta"+indice).show();
+                $("#plantaDestino").val(texto);
 
         });
 
