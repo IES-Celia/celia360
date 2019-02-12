@@ -445,7 +445,8 @@ display: block;
 .custom-hotspot-atras,
 .custom-hotspot-audio,
 .custom-hotspot-info2,
-.custom-hotspot-video{
+.custom-hotspot-video,
+.custom-hotspot-saltoEspec {
         width: 30px;
         height: 30px;
         background-size:contain;
@@ -461,16 +462,23 @@ display: block;
 .custom-hotspot-atras {background-image: url("svg/puertablanco.svg");}
 .custom-hotspot-audio {background-image: url("svg/long-play-record-cover.svg");}
 .custom-hotspot-video {background-image: url("svg/video-player.svg");}
+.custom-hotspot-saltoEspec{background-image: url("svg/saltoblanco.svg");}
+
 
 
 .custom-hotspot-info:hover,
 .custom-hotspot-salto:hover,
 .custom-hotspot-atras:hover,
 .custom-hotspot-audio:hover,
-.custom-hotspot-video:hover{
+.custom-hotspot-video:hover,
+.custom-hotspot-saltoEspec:hover{
   width: 40px;
   height: 40px;
   opacity: 0.85;
+}
+.custom-hotspot-saltoEspec:hover{
+  background-image: url("svg/saltoRojo.svg");
+
 }
 
 /* Audio */
@@ -1044,7 +1052,7 @@ display: block;
 /* ICONOS VISITA LIBRE */
 
 .custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, 
-.custom-hotspot-audio, .custom-hotspot-escaleras, #boton_mapa, #fullscreen {
+.custom-hotspot-audio, .custom-hotspot-escaleras,.custom-hotspot-saltoEspec, #boton_mapa, #fullscreen {
   transition: width 0.5s, height 0.5s, opacity 0.5s ease;
 }
 
