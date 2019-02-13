@@ -25,16 +25,36 @@
         src: url("../fonts/Roboto-Regular.ttf");
     }
 
-	/* MODALES */
-	a.cerrar{
-		position: relative;
-		left:90%;
-	}
+	/* DRAG AND DROP CSS */
 
-	div#modificar, div#insertar{
-		display: none;
-		position: absolute;
-		width: 100%;
-		top: 25%;
-		z-index: 100;
-	}
+	#drop_file_zone {
+        margin: 0 auto;
+          background-color: gray; 
+          border: #999 5px dashed;
+          width: 80%; 
+          height: 400px;
+          padding: 8px;
+          font-size: 18px;
+		  overflow:scroll;
+		  margin-bottom: 10px;
+	  }
+	  
+	  img.imagenesDragDrop{
+        border-radius: 20px;
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	  }
+
+	  #drop_file_zone input[type='file']{
+		  display: none;
+	  }
+
+	  /* ./ FIN DRAG DROP CSS */
+
+
+
+
+	  
