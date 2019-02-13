@@ -30,12 +30,8 @@
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     
     <!--ATENCIÓN LOLI  PARA PAGINACIÓN (varias funcionalidades)-->
-<<<<<<< HEAD
    <!-- <link rel="stylesheet" href="<?php //echo base_url("assets/css/jquery.dataTables.min.css"); ?>"> -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
-=======
-   <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
->>>>>>> 013627986c7b85cd4930cbfb7097677c3a94041d
     
     <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
    <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
