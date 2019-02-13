@@ -219,9 +219,9 @@ if(count($mapa)!=0){
 
 				<td align='center'>".$escenas['id_escena']."</td>
 				<th>
-				<button class='btn btn-primary' id='".$escenas['cod_escena']."'>Escena ".$escenas['cod_escena']." 
+				<div class='custom-hotspot-info' id='".$escenas['cod_escena']."'> 
 					<span class='oculto'>".base_url($escenas['panorama'])."</span>
-				</button>
+				</div>
 
 				<div id='panorama-".$escenas['cod_escena']."' class='panoramas oculto'>
 				</div>
@@ -288,7 +288,7 @@ $(document).ready(function() {
 <script>
 
     $(document).ready(function(){
-		$("#cont").on("click", ".btn", function(){
+		$("#cont").on("click", ".custom-hotspot-info", function(){
             id = $(this).attr('id');
             img = $(this).find('span').text();
 
