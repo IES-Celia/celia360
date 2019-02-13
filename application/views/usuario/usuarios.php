@@ -11,6 +11,82 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
+<!-- script para las ventanas modales -->
+<script>
+
+    function borrarusuario(idusu) {
+        resultado = confirm("¿Desea borrar el usuario?");
+
+        if (resultado) {
+            $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuestaBorrado);
+        }
+    }
+
+    function respuestaBorrado(r) {
+        if (r == 0) {
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Ha ocurrido un error en la eliminación</span>";
+        }
+        else {
+            selector = "#usu" + parseInt(r);
+            $(selector).remove();
+        }
+    }
+
+    function modTipo(idusu) {
+        nuevoTipo = $("select#tipo_usuario" + idusu).val();
+        resultado = confirm("¿Está seguro de que desea modificar el tipo de usuario?");
+        if (resultado) {
+            alert("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo);
+            $.get("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo, null, respuestaModtipo);
+        }
+    }
+
+    function respuestaModtipo(r) {
+        if (r == "0") {
+            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Usuario no modificado</span>";
+        }
+        else {
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Usuario modificado con éxito</span>";
+        }
+    }
+
+    function show_modusuario(idusu) {
+        email = "email_usuario_" + idusu;
+        nick = "nick_usuario_" + idusu;
+        nombre = "name_usuario_" + idusu;
+        ape = "ape_usuario_" + idusu;
+        tipo = "tipo_usuario" + idusu;
+        document.getElementById("form_modif_email").value = document.getElementById(email).innerHTML;
+        document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
+        document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
+        document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
+        aux = document.getElementById(tipo).value;
+
+        if (aux == 1) {
+            document.getElementById("form_modif_tipo").selectedIndex = '1';
+        } else if (aux == 2) {
+            document.getElementById("form_modif_tipo").selectedIndex = '2';
+        } else if (aux == 3) {
+            document.getElementById("form_modif_tipo").selectedIndex = '3';
+        } else {
+            document.getElementById("form_modif_tipo").selectedIndex = '0';
+        }
+
+        document.getElementById("form_modif_id").value = idusu;
+
+        $("#modificar").css('display', 'block');
+    }
+
+    function mostrar() {
+        $("#insertar").show();
+    }
+
+    function cerrar() {
+        $("#insertar").hide();
+        $("#modificar").hide();
+    }
+
+</script>
 <style>
     .cerrar {
         position: relative;
@@ -118,6 +194,7 @@ foreach ($tablaUsuarios as $usu) {
             </table>
         </div>
     </div>
+</div><!-- Final del container -->
 
     <?php
 
@@ -189,81 +266,4 @@ echo"
 
 ?>
 
-</div><!-- Final del container -->
 
-<!-- script para las ventanas modales -->
-<script>
-
-    function borrarusuario(idusu) {
-        resultado = confirm("¿Desea borrar el usuario?");
-
-        if (resultado) {
-            $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuestaBorrado);
-        }
-    }
-
-    function respuestaBorrado(r) {
-        if (r == 0) {
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Ha ocurrido un error en la eliminación</span>";
-        }
-        else {
-            selector = "#usu" + parseInt(r);
-            $(selector).remove();
-        }
-    }
-
-    function modTipo(idusu) {
-        nuevoTipo = $("select#tipo_usuario" + idusu).val();
-        resultado = confirm("¿Está seguro de que desea modificar el tipo de usuario?");
-        if (resultado) {
-            alert("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo);
-            $.get("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo, null, respuestaModtipo);
-        }
-    }
-
-    function respuestaModtipo(r) {
-        if (r == "0") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Usuario no modificado</span>";
-        }
-        else {
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Usuario modificado con éxito</span>";
-        }
-    }
-
-    function show_modusuario(idusu) {
-        email = "email_usuario_" + idusu;
-        nick = "nick_usuario_" + idusu;
-        nombre = "name_usuario_" + idusu;
-        ape = "ape_usuario_" + idusu;
-        tipo = "tipo_usuario" + idusu;
-        document.getElementById("form_modif_email").value = document.getElementById(email).innerHTML;
-        document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
-        document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
-        document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
-        aux = document.getElementById(tipo).value;
-
-        if (aux == 1) {
-            document.getElementById("form_modif_tipo").selectedIndex = '1';
-        } else if (aux == 2) {
-            document.getElementById("form_modif_tipo").selectedIndex = '2';
-        } else if (aux == 3) {
-            document.getElementById("form_modif_tipo").selectedIndex = '3';
-        } else {
-            document.getElementById("form_modif_tipo").selectedIndex = '0';
-        }
-
-        document.getElementById("form_modif_id").value = idusu;
-
-        $("#modificar").css('display', 'block');
-    }
-
-    function mostrar() {
-        $("#insertar").show();
-    }
-
-    function cerrar() {
-        $("#insertar").hide();
-        $("#modificar").hide();
-    }
-
-</script>
