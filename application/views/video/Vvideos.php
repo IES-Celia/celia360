@@ -88,7 +88,9 @@
 <div class="container">
     <div class="row mt-4">
         <div class="col-md-12">
-            <a name="" id="" class="float-right btn btn-primary" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Video</a>   
+            <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#insertar_video_modal">
+                <i class='fas fa-plus-circle'></i> Insertar Video
+            </button>   
         </div>
     </div>
     <div class="row">
@@ -130,47 +132,66 @@
             </table>            
         </div>
     </div>
+</div><!-- Final del container -->
 
-<?php
+<!-- Modal modificar video -->
+<div class="modal fade" id="modificar_video_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url("video/modificarvideo/" . $id)."' method='post' enctype='multipart/form-data'>"; ?>
+            <div class="form-group">
+              <label for="url_vid">URL Video</label>
+              <input type="text" name="url_vid" id="url" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="desc_vid">Descripcion</label>
+              <input type="text" name="desc_vid" id="desc" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <input type='hidden' name='id'  id='id'>
+            <button type="submit" class="btn btn-primary float-right">Modificar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>   
 
-    //Capa formulario modificar
-    echo "
-    <div id='modificar'>
-    <div id='caja'>
-    <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                    base_url("assets/css/cerrar_icon.png") . "'></img></a>
-        <h1>Modificar Audio</h1>
-        <form action='" . site_url("video/modificarvideo/" . $id) . "' method='post' enctype='multipart/form-data'>
-                        URL Video:<input type='text' name='url_vid' id='url'><br/>
-                        Descripcion:<input type='text' name='desc_vid'  id='desc'><br/>  					
-                        <input type='hidden' name='id'  id='id'<br/>
-                        
-                        <input type='submit'>
-                    </form>
-        </div>
-    </div>";
-    
-    //Capa formulario insertar
-    echo"
-    <div id='insertar'>
-    <div id='caja'>
-    <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                    base_url("assets/css/cerrar_icon.png") . "'></img></a>
-    <h1>Insertar Video</h1>
-        <form action='". site_url('/video/insertarvideo') ."' method='Post' enctype='multipart/form-data' id='insercion' >
-            Numero de videos : <input type='number' name='numeroVideos' id='numeroVideos' min='0' value='0' onchange='crearCamposInsercion()'><br>
-            Desc:<input type='text' name='desc'><br/>
-            <div id='camposInsercion'>
-                 
+<!-- Modal insertar video -->
+<div class="modal fade" id="insertar_video_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Insertar Video</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url('/video/insertarvideo')."' method='post' enctype='multipart/form-data'>"; ?>
+            <div class="form-group">
+              <label for="numeroVideos">Numero de videos</label>
+              <input type="number" name="numeroVideos" id="numeroVideos" class="form-control" placeholder="" aria-describedby="helpId" min='0' value='0' onchange='crearCamposInsercion()'>
+            </div>
+            <div class="form-group">
+              <label for="desc">Descripcion</label>
+              <input type="text" name="desc" id="desc" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div id="camposInsercion">
+
             </div>
             <input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'>
-            <input type='submit' id='enviar'>
+            <button type="submit" class="btn btn-primary float-right" id='enviar'>Modificar</button>
         </form>
-        </div>
-    </div>";
-    
-    /** a continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos video por ajax y al final del script ncluimos un plugin para la paginacion y buscador */
-    ?>
+      </div>
+    </div>
+  </div>
+</div> 
 </div><!-- Final del contenedor -->
 
 <script>
@@ -182,17 +203,7 @@
         document.getElementById("desc").value = document.getElementById(desc).innerHTML;
         document.getElementById("id").value = id;
 
-        $("#modificar").css('display', 'block');
-    }
-
-    function mostrar() {
-        $("#insertar").show();
-
-    }
-
-    function cerrar() {
-        $("#insertar").hide();
-        $("#modificar").hide();
+        $("#modificar_video_modal").modal();
     }
 
     //confirmacion al borrar
