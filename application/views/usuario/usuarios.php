@@ -100,7 +100,7 @@
     }
 </style>
 <div class="container">
-    <div class="row m-4">
+    <div class="row mt-4 mb-4">
         <div class="col-md-12">
             <a name="" id="" class="float-right btn btn-primary" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
         </div>
@@ -129,7 +129,7 @@ foreach ($tablaUsuarios as $usu) {
             <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
             <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
         if($usu["tipo_usuario"]==0){
-            echo "<td>  
+            echo "<td class='text-center'>  
                     <select name='tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red' selected='true' disabled='disabled'>Pendiente asignación</option>
                             <option value='1'>Admin</option>
@@ -139,7 +139,7 @@ foreach ($tablaUsuarios as $usu) {
                     <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
                 </td>";
         }elseif ($usu["tipo_usuario"]==1) {
-            echo "<td>
+            echo "<td class='text-center'>
                     <select name='tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red' >Pendiente asignación</option>
                             <option value='1' selected='true'>Admin</option>
@@ -149,7 +149,7 @@ foreach ($tablaUsuarios as $usu) {
                     <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
                 </td>";
         }elseif ($usu["tipo_usuario"]==2) {
-           echo "<td> 
+           echo "<td class='text-center'> 
                     <select name='tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red'>Pendiente asignación</option>
                             <option value='1'>Admin</option>
@@ -159,7 +159,7 @@ foreach ($tablaUsuarios as $usu) {
                     <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
                 </td>";
         }elseif ($usu["tipo_usuario"]==3) {
-           echo "<td>
+           echo "<td class='text-center'>
                     <select name='tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red'>Pendiente asignación</option>
                             <option value='1'>Admin</option>
