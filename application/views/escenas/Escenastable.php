@@ -195,7 +195,7 @@ if(count($mapa)!=0){
 
 				<td align='center'>".$escenas['id_escena']."</td>
 				<th>
-				<button class='btn' id='".$escenas['cod_escena']."'>Escena ".$escenas['cod_escena']." 
+				<button class='btn btn-primary' id='".$escenas['cod_escena']."'>Escena ".$escenas['cod_escena']." 
 					<span class='oculto'>".base_url($escenas['panorama'])."</span>
 				</button>
 

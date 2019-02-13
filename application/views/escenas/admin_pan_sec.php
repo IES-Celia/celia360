@@ -17,13 +17,13 @@
 
 </style>
 
-<div id='insertar'>
+<!-- <div id='insertar'>
     <div id='caja'>
-        <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
-        <!-- AQUI EMPIEZA LA VISTA -->
+        CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
+         AQUI EMPIEZA LA VISTA
         <?php
-        echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>";
+        /*echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+        base_url("assets/css/cerrar_icon.png") . "'></img></a>";*/
         ?>
         <h1>Insertar imagen</h1>
         <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
@@ -42,27 +42,27 @@
         </div>
     </div>
     </div>
-</div>
+</div> -->
 
 
 
 <!-- NUEVOOOOOOO -->
 
-<div class="container">
+<div class="container mt-3">
  <div class="row">
  	<div class="col-12">
  		<h1 class="text-center">Panel de administración Imágenes Secundarias</h1>
 	 </div>
  </div>
  <div class="row">
- <div class="col-2 offset-10 mt-3">
- 	<a class="btn btn-primary" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
+ <div class="col-2 offset-10">
+ 	<a class="btn btn-primary" onclick="mostrar('insertar',0)" data-toggle='modal' data-target='#insert'><i class='fas fa-plus-circle'></i> Nueva imagen</a>
  </div>
 </div>
 <div class="row">
  
  	<div class="col-12">
- 		<table class="table table-hover" id="cont">
+ 		<table class="table table-striped table-hover" id="cont">
 		 <thead>
 	<tr id="cabecera">
 		<th>Título</th>
@@ -91,7 +91,7 @@
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
 				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img img-fluid d-block mb-3'><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><div class='card'><div class='card-body text-center'>
 				
-				<button class='admin btn btn-primary mr-3'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary'>Hotspots</button></a>
+				<button class='admin btn btn-primary mr-3 col-xs-12'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary col-xs-12'>Hotspots</button></a>
 				
 				</div></div></td>
 				<td><i class='fa fa-edit edit text-primary' data-toggle='modal' data-target='#exampleModal' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
@@ -234,6 +234,7 @@
             fecna.setAttribute("type",'date');
             fecna.setAttribute('name','fecha'+contador);
             fecna.setAttribute("id","fecha"+contador);
+			fecna.setAttribute("class",'form-control');
             var contentLabel = document.createTextNode("Título de imágen "+contador+": ");
             var contentLabelFecna = document.createTextNode("Fecha de imágen "+contador+": ");
             label.setAttribute("for","nombre"+contador);
@@ -243,7 +244,7 @@
             inputName.setAttribute("type","text");
             inputName.setAttribute("name","nombre"+contador);
 			inputName.setAttribute("id","nombre"+contador);
-			inputName.setAttribute("class","nombresClass");
+			inputName.setAttribute("class","nombresClass form-control");
             contador++;
             image.src = event.target.result;
             image.width = 250; // a fake resize
@@ -378,3 +379,33 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="insert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal de actualización</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+	  <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
+	  <div id="drag_upload_file">
+            <p>Arrastra los archivos</p>
+            <p>o</p>
+            <p><button class="btn btn-primary" value="Selecciona archivos" onclick="file_explorer();">Selecciona las imágenes</button></p>
+            <div id="imagenesView">
+
+            </div>
+
+            <input type="file" id="selectfile" name="file[]" multiple accept="image/jpeg">
+            <p><button id="btnEnvio" class="btn btn-primary" type="button">Subir imágenes</button></p>
+           
+        </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
