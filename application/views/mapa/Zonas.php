@@ -201,9 +201,9 @@ $(document).ready(function(){
 });
 </script>
 <div class="container">
+    <h1 class="text-center">Mapa de zonas</h1>
     <div class="row text-center">
-        <div class="col-md-7 mx-auto mb-3" id="caja2">
-            <h1 class="text-center">Mapa de zonas</h1>
+        <div class="col-md-7 mx-auto mb-3 bg-secondary" id="caja2">
             <p>Utiliza el click izquierdo para eliminar un punto en el mapa</p>
             <p>Utiliza el doble click derecho para insertar un punto en el mapa</p>
         </div>

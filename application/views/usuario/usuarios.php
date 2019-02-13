@@ -11,180 +11,6 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
-<style>
-    .cerrar {
-        position: relative;
-        top: 15px;
-        left: 44%;
-    }
-
-    .img-cerrar {
-        width: 20px;
-        height: 20px;
-    }
-</style>
-<div class="container">
-<a name="" id="" class="float-right btn btn-primary m-3" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
-<!-- Tabla usuarios -->
-<table class="table bg-secondary" id='cont'>
-    <thead class='text-center'>
-        <tr id='cabecera'> 
-        <th>Nick</th>
-        <th>Correo</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Tipo</th>
-        <th>Modificar</th>
-        <th>Borrar</th>
-       </tr> 
-    </thead>
-    <tbody>
-<?php
-foreach ($tablaUsuarios as $usu) {
-   
-   $idusu = $usu["id_usuario"];
-    echo"<tr id='usu".$idusu."'>
-            <td id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
-            <td id='email_usuario_".$idusu."'>".$usu["email"]."</td>
-            <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
-            <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
-        if($usu["tipo_usuario"]==0){
-            echo "<td>  
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
-                            <option value='0' style='color:red' selected='true' disabled='disabled'>Pendiente asignación</option>
-                            <option value='1'>Admin</option>
-                            <option value='2'>Mapero</option>
-                            <option value='3'>Bibliotecario</option>
-                    </select>
-                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
-                </td>";
-        }elseif ($usu["tipo_usuario"]==1) {
-            echo "<td>
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
-                            <option value='0' style='color:red' >Pendiente asignación</option>
-                            <option value='1' selected='true'>Admin</option>
-                            <option value='2'>Mapero</option>
-                            <option value='3'>Bibliotecario</option>
-                    </select>
-                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
-                </td>";
-        }elseif ($usu["tipo_usuario"]==2) {
-           echo "<td> 
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
-                            <option value='0' style='color:red'>Pendiente asignación</option>
-                            <option value='1'>Admin</option>
-                            <option value='2' selected='true'>Mapero</option>
-                            <option value='3'>Bibliotecario</option>
-                    </select>
-                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
-                </td>";
-        }elseif ($usu["tipo_usuario"]==3) {
-           echo "<td>
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
-                            <option value='0' style='color:red'>Pendiente asignación</option>
-                            <option value='1'>Admin</option>
-                            <option value='2'>Mapero</option>
-                            <option value='3' selected='true'>Bibliotecario</option>
-                    </select>
-                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
-                </td>";
-        }    
-     
-    echo"   <td class='text-center'>
-                <a href='#' class='text-primary' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
-            </td>
-            <td class='text-center'>
-                <a href='#' class='text-primary' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
-            </td>
-        </tr>";
-}
-?>
-    </tbody>
-    <tfoot class="text-center">
-        <tr id='cabecera'> 
-            <th>Nick</th>
-            <th>Correo</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Tipo</th>
-            <th>Modificar</th>
-            <th>Borrar</th>
-       </tr> 
-    </tfoot>
-</table>
-
-<?php
-
-//Capa formulario modificar
-echo "
-<div id='modificar'>
-    <div id='caja'>
-<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-    
-<h1>Modificar usuario</h1>
-    <form action='".site_url("usuario/modUsuario")."' method='post'>
-
-        <label for='username'>Nombre de usuario</label>
-        <input type='text' name='username' id='form_modif_nick' required>
-        <label for='pass'>Password (en blanco para no modificar)</label>
-        <input type='password' name='pass'>
-        <label for='email'>Correo</label>
-        <input type='text' name='email' id='form_modif_email' required>
-        <label for='name'>Nombre</label>
-        <input type='text' name='nombre' id='form_modif_nombre' required>
-        <label for='subname'>Apellidos</label>
-        <input type='text' name='apellidos' id='form_modif_ape' required>
-        <label for='tipo'>Tipo de usuario</label>
-        <select name='tipo' id='form_modif_tipo'>
-                <option value='0' style='color:red'>Pendiente asignación</option>
-                <option value='1'>Admin</option>
-                <option value='2'>Mapero</option>
-                <option value='3'>Bibliotecario</option>
-        </select>
-        <input type='hidden' name='id' id='form_modif_id'>
-        <input type=submit value='Modificar'>
-    </form>
-   
-    </div>
-</div>";
-
-//Capa formulario insertar
-echo"
-<div id='insertar'>
-    <div id='caja'>
-    <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-<h1>Registro de usuarios</h1>
-<form action='".site_url("usuario/processregisterform")."' method='post'>
-
-    <label for='username'>Nombre de usuario</label>
-    <input type='text' name='username' id='username' required>
-    <label for='pass'>Password</label>
-    <input type='password' id='pass' name='pass' required>
-    <label for='email'>Correo</label>
-    <input type='text' name='email' id='email' required>
-    <label for='name'>Nombre</label>
-    <input type='text' name='nombre' id='nombre' required>
-    <label for='subname'>Apellidos</label>
-    <input type='text' name='subname' id='subname' required>
-        <label for='tipo'>Tipo de usuario</label>
-        <select name='tipo' id='form_modif_tipo'>
-                <option value='0' style='color:red'>Pendiente asignación</option>
-                <option value='1'>Admin</option>
-                <option value='2'>Mapero</option>
-                <option value='3'>Bibliotecario</option>
-        </select>
-    <input type='submit'>
-    
-</form>
-    </div>    
-</div>";
-
-?>
-
-</div><!-- Final del container -->
-
 <!-- script para las ventanas modales -->
 <script>
 
@@ -261,3 +87,183 @@ echo"
     }
 
 </script>
+<style>
+    .cerrar {
+        position: relative;
+        top: 15px;
+        left: 44%;
+    }
+
+    .img-cerrar {
+        width: 20px;
+        height: 20px;
+    }
+</style>
+<div class="container">
+    <div class="row m-4">
+        <div class="col-md-12">
+            <a name="" id="" class="float-right btn btn-primary" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table bg-secondary" id='cont'>
+                <thead class='text-center'>
+                    <tr id='cabecera'>
+                        <th>Nick</th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo</th>
+                        <th>Modificar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+<?php
+foreach ($tablaUsuarios as $usu) {
+   $idusu = $usu["id_usuario"];
+    echo"<tr id='usu".$idusu."'>
+            <td id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
+            <td id='email_usuario_".$idusu."'>".$usu["email"]."</td>
+            <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
+            <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
+        if($usu["tipo_usuario"]==0){
+            echo "<td>  
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red' selected='true' disabled='disabled'>Pendiente asignación</option>
+                            <option value='1'>Admin</option>
+                            <option value='2'>Mapero</option>
+                            <option value='3'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
+        }elseif ($usu["tipo_usuario"]==1) {
+            echo "<td>
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red' >Pendiente asignación</option>
+                            <option value='1' selected='true'>Admin</option>
+                            <option value='2'>Mapero</option>
+                            <option value='3'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
+        }elseif ($usu["tipo_usuario"]==2) {
+           echo "<td> 
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red'>Pendiente asignación</option>
+                            <option value='1'>Admin</option>
+                            <option value='2' selected='true'>Mapero</option>
+                            <option value='3'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
+        }elseif ($usu["tipo_usuario"]==3) {
+           echo "<td>
+                    <select name='tipo' id='tipo_usuario".$idusu."'>
+                            <option value='0' style='color:red'>Pendiente asignación</option>
+                            <option value='1'>Admin</option>
+                            <option value='2'>Mapero</option>
+                            <option value='3' selected='true'>Bibliotecario</option>
+                    </select>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                </td>";
+        }    
+     
+    echo"   <td class='text-center'>
+                <a href='#' class='text-primary' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
+            </td>
+            <td class='text-center'>
+                <a href='#' class='text-primary' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
+            </td>
+        </tr>";
+}
+?>
+                </tbody>
+                <tfoot class="text-center">
+                    <tr id='cabecera'>
+                        <th>Nick</th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo</th>
+                        <th>Modificar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div><!-- Final del container -->
+
+    <?php
+
+//Capa formulario modificar
+echo "
+<div id='modificar'>
+    <div id='caja'>
+<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+        base_url("assets/css/cerrar_icon.png") . "'></img></a>
+    
+<h1>Modificar usuario</h1>
+    <form action='".site_url("usuario/modUsuario")."' method='post'>
+
+        <label for='username'>Nombre de usuario</label>
+        <input type='text' name='username' id='form_modif_nick' required>
+        <label for='pass'>Password (en blanco para no modificar)</label>
+        <input type='password' name='pass'>
+        <label for='email'>Correo</label>
+        <input type='text' name='email' id='form_modif_email' required>
+        <label for='name'>Nombre</label>
+        <input type='text' name='nombre' id='form_modif_nombre' required>
+        <label for='subname'>Apellidos</label>
+        <input type='text' name='apellidos' id='form_modif_ape' required>
+        <label for='tipo'>Tipo de usuario</label>
+        <select name='tipo' id='form_modif_tipo'>
+                <option value='0' style='color:red'>Pendiente asignación</option>
+                <option value='1'>Admin</option>
+                <option value='2'>Mapero</option>
+                <option value='3'>Bibliotecario</option>
+        </select>
+        <input type='hidden' name='id' id='form_modif_id'>
+        <input type=submit value='Modificar'>
+    </form>
+   
+    </div>
+</div>";
+
+//Capa formulario insertar
+echo"
+<div id='insertar'>
+    <div id='caja'>
+    <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+        base_url("assets/css/cerrar_icon.png") . "'></img></a>
+<h1>Registro de usuarios</h1>
+<form action='".site_url("usuario/processregisterform")."' method='post'>
+
+    <label for='username'>Nombre de usuario</label>
+    <input type='text' name='username' id='username' required>
+    <label for='pass'>Password</label>
+    <input type='password' id='pass' name='pass' required>
+    <label for='email'>Correo</label>
+    <input type='text' name='email' id='email' required>
+    <label for='name'>Nombre</label>
+    <input type='text' name='nombre' id='nombre' required>
+    <label for='subname'>Apellidos</label>
+    <input type='text' name='subname' id='subname' required>
+        <label for='tipo'>Tipo de usuario</label>
+        <select name='tipo' id='form_modif_tipo'>
+                <option value='0' style='color:red'>Pendiente asignación</option>
+                <option value='1'>Admin</option>
+                <option value='2'>Mapero</option>
+                <option value='3'>Bibliotecario</option>
+        </select>
+    <input type='submit'>
+    
+</form>
+    </div>    
+</div>";
+
+?>
+
+

@@ -5,8 +5,14 @@
 	<script src="<?php echo base_url('assets/js/bootstrap/js/popper.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/bootstrap/js/jquery-3.3.1.slim.min.js'); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
-	<footer>
-<p>&copy; IES Celia Viñas 2018</p>
-</footer>
+	
+	
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center">&copy; IES Celia Viñas 2018</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -61,11 +61,16 @@
 
 
 <div class="container">
-<a class="btn btn-primary float-right mx-2"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
+<div class="row">
+<div class="col-md-12 mt-4">
 
+
+<a class="btn btn-primary float-right mx-2"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
+</div>
+</div>
 <?php
 // aqui cojemos la tabla entregada del controlador y mostramos todos los audios en una tabla
-echo"<table class='table-hover'  id='cont'>
+echo"<table class='table table-hover w-100 bg-secondary'  id='cont'>
     <thead>
         <tr id='cabecera'>
             <th>ID</th>
@@ -104,8 +109,8 @@ foreach ($tabla as $re) {
             </audio></td>";
    
     echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
-    echo"<td class='text-center'><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
-  
+  // echo"<td class='text-center'><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+      echo" <td class='text-center'><a class='text-primary'  role='button' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
 echo "</tbody>";
 echo "</table>";
