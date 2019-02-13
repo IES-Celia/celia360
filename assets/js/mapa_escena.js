@@ -20,12 +20,12 @@ $(document).ready(function() {
 	
     $("#btn-subir-piso").click(function(event) {
 		subir_piso();
-		mapa_responsivo();
+		/*mapa_responsivo();*/
     });
 
     $("#btn-bajar-piso").click(function(event) {
 		bajar_piso();
-		mapa_responsivo();
+		//mapa_responsivo();
     });
 /**
  * Administración del mapa.
@@ -106,13 +106,13 @@ $(document).ready(function() {
 	$("#btn-subir-piso-admin").click(function(event) {
 		subir_piso();
 		$("#piso_actual>span").text(piso)
-		mapa_responsivo();
+		//mapa_responsivo();
     });
 
     $("#btn-bajar-piso-admin").click(function(event) {
 		bajar_piso();
 		$("#piso_actual>span").text(piso)
-		mapa_responsivo();
+		//mapa_responsivo();
 	});
 	
 	$("#btn-editar-mapa").click(function () {
@@ -145,7 +145,7 @@ $(document).ready(function() {
 		$(this).parent().parent().parent().hide();
 	});
 	setTimeout(() => {
-		mapa_responsivo()
+		//mapa_responsivo()
 	}, 100);
 	
 	$("input[name=piso_inicial]").change(function(){
@@ -214,7 +214,7 @@ $(document).ready(function() {
 /**
  * Responsibidad del mapa.
  */
-$(window).resize(function() {
+/*$(window).resize(function() {
 	mapa_responsivo();
 });
 function mapa_responsivo(){
@@ -246,7 +246,7 @@ function mapa_responsivo(){
 		anchura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").width();
 		altura = $("#mapa_escena_hotspot > #zona"+piso+" > img ").height();		
 	}	
-}
+}*/
 	
 /**
  * Subida y Bajada de piso.

@@ -30,8 +30,7 @@
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     
     <!--ATENCIÓN LOLI  PARA PAGINACIÓN (varias funcionalidades)-->
-   <!-- <link rel="stylesheet" href="<?php //echo base_url("assets/css/jquery.dataTables.min.css"); ?>"> -->
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/jquery.dataTables.bootstrap.min.css"); ?>">
+   <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
     
     <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
    <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
@@ -65,7 +64,95 @@
     <!-- CSS CMS -->
     
     <!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url("assets/css/admin_style.css"); ?>"/> -->
-    </head>
+	<style>
+		    .sidenav {
+		height: 100%;
+		width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #262626;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+		z-index: 3;
+    }
+    
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 20px;
+        color:#c1c1c1;
+        display: block;
+        transition: 0.3s;
+        text-align: center;
+    }
+
+        
+    .sidenav a:hover {
+        color: orange;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    .sidenav .closebtn:hover{
+    
+        color: orange;
+    }
+
+    .sidenav .cerrarsesionbtn:hover{
+    
+        color: orange;
+    }
+
+    
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+        
+    .sidenavmenu {
+        font-size:auto;
+        cursor:pointer;
+        color:#ffffff;
+        background:transparent;
+        margin-top: 6px;
+        transition:0.4s;
+        margin-left: 8px;
+        float: left;
+    }
+        
+    .sidenavmenu:hover{
+        color:darkorange;
+    }
+        
+    .sidenav input{
+        background-color: grey;
+        border: 3px solid white;
+        color: white;
+        border-radius: 50px;
+        position: absolute;
+        right: 54px;
+        top: 68px;
+        height: 30px;
+        transition: 1s;
+        color: black;
+        font-size: 25px;
+        max-width: 180px;
+    }
+    
+    .sidenav input::placeholder{
+        color: black;
+    }
+	</style>
+</head>
     
     <body>
     
@@ -76,21 +163,31 @@
                 ini_set('display_errors', '0');
             }
     ?>
-        <div id="menu">
-        <div id="hamburguesa">    
-        <span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menu </span>
-        </div>
-        <div id="mensajemenu">
-            <?php  if (isset($mensaje)) echo "<span id='mensaje_cabecera'>$mensaje</span>"; ?>
-            <?php  if (isset($error)) echo "<span id='error_cabecera'>$error</span>"; ?>
-            
-            <span id='mensaje_cabecera'></span>
-            <span id='error_cabecera'></span>
-        </div>
-        <div id="logueo">    
-        <p id="sesion" align="center">Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></p>
-        </div>
-        </div>
+        <div id="menu" class="navbar navbar-expand-lg bg-dark">
+
+			<div class="navbar-brand">
+			<div id="hamburguesa">    
+				<span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menú </span>
+				
+			</div>
+			</div>
+			
+			
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div id="mensajemenu">
+				<?php  if (isset($mensaje)) echo "<span id='mensaje_cabecera'>$mensaje</span>"; ?>
+				<?php  if (isset($error)) echo "<span id='error_cabecera'>$error</span>"; ?>
+				
+				<span id='mensaje_cabecera'></span>
+				<span id='error_cabecera'></span>
+        	</div>
+				<ul class="mr-auto"></ul>
+				<div id="logueo">    
+					<span id="sesion" align="center">Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></span>
+				</div>
+			</div>
+    </div>
 
 
 
