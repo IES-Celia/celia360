@@ -87,9 +87,10 @@ function respuesta(r) {
 </script>
 
 <div class="container mt-5">
+
 	<div class="row">
 		<div class="col-md-8 col-xs-12">
-<div id="mapa_escena">
+            <div id="mapa_escena">
 <?php
 	  $indice = 0;
 
@@ -130,8 +131,9 @@ function respuesta(r) {
         $indice++;
 	  }
 ?>
+    </div>
 </div>
-</div>
+
 <div class="col-md-4">
 	<div class="card">
 		<div class="card-body text-center">
@@ -142,11 +144,32 @@ function respuesta(r) {
      <?php
  }else{
     ?>
-        <button class="botonmapa btn btn-primary m-3 d-block" id="btn-subir-piso">Subir zona</button>
-        <button class="botonmapa btn btn-primary m-3 d-block" id="btn-bajar-piso">Bajar zona</button>
-        <button class="botonmapa btn btn-primary m-3 d-block" id="btn-admin-mapa">Admin mapa</button>
-		<button class="botonmapa btn btn-primary m-3 d-block" id="btn-admin-selector-zonas">Admin selector de zonas</button>
-		<button class="botonmapa btn btn-primary m-3 d-block" id="btn-show-pan-sec">Ver panoramas asociados</button>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-subir-piso">Subir zona</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-bajar-piso">Bajar zona</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-admin-mapa">Admin mapa</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-admin-selector-zonas">Admin selector de zonas</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-show-pan-sec">Ver panoramas asociados</button>
+            </div>
+        </div>
+
      <?php
  }
 
@@ -157,7 +180,8 @@ function respuesta(r) {
 </div>
 </div> <!-- cierre .row -->
 
-
+    <div class="row">
+        <div class="col-md-12">
 <?php
 if(count($mapa)!=0){
 	echo "<table class='table table-hover bg-secondary' id='cont'>";
@@ -222,8 +246,9 @@ if(count($mapa)!=0){
     }
 ?>
 
-</div>
-
+        </div><!-- Final de col-->
+    </div><!-- Final de row -->
+</div><!-- Final de container -->
 <script>
 
 $(document).ready(function() {
