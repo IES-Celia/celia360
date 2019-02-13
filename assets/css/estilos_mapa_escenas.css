@@ -14,13 +14,18 @@
     display: inline-grid;
 }
 #mapa_escena{
-    margin-left: 15px;
+    /*margin-left: 15px;*/
 }
-
+.botones_mapa{
+    /*float: right;
+    display: inline-grid;
+    margin-right: 15px;
+    width: 20%;*/
+}
 .puntos, .puntos-draggables{
     cursor: pointer;
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: white;
     position: absolute;
@@ -36,7 +41,10 @@
     position: absolute;
 }
 
-
+#btn-subir-piso, #btn-bajar-piso, #btn-admin-mapa{
+	/*float: right;
+	position: relative;*/
+}
 .tooltip {
     visibility: hidden;
     background-color: white;

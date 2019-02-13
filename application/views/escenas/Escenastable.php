@@ -86,8 +86,9 @@ function respuesta(r) {
                             
 </script>
 
-<div class="container">
+<div class="container mt-5">
 	<div class="row">
+		<div class="col-md-8 col-xs-12">
 <div id="mapa_escena">
 <?php
 	  $indice = 0;
@@ -96,7 +97,7 @@ function respuesta(r) {
       foreach ($mapa as $imagen) {
 
             echo "<div id='zona".$indice."' class='pisos' style='display: none;'>";
-			echo "<img src='".base_url($imagen['url_img'])."' alt='zona$indice' style='width:100%;height:100%;'>";
+			echo "<img class='img-fluid' src='".base_url($imagen['url_img'])."' alt='zona$indice'>";
 			
           foreach ($puntos as $punto) {
 
@@ -124,12 +125,17 @@ function respuesta(r) {
               
             }
           }
-        echo "</div>";
+		echo "</div>";
+		
         $indice++;
 	  }
 ?>
 </div>
-<?php
+</div>
+<div class="col-md-4">
+	<div class="card">
+		<div class="card-body">
+		<?php
  if(count($mapa)==0){
      ?>
     <div class="botones_mapa">
@@ -139,22 +145,26 @@ function respuesta(r) {
  }else{
     ?>
     <div class="botones_mapa">
-        <button class="botonmapa" id="btn-subir-piso">Subir zona</button>
-        <button class="botonmapa" id="btn-bajar-piso">Bajar zona</button>
-        <button class="botonmapa" id="btn-admin-mapa">Admin mapa</button>
-		<button class="botonmapa" id="btn-admin-selector-zonas">Admin selector de zonas</button>
-		<button class="botonmapa" id="btn-show-pan-sec">Ver panoramas asociados</button>
+        <button class="botonmapa btn btn-primary m-3 d-block" id="btn-subir-piso">Subir zona</button>
+        <button class="botonmapa btn btn-primary m-3 d-block" id="btn-bajar-piso">Bajar zona</button>
+        <button class="botonmapa btn btn-primary m-3 d-block" id="btn-admin-mapa">Admin mapa</button>
+		<button class="botonmapa btn btn-primary m-3 d-block" id="btn-admin-selector-zonas">Admin selector de zonas</button>
+		<button class="botonmapa btn btn-primary m-3 d-block" id="btn-show-pan-sec">Ver panoramas asociados</button>
     </div>
      <?php
  }
 
 ?>
+		</div>
+	</div>
+
 </div>
+</div> <!-- cierre .row -->
 
 
 <?php
 if(count($mapa)!=0){
-	echo "<table class='table table-hover' id='cont'>";
+	echo "<table class='table table-hover bg-secondary' id='cont'>";
 	echo "<thead><tr id='cabecera'> 
 		  <th> IdEscena</th>
 		  <th>Previsualizar</th>
@@ -202,11 +212,11 @@ if(count($mapa)!=0){
                 <td align='center'>".$escenas['yaw']."</td>
 
                 <td align='center'>
-                <a onclick='borrarscene(".$escenas["id_escena"].")'><i class='fa fa-trash' style='font-size:30px;'></i></a>
+                <a onclick='borrarscene(".$escenas["id_escena"].")'><i class='fa fa-trash text-primary' style='font-size:30px;'></i></a>
                 </td>
 
                 <td align='center'>
-                <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit' style='font-size:30px;'></i> </a></td>
+                <a href= '".site_url("/escenas/showUpdateScene/".$escenas['cod_escena'])."'> <i class='fa fa-edit text-primary' style='font-size:30px;'></i> </a></td>
                 </tr>";
     ?>
     <?php
@@ -242,10 +252,10 @@ $(document).ready(function() {
 
 	$(document).ready(function(){
 		$("#btn-show-pan-sec").click(function(){
-			if ($('.puntos.tienePanoramas').css('color') == 'rgb(0, 0, 0)'){
+			if ($('.puntos.tienePanoramas').css('background-color') == 'rgb(223, 105, 26)'){
 				$('.puntos.tienePanoramas').css('color','gray');
 				$('.puntos.tienePanoramas').css('background','red');
-				$(this).css('background-color','rgba(0,0,0,0.8)');
+				$(this).css('background-color','rgb(223, 105, 90);');
 			}else{
 				$('.puntos.tienePanoramas').css('background','white');
 				$('.puntos.tienePanoramas').css('color','rgb(0, 0, 0)');

@@ -12,22 +12,23 @@
 */
 ?>
 <style>
-    .cerrar{
+    .cerrar {
         position: relative;
-        top:15px;
-        left:44%;
+        top: 15px;
+        left: 44%;
     }
-    .img-cerrar{
+
+    .img-cerrar {
         width: 20px;
         height: 20px;
     }
 </style>
-
-<?php
-//Tabla usuarios
- echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar Usuario </a>";
-echo "<table id='cont'>
-       <tr id='cabecera'> 
+<div class="container">
+<a name="" id="" class="float-right btn btn-primary m-3" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
+<!-- Tabla usuarios -->
+<table class="table bg-secondary" id='cont'>
+    <thead class='text-center'>
+        <tr id='cabecera'> 
         <th>Nick</th>
         <th>Correo</th>
         <th>Nombre</th>
@@ -35,9 +36,10 @@ echo "<table id='cont'>
         <th>Tipo</th>
         <th>Modificar</th>
         <th>Borrar</th>
-       </tr>     
-        ";
-        
+       </tr> 
+    </thead>
+    <tbody>
+<?php
 foreach ($tablaUsuarios as $usu) {
    
    $idusu = $usu["id_usuario"];
@@ -88,17 +90,30 @@ foreach ($tablaUsuarios as $usu) {
                 </td>";
         }    
      
-    
-
-    echo"   <td>
-                <a href='#' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
+    echo"   <td class='text-center'>
+                <a href='#' class='text-primary' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
             </td>
-            <td>
-                <a href='#' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
+            <td class='text-center'>
+                <a href='#' class='text-primary' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
             </td>
         </tr>";
 }
-echo "</table>";
+?>
+    </tbody>
+    <tfoot class="text-center">
+        <tr id='cabecera'> 
+            <th>Nick</th>
+            <th>Correo</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Tipo</th>
+            <th>Modificar</th>
+            <th>Borrar</th>
+       </tr> 
+    </tfoot>
+</table>
+
+<?php
 
 //Capa formulario modificar
 echo "
@@ -168,83 +183,81 @@ echo"
 
 ?>
 
+</div><!-- Final del container -->
 
-
-<?php
-//script para las ventanas modales
-?>
+<!-- script para las ventanas modales -->
 <script>
 
-        function borrarusuario(idusu){
-            resultado=confirm("¿Desea borrar el usuario?");
-            
-            if(resultado){ 
+    function borrarusuario(idusu) {
+        resultado = confirm("¿Desea borrar el usuario?");
+
+        if (resultado) {
             $.get("<?php echo base_url('usuario/borrarusuario/'); ?>" + idusu, null, respuestaBorrado);
-            }
+        }
+    }
+
+    function respuestaBorrado(r) {
+        if (r == 0) {
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Ha ocurrido un error en la eliminación</span>";
+        }
+        else {
+            selector = "#usu" + parseInt(r);
+            $(selector).remove();
+        }
+    }
+
+    function modTipo(idusu) {
+        nuevoTipo = $("select#tipo_usuario" + idusu).val();
+        resultado = confirm("¿Está seguro de que desea modificar el tipo de usuario?");
+        if (resultado) {
+            alert("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo);
+            $.get("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo, null, respuestaModtipo);
+        }
+    }
+
+    function respuestaModtipo(r) {
+        if (r == "0") {
+            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Usuario no modificado</span>";
+        }
+        else {
+            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Usuario modificado con éxito</span>";
+        }
+    }
+
+    function show_modusuario(idusu) {
+        email = "email_usuario_" + idusu;
+        nick = "nick_usuario_" + idusu;
+        nombre = "name_usuario_" + idusu;
+        ape = "ape_usuario_" + idusu;
+        tipo = "tipo_usuario" + idusu;
+        document.getElementById("form_modif_email").value = document.getElementById(email).innerHTML;
+        document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
+        document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
+        document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
+        aux = document.getElementById(tipo).value;
+
+        if (aux == 1) {
+            document.getElementById("form_modif_tipo").selectedIndex = '1';
+        } else if (aux == 2) {
+            document.getElementById("form_modif_tipo").selectedIndex = '2';
+        } else if (aux == 3) {
+            document.getElementById("form_modif_tipo").selectedIndex = '3';
+        } else {
+            document.getElementById("form_modif_tipo").selectedIndex = '0';
         }
 
-        function respuestaBorrado(r) {
-            if (r == 0) {
-                document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Ha ocurrido un error en la eliminación</span>";
-            }
-            else {
-                selector = "#usu"+parseInt(r);
-                $(selector).remove();
-            }
-        }
+        document.getElementById("form_modif_id").value = idusu;
 
-        function modTipo(idusu) {
-            nuevoTipo = $("select#tipo_usuario"+idusu).val();
-            resultado=confirm("¿Está seguro de que desea modificar el tipo de usuario?");
-            if(resultado){
-                alert("<?php echo base_url('usuario/modtipo/');?>"+idusu+'/'+nuevoTipo);
-                $.get("<?php echo base_url('usuario/modtipo/');?>"+idusu+'/'+nuevoTipo,null,respuestaModtipo);
-            }
-        }
+        $("#modificar").css('display', 'block');
+    }
 
-        function respuestaModtipo(r) {
-            if (r == "0") {
-                document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Usuario no modificado</span>";
-            }
-            else {
-                document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Usuario modificado con éxito</span>";
-            }
-        }
+    function mostrar() {
+        $("#insertar").show();
+    }
 
-        function show_modusuario(idusu){
-            email = "email_usuario_"+idusu;
-            nick = "nick_usuario_"+idusu;
-            nombre = "name_usuario_"+idusu;
-            ape = "ape_usuario_"+idusu;
-            tipo = "tipo_usuario"+idusu;
-            document.getElementById("form_modif_email").value = document.getElementById(email).innerHTML;
-            document.getElementById("form_modif_nick").value = document.getElementById(nick).innerHTML;
-            document.getElementById("form_modif_nombre").value = document.getElementById(nombre).innerHTML;
-            document.getElementById("form_modif_ape").value = document.getElementById(ape).innerHTML;
-            aux = document.getElementById(tipo).value;
+    function cerrar() {
+        $("#insertar").hide();
+        $("#modificar").hide();
+    }
 
-            if(aux==1){
-                document.getElementById("form_modif_tipo").selectedIndex='1';
-            }else if(aux==2){
-                document.getElementById("form_modif_tipo").selectedIndex='2';
-            }else if(aux==3){
-                document.getElementById("form_modif_tipo").selectedIndex='3';
-            }else{
-                document.getElementById("form_modif_tipo").selectedIndex='0';
-            }
-            
-            document.getElementById("form_modif_id").value = idusu;
-            
-            $("#modificar").css('display','block');
-        }
-
-        function mostrar(){
-            $("#insertar").show();
-        }
-
-        function cerrar(){
-            $("#insertar").hide();
-            $("#modificar").hide();
-        }    
-       
 </script>
