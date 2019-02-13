@@ -57,11 +57,13 @@ class escenas extends CI_Controller {
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["mapa"] = $this->mapa->cargar_mapa();
             $datos["puntos"] = $this->mapa->cargar_puntos();
-            $datos["vista"]="escenas/Escenastable";
+			$datos["vista"]="escenas/Escenastable";
+			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('admin_template', $datos);
         }
         else {
+			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
             $datos["error"] = "La inserci&oacute;n ha fallado";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["mapa"] = $this->mapa->cargar_mapa();
@@ -77,6 +79,7 @@ class escenas extends CI_Controller {
         $resultado = $this->EscenasModel->borrar($cod);
         
         if ($resultado > 1) {
+			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
             $datos["mensaje"] = "Escena borrada correctamente";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["vista"]="escenas/Escenastable";
@@ -86,6 +89,7 @@ class escenas extends CI_Controller {
             $this->load->view('admin_template', $datos);
             }
         else {
+			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
             $datos["error"] = "Error al borrar la escena";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["vista"]="escenas/Escenastable";
@@ -111,6 +115,7 @@ class escenas extends CI_Controller {
         $resultado = $this->EscenasModel->update($cod);
             
         if ($resultado == 0) {
+			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
             $datos["mensaje"] = "La modificaci&oacute;n ha sido un &eacute;xito";
             $datos["tablaEscenas"] = $this->EscenasModel->getAll();
             $datos["vista"]="escenas/Escenastable";
@@ -123,7 +128,8 @@ class escenas extends CI_Controller {
             if ($resultado == 1) $datos["error"] = "Ha fallado la subida y/o escalado de la imagen";
             else if ($resultado == 2) $datos["error"] = "Ha fallado la actualización de la base de datos";
             else $datos["error"] = "Ha fallado la actualización";
-            $datos["tablaEscenas"] = $this->EscenasModel->getAll();
+			$datos["tablaEscenas"] = $this->EscenasModel->getAll();
+			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
             $datos["vista"]="escenas/Escenastable";
             $datos["mapa"] = $this->mapa->cargar_mapa();
             $datos["puntos"] = $this->mapa->cargar_puntos();
