@@ -24,24 +24,28 @@
     }
 </style>
 <div class="container">
-<a name="" id="" class="float-right btn btn-primary m-3" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
-<!-- Tabla usuarios -->
-<table class="table bg-secondary" id='cont'>
-    <thead class='text-center'>
-        <tr id='cabecera'> 
-        <th>Nick</th>
-        <th>Correo</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>Tipo</th>
-        <th>Modificar</th>
-        <th>Borrar</th>
-       </tr> 
-    </thead>
-    <tbody>
+    <div class="row m-4">
+        <div class="col-md-12">
+            <a name="" id="" class="float-right btn btn-primary" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table bg-secondary" id='cont'>
+                <thead class='text-center'>
+                    <tr id='cabecera'>
+                        <th>Nick</th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo</th>
+                        <th>Modificar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
 <?php
 foreach ($tablaUsuarios as $usu) {
-   
    $idusu = $usu["id_usuario"];
     echo"<tr id='usu".$idusu."'>
             <td id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
@@ -99,21 +103,23 @@ foreach ($tablaUsuarios as $usu) {
         </tr>";
 }
 ?>
-    </tbody>
-    <tfoot class="text-center">
-        <tr id='cabecera'> 
-            <th>Nick</th>
-            <th>Correo</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Tipo</th>
-            <th>Modificar</th>
-            <th>Borrar</th>
-       </tr> 
-    </tfoot>
-</table>
+                </tbody>
+                <tfoot class="text-center">
+                    <tr id='cabecera'>
+                        <th>Nick</th>
+                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Tipo</th>
+                        <th>Modificar</th>
+                        <th>Borrar</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 
-<?php
+    <?php
 
 //Capa formulario modificar
 echo "

@@ -86,42 +86,51 @@
     }
 </style>
 <div class="container">
-<a name="" id="" class="float-right btn btn-primary m-3" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Video</a>
-<table class="table display bg-secondary" id='cont'>
-    <thead>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Ver video</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <a name="" id="" class="float-right btn btn-primary" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Video</a>   
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table display bg-secondary" id='cont'>
+                <thead>
+                    <tr id='cabecera'>
+                        <th>ID</th>
+                        <th>URL</th>
+                        <th>Descripcion</th>
+                        <th>Ver video</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
 <?php
-    foreach ($tabla as $re) {
-        $id=$re["id_vid"];
-        echo'<tr id="contenidovideo'.$id.'"><td id="id_vid'.$id.'">' . $re["id_vid"] . '</td>';
-        echo'<td id="url_vid'.$id.'">' . $re["url_vid"] . '</td>';
-        echo'<td id="desc_vid'.$id.'">' . $re["desc_vid"] . '</td>';
-        echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
-        echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
-        echo"<td><a href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
-    }
+                foreach ($tabla as $re) {
+                    $id=$re["id_vid"];
+                    echo'<tr id="contenidovideo'.$id.'"><td id="id_vid'.$id.'">' . $re["id_vid"] . '</td>';
+                    echo'<td id="url_vid'.$id.'">' . $re["url_vid"] . '</td>';
+                    echo'<td id="desc_vid'.$id.'">' . $re["desc_vid"] . '</td>';
+                    echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
+                    echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
+                    echo"<td><a href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+                }
 ?>
-    </tbody>
-    <tfoot>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Ver video</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </tfoot>
-</table>
+                </tbody>
+                <tfoot>
+                    <tr id='cabecera'>
+                        <th>ID</th>
+                        <th>URL</th>
+                        <th>Descripcion</th>
+                        <th>Ver video</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </tfoot>
+            </table>            
+        </div>
+    </div>
+
 <?php
 
     //Capa formulario modificar
