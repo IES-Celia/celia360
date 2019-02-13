@@ -28,6 +28,8 @@
     
 </style>
 <div class="container">
+<div class='row mt-4'>
+    <div class='col-md-12'>
 <?php
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 //formulario para mostrar la tabla imagenes, con sus datos 
@@ -40,14 +42,22 @@ if (isset($error)) {
 //título
 //echo '<h1>IMAGEN</h1>';
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
-//echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>";
+//echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>"
 
-echo "<a  id=''class='btn btn-primary   float-right  mb-2' onclick='mostrar('insertar',0)'  role='button'><i class='fas fa-plus-circle'></i>Insertar Imagen</a>";
+echo "<a  id='insertarImagen'  class='btn btn-primary   float-right  mb-2'  role='button' data-toggle='modal' data-target='#insertarImagen' data-whatever='@getbootstrap'><i class='fas fa-plus-circle'></i>Insertar Imagen</a>";
+echo" <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalInsertar' data-whatever='@getbootstrap'>Open modal for @getbootstrap</button>";
 
+echo "</div>";
+ echo "</div>";
 //he quitado la columna texto de la vista, pero sigue en la bd 
 //cabecera  <th>Texto</th>
 //tabla <td>" . $ima["texto_imagen"] . "</td>
 //****************** PAGINACIÓN CON JQUERY LOLI************\\
+echo"  
+<div class='row '>
+<div class='col-md-12 '>";
+
+
 echo "<table id='cont' class=' table table-hover w-100 bg-secondary'>";
     echo "<thead>";
         echo '<tr id="cabecera">
@@ -100,7 +110,8 @@ echo "</table><br>";
 //FIN DEL LISTADO
 ?>
 </div>
-
+</div>
+</div>
 <?php
 
 //Capa formulario modificar
@@ -147,10 +158,10 @@ $du = $lista_imagenes[0];
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
         <!-- AQUI EMPIEZA LA VISTA -->
         <?php
-        echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>";
+      /*  echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
+        base_url("assets/css/cerrar_icon.png") . "'></img></a>";*/
         ?>
-
+<!--
         <h1>Insertar imagen</h1>
         <form enctype="multipart/form-data" action='<?php echo site_url("imagen/insertar_imagen"); ?>' method="post">
             <input type='hidden' name='accion' value='insertar_imagen'>
@@ -162,8 +173,9 @@ $du = $lista_imagenes[0];
                 placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha"
-                value="<?php echo date("Y-m-d"); ?>" required><br />
+                value="<?php echo date("Y-m-d"); ?>" required><br /> -->
             <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+          <!--
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
             <label for="imagen">Imágenes (puede seleccionar varias):</label>
             <input type="file" name="imagen[]" id="imagen" placeholder="Seleccionar la(s) imagen(es)" required
@@ -172,8 +184,39 @@ $du = $lista_imagenes[0];
             <input type="submit" name="enviar" value="Guardar imagen" />
         </form>
     </div>
+</div>     
+-->
+ 
+            <!-- MODAL BOOTSTRAP-->
+<div class="modal fade" id="modalInsertar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalInsertar">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
 </div>
-
+            <!-- FIN DE MODAL BOOTSTRAP -->
 <script>
     function borrar_imagen(id_imagen) {
         if (confirm("¿Estás seguro?")) {
@@ -197,6 +240,7 @@ $du = $lista_imagenes[0];
 
         }
     }
+ 
 
     function mostrar(capa, id) {
         if (capa == "insertar") {
@@ -248,4 +292,15 @@ $du = $lista_imagenes[0];
             }
         });
     });
+
+    $('#insertarImagen').click('show.bs.modal', function (event) {
+        alert("hola");
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+})
 </script>
