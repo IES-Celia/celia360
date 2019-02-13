@@ -45,7 +45,6 @@ if (isset($error)) {
 //echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>"
 
 echo "<a  id='insertarImagen'  class='btn btn-primary   float-right  mb-2'  role='button' data-toggle='modal' data-target='#insertarImagen' data-whatever='@getbootstrap'><i class='fas fa-plus-circle'></i>Insertar Imagen</a>";
-echo" <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#modalInsertar' data-whatever='@getbootstrap'>Open modal for @getbootstrap</button>";
 
 echo "</div>";
  echo "</div>";
@@ -161,7 +160,7 @@ $du = $lista_imagenes[0];
       /*  echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
         base_url("assets/css/cerrar_icon.png") . "'></img></a>";*/
         ?>
-<!--
+<!-- FORMULARIO INSERTAR IMAGEN
         <h1>Insertar imagen</h1>
         <form enctype="multipart/form-data" action='<?php echo site_url("imagen/insertar_imagen"); ?>' method="post">
             <input type='hidden' name='accion' value='insertar_imagen'>
