@@ -150,7 +150,8 @@ $(document).ready(function() {
 	
 	$("input[name=piso_inicial]").change(function(){
 		$("#mapa_config_mapa > .pisos_config").hide();
-		$("#zona"+$(this).val()).show();
+
+		$("#mapa_config_mapa > #zona"+$(this).val()).show('fast');
 		
 	})
 
