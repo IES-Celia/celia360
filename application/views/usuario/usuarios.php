@@ -74,35 +74,15 @@
 
         document.getElementById("form_modif_id").value = idusu;
 
-        $("#modificar").css('display', 'block');
+        $('#modificar_usuario_modal').modal();
     }
-
-    function mostrar() {
-        $("#insertar").show();
-    }
-
-    function cerrar() {
-        $("#insertar").hide();
-        $("#modificar").hide();
-    }
-
 </script>
-<style>
-    .cerrar {
-        position: relative;
-        top: 15px;
-        left: 44%;
-    }
-
-    .img-cerrar {
-        width: 20px;
-        height: 20px;
-    }
-</style>
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-md-12">
-            <a name="" id="" class="float-right btn btn-primary" href="#" onclick='mostrar()' role="button"><i class='fas fa-plus-circle'></i> Insertar Usuario</a>
+            <button type="button" class="float-right btn btn-primary" data-toggle="modal" data-target="#insertar_usuario_modal">
+                <i class='fas fa-plus-circle'></i> Insertar Usuario
+            </button>
         </div>
     </div>
     <div class="row">
@@ -196,74 +176,109 @@ foreach ($tablaUsuarios as $usu) {
     </div>
 </div><!-- Final del container -->
 
-    <?php
+<!-- 
 
-//Capa formulario modificar
-echo "
-<div id='modificar'>
-    <div id='caja'>
-<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-    
-<h1>Modificar usuario</h1>
-    <form action='".site_url("usuario/modUsuario")."' method='post'>
+                    VENTANAS MODALES
 
-        <label for='username'>Nombre de usuario</label>
-        <input type='text' name='username' id='form_modif_nick' required>
-        <label for='pass'>Password (en blanco para no modificar)</label>
-        <input type='password' name='pass'>
-        <label for='email'>Correo</label>
-        <input type='text' name='email' id='form_modif_email' required>
-        <label for='name'>Nombre</label>
-        <input type='text' name='nombre' id='form_modif_nombre' required>
-        <label for='subname'>Apellidos</label>
-        <input type='text' name='apellidos' id='form_modif_ape' required>
-        <label for='tipo'>Tipo de usuario</label>
-        <select name='tipo' id='form_modif_tipo'>
-                <option value='0' style='color:red'>Pendiente asignación</option>
-                <option value='1'>Admin</option>
-                <option value='2'>Mapero</option>
-                <option value='3'>Bibliotecario</option>
-        </select>
-        <input type='hidden' name='id' id='form_modif_id'>
-        <input type=submit value='Modificar'>
-    </form>
-   
+-->
+
+<!-- Modal modificar -->
+<div class="modal fade" id="modificar_usuario_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar usuario</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url("usuario/modUsuario")."' method='post'>"; ?>
+            <div class="form-group">
+              <label for="username">Nombre de usuario</label>
+              <input type="text" name="username" id="form_modif_nick" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="pass">Password (en blanco para no modificar)</label>
+              <input type="password" name="pass" id="" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo</label>
+              <input type="text" name="email" id="form_modif_email" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" name="nombre" id="form_modif_nombre" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="subname">Apellidos</label>
+              <input type="text" name="apellidos" id="form_modif_ape" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="tipo">Tipo de usuario</label>
+              <select class="form-control" name="tipo" id="form_modif_tipo">
+                    <option value='0' style='color:red'>Pendiente asignación</option>
+                    <option value='1'>Admin</option>
+                    <option value='2'>Mapero</option>
+                    <option value='3'>Bibliotecario</option>
+              </select>
+            </div>
+            <input type='hidden' name='id' id='form_modif_id'>
+            <button type="submit" class="btn btn-primary float-right">Modificar</button>
+        </form>
+      </div>
     </div>
-</div>";
+  </div>
+</div>    
 
-//Capa formulario insertar
-echo"
-<div id='insertar'>
-    <div id='caja'>
-    <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-<h1>Registro de usuarios</h1>
-<form action='".site_url("usuario/processregisterform")."' method='post'>
+<!-- Modal insertar -->
+<div class="modal fade" id="insertar_usuario_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registro de usuarios</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url("usuario/processregisterform")."' method='post'>"; ?>
+            <div class="form-group">
+              <label for="username">Nombre de usuario</label>
+              <input type="text" name="username" id="username" class="form-control" placeholder="" aria-describedby="helpId" required>
+            </div>
+            <div class="form-group">
+              <label for="pass">Password</label>
+              <input type="password" name="pass" id="pass" class="form-control" required placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="email">Correo</label>
+              <input type="text" name="email" id="email" class="form-control" required placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" name="nombre" id="nombre" class="form-control" required placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="subname">Apellidos</label>
+              <input type="text" name="apellidos" id="subname" class="form-control" required placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="tipo">Tipo de usuario</label>
+              <select class="form-control" name="tipo" id="form_modif_tipo">
+                    <option value='0' style='color:red'>Pendiente asignación</option>
+                    <option value='1'>Admin</option>
+                    <option value='2'>Mapero</option>
+                    <option value='3'>Bibliotecario</option>
+              </select>
+            </div>
+            <input type='hidden' name='id' id='form_modif_id'>
+            <button type="submit" class="btn btn-primary float-right">Insertar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>    
 
-    <label for='username'>Nombre de usuario</label>
-    <input type='text' name='username' id='username' required>
-    <label for='pass'>Password</label>
-    <input type='password' id='pass' name='pass' required>
-    <label for='email'>Correo</label>
-    <input type='text' name='email' id='email' required>
-    <label for='name'>Nombre</label>
-    <input type='text' name='nombre' id='nombre' required>
-    <label for='subname'>Apellidos</label>
-    <input type='text' name='subname' id='subname' required>
-        <label for='tipo'>Tipo de usuario</label>
-        <select name='tipo' id='form_modif_tipo'>
-                <option value='0' style='color:red'>Pendiente asignación</option>
-                <option value='1'>Admin</option>
-                <option value='2'>Mapero</option>
-                <option value='3'>Bibliotecario</option>
-        </select>
-    <input type='submit'>
-    
-</form>
-    </div>    
-</div>";
-
-?>
 
 
