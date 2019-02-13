@@ -252,14 +252,12 @@ $(document).ready(function() {
 
 	$(document).ready(function(){
 		$("#btn-show-pan-sec").click(function(){
-			if ($('.puntos.tienePanoramas').css('background-color') == 'rgb(223, 105, 26)'){
-				$('.puntos.tienePanoramas').css('color','gray');
+			if ($('.puntos.tienePanoramas').css('background-color') == 'rgb(189, 89, 22)'){
 				$('.puntos.tienePanoramas').css('background','red');
-				$(this).css('background-color','rgb(223, 105, 90);');
+				$(this).css('background-color','red');
 			}else{
 				$('.puntos.tienePanoramas').css('background','white');
-				$('.puntos.tienePanoramas').css('color','rgb(0, 0, 0)');
-				$(this).css('background-color','rgba(0,0,0,0.2)');
+				$(this).css('background-color','rgb(189, 89, 22)');
 			}
 		});
 	});
