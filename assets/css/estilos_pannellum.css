@@ -627,8 +627,8 @@ display: block;
   z-index: 5;
 }
 .modal {
-  visibility: hidden;
-  z-index: 2;
+  /*visibility: hidden;
+  z-index: 2;*/
 }
 /* contenido */
 .modal__contents {

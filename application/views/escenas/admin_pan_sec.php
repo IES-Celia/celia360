@@ -16,46 +16,6 @@
 	}
 
 </style>
-<h1 class="blanco">Panel de administración Imágenes Secundarias</h1>
-<a class="insert" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
-
-
-<table id="cont" class="display" align="center">
-	<thead>
-	<tr id="cabecera">
-		<th>Título</th>
-		<th>Fecha</th>
-		<th>Imagen</th>
-		<th>Modificar</th>
-		<th>Eliminar</th>
-	</tr>
-	</thead>
-	<tfoot>
-		<tr id="cabecera">
-			<th>Título</th>
-			<th>Fecha</th>
-			<th>Imagen</th>
-			<th>Modificar</th>
-			<th>Eliminar</th>
-		</tr>
-	</tfoot>
-	<tbody>
-	<?php 
-		if(isset($tabla_escena_secundaria)){
-		for($i=0;$i<count($tabla_escena_secundaria);$i++){
-			$info = $tabla_escena_secundaria[$i];
-			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
-				<td class='titulo-img'>".$info['titulo']."</td>
-				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
-				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img'><br><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><button class='admin'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin'>Hotspots</button></a></td>
-				<td><i class='fa fa-edit edit' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
-				<td><i class='fa fa-trash delete del' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
-			</tr>";
-		}
-	}
-	?>
-	</tbody>
-</table>
 
 <div id='insertar'>
     <div id='caja'>
@@ -84,28 +44,69 @@
     </div>
 </div>
 
-<div id='modificar'>
-    <div id='caja'>
-        <?php
-        echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>";
-        ?>
-        <h1>Modificar Imagen</h1>
-        <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
-        <form enctype="multipart/form-data"  action='<?php echo site_url("Panoramas_Secundarios/updatePanorama"); ?>' method='post'>
-            <?php
-			echo "<input type='hidden' name='id_escena_principal' id='id_escena_principal' value=''><br/>";
-            echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
-            echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
-            //echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
 
-            echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
-            echo "<br>Fecha:<input type='date' id='fecha_modificar' name='fecha'  value=''><br/>";
-            ?>   
-            <input type='submit' name ='actualizar' value = 'Aceptar'>
-        </form>
-    </div>
+
+<!-- NUEVOOOOOOO -->
+
+<div class="container">
+ <div class="row">
+ 	<div class="col-12">
+ 		<h1 class="text-center">Panel de administración Imágenes Secundarias</h1>
+	 </div>
+ </div>
+ <div class="row">
+ <div class="col-2 offset-10 mt-3">
+ 	<a class="btn btn-primary" onclick="mostrar('insertar',0)"><i class='fas fa-plus-circle'></i> Nueva imagen</a>
+ </div>
 </div>
+<div class="row">
+ 
+ 	<div class="col-12">
+ 		<table class="table table-hover" id="cont">
+		 <thead>
+	<tr id="cabecera">
+		<th>Título</th>
+		<th>Fecha</th>
+		<th>Imagen</th>
+		<th>Modificar</th>
+		<th>Eliminar</th>
+	</tr>
+	</thead>
+	<tfoot>
+		<tr id="cabecera">
+			<th>Título</th>
+			<th>Fecha</th>
+			<th>Imagen</th>
+			<th>Modificar</th>
+			<th>Eliminar</th>
+		</tr>
+	</tfoot>
+	<tbody>
+	<?php 
+		if(isset($tabla_escena_secundaria)){
+		for($i=0;$i<count($tabla_escena_secundaria);$i++){
+			$info = $tabla_escena_secundaria[$i];
+			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
+				<td class='titulo-img'>".$info['titulo']."</td>
+				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
+				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img img-fluid d-block mb-3'><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><div class='card'><div class='card-body text-center'>
+				
+				<button class='admin btn btn-primary mr-3'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary'>Hotspots</button></a>
+				
+				</div></div></td>
+				<td><i class='fa fa-edit edit text-primary' data-toggle='modal' data-target='#exampleModal' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
+				<td><i class='fa fa-trash delete del text-primary' id='".$info['id_panorama_secundario']."' style='font-size:30px;'></i></td>
+			</tr>";
+		}
+	}
+	?>
+	</tbody>
+</table>
+	 </div>
+ </div>
+</div>
+
+
 
 <script>
 	 function borrar_imagen(id_imagen) {
@@ -327,7 +328,6 @@
 
  $(document).ready(function(){
 	 $(".delete").click(function(){
-
 		respuesta = confirm("¿Estás seguro?");
 		if(respuesta == true){
 		fila = $(this).parent().parent();
@@ -348,4 +348,33 @@
 </script>
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal de actualización</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form enctype="multipart/form-data"  action='<?php echo site_url("Panoramas_Secundarios/updatePanorama"); ?>' method='post'>
+            <?php
+			echo "<input type='hidden' name='id_escena_principal' id='id_escena_principal' value=''><br/>";
+            echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
+			   echo "<div class='form-group'>
+			   T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value='' class='form-control'>
+			   </div>";
+            //echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
+			echo "<div class='form-group'>
+			Fecha:<input type='date' class='form-control' id='fecha_modificar' name='fecha'  value=''>
+			</div>";
+            echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
+            ?>   
+            <input type='submit' class='btn btn-success' name ='actualizar' value = 'Actualizar'>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -151,4 +151,20 @@
         margin-bottom: -1px;
         background-color: #fff;
         border: 1px solid rgba(0,0,0,.125);
-    }
+	}
+	
+
+	/* MODALES */
+
+	a.cerrar{
+		position: relative;
+		left:90%;
+	}
+
+	div#modificar, div#insertar{
+		display: none;
+		position: absolute;
+		width: 100%;
+		top: 25%;
+		z-index: 100;
+	}

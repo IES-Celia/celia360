@@ -33,7 +33,7 @@
    <!-- <link rel="stylesheet" href="<?php //echo base_url("assets/css/jquery.dataTables.min.css"); ?>"> -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
     
-    <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
+    
    <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
 	<!--FIN LOLI-->
 
@@ -45,7 +45,11 @@
 	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
 	<!-- ./FIN QUILL Library -->
-	
+
+	<!-- style.css -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
+
+
 	<?php 
             if(isset($mapa)){
                 echo "<script>";

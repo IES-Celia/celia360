@@ -134,23 +134,19 @@ function respuesta(r) {
 </div>
 <div class="col-md-4">
 	<div class="card">
-		<div class="card-body">
+		<div class="card-body text-center">
 		<?php
  if(count($mapa)==0){
      ?>
-    <div class="botones_mapa">
         <button class="botonmapa" id="btn-admin-mapa">Añadir mapa</button>
-    </div>
      <?php
  }else{
     ?>
-    <div class="botones_mapa">
         <button class="botonmapa btn btn-primary m-3 d-block" id="btn-subir-piso">Subir zona</button>
         <button class="botonmapa btn btn-primary m-3 d-block" id="btn-bajar-piso">Bajar zona</button>
         <button class="botonmapa btn btn-primary m-3 d-block" id="btn-admin-mapa">Admin mapa</button>
 		<button class="botonmapa btn btn-primary m-3 d-block" id="btn-admin-selector-zonas">Admin selector de zonas</button>
 		<button class="botonmapa btn btn-primary m-3 d-block" id="btn-show-pan-sec">Ver panoramas asociados</button>
-    </div>
      <?php
  }
 
@@ -252,12 +248,13 @@ $(document).ready(function() {
 
 	$(document).ready(function(){
 		$("#btn-show-pan-sec").click(function(){
-			if ($('.puntos.tienePanoramas').css('background-color') == 'rgb(189, 89, 22)'){
+			if ($('.puntos.tienePanoramas').css('background-color') == 'rgb(255, 255, 255)'){
 				$('.puntos.tienePanoramas').css('background','red');
-				$(this).css('background-color','red');
+				$(this).css('background-color','#c38107');
 			}else{
 				$('.puntos.tienePanoramas').css('background','white');
-				$(this).css('background-color','rgb(189, 89, 22)');
+				$('.puntos.tienePanoramas').css('color','rgb(0, 0, 0)');
+				$(this).css('background-color','#DF691A');
 			}
 		});
 	});
