@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
 
-
     <!-- Javascript de pannellum framework -->
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
