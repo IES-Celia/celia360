@@ -71,7 +71,6 @@ $(document).ready(function() {
 	 * Marcar punto de destino en creación hotspot de tipo salto.
 	 */
 	$(".puntos").click(function() {
-
 		if($(this).parent().hasClass("pisos_hotspots")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
