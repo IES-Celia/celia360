@@ -71,11 +71,11 @@ $(document).ready(function() {
 	 * Marcar punto de destino en creación hotspot de tipo salto.
 	 */
 	$(".puntos").click(function() {
-		
+
 		if($(this).parent().hasClass("pisos_hotspots")){
 			$(".puntos").css("background", "white");
 			$(this).css("background", "yellow");
-			$("#caja4 > form > input[name=sceneId]").val($(this).attr("escena"));
+			$("#caja4 > form > #mapa_escena_hotspot > .row > .col-md-4 > .card > .card-body > div.form-group > input[name=sceneId]").val($(this).attr("escena"));
 			$("#puntoEscena input[name=clickHandlerArgs]").val($(this).attr("id"));
 		} else if ($(this).parent().hasClass("pisos_pd")){
 			$(".puntos").css("background", "white");

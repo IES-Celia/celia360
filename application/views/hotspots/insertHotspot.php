@@ -14,57 +14,48 @@
 */
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
-<html>
-    <head>
-        <title> Insert Hotspot </title>
-        <meta http-equiv="
-            Este archivo es parte de la aplicación web Celia360. 
 
-            Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
-            bajo los términos de la GNU General Public License tal y como está publicada por
-            la Free Software Foundation en su versión 3.
-
-            Celia 360 se distribuye con el propósito de resultar útil,
-            pero SIN NINGUNA GARANTÍA de ningún tipo. 
-            Véase la GNU General Public License para más detalles.
-
-            Puede obtener una copia de la licencia en http://www.gnu.org/licenses.">
-    </head>
-    <style>
-        .panel-informacion-texto {
-            font-size:0.65em;
-            font-weight: lighter;
-		}
-		.blanco{
-			color:white;
-		}
-    </style>
-<body>
-<h1 class="blanco"> Formulario para insertar Hotspots</h1>
-    <div id="botones">
-    Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:<br><br>
-        
-    <div id="botonesderecha">
-	<?php
+<div class="container mt-2">
+	<div class="row">
+		<div class="col-md-12 col-xs-12">
+			<h1 class="text-center">Formulario para insertar Hotspots</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		<div class="card">
+			<div class="card-body">
+			<p>Un hotspot es un punto de una escena en el que al hacer click se activará una función, el tipo del hotspot determinará la acción resulante del click, las tipos de hotspot son los siguientes:</p>
+			</div>
+		</div>
+		
+		<div class="card mb-2">
+			<div class="card-body">
+			<div class="col-md-12 text-center">
+			<?php
 		if($tabla == 1){
-			echo '<button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
-			<button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
-			<button class="botondentromapa" id="btnInsertarVideo">Punto video</button>';
+			echo '<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarPanel">Punto de panel informativo</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarAudio">Punto audiodescrito</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarVideo">Punto video</button>';
 		}else{
-			echo '<button class="botondentromapa" id="btnInsertarEscena" >Punto de salto a otra escena</button>
-			<button class="botondentromapa" id="btnInsertarPanel">Punto de panel informativo</button>
-			<button class="botondentromapa" id="btnInsertarAudio">Punto audiodescrito</button>
-			<button class="botondentromapa" id="btnInsertarVideo">Punto video</button>
-			<button class="botondentromapa" id="btnInsertarEscaleras">Conector entre planos (escaleras)</button><br>
-			<button class="botondentromapa" id="btnModificarPitchYaw">Punto hacia donde estará dirigida la cámara al entrar en esta fotografía</button>
-			<button class="botondentromapa" id="btnHibrido">Hibrido entre escaleras y ascensor</button>
-			<br><br>';
+			echo '<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarEscena" >Salto a otra escena</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarPanel">Panel informativo</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarAudio">Punto audiodescrito</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarVideo">Punto video</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarEscaleras">Ascensor</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnModificarPitchYaw">Pitch Yaw</button>
+			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnHibrido">Super salto</button>
+			';
 			
 		}
 	?>
-    </div>    
-    </div>
-<div id="formularios">
+	</div>
+			</div>
+		</div>
+		</div>
+		<div id="cosas" class="col-md-12 col-xs-12">
+		
+		<div id="formularios">
     <div id="puntoEscena"> 
     <div id="caja4">
         <?php
@@ -77,16 +68,21 @@
             <input type='hidden' name='clickHandlerFunc' value='puntos' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
             
-            Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
+			<div class="card mt-2 mb-2">
+				<div class="card-body">
+					<p class="text-center"> Selecciona una escena (en rojo donde estás, amarillo donde se saltará)</p>
+				</div>
+			</div>
+           
             <div id="mapa_escena_hotspot" >
-            
-        
-            <?php
+				<div class="row">
+					<div class="col-md-8 col-xs-12">
+					<?php
                 $indice = $this->session->piso;
                 
                     
                     echo "<div id='zona".$indice."' class='pisos pisos_hotspots'>";
-                    echo "<img src='".base_url($mapa[$indice]['url_img'])."' style='width:100%;'>";
+                    echo "<img src='".base_url($mapa[$indice]['url_img'])."' class='img img-fluid'>";
                     foreach ($puntos as $punto) {
                         if($punto['piso']==$indice){
                             if($punto['id_escena'] == $id_scene){
@@ -99,19 +95,41 @@
                     echo "</div>";
                    
             ?>
-            </div>
-                
-            <br>
-            <input type='text' name='sceneId' required>
+					</div>
+					<div class="col-md-4 col-xs-12">
+						<div class="card">
+							<div class="card-body">
+							<div class="form-group">
+						<label for="scenesalto">Salto destino</label>
+						<input type='text' name='sceneId' placeholder="Selecciona un punto en el mapa" required class="form-control">
+					</div>
+
+					<div class="form-group">
+						<input type='submit' class="button btn btn-success">
+					</div>
+							</div>
+						</div>
+					
+					
+            		
+					</div>
+				</div>
+        
             
-            <input type='submit' class="button">
+            </div>
+            
+           
         </form>
             </div>
     </div>
 
     <div id="puntoPanel"> 
     <div id="caja3">
-        <?php
+			<div class="row">
+			<div class="col-md-12">
+				<div class="card mt-2">
+					<div class="card-body">
+					<?php
         echo "<form enctype='multipart/form-data' action='".site_url("hotspots/process_insert_panel/".$tabla)."' method='post'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'> 
 			<?php  if(isset($escena_principal))
@@ -123,12 +141,32 @@
             <input type='hidden' name='tipo' value='info' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='panelInformacion' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' value='<?php echo $id_hotspot ?>' readonly='readonly'> 
-            <p class="blanco">Titulo del panel:</p> <input class="input-text" type='text' name='titulo' required><br> 
-            <p class="blanco">Texto del panel:</p>  <div id="editor"></div><br>
-            <label  class="blanco" style='text-justify: auto;'>seleccionar PDF (OPCIONAL)<br><span class='panel-informacion-texto'>Permite visionar el documento PDF en el panel</span></label>
-            <input type="file" name="documento" placeholder="Seleccionar la imagen"><br>
-            <input type="hidden" name="texto" id="descripcion_texto">
+            <div class="form-group">
+				<label for="tituloPanel">Título del panel</label>
+				<input class="input-text form-control" type='text' name='titulo' required>
+			</div>
+			<div class="form-group">
+					<label for="descPanel">Texto del panel</label>
+					<div id="editor"></div>
+			</div>
+			
+			<input type="hidden" name="texto" id="descripcion_texto">
             <input type="hidden" name="MAX_FILE_SIZE" value="200000000000" />
+			<div class="card">
+				<div class="card-body">
+					<div class="form-group">
+					<label  class="blanco" style='text-justify: auto;'>seleccionar PDF (OPCIONAL)<br><span class='panel-informacion-texto'>Permite visionar el documento PDF en el panel</span></label>
+					<input type="file" name="documento" class='form-control-file' placeholder="Seleccionar la imagen">
+					</div>
+					
+					<div class="form-group">
+					<input type='submit' class="btn btn-success button">
+					</div>
+				</div>
+				
+			</div>
+            
+            
             <!--
             <select name="documentoPanel">
             <option value="ninguno">ninguno</option>
@@ -142,8 +180,11 @@
                 ?>
             </select>
             <br><br>-->
-            <input type='submit' class="button">
+            
         </form>
+					</div>
+				</div>
+			
     </div>
 	</div>   
 	
@@ -179,12 +220,18 @@
         });
 
       </script>
+			</div>
+			</div>
+        
     
     <!-- Seccion hotspot de tipo audio -->
     <div id="puntoAudio"> 
     <div id="caja3">
-        <!-- Formulario para insertar un hotspot de tipo audio -->
-        <?php
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card mt-2">
+					<div class="card-body">
+					<?php
         echo "<form action='".   site_url("hotspots/process_insert_audio/".$tabla)   ."' method='get'>"; ?>
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
@@ -192,16 +239,34 @@
             <input type='hidden' name='cssClass' value='custom-hotspot-audio' readonly="readonly">
             <input type='hidden' name='tipo' value='info' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='musica' readonly="readonly">
-            ID del audio que se reproducirá al hacer click: <input type='text' name='clickHandlerArgs' id='idAudioForm' required><br> 
+			
+			<div class="form-group">
+				<label for="audio">Selecciona el audio en la tabla</label>
+				<input type='text' class="form-control" name='clickHandlerArgs' id='idAudioForm' required>
+			</div>
+
+			<div class="form-group">
+				<input type='submit' class="btn btn-success button">
+			</div>
+
+			
 
 
-            <input type='submit' class="button">
+            
         </form>
+					</div>
+				</div>
+			
     </div>
         
-        <div id="listaAudios">
+        
+    </div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+				<div id="listaAudios">
             <?php 
-                echo"<table class='tabla_audio' class='display' id='cont'>
+                echo"<table class='tabla_audio table table-hover' id='cont'>
                         <thead>
                             <tr id='cabecera'>
                             <th>ID</th>
@@ -243,28 +308,51 @@
                 echo "</table>";
             ?>
         </div>
-    </div>
+				</div>
+			</div>
+		</div>
+        <!-- Formulario para insertar un hotspot de tipo audio -->
+        
     <!-- FIN sección hotspot de tipo audio -->
     
     <div id="puntoVideo">
     <div id="caja3">
-        <?php
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card mt-2">
+					<div class="card-body">
+					<?php
         echo "<form action='".   site_url("hotspots/process_insert_video/").$tabla   ."' method='get'>"; ?>
 			<input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch' value='<?php echo $pitch ?>'>
              <input type='hidden' name='yaw' value='<?php echo $yaw ?>'>
             <input type='hidden' name='cssClass' value='custom-hotspot-video' readonly="readonly"> 
             <input type='hidden' name='tipo' value='info' readonly="readonly">
-            <input type='hidden' name='clickHandlerFunc' value='video' readonly="readonly"><br> 
-            ID del video que se reproducirá: <input type='text' name='clickHandlerArgs' id='idVideoForm' required><br> 
+            <input type='hidden' name='clickHandlerFunc' value='video' readonly="readonly">
+			
+			<div class="form-group">
+				<label for="video">Selecciona un vídeo en la tabla</label>
+				<input type='text' class="form-control" name='clickHandlerArgs' id='idVideoForm' required>
+			</div>
 
-            <input type='submit' class="button">
+			<div class="form-group">
+				<input type='submit' class="btn btn-success button">
+			</div>
+
+			 
+
+            
         </form>
-    </div>
-        
-        <div id="listaVideos">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+			<div id="listaVideos">
             <?php
-                echo"<table class='tabla_audio' class='display' id='cont'>
+                echo"<table class='tabla_video table table-hover' id='video'>
                         <thead>
                             <tr id='cabecera'>
                             <th>ID</th>
@@ -300,21 +388,38 @@
                 echo "</table>";
             ?>
         </div>
+			</div>
+		</div>
+        
+    </div>
+        
+        
     </div>
 
     <div id="puntoEscaleras">
     <div id="caja3">
-        <?php
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body text-center">
+						<p class="text-center"> Esto creará un punto de tipo escalera, el cual conecta las distintas zonas</p>
+					
+						<?php
         echo "<form action='".   site_url("hotspots/process_insert_escaleras")   ."' method='get'>"; ?>
-            Esto creará un punto de tipo escalera, el cual conecta las distintas zonas
-            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'><br> 
-            <input type='hidden' name='pitch' value=' <?php echo $pitch ?> '><br> 
-            <input type='hidden' name='yaw' value=' <?php echo $yaw ?> '><br> 
-            <input type='hidden' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"><br> 
-            <input type='hidden' name='tipo' value='info' readonly="readonly"> <br>
-            <input type='hidden' name='clickHandlerFunc' value='escaleras' readonly="readonly"><br> 
-            <input type='submit' class="button">
+           
+            <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'> 
+            <input type='hidden' name='pitch' value=' <?php echo $pitch ?> '>
+            <input type='hidden' name='yaw' value=' <?php echo $yaw ?> '>
+            <input type='hidden' name='cssClass' value='custom-hotspot-escaleras' readonly="readonly"> 
+            <input type='hidden' name='tipo' value='info' readonly="readonly">
+            <input type='hidden' name='clickHandlerFunc' value='escaleras' readonly="readonly"> 
+            <input type='submit' class="button btn btn-success">
         </form>
+					</div>
+				</div>
+			</div>
+		</div>
+       
     </div>
 	</div>
 
@@ -349,17 +454,24 @@
             <input type='hidden' name='tipo' value='scene' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntosEspec' readonly="readonly">
             <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
-            
-            Selecciona una escena (en rojo donde estás, amarillo donde se saltará): <br>
+			
+			<div class="card mt-2">
+				<div class="card-body">
+					<p class="text-center">Selecciona una escena (en rojo donde estás, amarillo donde se saltará)</p>
+				</div>
+			</div>
+             
             <div id="mapa_escena_hotspot" >
-<?php
+			<div class="row mt-2">
+			<div class="col-md-8 col-xs-12">
+<?php			
             $numeroPlanta= count($mapa);
                
            for($i=0;$i<=$numeroPlanta-1;$i++){
 
-                    echo "<div id='planta".$i."' class=' pisos_hotspots' style='display :none;'>";
+                    echo "<div id='planta".$i."' class='pisos_hotspots' style='display :none;'>";
 
-                    echo "<img src='".base_url($mapa[$i]['url_img'])."' style='width:100%;'>";
+                    echo "<img src='".base_url($mapa[$i]['url_img'])."' class='img img-fluid'>";
                     foreach ($puntos as $punto) {
 
                         $indice = $numeroPlanta - $i;
@@ -381,81 +493,53 @@
                 echo" </div>";
                 
             ?>
-           
-
-            <br>
-            <input type='text' name='sceneId' required><br>
-            <input  id="plantaDestino" type='text' name='plantaDestino' required>
-           
-            <input type='submit' class="button">
+			 <div class="col-md-4 col-xs-12">
+				 <div class="card">
+					 <div class="card-body">
+					 <div class="form-group">
+					<label for="escene">Salto destino</label>
+					<input type='text' name='sceneId' placeholder="Selecciona un punto en el mapa" required class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="actual">Zona actual</label>
+					<input  id="plantaDestino" type='text' name='plantaDestino' class="form-control" required readonly>
+				</div>
+				<div class="form-group">
+				<input type='submit' class="button btn btn-success">
+				</div>
+					 </div>
+				 </div>
+				
+			</div>
+			</div>
+		    
         </form>
             </div>
+			</div>
 
 <!-- FIN hibrido entre escaleras y dalto de escena -->
 
-    
-
-    
 </div>
+</div>
+		</div>
+	</div>
+</div>
+
+    <div id="botones">
+    
+        
+    <div id="botonesderecha">
+	
+    </div>    
+    </div>
+
+
 
     <script>
       $( document).ready(function() {
-        $("#formularios").children().hide();
-          
-        $("#btnInsertarEscena").click(function() {
-            $("#formularios").children().hide();
-            $("#puntoEscena").show();
-        });
-          
-        $("#btnInsertarPanel").click(function() {
-            $("#formularios").children().hide();
-            $("#puntoPanel").show();
-        });
-          
-        $("#btnInsertarAudio").click(function() {
-            $("#formularios").children().hide();
-            $("#puntoAudio").show();
-        });
 
-         $("#btnInsertarVideo").click(function() {
-            $("#formularios").children().hide();
-            $("#puntoVideo").show();
-        });
-          
-        $("#btnInsertarEscaleras").click(function() {
-            $("#formularios").children().hide();
-            $("#puntoEscaleras").show();
-        });
-          
-        $("#btnModificarPitchYaw").click(function(){
-          var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
-            if(resp)
-                location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
-		});
-		
-		$("#btnHibrido").click(function() {
-            $("#formularios").children().hide();
-            $("#puntoHibrido").show();
-			$(".plantas").click(function(){
-            clase = document.getElementsByClassName("plantas"); 
-            numeroPlanta = clase.length; 
-            indice = $(this).attr("value");
-            texto = $(this).text();
-          
-                $("#puntoHibrido").hide();
-                $("#puntoHibridoMapa").show();
-                indice = numeroPlanta-indice;
-                indice = indice-1;
-               for(i=0;i<numeroPlanta;i++){
-                    $("#planta"+i).hide();
-                }
-                $("#planta"+indice).show();
-                $("#plantaDestino").val(texto);
-
-        });
-
-       // Activamos la paginación y la búsqueda en la tabla de audios/videos
-       $(".tabla_audio,.tabla_video").dataTable({
+			// Activamos la paginación y la búsqueda en la tabla de audios/videos
+			$("#cont, #video").dataTable({
             "language": {
                 "lengthMenu": "Mostrar _MENU_ registros por página",
                 "zeroRecords": "No se encontraron resultados en su búsqueda",
@@ -473,6 +557,68 @@
             }
             });
 
+
+        $("#formularios").children().hide();
+          
+        $("#btnInsertarEscena").click(function() {
+			$('input[name="sceneId"]').val('');
+            $("#formularios").children().hide();
+            $("#puntoEscena").show();
+        });
+          
+        $("#btnInsertarPanel").click(function() {
+            $("#formularios").children().hide();
+            $("#puntoPanel").show();
+        });
+          
+        $("#btnInsertarAudio").click(function() {
+            $("#formularios").children().hide();
+            $("#puntoAudio").show();
+        });
+
+         $("#btnInsertarVideo").click(function() {
+            $("#formularios").children().hide();
+            $("#puntoVideo").show();
+
+        });
+          
+        $("#btnInsertarEscaleras").click(function() {
+            $("#formularios").children().hide();
+            $("#puntoEscaleras").show();
+        });
+          
+        $("#btnModificarPitchYaw").click(function(){
+          var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
+            if(resp)
+                location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
+		});
+		
+		$("#btnHibrido").click(function() {
+			$('input[name="sceneId"]').val('');
+			clase = document.getElementsByClassName("plantas"); 
+            numeroPlanta = clase.length; 
+            $("#formularios").children().hide();
+           $("#puntoHibrido").show();
+			$(".plantas").click(function(){
+            
+            indice = $(this).attr("value");
+            texto = $(this).text();
+          
+                
+				
+               $("#puntoHibridoMapa").show();
+                indice = numeroPlanta-indice;
+                indice = indice-1;
+               for(i=0;i<numeroPlanta;i++){
+                    $("#planta"+i).hide();
+                }
+				
+                $("#planta"+indice).show();
+				$('#puntoHibrido').hide();
+                $("#plantaDestino").val(texto);
+
+        });
+
       }); // fin document.ready
 		 
 	});
@@ -484,7 +630,8 @@
         function seleccionarVideo(idVideo) {
             document.getElementById("idVideoForm").value = idVideo;
         }
-         
-         
-         
+           
     </script> 
+
+
+

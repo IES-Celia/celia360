@@ -2,7 +2,7 @@
         #panorama{
             height: auto;
         }
-    </style>";
+    </style>
     
     
   

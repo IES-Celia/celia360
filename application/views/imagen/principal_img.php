@@ -44,7 +44,7 @@ if (isset($error)) {
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
 //echo"<a class='insert' onclick='mostrar(\"insertar\",0)' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>"
 
-echo "<a  id='insertarImagen'  class='btn btn-primary   float-right  mb-2'  role='button' data-toggle='modal' data-target='#insertarImagen' data-whatever='@getbootstrap'><i class='fas fa-plus-circle'></i>Insertar Imagen</a>";
+echo "<a  id='insertarImagen'  class='btn btn-primary   float-right  mb-2'  role='button' data-toggle='modal' data-target='#modalInsertar' onclick='mostrar(\"insertar\",0)'><i class='fas fa-plus-circle'></i>Insertar Imagen</a>";
 
 echo "</div>";
  echo "</div>";
@@ -99,7 +99,7 @@ echo "<table id='cont' class=' table table-hover w-100 bg-secondary'>";
                 base_url('assets/imagenes/imagenes-hotspots/' . $nombre_archivo) . "\"></a></td>";
                 echo "<td class='fecha-img'>" . $ima["fecha"] . "</td>";
                 
-                echo "<td class='text-center'><a class='text-primary' role='button' onclick='mostrar(\"modificar\", " . $fila . ")'><i class='fa fa-edit  ' style='font-size:30px;'></i></a></td>";
+                echo "<td class='text-center'><a class='text-primary' role='button' onclick='mostrar(\"modificar\", " . $fila . ")' data-toggle='modal' data-target='#modalModificar'><i class='fa fa-edit  ' style='font-size:30px;'></i></a></td>";
  // echo "<td><a class='delete' href='#' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td>";
                 echo "<td class='text-center'><a  class='text-primary delete'  role='button' onclick='borrar_imagen($fila)'><i class='fa fa-trash' style='font-size:30px;'></i></a></td>";
             echo "</tr>";
@@ -129,11 +129,13 @@ $du = $lista_imagenes[0];
         <?php
         echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
         base_url("assets/css/cerrar_icon.png") . "'></img></a>";
-        ?>
+       
+       ?>
         <h1>Modificar Imagen</h1>
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
         <form enctype="multipart/form-data" action='<?php echo site_url("imagen/actualizar_imagen"); ?>' method='post'>
             <?php
+            /*
             echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
             echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
             //echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
@@ -144,9 +146,47 @@ $du = $lista_imagenes[0];
             echo "<input type='hidden' name='url_imagen' id='url_modificar' value=''>";
             echo "<img id='foto_modificar' width='100px' src=''><br><p class='parrafo_modificar'></p><br>";
             echo "<div id='nombre-archivo-imagen'></div>";
-            ?>
+           */ ?>
             <input type='submit' name='actualizar' value='Aceptar'>
         </form>
+        <!-- MODAL MODIFICAR -->
+<div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Imagen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form enctype="multipart/form-data" action='<?php // echo site_url("imagen/insertar_imagen"); ?>' method="post">
+        <div class=form-group>
+        <input type='hidden' name='id_imagen' id='id_modificar' value=''>
+        <label for='titulo'>Título:</label>
+        <input type='text' class='form-control' id='titulo_modificar' name='titulo_imagen' value=''>
+        <label for='descripcion'> Descripción: </label>
+        <input type='text' class='form-control' id='texto_imagen_modificar' name='texto_imagen' value=''>
+        <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+        <label for='fecha'> Fecha: </label>
+        <input type='date' class='form-control' id='fecha_modificar' name='fecha'  value=''>
+        <label for='imagen'>Imagen:</label>
+        <input type='file' class='form-control-file' id='imagen' name='imagen'value=''>
+        <input type='hidden' name='url_imagen' id='url_modificar' value=''>
+            <div class='row mx-auto mt-4'>
+                <div class='col-md-8 mx-auto'>
+                    <img id='foto_modificar' class='' width='100%' src=''><br><p class='parrafo_modificar'></p>
+                    <div id='nombre-archivo-imagen' class='text-center'></div>
+                </div>
+            </div>
+            <input type='submit' name='actualizar' class='btn-success float-right' value='Aceptar'>
+
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- FIN MODAL MODIFICAR-->
     </div>
 </div>
 
@@ -160,62 +200,51 @@ $du = $lista_imagenes[0];
       /*  echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
         base_url("assets/css/cerrar_icon.png") . "'></img></a>";*/
         ?>
-<!-- FORMULARIO INSERTAR IMAGEN
-        <h1>Insertar imagen</h1>
-        <form enctype="multipart/form-data" action='<?php echo site_url("imagen/insertar_imagen"); ?>' method="post">
-            <input type='hidden' name='accion' value='insertar_imagen'>
-            <input id="id_imagen" name='id_imagen' type="hidden"><br />
-            <label id="label_titulo" for="titulo">T&iacute;tulo:</label>
-            <input type="text" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
-            <label for="texto_imagen">Descripción:</label>
-            <textarea id="texto_imagen" name='texto_imagen'
-                placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha"
-                value="<?php echo date("Y-m-d"); ?>" required><br /> -->
-            <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-          <!--
-            <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-            <label for="imagen">Imágenes (puede seleccionar varias):</label>
-            <input type="file" name="imagen[]" id="imagen" placeholder="Seleccionar la(s) imagen(es)" required
-                multiple><br />
-            <input type="hidden" name="accion" value="insertar_imagen"><br>
-            <input type="submit" name="enviar" value="Guardar imagen" />
-        </form>
-    </div>
-</div>     
--->
- 
-            <!-- MODAL BOOTSTRAP-->
-<div class="modal fade" id="modalInsertar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+ <!-- MODAL INSERCION -->
+ <div class="modal fade" id="modalInsertar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalInsertar">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Insertar Imagen</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
+      <form enctype="multipart/form-data" action='<?php // echo site_url("imagen/insertar_imagen"); ?>' method="post">
+      <div class=form-group>
+      <input type='hidden' name='accion' value='insertar_imagen'>
+            <input id="id_imagen" name='id_imagen' type="hidden">
+            <label id="label_titulo" for="titulo">T&iacute;tulo:</label>
+            <input type="text" class='form-control' name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
+            <label for="texto_imagen">Descripción:</label>
+           
+            <textarea id="texto_imagen" name='texto_imagen'  class='form-control'
+                placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea>
+            <label for="fecha">Fecha:</label>
+            <input type="date" class='form-control' id="fecha" name='fecha' placeholder="Introduzca la fecha"
+                value="<?php //echo date("Y-m-d"); ?>" required><br /> 
+            <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+         
+            <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+            <label for="imagen">Imágenes (puede seleccionar varias):</label>
+            <input type="file"  class='form-control-file'name="imagen[]" id="imagen" placeholder="Seleccionar la(s) imagen(es)" required
+                multiple><br />
+            <input type="hidden"name="accion" value="insertar_imagen"><br>
+            <input type="submit" class='btn btn-success float-right' name="enviar" value="Guardar imagen" />
         </form>
+       
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
+     
     </div>
   </div>
 </div>
-            <!-- FIN DE MODAL BOOTSTRAP -->
+
+
+<!-- FIN MODAL INSERCION -->
+
+            
 <script>
     function borrar_imagen(id_imagen) {
         if (confirm("¿Estás seguro?")) {
@@ -253,9 +282,10 @@ $du = $lista_imagenes[0];
             url = $("#imagen-" + id).find(".url-img").text();
             nombre = $("#imagen-" + id).find(".nombre-img").text();
             imagen = $("#imagen-" + id).find(".imagen-img").attr("src");//la imagen
+           
 
             $("#titulo_modificar").val(titulo);
-            $("#texto_imagen_modificar").html(texto);
+            $("#texto_imagen_modificar").val(texto);
             $("#fecha_modificar").val(fecha);
             $("#url_modificar").val(url);
             $("#foto_modificar").attr("src", imagen); //la imagen
@@ -292,14 +322,5 @@ $du = $lista_imagenes[0];
         });
     });
 
-    $('#insertarImagen').click('show.bs.modal', function (event) {
-        alert("hola");
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-            modal.find('.modal-title').text('New message to ' + recipient)
-            modal.find('.modal-body input').val(recipient)
-})
+    
 </script>
