@@ -140,33 +140,33 @@ function respuesta(r) {
 		<?php
  if(count($mapa)==0){
      ?>
-        <button class="botonmapa" id="btn-admin-mapa">Añadir mapa</button>
+        <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-admin-mapa">Añadir mapa</button>
      <?php
  }else{
     ?>
         <div class="row">
             <div class="col-md-12">
-                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-subir-piso">Subir zona</button>
+                <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-subir-piso">Subir zona</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-bajar-piso">Bajar zona</button>
+                <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-bajar-piso">Bajar zona</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-admin-mapa">Admin mapa</button>
+                <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-admin-mapa">Admin mapa</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-admin-selector-zonas">Admin selector de zonas</button>
+                <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-admin-selector-zonas">Admin selector de zonas</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <button class="botonmapa btn btn-primary m-3 text-center" id="btn-show-pan-sec">Ver panoramas asociados</button>
+                <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-show-pan-sec">Ver panoramas asociados</button>
             </div>
         </div>
 
