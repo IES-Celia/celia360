@@ -151,13 +151,23 @@ echo "<tr class='filaEscena'>
     </div>
 </div>
 
-<!-- Modal modificar-->
-<div id='modalGuiada' class='modalFondoGuiada'>
-    <div id='caja4' class="modal-contenidoGuiada">
-        <span class="closeGuiada">&times;</span>
-        <h2>Modificar</h2>
-        Selecciona una escena:
-        <input type="text" id='escenaGuiada' name="escenaGuiada">
+<!-- Modal modificar -->
+
+<div class="modal fade" id="modalGuiada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="escenaGuiada">Selecciona una escena:</label>
+          <input type="text"
+            class="form-control" name="escenaGuiada" id="escenaGuiada" aria-describedby="helpId" placeholder="">
+        </div>
         <div id="mapa_guiada">
             <?php
             
@@ -185,43 +195,33 @@ echo "<tr class='filaEscena'>
                 
             ?>
         </div>
-        <button id="boton_guiada_modificar" id="btn-bajar-piso" type="button">Bajar piso</button>
-        <button id="boton_guiada_modificar" id="btn-subir-piso" type="button">Subir piso</button>
-        <br><br>
-        Titulo escena:<input id='titulo_escena' type='text' name='tituloGuiada' value=''>
-        <br><br>
-        Selecciona un audio:
-        <select id='audioGuiada' name="audioGuiada">
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <button id="boton_guiada_modificar" id="btn-bajar-piso" type="button" class="btn btn-primary">Bajar piso</button>
+                <button id="boton_guiada_modificar" id="btn-subir-piso" type="button" class="btn btn-primary">Subir piso</button>
+            </div>
+        </div>
+        <div class="form-group">
+          <label for="tituloGuiada">Titulo escena</label>
+          <input type="text"
+            class="form-control" name="tituloGuiada" id="titulo_escena" aria-describedby="helpId" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="">Selecciona un audio</label>
+          <select class="form-control" name="audioGuiada" id="audioGuiada">
             <?php 
                 foreach ($audios as $audio) {
                     $nombreAudio=$audio["url_aud"];
                     echo "<option value=$nombreAudio>$nombreAudio</option>";
                 }
             ?>
-        </select>
-        <br><br>
-        <button id='actualizarGuiada' type="button">Enviar</button>
-    </div>
-</div>
-
-<!-- Modal modificar -->
-
-<div class="modal fade" id="modificar_guiada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="escenaGuiada">Selecciona una escena:</label>
-          <input type="text"
-            class="form-control" name="escenaGuiada" id="escenaGuiada" aria-describedby="helpId" placeholder="">
+          </select>
         </div>
-
+        <div class="row">
+            <div class="col-md-12">
+                <button id='actualizarGuiada' type="button" class="btn btn-primary float-right">Enviar</button>
+            </div>
+        </div>
       </div>
     </div>
   </div>
@@ -268,23 +268,7 @@ echo "<tr class='filaEscena'>
 
     function modificarGuiada(elemento) {
 
-        alert(elemento);
-        //TODO:Cargar la tabla aqui.
-        /*
-        $("#escenaGuiada");
-        $("#audioGuiada");
-        $("#tituloGuiada");
-        */
-        $("#modalGuiada").css({
-            "display" : "block"
-        });
-        /*
-        window.onclick = function(event) {
-            if (event.target == $(".modalFondoGuiada")) {
-                $("#modalGuiada").css("display","none");
-            }
-        }
-        */
+        $("#modalGuiada").modal();
 
         $("#actualizarGuiada").on("click", function () {
             var confirmar = confirm("¿Estas seguro que quieres modificarlo?");
@@ -307,7 +291,7 @@ echo "<tr class='filaEscena'>
                     $(elemento).closest(".filaEscena").find(".cod_escena").html(codEscena);
                     $(elemento).closest(".filaEscena").find(".titulo_escena").html(tituloEscena);
                     $(elemento).closest(".filaEscena").find(".audio_escena").html(audioEscena);
-                    $("#modalGuiada").css("display", "none");
+                    $("#modalGuiada").modal("hide");
                 } else {
                     alert("Error al intentar modificar");
                 }
