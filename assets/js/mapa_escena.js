@@ -93,7 +93,6 @@ $(document).ready(function() {
 			$(this).parent().parent().parent().find("#escenaGuiada").val($(this).attr("escena"))
 			$(".puntos").css("background-color", "white");
 			$(this).css("background-color","yellow");
-		
 		}else {
 			location.href = base_url + "escenas/cargar_escena/" + $(this).attr("escena") + "/show_insert_hotspot/"+piso;
 		}

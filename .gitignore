@@ -47,6 +47,7 @@ assets/imagenes/previews/*
 assets/imagenes/previews-guiada/*
 assets/imagenes/panoramasSecundarios/*
 !assets/css/*
+!assets/js/*
 
 sesiones/*
 
