@@ -95,8 +95,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table display bg-secondary" id='cont'>
-                <thead>
+            <table class="table display table-hover bg-secondary" id='cont'>
+                <thead class='text-center'>
                     <tr id='cabecera'>
                         <th>ID</th>
                         <th>URL</th>
@@ -114,12 +114,12 @@
                     echo'<td id="url_vid'.$id.'">' . $re["url_vid"] . '</td>';
                     echo'<td id="desc_vid'.$id.'">' . $re["desc_vid"] . '</td>';
                     echo"<td><a target='_blank' href='". $re["url_vid"] ."'>visitar enlace</a></td>";
-                    echo"<td><a onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit' style='font-size:30px;'></i></a></td>";
-                    echo"<td><a href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+                    echo"<td class='text-center'><a class='text-primary' onclick='mostrarm(". $re["id_vid"] .")'><i class='fa fa-edit fa-2x'></i></a></td>";
+                    echo"<td class='text-center'><a class='text-primary' href='#' onclick='borrarvid(". $re["id_vid"] .")'><i class='fa fa-trash fa-2x'></i></a></td></tr>";
                 }
 ?>
                 </tbody>
-                <tfoot>
+                <tfoot class='text-center'>
                     <tr id='cabecera'>
                         <th>ID</th>
                         <th>URL</th>

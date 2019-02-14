@@ -59,43 +59,39 @@
 
 </style>
 
-
 <div class="container">
-<div class="row">
-<div class="col-md-12 mt-4">
-
-
-<a class="btn btn-primary float-right mx-2"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
-</div>
-</div>
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <a class="btn btn-primary float-right"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <table class='table table-hover bg-secondary' id='cont'>
+            <thead>
+                <tr id='cabecera'>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Descripcion</th>
+                    <th>Tipo de audio</th>
+                    <th>Reproducir</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr id='cabecera'>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Descripcion</th>
+                    <th>Tipo de audio</th>
+                    <th>Reproducir</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </tfoot>
+            <tbody>
 <?php
-// aqui cojemos la tabla entregada del controlador y mostramos todos los audios en una tabla
-echo"<table class='table table-hover w-100 bg-secondary'  id='cont'>
-    <thead>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </tfoot>
-<tbody>
-";
-
 foreach ($tabla as $re) {
     $id=$re["id_aud"];
     echo'<tr id="contenidoaudio'.$id.'">
@@ -112,11 +108,12 @@ foreach ($tabla as $re) {
   // echo"<td class='text-center'><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
       echo" <td class='text-center'><a class='text-primary'  role='button' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
-echo "</tbody>";
-echo "</table>";
-
-
-//Capa(ventana modal) formulario modificar
+?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php
 echo "
 <div id='modificar'>
 	<div id='caja'>
@@ -137,7 +134,6 @@ echo "
 	</div>
 </div>";
 
-//Capa (ventana modal) formulario insertar
 echo"
 <div id='insertar'>
 <div id='caja'>

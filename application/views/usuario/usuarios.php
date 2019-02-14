@@ -11,6 +11,12 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
+<style>
+  .form-control-tipo{
+    display : inline!important;
+    width: auto;
+  }
+</style>
 <!-- script para las ventanas modales -->
 <script>
 
@@ -36,7 +42,7 @@
         nuevoTipo = $("select#tipo_usuario" + idusu).val();
         resultado = confirm("¿Está seguro de que desea modificar el tipo de usuario?");
         if (resultado) {
-            alert("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo);
+            //alert("<?php //echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo);
             $.get("<?php echo base_url('usuario/modtipo/');?>" + idusu + '/' + nuevoTipo, null, respuestaModtipo);
         }
     }
@@ -87,7 +93,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <table class="table bg-secondary" id='cont'>
+            <table class="table bg-secondary table-hover" id='cont'>
                 <thead class='text-center'>
                     <tr id='cabecera'>
                         <th>Nick</th>
@@ -104,60 +110,69 @@
 foreach ($tablaUsuarios as $usu) {
    $idusu = $usu["id_usuario"];
     echo"<tr id='usu".$idusu."'>
-            <td id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
-            <td id='email_usuario_".$idusu."'>".$usu["email"]."</td>
-            <td id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
-            <td id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
+            <td class='align-middle' id='nick_usuario_".$idusu."'>".$usu["nombre_usuario"]."</td>
+            <td class='align-middle' id='email_usuario_".$idusu."'>".$usu["email"]."</td>
+            <td class='align-middle' id='name_usuario_".$idusu."'>".$usu["nombre"]."</td>
+            <td class='align-middle' id='ape_usuario_".$idusu."'>".$usu["apellido"]."</td>";
         if($usu["tipo_usuario"]==0){
-            echo "<td class='text-center'>  
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
+            echo "<td class='text-center align-middle'>
+                    <div class='form-group'>  
+                    <select name='tipo' class='form-control form-control-tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red' selected='true' disabled='disabled'>Pendiente asignación</option>
                             <option value='1'>Admin</option>
                             <option value='2'>Mapero</option>
                             <option value='3'>Bibliotecario</option>
                     </select>
                     <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                    </div>
                 </td>";
         }elseif ($usu["tipo_usuario"]==1) {
-            echo "<td class='text-center'>
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
-                            <option value='0' style='color:red' >Pendiente asignación</option>
-                            <option value='1' selected='true'>Admin</option>
-                            <option value='2'>Mapero</option>
-                            <option value='3'>Bibliotecario</option>
-                    </select>
-                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+            echo "<td class='text-center align-middle'>
+                    <div class='form-group'>
+                      <select name='tipo' class='form-control form-control-tipo' id='tipo_usuario".$idusu."'>
+                              <option value='0' style='color:red' >Pendiente asignación</option>
+                              <option value='1' selected='true'>Admin</option>
+                              <option value='2'>Mapero</option>
+                              <option value='3'>Bibliotecario</option>
+                      </select>
+                      <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                    </div>
                 </td>";
         }elseif ($usu["tipo_usuario"]==2) {
-           echo "<td class='text-center'> 
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
+           echo "<td class='text-center align-middle'>
+                  <div class='form-group'> 
+                    <select name='tipo' class='form-control form-control-tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red'>Pendiente asignación</option>
                             <option value='1'>Admin</option>
                             <option value='2' selected='true'>Mapero</option>
                             <option value='3'>Bibliotecario</option>
                     </select>
                     <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                    </div>
                 </td>";
         }elseif ($usu["tipo_usuario"]==3) {
-           echo "<td class='text-center'>
-                    <select name='tipo' id='tipo_usuario".$idusu."'>
+           echo "<td class='text-center align-middle'>
+                  <div class='form-group'>
+                    <select name='tipo' class='form-control form-control-tipo' id='tipo_usuario".$idusu."'>
                             <option value='0' style='color:red'>Pendiente asignación</option>
                             <option value='1'>Admin</option>
                             <option value='2'>Mapero</option>
                             <option value='3' selected='true'>Bibliotecario</option>
                     </select>
-                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up'></i></a>
+                    <a href='#' onclick='modTipo(".$usu["id_usuario"].")'><i class='far fa-arrow-alt-circle-up fa-2x'></i></a>
+                    </div>
                 </td>";
         }    
      
-    echo"   <td class='text-center'>
-                <a href='#' class='text-primary' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit'></i></a>
+    echo"   <td class='text-center align-middle'>
+                <a href='#' class='text-primary' onclick='show_modusuario(".$usu["id_usuario"].")'><i class='fa fa-edit fa-2x'></i></a>
             </td>
-            <td class='text-center'>
-                <a href='#' class='text-primary' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash'></i></a>
+            <td class='text-center align-middle'>
+                <a href='#' class='text-primary' onclick='borrarusuario(".$usu["id_usuario"].")'><i class='fa fa-trash fa-2x'></i></a>
             </td>
         </tr>";
 }
+
 ?>
                 </tbody>
                 <tfoot class="text-center">

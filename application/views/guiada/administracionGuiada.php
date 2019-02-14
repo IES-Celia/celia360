@@ -25,64 +25,16 @@ $urlFormulario = site_url('guiada/modificarEscena');
 ?>
 <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.js"); ?>"></script>
 <style>
-    #modalGuiada {
-        z-index: 100;
-    }
-
-    #modalGuiadaImagen {
-        z-index: 100;
-    }
-
-    .modalFondoGuiada {
-        display: none;
-        position: fixed;
-        z-index: 99;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .modal-contenidoGuiada {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
-
-
-    .closeGuiada {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .closeGuiada:hover,
-    .closeGuiada:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .ordernar {
-        padding-left: 4px;
-        font-size: 1.3rem;
-        color: black;
+    #modalGuiada{
+        display : none;
     }
 </style>
-
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-md-12">
             <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
                 <input id='orden' type='hidden' value='asc' name='orden'>
-                <button type="submit" class="btn btn-primary float-right"><i class='fa fa-plus-circle'></i>Crear nuevo</button>
+                <button type="submit" class="btn btn-primary float-right"><i class='fa fa-plus-circle'></i> Crear nuevo</button>
             </form>
         </div>
     </div>
@@ -129,29 +81,42 @@ else {
             $imagen=$escena["img_preview"];
             $imagen = base_url('assets/imagenes/previews-guiada/').$imagen;
         }
-            $idEscena =$escena['id_visita'];
+        
+        $idEscena =$escena['id_visita'];
 
-        echo "<tr class='filaEscena'>".
-        "<td class='id_visita align-middle'>".$escena['id_visita']."</td>
-        <td class='cod_escena align-middle'> <a href='".base_url()."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a></td> 
+echo "<tr class='filaEscena'>
+        <td class='id_visita align-middle'>".$escena['id_visita']."</td>
+        <td class='cod_escena align-middle'> 
+            <a href='".base_url()."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a>
+        </td> 
         <td class='audio_escena align-middle'>
             <audio controls='controls' preload='auto'>
                 <source src='" . base_url().$escena['audio_escena'] . "' type='audio/m4a'/>
                 <source src='" . base_url().$escena['audio_escena'] . "' type='audio/mp3'/>
             </audio>
-        <p class='text-center'>".$escena['audio_escena']."</p>
+            <p class='text-center'>".$escena['audio_escena']."</p>
         </td>
         <td class='titulo_escena text-center align-middle'>".$escena['titulo_escena']."</td>
-        <td><img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'></td>
-        <td class='align-middle'><a name='' id='boton_guiada' class='btn btn-primary change_img' href='#' role='button'>Cambiar</a></td>
-        <td class='text-center align-middle'><a data-id='$idEscena' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td>
-        <td class='text-center align-middle'><a data-id='$idEscena' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td>
-        <td class='orden align-middle text-center'><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-up'></i></span><br><span class='flecha' onclick='moverFila(this);'><i class='fas fa-angle-down'></i></span></td>
+        <td>
+            <img class='img_preview' style='height:100px; width:auto;' src='".$imagen."'>
+        </td>
+        <td class='align-middle'>
+            <a name='' id='boton_guiada' class='btn btn-primary change_img' href='#' role='button' data-toggle='modal' data-target='#modalGuiadaImagen'>Cambiar</a>
+        </td>
+        <td class='text-center align-middle'>
+            <a data-id='$idEscena' onclick='borrarGuiada(this)' class='text-primary'><i class='fa fa-trash fa-2x'></i></a>
+        </td>
+        <td class='text-center align-middle'>
+            <a data-id='$idEscena' onclick='modificarGuiada(this)' class='text-primary'>
+                <i class='fa fa-edit fa-2x'></i>
+            </a>
+        </td>
+        <td class='orden align-middle text-center'>
+            <span class='flecha text-primary' onclick='moverFila(this)'><i class='fas fa-angle-up fa-2x'></i></span><br>
+            <span class='flecha text-primary' onclick='moverFila(this)'><i class='fas fa-angle-down fa-2x'></i></span></td>
         <td class='posicion text-midle align-middle text-center'>".$escena['orden']."</td>";
-
     }
 } // else
-
 ?>
 
                 </tbody>
@@ -186,14 +151,13 @@ else {
     </div>
 </div>
 
+<!-- Modal modificar-->
 <div id='modalGuiada' class='modalFondoGuiada'>
     <div id='caja4' class="modal-contenidoGuiada">
         <span class="closeGuiada">&times;</span>
         <h2>Modificar</h2>
         Selecciona una escena:
         <input type="text" id='escenaGuiada' name="escenaGuiada">
-
-
         <div id="mapa_guiada">
             <?php
             
@@ -240,31 +204,61 @@ else {
     </div>
 </div>
 
+<!-- Modal modificar -->
 
-<div id='modalGuiadaImagen' class='modalFondoGuiada'>
-    <div id='caja' class="modal-contenidoGuiada">
-        <span class="closeGuiada">&times;</span>
-        <h2>Modificar Imagen</h2>
-        Selecciona una imagen:
-        <form id='guiadaImagen' id='caja' enctype="multipart/form-data" action='' method="post">
-            <input type="file" name="imagenPreview" placeholder="Seleccionar la imagen" required><br>
-            <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-            <input type="hidden" name="id_visita" value="" />
-            <input type="submit" value='Enviar' />
-        </form>
-        <br><br>
+<div class="modal fade" id="modificar_guiada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="escenaGuiada">Selecciona una escena:</label>
+          <input type="text"
+            class="form-control" name="escenaGuiada" id="escenaGuiada" aria-describedby="helpId" placeholder="">
+        </div>
 
+      </div>
     </div>
-</div>
+  </div>
+</div> 
 
+<!-- Modal modificar imagen-->
+
+<div class="modal fade" id="modalGuiadaImagen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Imagen</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id='guiadaImagen' id='caja' enctype="multipart/form-data" action='' method="post">
+            <div class="form-group">
+                <label for=""><h4>Selecciona una imagen</h4></label>
+                <input type="file" class="form-control-file" name="imagenPreview" id="" placeholder="" aria-describedby="fileHelpId" required>
+            </div>
+            <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+            <button type="submit" class="btn btn-primary float-right">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>    
 
 <script>
 
     $(".change_img").on("click", function () {
         var codigo = $(this).closest(".filaEscena").find(".id_visita").text();
-        $("#modalGuiadaImagen").css("display", "block");
+        $("#modalGuiadaImagen").modal()
         $(".closeGuiada").click(function (e) {
-            $("#modalGuiadaImagen").css("display", "none");
+            $("#modalGuiadaImagen").modal("hide");
         });
         $("input[name='id_visita']").val(codigo);
         var urlCodeIgniter = "<?php echo site_url('guiada/asociarImagenPreview'); ?>";
@@ -274,14 +268,15 @@ else {
 
     function modificarGuiada(elemento) {
 
+        alert(elemento);
         //TODO:Cargar la tabla aqui.
+        /*
         $("#escenaGuiada");
         $("#audioGuiada");
         $("#tituloGuiada");
-
-        $("#modalGuiada").css("display", "block");
-        $(".closeGuiada").click(function (e) {
-            $("#modalGuiada").css("display", "none");
+        */
+        $("#modalGuiada").css({
+            "display" : "block"
         });
         /*
         window.onclick = function(event) {
@@ -450,10 +445,6 @@ else {
             //No se puede mover en esa direccion por que no hay nada.
             console.log("there is nothing there, sorry bud!");
         }
-
-
-
-
 
         //&uarr;
         //&darr;
