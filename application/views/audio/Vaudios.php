@@ -60,7 +60,6 @@
 </style>
 
 <div class="container">
-<<<<<<< HEAD
     <div class="row">
         <div class="col-md-12 mt-4">
             <a class="btn btn-primary float-right"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
@@ -93,49 +92,6 @@
             </tfoot>
             <tbody>
 <?php
-=======
-<div class="row">
-<div class="col-md-12 mt-4">
-
-
-<a class="btn btn-primary float-right mx-2"  role="button" onclick='mostrar()' data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12 mt-4">
-<?php
-// aqui cojemos la tabla entregada del controlador y mostramos todos los audios en una tabla
-
-
-echo"<table class='table table-hover w-100 bg-secondary'  id='cont'>
-    <thead>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </tfoot>
-<tbody>
-";
-echo"</div>";
-echo"</div>";
-
->>>>>>> 7030f60b52798ddf828dad112812a6799534cb10
 foreach ($tabla as $re) {
     $id=$re["id_aud"];
     echo'<tr id="contenidoaudio'.$id.'">
@@ -149,7 +105,6 @@ foreach ($tabla as $re) {
             </audio></td>";
    
     echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
-  // echo"<td class='text-center'><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
       echo" <td class='text-center'><a class='text-primary'  role='button' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
 ?>
@@ -178,12 +133,7 @@ echo "
 	</div>
 </div>";
 
-<<<<<<< HEAD
 echo"
-=======
-//Capa (ventana modal) formulario insertar
-/*echo"
->>>>>>> 7030f60b52798ddf828dad112812a6799534cb10
 <div id='insertar'>
 <div id='caja'>
 <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
@@ -201,48 +151,11 @@ echo"
       </form>
 	  </div>
 </div>";
-*/
 
+        
 /* A continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script incluimos un plugin para la paginacion y buscador */
 ?>
-
-
-<!-- MODAL DE INSERCION -->
-<div class="modal fade" id="modalInsertarAud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      
-      <form action='". site_url("/audio/insertarAud") ."'  method='Post' enctype='multipart/form-data' >
-    <div class='form-group'>
-    <label for='descripcion'>Descripcion:</label>
-    <input id='desc' type='text' name='desc' class="form-control">
-    <label for='audio' >Inserte audio</label>
-    <input type='file' class="form-control-file" name ='audio[]' id='audio' multiple>
-    <label for='tipo'>Tipo</label>
-    <select name='tipo_aud' id='tipo' class='form-control'>
-  			<option value='v-guiada'>Visita guiada</option>
- 			<option value='d-objeto' selected>Definir un objeto</option>
-		</select>
-        
-    </div>
-    <input type='submit' class='btn-success float-right'>
-      </div>
-      
-    </div>
-  </div>
 </div>
-
-
-
-<!-- FIN MODAL INSERCION -->
-</div> <!-- cierre del container -->
 <script>
 
     function mostrarm(id){
@@ -258,6 +171,15 @@ echo"
         $("#contenedor").show();
         $("#modificar").show();
     }
+
+    function mostrar(){
+        $("#insertar").show();    
+    }
+
+    function cerrar(){
+        $("#insertar").hide();
+        $("#modificar").hide();
+    }    
         
     //confirmacion al borrar
     function borraraud(id) {
