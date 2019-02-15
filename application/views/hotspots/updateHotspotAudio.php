@@ -13,64 +13,48 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
-<html>
-    <head>
-        <style type="text/css">
 
-            .button {
-                background-color: #555555; /* Black	*/
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
 
-            }
 
-            div.centrado {
-                margin-left:25%;
-                margin-right:25%;
 
-            }
-
-            #caja5 input[type=submit]{
-                width:430px;
-            }
-            
-
-        </style>
-        <title> Modificar Hotspot </title>
-    </head>
-    <body>
-
-        <?php
+		<div class="container mt-2">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="text-center">Modificación de Hotspot Audio</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-body">
+						<?php
         $tabla = $tabla[0];
 
         echo "
 
-        <h1> Formulario para UPDATE Hotspots Audio </h1>
-
-        <fieldset id='caja5'>
-
         <form action=' " . site_url("hotspots/updateHotspotAudio/".$tipo_update) . " ' method='get'>
-
-	Coordenadas donde se situa el punto:<br>
-        <a href='" . site_url('escenas/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificarlos</a><br><br>
+			<div class='form-group'>
+				<label for='coords'>Coordenadas donde se situa el punto:</label>
+				<a class='btn btn-primary' href='" . site_url('escenas/cargar_escena_modificar/' . $codigo_escena . '/' . "update_hotspot_pitchyaw/" . $tabla['id_hotspot']) . "'>Modificarlos</a>
+			</div>
 	
+        
 	<div id='puntoAudio'> 
        
-            <input type='hidden' name='sceneId' id='sceneId' readonly='readonly' value='" . $codigo_escena . "'><br>
-            <input type='hidden' name='id_scene'  readonly='readonly' value='" . $tabla['id_hotspot'] . "'><br>
-            <input type='hidden' name='pitch' value='" . $tabla['pitch'] . "'><br> 
-            <input type='hidden' name='yaw 'value='" . $tabla['yaw'] . "'><br> 
-            <input type='hidden' name='cssClass' value='custom-hotspot-audio' readonly='readonly'><br> 
-            <input type='hidden' name='tipo' value='info' readonly='readonly'> <br>
-            <input type='hidden' name='clickHandlerFunc' value='audio' readonly='readonly'><br> 
+            <input type='hidden' name='sceneId' id='sceneId' readonly='readonly' value='" . $codigo_escena . "'>
+            <input type='hidden' name='id_scene'  readonly='readonly' value='" . $tabla['id_hotspot'] . "'>
+            <input type='hidden' name='pitch' value='" . $tabla['pitch'] . "'>
+            <input type='hidden' name='yaw 'value='" . $tabla['yaw'] . "'>
+            <input type='hidden' name='cssClass' value='custom-hotspot-audio' readonly='readonly'>
+            <input type='hidden' name='tipo' value='info' readonly='readonly'>
+            <input type='hidden' name='clickHandlerFunc' value='audio' readonly='readonly'>
 			
-			Audio que se reproducirá al clickar en el punto:
-			<select id='idAudioForm' name='clickHandlerArgs'>";
+			<div class='form-group'>
+				<label for='audio'>Audio que se reproducirá al clickar en el punto:</label>
+			
+			
+			
+			<select id='idAudioForm' name='clickHandlerArgs' class='form-control'>";
 			for($i=0;$i<count($allAudios);$i++){
 				$info = $allAudios[$i];
 				if($info['id_aud'] == $tabla['clickHandlerArgs']){
@@ -81,23 +65,33 @@
 			}
 			
 			echo "</select>";
+			echo "</div>";
         
         
         echo "</div>
             <input type='hidden' name='id_hotspot' value='" . $tabla['id_hotspot'] . "'>
 	
-	
-            <input type='submit'>
-            <br>
-            <a class='rojo_borrar' href='" . site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot']."/".$tipo_update) . "'
-        >BORRAR ESTE HOTSPOT </a></td>
+			<div class='form-group'>
+				<input type='submit' class='btn btn-success ml-2' value='Actualizar Hotspot'>
+				<a class='rojo_borrar btn btn-danger' href='" . site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot']."/".$tipo_update) . "'
+				>Eliminar Hotspot Audio </a>
+			</div>
+            
+            
+           
 	
         </form>
-    </fieldset>
 
 ";/**  Cierre echo * */
         ?>
-        <div id='listaAudios'>Capa vacia</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+        
 
         <script>
             $(document).ready(function () {
@@ -106,4 +100,3 @@
             });
 
         </script>	
-
