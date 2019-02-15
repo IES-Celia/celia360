@@ -17,35 +17,6 @@
 
 </style>
 
-<!-- <div id='insertar'>
-    <div id='caja'>
-        CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
-         AQUI EMPIEZA LA VISTA
-        <?php
-        /*echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>";*/
-        ?>
-        <h1>Insertar imagen</h1>
-        <div id="drop_file_zone" ondrop="upload_file(event)" ondragover="return false">
-        <div id="drag_upload_file">
-        
-            <p>Arrastra los archivos</p>
-            <p>o</p>
-            <p><button class="btn btn-primary" value="Selecciona archivos" onclick="file_explorer();">Selecciona las imágenes</button></p>
-            <div id="imagenesView">
-
-            </div>
-
-            <input type="file" id="selectfile" name="file[]" multiple accept="image/jpeg">
-            <p><button id="btnEnvio" class="btn btn-primary" type="button">Subir imágenes</button></p>
-           
-        </div>
-    </div>
-    </div>
-</div> -->
-
-
-
 <!-- NUEVOOOOOOO -->
 
 <div class="container mt-3">
@@ -298,11 +269,11 @@
                 processData: false,
                 data: form_data,
                 success:function(result){
-                  console.log(result);
 
                   if(result == 0){
                     document.getElementById("mensaje_cabecera").innerHTML = "Imágenes subidas con éxito";
-                    document.getElementById("error_cabecera").innerHTML= '';
+				
+									  document.getElementById("error_cabecera").innerHTML= '';
                   }else{
                     document.getElementById("error_cabecera").innerHTML = "Error al insertar todas las imágenes";
 					document.getElementById("mensaje_cabecera").innerHTML = "";
