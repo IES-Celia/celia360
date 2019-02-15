@@ -2,7 +2,7 @@
 /*
     Este archivo es parte de la aplicación web Celia360. 
 
-    Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
+    Celia 360 es software libre: usted puede redistribuirlo y/o lo
     bajo los términos de la GNU General Public License tal y como está publicada por
     la Free Software Foundation en su versión 3.
  
@@ -72,9 +72,16 @@ class HotspotsModel extends CI_Model {
         $targetYaw = $this->input->post_get("targetYaw");
         $tipo = $this->input->post_get("tipo");
         $plantaDestino = $this->input->post_get("plantaDestino");
-        // insercción del punto en la tabla hotspot
-        $insrt = "INSERT INTO hotspots (id_hotspot,plantaDestino,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES('$idhotspot','$plantaDestino','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";
-        $this->db->query($insrt);
+		// insercción del punto en la tabla hotspot
+		
+		if($this->input->post_get('plantaDestino') != null){
+			$insrt = "INSERT INTO hotspots (id_hotspot,plantaDestino,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES('$idhotspot','$plantaDestino','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";
+			$this->db->query($insrt);
+		}else{
+			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES('$idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";
+			$this->db->query($insrt);
+		}
+       
 
         // insercción de la relación (del jotpoch y la escena para que el json pueda salir) en la tabla escenas_hotspots 
         // lo primero es recuperar el id de la escena a partir del cod_escena y luego ya el insert

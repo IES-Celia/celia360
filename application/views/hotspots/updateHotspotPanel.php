@@ -48,7 +48,7 @@ echo "
 	<input type='submit' class='button btn btn-success'>
 	<a href=
     '".site_url("/hotspots/delete_hotspot/".$tabla['id_hotspot']."/".$tipo_update)."'
-    class='rojo_borrar btn btn-danger link' >BORRAR ESTE HOTSPOT (CUIDADO!)</a>
+    class='rojo_borrar btn btn-danger link' >Borrar Hotspot</a>
 	</div>
 
 	<div class='form-group'>
