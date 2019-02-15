@@ -59,49 +59,39 @@
 
 </style>
 
-
 <div class="container">
-<div class="row">
-<div class="col-md-12 mt-4">
-
-
-<a class="btn btn-primary float-right mx-2"  role="button" onclick='mostrar()' data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
-</div>
-</div>
-<div class="row">
-<div class="col-md-12 mt-4">
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <a class="btn btn-primary float-right"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+        <table class='table table-hover bg-secondary' id='cont'>
+            <thead>
+                <tr id='cabecera'>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Descripcion</th>
+                    <th>Tipo de audio</th>
+                    <th>Reproducir</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr id='cabecera'>
+                    <th>ID</th>
+                    <th>URL</th>
+                    <th>Descripcion</th>
+                    <th>Tipo de audio</th>
+                    <th>Reproducir</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </tfoot>
+            <tbody>
 <?php
-// aqui cojemos la tabla entregada del controlador y mostramos todos los audios en una tabla
-
-
-echo"<table class='table table-hover w-100 bg-secondary'  id='cont'>
-    <thead>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
-    <tfoot>
-        <tr id='cabecera'>
-            <th>ID</th>
-            <th>URL</th>
-            <th>Descripcion</th>
-            <th>Tipo de audio</th>
-            <th>Reproducir</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
-        </tr>
-    </tfoot>
-<tbody>
-";
-echo"</div>";
-echo"</div>";
-
 foreach ($tabla as $re) {
     $id=$re["id_aud"];
     echo'<tr id="contenidoaudio'.$id.'">
@@ -114,16 +104,16 @@ foreach ($tabla as $re) {
             <source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
             </audio></td>";
    
-    echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")' data-toggle='modal' data-target='#modalModificarAud'  ><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
-  // echo"<td class='text-center'><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
+    echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
       echo" <td class='text-center'><a class='text-primary'  role='button' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
-echo "</tbody>";
-echo "</table>";
-
-
-//Capa(ventana modal) formulario modificar
-/*echo "
+?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php
+echo "
 <div id='modificar'>
 	<div id='caja'>
         <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" . base_url("assets/css/cerrar_icon.png") . "'></img></a>
@@ -162,8 +152,8 @@ echo "</table>";
       </form>
 	  </div>
 </div>";
-*/
 
+        
 /* A continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script incluimos un plugin para la paginacion y buscador */
 ?>
 
@@ -264,6 +254,15 @@ echo "</table>";
         $("#contenedor").show();
         $("#modificar").show();
     }
+
+    function mostrar(){
+        $("#insertar").show();    
+    }
+
+    function cerrar(){
+        $("#insertar").hide();
+        $("#modificar").hide();
+    }    
         
     //confirmacion al borrar
     function borraraud(id) {

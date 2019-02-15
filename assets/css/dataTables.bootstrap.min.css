@@ -161,7 +161,7 @@ div.table-responsive
 	padding-right: 0;
 }
 
-#cont_length label{
+#cont_length, #video_length label{
 	position: relative;
 	top: 50px;
 }

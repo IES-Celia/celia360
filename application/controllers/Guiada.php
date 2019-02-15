@@ -128,7 +128,7 @@ class Guiada extends CI_Controller {
     }
 
     public function modificarImagenPreview(){
-        $idEscena=$_REQUEST["id_visita"];
+        $idEscena = $this->input->get_post("id_visita");
         $asociar = $this->GuiadaModel->asociarImagen($idEscena);
         if($asociar==false){
              redirect('/guiada/menuGuiada', 'refresh');
@@ -158,7 +158,7 @@ class Guiada extends CI_Controller {
 */
 
     public function borrarEscena(){
-        $idEscena = $_REQUEST["id"];
+        $idEscena = $this->input->get_post("id");
         $this->GuiadaModel->borrarImagen($idEscena);
         $this->GuiadaModel->borrarEscenaGuiada($idEscena);
     }
@@ -171,7 +171,7 @@ class Guiada extends CI_Controller {
 */
     
     public function actualizarEscena(){
-        $id_visita = $_REQUEST["id"];
+        $id_visita = $this->input->get_post("id");
         $actualizar = $this->GuiadaModel->actualizarEscena($id_visita);
         echo($actualizar);
     }
@@ -195,10 +195,10 @@ class Guiada extends CI_Controller {
 *
 */
     public function cambiarFilas(){
-        $filaAID = $_REQUEST["filaAID"];
-        $filaAPOS = $_REQUEST["filaAPOS"];
-        $filaBID = $_REQUEST["filaBID"];
-        $filaBPOS = $_REQUEST["filaBPOS"];
+        $filaAID = $this->input->get_post("filaAID");
+        $filaAPOS = $this->input->get_post("filaAPOS");
+        $filaBID = $this->input->get_post("filaBID");
+        $filaBPOS = $this->input->get_post("filaBPOS");
         $mover = $this->GuiadaModel->intercambiarFilas($filaAID,$filaAPOS,$filaBID,$filaBPOS);
 
         echo $mover;

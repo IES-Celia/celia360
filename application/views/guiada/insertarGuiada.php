@@ -11,72 +11,79 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 -->
 
-
 <?php
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 ?>
+<div class="container">
+    <h1 class="text-center">Insertar escena guiada</h1>
+    <div class="row">
+        <div class="col-md-8 mx-auto bg-secondary">
+            <form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
+                <div class="form-group">
+                  <label for="titulo_escena"><h4>Nombre escena</h4></label>
+                  <input type="text"
+                    class="form-control" name="tituloGuiada" id="titulo_escena" aria-describedby="helpId" placeholder="">
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="button" id="btn-subir-piso" class="btn btn-primary">Subir zona</button>
+                        <button type="button" id="btn-bajar-piso" class="btn btn-primary">Bajar zona</button>
+                    </div>
+                </div>
+                <h2 class="text-center">Selecciona una escena</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="mapa_escena_hotspot">
+                        <?php
+                            
+                            $indice = 0;
 
-
-<div id='caja2'>
-<h1>Insertar escena guiada</h1>
-<form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
-   
-    <label for='titulo_escena'>Nombre escena</label>
-    <input id='titulo_escena' type='text' name='tituloGuiada' value=''>
-    <br>
-    <button type="button" id="btn-subir-piso">Subir zona</button>
-    <button type="button" id="btn-bajar-piso">Bajar zona</button>
-    <h2>Selecciona una escena</h2>
-    <div id="mapa_escena_hotspot">
-    <?php
+                            foreach ($mapa as $imagen) {
+                                echo "<div id='zona".$indice."' class='pisos pisos_guiada' style='display: none;'>";
+                                echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
+                            
+                                foreach ($puntos as $punto) {
+                                if($punto['piso']==$indice){
+                                
+                                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+                                    <span class='tooltip'>".$punto['id_escena']."</span>
+                                    </div>";
+                                
+                                }
+                                
+                                }
+                            echo "</div>";
+                            $indice++;
+                            }
+                        ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="hidden" id='escenaGuiada' name="escenaGuiada" required>
+                            <div class="form-group">
+                              <label for="audioGuiada"><h4>Selecciona un audio</h4></label>
+                              <select class="form-control" name="audioGuiada" id="">
+                                <?php 
+                                foreach ($audios as $audio) {
+                                    $nombreAudio=$audio["url_aud"];
+                                    echo "<option value=$nombreAudio>$nombreAudio</option>";
+                                }
+                                ?>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <button type="submit" class="btn btn-primary float-right">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     
-    $indice = 0;
-
-    foreach ($mapa as $imagen) {
-        echo "<div id='zona".$indice."' class='pisos pisos_guiada' style='display: none;'>";
-        echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
-      
-        foreach ($puntos as $punto) {
-          if($punto['piso']==$indice){
-          
-            echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-            <span class='tooltip'>".$punto['id_escena']."</span>
-            </div>";
-          
-          }
-          
-        }
-      echo "</div>";
-      $indice++;
-    }
-
-    ?>
-    </div>
-    <br><br>
-    <input type="hidden" id='escenaGuiada' name="escenaGuiada" required>
-    
-    <br><br>
-    <label for='audioGuiada'>Selecciona un audio</label>
-    <select name="audioGuiada">
-        <?php 
-            foreach ($audios as $audio) {
-                $nombreAudio=$audio["url_aud"];
-                echo "<option value=$nombreAudio>$nombreAudio</option>";
-            }
-        ?>
-    </select>
-    <br><br>
-    <input type="submit" name="enviar"/>
-</form>
-</div>
-
-
-<script>
-
-            $(document).ready(function () {
-                $("#escenaGuiada").change(function (e) { 
-                    //$("#titulo_escena").val($(this).val());
-                });
-            });
-
-</script>
+    </div><!-- Final de row -->
+</div><!-- Final de container -->

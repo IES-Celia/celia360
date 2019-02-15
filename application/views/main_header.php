@@ -3,7 +3,6 @@
 <!-- HEADER DEL HOMEPAGE PRINCIPAL -->
 <!-- Carga todo el CSS y JS común del frontend y prepara las variables del mapa y de la portada si están presentes -->
 
-
 <html>
 <head>
 <meta charset="UTF-8">
@@ -64,8 +63,10 @@
 	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
 	<!-- ./FIN QUILL Library -->
-	
     
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
+
     <script>
     
         /* EFECTOS DEL MENÚ SOBRE LA PORTADA */    

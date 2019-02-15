@@ -15,173 +15,70 @@ if(isset($imagenes_seleccionadas)){
 $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_escena."/vacio";
 
 ?>
-<html>
-<head>
-  <style>
+	
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="text-center">
+				Modificación de imagenes panel de información
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-xs-12">
+		<?php
+echo "<div id='contenedor_img'>
+<div id='imgHS'>";
 
-  #contenedor_img {
-  display:flex;
-  align-items: flex-end;
-  justify-content:flex-start;
+foreach( $lista_imagenes as $img){
+ $img_correcto = explode(".",$img["url_imagen"]);
+ $img_correcto_enlace = base_url("assets/imagenes/imagenes-hotspots/").$img_correcto[0]."_miniatura.jpg";
+ $imagen_propiedades = array(
+	"src" => $img_correcto_enlace,
+	"class" => "imgHS",
+	"width" => "120",
+	"height" => "120",
+	"title" => $img["titulo_imagen"],
+	"alt" => $img["titulo_imagen"],
+	"data-id" => $img["id_imagen"]
+	
+); 
+echo "<a class='enlace_img' href='#'>"; 
+echo img($imagen_propiedades);
+echo "</a>";       
+
 }
-  #imgHS {
-  display: flex;
-  flex-wrap: wrap;
-  width: 50%;
-  height: 70%;
-  background-color:rgba(0,0,0,0.2);
-  border-radius:20px;
-  padding:20px;
-}
-    
-  #imgHS > a {
-  margin-left: 2px;
-  margin-right: 2px;
-}
-  #panel{
-  display:flex;
-  align-items: baseline;
-  flex-flow: column wrap;
-  margin: 0 20px;
-  align-self:flex-start;
-  background-color:rgba(0,0,0,0.2);
-  border-radius:20px;
-  padding:20px;
-  font-family:"verdana";
-}
+?>
+	</div>
+		</div>
+	</div>
+	<div class="col-md-6 col-xs-12">
+	<div id='panel'>
 
-  .borderojo{
-   border: 2px solid white;
-}
+<input type="hidden" id='idhs' value="<?php echo $idhs; ?>" disabled/>
+<?php
+ if(isset($escena_principal)){
+	 echo '<input type="hidden" id="escena_pr" value="'.$escena_principal.'" disabled/>';
+ }
+?>
+<ul id='img_seleccionadas'>
 
-  #img_seleccionadas { 
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    }
-  #img_seleccionadas li { 
-    background-color:  grey;
-    font-size: 1.2em;
-    padding: 12px;
-    border-radius: 10px;
-    color:white;
-    margin: 5px 0; 
-    }
+</ul>
+ <div style='color:white; font-weight:bold; font-size: 1.2rem;'>
+	 Nota: Puedes ordenar las imagenes arrastrandolas en la lista. 
+ </div>
+ <a class='insert btn btn-success' onclick='add_img_to_hotspot()'>Enviar</a>
+ <a class='insert btn btn-primary' data-toggle='modal' data-target='#exampleModal'> <i class='fas fa-plus-circle'></i> Insertar imagen </a>
+ <!-- <form id='formulario_atras' action="<?php echo $urlAtras; ?>" method='get'>
+		 <input id='panel_atras' type='button' value='volver atras'>
+ </form> -->
 
-    .img-cerrar{
-        width: 20px;
-        height: 20px;
-    }
-    .cerrar{
-        position: relative;
-        top:15px;
-        left:44%;
-    }
-    .derec{
-        width:500px;
-        float:left;
-		}
-		
-		.blanco {
-			color:white;
-		}
-
-  </style>
-</head>
-
-<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-<script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.js"); ?>"></script>
-  <body>
-  <h1 class="blanco"> Formulario para insertar Hotspots</h1>
-  <br>
-  <?php
-
-
-
-  
-  echo "<div id='contenedor_img'>
-  <br><div id='imgHS'>";
-  
-  foreach( $lista_imagenes as $img){
-   $img_correcto = explode(".",$img["url_imagen"]);
-   $img_correcto_enlace = base_url("assets/imagenes/imagenes-hotspots/").$img_correcto[0]."_miniatura.jpg";
-   $imagen_propiedades = array(
-    "src" => $img_correcto_enlace,
-    "class" => "imgHS",
-    "width" => "120",
-    "height" => "120",
-    "title" => $img["titulo_imagen"],
-    "alt" => $img["titulo_imagen"],
-    "data-id" => $img["id_imagen"]
-    
-  ); 
-  echo "<a class='enlace_img' href='#'>"; 
-  echo img($imagen_propiedades);
-  echo "</a>";       
-  
-  }
- ?>
-    </div>
-
-<title> Insert Hotspot </title>
-<div id='panel'>
-
- <input type="hidden" id='idhs' value="<?php echo $idhs; ?>" disabled/><br>
- <?php
-	if(isset($escena_principal)){
-		echo '<input type="hidden" id="escena_pr" value="'.$escena_principal.'" disabled/><br>';
-	}
- ?>
- <ul id='img_seleccionadas'>
- 
- </ul><br>
-  <div style='color:white; font-weight:bold; font-size: 1.2rem;'>
-    Nota: Puedes ordenar las imagenes arrastrandolas en la lista. 
-  </div>
-  <a class='insert' onclick='add_img_to_hotspot()'>Enviar</a>
-  <br>
-  <!-- <form id='formulario_atras' action="<?php echo $urlAtras; ?>" method='get'>
-      <input id='panel_atras' type='button' value='volver atras'><br/><br/>
-  </form> -->
-
-    <!--**************************LOLI Insertar más imágenes  -->
-    <div>
-        <div class='derec'>
-        <?php
-        echo"<a class='insert' onclick='mostrar()' > <i class='fas fa-plus-circle'></i> Insertar imagen </a>";
-        ?>
-        </div>
-        <!--Capa formulario insertar-->
-        <div id='insertar'>
-            <div id='caja'>
-                <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
-                <!-- AQUI EMPIEZA LA VISTA -->
-                <?php
-                echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                base_url("assets/css/cerrar_icon.png") . "'></img></a>";
-                ?>
-                <h1>Insertar imagen</h1>
-                <form enctype="multipart/form-data" action='<?php echo site_url("hotspots/insertar_imagen"); ?>' method="post">
-                    <input type='hidden' name='accion' value='insertar_imagen'>
-                    <input id= "id_imagen" name='id_imagen' type ="hidden"><br />
-                    <label id= "label_titulo" for="titulo">T&iacute;tulo:</label>
-                    <input type="text" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
-                    <label for="texto_imagen">Descripción:</label>
-                    <textarea id="texto_imagen" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea><br>
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" id="fecha" name='fecha' placeholder="Introduzca la fecha" value="<?php echo date("Y-m-d"); ?>" required><br />
-                    <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
-                    <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-                    <label for="imagen">Imágenes (puede seleccionar varias):</label>
-                    <input type="file" name="imagen[]"  id="imagen" placeholder="Seleccionar la(s) imagen(es)" required multiple><br />
-                    <input type="hidden" name="accion" value="insertar_imagen"><br>
-                    <input type="submit" name="enviar" value="Guardar imagen"/>
-                </form>
-            </div>
-        </div>
-        <!--    fin insertar más imágenes-->       
-    </div>           
+	 <!--**************************LOLI Insertar más imágenes  -->
+	          
 </div>
+		</div>
+</div>
+
 
 <script>
   
@@ -320,20 +217,52 @@ $urlAtras = site_url('hotspots/show_insert_hotspot/').$pitch."/".$yaw."/".$id_es
       });
     }
   }
-    /* 
-    * Mostrar el formulario para insertar nuevas imágenes en una modal
-    * 
-    * */
-    function mostrar(){
-        $("#insertar").show();      
-    }
-    /*
-    * Cerrar la ventana modal de insertar nuevas imágenes
-    * 
-    */
-    function cerrar(){
-        $("#insertar").hide();
-    }  
 </script>  
-</body>	
-</html>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Inserción de imagenes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+			<form enctype="multipart/form-data" action='<?php echo site_url("hotspots/insertar_imagen"); ?>' method="post">
+									 <input type='hidden' name='accion' value='insertar_imagen'>
+									 <input id= "id_imagen" name='id_imagen' type ="hidden">
+
+									 <div class="form-group">
+									 <label id= "label_titulo" for="titulo">T&iacute;tulo:</label>
+									 <input type="text" class="form-control" name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required>
+									 </div>
+									 
+									 <div class="form-group">
+									 		<label for="texto_imagen">Descripción:</label>
+									 		<textarea id="texto_imagen" class="form-control" name='texto_imagen' placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea>
+									 </div>
+
+									 <div class="form-group">
+									 <label for="fecha">Fecha:</label>
+									 <input type="date" class="form-control" id="fecha" name='fecha' placeholder="Introduzca la fecha" value="<?php echo date("Y-m-d"); ?>" required>
+									 </div>
+									 
+									 <!-- MAX_FILE_SIZE debe preceder al campo de entrada del fichero -->
+									 <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+										<div class="form-group">
+											<label for="imagen">Imágenes (puede seleccionar varias):</label>
+									 		<input type="file" class="form-control-file" name="imagen[]"  id="imagen" placeholder="Seleccionar la(s) imagen(es)" required multiple>
+										</div>
+									
+									 
+									 <input type="hidden" name="accion" value="insertar_imagen">
+									 <div class="form-group">
+										 <input type="submit" name="enviar" class="btn btn-success" value="Guardar imagen"/>
+									 </div>
+							 </form>
+      </div>
+
+    </div>
+  </div>
+</div>

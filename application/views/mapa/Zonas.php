@@ -149,15 +149,14 @@ $(document).ready(function(){
             top = top.toFixed(2);
 
             //Mostrar ventana modal del select option
-            $("#insertar").css({
-                "display" : "block"
-            })
+            $("#zona_modal").modal();
         }
     /* Fin del evento mousedown en mapa_zona */
     });
 
     //Insertar punto en el mapa mediante ajax
     $("#aceptar_insertar_punto").click(function(){
+        
         //Value del select option
         var piso = $("#select_pisos").val();
         //Texto del select option seleccionado
@@ -186,9 +185,7 @@ $(document).ready(function(){
         });
 
         //Ocultar ventana modal, despues de ejecutarse el ajax
-        $("#insertar").css({
-            "display" : "none"
-        })
+        $("#zona_modal").modal("hide");
     })//Final del evento aceptar_insertar_punto
 
     $("#cancelar_insertar_punto").click(function(){
@@ -215,28 +212,42 @@ $(document).ready(function(){
             <?php
             /* Coloca los puntos en la imagen del mapa */ 
             foreach ($pisos as $piso) {
-                echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;'><span class='tooltip'>".$piso["piso"]."-".$piso["titulo_piso"]."</span></div>";
+                if($piso["top_zona"] == null) echo "<div id='".$piso['piso']."' class='puntos' style='displaye: none; left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;'><span class='tooltip'>".$piso["piso"]."-".$piso["titulo_piso"]."</span></div>";
+                if($piso["top_zona"] != "null") echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;'><span class='tooltip'>".$piso["piso"]."-".$piso["titulo_piso"]."</span></div>";
             }
             ?>
         </div>
     </div>
 </div>
-<!-- Ventana Modal -->
-<div id="insertar">
-    <div id="caja">
-        <h2 class="text-center">Zonas</h2>
-        <select name="piso" id="select_pisos">
-            <option value="nada" selected="true" disabled="disabled"> - Selecciona Zona - </option>
-            <?php  
-                foreach ($pisos as $piso) {
-                    if($piso["top_zona"] == "null") echo "<option style='display : block' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
-                    if($piso["top_zona"] != "null") echo "<option style='display : none' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
-                }
-            ?>
-        </select>
-        <div class="m-1">
-            <button class="insert" id="aceptar_insertar_punto">Aceptar</button>
-            <button class="insert" id="cancelar_insertar_punto">Cancelar</button>
+
+<!-- Ventana modal -->
+<div class="modal fade" id="zona_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Zonas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="form-group">
+                <select name="piso" class="form-control" id="select_pisos">
+                    <option value="nada" selected="true" disabled="disabled"> - Selecciona Zona - </option>
+                    <?php  
+                        foreach ($pisos as $piso) {
+                            if($piso["top_zona"] == "null") echo "<option style='display : block' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
+                            if($piso["top_zona"] != "null") echo "<option style='display : none' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
+                        }
+                        ?>
+                </select>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a name="" id="aceptar_insertar_punto" class="btn btn-primary float-right" href="#" role="button">Insertar</a>
+            </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
