@@ -33,12 +33,7 @@
 <?php
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
 //formulario para mostrar la tabla imagenes, con sus datos 
-if (isset($mensaje)) {
-    echo "<p style='color:green'>" . $mensaje . "</p>";
-}
-if (isset($error)) {
-    echo "<p style='color:red'>" . $error . "</p>";
-}
+
 //título
 //echo '<h1>IMAGEN</h1>';
 // CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha
@@ -115,20 +110,13 @@ echo "</table><br>";
 
 //Capa formulario modificar
 // Formulario para modificar la imagen
-if (isset($mensaje)) {
-    echo "<p style='color:green'>" . $mensaje . "</p>";
-}
-if (isset($error)) {
-    echo "<p style='color:red'>" . $error . "</p>";
-}
 $du = $lista_imagenes[0];
 ?>
 
 <div id='modificar'>
     <div id='caja'>
         <?php
-        echo"<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-        base_url("assets/css/cerrar_icon.png") . "'></img></a>";
+       
        
        ?>
        <!-- <h1>Modificar Imagen</h1> -->
@@ -147,7 +135,7 @@ $du = $lista_imagenes[0];
             echo "<img id='foto_modificar' width='100px' src=''><br><p class='parrafo_modificar'></p><br>";
             echo "<div id='nombre-archivo-imagen'></div>";
            */ ?>
-            <input type='submit' name='actualizar' value='Aceptar'>
+          
         </form>
         <!-- MODAL MODIFICAR -->
 <div class="modal fade" id="modalModificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -160,13 +148,13 @@ $du = $lista_imagenes[0];
         </button>
       </div>
       <div class="modal-body">
-      <form enctype="multipart/form-data" action='<?php // echo site_url("imagen/insertar_imagen"); ?>' method="post">
+      <form enctype="multipart/form-data" action='<?php  echo site_url("imagen/actualizar_imagen"); ?>' method="post">
         <div class=form-group>
         <input type='hidden' name='id_imagen' id='id_modificar' value=''>
         <label for='titulo'>Título:</label>
         <input type='text' class='form-control' id='titulo_modificar' name='titulo_imagen' value=''>
         <label for='descripcion'> Descripción: </label>
-        <input type='text' class='form-control' id='texto_imagen_modificar' name='texto_imagen' value=''>
+        <input type='text' class='form-control' id='texto_imagen_modificar' name='descripcion' value=''>
         <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
         <label for='fecha'> Fecha: </label>
         <input type='date' class='form-control' id='fecha_modificar' name='fecha'  value=''>
@@ -212,7 +200,7 @@ $du = $lista_imagenes[0];
         </button>
       </div>
       <div class="modal-body">
-      <form enctype="multipart/form-data" action='<?php // echo site_url("imagen/insertar_imagen"); ?>' method="post">
+      <form enctype="multipart/form-data" action='<?php  echo site_url("imagen/insertar_imagen"); ?>' method="post">
       <div class=form-group>
       <input type='hidden' name='accion' value='insertar_imagen'>
             <input id="id_imagen" name='id_imagen' type="hidden">
@@ -229,9 +217,9 @@ $du = $lista_imagenes[0];
          
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
             <label for="imagen">Imágenes (puede seleccionar varias):</label>
-            <input type="file"  class='form-control-file'name="imagen[]" id="imagen" placeholder="Seleccionar la(s) imagen(es)" required
+            <input type="file"  class='form-control-file' name="imagen[]" id="imagen" placeholder="Seleccionar la(s) imagen(es)" required
                 multiple><br />
-            <input type="hidden"name="accion" value="insertar_imagen"><br>
+            <input type="hidden" name="accion" value="insertar_imagen"><br>
             <input type="submit" class='btn btn-success float-right' name="enviar" value="Guardar imagen" />
         </form>
        
@@ -324,3 +312,4 @@ $du = $lista_imagenes[0];
 
     
 </script>
+</div>
