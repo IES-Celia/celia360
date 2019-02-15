@@ -114,7 +114,7 @@ foreach ($tabla as $re) {
             <source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
             </audio></td>";
    
-    echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
+    echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")' data-toggle='modal' data-target='#modalModificarAud'  ><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
   // echo"<td class='text-center'><a href='#' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
       echo" <td class='text-center'><a class='text-primary'  role='button' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
@@ -123,7 +123,7 @@ echo "</table>";
 
 
 //Capa(ventana modal) formulario modificar
-echo "
+/*echo "
 <div id='modificar'>
 	<div id='caja'>
         <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" . base_url("assets/css/cerrar_icon.png") . "'></img></a>
@@ -142,7 +142,7 @@ echo "
         </form>
 	</div>
 </div>";
-
+*/
 //Capa (ventana modal) formulario insertar
 /*echo"
 <div id='insertar'>
@@ -179,8 +179,9 @@ echo "
         </button>
       </div>
       <div class="modal-body">
-      
-      <form action='". site_url("/audio/insertarAud") ."'  method='Post' enctype='multipart/form-data' >
+      <?php
+     echo" <form action='".site_url("/audio/insertarAud")."'  method='Post' enctype='multipart/form-data' >";
+      ?>
     <div class='form-group'>
     <label for='descripcion'>Descripcion:</label>
     <input id='desc' type='text' name='desc' class="form-control">
@@ -203,6 +204,50 @@ echo "
 
 
 <!-- FIN MODAL INSERCION -->
+<!-- MODAL MODIFICAR -->
+<div class="modal fade" id="modalModificarAud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Audio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+     echo"<form  action='".site_url("audio/modificaraud/".$id)."' method='post' enctype='multipart/form-data'>";
+      ?>
+      <div class='form-group'>
+      <label for='urlAud'>URL audio:</label>
+      <input type='text' class='form-control text-light' name='url_aud' id='url' readonly>
+      <label for='Descripcion'>Descripcion:</label>
+      <input id='desc' type='text' name='desc_aud'  id='desc' class='form-control'>
+                <input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
+                <input type='hidden' name='id'  id='id'>
+                <label for='tipo'>Tipo</label>
+                <select name='tipo_aud' id='select' class='form-control'>
+                    <option value='v-guiada'>visita guiada</option>
+                    <option value='d-objeto'>definir objeto</option>
+                </select>
+                <input type='submit' class='btn-success'> 
+                </div>
+        </form>
+	
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- FIN MODAL MODIFICAR -->
 </div> <!-- cierre del container -->
 <script>
 

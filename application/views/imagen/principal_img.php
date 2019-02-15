@@ -131,7 +131,7 @@ $du = $lista_imagenes[0];
         base_url("assets/css/cerrar_icon.png") . "'></img></a>";
        
        ?>
-        <h1>Modificar Imagen</h1>
+       <!-- <h1>Modificar Imagen</h1> -->
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
         <form enctype="multipart/form-data" action='<?php echo site_url("imagen/actualizar_imagen"); ?>' method='post'>
             <?php
