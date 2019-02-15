@@ -271,12 +271,11 @@
                 success:function(result){
 
                   if(result == 0){
-                    document.getElementById("mensaje_cabecera").innerHTML = "Imágenes subidas con éxito";
-				
-									  document.getElementById("error_cabecera").innerHTML= '';
+										$("#error_cabecera").html('');
+                    $("#mensaje_cabecera").html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Imágenes insertadas correctamente</h7><i class='far fa-check-circle'></i></div>");
                   }else{
-                    document.getElementById("error_cabecera").innerHTML = "Error al insertar todas las imágenes";
-					document.getElementById("mensaje_cabecera").innerHTML = "";
+                    $("#error_cabecera").html("<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al insertar todas las imágenes</h7><i class='far fa-check-circle'></i></div>");
+										$("mensaje_cabecera").html("");
                   }
 
 				  cod_escena = '<?php echo $cod_escena; ?>';
@@ -307,10 +306,10 @@
 		url = "<?php echo base_url('Panoramas_Secundarios/deletePanorama/');?>"+id;
 		$.get( url, function( data ) {
 			if (data.trim() < "0") {
-				$("#error_cabecera").html("Hubo problemas al eliminar la imagen.");
+				$("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Hubo un error al eliminar la imagen</h7><i class='far fa-check-circle'></i></div>");
 
 			}else if(data.trim() > "0"){
-				$("#mensaje_cabecera").html("Imagen eliminada con éxito");
+				$("#mensaje_cabecera").html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Imagen eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
 				fila.remove();
 			}
 			});
@@ -321,7 +320,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade mt-5" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -351,7 +350,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="insert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade mt-5" id="insert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
