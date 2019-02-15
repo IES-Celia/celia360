@@ -119,7 +119,7 @@ class Imagen extends CI_Controller {
 
         //acciones para modificar los datos de la imagen en la BD
         $actualizar_titulo = $this->input->post_get('titulo_imagen');
-        $actualizar_texto = $this->input->post_get('texto_imagen');
+        $actualizar_texto = $this->input->post_get('descripcion');
         $actualizar_fecha = $this->input->post_get('fecha');
 
         $actualizar_url = 'assets/imagenes/imagenes-hotspots/' . $this->input->post_get('titulo_imagen') . ".jpg";

@@ -176,19 +176,32 @@
 			</div>
 			</div>
 			
-			
+			<style>
+                .alert{
+                    margin-bottom: 0!important;
+                    width: auto!important;
+                }
+            </style>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<div id="mensajemenu">
-				<?php  if (isset($mensaje)) echo "<span id='mensaje_cabecera'>$mensaje</span>"; ?>
-				<?php  if (isset($error)) echo "<span id='error_cabecera'>$error</span>"; ?>
+			<div id="mensajemenu" class='col-md-10'>
+                <div class='col-md-6 text-center mx-auto' >
+                <div id="mensaje_cabecera">
+                <?php  if (isset($mensaje)) echo "<div class='alert alert-success ' role='alert' >
+                                                        <h7 class='mr-2'> $mensaje</h7><i class='far fa-check-circle'></i>
+                                                        </div>"; ?>
+                </div>
+                <div id="error_cabecera">
+				<?php  if (isset($error)) echo "<div class='alert alert-danger ' role='alert' >
+                                                        <h7 class='mr-2'>$error</h7><i class='fas fa-exclamation-circle'></i>
+                                                        </div>";  ?>
+                </div>
+                </div>
 				
-				<span id='mensaje_cabecera'></span>
-				<span id='error_cabecera'></span>
+				
         	</div>
-				<ul class="mr-auto"></ul>
-				<div id="logueo">    
-					<span id="sesion" align="center">Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></span>
+				<div id="logueo" >    
+					<span id="sesion" >Estás logueado como <span id="usuario"> <?php echo $this->session->nombreusr;?></span></span>
 				</div>
 			</div>
     </div>

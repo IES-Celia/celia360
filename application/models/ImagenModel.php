@@ -131,7 +131,7 @@ class ImagenModel extends CI_Model {
 
             $actualizar_id = $this->input->post_get('id_imagen');
             $actualizar_titulo = $this->input->post_get('titulo_imagen');
-            $actualizar_texto = $this->input->post_get('texto_imagen');
+            $actualizar_texto = $this->input->post_get('descripcion');
             $actualizar_url = $this->input->post_get('url_imagen');
             $actualizar_fecha = $this->input->post_get('fecha');
 
