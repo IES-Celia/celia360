@@ -132,8 +132,9 @@ echo "
         </form>
 	</div>
 </div>";
-
-echo"
+*/
+//Capa (ventana modal) formulario insertar
+/*echo"
 <div id='insertar'>
 <div id='caja'>
 <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
@@ -155,7 +156,89 @@ echo"
         
 /* A continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script incluimos un plugin para la paginacion y buscador */
 ?>
+
+
+<!-- MODAL DE INSERCION -->
+<div class="modal fade" id="modalInsertarAud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+     echo" <form action='".site_url("/audio/insertarAud")."'  method='Post' enctype='multipart/form-data' >";
+      ?>
+    <div class='form-group'>
+    <label for='descripcion'>Descripcion:</label>
+    <input id='desc' type='text' name='desc' class="form-control">
+    <label for='audio' >Inserte audio</label>
+    <input type='file' class="form-control-file" name ='audio[]' id='audio' multiple>
+    <label for='tipo'>Tipo</label>
+    <select name='tipo_aud' id='tipo' class='form-control'>
+  			<option value='v-guiada'>Visita guiada</option>
+ 			<option value='d-objeto' selected>Definir un objeto</option>
+		</select>
+        
+    </div>
+    <input type='submit' class='btn-success float-right'>
+      </div>
+      
+    </div>
+  </div>
 </div>
+
+
+
+<!-- FIN MODAL INSERCION -->
+<!-- MODAL MODIFICAR -->
+<div class="modal fade" id="modalModificarAud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Audio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <?php
+     echo"<form  action='".site_url("audio/modificaraud/".$id)."' method='post' enctype='multipart/form-data'>";
+      ?>
+      <div class='form-group'>
+      <label for='urlAud'>URL audio:</label>
+      <input type='text' class='form-control text-light' name='url_aud' id='url' readonly>
+      <label for='Descripcion'>Descripcion:</label>
+      <input id='desc' type='text' name='desc_aud'  id='desc' class='form-control'>
+                <input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
+                <input type='hidden' name='id'  id='id'>
+                <label for='tipo'>Tipo</label>
+                <select name='tipo_aud' id='select' class='form-control'>
+                    <option value='v-guiada'>visita guiada</option>
+                    <option value='d-objeto'>definir objeto</option>
+                </select>
+                <input type='submit' class='btn-success'> 
+                </div>
+        </form>
+	
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- FIN MODAL MODIFICAR -->
+</div> <!-- cierre del container -->
 <script>
 
     function mostrarm(id){
