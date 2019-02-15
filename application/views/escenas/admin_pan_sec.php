@@ -15,6 +15,28 @@
 		color:white;
 	}
 
+    #panorama {
+        width: 300px;
+        height: 250px;
+    }
+
+    .panoramas{
+        width: 500px;
+        height: 300px;
+				margin: 0 auto;
+
+    }
+
+    .oculto{
+        display: none;
+    }
+
+    .activo {
+        display: block;
+    }
+
+    
+
 </style>
 
 <!-- NUEVOOOOOOO -->
@@ -60,9 +82,21 @@
 			echo "<tr id='imagen-".$info['id_panorama_secundario']."'>
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
-				<td class='url-img'> <img src='". base_url($info['panorama'])."' class='imagen-img img-fluid d-block mb-3'><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw/'><div class='card'><div class='card-body text-center'>
+				<td class='text-center'>
+				<div class='custom-hotspot-info mx-auto' id='".$info['id_panorama_secundario']."'> 
+					<span class='oculto'>".base_url($info['panorama'])."</span>
+				</div>
+
+				<div id='panorama-".$info['id_panorama_secundario']."' class='panoramas oculto'>
+				</div>
+				<div class='form-group mt-3'>
+				<button class='admin btn btn-primary mr-3 col-xs-12'>Pitch-Yaw</button></a>
+				<a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary col-xs-12'>Hotspots</button></a>
+				</div>
+			
+				</td>
 				
-				<button class='admin btn btn-primary mr-3 col-xs-12'>Pitch-Yaw</button></a><a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary col-xs-12'>Hotspots</button></a>
+				
 				
 				</div></div></td>
 				<td><i class='fa fa-edit edit text-primary' data-toggle='modal' data-target='#exampleModal' style='font-size:30px;' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></i></td>
@@ -133,6 +167,7 @@
  
 //PAGINACIÓN CON JQUERY LOLI
     $(document).ready(function() {
+
         $('#cont').dataTable({
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -205,7 +240,9 @@
             fecna.setAttribute("type",'date');
             fecna.setAttribute('name','fecha'+contador);
             fecna.setAttribute("id","fecha"+contador);
-			fecna.setAttribute("class",'form-control');
+						fecna.setAttribute("class",'form-control');
+						fecna.className += " inputsClass";
+						fecna.value = '<?php echo date('Y-m-d'); ?>';
             var contentLabel = document.createTextNode("Título de imágen "+contador+": ");
             var contentLabelFecna = document.createTextNode("Fecha de imágen "+contador+": ");
             label.setAttribute("for","nombre"+contador);
@@ -214,8 +251,10 @@
             label2.appendChild(contentLabelFecna);
             inputName.setAttribute("type","text");
             inputName.setAttribute("name","nombre"+contador);
-			inputName.setAttribute("id","nombre"+contador);
-			inputName.setAttribute("class","nombresClass form-control");
+						inputName.setAttribute("id","nombre"+contador);
+						inputName.setAttribute("class","form-control");
+						inputName.className += " inputsClass";
+	
             contador++;
             image.src = event.target.result;
             image.width = 250; // a fake resize
@@ -232,21 +271,31 @@
       }
 	}
 
-	
-
 	function compruebaCampo(){
-		for(i=0;i<$("input[class=nombresClass]").length;i++){
-			valor = document.getElementById("nombre"+(i+1)).value;
-			if(valor == ""){
+		for(i=0;i<$("input.inputsClass").length/2;i++){
+			longitudNombre = document.getElementById('nombre'+(i+1)).value.length;
+			longitudFecha = document.getElementById('fecha'+(i+1)).value.length;
+
+			valorNombre = $("#nombre"+(i+1));
+			valorFecha = $("#fecha"+(i+1));
+
+			if(longitudNombre == 0){
+				valorNombre.css('border-color','red');
+				valorNombre.focus();
+				return false;
+
+			} else if(longitudFecha == 0){
+				valorFecha.css('border-color','red');
+				valorFecha.focus();
 				return false;
 			}
 		}
-
 		return true;
 	}
 
  
     function ajax_file_upload(file_obj) {
+
       document.getElementById("btnEnvio").addEventListener('click',function(){
 		if(compruebaCampo()){
 			var form_data = new FormData();
@@ -286,7 +335,7 @@
 				}
             });
 		}else{
-			alert("FALTAN CAMPOS POR RELLENAR");
+			alert("Rellene todos los inputs");
 		}   
 		});
 		fileobj = [];
@@ -378,4 +427,21 @@
     </div>
   </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("#cont").on("click", ".custom-hotspot-info", function(){
+            id = $(this).attr('id');
+            img = $(this).find('span').text();
+
+
+            pannellum.viewer('panorama-'+id, {
+                "type": "equirectangular",
+                "panorama": img,
+                "autoLoad": true
+            });
+            $('#panorama-'+id).toggleClass('oculto');
+        });
+    });
+</script>
 

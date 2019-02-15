@@ -253,6 +253,7 @@ if(count($mapa)!=0){
 
 $(document).ready(function() {
         $('#cont').dataTable({
+
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
             "zeroRecords": "No se encontraron resultados en su búsqueda",
