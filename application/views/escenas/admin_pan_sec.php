@@ -90,7 +90,7 @@
 				<div id='panorama-".$info['id_panorama_secundario']."' class='panoramas oculto'>
 				</div>
 				<div class='form-group mt-3'>
-				<button class='admin btn btn-primary mr-3 col-xs-12'>Pitch-Yaw</button></a>
+				<a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw'<button class='admin btn btn-primary mr-3 col-xs-12'>Pitch-Yaw</button></a>
 				<a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary col-xs-12'>Hotspots</button></a>
 				</div>
 			
