@@ -62,7 +62,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-4">
-            <a class="btn btn-primary float-right"  role="button" onclick='mostrar()'><i class='fas fa-plus-circle'></i> Insertar audio</a>
+            <a class="btn btn-primary float-right"  role="button" onclick='mostrar()' data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
         </div>
     </div>
     <div class="row">
@@ -104,7 +104,7 @@ foreach ($tabla as $re) {
             <source src='" . base_url($re["url_aud"]) . "' type='audio/mp3'/>
             </audio></td>";
    
-    echo "<td class='text-center'><a class='text-primary ' role='button'  onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
+    echo "<td class='text-center'><a class='text-primary ' data-toggle='modal' data-target='#modalModificarAud' role='button'  onclick='mostrarm(". $re["id_aud"] .")'><i class='fa fa-edit text-center' style='font-size:30px;'></i></a></td>";
       echo" <td class='text-center'><a class='text-primary'  role='button' onclick='borraraud(". $re["id_aud"] .")'><i class='fa fa-trash' style='font-size:30px;'></i></a></td></tr>";
 }
 ?>
@@ -113,7 +113,7 @@ foreach ($tabla as $re) {
     </div>
 </div>
 <?php
-echo "
+/*echo "
 <div id='modificar'>
 	<div id='caja'>
         <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" . base_url("assets/css/cerrar_icon.png") . "'></img></a>
@@ -131,8 +131,8 @@ echo "
                 <input type='submit'> 
         </form>
 	</div>
-</div>";
-*/
+</div>";*/
+
 //Capa (ventana modal) formulario insertar
 /*echo"
 <div id='insertar'>
@@ -212,7 +212,7 @@ echo "
       <label for='urlAud'>URL audio:</label>
       <input type='text' class='form-control text-light' name='url_aud' id='url' readonly>
       <label for='Descripcion'>Descripcion:</label>
-      <input id='desc' type='text' name='desc_aud'  id='desc' class='form-control'>
+      <input id='descripcion' type='text' name='desc_aud'  class='form-control'>
                 <input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
                 <input type='hidden' name='id'  id='id'>
                 <label for='tipo'>Tipo</label>
@@ -245,9 +245,9 @@ echo "
         url = "url_aud"+id;
         desc = "desc_aud"+id;
         tipo = "tipo_aud"+id;
-           
+        
         document.getElementById("url").value = document.getElementById(url).innerHTML;
-        document.getElementById("desc").value = document.getElementById(desc).innerHTML;
+        document.getElementById("descripcion").value = document.getElementById(desc).innerHTML;
         document.getElementById("select").value = document.getElementById(tipo).innerHTML;
         document.getElementById("id").value = id;
             
@@ -255,14 +255,7 @@ echo "
         $("#modificar").show();
     }
 
-    function mostrar(){
-        $("#insertar").show();    
-    }
-
-    function cerrar(){
-        $("#insertar").hide();
-        $("#modificar").hide();
-    }    
+   
         
     //confirmacion al borrar
     function borraraud(id) {
