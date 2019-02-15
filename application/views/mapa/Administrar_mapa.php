@@ -137,7 +137,7 @@
 				<input type="file"  class="form-control-file" name="zona" id="zona" placeholder="Seleccionar la imagen">
 			</div>
         
-            <input type="submit" class="btn btn-success" value="Modificar">
+            <input type="submit" class="btn btn-success float-right" value="Modificar">
         </form>
     </div>
 </div>
@@ -240,7 +240,7 @@
                 
             ?>
             </div>
-            <input type="submit" class="btn btn-success mt-2" value="Modificar">
+            <input type="submit" class="btn btn-success mt-2 float-right" value="Modificar">
         </form>
     </div>
 </div>

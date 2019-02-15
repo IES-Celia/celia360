@@ -343,7 +343,7 @@
 			</div>";
             echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
             ?>   
-            <input type='submit' class='btn btn-success' name ='actualizar' value = 'Actualizar'>
+            <input type='submit' class='btn btn-success float-right' name ='actualizar' value = 'Actualizar'>
         </form>
       </div>
     </div>
