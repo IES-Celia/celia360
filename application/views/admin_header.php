@@ -186,12 +186,16 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<div id="mensajemenu" class='col-md-10'>
                 <div class='col-md-6 text-center mx-auto' >
-                <?php  if (isset($mensaje)) echo "<div class='alert alert-success ' role='alert' id='mensaje_cabecera'>
+                <div id="mensaje_cabecera">
+                <?php  if (isset($mensaje)) echo "<div class='alert alert-success ' role='alert' >
                                                         <h7 class='mr-2'> $mensaje</h7><i class='far fa-check-circle'></i>
                                                         </div>"; ?>
-				<?php  if (isset($error)) echo "<div class='alert alert-danger ' role='alert' id='error_cabecera'>
+                </div>
+                <div id="error_cabecera">
+				<?php  if (isset($error)) echo "<div class='alert alert-danger ' role='alert' >
                                                         <h7 class='mr-2'>$error</h7><i class='fas fa-exclamation-circle'></i>
                                                         </div>";  ?>
+                </div>
                 </div>
 				
 				
