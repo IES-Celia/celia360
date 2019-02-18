@@ -434,7 +434,7 @@
                 $escena_inicial = $imagen["escena_inicial"];
                 $punto_inicial = $imagen["punto_inicial"];
                 $titulo_piso = $imagen["titulo_piso"];
-                echo '<button id="p'.$piso.'" class="plantas" value="'.$piso.'" >'.$titulo_piso.'</button>';
+                echo '<button id="p'.$piso.'" class="plantas bg-secondary" value="'.$piso.'" >'.$titulo_piso.'</button>';
                 }
                 echo "</div>";//div final de myModal
             ?>
@@ -502,7 +502,7 @@
 				</div>
 				<div class="form-group">
 					<label for="actual">Zona actual</label>
-					<input  id="plantaDestino" type='text' name='plantaDestino' class="form-control" required readonly>
+					<input  id="plantaDestino" type='text' name='plantaDestino' class="form-control text-info" required readonly>
 				</div>
 				<div class="form-group">
 				<input type='submit' class="button btn btn-success">
