@@ -1,6 +1,17 @@
 <!-- MENU PRINCIPAL DEL HOMEPAGE -->
 <!-- Incluye enlaces a todas las funciones accesibles desde el homepage -->
+<script>
+    /* Ocultar el contenido central al pulsar el boton del menu*/
+    $(document).ready(function(){
+        $("#botonMenu").click(function(){
+            $("#slider1_portada").toggle("display");
+        });
+    });
+</script>
 <style>
+    ul{
+        text-align:center;
+    }
     ul a{
         font-size: 30px;
         color: white;
@@ -24,7 +35,6 @@
         background-position: center;
     }
 </style>
-
 <body style="background-image:url('<?php echo site_url("assets/imagenes/portada/".$portada[1]['opcion_valor']); ?>')">
 
 <div class="container-fluid menu">
@@ -33,7 +43,7 @@
         <a class="navbar-brand" href="<?php echo site_url();?>">
             <img width="50px" src="<?php echo site_url("assets/imagenes/portada/".$portada[10]["opcion_valor"]); ?>"/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button id="botonMenu" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">

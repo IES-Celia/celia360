@@ -27,13 +27,13 @@
     /* Posicionar el pie de pagina al final */
     #footer{
         position: absolute;
-        top: 92%;
+        top: 85%;
     }
 </style>
 
 <div id="slider1_portada" class="container-fluid fondo-portada">
 
-    <div id="slider1_portada" class="centrado-porcentual">
+    <div class="centrado-porcentual">
 
         <h1 style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;" id="titulito"><?php echo  $portada[0]["opcion_valor"] ?></h1>
 
@@ -44,7 +44,7 @@
         <?php 
             if ($portada[7]["opcion_valor"] == "1") {
                 // El botón "Historia" solo se muestra si está configurado así en las opciones de portada
-                echo "<a class='btn btn-primary' href='".site_url("biblioteca/abrir_phistoria")."' role='button'>HISTORIA</a>";
+                echo "<a class='btn' href='".site_url("biblioteca/abrir_phistoria")."' role='button'>HISTORIA</a>";
             }
         ?>
 
@@ -55,9 +55,13 @@
 <div class="container-fluid" id="footer">
 
     <p class="text-center">
-        <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;" >Powered by Celia Viñas 2ºDAW 17/18&nbsp;&nbsp;</span>
+        <span>Creditos |</span>
+        <span>Politica de privacidad |</span>
+        <span>Cookies</span>
+    </p>
+    <p class="text-center">
+        <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;" >Powered by Celia Viñas 2ºDAW 17/19&nbsp;&nbsp;</span>
         <img src="<?php echo base_url("assets/imagenes/portada/logo.png");?>" width="20px"/>
     </p>
 
 </div>
-

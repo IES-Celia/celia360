@@ -22,7 +22,7 @@
   ?>
 
     // Prepara el título de la portada (extraído de la BD)
-    base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
+    var base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
 
 </script>
 
@@ -41,11 +41,11 @@
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
-    <!-- Css y JS de la portada 
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
+    <!-- Css y JS de la portada -->
+    <!-- <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/> -->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
--->
+	<!-- <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/> -->
+
     <!-- Fuentes externas -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
