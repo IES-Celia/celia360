@@ -197,8 +197,8 @@ echo "<tr class='filaEscena'>
         </div>
         <div class="row mt-4">
             <div class="col-md-12 text-center">
-                <button id="boton_guiada_modificar" id="btn-bajar-piso" type="button" class="btn btn-primary">Bajar piso</button>
-                <button id="boton_guiada_modificar" id="btn-subir-piso" type="button" class="btn btn-primary">Subir piso</button>
+                <button id="btn-bajar-piso" class="btn btn-primary">Bajar piso</button>
+                <button id="btn-subir-piso" class="btn btn-primary">Subir piso</button>
             </div>
         </div>
         <div class="form-group">
