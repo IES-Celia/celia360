@@ -1,25 +1,3 @@
- <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
- <style>
-    #panorama {
-        width: 300px;
-        height: 250px;
-    }
-
-    .panoramas{
-        width: 500px;
-        height: 300px;
-		margin-top:10px;
-    }
-
-    .oculto{
-        display: none;
-    }
-
-    .activo {
-        display: block;
-    }
-
-    </style>
 <?php 
 	if (isset($datos["error"])) {
 			echo "<p style='color:red'>".$datos["error"]."</p>";
