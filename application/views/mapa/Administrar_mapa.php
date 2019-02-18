@@ -136,7 +136,6 @@
 				<label for="mod">Modificar imagen de zona</label>
 				<input type="file"  class="form-control-file" name="zona" id="zona" placeholder="Seleccionar la imagen">
 			</div>
-        
             <input type="submit" class="btn btn-success float-right" value="Modificar">
         </form>
     </div>
