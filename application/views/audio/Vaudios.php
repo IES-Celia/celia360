@@ -15,54 +15,10 @@
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
 
-<style type="text/css">
-		
-	  #modificar{
-        display:none;
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        border: 3px solid ;
-        background-color:rgb(0,0,0); 
-        background-color:rgba(0,0,0,0.4);
-    }
-
-    #insertar{
-        display:none;
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        border: 3px solid ;
-        background-color:rgb(0,0,0); 
-        background-color:rgba(0,0,0,0.4);
-    }
-   
-
-    .cerrar{
-        position: relative;
-    top:15px;
-    left:44%;
-    
-    }
-    .img-cerrar{
-         width: 20px; height: 20px;
-    }
- 
-
-</style>
-
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-4">
-            <a class="btn btn-primary float-right"  role="button" onclick='mostrar()' data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
+            <a class="btn btn-primary float-right"  role="button" data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
         </div>
     </div>
     <div class="row">
@@ -112,50 +68,6 @@ foreach ($tabla as $re) {
         </table>
     </div>
 </div>
-<?php
-/*echo "
-<div id='modificar'>
-	<div id='caja'>
-        <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" . base_url("assets/css/cerrar_icon.png") . "'></img></a>
-        <h1>Modificar Audio</h1>
-        <form  action='" . site_url("audio/modificaraud/" . $id) . "' method='post' enctype='multipart/form-data'>
-                URL audio:<input type='text' name='url_aud' id='url' readonly><br/>
-                Descripcion:<input id='desc' type='text' name='desc_aud'  id='desc'><br/>    
-                <input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
-                <input type='hidden' name='id'  id='id'><br/>
-                Tipo
-                <select name='tipo_aud' id='select'>
-                    <option value='v-guiada'>visita guiada</option>
-                    <option value='d-objeto'>definir objeto</option>
-                </select><br/><br/>
-                <input type='submit'> 
-        </form>
-	</div>
-</div>";*/
-
-//Capa (ventana modal) formulario insertar
-/*echo"
-<div id='insertar'>
-<div id='caja'>
-<a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                base_url("assets/css/cerrar_icon.png") . "'></img></a>
-<h1>Insertar audio</h1>
-<form action='". site_url("/audio/insertarAud") ."'  method='Post' enctype='multipart/form-data' >
-    Descripcion:<input id='desc' type='text' name='desc'><br/>
-	Inserte audio<input type='file' name ='audio[]' id='audio' multiple><br/>
-	Tipo<select name='tipo_aud' id='tipo'>
-  			<option value='v-guiada'>Visita guiada</option>
- 			<option value='d-objeto' selected>Definir un objeto</option>
-		</select><br/><br/>
-    <input type='submit'>
-    
-      </form>
-	  </div>
-</div>";
-
-        
-/* A continuacion nos encontramos al script de javascript ayax, donde mostramos  las ventanas modales, borramos audio por ajax y al final del script incluimos un plugin para la paginacion y buscador */
-?>
 
 
 <!-- MODAL DE INSERCION -->
@@ -163,7 +75,7 @@ foreach ($tabla as $re) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Inserción de Audio</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -236,9 +148,7 @@ foreach ($tabla as $re) {
                 <input type='submit' class=' btn btn-success float-right'> 
                 </div>
         </form>
-	
       </div>
-      
     </div>
   </div>
 </div>
@@ -264,8 +174,6 @@ foreach ($tabla as $re) {
         document.getElementById("select").value = document.getElementById(tipo).innerHTML;
         document.getElementById("id").value = id;
             
-        $("#contenedor").show();
-        $("#modificar").show();
     }
 
    
