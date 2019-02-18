@@ -129,7 +129,7 @@
 			<input type="hidden" name="MAX_FILE_SIZE" value="20000000">
 			<div class="form-group">
 				<label for="posicion_inicial">Posición inicial</label>
-            	<input type="text" class="form-control text-white" name="posicion_inicial" readonly>
+            	<input type="text" class="form-control text-info" name="posicion_inicial" readonly>
 			</div>
 
 			<div class="form-group">
