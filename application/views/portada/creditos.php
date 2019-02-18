@@ -14,7 +14,6 @@
 */
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
 <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
@@ -29,86 +28,20 @@ $(document).ready(function(){
 <style>
     body{
         overflow-y: auto;
-        background-color: #2B3E50;
+        background-color: #2B3E50 !important;
+        background-image:none !important;
     }
 
     /* Estilos de la ventana modal */
 
-    #popup {
-		visibility: hidden;
-		opacity: 0;
-		margin-top: -200px;
-	}
-	#popup:target {
-		visibility:visible;
-		opacity: 1;
-		background-color: rgba(0,0,0,0.8);
-		position: fixed;
-		top:0;
-		left:0;
-		right:0;
-		bottom:0;
-		margin:0;
-		z-index: 999;
-		-webkit-transition:all 1s;
-		-moz-transition:all 1s;
-		transition:all 1s;
-	}
-	.popup-contenedor {
-		position: relative;
-		margin:7% auto;
-		padding:30px 50px;
-		background-color: #fafafa;
-		color:#333;
-		border-radius: 3px;
-		width:50%;
-	}
-	a.popup-cerrar {
-		position: absolute;
-		top:3px;
-		right:3px;
-		background-color: #333;
-		padding:7px 10px;
-		font-size: 20px;
-		text-decoration: none;
-		line-height: 1;
-		color:#fff;
-	}
- 
-    /* Estilos para el enlace */
-    
-	a.popup-link {
-	    text-align: center;
-	    display: block;
-	    margin: 30px 0;
-	}
-    
-    .popup-contenedor li{
-        font-size: 20px;
-    }
-    
-    .display-4{
-        font-size: 36px;
-    }
-
-    /* Estilos de las cajas del equipo de desarrollo */
-
-    img{
-        width: 100%;
-    }
-    a{
-        padding: 10px;
-    }
-    .margen-superior{
-        margin-top: 110px;
-    }
+   
 </style>
 
 <div class='container'>
 
-    <div class="row margen-superior bg-secondary">
+    <div class="row margen-superior bg-secondary mt-5">
         <div class="col-md-10 mx-auto">
-            <h1>¿Qué es CeliaTour?</h1>
+            <h1 class="text-center">¿Qué es CeliaTour?</h1>
             <p class="text-justify">Es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360 desarrollada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web en IES Celia Viñas de Almería (España) durante el curso 2017/2018.</p>
         </div>
     </div>
@@ -118,449 +51,95 @@ $(document).ready(function(){
             <h2 class="text-center">Equipo de desarrollo</h2>
         </div>
     </div>
-       <!-- 
-    <div class='row'>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Miguel Ángel López Segura</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>migueldevelopez@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><i class="fab fa-linkedin-in"></i></a>
-                    <a target="_blank" href="mailto:migueldevelopez@gmail.com"><i class="far fa-envelope"></i></a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/miguelille"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='0'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Francisco Linares González</h2> 
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>franlg.alm@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href="mailto:franlg.alm@gmail.com"><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/FrankLG"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='1'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Zygimantas Sniurevicius</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>zygis.1415@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href="mailto:zygis.1415@gmail.com"><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/heremias22"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='2'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Marc Expósito Miras</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>enconstruccion@mimail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/MarcWotofok"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='3'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Manuel González Mesa</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>enconstruccion@mimail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/mgonzalezmesa"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='4'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Alejandro López López</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>f.alejandrolopez92@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href="mailto:f.alejandrolopez92@gmail.com"><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/Alfrik"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='5'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Hamza Benhachmi</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>enconstruccion@mimail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/jamudi"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='6'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Miguel Ángel López Rodríguez</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>enconstruccion@mimail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/MickeyLopez091"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='7'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>María Dolores Salmerón Sierra</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>salmeron.loli@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href="mailto:salmeron.loli@gmail.com"><i class="far fa-envelope"></i> </a>                       
-                    <a target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/lolisalmeron"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='8'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Álvaro Sánchez Casares</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>enconstruccion@mimail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/Dansberg"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='9'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>José Luis Ramírez Jiménez</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>enconstruccion@mimail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/pepeluchan"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='10'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>Daniel Sanchez Gil</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>danielsanchezgil95@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='11'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>David Ramón Casanova</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>DavidRamonCasanova98@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='12'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mt-3">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="<?php echo base_url("assets/imagenes/portada/miguelimg.jpg"); ?>"/>
-                </div>
-                <div class="col-md-8">
-                    <h2>David Mora Caceres</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>danielsanchezgil95@gmail.com</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <a target="_blank" href=""><i class="fab fa-linkedin-in"></i> </a>
-                    <a target="_blank" href=""><i class="far fa-envelope"></i> </a>
-                    <a target="_blank" href=""> <i class="far fa-file-pdf"></i></a> 
-                    <a target="_blank" href="https://github.com/vampy95"> <i class="fab fa-github"></i></a>
-                    <a href="#popup" class="inform" alumno='13'><i class="fas fa-plus"></i> info </a>
-                </div>
-            </div>
-        </div>
-
-    </div>
--->
+ 
 <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
             <h2 class="text-center">Desarrolladores</h2>
             <ul class="list-group">
                 <li class="list-group-item">
                 <p class="d-inline" >Miguel Ángel Lopéz Segura </p>
-                    <a class="d-inline"  href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href="mailto:migueldevelopez@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/miguelille" ><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:migueldevelopez@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/miguelille" ><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Francisco Linares González</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href="mailto:franlg.alm@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/FrankLG"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:franlg.alm@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/FrankLG"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                  </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Zygimantas Sniurevicius</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href= "mailto:zygis.1415@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a  class="d-inline" href= "https://github.com/heremias22"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href= "mailto:zygis.1415@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a  class="d-inline"  target="_blank" href= "https://github.com/heremias22"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
 
                 <li class="list-group-item">
                 <p class="d-inline" >Marc Expósito Miras</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/MarcWotofok"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/MarcWotofok"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Manuel González Mesa</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/MarcWotofok"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline"  target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/MarcWotofok"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Alejandro López López</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href="mailto:f.alejandrolopez92@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/Alfrik"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:f.alejandrolopez92@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/Alfrik"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Hamza Benhachmi</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/jamudi"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/jamudi"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Miguel Ángel López Rodríguez</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline"  href="https://github.com/MickeyLopez091"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank"  href="https://github.com/MickeyLopez091"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >María Dolores Salmerón Sierra</p>
-                <a class="d-inline" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><img class="float-right mr-2 mt-3"  style="width:15px;"src=<?php echo base_url('assets/css/svg/file-pdf-regular.svg'); ?>></a>
-                <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                <a class="d-inline" href="mailto:salmeron.loli@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                <a class="d-inline" href="https://github.com/lolisalmeron"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                <a class="d-inline" target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><img class="float-right mr-2 mt-3"  style="width:15px;"src=<?php echo base_url('assets/css/svg/file-pdf-regular.svg'); ?>></a>
+                <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                <a class="d-inline" target="_blank" href="mailto:salmeron.loli@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                <a class="d-inline" target="_blank" href="https://github.com/lolisalmeron"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Álvaro Sánchez Casares</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/Dansberg"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/Dansberg"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >José Luis Ramírez Jiménez</p>
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/Dansberg"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/Dansberg"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >David Ramón Casanova</p>
-                    <a class="d-inline" href=""><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href="davidramoncasanova98@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/DavidRamon15"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/david-ramon-casanova/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="davidramoncasanova98@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/DavidRamon15"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                     <p class="d-inline">Daniel Sanchez Gil</p>
-                    <a class="d-inline" href="https://www.linkedin.com/in/daniel-sanchez-gil"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" href="mailto:danielsanchezgil95@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" href="https://github.com/vampy95"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/daniel-sanchez-gil"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:danielsanchezgil95@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/vampy95"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">David Mora Cáceres
-                    <a  href="https://www.linkedin.com/in/david-mora-/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a  href="mailto:davidmoracaceres2@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a  href="https://github.com/dmc21"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/david-mora-/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:davidmoracaceres2@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/dmc21"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
             </ul>
         </div>
@@ -600,20 +179,12 @@ $(document).ready(function(){
 
 <!-- FINAL DE CONTAINER -->
 
-   	<div class="modal-wrapper" id="popup">
-		<div class="popup-contenedor">
-			<h2 id="titulomodal" class="display-4">Ventana en desarrollo WIP</h2>
-            <h5>Desarrollo realizado:</h5>
-			<ul id="listaGoals">
+  <!-- 	
                 <li>Matar moscas a cañonazos</li> 
                 <li>Montar cirios pascuales</li> 
                 <li>Disparar con polvora de rey</li>
                 <li>Es lo que nos diferencia de uno de la calle</li>   
-            </ul>
-			<a class="popup-cerrar" href="#">X</a>
-		</div>
-    </div> 
-    
+    -->
 <script>
 
     /* Script para el funcionamiento de las ventanas modales */
