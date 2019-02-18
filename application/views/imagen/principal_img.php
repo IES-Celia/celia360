@@ -122,19 +122,7 @@ $du = $lista_imagenes[0];
        <!-- <h1>Modificar Imagen</h1> -->
         <!-- CAMPOS DE LA TABLA : id_imagen,  titulo_imagen,  texto_imagen,  url_imagen , fecha -->
         <form enctype="multipart/form-data" action='<?php echo site_url("imagen/actualizar_imagen"); ?>' method='post'>
-            <?php
-            /*
-            echo "<input type='hidden' name='id_imagen' id='id_modificar' value=''><br/>";
-            echo "T&iacute;tulo:<input type='text' id='titulo_modificar' name='titulo_imagen' value=''><br/>";
-            //echo "<br>Descripción:<input type='text' id='texto_imagen_modificar' name='texto_imagen' value=''><br/>";
-            echo "<br>Descripción:<br><textarea id='texto_imagen_modificar' name='texto_imagen'></textarea><br/>";
-            echo '<input type="hidden" name="MAX_FILE_SIZE" value="20000000" />';
-            echo "<br>Fecha:<input type='date' id='fecha_modificar' name='fecha'  value=''><br/>";
-            echo "<br>Imagen:<input type='file' id='imagen' name='imagen'value=''><br/>";
-            echo "<input type='hidden' name='url_imagen' id='url_modificar' value=''>";
-            echo "<img id='foto_modificar' width='100px' src=''><br><p class='parrafo_modificar'></p><br>";
-            echo "<div id='nombre-archivo-imagen'></div>";
-           */ ?>
+           
           
         </form>
         <!-- MODAL MODIFICAR -->
@@ -267,10 +255,7 @@ $du = $lista_imagenes[0];
  
 
     function mostrar(capa, id) {
-        if (capa == "insertar") {
-            $("#insertar").show();
-        }
-        if (capa == "modificar") {
+     
 
             titulo = $("#imagen-" + id).find(".titulo-img").text();
             texto = $("#imagen-" + id).find(".texto-img").text();
@@ -288,14 +273,11 @@ $du = $lista_imagenes[0];
             $("#nombre-archivo-imagen").html(url);
             $("#id_modificar").val(nombre);
 
-            $("#modificar").show();
-        }
+            
+      
     }
 
-    function cerrar() {
-        $("#insertar").hide();
-        $("#modificar").hide();
-    }
+  
 
     //PAGINACIÓN CON JQUERY LOLI
     $(document).ready(function () {
