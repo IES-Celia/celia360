@@ -90,7 +90,7 @@ foreach ($tabla as $re) {
     </div>
     <div class='form-group'>
     <label for='audio' >Inserte audio</label>
-    <input type='file' class="form-control-file" name ='audio[]' id='audio' multiple>
+    <input type='file' class="form-control-file" required name ='audio[]' id='audio' multiple>
     </div>
     <div class='form-group'>
     <label for='tipo'>Tipo</label>
@@ -101,12 +101,14 @@ foreach ($tabla as $re) {
     </div>
     <div class='form-group'>
     <input type='submit'  class='btn btn-success float-right'>
-    </div>
+	</div>
+	</form>
     </div>
    
       </div>
       
-    </div>
+	</div>
+
   </div>
 </div>
 
@@ -187,13 +189,15 @@ foreach ($tabla as $re) {
 
     function respuesta(r) {
         if (r.trim() == "-1") {
-			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el audio</span>";
+			$('#mensaje_cabecera').html('');
+			document.getElementById("error_cabecera").innerHTML = "<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al borrar el audio</h7><i class='fas fa-exclamation-circle'></i></div>"
 		} else if (r.trim() == "-2") {
-			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese audio está en uso en un hotspot y no se puede borrar</span>";
+			$('#mensaje_cabecera').html('');
+			document.getElementById("error_cabecera").innerHTML = "<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>El audio a borrar se encuentra en uso en un hotspot</h7><i class='fas fa-exclamation-circle'></i></div>";
             
         } else {
-            
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Borrado con éxito</span>";
+            $('#error_cabecera').html('');
+            document.getElementById("mensaje_cabecera").innerHTML = "<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Audio borrado con éxito</h7><i class='far fa-check-circle'></i></div>";
 			
 			selector = "#contenidoaudio"+parseInt(r);
 			

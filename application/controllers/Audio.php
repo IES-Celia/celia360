@@ -75,6 +75,7 @@ class Audio extends CI_Controller {
                 $tipo = $this->input->post_get("tipo_aud");
                 $desc = $this->input->post_get("desc");
 				$res = $this->AudioModel->insertaraud($desc, $tipo,$f_def,$i);
+				$datos['mensaje'] = "Audio subido con éxito";
 				}else{
 					$datos['error'] = 'El audio supera los 10 MB';
 				}
@@ -127,7 +128,14 @@ class Audio extends CI_Controller {
      */
     public function modificaraud() {
         $id = $this->input->post_get("id");
-        $this->AudioModel->modificaraud($id);
+		$res = $this->AudioModel->modificaraud($id);
+		
+		if ($res == 1){
+			$datos['mensaje'] = 'Audio actualizado con éxito';
+		}else{
+			$datos['error'] = 'Error al modificar el audio';
+		}
+
         $datos["tabla"] = $this->AudioModel->allAudios();
         $datos["vista"] = "audio/Vaudios";
         $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);

@@ -29,12 +29,8 @@ class AudioModel extends CI_Model {
 
         $r = "";
             if (move_uploaded_file($_FILES['audio']['tmp_name'][$i], $f_def)) {
-                echo "El fichero es válido y se subió con éxito.\n";
                 $insrt = "insert into audio (url_aud,desc_aud, tipo_aud)values('$f_def','$desc','$tipo')";
                 $r = $this->db->query($insrt);
-            } else {
-                echo $f_def;
-                echo "¡Posible ataque de subida de ficheros!\n" . $_FILES["audio"]["error"][$i];
             }
         
         return $r;
@@ -102,7 +98,7 @@ class AudioModel extends CI_Model {
 
         $del = "update audio set desc_aud='$desc', tipo_aud='$tipo' where id_aud='$id'";
         $r = $this->db->query($del);
-        return $r;
+        return $this->db->affected_rows();
     }
 // borra el audio especificado y devuelve una lista de todos los audios disponibles en el servidor/basedatos
     public function buscaridaud($id) {
