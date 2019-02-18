@@ -140,7 +140,7 @@ $du = $lista_imagenes[0];
         <div class=form-group>
         <input type='hidden' name='id_imagen' id='id_modificar' value=''>
         <label for='titulo'>Título:</label>
-        <input type='text' class='form-control' id='titulo_modificar' name='titulo_imagen' value=''>
+        <input type='text' class='form-control' id='titulo_modificar' name='titulo_imagen' value='' required>
         </div>
         <div class='form-group'>
         <label for='descripcion'> Descripción: </label>
@@ -149,7 +149,7 @@ $du = $lista_imagenes[0];
         <div class='form-group'>
         <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
         <label for='fecha'> Fecha: </label>
-        <input type='date' class='form-control' id='fecha_modificar' name='fecha'  value=''>
+        <input type='date' class='form-control' id='fecha_modificar' name='fecha'  value='' required >
         </div>
         <div class='form-group'>
         <label for='imagen'>Imagen:</label>
@@ -238,13 +238,15 @@ $du = $lista_imagenes[0];
 
     function respuesta(r) {
         if (r.trim() == "0") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar la imagen.</span>";
+            $("#mensaje_cabecera").html("");
+            document.getElementById("error_cabecera").innerHTML = "<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al borrar la imagen </h7><i class='fas fa-exclamation-circle'></i></div>";
         } else if (r.trim() == "-1") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ésta imagen está en uso en un hotspot y no se puede borrar.</span>";
+            $("#mensaje_cabecera").html("");
+            document.getElementById("error_cabecera").innerHTML = "<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Esta imagen esta en uso en un hotspot y no se puede borrar</h7><i class='fas fa-exclamation-circle'></i></div>"; 
 
         } else {
-
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Imagen borrada con éxito.</span>";
+            $("#error_cabecera").html("");
+            document.getElementById("mensaje_cabecera").innerHTML = "<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Imagen borrada con existo</h7><i class='far fa-check-circle'></i></div>";
 
             selector = "#imagen-" + parseInt(r);
 
@@ -274,7 +276,7 @@ $du = $lista_imagenes[0];
             $("#id_modificar").val(nombre);
 
             
-      
+        //}
     }
 
   
