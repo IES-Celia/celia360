@@ -175,16 +175,23 @@ foreach ($tabla as $re) {
     <div class='form-group'>
     <label for='descripcion'>Descripcion:</label>
     <input id='desc' type='text' name='desc' class="form-control">
+    </div>
+    <div class='form-group'>
     <label for='audio' >Inserte audio</label>
     <input type='file' class="form-control-file" name ='audio[]' id='audio' multiple>
+    </div>
+    <div class='form-group'>
     <label for='tipo'>Tipo</label>
     <select name='tipo_aud' id='tipo' class='form-control'>
   			<option value='v-guiada'>Visita guiada</option>
  			<option value='d-objeto' selected>Definir un objeto</option>
 		</select>
-        
     </div>
-    <input type='submit' class='btn-success float-right'>
+    <div class='form-group'>
+    <input type='submit'  class='btn btn-success float-right'>
+    </div>
+    </div>
+   
       </div>
       
     </div>
@@ -211,16 +218,22 @@ foreach ($tabla as $re) {
       <div class='form-group'>
       <label for='urlAud'>URL audio:</label>
       <input type='text' class='form-control text-light' name='url_aud' id='url' readonly>
+      </div>
+      <div class='form-group'>
       <label for='Descripcion'>Descripcion:</label>
       <input id='descripcion' type='text' name='desc_aud'  class='form-control'>
+      </div>
                 <input type='hidden' name='MAX_FILE_SIZE' value='500000000'> 					
                 <input type='hidden' name='id'  id='id'>
+                <div class='form-group'>
                 <label for='tipo'>Tipo</label>
                 <select name='tipo_aud' id='select' class='form-control'>
                     <option value='v-guiada'>visita guiada</option>
                     <option value='d-objeto'>definir objeto</option>
                 </select>
-                <input type='submit' class='btn-success'> 
+                </div>
+                <div class='form-group'>
+                <input type='submit' class=' btn btn-success float-right'> 
                 </div>
         </form>
 	

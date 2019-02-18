@@ -153,13 +153,21 @@ $du = $lista_imagenes[0];
         <input type='hidden' name='id_imagen' id='id_modificar' value=''>
         <label for='titulo'>Título:</label>
         <input type='text' class='form-control' id='titulo_modificar' name='titulo_imagen' value=''>
+        </div>
+        <div class='form-group'>
         <label for='descripcion'> Descripción: </label>
         <input type='text' class='form-control' id='texto_imagen_modificar' name='descripcion' value=''>
+        </div>
+        <div class='form-group'>
         <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
         <label for='fecha'> Fecha: </label>
         <input type='date' class='form-control' id='fecha_modificar' name='fecha'  value=''>
+        </div>
+        <div class='form-group'>
         <label for='imagen'>Imagen:</label>
         <input type='file' class='form-control-file' id='imagen' name='imagen'value=''>
+        </div>
+        <div class='form-group'>
         <input type='hidden' name='url_imagen' id='url_modificar' value=''>
             <div class='row mx-auto mt-4'>
                 <div class='col-md-8 mx-auto'>
@@ -168,7 +176,7 @@ $du = $lista_imagenes[0];
                 </div>
             </div>
             <input type='submit' name='actualizar' class='btn-success float-right' value='Aceptar'>
-
+        
       </div>
       </form>
     </div>
