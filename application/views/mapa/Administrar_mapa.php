@@ -53,45 +53,45 @@
 			</div>
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-subir-piso-admin" >Subir zona</button>
+				<button class="botonmapa btn btn-primary w-75" id="btn-subir-piso-admin" >Subir zona</button>
 				</div>
 			</div>
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-bajar-piso-admin">Bajar zona</button>
+				<button class="botonmapa btn btn-primary w-75" id="btn-bajar-piso-admin">Bajar zona</button>
 				</div>
 			</div>
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-editar-mapa" data-toggle="modal" data-target="#editZona">Editar zona</button>
+				<button class="botonmapa btn btn-primary w-75" id="btn-editar-mapa" data-toggle="modal" data-target="#editZona">Editar zona</button>
 				</div>
 			</div>
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-anadir-mapa" data-toggle="modal" data-target="#addZona">Añadir zona</button>
+				<button class="botonmapa btn btn-primary w-75" id="btn-anadir-mapa" data-toggle="modal" data-target="#addZona">Añadir zona</button>
 				</div>
 			</div>
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-config-mapa" data-toggle="modal" data-target="#config">Config general</button>
-				</div>
-			</div>
-
-			<div class="row m-3">
-				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-eliminar-mapa">Eliminar zona</button>
+				<button class="botonmapa btn btn-primary w-75" id="btn-config-mapa" data-toggle="modal" data-target="#config">Config general</button>
 				</div>
 			</div>
 
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<button class="botonmapa btn btn-primary" id="btn-mover-puntos">Mover escenas</button>
+				<button class="botonmapa btn btn-primary w-75" id="btn-eliminar-mapa">Eliminar zona</button>
 				</div>
 			</div>
 
 			<div class="row m-3">
 				<div class="col-12 text-center">
-				<a href="<?php echo base_url('escenas') ?>"><button class="botonmapa btn btn-primary">Volver atras</button></a>
+				<button class="botonmapa btn btn-primary w-75" id="btn-mover-puntos">Mover escenas</button>
+				</div>
+			</div>
+
+			<div class="row m-3">
+				<div class="col-12 text-center">
+				<a href="<?php echo base_url('escenas') ?>"><button class="botonmapa btn btn-primary w-75">Volver atras</button></a>
 				</div>
 			</div>
         </div>
