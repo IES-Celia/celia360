@@ -239,7 +239,7 @@ foreach ($tablaUsuarios as $usu) {
               </select>
             </div>
             <input type='hidden' name='id' id='form_modif_id'>
-            <button type="submit" class="btn btn-primary float-right">Modificar</button>
+            <button type="submit" class="btn btn-sucess float-right">Modificar</button>
         </form>
       </div>
     </div>

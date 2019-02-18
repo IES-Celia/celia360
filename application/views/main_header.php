@@ -8,7 +8,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Celia Tour</title>
-    <script>
+
+<script>
         // Prepara las varibales JS para el mapa (si están presentes)
 <?php
         if (isset($config_mapa)) {
@@ -19,10 +20,12 @@
   <?php
         }
   ?>
-        // Prepara el título de la portada (extraído de la BD)
-        base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
 
-    </script>
+    // Prepara el título de la portada (extraído de la BD)
+    base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
+
+</script>
+
     <!-- CSS SLICK -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick-theme.css"); ?>"/>
@@ -38,10 +41,11 @@
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
-    <!-- Css y JS de la portada -->
+    <!-- Css y JS de la portada 
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
+-->
     <!-- Fuentes externas -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
@@ -62,7 +66,7 @@
 	<script src="<?php echo base_url('assets/js/quill/js/quill.core.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
-	<!-- ./FIN QUILL Library -->
+	<!-- FIN QUILL Library -->
     
     <!-- Bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
@@ -72,120 +76,88 @@
         /* EFECTOS DEL MENÚ SOBRE LA PORTADA */    
 
         $(document).ready(function(){
+        
             $("#descripcion_portada").fadeOut('fast');
-        // para que cambie el background a INICIO al hacer hover
+            
+            // para que cambie el background a INICIO al hacer hover
 
-        $('#header_portada img').mouseenter(function(){
-            $("#titulito").text(base_titulo);
-            $("#descripcion_portada").text("");
-            $("#descripcion_portada").siblings().fadeIn('fast');
-        });
+            $('#header_portada img').mouseenter(function(){
+                $("#titulito").text(base_titulo);
+                $("#descripcion_portada").text("");
+                $("#descripcion_portada").siblings().fadeIn('fast');
+            });
 
-        $('html, body').css({
-            overflow: 'auto',
-            height: '100%'
-        });
+            // para que cambie el background a LIBRE al hacer hover
 
-        // para que cambie el background a LIBRE al hacer hover
+            $('#opcionlibre_portada').mouseenter(function(){
+                $("#titulito").text("Visita Libre");
+                $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>");
+                $("#descripcion_portada").fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeOut('fast');
+            });
 
-        $('#opcionlibre_portada').mouseenter(function(){
-            $("#titulito").text("Visita Libre");
-            $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>");
-            $("#descripcion_portada").fadeIn('fast');
-            $("#descripcion_portada").siblings().fadeOut('fast');
-            // $("#descripcion_portada").siblings().css('visibility', 'hidden');; con mantiene el mismo flujo pero no tiene animación
-        });
+            $('#opcionlibre_portada').click(function(){
+                $('#portadaca').fadeOut();
+            }); 
 
-        $('#opcionlibre_portada').click(function(){
-          $('#portadaca').fadeOut();
-        }); 
+            $('#opcionguiada_portada').click(function(){
+                $('#portadaca').fadeOut();
+            }); 
 
-        $('#opcionguiada_portada').click(function(){
-          $('#portadaca').fadeOut();
-        }); 
+            // para que cambie el background a GUIADA al hacer hover
 
-        // para que cambie el background a GUIADA al hacer hover
+            $('#opcionguiada_portada').mouseenter(function(){
+                $("#titulito").text("Visita Guiada");
+                $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>");
+                $("#descripcion_portada").fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeOut();
 
-        $('#opcionguiada_portada').mouseenter(function(){
-            $("#titulito").text("Visita Guiada");
-            $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>");
-            $("#descripcion_portada").fadeIn('fast');
-            $("#descripcion_portada").siblings().fadeOut();
+            });
 
-        });
+            // para que cambie el background a PUNTOS DESTACADOS al hacer hover
 
-        // para que cambie el background a PUNTOS DESTACADOS al hacer hover
+            $('#opciondestacada_portada').mouseenter(function(){
+                $("#titulito").text("Zonas Destacadas");
+                $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>");
+                $("#descripcion_portada").fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeOut();
 
-        $('#opciondestacada_portada').mouseenter(function(){
-            $("#titulito").text("Zonas Destacadas");
-            $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>");
-            $("#descripcion_portada").fadeIn('fast');
-            $("#descripcion_portada").siblings().fadeOut();
+            });
 
-        });
+            // para que cambie el background a BIBLIOTECA al hacer hover
 
+            $('#clickbiblio').mouseenter(function(){
+                $("#titulito").text("Biblioteca");
+                $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>");
+                $("#descripcion_portada").fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeOut();
 
-        // para que cambie el background a BIBLIOTECA al hacer hover
+            });    
 
-        $('#clickbiblio').mouseenter(function(){
-            $("#titulito").text("Biblioteca");
-            $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>");
-            $("#descripcion_portada").fadeIn('fast');
-            $("#descripcion_portada").siblings().fadeOut();
+            // para que cambie el background a creditos al hacer hover
 
-        });    
+            $('#creditos_portada').mouseenter(function(){
+                $("#titulito").text("Créditos");
+                $("#descripcion_portada").text("Conoce al equipo de desarrollo que hizo posible este tour virtual");
+                $("#descripcion_portada").fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeOut();
 
-        // para que cambie el background a creditos al hacer hover
-
-        $('#creditos_portada').mouseenter(function(){
-            $("#titulito").text("Créditos");
-            $("#descripcion_portada").text("Conoce al equipo de desarrollo que hizo posible este tour virtual");
-            $("#descripcion_portada").fadeIn('fast');
-            $("#descripcion_portada").siblings().fadeOut();
-
-        });  
-
-
-        $("#slider1_portada").mouseenter(function(){
-            $("#titulito").text(base_titulo);
-            $("#descripcion_portada").text("");
-            $("#descripcion_portada").siblings().fadeIn();
-        });    
-
-
-
-        ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
-        $('#clickbiblio').on("click",function(){
-            $('#bibliotecaajax').css("display","block");
-        });
-            // para desactivar el scroll cuando la pantalla sea grande 
-        //if ($(window).width()<800){
-
-
-            // para activar el scroll    
-            /*$('#lazo_portada').on('click',function(){
-              $('html, body').css({
-                overflow: 'auto',
-                height: 'auto'
             });  
-            });*/
 
-            // para darle efecto al historia
-            /*
-            $('#lazo_portada').on('click', function(e){
-                e.preventDefault();
-               $('html,body').animate({
-                   scrollTop: 1000
-               }, 800); 
-            });*/
+            $("#slider1_portada").mouseenter(function(){
+                $("#titulito").text(base_titulo);
+                $("#descripcion_portada").text("");
+                $("#descripcion_portada").siblings().fadeIn();
+            });    
 
-        //}
+            ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
+            $('#clickbiblio').on("click",function(){
+                $('#bibliotecaajax').css("display","block");
+            });
+
         });
 
     </script>    
 
 </head>
-	
-<body>
     
-
