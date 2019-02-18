@@ -195,14 +195,13 @@ class Guiada extends CI_Controller {
 *
 */
     public function cambiarFilas(){
-        $filaAID = $this->input->get_post("filaAID");
-        $filaAPOS = $this->input->get_post("filaAPOS");
-        $filaBID = $this->input->get_post("filaBID");
-        $filaBPOS = $this->input->get_post("filaBPOS");
-        $mover = $this->GuiadaModel->intercambiarFilas($filaAID,$filaAPOS,$filaBID,$filaBPOS);
+       $arrayId = $this->input->post('idArray');
+	   $arrayOrden = $this->input->post('orden');
 
-        echo $mover;
-        
+	   $res = $this->GuiadaModel->updateTable($arrayId, $arrayOrden);
+
+	   echo $res;
+
     }
 
 

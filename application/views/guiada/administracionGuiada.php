@@ -33,9 +33,10 @@ $urlFormulario = site_url('guiada/modificarEscena');
     <div class="row mt-4 mb-4">
         <div class="col-md-12">
             <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
-                <input id='orden' type='hidden' value='asc' name='orden'>
+				<input id='orden' type='hidden' value='asc' name='orden'>
                 <button type="submit" class="btn btn-primary float-right"><i class='fa fa-plus-circle'></i> Crear nuevo</button>
-            </form>
+			</form>
+			<button class=" mr-2 btn btn-success btnEnviar float-right" style='display:none;'>Aceptar los cambios</button>
         </div>
     </div>
     <div class="row">    
@@ -64,7 +65,6 @@ $urlFormulario = site_url('guiada/modificarEscena');
                         <th>Borrar</th>
                         <th>Modificar</th>
                         <th>Mover</th>
-                        <th>Posición</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -112,9 +112,8 @@ echo "<tr class='filaEscena'>
             </a>
         </td>
         <td class='orden align-middle text-center'>
-            <span class='flecha text-primary' onclick='moverFila(this)'><i class='fas fa-angle-up fa-2x'></i></span><br>
-            <span class='flecha text-primary' onclick='moverFila(this)'><i class='fas fa-angle-down fa-2x'></i></span></td>
-        <td class='posicion text-midle align-middle text-center'>".$escena['orden']."</td>";
+            MOVER
+        <td class='posicion text-midle align-middle text-center' style='display:none;'>".$escena['orden']."</td>";
     }
 } // else
 ?>
@@ -142,8 +141,6 @@ echo "<tr class='filaEscena'>
                         <th>Cambiar imagen</th>
                         <th>Borrar</th>
                         <th>Modificar</th>
-                        <th>Mover</th>
-                        <th>Posición</th>
                     </tr> 
                 </tfoot>
             </table>
@@ -369,13 +366,73 @@ echo "<tr class='filaEscena'>
         });
     }
 
+	/* DRAG DROP */
+
+	$(document).ready(e => {
+		var ordenArray = []; //guardo el orden
+            $('td.posicion').each(function(index) {
+               ordenArray[index] = index;
+        	});
+
+			console.log(ordenArray);
+
+		$(function() {
+        $("table tbody").sortable();
+        $("table tbody").draggable();
+        $( "table tbody").disableSelection();
+
+  });
+
+  $( "tbody" ).droppable({
+        drop: function( event, ui ) {
+            $('.btnEnviar').css('display','block');
+        }
+    });
+		var arrayDatos = []; // guardo el idvisita
+		$('.btnEnviar').click(function(){
+                $('td.id_visita').each(function(index){
+                    arrayDatos[index] = $(this).text();
+                });
+
+                ordenArray.sort(function(a, b){
+					return a-b;
+					});
+
+                $('td.posicion').each(function(index) {
+                    $(this).text(ordenArray[index]);
+                });
+
+
+				url = "<?php echo base_url('guiada/cambiarFilas'); ?>";
+				
+				$.post(url, {idArray: arrayDatos, orden: ordenArray},function(data){
+					if (data > 0){
+						$('#error_cabecera').html('');
+						$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Orden modificado</h7><i class='far fa-check-circle'></i></div>");
+						$('.btnEnviar').css('display','none');
+
+					}else{
+						$('#mensaje_cabecera').html('');
+						$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al modificar el orden</h7><i class='far fa-check-circle'></i></div>");
+						$('.btnEnviar').css('display','none');
+					}
+				});
+        	});
+
+
+		});
+
+
+
+				/* FIN DRAG DROP */
+
     //Boton activar cambios de orden
     //Se actica el sortable
     //Los mueves todos
     //Al finalizar le das a un boton y envia el orden a MYSQL
     //Se quita el sortable
 
-    function moverFila(elemento) {
+    /*function moverFila(elemento) {
 
         var filaA = $(elemento).parent().parent();
         var filaA_identificacion = $(filaA).find(".id_visita").text();
@@ -394,7 +451,7 @@ echo "<tr class='filaEscena'>
 
         if (filaB_identificacion) {
 
-            var urlPeticion = "<?php echo base_url("guiada/cambiarFilas");?>";
+            var urlPeticion = "<?php // echo base_url("guiada/cambiarFilas");?>";
 
             var peticion = $.ajax({
                 type: "post",
@@ -433,6 +490,6 @@ echo "<tr class='filaEscena'>
         //&uarr;
         //&darr;
 
-    }
+    }*/
 
 </script>

@@ -176,7 +176,16 @@ class GuiadaModel extends CI_Model {
         
         return $this->db->affected_rows();
 
-    }
+	}
+	
+	public function updateTable($arrayId, $orden){
+		$devuelve = 0;
+		for($i=0;$i<count($arrayId);$i++){
+			$this->db->query("UPDATE visita_guiada SET orden = '".$orden[$i]."' WHERE id_visita = '".$arrayId[$i]."'");
+			$devuelve += $this->db->affected_rows();
+		}
+		return $devuelve;
+	}
 
 }
 
