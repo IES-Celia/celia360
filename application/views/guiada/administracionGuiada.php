@@ -27,7 +27,14 @@ $urlFormulario = site_url('guiada/modificarEscena');
 <style>
     #modalGuiada{
         display : none;
-    }
+	}
+	
+	.placeholder{
+		height: 100px;
+		background-color:black;
+		opacity: 0.5;
+		border: 3px dotted white;
+	}
 </style>
 <div class="container">
     <div class="row mt-4 mb-4">
@@ -376,12 +383,16 @@ echo "<tr class='filaEscena'>
 
 			console.log(ordenArray);
 
-		$(function() {
-        $("table tbody").sortable();
-        $("table tbody").draggable();
-        $( "table tbody").disableSelection();
+		
+			$( "table tbody" ).sortable({
+			placeholder: "placeholder"
+		});
 
-  });
+		$( "table tbody" ).disableSelection();
+
+
+
+  
 
   $( "tbody" ).droppable({
         drop: function( event, ui ) {
