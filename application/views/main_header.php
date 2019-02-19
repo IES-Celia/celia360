@@ -94,13 +94,7 @@
                 $("#descripcion_portada").siblings().fadeOut('fast');
             });
 
-            $('#opcionlibre_portada').click(function(){
-                $('#portadaca').fadeOut();
-            }); 
-
-            $('#opcionguiada_portada').click(function(){
-                $('#portadaca').fadeOut();
-            }); 
+            
 
             // para que cambie el background a GUIADA al hacer hover
 

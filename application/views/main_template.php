@@ -5,9 +5,9 @@
    * La vista main_biblioteca se incluye como un caso especial porque debe de estar dentro del div id="portadaca" para funcionar bien.
    */
 	if($vista == 'portada/visita'){
-		include("visita_header.php");
+		include('visita_header.php');
 		include($vista.".php");
-		include("visita_footer.php");
+		include("main_footer.php");
 	}else{
 		include("main_header.php");
 		include("main_menu.php");

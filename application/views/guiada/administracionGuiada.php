@@ -170,7 +170,7 @@ echo "<tr class='filaEscena'>
         <div class="form-group">
           <label for="escenaGuiada">Selecciona una escena:</label>
           <input type="text"
-            class="form-control" name="escenaGuiada" id="escenaGuiada" aria-describedby="helpId" placeholder="">
+            class="form-control bg-white" readOnly name="escenaGuiada" id="escenaGuiada" aria-describedby="helpId" placeholder="">
         </div>
         <div id="mapa_guiada">
             <?php
@@ -274,11 +274,15 @@ echo "<tr class='filaEscena'>
 
         $("#modalGuiada").modal();
 
-        $("#actualizarGuiada").on("click", function () {
+		$("#titulo_escena").val($(elemento).parent().parent().find('.titulo_escena').text()); 
+		$('#escenaGuiada').val($(elemento).parent().parent().find('.cod_escena').children().text())
+        
+		
+		$("#actualizarGuiada").on("click", function () {
             var confirmar = confirm("¿Estas seguro que quieres modificarlo?");
             if (confirmar) {
                 var idEscena = $(elemento).attr("data-id");
-                codEscena = $("#escenaGuiada").find(":selected").text();
+                codEscena = $("#escenaGuiada").val();
                 audioEscena = $("#audioGuiada").find(":selected").text();
                 tituloEscena = $("#titulo_escena").val();
                 var urlPeticion = "<?php echo base_url("guiada/actualizarEscena");?>";
