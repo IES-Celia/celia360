@@ -42,20 +42,21 @@
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
     <!-- Css y JS de la portada -->
-    <!-- <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/> -->
+    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
-	<!-- <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/> -->
+	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
 
     <!-- Fuentes externas -->
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
     <link rel="shortcut icon" href="<?php echo base_url("assets/imagenes/portada/icono.ico"); ?>">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">	
+
     <!-- CSS Biblioteca -->
     <link href="assets/css/hover.css" rel="stylesheet" media="all"/>
     <link rel="stylesheet" href="assets/css/animate.css"/>
     <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
- 
+
 	<!-- Efectos JS de la portada -->
 	
 	<!-- QUILL Library -->
@@ -68,9 +69,6 @@
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
 	<!-- FIN QUILL Library -->
     
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
-
     <script>
     
         /* EFECTOS DEL MENÚ SOBRE LA PORTADA */    
@@ -144,11 +142,12 @@
 
             });  
 
-            $("#slider1_portada").mouseenter(function(){
+            //Al perder el foco los elementos del menu, se restablece el nombre de titulo por defecto
+            $("ul li a").mouseleave(function(){
                 $("#titulito").text(base_titulo);
                 $("#descripcion_portada").text("");
                 $("#descripcion_portada").siblings().fadeIn();
-            });    
+            })
 
             ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
             $('#clickbiblio').on("click",function(){
