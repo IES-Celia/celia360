@@ -609,11 +609,10 @@ $( ".modal__close" ).on( "click", function() {
  * Inicia la carga del audio con su correspondiente audio 
  */
 function audio_guiada(indice){
-
   $("#panel_audio_libre").hide();
   $('#audio_libre').attr("src","");
-  $('#audio_guiada').attr("src",array_audios[indice]);
-  viewer.loadScene(array_escenas[indice]);
+	$('#audio_guiada').attr("src",array_audios[indice]);
+  viewer.loadScene(array_escenas[indice].trim());
   //Deseleccionar el hightlight  
   $(".titulo_slider").each(function(){
     $(this).removeClass("highlight_slider");
@@ -663,7 +662,7 @@ peticion.done(function(datos){
     array_audios.push(enlace_audio_correcto);
     array_previews.push(datos[i].img_preview);
     var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
-    var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
+		var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
     $(".slider-nav").append(crearSliderPreview);
 }
 

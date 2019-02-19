@@ -113,7 +113,7 @@ echo "<tr class='filaEscena'>
             </a>
         </td>
         <td class='orden align-middle text-center'>
-            MOVER
+		<i class='fas fa-arrows-alt lead'></i>
         <td class='posicion text-midle align-middle text-center' style='display:none;'>".$escena['orden']."</td>";
     }
 } // else
@@ -240,8 +240,9 @@ echo "<tr class='filaEscena'>
         <form id='guiadaImagen' id='caja' enctype="multipart/form-data" action='' method="post">
             <div class="form-group">
                 <label for=""><h4>Selecciona una imagen</h4></label>
-                <input type="file" class="form-control-file" name="imagenPreview" id="" placeholder="" aria-describedby="fileHelpId" required>
+                <input type="file" class="form-control-file" name="imagenPreview" aria-describedby="fileHelpId" required>
             </div>
+			<input type="hidden" name="id_visita" value="">
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
             <button type="submit" class="btn btn-success float-right">Enviar</button>
         </form>
@@ -253,7 +254,7 @@ echo "<tr class='filaEscena'>
 <script>
 
     $(".change_img").on("click", function () {
-        var codigo = $(this).closest(".filaEscena").find(".id_visita").text();
+        var codigo = $(this).parent().parent().find(".id_visita").text();
         $("#modalGuiadaImagen").modal();
         $(".closeGuiada").click(function (e) {
             $("#modalGuiadaImagen").modal("hide");
@@ -319,7 +320,7 @@ echo "<tr class='filaEscena'>
 
 
     function borrarGuiada(elemento) {
-        var confirmar = confirm("¿Estas seguro que quieres borrar este elemento?");
+        var confirmar = confirm("¿Estas seguro que quieres borrar esta escena?");
         if (confirmar) {
             var idEscena = $(elemento).attr("data-id");
             var urlPeticion = "<?php echo base_url("guiada/borrarEscena");?>";
@@ -330,7 +331,17 @@ echo "<tr class='filaEscena'>
             });
 
             peticion.done(function (resultado) {
-                $(elemento).closest(".filaEscena").remove();
+				alert(resultado);
+				if(resultado.trim() == 1){
+					
+					$(elemento).closest(".filaEscena").remove();
+					$('#error_cabecera').html('');
+						$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Escena guiada eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
+				}else{
+					$('#mensaje_cabecera').html('');
+						$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la escena guiada</h7><i class='far fa-check-circle'></i></div>");
+				}
+                
             });
         }
 

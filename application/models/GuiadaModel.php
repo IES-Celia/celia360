@@ -54,10 +54,8 @@ class GuiadaModel extends CI_Model {
     */
 
     public function lastEscenaGuiada() {
-
             $resultado = $this->db->query("SELECT id_visita FROM visita_guiada ORDER BY id_visita DESC LIMIT 1")->result_array()[0]["id_visita"];
             return $resultado;
-        
     }
 
       /** 
@@ -79,9 +77,8 @@ class GuiadaModel extends CI_Model {
        $resultado_subida = $this->upload->do_upload('imagenPreview');
 
         if ($resultado_subida == false) {
-            $malasuerte = $this->upload->display_errors("<i>", "</i>");
-            $resultado = -1;
-        } else {
+            $resultado = -2;
+        } else if ($resultado_subida == true) {
             //Nombre de archivo proporcionado por el agente de usuario del cliente, antes de cualquier preparación o incremento de nombre de archivo
             $imgFile = $this->upload->data('client_name');
             //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
@@ -89,7 +86,9 @@ class GuiadaModel extends CI_Model {
             $sql="UPDATE visita_guiada SET img_preview='$tmp_dir' WHERE id_visita='$idEscena'";
             $this->db->query($sql);
             $resultado = 1;
-        }
+        }else{
+			$resultado = -1;
+		}
         return $resultado;
     }
 
@@ -101,7 +100,6 @@ class GuiadaModel extends CI_Model {
     public function borrarEscenaGuiada($idEscena) {
         $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
         $resultado = $this->db->query($sql);
-        echo($sql);
         return $this->db->affected_rows();
     }
 
@@ -113,8 +111,14 @@ class GuiadaModel extends CI_Model {
     public function borrarImagen($idEscena){
         $sql ="SELECT img_preview  FROM visita_guiada WHERE id_visita='$idEscena'";
         $resultado = $this->db->query($sql)->result_array()[0]["img_preview"];
-        $enlace ="assets/imagenes/previews-guiada/" . $resultado;
-        unlink($enlace);
+		$enlace ="assets/imagenes/previews-guiada/" . $resultado;
+		$retorno;
+		if(unlink($enlace)){
+			$retorno = 1;
+		}else{
+			$retorno = 0;
+		}
+		return $retorno;
     }
 
       /** 
