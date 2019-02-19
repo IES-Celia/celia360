@@ -113,7 +113,7 @@ echo "<tr class='filaEscena'>
             </a>
         </td>
         <td class='orden align-middle text-center'>
-		<i class='fas fa-arrows-alt lead'></i>
+		<i class='fas fa-arrows-alt lead guiada-move'></i>
         <td class='posicion text-midle align-middle text-center' style='display:none;'>".$escena['orden']."</td>";
     }
 } // else
