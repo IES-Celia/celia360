@@ -2,8 +2,6 @@
   <link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
   <script>
       
-      
-
     $(document).ready(function(){
       $('#open').click(function(){
         $('.modalita').toggle('slow');

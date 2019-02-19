@@ -1,73 +1,33 @@
-<link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css> <style
-    type="text/css">
+<div class="container-fluid">
 
-label{
+  <div class="row mt-4">
+    <div class="col-md-12">
+        <a name="" id="" class="float-right btn btn-primary" href="#" role="button" onclick="mostrar()"><i class='fas fa-plus-circle'></i> Insertar Libro</a>
+    </div>
+  </div>
 
-margin-left: 10px;
-
-}
-
-#caja input[type=text]{
-
-width:70%;
-}
-
-.img-cerrar{
-
-width: 20px; height: 20px;
-}
-
-.cerrar{
-
-position:relative;
-top:-428px;
-left:45%;
-}
-
-.cerrar1{
-position:relative;
-top:-388px;
-left:45%;
-}
-.cerrarBorrar{
-position:relative;
-top:-192px;
-left:47%;
-}
-</style>
-
-    <div class="container">
-
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <a name="" id="" class="float-right btn btn-primary" href="#" role="button" onclick="mostrar()"><i
-                        class='fas fa-plus-circle'></i> Insertar Libro</a>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table display bg-secondary" id='cont'>
-                    <thead class="text-center">
-                        <tr id='cabecera'>
-                            <th class="align-middle">Id</th>
-                            <th class="align-middle">Titulo</th>
-                            <th class="align-middle">Autor</th>
-                            <th class="align-middle">Editorial</th>
-                            <th class="align-middle">Lugar de edicion</th>
-                            <th class="align-middle">Fecha de edicion</th>
-                            <th class="align-middle">ISBN</th>
-                            <th class="align-middle">Tipo</th>
-                            <th class="align-middle">Apaisado</th>
-                            <th class="align-middle">Modificar</th>
-                            <th class="align-middle">Páginas</th>
-                            <th class="align-middle">Eliminar</th>
-                            <th class="align-middle">Subir</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                /*echo "<a href='index.php?accion=showinsertlibro'><i class='fa fa-plus' aria-hidden='true'></i><i title='Insertar libro' class='fa fa-book' aria-hidden='true'></i></a>";*/
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table display bg-secondary" id='cont'>
+        <thead class="text-center">
+          <tr id='cabecera'>
+            <th class="align-middle text-center">Id</th>
+            <th class="align-middle text-center">Titulo</th>
+            <th class="align-middle text-center">Autor</th>
+            <th class="align-middle text-center">Editorial</th>
+            <th class="align-middle text-center">Lugar de edicion</th>
+            <th class="align-middle text-center">Fecha de edicion</th>
+            <th class="align-middle text-center">ISBN</th>
+            <th class="align-middle text-center">Tipo</th>
+            <th class="align-middle text-center">Apaisado</th>
+            <th class="align-middle text-center">Modificar</th>
+            <th class="align-middle text-center">Páginas</th>
+            <th class="align-middle text-center">Eliminar</th>
+            <th class="align-middle">Subir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
                 foreach ($tabla as $usu) {
                     $id = $usu['id_libro'];
                     echo "<tr id='libro".$id."'>
@@ -88,14 +48,19 @@ left:47%;
                               }else{
                                 echo "<td class='align-middle'>Apaisado</td>";
                               }                            
-                            echo" <td class='align-middle'>
-                            <a onclick='mostrarm(".$usu['id_libro'].")'> <i class='fa fa-edit' style='font-size:20px;'></i></a>
-                            <td class='align-middle'><a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a></td>
-                            <td class='align-middle'><a href='#' onclick='mostrarborrar(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a></td>
-                            <td class='align-middle'><a href='".site_url("/biblioteca/showsubida/".$usu["id_libro"])."'><i class='fa fa-upload' aria-hidden='true'></i></a></td>
-                            
-
-                           </tr>";
+echo      "<td class='align-middle text-center'>
+              <a onclick='mostrarm(".$usu['id_libro'].")'><i class='fa fa-edit text-primary' style='font-size:20px;'></i></a>
+            </td>
+            <td class='align-middle'>
+              <a href='".site_url("/biblioteca/showinsertimg/".$usu["id_libro"])."'><i class='fas fa-file-alt' style='font-size:20px;'></i></a>
+            </td>
+            <td class='align-middle'>
+              <a href='#' onclick='mostrarborrar(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a>
+            </td>
+            <td class='align-middle'>
+              <a href='".site_url("/biblioteca/showsubida/".$usu["id_libro"])."'><i class='fa fa-upload' aria-hidden='true'></i></a>
+            </td>
+          </tr>";
                 }
 ?>
                     </tbody>
@@ -122,207 +87,196 @@ left:47%;
 
     </div><!-- Final de container -->
 
+<!--
 
-    <?php
+        Ventanas modales
 
-                //Modal confirmacion eliminar libro
-                echo"<div id='eliminarLibro'>
-                      <div id='caja'>
-                          <h1>Procede a eliminar el libro: <span id='idlibroborrar' ></span> </h1>
-                          <form action='".site_url("biblioteca/deletelibro")."' method='get'>
+-->
 
-                          <label>¿Desea eliminar el directorio que contiene las imagenes?</label>
-                            <select name = 'bcarpeta'>
-                              <option value='0'selected>No</option>
-                              <option value='1'>Si</option>
-                            </select>
-                            <span class='highlight'></span>
-                            <span class='bar'></span>
+<!-- Modal modificar -->
+<div class="modal fade" id="modificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url("biblioteca/modifiedLibro/")."' method='post'>"; ?>
+            <div class="form-group">
+              <label for="titulo">Titulo</label>
+              <input type="text" name="titulo" id="modif_titulo" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="autor">Autor</label>
+              <input type="text"
+                class="form-control" name="autor" id="modif_autor" aria-describedby="helpId" placeholder="" required>
+            </div>
+            <div class="form-group">
+              <label for="editorial">Editorial</label>
+              <input type="text"
+                class="form-control" name="editorial" id="modif_editorial" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Lugar de Edición</label>
+              <input type="text"
+                class="form-control" name="lugar_edicion" id="modif_lugar_edicion" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Fecha de Edicion</label>
+              <input type="text"
+                class="form-control" name="fecha_edicion" id="modif_fecha_edicion" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">I S B N</label>
+              <input type="text"
+                class="form-control" name="ISBN" id="modif_isbn" aria-describedby="helpId" placeholder="">
+            </div>
+<?php
 
-                            <input id='borrar_id_libro' type='hidden' name='id_libro'>
-                            <input class='boton' type='submit' value='Eliminar'>
-                          </form>
-
-                        <a class='cerrarBorrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-                      </div>
-                    </div>";
-                //MODAL MODIFICAR LIBROS
-                echo "<div id='modificar'>";
-                echo "<div id='caja'>";
-                    echo "
-                    <h1>Modificar Libro</h1>
-                        <div >
-                            <form id='xxx' action='".site_url("biblioteca/modifiedLibro/")."' method='get'>
-                                <div class='group'>      
-                                  <input type='text' name='titulo' id='modif_titulo'  required>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Titulo</label>
-                                </div>
-                                <div class='group'>      
-                                  <input type='text' name='autor' id='modif_autor' required>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Autor</label>
-                                </div>
-                                <div class='group'>      
-                                  <input type='text' name='editorial' id='modif_editorial' required>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Editorial</label>
-                                </div>
-                                <div class='group'>      
-                                  <input type='text' name='lugar_edicion' id='modif_lugar_edicion' required>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Lugar de Edición</label>
-                                </div>
-                                <div class='group'>      
-                                  <input type='date' name='fecha_edicion' id='modif_fecha_edicion' required>
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>Fecha de Edicion</label>
-                                </div>
-                                <div class='group'>      
-                                  <input type='text' name='ISBN' id='modif_isbn' >
-                                  <span class='highlight'></span>
-                                  <span class='bar'></span>
-                                  <label>I S B N </label>
-                                </div>";
-
-                                if($usu["tipo"]==0){
-                                  echo"
-                                  <div class='group'>      
-                                    <select name='tipo'>
-                                      <option value='0'selected>Biblioteca</option>
-                                      <option value='1'>Historia</option>
-                                    </select>
-                                    <span class='highlight'></span>
-                                    <span class='bar'></span>
-                                    <label>Tipo</label>
-                                  </div>";
-                                }else{
-                                  echo"
-                                  <div class='group'>      
-                                    <select name='tipo'>
-                                      <option value='0'>Biblioteca</option>
-                                      <option value='1'selected>Historia</option>
-                                    </select>
-                                    <span class='highlight'></span>
-                                    <span class='bar'></span>
-                                    <label>Tipo</label>
-                                  </div>";
-                                }
-                                if ($usu["apaisado"]==0) {
-                                   echo"
-                                  <div class='group'>      
-                                    <select name='apaisado'>
-                                      <option value='0' selected>No</option>
-                                      <option value='1'>Si</option>
-                                    </select>
-                                    <span class='highlight'></span>
-                                    <span class='bar'></span>
-                                    <label>Apaisado</label>
-                                  </div>";
-                                }else{
-                                    echo"
-                                    <div class='group'>      
-                                      <select name='apaisado'>
-                                        <option value='0'>No</option>
-                                        <option value='1' selected>Si</option>
-                                      </select>
-                                      <span class='highlight'></span>
-                                      <span class='bar'></span>
-                                      <label>Apaisado</label>
-                                    </div>";
-                                  }
-                                echo"
-                            <input type='hidden' id='modif_id_libro' name='id_libro'>
-                            <input type='submit' class='enviar'>
-                        </form>
-                        <a class='cerrar1' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-                    </div> ";
-                 echo "</div>";
-                 echo "</div>";
-
-
-                 //MODAL INSERTAR LIBROS
-
-                 echo "<div id='insertar'>";
-                 echo "<div id='caja'>";
-                 echo"
-
-                    <h1>Insertar libro</h1>
-                    <div >
-                        <form action='".site_url("biblioteca/insertlibro")."' method='get'>
-                            <div class='group'>      
-                              <input type='text' name='titulo' required>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Titulo</label>
-                            </div>
-                            <div class='group'>      
-                              <input type='text' name='autor' required>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Autor</label>
-                            </div>
-                            <div class='group'>      
-                              <input type='text' name='editorial' required>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Editorial</label>
-                            </div>
-                            <div class='group'>      
-                              <input type='text' name='lugar' required>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Lugar de Edición</label>
-                            </div>
-                            <div class='group'>      
-                              <input type='date' name='fecha' value='Fecha de Edición' required>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Fecha de Edición</label>
-                            </div>
-                            <div class='group'>      
-                              <input type='text' name='isbn' required>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>I S B N </label>
-                            </div>
-                            <div class='group'>      
-                              <select name='tipo'>
-                                <option value='0' selected>Biblioteca</options>
-                                <option value='1'>Historia</options>
-                              </select>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Tipo</label>
-                            </div>
-                            <div class='group'>      
-                              <select name='apaisado'>
-                                <option value='0'selected >No</options>
-                                <option value='1' >Si</options>
-                              </select>
-                              <span class='highlight'></span>
-                              <span class='bar'></span>
-                              <label>Apaisado</label>
-                            </div>
-
-                           <br/><br/>
-                            <input class='boton' type='submit'>
-                        </form>
-                        <a class='cerrar' href='#' onclick='cerrar()'><img class='img-cerrar' src='" .
-                        base_url("assets/css/cerrar_icon.png") . "'></img></a>
-                    </div>
-                ";
-                 echo "</div>";
-                 echo "</div>";
+if($usu["tipo"]==0){
 ?>
-    <script>
+            <div class="form-group">
+              <label for="tipo">Tipo</label>
+              <select class="form-control" name="tipo" id="form_modif_tipo">
+                <option value='0'selected>Biblioteca</option>
+                <option value='1'>Historia</option>
+              </select>
+            </div>
+<?php
+}else{
+?>
+            <div class="form-group">
+              <label for="tipo">Tipo</label>
+              <select class="form-control" name="tipo" id="form_modif_tipo">
+                <option value='0'>Biblioteca</option>
+                <option value='1'selected>Historia</option>
+              </select>
+            </div>
+<?php
+}
+if ($usu["apaisado"]==0) {
+?>
+            <div class="form-group">
+              <label for="apaisado">Apaisado</label>
+              <select class="form-control" name="apaisado" id="form_modif_tipo">
+                <option value='0' selected>No</option>
+                <option value='1'>Si</option>
+              </select>
+            </div>
+<?php
+}else{
+?>
+            <div class="form-group">
+              <label for="apaisado">Apaisado</label>
+              <select class="form-control" name="apaisado" id="form_modif_tipo">
+                <option value='0'>No</option>
+                <option value='1' selected>Si</option>
+              </select>
+            </div>
+<?php
+  }
+?>
+            <input type='hidden' id='modif_id_libro' name='id_libro'>
+            <button type="submit" class="btn btn-success float-right">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>   
+
+<!-- Modal eliminar libro -->
+<div class="modal fade" id="eliminarLibro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url("biblioteca/deletelibro")."' method='post'>"; ?>
+            <div class="form-group">
+              <label for="">¿Desea eliminar el directorio que contiene las imagenes?</label>
+              <select class="form-control" name="bcarpeta" id="">
+                <option value='0'selected>No</option>
+                <option value='1'>Si</option>
+              </select>
+            </div>
+            <input type='hidden' name='id_libro' id='borrar_id_libro'>
+            <button type="submit" class="btn btn-success float-right">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>   
+
+<!-- Modal insertar libros -->
+<div class="modal fade" id="insertar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo "<form action='".site_url("biblioteca/insertlibro")."' method='post'>"; ?>
+            <div class="form-group">
+              <label for="titulo">Titulo</label>
+              <input type="text" name="titulo" class="form-control" placeholder="" aria-describedby="helpId">
+            </div>
+            <div class="form-group">
+              <label for="autor">Autor</label>
+              <input type="text"
+                class="form-control" name="autor" aria-describedby="helpId" placeholder="" required>
+            </div>
+            <div class="form-group">
+              <label for="editorial">Editorial</label>
+              <input type="text"
+                class="form-control" name="editorial" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Lugar de Edición</label>
+              <input type="text"
+                class="form-control" name="lugar" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">Fecha de Edicion</label>
+              <input type="text"
+                class="form-control" name="fecha"aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="">I S B N</label>
+              <input type="text"
+                class="form-control" name="isbn" aria-describedby="helpId" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="tipo">Tipo</label>
+              <select class="form-control" name="tipo" id="">
+                <option value='0' selected>Biblioteca</option>
+                <option value='1'>Historia</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="apaisado">Apaisado</label>
+              <select class="form-control" name="apaisado" id="">
+                <option value='0'selected >No</option>
+                <option value='1'>Si</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Insertar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>   
+
+<script>
         function respuesta(r) {
             if (r == 0) {
                 alert("Error");
@@ -332,6 +286,7 @@ left:47%;
             }
         }
 
+        //Modificar libro
         function mostrarm(id_libro) {
             titulo = document.getElementById("titulo_libro_" + id_libro).innerHTML;
             autor = document.getElementById("autor_libro_" + id_libro).innerHTML;
@@ -349,18 +304,18 @@ left:47%;
             $("#modif_isbn").val(isbn);
             $("#modif_id_libro").val(pasar_id);
 
-            $("#modificar").show();
+            $("#modificar").modal();
         }
 
+        //Eliminar libro
         function mostrarborrar(id_libro) {
-
             b_idlibro = id_libro;
             $("#borrar_id_libro").val(b_idlibro);
             $("#idlibroborrar").text(b_idlibro);
-
-            $("#eliminarLibro").show();
+            $("#eliminarLibro").modal();
         }
 
+        /*
         function borrarlibro() {
             id_libro = $("borrar_id_libro").val();
             alert(id_libro);
@@ -370,21 +325,15 @@ left:47%;
                 $.get("<?php echo base_url('biblioteca/deletelibro/');?>" + id_libro, null, respuesta);
 
         }
+        */
 
+        //Insertar libro
         function mostrar() {
-            $("#insertar").show();
-
+          $("#insertar").modal();
         }
 
         function alertid(id_libro) {
-            alert("EL nombre de la carpeta que contenga el libro debera ser: " + id_libro);
-        }
-        function cerrar() {
-
-            $("#insertar").hide();
-            $("#modificar").hide();
-            $("#eliminarLibro").hide();
-
+          alert("EL nombre de la carpeta que contenga el libro debera ser: " + id_libro);
         }
 
         $(document).ready(function () {
@@ -406,4 +355,4 @@ left:47%;
                 }
             });
         });
-    </script>
+</script>
