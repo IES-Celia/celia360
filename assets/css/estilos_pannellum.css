@@ -626,9 +626,9 @@ display: block;
 #GmyModal{
   z-index: 5;
 }
-.modal {
-  /*visibility: hidden;
-  z-index: 2;*/
+.modal-visita {
+  visibility: hidden;
+  z-index: 2;
 }
 /* contenido */
 .modal__contents {

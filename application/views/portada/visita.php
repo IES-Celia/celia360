@@ -113,7 +113,7 @@
           <!-- Fin galería -->
             
           <!-- Ventana Modal Galería -->
-              <div class="modal">
+              <div class="modal-visita">
                 <div class="overlay"></div>
                 <div id='documentoPanel'>
                   <a class="cerrarDocumento" href="#">&times;</a>            
@@ -220,7 +220,7 @@
     ?>
 
   </div>
-  <div id="boton_mapa"class="cerrado_boton boton"></div>
+  <div id="boton_mapa" class="cerrado_boton boton"></div>
 
         <div id="subir_piso" style="display:none" class="cerrado_boton boton" onclick="cambiar_piso('arriba')"></div>
 
@@ -459,7 +459,7 @@ $( ".menu_slider" ).click(function() {
  */
 function panelInformacion(hotspotDiv,args){
     
-  $(".modal").css("visibility","visible");
+  $(".modal-visita").css("visibility","visible");
   var peticion = $.ajax({
     url: "<?php echo site_url("hotspots/load_panel"); ?>",
     type:"post",
@@ -512,15 +512,15 @@ peticion.done(function(datos){
   showSlides(slideIndex);  
 });
     
-  $('.modal').css('display','block');
+  $('.modal-visita').css('display','block');
   $(window).click(function(event){
-    if($(event.target).hasClass("modal")){ 
-     $('.modal').css('display','none');
+    if($(event.target).hasClass("modal-visita")){ 
+     $('.modal-visita').css('display','none');
     }
   });
     
   $('#close').click(function(event){
-    $('.modal').css('display','none');
+    $('.modal-visita').css('display','none');
   });
 } //fin function panelInformacion()
   
@@ -597,11 +597,11 @@ function showSlides(n) {
 }
   //Si le das click fuera de la ventana quitarlo.
 $( ".overlay" ).on( "click", function() {
-  $( ".modal" ).css('visibility',"hidden");
+  $( ".modal-visita" ).css('visibility',"hidden");
 });
   //Si el das click a la X se cierra.
 $( ".modal__close" ).on( "click", function() {
-  $( ".modal" ).css('visibility',"hidden");
+  $( ".modal-visita" ).css('visibility',"hidden");
 });  
 
 
