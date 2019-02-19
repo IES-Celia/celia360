@@ -15,9 +15,9 @@ class GuiadaModel extends CI_Model {
 
     public function crearEscenaGuiada() {
 
-        $cod_escena = $_REQUEST['escenaGuiada'];
-        $audio_escena = $_REQUEST["audioGuiada"];
-        $titulo_escena = $_REQUEST["tituloGuiada"];
+        $cod_escena = $this->input->post_get('escenaGuiada');
+        $audio_escena = $this->input->post_get('audioGuiada');
+        $titulo_escena = $this->input->post_get('tituloGuiada');
         if(empty($cod_escena) || empty($audio_escena)){
             return -1;    
         }

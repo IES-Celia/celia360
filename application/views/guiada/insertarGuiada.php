@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
                 <div class="form-group">
                   <label for="titulo_escena"><h4>Nombre escena</h4></label>
                   <input type="text"
-                    class="form-control" name="tituloGuiada" id="titulo_escena" aria-describedby="helpId" placeholder="">
+                    class="form-control" name="tituloGuiada" id="titulo_escena" aria-describedby="helpId" placeholder="Nombre de la escena">
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
                                 foreach ($puntos as $punto) {
                                 if($punto['piso']==$indice){
                                 
-                                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
+                                    echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos puntos-guiada' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
                                     <span class='tooltip'>".$punto['id_escena']."</span>
                                     </div>";
                                 
@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
                             <input type="hidden" id='escenaGuiada' name="escenaGuiada" required>
                             <div class="form-group">
                               <label for="audioGuiada"><h4>Selecciona un audio</h4></label>
-                              <select class="form-control" name="audioGuiada" id="">
+                              <select class="form-control" name="audioGuiada">
                                 <?php 
                                 foreach ($audios as $audio) {
                                     $nombreAudio=$audio["url_aud"];
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
                 </div>
                 <div class="row">
                     <div class="col-md-12 mb-4">
-                        <button type="submit" class="btn btn-primary float-right">Enviar</button>
+                        <button type="submit" class="btn btn-success float-right">Enviar</button>
                     </div>
                 </div>
             </form>

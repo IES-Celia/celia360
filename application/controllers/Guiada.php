@@ -77,7 +77,17 @@ class Guiada extends CI_Controller {
             $this->load->view("admin_template", $datos);
 
         } else {
-            $this->mostrarFormularioGuiada();
+			//Todos los audios existentes.
+			$datos["audios"]=$this->AudioModel->allAudios();
+			//Todas las escenas existentes.
+			$datos["escenasGuiada"]=$this->EscenasModel->getAll();
+			$datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
+			$datos["mapa"] = $this->mapa->cargar_mapa();
+			$datos["puntos"] = $this->mapa->cargar_puntos();
+            $datos['error'] = "Error al insertar la escena guiada";
+            $datos["vista"]="guiada/administracionGuiada";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view("admin_template", $datos);
         }
     }
 
