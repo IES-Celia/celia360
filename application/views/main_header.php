@@ -69,6 +69,14 @@
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
 	<!-- FIN QUILL Library -->
     
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
+    
+    <!-- Bootstrap JS -->
+    <script src="<?php echo base_url('assets/js/bootstrap/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/bootstrap/js/popper.min.js'); ?>"></script>
+    <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
+
     <script>
     
         /* EFECTOS DEL MENÚ SOBRE LA PORTADA */    

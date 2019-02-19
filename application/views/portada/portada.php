@@ -13,10 +13,13 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
-<!-- Bootstrap -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
 
 <style>
+    /* Eliminar el scroll de la portada */
+    body{
+        overflow-x: hidden;
+        overFlow-y: hidden;
+    }
     /* Centrar vertical y horizontalmente el div que contiene el h1, los parrafos y en boton*/
     .centrado-porcentual {
         text-align: center;
@@ -44,7 +47,7 @@
     }
 </style>
 
-<div id="slider1_portada" class="container-fluid fondo-portada">
+<div id="slider1_portada" class="container-fluid">
 
     <div class="centrado-porcentual">
 
