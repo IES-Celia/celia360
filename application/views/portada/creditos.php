@@ -15,7 +15,8 @@
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
 
-<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
 
 <script>
 $(document).ready(function(){
@@ -24,17 +25,12 @@ $(document).ready(function(){
     });
 });
 </script>
-
 <style>
     body{
         overflow-y: auto;
         background-color: #2B3E50 !important;
         background-image:none !important;
     }
-
-    /* Estilos de la ventana modal */
-
-   
 </style>
 
 <div class='container'>

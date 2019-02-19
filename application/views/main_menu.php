@@ -35,8 +35,6 @@
         background-position: center;
     }
 </style>
-<!-- Cargamos en el body la imagen de fondo -->
-<body style="background-image:url('<?php echo site_url("assets/imagenes/portada/".$portada[1]['opcion_valor']); ?>')">
 
 <div class="container-fluid menu">
 
