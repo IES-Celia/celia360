@@ -11,10 +11,9 @@
     <!-- Css de pannellum framework -->
     <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
-    <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA
+    <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
 
-     CSS SLICK -->
     <script>
         base_url = '<?php echo base_url() ?>';
 	</script>
