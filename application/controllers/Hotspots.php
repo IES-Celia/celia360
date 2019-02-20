@@ -517,7 +517,7 @@ class Hotspots extends CI_Controller {
     * Carga la información necesaria para el panel (o galería de imágenes). La petición se hace por Ajax.
     */
  public function load_panel(){
-  $id = $_REQUEST["id_hotspot"];
+  $id = $this->input->post_get("id_hotspot");
   $resultado = $this->hotspotsModel->cargar_imagenes_panel($id);
   //TODO: añadir mensaje de la situacion
  }
@@ -526,7 +526,7 @@ class Hotspots extends CI_Controller {
     * Recibe la petición vía Ajax para obtener la URL de un vídeo a partir de su Id.
     */
  public function load_video(){
-    $id = $_REQUEST["idVideo"];
+    $id = $this->input->post_get("idVideo");
     $url = $this->hotspotsModel->cargar_video($id);
     // El vídeo se almacena en la BD con la URL de Vimeo (p.ej: https://vimeo.com/2910853)
     // pero para el reproductor embebido es necesario transformarlo (como https://player.vimeo.com/video/2910853)
@@ -564,7 +564,7 @@ class Hotspots extends CI_Controller {
     * Recibe la petición vía Ajax para obtener la URL de un audio a partir de su Id.
     */
    public function load_audio() {
-        $id = $_REQUEST["id_hotspot"];
+        $id = $this->input->post_get("id_hotspot");
         $resultado = $this->hotspotsModel->cargar_audio($id);
         //var_dump($resultado);
         //TODO: añadir mensaje de la situacion

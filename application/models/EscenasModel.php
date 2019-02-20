@@ -70,9 +70,9 @@ class EscenasModel extends CI_Model {
             // Vamos a insertar un registro en la BD para genera el id (que es AUTOINCREMENT)
             $name = $this->input->post_get("name");
             $cod = "temp";  // Luego lo sustituiremos por el id (campo redundante; no lo eliminamos porque se usa en otros lugares de la aplicación por motivos históricos)
-            $left_mapa = $_REQUEST["left_mapa"];
-            $top_mapa = $_REQUEST["top_mapa"];
-            $piso_mapa = $_REQUEST["piso_mapa"];
+            $left_mapa = $this->input->post_get("left_mapa");
+            $top_mapa = $this->input->post_get("top_mapa");
+            $piso_mapa = $this->input->post_get("piso_mapa");
             $nombre_imagen = "temp";   // También lo cambiaremos luego, cuando conozcamos el id asignado al registro
 
             $insert = "INSERT INTO escenas (Nombre,cod_escena,hfov,pitch,yaw,tipo,panorama) 
@@ -238,8 +238,8 @@ class EscenasModel extends CI_Model {
         /////////////////////
 
 
-        $name = $_REQUEST["name"];
-        $id = $_REQUEST["Id"];
+        $name = $this->input->post_get("name");
+        $id = $this->input->post_get("Id");
         $panorama = $this->upload->data()["client_name"];
         $update = "
                     UPDATE escenas 

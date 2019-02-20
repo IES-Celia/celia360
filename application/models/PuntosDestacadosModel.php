@@ -52,11 +52,11 @@ class PuntosDestacadosModel extends CI_Model {
     public function crear_celda(){
         $resultado = array();
 
-        $fila_asociada= $_REQUEST["fila_asociada"];
+        $fila_asociada= $this->input->post_get("fila_asociada");
         $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
         $id_celda = $res+1;
-        $escena_celda= $_REQUEST["escena_celda"];
-        $titulo_celda = $_REQUEST["titulo_celda"];
+        $escena_celda= $this->input->post_get("escena_celda");
+        $titulo_celda = $this->input->post_get("titulo_celda");
 
         //Insertamos un registro vacío para generar el ID y usarlo como nombre del fichero que se va a subir
         $this->db->query("INSERT INTO celda_pd(id_celda) VALUES ('.$id_celda.')"); // Es un campo auto_increment, así que ignorará el 0
@@ -128,10 +128,10 @@ class PuntosDestacadosModel extends CI_Model {
      */
     public function editar_celda(){
 		$devuelve = 0;
-        $id_celda = $_REQUEST["id_celda"];
-        $escena_celda= $_REQUEST["escena_celda"];
-        $titulo_celda = $_REQUEST["titulo_celda"];
-        $fila_asociada= $_REQUEST["fila_asociada"];
+        $id_celda = $this->input->post_get("id_celda");
+        $escena_celda= $this->input->post_get("escena_celda");
+        $titulo_celda = $this->input->post_get("titulo_celda");
+        $fila_asociada= $this->input->post_get("fila_asociada");
         
         $config['upload_path'] = 'assets/imagenes/destacados/';
         $config['allowed_types'] = 'jpg';
