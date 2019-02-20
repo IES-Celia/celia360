@@ -1659,21 +1659,28 @@ function renderInitCallback() {
  * @param {Object} hs - The configuration for the hotspot
  */
 function createHotSpot(hs) {
+    
     // Make sure hot spot pitch and yaw are numbers
     hs.pitch = Number(hs.pitch) || 0;
     hs.yaw = Number(hs.yaw) || 0;
 
     var div = document.createElement('div');
     div.className = 'pnlm-hotspot-base '
-    if (hs.cssClass)
+    if (hs.cssClass){
         div.className += ' ' + hs.cssClass;
-    else
+    }else{
         div.className += ' pnlm-hotspot pnlm-sprite pnlm-' + escapeHTML(hs.type);
-
+    }
     var span = document.createElement('span');
+
     if (hs.text)
         span.innerHTML = escapeHTML(hs.text);
-
+    if(hs.cssClass=="custom-hotspot-saltoEspec"){
+        
+        span.innerHTML = hs.clickHandlerArgs;
+        $(span).attr("class","tooltipi");
+        div.appendChild(span);
+    }
     var a;
     if (hs.video) {
         var video = document.createElement('video'),
@@ -1739,6 +1746,7 @@ function createHotSpot(hs) {
         div.style.cursor = 'pointer';
         span.style.cursor = 'pointer';
     }
+    
     hs.div = div;
 };
 

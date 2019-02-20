@@ -450,10 +450,10 @@
             <input type='hidden' name='id_scene'  readonly="readonly" value='<?php echo $id_scene ?>'>
             <input type='hidden' name='pitch'  readonly="readonly" value=' <?php echo $pitch ?> '> 
             <input type='hidden' name='yaw'  readonly="readonly" value=' <?php echo $yaw ?> '> 
-            <input type='hidden' name='cssClass' value='custom-hotspot-saltoEspec tooltipi' readonly="readonly">
-            <input type='hidden' name='tipo' value='scene' readonly="readonly">
+            <input type='hidden' name='cssClass' value='custom-hotspot-saltoEspec' readonly="readonly">
+            <input type='hidden' name='tipo' value='superSalto' readonly="readonly">
             <input type='hidden' name='clickHandlerFunc' value='puntosEspec' readonly="readonly">
-            <input type='hidden' name='clickHandlerArgs' readonly='readonly'>
+            
 			
 			
              
@@ -462,7 +462,7 @@
 			<div class="col-md-8 col-xs-12">
 <?php			
             $numeroPlanta= count($mapa);
-               
+            
            for($i=0;$i<=$numeroPlanta-1;$i++){
 
                     echo "<div id='planta".$i."' class='pisos_hotspots' style='display :none;'>";
@@ -508,7 +508,9 @@
 				
 			</div>
 			</div>
-		    
+            
+		   <input type='hidden' name='clickHandlerArgs' id="clickHandlerArgs" value='' readonly='readonly'>
+           
         </form>
             </div>
 			</div>
@@ -612,6 +614,7 @@
                 $("#planta"+indice).show();
 				$('#puntoHibrido').hide();
                 $("#plantaDestino").val(texto);
+                $("#clickHandlerArgs").val(texto);
 
         });
 
