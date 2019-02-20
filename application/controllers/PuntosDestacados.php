@@ -58,10 +58,11 @@ class PuntosDestacados extends CI_Controller {
         $this->load->model("MapaModel", "mapa");
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
-        $datos["id_fila"]= $id_fila;
-        $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/insertarDestacado");
-        if ($permiso) {
-            $this->load->view("puntosdestacados/insertarDestacado", $datos);
+		$datos["id_fila"]= $id_fila;
+		$datos['vista'] = "puntosdestacados/insertarDestacado";
+        $datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
+        if ($datos['permiso']) {
+            $this->load->view("admin_template", $datos);
         }
         else {
             redirect(base_url("usuario"));
@@ -76,10 +77,17 @@ class PuntosDestacados extends CI_Controller {
     
     public function borrar_celda($id_fila){
         $resultado = $this->PuntosDestacadosModel->borrar_celda($id_fila);
-        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-        $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/adminDestacados");
-        if ($permiso) {
-            $this->load->view("puntosdestacados/adminDestacados", $datos);	
+		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+		$datos['vista'] = "puntosdestacados/adminDestacados";
+        $datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
+		
+		if ($datos['permiso']) {
+			if($resultado == 1){
+				$datos['mensaje'] = "Punto destacado borrado con éxito";
+			}else{
+				$datos['error'] = "Error al borrar el punto destacado";
+			}
+			$this->load->view("admin_template", $datos);
         }else {
             redirect(base_url("usuario"));
         }
@@ -107,13 +115,15 @@ class PuntosDestacados extends CI_Controller {
      */
     
     public function cargar_admin_puntosdestacados(){
-        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-        $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/adminDestacados");
-        if ($permiso) {
-            $this->load->view("puntosdestacados/adminDestacados", $datos);
-        } else {
-            redirect(base_url("usuario"));
-        }
+		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+		$datos['vista'] = "puntosdestacados/adminDestacados";
+		$datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
+
+        if($datos['permiso']){
+			$this->load->view('admin_template',$datos);
+		}else{
+			echo 'no tienes permisos';
+		}
     }
     
     /**
@@ -123,13 +133,14 @@ class PuntosDestacados extends CI_Controller {
      */
 
     public function formulario_update($id){
-        $this->load->model("MapaModel", "mapa");
+		$this->load->model("MapaModel", "mapa");
+		$datos['vista'] = "puntosdestacados/updateDestacado";
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["celda"]= $this->PuntosDestacadosModel->info_celda($id);
-        $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/updateDestacado");
-        if ($permiso) {
-            $this->load->view("puntosdestacados/updateDestacado", $datos);
+        $datos['permiso'] = $this->UsuarioModel->comprueba_permisos("puntosdestacados/updateDestacado");
+        if ($datos['permiso']) {
+            $this->load->view("admin_template", $datos);
         }
         else {
             redirect(base_url("usuario"));
@@ -145,10 +156,16 @@ class PuntosDestacados extends CI_Controller {
     
     public function processupdatedestacado(){
         $resultado = $this->PuntosDestacadosModel->editar_celda();
-        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-        $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/adminDestacados");
-        if ($permiso) {
-            $this->load->view("puntosdestacados/adminDestacados", $datos);
+		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+		$datos['vista'] = "puntosdestacados/adminDestacados";
+        $datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
+        if ($datos['permiso']) {
+			if($resultado == 1){
+				$datos['mensaje'] = "Punto destacado actualizado con éxito";
+			}else{
+				$datos['error'] = "Error al actualizar el punto destacado";
+			}
+            $this->load->view("admin_template", $datos);
         }
         else {
             redirect(base_url("usuario"));
@@ -161,17 +178,20 @@ class PuntosDestacados extends CI_Controller {
      */
     
     public function processinsertdestacado(){
+		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+		$datos['vista'] = "puntosdestacados/adminDestacados";
         $resultado = $this->PuntosDestacadosModel->crear_celda();
-        if($resultado){
-            $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
-            $permiso = $this->UsuarioModel->comprueba_permisos("puntosdestacados/adminDestacados");
-            if ($permiso) {
-                $this->load->view("puntosdestacados/adminDestacados", $datos);	
-            }
-            else {
+        $datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
+            if ($datos['permiso']) {
+				if($resultado){
+					$datos['mensaje'] = "Punto destacado insertado con éxito";
+                		
+            }else{
+				$datos['error'] = "Error al insertar el punto destacado";
+			}
+			$this->load->view("admin_template", $datos);
+		}else {
                 redirect(base_url("usuario"));
             }
         }
-    }
-    
-}
+	}
