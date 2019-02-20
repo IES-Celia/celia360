@@ -319,7 +319,11 @@
 			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 			  ");
             $db->query("ALTER TABLE `escenas`
-                        ADD PRIMARY KEY (`id_escena`);");
+                        ADD PRIMARY KEY (`id_escena`);
+
+ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT
+
+");
             
 
             $db->query("CREATE TABLE `escenas_hotspots` (
@@ -423,7 +427,12 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `puntos_mapa`
                         ADD PRIMARY KEY (`id_punto_mapa`),
-                        ADD KEY `piso` (`piso`);");
+						ADD KEY `piso` (`piso`);
+						
+ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT
+
+
+						");
            
 
             $db->query("CREATE TABLE `usuarios` (
