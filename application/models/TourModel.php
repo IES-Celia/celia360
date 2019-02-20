@@ -80,8 +80,22 @@ class TourModel extends CI_Model {
 					$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
 					$json = $json . '} '; 
 				}
-					
-			}else{ // si es de escena pues te mete to esto
+            
+			}else{ // si es un salto especial a otra zona
+                if($hotspot['clickHandlerFunc']=='puntosEspec'){
+                        $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
+                        $json = $json . '"yaw": '.$hotspot['yaw'].',';  
+                        $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
+                        $json = $json . '"sceneId": "'.$hotspot['sceneId'].'",'; 
+                        $json = $json . '"targetPitch": '.$hotspot['targetPitch'].',';  
+                        $json = $json . '"targetYaw": '.$hotspot['targetYaw'].','; 
+                        $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
+                        $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
+                        $json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
+                      
+                        $json = $json . '} '; 
+    
+                }else{ // si es un salto normal
 				$json = $json . '{"pitch": '.$hotspot['pitch'].','; 
 				$json = $json . '"yaw": '.$hotspot['yaw'].',';  
 				$json = $json . '"type": "'.$hotspot['tipo'].'",'; 
@@ -92,8 +106,21 @@ class TourModel extends CI_Model {
 				$json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
 				$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
 				$json = $json . '} ';  
-			}
-		}
+            }
+         /*   if($hotspot['clickHandlerFunc']=='puntosEspec'){
+                $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
+					$json = $json . '"yaw": '.$hotspot['yaw'].',';  
+					$json = $json . '"type": "'.$hotspot['tipo'].'",'; 
+					$json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
+                    $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
+                    $json = $json . '"createTooltipFunc": hotspot,';
+                    $json = $json . '"createTooltipArgs": "'.$hotspot['plantaDestino'].'"';
+					$json = $json . '} '; 
+
+            }*/
+            
+        }
+    }
 		$flagHot=false;
 		$json = $json . ']}';  
 	}

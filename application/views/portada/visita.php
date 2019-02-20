@@ -7,6 +7,15 @@
     overflow: visible;
     position: relative;
   }
+  /*.superSalto{
+    position: absolute;
+    text-align: center;
+    border-radius: 3px;
+    background-color: #fff;
+    top: -20px;
+  
+  }*/
+ 
 </style>
 <!-- Script para el mapa de zona -->
 <script>
@@ -14,8 +23,10 @@
     //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
     $(".punto_mapa_zona").click(function(){
       $("#myModal").hide();
+      
     })
   });
+  
 </script>
 
 <div class="contenedor">
@@ -260,6 +271,7 @@ function visita_opcion(nombre){
       cargarPannellum();
     }
   }).done(function(data) {
+    console.log(data);
 			// ¡Hecho! El JSON completo está en data. Vamos a hacerle un par de transformaciones necesarias para que funcione OK.
 			$.each(data.scenes, function(i){
         // En la BD tenemos rutas relativas a la imagen del panorama. Las sutituimos por rutas absolutas con base_url()
@@ -834,5 +846,11 @@ $(document).ready(function(){
     }
 ?>
     });
-</script>
 
+
+</script>
+<script>
+$(".custos-hotspot-saltoEspec").hover(function(){
+    $(".tooltipi").show();
+});
+</script>
