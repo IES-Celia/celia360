@@ -116,7 +116,7 @@ class escenas extends CI_Controller {
     
     public function processupdatescene(){
     
-        $cod=$_REQUEST['cod'];
+        $cod=$this->input->get_post('cod');
         $resultado = $this->EscenasModel->update($cod);
             
         if ($resultado == 0) {
@@ -181,7 +181,7 @@ class escenas extends CI_Controller {
     }
 
     public function cargar_versiones_escena () {
-        $cod_escena = $_REQUEST["codigo_escena"];
+        $cod_escena = $this->input->get_post("codigo_escena");
         $resultado = $this->EscenasModel->get_versiones($cod_escena);
         echo json_encode($resultado);
     }

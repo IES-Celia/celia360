@@ -218,9 +218,9 @@ class Biblioteca extends CI_Controller {
 	 * 
 	 */
 	public function procesarinsertimg(){
-		$id_libro = $_REQUEST["id"];
-		$pag_ant = $_REQUEST["pagina_ant"];
-		$num_pag = $_REQUEST["num_pag"];
+		$id_libro = $this->input->post_get("id");
+		$pag_ant = $this->input->post_get("pagina_ant");
+		$num_pag = $this->input->post_get("num_pag");
 		$confirmre=$this->bibliotecaModel->renomdir($id_libro,$pag_ant,$num_pag);
 		$confirmin=$this->bibliotecaModel->insertarimagen($id_libro, $pag_ant);
 
@@ -231,7 +231,7 @@ class Biblioteca extends CI_Controller {
 		}
 
 
-		$datos["idlibro"] = $_REQUEST["id"];
+		$datos["idlibro"] = $this->input->post_get("id");
         $datos["vista"] = "biblioteca/insertimg";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
 		$this->load->view("admin_template",$datos);

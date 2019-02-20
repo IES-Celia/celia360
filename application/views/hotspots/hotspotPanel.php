@@ -1,8 +1,8 @@
 <?php 
 
 $id_escena = $_POST["id_scene"];
-$yaw = $_REQUEST["yaw"];
-$pitch = $_REQUEST["pitch"];
+$yaw = $this->input->post_get("yaw");
+$pitch = $this->input->post_get("pitch");
 
 if(isset($imagenes_seleccionadas)){
   foreach( $imagenes_seleccionadas as $img){

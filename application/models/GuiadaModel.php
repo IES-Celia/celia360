@@ -127,10 +127,10 @@ class GuiadaModel extends CI_Model {
     */
 
     public function actualizarEscena($idEscena){
-        $id_visita = $_REQUEST["id"];
-        $cod_escena = $_REQUEST["escena"];
-        $audio_escena = $_REQUEST["audio"];
-        $titulo_escena = $_REQUEST["titulo"];
+        $id_visita = $this->input->post_get("id");
+        $cod_escena = $this->input->post_get("escena");
+        $audio_escena = $this->input->post_get("audio");
+        $titulo_escena = $this->input->post_get("titulo");
 
         $this->db->query("UPDATE visita_guiada
 				SET 

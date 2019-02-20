@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Celia Tour</title>
+<title>Celia Tour Login</title>
 
 <!-- CSS SLICK -->
 <link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
@@ -22,10 +22,7 @@
 <script src="<?php echo base_url('assets/js/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap/js/popper.min.js'); ?>"></script>
 <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
-
-<!-- CSS CMS -->
-<!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/> -->
-   
+ 
 <?php 
     error_reporting(7);
     if (!ini_get('display_errors')) {

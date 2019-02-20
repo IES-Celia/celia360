@@ -58,7 +58,7 @@ echo      "<td class='align-middle text-center'>
               <a href='#' onclick='mostrarborrar(".$usu['id_libro'].")'><i title='Eliminar' class='fa fa-trash' aria-hidden='true'></i></a>
             </td>
             <td class='align-middle'>
-              <a href='".site_url("/biblioteca/showsubida/".$usu["id_libro"])."'><i class='fa fa-upload' aria-hidden='true'></i></a>
+              <a href='".site_url("/biblioteca/showSubida/".$usu["id_libro"])."'><i class='fa fa-upload' aria-hidden='true'></i></a>
             </td>
           </tr>";
                 }

@@ -30,8 +30,8 @@ class Backup extends CI_Controller {
     }
 
     public function showBackup() {   
-        $datos["vista"]="Backup";
-        $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+        $datos["vista"]="backup";
+        $datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
     }
     
@@ -54,7 +54,7 @@ class Backup extends CI_Controller {
         }else{
             echo "<script>alert('Error al restaurar assets')</script>";
         }
-        $datos["vista"]="Backup";
+        $datos["vista"]="backup";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
     }
@@ -66,7 +66,7 @@ class Backup extends CI_Controller {
         }else{
             echo "<script>alert('Error al restaurar sql')</script>";
         }
-        $datos["vista"]="Backup";
+        $datos["vista"]="backup";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template', $datos);
     }

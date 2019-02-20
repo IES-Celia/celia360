@@ -9,7 +9,6 @@ if($permiso){
 	include("login_header.php");
   include("usuario/formLogin.php");
 	include("login_footer.php");
-    
 }
 ?>
 

@@ -60,7 +60,7 @@
         <?php 
             if ($portada[7]["opcion_valor"] == "1") {
                 // El botón "Historia" solo se muestra si está configurado así en las opciones de portada
-                echo "<a class='btn echenique' href='".site_url("biblioteca/abrir_phistoria")."' role='button'>HISTORIA</a>";
+                echo "<a class='btn echenique' id='echenique' href='".site_url("biblioteca/abrir_phistoria")."' role='button'>HISTORIA</a>";
             }
         ?>
 

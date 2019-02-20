@@ -1,46 +1,23 @@
-<html>
-    <head>
-        <title>Upload Multiple Files in Codeigniter using Ajax JQuery</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
-       
-    </head>
-    <body>
-    	 <style>
-    	 .text
-        	.mensaje_final{
-        		background: #000000bd !important;
-			    width: 625px;
-			    height: auto;
-			    font-size: 45px;
-			    border-radius: 5px;
-			    margin: 0 auto;
-			    padding: 10px;
-		}
-        </style>
-        <div class="container">
-            <br /><br /><br />
-            <h3 align="center">Subida múltiple de imagenes para un libro</h3><br />
-            
-            <div class="col-md-6" align="right">
-                <label>Subida múltiple de imagenes para un libro</label>
-            </div>
-            <div class="col-md-6">
-                <input type="file" name="files" id="files" multiple />
-            </div>
-            <div id="enviar">
-            	<button id="enviar_f">Enviar formulario</button>
-            </div>
-            <div style="clear:both"></div>
-                <br />
-                <br />
-            <div id="uploaded_images"></div>
-            <div style="padding:20px;" id="mensaje"></div>
-           
-        </div>
-    </body>
-</html>
 
+<div class="container">
+    <h1 class="text-center">Subida múltiple de imagenes</h1>
+    <div class="row">
+        <div class="col-md-7 mx-auto bg-secondary text-center">
+            <div class="form-group">
+              <label for="files"><h4 class="tex-center">Subida múltiple de imagenes para un libro</h4></label>
+              <input type="file" class="form-control-file text-center" name="files" id="files" placeholder="" aria-describedby="fileHelpId" multiple>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <input name="" id="enviar_f" class="btn btn-primary float-right" type="button" value="Enviar">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="uploaded_images"></div>
+<div style="padding:20px;" id="mensaje"></div>
+           
 <script>
 
 	var enviando = 0;
