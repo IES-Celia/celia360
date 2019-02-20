@@ -113,9 +113,10 @@ class PuntosDestacadosModel extends CI_Model {
     public function borrar_celda($id){
         $this->db->query("DELETE FROM celda_pd WHERE id_celda = '$id'");
         $imagen_borrar = "assets/imagenes/destacados/$id.JPG";
-        unlink($imagen_borrar);
-       /* $imagen_borrar = "assets/imagenes/destacados/$id._miniatura.JPG";
-        unlink($imagen_borrar);*/
+		unlink($imagen_borrar);
+		
+		return $this->db->affected_rows();
+       
     }
    
     
@@ -126,6 +127,7 @@ class PuntosDestacadosModel extends CI_Model {
      *
      */
     public function editar_celda(){
+		$devuelve = 0;
         $id_celda = $_REQUEST["id_celda"];
         $escena_celda= $_REQUEST["escena_celda"];
         $titulo_celda = $_REQUEST["titulo_celda"];
@@ -140,12 +142,9 @@ class PuntosDestacadosModel extends CI_Model {
         
         $resultado_subida = $this->upload->do_upload('imagen_celda');
 
-        if ($resultado_subida == 1) {
-             echo "La imagen (supuestamente) ha sido subida con exito";
-        } else {
-            $malasuerte = $this->upload->display_errors("<i>", "</i>");
-            var_dump($malasuerte);
-        }
+        if (!$this->upload->do_upload('imagen_celda')) {
+             $devuelve = -1;
+        } 
         
         
         echo $this->upload->display_errors("<i>","</i>");
@@ -154,8 +153,11 @@ class PuntosDestacadosModel extends CI_Model {
                            titulo_celda='$titulo_celda',
                            fila_asociada='$fila_asociada'
                            WHERE id_celda='$id_celda'
-                            ");
-        return $this->db->affected_rows();
+							");
+					if($this->db->affected_rows() == 1){
+						$devuelve = 1;
+					}
+        return $devuelve;
     }
    
     /**
