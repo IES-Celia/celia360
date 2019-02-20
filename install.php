@@ -370,7 +370,7 @@ ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `imagenes`
 						ADD PRIMARY KEY (`id_imagen`);
-						ALTER TABLE `imagenes` MODIFY COLUMN `id_imagen` INT AUTO_INCREMENT;");
+						ALTER TABLE `imagenes` MODIFY COLUMN `id_imagen` INT(11) AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `libros` (
