@@ -172,7 +172,7 @@
 
 		<div class="form-group">
 		<label for="posicion">Posición:</label>
-            <input type="number" name="posicion" class="form-control text-white" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas; ?>">
+            <input type="number" name="posicion" class="form-control" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas; ?>">
 		</div>
            <div class="form-group">
 			   <label for="add">Imagen zona</label>
