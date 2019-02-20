@@ -194,7 +194,11 @@
 	
 	/* ./ FIN MENU LATERAL PANEL DE ADMINISTRACION */
 
+/* <i> guiada move */
 
+.guiada-move {
+	cursor: move;
+}
 
 
 

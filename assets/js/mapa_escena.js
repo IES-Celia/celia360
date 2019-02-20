@@ -90,7 +90,7 @@ $(document).ready(function() {
 			$(".puntos").css("background-color","white");
 			$(this).css("background-color","yellow");
 		}else if($(this).parent().hasClass("pisos_guiada")){
-			$(this).parent().parent().parent().find("#escenaGuiada").val($(this).attr("escena"))
+			$("#escenaGuiada").val($(this).attr("escena"));
 			$(".puntos").css("background-color", "white");
 			$(this).css("background-color","yellow");
 		}else {

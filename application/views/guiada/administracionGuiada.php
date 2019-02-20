@@ -13,12 +13,6 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 
-if (isset($error)) {
-	echo "<p style='color:red'>".$error."</p>";
-}
-if (isset($mensaje)) {
-	echo "<p style='color:blue'>".$mensaje."</p>";
-}
 
 $urlFormulario = site_url('guiada/modificarEscena');
     
@@ -93,8 +87,8 @@ else {
 
 echo "<tr class='filaEscena'>
         <td class='id_visita align-middle'>".$escena['id_visita']."</td>
-        <td class='cod_escena align-middle'> 
-            <a href='".base_url()."escenas/cargar_escena/".$escena['cod_escena']."/show_insert_hotspot/0"."'>".$escena['cod_escena']."</a>
+        <td class='cod_escena align-middle'>"
+            .$escena['cod_escena']."
         </td> 
         <td class='audio_escena align-middle'>
             <audio controls='controls' preload='auto'>
@@ -119,7 +113,7 @@ echo "<tr class='filaEscena'>
             </a>
         </td>
         <td class='orden align-middle text-center'>
-            MOVER
+		<i class='fas fa-arrows-alt lead guiada-move'></i>
         <td class='posicion text-midle align-middle text-center' style='display:none;'>".$escena['orden']."</td>";
     }
 } // else
@@ -216,7 +210,7 @@ echo "<tr class='filaEscena'>
             <?php 
                 foreach ($audios as $audio) {
                     $nombreAudio=$audio["url_aud"];
-                    echo "<option value=$nombreAudio>$nombreAudio</option>";
+                    echo "<option value= \"$nombreAudio\" >$nombreAudio</option>";
                 }
             ?>
           </select>
@@ -246,10 +240,11 @@ echo "<tr class='filaEscena'>
         <form id='guiadaImagen' id='caja' enctype="multipart/form-data" action='' method="post">
             <div class="form-group">
                 <label for=""><h4>Selecciona una imagen</h4></label>
-                <input type="file" class="form-control-file" name="imagenPreview" id="" placeholder="" aria-describedby="fileHelpId" required>
+                <input type="file" class="form-control-file" name="imagenPreview" aria-describedby="fileHelpId" required>
             </div>
+			<input type="hidden" name="id_visita" value="">
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
-            <button type="submit" class="btn btn-primary float-right">Enviar</button>
+            <button type="submit" class="btn btn-success float-right">Enviar</button>
         </form>
       </div>
     </div>
@@ -259,8 +254,8 @@ echo "<tr class='filaEscena'>
 <script>
 
     $(".change_img").on("click", function () {
-        var codigo = $(this).closest(".filaEscena").find(".id_visita").text();
-        $("#modalGuiadaImagen").modal()
+        var codigo = $(this).parent().parent().find(".id_visita").text();
+        $("#modalGuiadaImagen").modal();
         $(".closeGuiada").click(function (e) {
             $("#modalGuiadaImagen").modal("hide");
         });
@@ -273,14 +268,21 @@ echo "<tr class='filaEscena'>
     function modificarGuiada(elemento) {
 
         $("#modalGuiada").modal();
-
-		$("#titulo_escena").val($(elemento).parent().parent().find('.titulo_escena').text()); 
-		$('#escenaGuiada').val($(elemento).parent().parent().find('.cod_escena').children().text())
-        
+		$('#mapa_guiada').find('.puntos').css('background-color','');
 		
+		$("#titulo_escena").val($(elemento).parent().parent().find('.titulo_escena').text()); 
+		$('#escenaGuiada').val($(elemento).parent().parent().find('.cod_escena').text());
+		opcionSeleccionada = $(elemento).parent().parent().find('.audio_escena').last().text().trim();
+		
+		
+		$('select#audioGuiada option[value="'+opcionSeleccionada+'"').attr('selected','selected');
+		codEscena = $(elemento).parent().parent().find('.cod_escena').text().trim();
+		$('#mapa_guiada').find('.puntos[escena="'+codEscena+'"]').css('background-color','yellow').parent();
+
+		
+
 		$("#actualizarGuiada").on("click", function () {
-            var confirmar = confirm("¿Estas seguro que quieres modificarlo?");
-            if (confirmar) {
+
                 var idEscena = $(elemento).attr("data-id");
                 codEscena = $("#escenaGuiada").val();
                 audioEscena = $("#audioGuiada").find(":selected").text();
@@ -291,17 +293,20 @@ echo "<tr class='filaEscena'>
                     url: urlPeticion,
                     data: { id: idEscena, escena: codEscena, audio: audioEscena, titulo: tituloEscena }
                 });
-            }
+            
 
             peticion.done(function (resultado) {
-                if (resultado == 1) {
-                    alert("Se ha modificado correctamente");
-                    $(elemento).closest(".filaEscena").find(".cod_escena").html(codEscena);
-                    $(elemento).closest(".filaEscena").find(".titulo_escena").html(tituloEscena);
-                    $(elemento).closest(".filaEscena").find(".audio_escena").html(audioEscena);
-                    $("#modalGuiada").modal("hide");
+                if (resultado.trim() == 1) {
+					$('#error_cabecera').html('');
+                    $('#mensaje_cabecera').html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Actualizado con éxito</h7><i class='far fa-check-circle'></i></div>");
+					$("#modalGuiada").modal("hide");
+					$('html, body').animate({scrollTop: '0px'}, 300);
+					setTimeout(() => {
+						window.location = "<?php echo base_url("guiada/menuGuiada"); ?>";
+					}, 1500);
                 } else {
-                    alert("Error al intentar modificar");
+					$('#mensaje_cabecera').html('');
+                    $('#error_cabecera').html("<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al actualizar</h7><i class='fas fa-exclamation-circle'></i></div>");
                 }
             });
 
@@ -315,7 +320,7 @@ echo "<tr class='filaEscena'>
 
 
     function borrarGuiada(elemento) {
-        var confirmar = confirm("¿Estas seguro que quieres borrar este elemento?");
+        var confirmar = confirm("¿Estas seguro que quieres borrar esta escena?");
         if (confirmar) {
             var idEscena = $(elemento).attr("data-id");
             var urlPeticion = "<?php echo base_url("guiada/borrarEscena");?>";
@@ -326,7 +331,17 @@ echo "<tr class='filaEscena'>
             });
 
             peticion.done(function (resultado) {
-                $(elemento).closest(".filaEscena").remove();
+				alert(resultado);
+				if(resultado.trim() == 1){
+					
+					$(elemento).closest(".filaEscena").remove();
+					$('#error_cabecera').html('');
+						$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Escena guiada eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
+				}else{
+					$('#mensaje_cabecera').html('');
+						$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la escena guiada</h7><i class='far fa-check-circle'></i></div>");
+				}
+                
             });
         }
 

@@ -77,7 +77,17 @@ class Guiada extends CI_Controller {
             $this->load->view("admin_template", $datos);
 
         } else {
-            $this->mostrarFormularioGuiada();
+			//Todos los audios existentes.
+			$datos["audios"]=$this->AudioModel->allAudios();
+			//Todas las escenas existentes.
+			$datos["escenasGuiada"]=$this->EscenasModel->getAll();
+			$datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
+			$datos["mapa"] = $this->mapa->cargar_mapa();
+			$datos["puntos"] = $this->mapa->cargar_puntos();
+            $datos['error'] = "Error al insertar la escena guiada";
+            $datos["vista"]="guiada/administracionGuiada";
+            $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+            $this->load->view("admin_template", $datos);
         }
     }
 
@@ -111,21 +121,40 @@ class Guiada extends CI_Controller {
 
     public function asociarImagenPreview(){
         //Si es una modificacion de imagen existente
-          if(isset($_POST["id_visita"])){
-            $idEscena=$_POST["id_visita"];
+          if($this->input->get_post('id_visita') !== null){ //MODIFICAR ESTO
+            $idEscena=$this->input->get_post('id_visita');
             $borrarImagen = $this->GuiadaModel->borrarImagen($idEscena);
-            $asociar = $this->GuiadaModel->asociarImagen($idEscena);
+			$asociar = $this->GuiadaModel->asociarImagen($idEscena);
+
+			if($asociar == 1 && $borrarImagen == 1){
+				$datos['mensaje'] = "Imagen actualizada con éxito";
+			}else{
+				$datos['error'] = "Error al modificar la imagen";
+			}
           }else {
         //Si es la primera vez que introducimos una imagen
             $idEscena=$this->GuiadaModel->lastEscenaGuiada();
             $asociar = $this->GuiadaModel->asociarImagen($idEscena);
             if($asociar==-1){
                 $this->GuiadaModel->borrarEscenaGuiada($idEscena);
-            }
-          }
-          redirect('/guiada/menuGuiada', 'refresh');
-        
-    }
+		  }else if ($asociar == 1){
+			  $datos['mensaje'] = "Escena guiada insertada con éxito";
+		  }else if($asociar == -2){
+			  $datos['error'] = "Error al modificar la imagen"; 
+		  }
+	}
+
+	//Todos los audios existentes.
+	$datos["audios"]=$this->AudioModel->allAudios();
+	//Todas las escenas existentes.
+	$datos["escenasGuiada"]=$this->EscenasModel->getAll();
+	$datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
+	$datos["mapa"] = $this->mapa->cargar_mapa();
+	$datos["puntos"] = $this->mapa->cargar_puntos();
+	$datos["vista"]="guiada/administracionGuiada";
+	$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+  $this->load->view('admin_template',$datos);
+}
 
     public function modificarImagenPreview(){
         $idEscena = $this->input->get_post("id_visita");
@@ -160,7 +189,9 @@ class Guiada extends CI_Controller {
     public function borrarEscena(){
         $idEscena = $this->input->get_post("id");
         $this->GuiadaModel->borrarImagen($idEscena);
-        $this->GuiadaModel->borrarEscenaGuiada($idEscena);
+		$res = $this->GuiadaModel->borrarEscenaGuiada($idEscena);
+		
+		echo $res;
     }
 
 /**
