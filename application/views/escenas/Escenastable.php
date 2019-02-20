@@ -37,30 +37,25 @@
  * @param {String} cod Código de la escena que se va a borrar.
  **/    
 function borrarscene(cod) {
-                resultado = confirm("¿Está seguro de que quiere borrar esta escena?\n\nCUIDADO: esta acción no se puede deshacer.");
-                if (resultado) {
-                    $.get("<?php echo base_url('/escenas/deletesceneajax/'); ?>" + cod, null, respuesta);
-                }
-            }
-    
-/**
- * Esta función procesa la respuesta del borrado por Ajax de la escena.
- * @param {String} cod Código de la escena que se va a borrar.
- **/
-function respuesta(r) {
-        r = r.trim();
-        if (r==" ") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ha ocurrido un error al borrar la escena</span>";
-        }
-        else {
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Escena borrada con éxito.</span>";
-            selector = "#fila" + r;
-            $(selector).next().remove();
-            $(selector).remove();
-        }
-        
-    }
-                     
+	resultado = confirm("¿Está seguro de que quiere borrar esta escena?\n\nCUIDADO: esta acción no se puede deshacer.");
+	var fila = "#fila"+cod;
+	if (resultado) {
+		url = "<?php echo base_url('/escenas/deletesceneAjax/'); ?>" +cod;
+		$.ajax(url)
+		.done(function(data){
+			if(data.trim() > 0){
+				$('#error_cabecera').html('');
+				$('#mensaje_cabecera').html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Escena eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
+				$(fila).remove();
+			}else{
+				$('#error_cabecera').html("<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al eliminar la escena</h7><i class='fas fa-exclamation-circle'></i></div>")
+				$('#mensaje_cabecera').html('');
+			}
+		});		
+	}
+}
+            
+              
                             
 </script>
 
@@ -188,7 +183,7 @@ if(count($mapa)!=0){
             echo "<tr><td align='center' colspan='7'>No hay registros para mostrar.</td></tr>";
         }
         else {
-
+			
             foreach ($tablaEscenas as $escenas){
 
             $id=$escenas["id_escena"];

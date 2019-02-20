@@ -99,7 +99,12 @@ class escenas extends CI_Controller {
             $this->load->view("admin_template",$datos);
         }
         
-    }
+	}
+	
+	public function deletesceneAjax($cod){
+		$resultado = $this->EscenasModel->borrar($cod);
+		echo $resultado;
+	}
     
     public function showupdatescene($cod){
     
