@@ -517,8 +517,16 @@ class HotspotsModel extends CI_Model {
     //Sacar el id del ultimo hotspot.
     public function ultimo_hotspot() {
         
-        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
-        return $res;
+        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array();
+
+		$devuelve = "";
+		if(count($res) == 0){
+			$devuelve = 1;
+		}else{
+			$devuelve = $res[0]['id_hotspot'];
+		}
+
+		return $devuelve;
     }
 
     // saca la escena de un punto... importante por no tener el cod_escena en el hotspot, esto deja de tener sentido con la unificación de cod_escena e id_escena   
