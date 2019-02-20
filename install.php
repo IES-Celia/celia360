@@ -332,22 +332,25 @@
                         ADD PRIMARY KEY (`id_escena`,`id_hotspot`);");
 
             $db->query("CREATE TABLE `hotspots` (
-                            `id_hotspot` int(11) NOT NULL,
-                            `titulo_panel` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-                            `texto_panel` varchar(2999) COLLATE utf8_spanish_ci DEFAULT NULL,
-                            `descripcion` varchar(1000) CHARACTER SET latin1 NOT NULL,
-                            `pitch` int(11) NOT NULL,
-                            `yaw` int(11) NOT NULL,
-                            `cssClass` varchar(100) CHARACTER SET latin1 NOT NULL,
-                            `clickHandlerFunc` varchar(100) CHARACTER SET latin1 NOT NULL,
-                            `clickHandlerArgs` varchar(100) CHARACTER SET latin1 NOT NULL,
-                            `sceneId` varchar(100) CHARACTER SET latin1 NOT NULL,
-                            `targetPitch` int(11) NOT NULL,
-                            `targetYaw` int(11) NOT NULL,
-                            `tipo` varchar(10) CHARACTER SET latin1 NOT NULL,
-                            `cerrado_destacado` int(11) NOT NULL DEFAULT '0',
-                            `documento_url` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL
-                            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
+				`id_hotspot` int(11) NOT NULL,
+				`titulo_panel` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+				`texto_panel` varchar(2999) COLLATE utf8_spanish_ci DEFAULT NULL,
+				`descripcion` varchar(1000) CHARACTER SET latin1 NOT NULL,
+				`pitch` int(11) NOT NULL,
+				`yaw` int(11) NOT NULL,
+				`cssClass` varchar(100) CHARACTER SET latin1 NOT NULL,
+				`clickHandlerFunc` varchar(100) CHARACTER SET latin1 NOT NULL,
+				`clickHandlerArgs` varchar(100) CHARACTER SET latin1 NOT NULL,
+				`sceneId` varchar(100) CHARACTER SET latin1 NOT NULL,
+				`targetPitch` int(11) NOT NULL,
+				`targetYaw` int(11) NOT NULL,
+				`tipo` varchar(10) CHARACTER SET latin1 NOT NULL,
+				`cerrado_destacado` int(11) NOT NULL DEFAULT '0',
+				`documento_url` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+				`plantaDestino` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
+			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+			  
+			  --");
             $db->query("ALTER TABLE `hotspots`
                         ADD PRIMARY KEY (`id_hotspot`);");
 
@@ -360,8 +363,7 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `imagenes`
                         ADD PRIMARY KEY (`id_imagen`);");
-            $db->query("ALTER TABLE `imagenes`
-                            MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=352;");
+            
 
             $db->query("CREATE TABLE `libros` (
                             `id_libro` int(11) NOT NULL,
@@ -377,22 +379,13 @@
             $db->query("ALTER TABLE `libros`
                         ADD PRIMARY KEY (`id_libro`),
                         ADD UNIQUE KEY `ISBN` (`ISBN`);");
-            $db->query("ALTER TABLE `libros`
-                        MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;");
 
             $db->query("CREATE TABLE `opciones_portada` (
-                            `titulo_web` varchar(200) NOT NULL,
-                            `imagen_web` varchar(200) NOT NULL,
-                            `subtitulo_visita_libre` varchar(200) NOT NULL,
-                            `subtitulo_visita_guiada` varchar(200) NOT NULL,
-                            `subtitulo_puntos_destacados` varchar(200) NOT NULL,
-                            `subtitulo_biblioteca` varchar(200) NOT NULL,
-                            `show_biblioteca` varchar(1) NOT NULL,
-                            `show_historia` varchar(1) NOT NULL,
-                            `nombre_fuente` varchar(100) NOT NULL,
-                            `color_fuente` varchar(10) NOT NULL,
-                            `logo_web` varchar(100) NOT NULL
-                            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+				`id_opcion` int(11) NOT NULL,
+				`opcion` varchar(200) NOT NULL,
+				`opcion_valor` varchar(200) DEFAULT NULL
+			  ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+			  ");
 
             $db->query("CREATE TABLE `panel_imagenes` (
                             `id_hotspot` int(11) NOT NULL,
@@ -408,7 +401,7 @@
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
             $db->query("ALTER TABLE `panel_informacion`
                         ADD PRIMARY KEY (`id_documento`);");
-            $db->query("ALTER TABLE `panel_informacion` MODIFY `id_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;");
+            
 
             $db->query("CREATE TABLE `pisos` (
                             `piso` int(1) NOT NULL,
@@ -432,8 +425,7 @@
             $db->query("ALTER TABLE `puntos_mapa`
                         ADD PRIMARY KEY (`id_punto_mapa`),
                         ADD KEY `piso` (`piso`);");
-            $db->query("ALTER TABLE `puntos_mapa`
-            MODIFY `id_punto_mapa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;");
+           
 
             $db->query("CREATE TABLE `usuarios` (
                             `id_usuario` int(11) NOT NULL,
@@ -446,8 +438,7 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `usuarios`
                         ADD PRIMARY KEY (`id_usuario`);");
-            $db->query("ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;");
+            
 
             $db->query("CREATE TABLE `video` (
                             `id_vid` int(11) NOT NULL,
@@ -456,8 +447,7 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `video`
                         ADD PRIMARY KEY (`id_vid`);");
-            $db->query("ALTER TABLE `video`
-  MODIFY `id_vid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;");
+            
 
             $db->query("CREATE TABLE `visita_guiada` (
                             `id_visita` int(11) NOT NULL,
@@ -469,18 +459,38 @@
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
             $db->query("ALTER TABLE `visita_guiada`
                         ADD PRIMARY KEY (`id_visita`);");
-            $db->query("ALTER TABLE `visita_guiada`
-  MODIFY `id_visita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;");
+           
 
-  $this->db->query('CREATE TABLE IF NOT EXISTS panoramas_secundarios (id_panorama_secundario VARCHAR(100),id_escena int,titulo VARCHAR(75),fecha_acontecimiento DATE,panorama VARCHAR(250),hfov INT,pitch INT,yaw INT)ENGINE = InnoDB;');
+  $this->db->query('CREATE TABLE `panoramas_secundarios` (
+	`id_panorama_secundario` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+	`cod_escena` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+	`titulo` varchar(75) DEFAULT NULL,
+	`fecha_acontecimiento` date DEFAULT NULL,
+	`panorama` varchar(250) DEFAULT NULL,
+	`hfov` int(11) DEFAULT NULL,
+	`pitch` int(11) DEFAULT NULL,
+	`yaw` int(11) DEFAULT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
           
 
             // Creamos el usuario administrador
             $db->query("INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `nombre`, `apellido`, `password`, `email`, `tipo_usuario`) 
                             VALUES ('1', '$username', 'Administrador', '', '" . md5($pass) . "', '$emailadmin', '1')");
             // Creamos una entrada genérica en la tabla opciones_portada
-            $db->query("INSERT INTO `opciones_portada` (`titulo_web`, `imagen_web`, `subtitulo_visita_libre`, `subtitulo_visita_guiada`, `subtitulo_puntos_destacados`, `subtitulo_biblioteca`, `show_biblioteca`, `show_historia`, `color_fuente`, `nombre_fuente`, `logo_web`) "
-                    . "     VALUES ('Mi Tour Virtual', 'portada.jpg', 'Visita libre al tour virtual', 'Visita guiada al tour virtual', 'Visita de puntos destacados al tour virtual', 'Biblioteca del tour virtual', '1', '1', '#ffffff', 'Lato', 'sin-uso')");
+            $db->query("INSERT INTO `opciones_portada` (`id_opcion`, `opcion`, `opcion_valor`) VALUES
+			(0, 'titulo_web', 'Celia tour'),
+			(1, 'imagen_web', 'portada.jpg'),
+			(2, 'subtitulo_visita_libre', 'Texto de prueba 1'),
+			(3, 'subtitulo_visita_guiada', 'Texto de prueba 2'),
+			(4, 'subtitulo_puntos_destacados', 'Texto de prueba 3'),
+			(5, 'subtitulo_biblioteca', 'Texto de prueba 4'),
+			(6, 'show_biblioteca', '1'),
+			(7, 'show_historia', '1'),
+			(8, 'nombre_fuente', 'Ubuntu'),
+			(9, 'color_fuente', '#ffffff'),
+			(10, 'logo_web', 'logo.png'),
+			(11, 'ascensor_mapa', 'ascensor'),
+			(12, 'url_mapa', 'mapa.jpg');");
         
 
 
