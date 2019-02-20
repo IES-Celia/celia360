@@ -14,15 +14,19 @@
 */
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
-
-<div class="container">
+<style>
+    audio{
+        width: 200px!important;
+    }
+</style>
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-12 mt-4">
-            <a class="btn btn-primary float-right"  role="button" data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
+            <a class="btn btn-primary float-right" role="button" data-toggle="modal" data-target="#modalInsertarAud"><i class='fas fa-plus-circle'></i> Insertar audio</a>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 table-responsive">
         <table class='table table-hover bg-secondary' id='cont'>
             <thead>
                 <tr id='cabecera'>
@@ -68,7 +72,7 @@ foreach ($tabla as $re) {
         </table>
     </div>
 </div>
-
+</div> <!-- cierre del container -->
 
 <!-- MODAL DE INSERCION -->
 <div class="modal fade" id="modalInsertarAud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,10 +115,8 @@ foreach ($tabla as $re) {
 
   </div>
 </div>
-
-
-
 <!-- FIN MODAL INSERCION -->
+
 <!-- MODAL MODIFICAR -->
 <div class="modal fade" id="modalModificarAud" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -154,16 +156,8 @@ foreach ($tabla as $re) {
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
 <!-- FIN MODAL MODIFICAR -->
-</div> <!-- cierre del container -->
+
 <script>
 
     function mostrarm(id){
@@ -177,9 +171,7 @@ foreach ($tabla as $re) {
         document.getElementById("id").value = id;
             
     }
-
-   
-        
+ 
     //confirmacion al borrar
     function borraraud(id) {
         if (confirm("¿Estás seguro?")) {
