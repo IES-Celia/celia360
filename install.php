@@ -287,8 +287,7 @@
             $db->query("ALTER TABLE `audio`
                         ADD PRIMARY KEY (`id_aud`),
                         ADD KEY `id_aud` (`id_aud`);");
-             $db->query("ALTER TABLE `audio`
-                        MODIFY `id_aud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;");
+    
 
 
 
@@ -309,19 +308,19 @@
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
 
             $db->query("CREATE TABLE `escenas` (
-                            `id_escena` int(11) NOT NULL,
-                            `Nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-                            `cod_escena` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-                            `hfov` int(11) NOT NULL,
-                            `pitch` int(11) NOT NULL,
-                            `yaw` int(11) NOT NULL,
-                            `tipo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-                            `panorama` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
-                            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
+				`id_escena` int(11) NOT NULL,
+				`Nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+				`cod_escena` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+				`hfov` int(11) NOT NULL,
+				`pitch` int(11) NOT NULL,
+				`yaw` int(11) NOT NULL,
+				`tipo` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+				`panorama` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
+			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+			  ");
             $db->query("ALTER TABLE `escenas`
                         ADD PRIMARY KEY (`id_escena`);");
-            $db->query("ALTER TABLE `escenas`
-                         MODIFY `id_escena` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;");
+            
 
             $db->query("CREATE TABLE `escenas_hotspots` (
                             `id_escena` int(11) NOT NULL,
@@ -461,7 +460,7 @@
                         ADD PRIMARY KEY (`id_visita`);");
            
 
-  $this->db->query('CREATE TABLE `panoramas_secundarios` (
+  $db->query('CREATE TABLE `panoramas_secundarios` (
 	`id_panorama_secundario` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
 	`cod_escena` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
 	`titulo` varchar(75) DEFAULT NULL,
