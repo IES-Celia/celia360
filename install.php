@@ -322,7 +322,8 @@
 			  ");
             $db->query("ALTER TABLE `escenas`
 						ADD PRIMARY KEY (`id_escena`);");
-				$db-query("ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;");
+
+			$db-query("ALTER TABLE `escenas` MODIFY COLUMN `id_escena` INT AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `escenas_hotspots` (
