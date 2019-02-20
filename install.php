@@ -286,11 +286,9 @@
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `audio`
                         ADD PRIMARY KEY (`id_aud`),
-						ADD KEY `id_aud` (`id_aud`);
-						
-ALTER TABLE `audio` MODIFY COLUMN `id_aud` INT AUTO_INCREMENT;
+						ADD KEY `id_aud` (`id_aud`);");
 
-						");
+						$db->query("ALTER TABLE `audio` MODIFY COLUMN `id_aud` INT AUTO_INCREMENT;");
     
 
 
@@ -323,11 +321,8 @@ ALTER TABLE `audio` MODIFY COLUMN `id_aud` INT AUTO_INCREMENT;
 			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 			  ");
             $db->query("ALTER TABLE `escenas`
-                        ADD PRIMARY KEY (`id_escena`);
-
-ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;
-
-");
+						ADD PRIMARY KEY (`id_escena`);");
+				$db-query("ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `escenas_hotspots` (
@@ -369,8 +364,9 @@ ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;
                             `fecha` date NOT NULL
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `imagenes`
-						ADD PRIMARY KEY (`id_imagen`);
-						ALTER TABLE `imagenes` MODIFY COLUMN `id_imagen` INT(11) AUTO_INCREMENT;");
+						ADD PRIMARY KEY (`id_imagen`);");
+
+			$db->query("ALTER TABLE `imagenes` MODIFY COLUMN `id_imagen` INT(11) AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `libros` (
@@ -386,8 +382,9 @@ ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `libros`
                         ADD PRIMARY KEY (`id_libro`),
-						ADD UNIQUE KEY `ISBN` (`ISBN`);
-						ALTER TABLE `libros` MODIFY COLUMN `id_libro` INT AUTO_INCREMENT;");
+						ADD UNIQUE KEY `ISBN` (`ISBN`);");
+
+			$db->query("ALTER TABLE `libros` MODIFY COLUMN `id_libro` INT AUTO_INCREMENT;");
 
             $db->query("CREATE TABLE `opciones_portada` (
 				`id_opcion` int(11) NOT NULL,
@@ -409,8 +406,9 @@ ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;
                             `documento_url` varchar(255) NOT NULL
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
             $db->query("ALTER TABLE `panel_informacion`
-						ADD PRIMARY KEY (`id_documento`);
-						ALTER TABLE `panel_informacion` MODIFY COLUMN `id_documento` INT AUTO_INCREMENT;");
+						ADD PRIMARY KEY (`id_documento`);");
+
+			$db->query("ALTER TABLE `panel_informacion` MODIFY COLUMN `id_documento` INT AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `pisos` (
@@ -434,12 +432,9 @@ ALTER TABLE `escenas` MODIFY COLUMN id_escena INT AUTO_INCREMENT;
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `puntos_mapa`
                         ADD PRIMARY KEY (`id_punto_mapa`),
-						ADD KEY `piso` (`piso`);
-						
-ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT;
+						ADD KEY `piso` (`piso`);");
 
-
-						");
+			$db->query("ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT;");
            
 
             $db->query("CREATE TABLE `usuarios` (
@@ -452,8 +447,9 @@ ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT;
                             `tipo_usuario` int(255) NOT NULL
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `usuarios`
-						ADD PRIMARY KEY (`id_usuario`);
-						ALTER TABLE `usuarios` MODIFY COLUMN `id_usuario` INT AUTO_INCREMENT;");
+						ADD PRIMARY KEY (`id_usuario`);");
+
+			$db->query("ALTER TABLE `usuarios` MODIFY COLUMN `id_usuario` INT AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `video` (
@@ -462,8 +458,9 @@ ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT;
                             `desc_vid` text COLLATE utf8_spanish_ci NOT NULL
                             ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `video`
-						ADD PRIMARY KEY (`id_vid`);
-						ALTER TABLE `video` MODIFY COLUMN `id_vid` INT AUTO_INCREMENT;");
+						ADD PRIMARY KEY (`id_vid`);");
+
+			$db->query("ALTER TABLE `video` MODIFY COLUMN `id_vid` INT AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `visita_guiada` (
@@ -475,8 +472,9 @@ ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT;
                             `orden` int(11) NOT NULL
                             ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
             $db->query("ALTER TABLE `visita_guiada`
-						ADD PRIMARY KEY (`id_visita`);
-						ALTER TABLE `visita_guiada` MODIFY COLUMN `id_visita` INT AUTO_INCREMENT;");
+						ADD PRIMARY KEY (`id_visita`);");
+
+			$db->query("ALTER TABLE `visita_guiada` MODIFY COLUMN `id_visita` INT AUTO_INCREMENT;");
            
 
   $db->query('CREATE TABLE `panoramas_secundarios` (
