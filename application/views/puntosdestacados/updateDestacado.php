@@ -13,40 +13,60 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
+
         <?php
         echo "<script>";
         echo "piso_maximo = " . count($mapa) . ";";
         echo "piso_maximo--";
         echo "</script>";
         ?>
-        <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-        <script src='<?php echo base_url('assets/js/mapa_escena.js') ?>'></script>
-        <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css"); ?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
 
-    </head>
-    <body>
-
-        <h1 align="center">Modificación de punto destacado</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="text-center">
+						Modificación de punto destacado
+					</h1>
+				</div>
+			</div>
+			<div class="col-md-8 mx-auto">
+				<div class="card">
+					<div class="card-body">
         <div id='caja2'>
-            <fieldset>
-
                 <?php
                 $tabla = $celda[0];
                 echo"<form action='" . site_url("PuntosDestacados/processupdatedestacado") . "' method='post' enctype='multipart/form-data'>
-                <input type='hidden' name='id_celda' value='" . $tabla['id_celda'] . "' readonly> <br>
-                Nombre del punto destacado:  <input type='text' name='titulo_celda' value='" . $tabla['titulo_celda'] . "'> <br>
-                Nueva imagen:<br>
-                <input type='file' name='imagen_celda'> <br/><br/> 
-                <input type='text' name='escena_celda' readonly value='" . $tabla['escena_celda'] . "'> <br><br>
-                Fila de la celda: <input type='number' min='0' max='4' name='fila_asociada' value='" . $tabla['fila_asociada'] . "'><br><br>
-                Seleccione la escena en el mapa:<br>(se sombreará en amarillo)";
+                <input type='hidden' name='id_celda' value='" . $tabla['id_celda'] . "' readonly>
+				
+				<div class='form-group'>
+					<label for='nombrepd'>Nombre del punto destacado</label>
+					<input type='text' class='form-control' name='titulo_celda' value='" . $tabla['titulo_celda'] . "'>
+				</div>
+
+				<div class='form-group'>
+					<label for='nuevaimg'>Nueva imagen</label>
+					<input type='file' name='imagen_celda' class='form-control-file'>
+				</div>
+
+				
+				<div class='form-group'>
+					<label for='escenaselec'>Escena seleccionada</label>
+					<input type='text' name='escena_celda' class='form-control bg-white' readonly value='" . $tabla['escena_celda'] . "'>
+				</div>
+                 
+				 <div class='form-group'>
+					 <label for='fila-celda'>Fila de la celda</label>
+					 <input type='number' min='0' max='4' name='fila_asociada' value='" . $tabla['fila_asociada'] . "'>
+				 </div>
+				 <div class='card'>
+					<div class='card-body'>
+						Seleccione la escena en el mapa:<br>(se sombreará en amarillo)
+					</div>
+				</div>";
+                
                 ?>
 
-                <div id="mapa_escena_hotspot" class="insertar_pd">
+                <div id="mapa_escena_hotspot" class="insertar_pd m-4">
                     <?php
                     $indice = 0;
 
@@ -65,15 +85,20 @@
                         $indice++;
                     }
                     ?>
-                </div><br><br>
-                <button id="btn-bajar-piso" type="button">Bajar piso</button>
-                <button id="btn-subir-piso" type="button">Subir piso</button>
-                <br><br><br><hr>
-                <input type='submit' value='Guardar cambios'><br><br>
-                <a href="<?php echo site_url("PuntosDestacados/cargar_admin_puntosdestacados"); ?>">Atrás</a>
+                </div>
+				<div class="form-group">
+				<button id="btn-bajar-piso" type="button" class="btn btn-primary">Bajar piso</button>
+                <button id="btn-subir-piso" type="button" class="btn btn-primary">Subir piso</button>
+				</div>
+                <hr>
+				<div class="form-group">
+				<input type='submit' class='btn btn-success' value='Guardar cambios'>
+				</div>
+                
+        
                 </form>
-            </fieldset>
         </div>
-
-    </body>
-</html>
+					</div>
+				</div>
+			</div>
+		</div>

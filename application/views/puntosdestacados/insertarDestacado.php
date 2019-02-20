@@ -13,36 +13,50 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
-<!DOCTYPE html>
-<html>
-<head>
+
 	<?php 
 		echo "<script>";
 		echo "piso_maximo = ".count($mapa).";";
         echo "piso_maximo--";
         echo "</script>";
 	?>
-	<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-	<script src='<?php echo base_url('assets/js/mapa_escena.js')?>'></script>
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/admin_style.css"); ?>"/>
 
-</head>
-<body>
-
-	<h1 align="center">Inserción de punto destacado</h1>
-	<div id="caja2">
-	<fieldset>
-
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="text-center">
+						Inserción de punto destacado
+					</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 mx-auto">
+					<div class="card">
+						<div class="card-body">
+						<div id="caja2">
 		<?php
 			echo"<form action='".site_url("PuntosDestacados/processinsertdestacado")."' method='post' enctype='multipart/form-data'>";   
         ?>
-		    	
-		Nombre del punto destacado:  <input type='text' name='titulo_celda' required> <br>
-                <input type="hidden" name="MAX_FILE_SIZE" value="20000000" /><br>
-                Imagen destacada:  <input type='file' name='imagen_celda' required> <br><br><hr><br>
-                Seleccione la escena en el mapa:<br>(se sombreará en amarillo) <input type='hidden' name='escena_celda' required> <br><br>
-				<div id="mapa_escena_hotspot" class="insertar_pd">
+		    	<div class="form-group">
+					<label for="namepd">Nombre del punto destacado</label>
+					<input type='text' name='titulo_celda' required class="form-control">
+				</div>
+		
+                <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
+				<div class="form-group">
+					<label for="imgdest">Imagen destacada</label>
+					<input type='file' name='imagen_celda' required class="form-control-file">
+				</div>
+                <hr>
+
+				<div class="card">
+					<div class="card-body">
+						Seleccione la escena en el mapa:<br>(se sombreará en amarillo) 
+					</div>
+				</div>
+
+                <input type='hidden' name='escena_celda' required>
+				<div id="mapa_escena_hotspot" class="insertar_pd mt-4 mb-4">
 				
 				<?php
 					$indice = 0;
@@ -64,18 +78,24 @@
 						$indice++;
 					}
 				?>
-				</div><br>
-				<button id="btn-bajar-piso" type="button">Bajar piso</button>
-				<button id="btn-subir-piso" type="button">Subir piso</button>
-                                <input type='hidden' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br><br><br><hr><br>
-			    
-                            <input type='submit' value='Enviar'><br>
-                <a href="<?php echo site_url("PuntosDestacados/cargar_admin_puntosdestacados"); ?>">Atrás</a><br>
+				</div>
+				<div class="form-group">
+					<button id="btn-bajar-piso" type="button" class="btn btn-primary">Bajar piso</button>
+					<button id="btn-subir-piso" type="button" class="btn btn-primary">Subir piso</button>
+				</div>
+				
+				<input type='hidden' name='fila_asociada' value='<?php echo $id_fila ?>' readonly><br><br><br><hr><br>
+				<div class="form-group">
+					<input type='submit' class="btn btn-success" value='Insertar punto destacado'>
+				</div>
+                            
+                
 			   
 			</form>
-	
-	</fieldset>
         </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-</body>
-</html>
