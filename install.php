@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Install</title>
+        <title>Install CMS Celia Tour</title>
 <?php
 //Estilos del formulario de instalación 
 ?>
