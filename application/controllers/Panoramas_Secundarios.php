@@ -16,11 +16,15 @@ public function show_panoramas_secundarios($codigo_escena, $datos = null){ //car
 	$datos['datos_escena'] = $this->EscenasModel->getOne($codigo_escena);
 	$datos['tabla_escena_secundaria'] = $this->PanoramasSecundariosModel->getById($codigo_escena);
 	$datos["vista"]="escenas/admin_pan_sec";
-
 	$datos['cod_escena'] = $codigo_escena;
-
-	$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
-    $this->load->view("admin_template",$datos);
+	$datos["permiso"] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
+	
+	if($datos['permiso']){
+		$this->load->view("admin_template",$datos);
+	}else{
+		redirect('usuario');
+	}
+	
 }
 
 
