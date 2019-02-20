@@ -176,7 +176,7 @@
 		</div>
            <div class="form-group">
 			   <label for="add">Imagen zona</label>
-			   <input type="file" name="zona" id="zona" placeholder="Seleccionar la imagen">
+			   <input type="file" name="zona" id="zona" class="form-control-file" placeholder="Seleccionar la imagen">
 		   </div>
             <input type="submit" class="btn btn-success" value="Añadir">
         </form>
