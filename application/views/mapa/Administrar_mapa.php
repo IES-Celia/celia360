@@ -39,9 +39,13 @@
     if(count($mapa)==0){
         ?>
         <div class="botones_mapa">
-            <button class="botonmapa" id="btn-anadir-mapa">Añadir zona</button>
-            <a href="<?php echo base_url('escenas') ?>"><button class="botonmapa">Volver atras</button></a>
+				<div class="row m-3">
+				<div class="col-12 text-center">
+            <button class="botonmapa btn btn-primary" data-toggle="modal" data-target="#addZona" id="btn-anadir-mapa">Añadir zona</button>
+            <a href="<?php echo base_url('escenas') ?>"><button class="botonmapa btn btn-primary">Volver atras</button></a>
         </div>
+				</div>
+				</div>
         <?php
     }else{
         ?>
