@@ -288,7 +288,7 @@
                         ADD PRIMARY KEY (`id_aud`),
 						ADD KEY `id_aud` (`id_aud`);");
 
-						$db->query("ALTER TABLE `audio` MODIFY COLUMN `id_aud` INT AUTO_INCREMENT;");
+						$db->query("ALTER TABLE `audio` MODIFY COLUMN `id_aud` INT(11) AUTO_INCREMENT;");
     
 
 
@@ -320,10 +320,9 @@
 				`panorama` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 			  ");
-            $db->query("ALTER TABLE `escenas`
-						ADD PRIMARY KEY (`id_escena`);");
+            $db->query("ALTER TABLE `escenas`ADD PRIMARY KEY (`id_escena`);");
 
-			$db-query("ALTER TABLE `escenas` MODIFY COLUMN `id_escena` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `escenas` MODIFY COLUMN `id_escena` int(11) AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `escenas_hotspots` (
@@ -385,7 +384,7 @@
                         ADD PRIMARY KEY (`id_libro`),
 						ADD UNIQUE KEY `ISBN` (`ISBN`);");
 
-			$db->query("ALTER TABLE `libros` MODIFY COLUMN `id_libro` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `libros` MODIFY COLUMN `id_libro` INT(11) AUTO_INCREMENT;");
 
             $db->query("CREATE TABLE `opciones_portada` (
 				`id_opcion` int(11) NOT NULL,
@@ -409,7 +408,7 @@
             $db->query("ALTER TABLE `panel_informacion`
 						ADD PRIMARY KEY (`id_documento`);");
 
-			$db->query("ALTER TABLE `panel_informacion` MODIFY COLUMN `id_documento` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `panel_informacion` MODIFY COLUMN `id_documento` INT(11) AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `pisos` (
@@ -435,7 +434,7 @@
                         ADD PRIMARY KEY (`id_punto_mapa`),
 						ADD KEY `piso` (`piso`);");
 
-			$db->query("ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `puntos_mapa` MODIFY COLUMN `id_punto_mapa` INT(11) AUTO_INCREMENT;");
            
 
             $db->query("CREATE TABLE `usuarios` (
@@ -450,7 +449,7 @@
             $db->query("ALTER TABLE `usuarios`
 						ADD PRIMARY KEY (`id_usuario`);");
 
-			$db->query("ALTER TABLE `usuarios` MODIFY COLUMN `id_usuario` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `usuarios` MODIFY COLUMN `id_usuario` INT(11) AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `video` (
@@ -461,7 +460,7 @@
             $db->query("ALTER TABLE `video`
 						ADD PRIMARY KEY (`id_vid`);");
 
-			$db->query("ALTER TABLE `video` MODIFY COLUMN `id_vid` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `video` MODIFY COLUMN `id_vid` INT(11) AUTO_INCREMENT;");
             
 
             $db->query("CREATE TABLE `visita_guiada` (
@@ -475,7 +474,7 @@
             $db->query("ALTER TABLE `visita_guiada`
 						ADD PRIMARY KEY (`id_visita`);");
 
-			$db->query("ALTER TABLE `visita_guiada` MODIFY COLUMN `id_visita` INT AUTO_INCREMENT;");
+			$db->query("ALTER TABLE `visita_guiada` MODIFY COLUMN `id_visita` INT(11) AUTO_INCREMENT;");
            
 
   $db->query('CREATE TABLE `panoramas_secundarios` (
