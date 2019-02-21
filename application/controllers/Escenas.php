@@ -76,7 +76,7 @@ class escenas extends CI_Controller {
     
     public function deletescene($cod){
 
-        $resultado = $this->EscenasModel->borrar($cod);
+        $resultado = $this->EscenasModel->borrarEscena($cod);
         
         if ($resultado > 1) {
 			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
@@ -102,7 +102,7 @@ class escenas extends CI_Controller {
 	}
 	
 	public function deletesceneAjax($cod){
-		$resultado = $this->EscenasModel->borrar($cod);
+		$resultado = $this->EscenasModel->borrarEscena($cod);
 		echo $resultado;
 	}
     
@@ -173,10 +173,10 @@ class escenas extends CI_Controller {
      */
     public function cargar_escena_modificar($escenaInicial, $redireccion, $idhotspot){
         $redireccion = site_url("/hotspots/".$redireccion."/");
-        echo $redireccion;
-        $datos["redireccion_jotpoch"]= $redireccion;
+        $datos["redireccion_joptoch"]= $redireccion;
 	    $datos["escenaInicial"] = $escenaInicial;
-        $datos["idhotspot"]= $idhotspot;
+		$datos["idhotspot"]= $idhotspot;
+		$datos['panorama_secundario'] = 0;
 	    $this->load->view("escenas/jotpoch", $datos);	
     }
 

@@ -126,7 +126,7 @@ class HotspotsModel extends CI_Model {
      */
     public function modificarPitchYawEscena($pitch, $yaw, $idescena, $id_pan_sec) {
 		$devuelve = '';
-		if($id_pan_sec == null){
+		if($id_pan_sec == "vacio"){
 			$this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_escena='" . $idescena . "'");
 			$devuelve =  $this->db->affected_rows();
 		}else{
@@ -146,7 +146,9 @@ class HotspotsModel extends CI_Model {
      */    
     public function modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot){
         $this->db->query("UPDATE hotspots SET targetPitch=" . $pitch . ", targetYaw=" . $yaw . " WHERE id_hotspot='" . $idhotspot . "'");
-    }
+	
+		return $this->db->affected_rows();
+	}
     
     /**
      * Modifica un hotspot de tipo de video cambiando el video.
@@ -255,8 +257,14 @@ class HotspotsModel extends CI_Model {
     public function insertarHotspotPanel($tabla) {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
-        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
-        $idhotspot = $res + 1;
+        $res = $this->db->query("SELECT MAX(id_hotspot)as maxid FROM hotspots")->result_array();
+		
+		$idhotspot = '';
+		if (count($res) == 0){
+			$idhotspot = 1;
+		}else{
+			$idhotspot = $res[0]["maxid"] + 1;
+		}
 
         $id_scene = $this->input->post_get("id_scene");
         $pitch = $this->input->post_get("pitch");

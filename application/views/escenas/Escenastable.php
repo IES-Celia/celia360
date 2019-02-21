@@ -153,7 +153,7 @@ function borrarscene(cod) {
 </div>
 </div> <!-- cierre .row -->
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-md-12">
 <?php
 if(count($mapa)!=0){
@@ -225,6 +225,7 @@ if(count($mapa)!=0){
 <script>
 
 $(document).ready(function() {
+	$.fn.dataTable.ext.errMode = 'throw';
         $('#cont').dataTable({
 
     	"language": {

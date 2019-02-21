@@ -188,48 +188,29 @@
  * Eliminación de una zona y todos los elementos que contenga como escenas y hotspots.
  */
 		public function eliminar_zona($piso,$piso_maximo){
+
+			$sql = "SELECT id_escena, cod_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo)";
+			$resultado = $this->db->query($sql)->result_array();
+
+			$devolver = '';
+			if(count($resultado) == 0){
 			$this->imagen_adelante($piso,$piso_maximo);
-
-			$this->db->query("SET foreign_key_checks=0;");
-
-			$sql = "SELECT id_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo )";
-			$resultado = $this->db->query($sql)->result_array(); //seleccionamos las escenas que esan relacionadas con la zona
-
+			
 			$sql = "SELECT url_img FROM pisos WHERE piso = $piso_maximo";
 			$zona_borrar = $this->db->query($sql)->result_array(); //se consigue la url del piso.
 			
 			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
 			$this->db->query($sql); //Se elimina el piso.
-
+			$devolver += $this->db->affected_rows();
 			if (isset($zona_borrar[0]["url_img"])) { //si existe se elimina.
 				unlink($zona_borrar[0]["url_img"]);
 			}
-
-			
-			$sql ="DELETE FROM puntos_mapa WHERE piso = $piso_maximo";
-			$this->db->query($sql); //se elimina los puntos relacionados con el piso.
-
-			foreach ($resultado as $id) {
-				$sql = "DELETE FROM hotspots WHERE id_hotspot IN (
-					SELECT id_hotspot FROM escenas_hotspots where id_escena = \"".$id['id_escena']."\")";
-				$this->db->query($sql); //Se eliminan los hotspots que tienen relacion con la escena.
-	
-				
-				$sql = "DELETE FROM escenas_hotspots WHERE id_escena = \"".$id['id_escena']."\" ";
-				$this->db->query($sql); //eliminamos la relacion de la tabla escenas-hotspots.
-	
-				$sql = "DELETE FROM hotspots WHERE sceneid=(SELECT cod_escena FROM escenas WHERE id_escena=\"".$id['id_escena']."\")";
-				$this->db->query($sql);//Eliminamos los hotspots que saltan hacia dicha escena.
-
-				$sql = "SELECT panorama FROM escenas WHERE id_escena = \"".$id['id_escena']."\" ";
-				$panorama_borrar=$this->db->query($sql)->result_array();//sacamos la url de la imagen de escena.
-				unlink($panorama_borrar[0]["panorama"]);//se elimina la imagen de escena.
-					
-				$sql = "DELETE FROM escenas WHERE id_escena = \"".$id['id_escena']."\" ";
-				$this->db->query($sql);//por ultimo se elimina la escena.
-			}
-			$this->db->query("SET foreign_key_checks=1;");
+		}else{
+			$devolver = 0;
 		}
+
+		return $devolver;
+	}
 /**
  * Actualiza la posición de inicio del recorrido
  */

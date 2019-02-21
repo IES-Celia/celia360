@@ -14,8 +14,8 @@
 <?php
         if (isset($config_mapa)) {
 ?>
-            piso = <?php echo $config_mapa["piso_inicial"]?>;
-            piso_maximo = <?php echo count($mapa)?>;
+            var piso = <?php echo $config_mapa["piso_inicial"]?>;
+            var piso_maximo = <?php echo count($mapa)?>;
             piso_maximo--;
   <?php
         }
@@ -29,27 +29,30 @@
     <!-- CSS SLICK -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick-theme.css"); ?>"/>
-    <!-- Javascript de pannellum framework -->
+    <!-- Javascript de pannellum framework
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
-    <!-- Css de pannellum framework -->
+     -->
+    <!-- Css de pannellum framework
     <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
-    <!-- Css de pannellum -->
+     -->
+    <!-- Css de pannellum
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_panellum.css");?>">
+     -->
     <!--librerias JQuery & JQuery ui-->
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
+
     <!-- Css y JS de la portada -->
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>
+
+    <!--<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>-->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
 
     <!-- Fuentes externas -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo base_url("assets/imagenes/portada/icono.ico"); ?>">
+    <!--<link rel="shortcut icon" href="<?php echo base_url("assets/imagenes/portada/icono.ico"); ?>">-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">	
 
     <!-- CSS Biblioteca -->
@@ -57,13 +60,14 @@
     <link rel="stylesheet" href="assets/css/animate.css"/>
     <link rel="stylesheet" href="<?php echo base_url("assets/css/ultimo-estilo.css"); ?>"/>
 
-	<!-- Efectos JS de la portada -->
+	<!-- Efectos CSS y JS de la portada -->
 	
-	<!-- QUILL Library -->
+	<!-- QUILL Library CSS -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.snow.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.core.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.bubble.css'); ?>">
 
+	<!-- QUILL Library JS -->
 	<script src="<?php echo base_url('assets/js/quill/js/quill.core.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
@@ -83,86 +87,53 @@
 
         $(document).ready(function(){
         
-            $("#descripcion_portada").fadeOut('fast');
-            
-            // para que cambie el background a INICIO al hacer hover
+            //Texto oculto por defecto en la descripcion de la portada
+            $("#descripcion_portada").text("Mangel").css({"visibility" : "hidden"});
 
+            // para que cambie el background a INICIO al hacer hover
+            /*
             $('#header_portada img').mouseenter(function(){
                 $("#titulito").text(base_titulo);
                 $("#descripcion_portada").text("");
-                $("#descripcion_portada").siblings().fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeIn(800000);
             });
-
+            */
             // para que cambie el background a LIBRE al hacer hover
 
             $('#opcionlibre_portada').mouseenter(function(){
-                $("#titulito").text("Visita Libre");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut('fast');
+                $("#titulito").text("Visita Libre").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });
 
             // para que cambie el background a GUIADA al hacer hover
 
             $('#opcionguiada_portada').mouseenter(function(){
-                $("#titulito").text("Visita Guiada");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
+                $("#titulito").text("Visita Guiada").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });
 
             // para que cambie el background a PUNTOS DESTACADOS al hacer hover
 
             $('#opciondestacada_portada').mouseenter(function(){
-                $("#titulito").text("Zonas Destacadas");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
+                $("#titulito").text("Zonas Destacadas").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });
 
             // para que cambie el background a BIBLIOTECA al hacer hover
 
             $('#clickbiblio').mouseenter(function(){
-                $("#titulito").text("Biblioteca");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
+                $("#titulito").text("Biblioteca").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });    
 
-            // para que cambie el background a creditos al hacer hover
-
-            $('#creditos_portada').mouseenter(function(){
-                $("#titulito").text("Créditos");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("Conoce al equipo de desarrollo que hizo posible este tour virtual");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
-            });  
-
             //Al perder el foco los elementos del menu, se restablece el nombre de titulo por defecto
-            $("ul li a").mouseleave(function(){
-                $("#titulito").text(base_titulo);
-                $("#echenique").fadeIn();
-                $("#descripcion_portada").text("");
-                $("#descripcion_portada").siblings().fadeIn();
+            $("ul").mouseleave(function(){
+                $("#titulito").fadeOut("fast", function(){
+                    $(this).text(base_titulo).fadeIn("fast");
+                });
+                $("#descripcion_portada").css({
+                    "visibility" : "hidden"
+                })
             })
 
             ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
@@ -170,7 +141,6 @@
                 $('#bibliotecaajax').css("display","block");
             });
 
-            $
 
         });
 

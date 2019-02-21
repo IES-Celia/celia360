@@ -22,9 +22,9 @@
 <title>Celia Tour</title>
  <!-- Javascript de pannellum framework -->
     <script>
-      ruta_base = '<?php echo $redireccion_joptoch; ?>';
-	  hotspot_base = "<?php echo $idhotspot; ?>"; 
-	  pan_secundario = "<?php echo $panorama_secundario; ?>";
+    ruta_base = '<?php if(isset($redireccion_joptoch)) echo $redireccion_joptoch; ?>';
+	  hotspot_base = "<?php if(isset($idhotspot)) echo $idhotspot; ?>"; 
+	  pan_secundario = "<?php if(isset($panorama_secundario)) echo $panorama_secundario; ?>";
 	  cod_escena = "<?php if(isset($cod_escena)) echo $cod_escena[0]['cod_escena']; ?>";
 
     </script>

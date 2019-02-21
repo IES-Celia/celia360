@@ -141,11 +141,25 @@ class EscenasModel extends CI_Model {
      * 
      * @param codigo_escena
      */
-    public function borrar($cod) {
+    public function borrarEscena($cod) { //borrar de panel imagenes cuando borramos una escena
 
-        $resultado = 0;
-        
-        $sql = "DELETE FROM hotspots WHERE id_hotspot IN (
+		//obtener todos los hotspots asociados al $cod escena
+		// e ir eliminando todos los hotspots que su id este en la tabla
+		//panel imagenes
+		
+		$resultado = 0;
+		//obtengo todos los hotspots asociados a la escena $cod
+		$hotspots = $this->db->query("SELECT id_hotspot FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod');");
+		
+		//elimino los hotspots de la tabla panel_imagenes
+		for($i=0;$i<count($hotspots->result_array());$i++){
+			$id = $hotspots->result_array()[$i]['id_hotspot'];
+			$this->db->query("DELETE FROM panel_imagenes WHERE id_hotspot = $id");
+			$resultado+= $this->db->affected_rows();
+		}
+		
+		
+		$sql = "DELETE FROM hotspots WHERE id_hotspot IN (
                 SELECT id_hotspot FROM escenas_hotspots where id_escena IN (
                     SELECT id_escena FROM escenas WHERE cod_escena = '$cod'))";
         $this->db->query($sql);
@@ -169,7 +183,7 @@ class EscenasModel extends CI_Model {
 
 		$imagen_borrar = "assets/imagenes/escenas/$cod.JPG";
 		
-		$consulta = $this->db->query("SELECT * FROM panoramas_secundarios WHERE cod_escena = '$cod'");
+		$consulta = $this->db->query("SELECT id_panorama_secundario, panorama FROM panoramas_secundarios WHERE cod_escena = '$cod'");
 		
 
 		for($i=0;$i<count($consulta->result_array());$i++){

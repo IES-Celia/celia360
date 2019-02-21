@@ -55,13 +55,13 @@ class Hotspots extends CI_Controller {
      * @param String $idescena Código de la escena donde se creará el hotspot
      */
     
-    public function show_insert_hotspot($pitch, $yaw, $idescena, $id_pan_sec = null) {
+    public function show_insert_hotspot($pitch, $yaw, $idescena, $id_pan_sec = "vacio") {
         //cargar los modelos
         $this->load->model("MapaModel","mapa");
         $this->load->model("AudioModel");
 		$this->load->model("VideoModel", "Vidm");
 
-		if($id_pan_sec == null){
+		if($id_pan_sec == "vacio"){
 			$datos['tabla'] = '0';
 			$datos["id_scene"]= $idescena;
 		}else{
@@ -128,10 +128,10 @@ class Hotspots extends CI_Controller {
      * @param double $yaw Coordenada yaw
      * @param String $codescena Código de escena
      */
-    public function update_escena_pitchyaw($pitch, $yaw, $idescena = null, $id_pan_sec = null) {
+    public function update_escena_pitchyaw($pitch, $yaw, $idescena = null, $id_pan_sec = "vacio") {
 
-		if($id_pan_sec == null){
-			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $idescena, null);
+		if($id_pan_sec == "vacio"){
+			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, $idescena, "vacio");
         	redirect('escenas/');
 		}else{
 			$datos["resultado"] = $this->hotspotsModel->modificarPitchYawEscena($pitch, $yaw, null, $id_pan_sec);
@@ -162,8 +162,12 @@ class Hotspots extends CI_Controller {
      * @param type $idhotspot hotspot del cual serán modificados los targets
      */
     public function update_hotspot_targets($pitch, $yaw, $codescena, $idhotspot) {
-        $datos["resultado"] = $this->hotspotsModel->modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot);
-        redirect('escenas/cargar_escena/' . $codescena . '/_hotspot/');
+        $res = $this->hotspotsModel->modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot);
+		
+		if($res > 0){
+			redirect('hotspots/show_update_hotspot/'.$idhotspot.'/' . $codescena . '/0');
+		}
+		
     /*
         $datos["pitch"]= $pitch;
         $datos["yaw"]= $yaw;

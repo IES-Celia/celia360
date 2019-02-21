@@ -34,8 +34,12 @@
         background-attachment: fixed;
         background-position: center;
     }
-</style>
 
+</style>
+<?php
+    $color = $portada[9]['opcion_valor'];
+    $fuente = $portada[8]['opcion_valor']; 
+?>
 <div class="container-fluid menu">
 
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -48,24 +52,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre");?>" onclick="visita_opcion('get_json_libre')">Visita libre</a>
+                    <a class="nav-link" id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre");?>" onclick="visita_opcion('get_json_libre')" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Visita libre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada");?>" onclick="visita_opcion('get_json_guiada')">Visita Guiada</a>
+                    <a class="nav-link" id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada");?>" onclick="visita_opcion('get_json_guiada')" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Visita Guiada</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="opciondestacada_portada" href="<?php echo site_url("PuntosDestacados");?>">Destacados</a>
+                    <a class="nav-link" id="opciondestacada_portada" href="<?php echo site_url("PuntosDestacados");?>" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Destacados</a>
                 </li>
                 <li>
                     <?php 
                     // La opción de menú "biblioteca" solo se muestra si está configurado así en las opciones de portada
                     if ($portada[6]["opcion_valor"]== "1") {  
-                        echo "<a class='nav-link' id='clickbiblio' href='".site_url("biblioteca/vertodosloslibros")."'>Biblioteca</a>";
+                        echo "<a class='nav-link' id='clickbiblio' href='".site_url("biblioteca/vertodosloslibros")."'style='color:$color; font-family:$fuente , sans-serif;'>Biblioteca</a>";
                     }
                     ?>
-                </li>
-                <li>
-                    <a class="nav-link" id="creditos_portada" href="<?php echo site_url("tour/creditos"); ?>" >Créditos</a>
                 </li>
             </ul>
         </div>

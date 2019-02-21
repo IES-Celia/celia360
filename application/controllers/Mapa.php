@@ -34,7 +34,13 @@ class Mapa extends CI_Controller {
     }
 
     public function eliminar_zona($piso,$piso_maximo){
-        $this->mapa->eliminar_zona($piso,$piso_maximo);
+		$res = $this->mapa->eliminar_zona($piso,$piso_maximo);
+		
+		if($res >0){
+			$datos['mensaje'] = "Zona eliminada con éxito";
+		}else{
+			$datos['error'] = "Existen escenas en la zona";
+		}
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
         $datos["vista"] = "mapa/Administrar_mapa";
