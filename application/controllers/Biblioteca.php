@@ -33,7 +33,7 @@ class Biblioteca extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model("bibliotecaModel");
-                $this->load->model("UsuarioModel");
+        $this->load->model("UsuarioModel");
 	}
 /**
  * Método por defecto del controlador.

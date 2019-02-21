@@ -7,89 +7,9 @@
         position: relative;
         display: inline-grid;
     }
-    .botonFormulario{
-        width: 300px;
-        margin: 10px;
-        height: auto;
-        cursor: pointer;
-        border-radius: 10px;
-        border-color: white;
-        font-family: comic;
-        font-size: 30px;
-        color: white;
-        background-color: rgba(0,0,0,0.2);
-        transition: 0.4s;
-    }
-    .insert {
-        color: white;
-        font-size: 28px;
-        text-decoration: none;
-        width: 250px;
-        transition: 0.4s;
-        background: #1C6EA4;
-        text-align: center;
-        margin-bottom: 15px;
-        box-shadow: inset 0px 0px 2px 1px rgba(255,255,255,1);
-        margin-right: 28px;
-        display: inline!important;
-        float: none!important;
-        border-radius: 5px;
-    }
-    /* CSS ventanas modales */
-    #insertar{
-        display: none;
-        z-index: 1;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        border: 3px solid;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-    }
-    #caja {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        -webkit-transform: translate(-50%, -50%);
-        font-family: comic;
-        color: white;
-        width: 500px;
-        height: auto;
-        min-height: 150px;
-        text-align: center;
-        border: 2px solid grey;
-        border-radius: 10px;
-        box-shadow: 3px 3px 10px grey;
-        background: rgb(90,163,237);
-        background: -moz-linear-gradient(to bottom, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%);
-        background: -webkit-linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);
-        background: linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);
-    }
-    .cerrar {
-        position: relative;
-        top: 15px;
-        left: 44%;
-    }
 </style>
 <script>
 $(document).ready(function(){
-
-    //Mostrar el id del punto, cuando el raton se posiciona encima de un punto
-    $(".mapa_zona").on("mouseenter", ".puntos", function(){
-        $(this).children("span").css({
-            "visibility" : "visible"
-        });
-    });
-    //Ocultar el id del punto, cuando el raton se quita de encima de un punto
-    $(".mapa_zona").on("mouseleave", ".puntos", function(){
-        $(this).children("span").css({
-            "visibility" : "hidden"
-        });
-    })
 
     /* Eliminar puntos en el mapa */
     $(".mapa_zona").on("click", ".puntos", function(event){//Utilizamos el metodo .on para poder eliminar elementos HTML creados dinamicamente
@@ -198,6 +118,7 @@ $(document).ready(function(){
 });
 </script>
 <div class="container">
+
     <h1 class="text-center">Mapa de zonas</h1>
     <div class="row text-center">
         <div class="col-md-7 mx-auto mb-3 bg-secondary" id="caja2">
@@ -205,6 +126,7 @@ $(document).ready(function(){
             <p>Utiliza el doble click derecho para insertar un punto en el mapa</p>
         </div>
     </div>
+
     <div class="row">
         <!-- Imagen del mapa de la zona -->
         <div class="mapa_zona col-md-7 mx-auto" style="height: 400px;">
@@ -212,12 +134,13 @@ $(document).ready(function(){
             <?php
             /* Coloca los puntos en la imagen del mapa */ 
             foreach ($pisos as $piso) {
-                if($piso["top_zona"] == null) echo "<div id='".$piso['piso']."' class='puntos' style='displaye: none; left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;'><span class='tooltip'>".$piso["piso"]."-".$piso["titulo_piso"]."</span></div>";
-                if($piso["top_zona"] != "null") echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;'><span class='tooltip'>".$piso["piso"]."-".$piso["titulo_piso"]."</span></div>";
+                if($piso["top_zona"] == null) echo "<div id='".$piso['piso']."' class='puntos' style='displaye: none; left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;' data-toggle='tooltip' data-placement='top' title='".$piso["piso"]."-".$piso["titulo_piso"]."'></div>";
+                if($piso["top_zona"] != "null") echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;' data-toggle='tooltip' data-placement='top' title='".$piso["piso"]."-".$piso["titulo_piso"]."'></div>";
             }
             ?>
         </div>
     </div>
+    
 </div>
 
 <!-- Ventana modal -->
