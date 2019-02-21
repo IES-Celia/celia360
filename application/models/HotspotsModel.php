@@ -140,7 +140,9 @@ class HotspotsModel extends CI_Model {
      */    
     public function modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot){
         $this->db->query("UPDATE hotspots SET targetPitch=" . $pitch . ", targetYaw=" . $yaw . " WHERE id_hotspot='" . $idhotspot . "'");
-    }
+	
+		return $this->db->affected_rows();
+	}
     
     /**
      * Modifica un hotspot de tipo de video cambiando el video.

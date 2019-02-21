@@ -623,13 +623,15 @@ function onDocumentMouseDown(event) {
     var pitch = coords[0];
 	var yaw = coords[1];
          if(event.which == 3){
+			 alert("ruta base -> "+ruta_base);
+			 alert('hotspot base -> '+hotspot_base);
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
 
              if(coso==true){
 				 if(pan_secundario == 1){
-					location.href= ruta_base +""+pitch+"/"+yaw+"/"+cod_escena+"/"+escena_base;
+					location.href= ruta_base+""+pitch+"/"+yaw+"/"+cod_escena+"/"+escena_base;
 				 }else{
-					location.href= ruta_base +""+pitch+"/"+yaw+"/"+escena_base;
+					location.href = ruta_base+""+pitch+"/"+yaw+"/"+escena_base+"/"+hotspot_base;
 				 }
 				
 				
