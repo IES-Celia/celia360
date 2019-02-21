@@ -191,12 +191,15 @@
 			$this->imagen_adelante($piso,$piso_maximo);
 
 			$this->db->query("SET foreign_key_checks=0;");
+			
 
-			$sql = "SELECT id_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo )";
+			$sql = "SELECT id_escena, cod_escena FROM escenas WHERE cod_escena IN (SELECT id_escena FROM puntos_mapa where piso = $piso_maximo)";
 			$resultado = $this->db->query($sql)->result_array(); //seleccionamos las escenas que esan relacionadas con la zona
 
+			
 			$sql = "SELECT url_img FROM pisos WHERE piso = $piso_maximo";
 			$zona_borrar = $this->db->query($sql)->result_array(); //se consigue la url del piso.
+			
 			
 			$sql = "DELETE FROM pisos WHERE piso = $piso_maximo";
 			$this->db->query($sql); //Se elimina el piso.
@@ -209,24 +212,56 @@
 			$sql ="DELETE FROM puntos_mapa WHERE piso = $piso_maximo";
 			$this->db->query($sql); //se elimina los puntos relacionados con el piso.
 
-			foreach ($resultado as $id) {
+
+			
+			for ($i=0;$i<count($resultado);$i++) {
+				$id = $resultado[$i]['id_escena'];
+				$cod = $resultado[$i]['cod_escena'];
+
+				$allPanoramas = $this->db->query("SELECT id_panorama_secundario, panorama as panoramas FROM panoramas_secundarios WHERE cod_escena = '$cod'");
+				
+				for($j=0;$j<count($allPanoramas->result_array());$j++){
+					$imagen = $allPanoramas->result_array()[$j]['panoramas'];
+					$id_pan_sec = $allPanoramas->result_array()[$j]['id_panorama_secundario'];
+					unlink(getcwd().'/'.$imagen);
+					$this->db->query("DELETE FROM escenas_hotspots WHERE id_panorama_secundario = '$id_pan_sec'");
+					$this->db->query("DELETE FROM panoramas_secundarios WHERE cod_escena = '$cod'");
+				
+				}
+				
+				
+				$hotspots = $this->db->query("SELECT id_hotspot FROM escenas_hotspots WHERE id_escena = (SELECT id_escena FROM escenas WHERE cod_escena = '$cod');");
+		
+				//elimino los hotspots de la tabla panel_imagenes
+				for($k=0;$i<count($hotspots->result_array());$k++){
+					$id_hots = $hotspots->result_array()[$k]['id_hotspot'];
+					$this->db->query("DELETE FROM panel_imagenes WHERE id_hotspot = $id_hots");
+				}
+
+
 				$sql = "DELETE FROM hotspots WHERE id_hotspot IN (
-					SELECT id_hotspot FROM escenas_hotspots where id_escena = \"".$id['id_escena']."\")";
+					SELECT id_hotspot FROM escenas_hotspots where id_escena = '$id')";
 				$this->db->query($sql); //Se eliminan los hotspots que tienen relacion con la escena.
 	
 				
-				$sql = "DELETE FROM escenas_hotspots WHERE id_escena = \"".$id['id_escena']."\" ";
+				$sql = "DELETE FROM escenas_hotspots WHERE id_escena = '$id' ";
 				$this->db->query($sql); //eliminamos la relacion de la tabla escenas-hotspots.
 	
-				$sql = "DELETE FROM hotspots WHERE sceneid=(SELECT cod_escena FROM escenas WHERE id_escena=\"".$id['id_escena']."\")";
+				$sql = "DELETE FROM hotspots WHERE sceneid=(SELECT cod_escena FROM escenas WHERE id_escena= '$id')";
 				$this->db->query($sql);//Eliminamos los hotspots que saltan hacia dicha escena.
 
-				$sql = "SELECT panorama FROM escenas WHERE id_escena = \"".$id['id_escena']."\" ";
+				$sql = "SELECT panorama FROM escenas WHERE id_escena = '$id' ";
 				$panorama_borrar=$this->db->query($sql)->result_array();//sacamos la url de la imagen de escena.
-				unlink($panorama_borrar[0]["panorama"]);//se elimina la imagen de escena.
+				
+				
+				if($panorama_borrar != NULL){
+					unlink($panorama_borrar[0]["panorama"]);//se elimina la imagen de escena.
+				}
+				
 					
-				$sql = "DELETE FROM escenas WHERE id_escena = \"".$id['id_escena']."\" ";
+				$sql = "DELETE FROM escenas WHERE id_escena = '$id' ";
 				$this->db->query($sql);//por ultimo se elimina la escena.
+
 			}
 			$this->db->query("SET foreign_key_checks=1;");
 		}
