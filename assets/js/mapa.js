@@ -16,13 +16,8 @@ function variable_piso(x){
     piso=x;
 }
 /*cambio de punto seleccionado, mediante los puntos del mapa*/
-function puntos(hotspotDiv,identificador){
-    /*if(identificador=="p0punto12"){
-        piso_escalera(0);
-    }
-    if(identificador=="p1punto18"){
-        piso_escalera(1);
-    }*/
+function puntos(identificador){
+
     document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
     document.getElementById(identificador).className="punto_seleccionado";            
 }
