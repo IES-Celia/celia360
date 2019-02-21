@@ -87,86 +87,53 @@
 
         $(document).ready(function(){
         
-            $("#descripcion_portada").fadeOut('fast');
-            
-            // para que cambie el background a INICIO al hacer hover
+            //Texto oculto por defecto en la descripcion de la portada
+            $("#descripcion_portada").text("Mangel").css({"visibility" : "hidden"});
 
+            // para que cambie el background a INICIO al hacer hover
+            /*
             $('#header_portada img').mouseenter(function(){
                 $("#titulito").text(base_titulo);
                 $("#descripcion_portada").text("");
-                $("#descripcion_portada").siblings().fadeIn('fast');
+                $("#descripcion_portada").siblings().fadeIn(800000);
             });
-
+            */
             // para que cambie el background a LIBRE al hacer hover
 
             $('#opcionlibre_portada').mouseenter(function(){
-                $("#titulito").text("Visita Libre");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut('fast');
+                $("#titulito").text("Visita Libre").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[2]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });
 
             // para que cambie el background a GUIADA al hacer hover
 
             $('#opcionguiada_portada').mouseenter(function(){
-                $("#titulito").text("Visita Guiada");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
+                $("#titulito").text("Visita Guiada").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[3]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });
 
             // para que cambie el background a PUNTOS DESTACADOS al hacer hover
 
             $('#opciondestacada_portada').mouseenter(function(){
-                $("#titulito").text("Zonas Destacadas");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
+                $("#titulito").text("Zonas Destacadas").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[4]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });
 
             // para que cambie el background a BIBLIOTECA al hacer hover
 
             $('#clickbiblio').mouseenter(function(){
-                $("#titulito").text("Biblioteca");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
+                $("#titulito").text("Biblioteca").fadeIn("fast");
+                $("#descripcion_portada").text("<?php echo $portada[5]["opcion_valor"];?>").fadeIn("fast").css({"visibility" : "visible"});
             });    
 
-            // para que cambie el background a creditos al hacer hover
-
-            $('#creditos_portada').mouseenter(function(){
-                $("#titulito").text("Créditos");
-                $("#echenique").css({
-                    "display" : "none"
-                })
-                $("#descripcion_portada").text("Conoce al equipo de desarrollo que hizo posible este tour virtual");
-                $("#descripcion_portada").fadeIn('fast');
-                $("#descripcion_portada").siblings().fadeOut();
-
-            });  
-
             //Al perder el foco los elementos del menu, se restablece el nombre de titulo por defecto
-            $("ul li a").mouseleave(function(){
-                $("#titulito").text(base_titulo);
-                $("#echenique").fadeIn();
-                $("#descripcion_portada").text("");
-                $("#descripcion_portada").siblings().fadeIn();
+            $("ul").mouseleave(function(){
+                $("#titulito").fadeOut("fast", function(){
+                    $(this).text(base_titulo).fadeIn("fast");
+                });
+                $("#descripcion_portada").css({
+                    "visibility" : "hidden"
+                })
             })
 
             ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
@@ -174,7 +141,6 @@
                 $('#bibliotecaajax').css("display","block");
             });
 
-            $
 
         });
 
