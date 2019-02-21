@@ -249,8 +249,14 @@ class HotspotsModel extends CI_Model {
     public function insertarHotspotPanel($tabla) {
 
         // esta consulta es para sacar el ultimo id y sumarle uno, evitando asi tener que poner AI en la bd
-        $res = $this->db->query("SELECT id_hotspot FROM hotspots ORDER BY id_hotspot DESC LIMIT 1")->result_array()[0]["id_hotspot"];
-        $idhotspot = $res + 1;
+        $res = $this->db->query("SELECT MAX(id_hotspot)as maxid FROM hotspots")->result_array();
+		
+		$idhotspot = '';
+		if (count($res) == 0){
+			$idhotspot = 1;
+		}else{
+			$idhotspot = $res[0]["maxid"] + 1;
+		}
 
         $id_scene = $this->input->post_get("id_scene");
         $pitch = $this->input->post_get("pitch");
