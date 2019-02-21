@@ -623,8 +623,6 @@ function onDocumentMouseDown(event) {
     var pitch = coords[0];
 	var yaw = coords[1];
          if(event.which == 3){
-			 alert("ruta base -> "+ruta_base);
-			 alert('hotspot base -> '+hotspot_base);
              var coso= confirm("¿Desea crear un hotspot aqui? Pitch: "+coords[0]+" Yaw: "+coords[1]);
 
              if(coso==true){
