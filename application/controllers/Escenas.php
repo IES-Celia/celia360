@@ -76,7 +76,7 @@ class escenas extends CI_Controller {
     
     public function deletescene($cod){
 
-        $resultado = $this->EscenasModel->borrar($cod);
+        $resultado = $this->EscenasModel->borrarEscena($cod);
         
         if ($resultado > 1) {
 			$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
@@ -102,7 +102,7 @@ class escenas extends CI_Controller {
 	}
 	
 	public function deletesceneAjax($cod){
-		$resultado = $this->EscenasModel->borrar($cod);
+		$resultado = $this->EscenasModel->borrarEscena($cod);
 		echo $resultado;
 	}
     
