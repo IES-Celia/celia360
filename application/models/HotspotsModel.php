@@ -120,7 +120,7 @@ class HotspotsModel extends CI_Model {
      */
     public function modificarPitchYawEscena($pitch, $yaw, $idescena, $id_pan_sec) {
 		$devuelve = '';
-		if($id_pan_sec == null){
+		if($id_pan_sec == "vacio"){
 			$this->db->query("UPDATE escenas SET pitch=" . $pitch . ", yaw=" . $yaw . " WHERE id_escena='" . $idescena . "'");
 			$devuelve =  $this->db->affected_rows();
 		}else{
