@@ -494,7 +494,7 @@
 					 <div class="card-body">
 					 <div class="form-group">
 					<label for="escene">Salto destino</label>
-					<input type='text' name='sceneId' placeholder="Selecciona un punto en el mapa" required class="form-control">
+					<input type='text' id='sceneId' name='sceneId' placeholder="Selecciona un punto en el mapa" required class="form-control">
 				</div>
 				<div class="form-group">
 					<label for="actual">Zona actual</label>
@@ -592,16 +592,17 @@
 		});
 		
 		$("#btnHibrido").click(function() {
-			$('input[name="sceneId"]').val('');
+            
+			
 			clase = document.getElementsByClassName("plantas"); 
             numeroPlanta = clase.length; 
             $("#formularios").children().hide();
            $("#puntoHibrido").show();
 			$(".plantas").click(function(){
-            
+                
             indice = $(this).attr("value");
             texto = $(this).text();
-          
+            
                 
 				
                $("#puntoHibridoMapa").show();
@@ -614,9 +615,12 @@
                 $("#planta"+indice).show();
 				$('#puntoHibrido').hide();
                 $("#plantaDestino").val(texto);
+    
                 $("#clickHandlerArgs").val(texto);
+              
 
         });
+    
 
       }); // fin document.ready
 		 

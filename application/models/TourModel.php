@@ -107,17 +107,7 @@ class TourModel extends CI_Model {
 				$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
 				$json = $json . '} ';  
             }
-         /*   if($hotspot['clickHandlerFunc']=='puntosEspec'){
-                $json = $json . '{"pitch": '.$hotspot['pitch'].','; 
-					$json = $json . '"yaw": '.$hotspot['yaw'].',';  
-					$json = $json . '"type": "'.$hotspot['tipo'].'",'; 
-					$json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
-                    $json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
-                    $json = $json . '"createTooltipFunc": hotspot,';
-                    $json = $json . '"createTooltipArgs": "'.$hotspot['plantaDestino'].'"';
-					$json = $json . '} '; 
-
-            }*/
+         
             
         }
     }
