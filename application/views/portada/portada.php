@@ -71,7 +71,7 @@
 <div class="container-fluid" id="footer">
 
     <p class="text-center">
-        <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Creditos |</span>
+        <span><a style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;" href="<?php echo site_url("tour/creditos");?>">Créditos</a> |</span>                    
         <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Politica de privacidad |</span>
         <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Cookies</span>
     </p>

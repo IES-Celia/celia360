@@ -14,10 +14,6 @@
 */
 // a continuacion nos encontramos con el css de las ventanas modales de la vista audio.
 ?>
-
-<!-- Bootstrap -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
-
 <script>
 $(document).ready(function(){
    $('html, body').css({
@@ -31,6 +27,7 @@ $(document).ready(function(){
         background-color: #2B3E50 !important;
         background-image:none !important;
     }
+    .list-group-item{border: 1px solid black !important ;}
 </style>
 
 <div class='container'>
@@ -48,7 +45,7 @@ $(document).ready(function(){
         </div>
     </div>
  
-<div class="row">
+    <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
             <h2 class="text-center">Desarrolladores</h2>
             <ul class="list-group">
@@ -150,10 +147,6 @@ $(document).ready(function(){
             </ul>
         </div>
     </div>
-
-<style>
-   .list-group-item{border: 1px solid black !important ;}
-</style>
     <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
             <h2 class="text-center">Colaboradores</h2>
@@ -172,38 +165,12 @@ $(document).ready(function(){
             </ul>
         </div>
     </div>
+</div><!-- FINAL DE CONTAINER -->
 
-<!-- FINAL DE CONTAINER -->
+<!-- 	
+    Matar moscas a cañonazos 
+    Montar cirios pascuales 
+    Disparar con polvora de rey
+    Es lo que nos diferencia de uno de la calle  
+-->
 
-  <!-- 	
-                <li>Matar moscas a cañonazos</li> 
-                <li>Montar cirios pascuales</li> 
-                <li>Disparar con polvora de rey</li>
-                <li>Es lo que nos diferencia de uno de la calle</li>   
-    -->
-<script>
-
-    /* Script para el funcionamiento de las ventanas modales */
-
-    var Miguel1 = ["Miguel Ángel López Segura", "<li>Coordinador</li><li>Desarrollo de los puntos destacados, frontend y backend</li><li>Desarrollo de la portada de la web, la cual se puede personalizar en el panel de administración</li><li>Desarrollo de los creditos</li><li>Desarrollo de la herramienta para crear hotspots (puntos de acción para saltar entre imagenes 360º, panel de información...)</li>"];
-    var Fran = ["Francisco Linares", "<li>Encargado de todo el backend relacionado con el mapa y subida de las escenas</li><li>Ser Zeus</li><li>Desarrollo de los hotspots de tipo vídeo</li><li>Ser Zeus</li>"];
-    var Zygis = ["Zygimantas Sniurevicius", "<li>Desarrollo de la visita guiada, frontend and backend</li><li>Encargado </li><li>Creación de todos los metodos encargados de que los hotspots (puntos de accion para saltar entre imagenes 360º, panel de información...) funcionen</li>"];
-    var Marc = ["Marc Expósito Miras", "<li>Desarrollo de la biblioteca</li>"];
-    var Manu = ["Manuel González Mesa", "<li>Desarrollo de la biblioteca</li>"];
-    var Alejandro = ["Alejandro López López", "<li>Desarrollo de la biblioteca</li>"];
-    var Hamza = ["Hamza Benhachmi", "<li>Encargado del backend relacionado con audio</li>"];
-    var Miguel2 = ["Miguel Ángel López Rodríguez", "<li>Desarrollo del instalable del tour</li>"];
-    var Loli =["María Dolores Salmerón Sierra", "<li>Encargada del backend relacionadas con las imagenes</li>"];
-    var Alvaro = ["Álvaro Sánchez Casares", "<li>Diseño del dashboard</li>"];
-    var Jose = ["José Luis Ramírez Jiménez", "<li>Captura de fotografias y audios</li>"];
-    var DanielS = [];
-    var DavidR = [];
-    var DavidM = [];
-    
-    var alumnos2018 = [Miguel1, Fran, Zygis, Marc, Manu, Alejandro, Hamza, Miguel2, Loli, Alvaro, Jose, DanielS, DavidR, DavidM];
-    $(".inform").click(function(){
-        var alumno = $(this).attr("alumno");
-        $('#titulomodal').html(alumnos2018[alumno][0]);
-        $('#listaGoals').html(alumnos2018[alumno][1]);
-    });
-</script>

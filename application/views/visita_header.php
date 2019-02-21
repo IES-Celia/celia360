@@ -23,7 +23,6 @@
 
 </script>
 
-    
     <!-- Javascript de pannellum framework -->
     <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
 	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
@@ -39,10 +38,10 @@
     <!-- Css y JS de la portada -->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
-
 	 <!-- CSS SLICK -->
-	 <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick-theme.css"); ?>"/>
+    
 </head>
 <body>
 <a class="nav-link" style='display:none;' id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre");?>" onclick="visita_opcion('get_json_libre')">Visita libre</a>
