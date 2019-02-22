@@ -90,6 +90,24 @@
           <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el botón.</h4>
           <div id="boton_aceptar_guiada"></div>
         </div>
+
+
+				<div id="error_guiada">
+          <h3 style="text-align: center;">Visita guiada</h3>
+          <div class='mensaje_guiada_inicio_recomendacion'>
+            <hr class="mensaje_separador"> 
+            
+						<h1 style="text-align: center">Pendiente de introducción de datos para el desarrollo de la misma</h1>
+            
+            <hr class="mensaje_separador">
+          </div>
+
+          <a href="" id="hrefVolver">
+						<div id="volverPrincipal"></div>
+					</a>
+        </div>
+
+
           <div id="menu_guiada_show">
           <div class="titulo_guiada"></div>
              
@@ -98,7 +116,6 @@
               </div>
             </div>
        
-          
           <div class="menu_vguiada">
             <ul>
               <li><div class='icono_left' onclick="anterior();"></div></li>
@@ -135,7 +152,7 @@
                 <div class="modal__contents">
                   <a class="modal__close" href="#">&times;</a>
                   <p id="titulo"></p>
-                  <hr class='mensaje_separador_negro'></hr>
+                  <hr class='mensaje_separador_negro'>
                   <div id="gallery">
                     <div class='mas_img_div' onclick="openModal();">
                       <div class='mas_imagenes'></div>
@@ -143,7 +160,7 @@
                     </div>
                     <img src="">
                   </div>
-                  <hr class='mensaje_separador_negro'></hr>
+                  <hr class='mensaje_separador_negro'>
                 
                   <div id="texto">
                 
@@ -271,7 +288,10 @@ function visita_opcion(nombre){
       cargarPannellum();
     }
   }).done(function(data) {
-    console.log(data);
+    if(data == 1){ //la visita guiada no está definida
+			$('#error_guiada').show();
+			$("#hrefVolver").attr('href','<?php echo base_url(); ?>');
+		}else{
 			// ¡Hecho! El JSON completo está en data. Vamos a hacerle un par de transformaciones necesarias para que funcione OK.
 			$.each(data.scenes, function(i){
         // En la BD tenemos rutas relativas a la imagen del panorama. Las sutituimos por rutas absolutas con base_url()
@@ -368,11 +388,13 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 					});
 				});
       }
+		}
         console.log("success");
       })
       .fail(function(err) {
         console.log(err.responseText);
       })
+	
 } //fin function visita_opcion()
 
 

@@ -120,7 +120,22 @@ display: block;
   border-radius: 2%;
 }
 
-#mensaje_guiada h3 {
+#error_guiada{
+	display: none;
+  position:absolute;
+  width: 50%;
+  height: 50%;
+  background-color: rgba(17, 17, 17, 0.8);
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 2;
+  border-radius: 2%;
+}
+
+
+
+#mensaje_guiada, #error_guiada h3 {
   margin-top: 30px;
   color: white;
 }
@@ -189,7 +204,7 @@ display: block;
 
 .mensaje_guiada_inicio_recomendacion ol li {counter-increment: li}
 
-#boton_aceptar_guiada{
+#boton_aceptar_guiada, #volverPrincipal{
   position: absolute;
   margin: auto;
   display: block;
@@ -206,7 +221,7 @@ display: block;
   transition: width 0.5s, height 0.5s;
 }
 
-#boton_aceptar_guiada:hover {
+#boton_aceptar_guiada:hover, #volverPrincipal:hover {
   height: 60px;
   width: 70px;
 }

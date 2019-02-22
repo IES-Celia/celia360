@@ -331,7 +331,6 @@ echo "<tr class='filaEscena'>
             });
 
             peticion.done(function (resultado) {
-				alert(resultado);
 				if(resultado.trim() == 1){
 					
 					$(elemento).closest(".filaEscena").remove();
