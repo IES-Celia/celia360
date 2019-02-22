@@ -29,18 +29,27 @@ function puntos(hotspotDiv,identificador){
 function puntosEspec(hotspotDiv,identificador){
     // aqui!!!
     document.getElementsByClassName("piso_abierto")[0].className ="piso_cerrado pisos";
+
        i= identificador.indexOf(":");
        j= identificador.indexOf(":",i+1);
        punto = identificador.substr(j+1,identificador.length);
-       alert(punto);
+       
        id_mapa = "punto"+punto;
 
     $("#"+id_mapa).parent().attr("class","piso_abierto pisos");
     $("#"+id_mapa).attr("class","punto_seleccionado");
-
+   
     document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
-    document.getElementById(identificador).className="punto_seleccionado";
-    piso = 
+    //document.getElementById(identificador).className="punto_seleccionado";
+  
+        idZona = $("#"+id_mapa).parent().attr("id");
+      
+        numeroZona = idZona.replace("zona","");
+       
+        piso = numeroZona;
+      
+        
+    
     
 }
 /*cambio de punto seleccionado mediante jotpoch*/
@@ -55,23 +64,29 @@ function piso_escalera(option){
     piso=option;
 }
 /*función de botones subir y bajar piso mapa*/
-function cambiar_piso(opcion){
+function cambiar_piso(opcion,){
     if (opcion=="arriba") {
         if (piso==piso_maximo) {
             // aqui puedes poner algo y saltará cuando intentas pasar más allá del tejado
         }else{
+         
             $("#mapa > div:eq(" + piso + ")").attr("class", "piso_cerrado pisos");
             piso++;
             $("#mapa > div:eq(" + piso + ")").attr("class", "piso_abierto pisos"); 
-        }
+          
+            }
+       
     }else if (opcion=="abajo") {
         if(piso==0){
             // aqui puedes poner algo y saltará cuando intentas pasar más allá del sotano
         }else{
+            
             $("#mapa > div:eq("+piso+")").attr("class", "piso_cerrado pisos");
             piso--;
             $("#mapa > div:eq("+piso+")").attr("class", "piso_abierto pisos");
-        }
+               
+            }
+       
     }
     mapa_responsivo();  
 }

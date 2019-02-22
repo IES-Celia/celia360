@@ -1672,18 +1672,19 @@ function createHotSpot(hs) {
         div.className += ' pnlm-hotspot pnlm-sprite pnlm-' + escapeHTML(hs.type);
     }
     var span = document.createElement('span');
-
+    var  texto="";
+    var j ="";
+    var punto ="";
     if (hs.text)
         span.innerHTML = escapeHTML(hs.text);
     if(hs.cssClass=="custom-hotspot-saltoEspec"){
-       // var parte = hs.clickHandlerArgs.split(":");
-       
-       i= hs.clickHandlerArgs.indexOf(":");
-       j= hs.clickHandlerArgs.indexOf(":",i+1);
-       punto = hs.clickHandlerArgs.substr(j+1,hs.clickHandlerArgs.length);
-        span.innerHTML =  punto;
-       
-       alert(punto);
+      
+        texto = hs.clickHandlerArgs;
+        i= texto.indexOf(":");
+       j= texto.indexOf(":",i+1);
+       punto = texto.substr(0,i);
+        span.innerHTML = punto;
+
         $(span).attr("class","tooltipi");
         div.appendChild(span);
     }
