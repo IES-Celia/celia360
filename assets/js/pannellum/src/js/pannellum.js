@@ -1673,7 +1673,8 @@ function createHotSpot(hs) {
     }
     var span = document.createElement('span');
     var  texto="";
-    var j ="";
+	var j ="";
+	var i = "";
     var punto ="";
     if (hs.text)
         span.innerHTML = escapeHTML(hs.text);

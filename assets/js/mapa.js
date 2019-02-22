@@ -47,10 +47,6 @@ function puntosEspec(hotspotDiv,identificador){
         numeroZona = idZona.replace("zona","");
        
         piso = numeroZona;
-      
-        
-    
-    
 }
 /*cambio de punto seleccionado mediante jotpoch*/
 function puntosMapa(identificador){          
