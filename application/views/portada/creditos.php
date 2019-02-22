@@ -32,8 +32,8 @@ $(document).ready(function(){
 
 <div class='container'>
 
-    <div class="row margen-superior bg-secondary mt-5">
-        <div class="col-md-10 mx-auto">
+    <div class="row margen-superior mt-5">
+        <div class="col-md-6 mx-auto bg-secondary">
             <h1 class="text-center">¿Qué es CeliaTour?</h1>
             <p class="text-justify">Es una aplicación web para la creación de recorridos virtuales a partir de fotografías 360 desarrollada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web en IES Celia Viñas de Almería (España) durante el curso 2017/2018.</p>
         </div>

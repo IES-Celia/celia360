@@ -18,241 +18,82 @@
 <html>
     <head>
         <title>Install CMS Celia Tour</title>
-<?php
-//Estilos del formulario de instalación 
-?>
-        <style type="text/css">
-
-                #caja{
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            -webkit-transform: translate(-50%, -50%);
-            font-family: comic;
-            color:white;
-            width: 50%;
-            height: 80%;
-            text-align: center;
-            border: 2px solid grey;
-            border-radius: 10px;
-            overflow-y: scroll;
-            box-shadow: 3px 3px 10px grey;
-            background: rgb(90,163,237); 
-            background: -moz-linear-gradient(to bottom, rgba(90,163,237,1) 1%, rgba(35,101,132,1) 100%); 
-            background: -webkit-linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%); 
-            background: linear-gradient(to bottom, rgba(90,163,237,1) 1%,rgba(35,101,132,1) 100%);       
-           
-        }
-        
-        
-        #caja input[type=text]{
-            border: none;
-            border-bottom:2px solid white;
-            background-color: rgba(0,0,0,0.0);  
-            width: 89%;
-            word-wrap: break-word;
-            text-align: center;
-            color:white;
-            font-size: 20px;
-            margin-bottom: 13px;
-
-        }
-
-        #caja input[type=text]::placeholder{
-            color:navajowhite;
-            
-        }
-
-        #caja textarea{
-            border: none;
-            border-bottom:2px solid white;
-            background-color: rgba(0,0,0,0.0);  
-            width: 80%;
-            word-wrap: break-word;
-            text-align: center;
-            color:white;
-            font-size: 20px;
-            margin-bottom: 13px;
-            
-        }
-
-        #caja textarea::placeholder{
-            color:navajowhite;
-            
-        }
-
-        #caja input[type=number]{
-            border: none;
-            border-bottom:2px solid white;
-            background-color: rgba(0,0,0,0.0);  
-            width: 80%;
-            word-wrap: break-word;
-            text-align: center;
-            color:white;
-            font-size: 20px;
-            margin-bottom: 13px;
-
-        }
-
-        #caja input[type=password]{
-            border: none;
-            border-bottom:2px solid white;
-            background-color: rgba(0,0,0,0.0); 
-            width: 88%;
-            word-wrap: break-word;
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            margin-bottom: 13px;
-
-
-        }
-
-        label{
-            float: left;
-            margin-left: 50px;
-            margin-top: 5px;
-            font-size: 15px;
-        }
-
-        #caja input[type=submit]{
-            width: 300px;
-            margin: 10px;
-            height: auto;
-            cursor: pointer;
-            border-radius: 10px;
-            border-color: white;
-            font-family: comic;
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0,0,0,0.2);
-            transition: 0.4s;
-        }
-        
-        #caja input[type=button]{
-             width: 300px;
-            margin: 10px;
-            height: auto;
-            cursor: pointer;
-            border-radius: 10px;
-            border-color: white;
-            font-family: comic;
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0,0,0,0.2);
-            transition: 0.4s;
-
-        }
-
-        #caja select{
-            border: none;
-            border-bottom:2px solid white;
-            background: rgba(0,0,0,0);
-            width: 80%;
-            word-wrap: break-word;
-            text-align: center;
-            font-size: 20px;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            color:white;
-            background-color:transparent;
-        }
-        
-        option{
-        
-            background-color:rgb(90,163,237);
-        }
-
-        #caja legend{
-            font-size: 35px;
-            margin: 0 auto;
-            line-height: 60px;
-            font-weight: bolder;
-            margin-bottom: 3px;
-            
-            
-        }
- 
-        #caja form a{
-            text-decoration: none;
-            border:2px solid white;
-            color:white;
-            font-size: 24px;
-            padding-top:5px;
-            padding-bottom: 5px;
-            padding-left: 80px;
-            padding-right: 80px;  
-            height: 40px;
-            width:100%;
-            max-width: 400px;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 10px;
-            line-height: 50px;
-            background-color: rgba(0,0,0,0.2);
-            transition:0.4s;
-            
-        }
-        
-        #caja form a:hover{
-            background-color:rgba(0,0,0,0.4);
-        }
-
-        #caja form a.eliminar {
-            background-color: rgba(255, 0, 0, 0.5);
-        }
-       
-        #caja form a.eliminar:hover {
-            background-color: rgba(255, 0, 0, 1);
-        }
-       
-        input:focus{
-            outline: 0px;
-        }
-
-        input:activate{
-            background-color: rgba(0,0,0,0.0);
-        }
-
-         #caja input[type=button]:hover{
-            background-color: rgba(0,0,0,0.4);
-        }
-
-          #caja input[type=submit]:hover{
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        input[type="date" i]{
-            color: white;
-            background-color: transparent;
-            margin-bottom: 10px;
-            
-        }
-
+        <!-- Fuente externa -->
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <!-- Estilos del formulario de instalación -->
+        <style>
+            .container{
+                margin: auto;
+                max-width: 1300px;
+            }
+            .bg-secondary {
+                background-color: #4E5D6C;
+            }
+            .col-md-6{
+                width: 50%;
+            }
+            .col-md-12{
+                width: 100%;
+            }
+            .mx-auto{
+                margin: auto!important;
+            }
+            h1, h4, p, label{
+                color: white;
+                font-family:"Lato";
+            }
+            input, label{
+                display: block;
+            }
+            .text-center{
+                text-align: center;
+            }
+            label{
+                margin-bottom: 10px;
+                font-size: 1.25rem;
+                margin-top: 10px;
+            }
+            .form-group{
+                margin-bottom: 1rem;
+                margin: auto;
+                width: 90%;
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: #DF691A;
+                border: none;
+                width: auto;
+                padding: 0.375rem 0.75rem;
+                font-size: 1rem;
+            }
+            .mt-3{
+                margin-top: 15px; 
+            }
+            .pb-3{
+                padding-bottom: 15px; 
+            }
+            body{
+                background-color: #2B3E50;
+            }
+            .text-justify{
+                text-align: justify;
+            }
+            p{
+                margin: 20px;
+            }
+            input {
+                width: 100%;
+                display: block;
+                margin: auto;
+                padding: 0.375rem;
+            }
             h1{
-                margin-left: 5px;
+                font-size: 2.5rem;
             }
-
-        
-            ::-webkit-scrollbar {
-            width: 1.5%;
-            margin: 1%;
+            h4{
+                font-size: 1.5rem;
             }
-
-
-            ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey; 
-            border-radius: 10px;
-            }
-
-            ::-webkit-scrollbar-thumb {
-            background:rgba(35,101,132,1); 
-            border-radius: 10px;
-            }
-
-        </style>
+        </style>         
     </head>
     <body>
 
@@ -637,44 +478,75 @@
         else {
             // Mostramos formulario
             ?>
-            <div id="caja">
-                <form action="install.php">
-                    <h1>Instalaci&oacute;n de Celia 360</h1>
-                    <p>Este programa de instalación le ayudará a desplegar la aplicación CeliaTour/Celia360 en su servidor. Si no sabe como proceder, le recomendamos que se ponga en contacto con su administrador de sistemas.</p>
 
-                    <h3>Configuración del host</h3>
-                    <label for="host">Nombre del host</label>
-                    <input type='text' name='host' id="host" required>
-                    <label for="namebd">Nombre de la base de datos</label>
-                    <input type='text' id="namebd" name='namebd' required>
-                    <label for="nameuse">Usuario de la base de datos</label>
-                    <input type='text' name='nameuse' id="nameuse" required>
-                    <label for="passbd">Contraseña de la base de datos</label>
-                    <input type='password' name='passbd' id="passbd">
-                    <label for="base">Base URL del sitio</label>
-                    <input type='text' name='base' id="base" placeholder="http://ejemplo.com" required>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto bg-secondary">
+            <form action="install.php">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="text-center">Instalaci&oacute;n de Celia 360</h1>
+                        <p class="text-justify">
+                        Este programa de instalación le ayudará a desplegar la aplicación CeliaTour/Celia360 en su servidor. Si no sabe como proceder, le recomendamos que se ponga en contacto con su administrador de sistemas.
+                        </p>
+                        <h4 class="text-center">Configuración del host</h4>
+                        <div class="form-group">
+                            <label for="host">Nombre del host</label>
+                            <input type='text' name='host' id="host" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="namebd">Nombre de la base de datos</label>
+                            <input type='text' id="namebd" name='namebd' required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameuse">Usuario de la base de datos</label>
+                            <input type='text' name='nameuse' id="nameuse" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passbd">Contraseña de la base de datos</label>
+                            <input type='password' name='passbd' id="passbd">            
+                        </div>
+                        <div class="form-group">
+                            <label for="base">Base URL del sitio</label>
+                            <input type='text' name='base' id="base" placeholder="http://ejemplo.com" required>            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="text-center">Configuración del usuario administrador</h4>
+                        <div class="form-group">
+                            <label for="username">Nombre de usuario administrador</label>
+                            <input type='text' name='username' id="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Contrase&ntilde;a</label>
+                            <input type='password' id="pass" name='pass' required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass2">Repita Contrase&ntilde;a</label>
+                            <input type='password' id="pass2" name='pass2' required>  
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type='text' name='emailadmin' id="email" required>
+                        <div>
+                    </div>
+                </div>
+                <div class="row mt-3 pb-3">
+                    <div class="col-md-12">
+                        <input type='submit' value='Aceptar' class="btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-                    <h3>Configuración del usuario administrador</h3>
-                    <label for="username">Nombre de usuario administrador</label>
-                    <input type='text' name='username' id="username" required>
-                    <label for="pass">Contrase&ntilde;a</label>
-                    <input type='password' id="pass" name='pass' required>
-                    <label for="pass2">Repita Contrase&ntilde;a</label>
-                    <input type='password' id="pass2" name='pass2' required>  
-                    <br/>
-
-                    <label for="email">Email</label>
-                    <br/>
-                    <input type='text' name='emailadmin' id="email" required> 
-                    <input type='submit' value='Aceptar' style="border: none;">
-                </form>
-            </div>
-
+</div><!-- Final de container -->
 
             <?php
         }
         ?>
-
 
     </body>
 </html>
