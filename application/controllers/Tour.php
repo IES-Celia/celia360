@@ -77,8 +77,13 @@ class Tour extends CI_Controller {
    public function get_json_guiada() {
         $this->load->model("MapaModel","mapa");
         $datos["inicio"] = $this->mapa->cargar_config();
-        $json = $this->TourModel->get_datos_guiada($datos);
-        echo $json;
+				$json = $this->TourModel->get_datos_guiada($datos);
+				if($json == false){
+					echo 1;
+				}else{
+					echo $json;
+				}
+        
   }
   
   /**

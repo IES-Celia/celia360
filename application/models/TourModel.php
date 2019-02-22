@@ -127,7 +127,14 @@ class TourModel extends CI_Model {
   * @return el json de la visita guiada
   */
    public function get_datos_guiada($datos) {
-    $this->load->database();
+	$this->load->database();
+	
+	$res = $this->db->query('SELECT * FROM visita_guiada')->result_array();
+	$json = '';
+	if(count($res)== 0){
+		$json = false;
+	}else{
+
     $sql = "SELECT * FROM escenas";
     $res = $this->db->query($sql);
     $flagObj=false;
@@ -173,8 +180,9 @@ class TourModel extends CI_Model {
 
     $json = $json . '}';  
     $json = $json . '}';  
-    return $json;
   }
+  return $json;
+}
     
   /*
   * Metodo que saca un json para los puntos destacados, con TODOS los hotspots MENOS los hotspots de tipo salto que limitan las zonas destacadas y todas las escenas
@@ -183,7 +191,6 @@ class TourModel extends CI_Model {
   */
 public function get_datos_destacado($datos) {
     $this->load->database();
-
     $sql = "SELECT * FROM escenas";
     $res =  $this->db->query($sql);
     $flagObj=false;
