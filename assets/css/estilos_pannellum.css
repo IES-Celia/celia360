@@ -204,7 +204,7 @@ display: block;
 
 .mensaje_guiada_inicio_recomendacion ol li {counter-increment: li}
 
-#boton_aceptar_guiada, #volverPrincipal{
+#boton_aceptar_guiada, #volverPrincipal{ 
   position: absolute;
   margin: auto;
   display: block;
