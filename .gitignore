@@ -49,6 +49,8 @@ assets/imagenes/panoramasSecundarios/*
 !assets/css/*
 !assets/js/*
 
+!assets/css/estilos_pannellum.css
+
 sesiones/*
 
 
