@@ -515,13 +515,14 @@ display: block;
   top: 20px;
   left: 80px;
   padding: 0;
-  display: none;
+	display: none;
+	width: 30%;
 }
 /*X que aparece al lado del audio arriba */
 .botonPause {
   position: relative;
-  float: right;
-  left: 380px;
+	float: right;
+	left: 10px;
   top:8px;
   z-index: 100;
   cursor:default;
