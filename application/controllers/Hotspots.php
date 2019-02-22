@@ -276,7 +276,7 @@ class Hotspots extends CI_Controller {
 					$datos["escena_inicial"]=$escena_inicial;
 				}
 		 }
-
+            //HOTSPOT TIPO SUPER SALTO
 		 if ($datos["tabla"][0]["clickHandlerFunc"] == "puntosEspec") {
             $datos["vista"]="hotspots/updateHotspot";
             if(isset($escena_inicial)){

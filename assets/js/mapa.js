@@ -27,9 +27,21 @@ function puntos(hotspotDiv,identificador){
     document.getElementById(identificador).className="punto_seleccionado";            
 }
 function puntosEspec(hotspotDiv,identificador){
-   
+    // aqui!!!
+    document.getElementsByClassName("piso_abierto")[0].className ="piso_cerrado pisos";
+       i= identificador.indexOf(":");
+       j= identificador.indexOf(":",i+1);
+       punto = identificador.substr(j+1,identificador.length);
+       alert(punto);
+       id_mapa = "punto"+punto;
+
+    $("#"+id_mapa).parent().attr("class","piso_abierto pisos");
+    $("#"+id_mapa).attr("class","punto_seleccionado");
+
     document.getElementsByClassName("punto_seleccionado")[0].className="puntos";
-    document.getElementById(identificador).className="punto_seleccionado";            
+    document.getElementById(identificador).className="punto_seleccionado";
+    piso = 
+    
 }
 /*cambio de punto seleccionado mediante jotpoch*/
 function puntosMapa(identificador){          

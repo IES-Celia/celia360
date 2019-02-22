@@ -72,10 +72,16 @@ class HotspotsModel extends CI_Model {
         $targetYaw = $this->input->post_get("targetYaw");
         $tipo = $this->input->post_get("tipo");
         $plantaDestino = $this->input->post_get("plantaDestino");
+
+        $desitno=$clickHandlerArgs ;
+        if($plantaDestino!=null){
+        $idPuntoMapa = $this->db->query("SELECT `id_punto_mapa` FROM `puntos_mapa` WHERE `id_escena`='$sceneId'")->result_array()[0]["id_punto_mapa"];
+        $destino = $clickHandlerArgs.":".$sceneId.":".$idPuntoMapa;
+        }
 		// insercción del punto en la tabla hotspot
 		
 		if($this->input->post_get('plantaDestino') != null){
-			$insrt = "INSERT INTO hotspots (id_hotspot,plantaDestino,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES('$idhotspot','$plantaDestino','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";
+			$insrt = "INSERT INTO hotspots (id_hotspot,plantaDestino,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES('$idhotspot','$plantaDestino','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$destino','$sceneId','$targetPitch','$targetYaw','$tipo')";
 			$this->db->query($insrt);
 		}else{
 			$insrt = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,sceneId,targetPitch,targetYaw,tipo) VALUES('$idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$sceneId','$targetPitch','$targetYaw','$tipo')";

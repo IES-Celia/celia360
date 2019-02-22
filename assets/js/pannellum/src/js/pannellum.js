@@ -1676,8 +1676,14 @@ function createHotSpot(hs) {
     if (hs.text)
         span.innerHTML = escapeHTML(hs.text);
     if(hs.cssClass=="custom-hotspot-saltoEspec"){
-        
-        span.innerHTML = hs.clickHandlerArgs;
+       // var parte = hs.clickHandlerArgs.split(":");
+       
+       i= hs.clickHandlerArgs.indexOf(":");
+       j= hs.clickHandlerArgs.indexOf(":",i+1);
+       punto = hs.clickHandlerArgs.substr(j+1,hs.clickHandlerArgs.length);
+        span.innerHTML =  punto;
+       
+       alert(punto);
         $(span).attr("class","tooltipi");
         div.appendChild(span);
     }
