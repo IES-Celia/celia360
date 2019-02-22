@@ -117,8 +117,8 @@
             }else{
 
             // Creamos la estructura de la BD
-            $db = new mysqli($host, $userdb, $passdb, $nombredb);
-            $result = $db->query("CREATE TABLE ");
+			$db = new mysqli($host, $userdb, $passdb, $nombredb);
+	
             $db->query("CREATE TABLE `audio` (
                             `id_aud` int(11) NOT NULL,
                             `url_aud` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
