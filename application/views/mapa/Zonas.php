@@ -96,6 +96,10 @@ $(document).ready(function(){
                         "display" : "none"
                     });
                     $("#select_pisos option[value='288']").prop("selected", true);
+                    let color = $("#color_punto").val();
+                    $(".puntos").css({
+                        "background-color" : color
+                    });
                     console.log("Punto insertado correctamente");
                 }else{
                     console.log("Error al insertar punto");
@@ -113,6 +117,13 @@ $(document).ready(function(){
         })            
     })
 
+    $("#color_punto").change(function(){
+        let color = $(this).val();
+        $(".puntos").css({
+            "background-color" : color
+        });
+    })
+
 /* Fin del document ready */
 });
 </script>
@@ -121,8 +132,12 @@ $(document).ready(function(){
     <h1 class="text-center">Mapa de zonas</h1>
     <div class="row text-center">
         <div class="col-md-7 mx-auto mb-3 bg-secondary" id="caja2">
-            <p>Utiliza el click izquierdo para eliminar un punto en el mapa</p>
-            <p>Utiliza el doble click derecho para insertar un punto en el mapa</p>
+            <p>Utiliza el click izquierdo para eliminar un punto en el mapa.</p>
+            <p>Utiliza el doble click derecho para insertar un punto en el mapa.</p>
+            <p>En caso de que los puntos no se visualicen correctamente, cambie el color de los puntos.</p>
+            <div class="form-group">
+              <input type='color' id="color_punto" name='color_fuente'>
+            </div>
         </div>
     </div>
 
