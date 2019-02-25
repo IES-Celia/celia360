@@ -200,6 +200,18 @@
 	cursor: move;
 }
 
+thead, tfoot{
+	background-color: #df691a;
+}
+
+svg.edit{
+	cursor: pointer;
+}
+
+svg.del{
+	cursor: pointer;
+}
+
 
 
 

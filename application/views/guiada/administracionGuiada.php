@@ -141,7 +141,8 @@ echo "<tr class='filaEscena'>
                         <th>Imagen</th>
                         <th>Cambiar imagen</th>
                         <th>Borrar</th>
-                        <th>Modificar</th>
+						<th>Modificar</th>
+						<th>Mover</th>
                     </tr> 
                 </tfoot>
             </table>

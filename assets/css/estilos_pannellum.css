@@ -120,7 +120,7 @@ display: block;
   border-radius: 2%;
 }
 
-#error_guiada{
+#error_guiada{ 
 	display: none;
   position:absolute;
   width: 50%;
