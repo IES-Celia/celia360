@@ -214,19 +214,24 @@
 /**
  * Actualiza la posición de inicio del recorrido
  */
-		public function update_config(){
+		public function update_config(){ //preguntar a alfredo
 			$piso = $this->input->post_get("piso_inicial");
 			$punto = $this->input->post_get("punto_inicial");
 			$escena = $this->input->post_get("escena_inicial");
 			$sql = "SELECT * FROM config_mapa";
-			if($this->db->query($sql)->num_rows()>0)
-				$sql = "UPDATE config_mapa SET piso_inicial='$piso', punto_inicial='$punto', escena_inicial='$escena'";
-			else
+			$resultado = 0;
+			if($this->db->query($sql)->num_rows()>0){
+				$sql = "UPDATE config_mapa SET piso_inicial='$piso', punto_inicial='$punto', escena_inicial='$escena';";
+			}else{
 				$sql = "INSERT INTO config_mapa(piso_inicial, punto_inicial, escena_inicial) VALUES ($piso,'$punto','$escena')";
-			
-			$this->db->query($sql);
+			}
+
+			$this->db->query("UPDATE pisos SET punto_inicial = '$punto', escena_inicial = '$escena' WHERE piso = '$piso';");
 			$resultado = $this->db->affected_rows();
 
+			$this->db->query($sql);
+			$resultado += $this->db->affected_rows();
+			
 			return $resultado;
 		}
 /**

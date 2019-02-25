@@ -433,7 +433,7 @@ class Hotspots extends CI_Controller {
             $datos["mensaje"] = "La inserci&oacute;n ha sido un &eacute;xito";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $id_scene = $this->input->post_get("id_scene");
-            redirect('escenas/cargar_escena/'.$id_scene.'/_hotspot/');
+            redirect('escenas/cargar_escena/'.$id_scene.'/show_insert_hotspot/');
     }
     
   

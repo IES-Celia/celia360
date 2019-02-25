@@ -117,8 +117,8 @@
             }else{
 
             // Creamos la estructura de la BD
-            $db = new mysqli($host, $userdb, $passdb, $nombredb);
-            $result = $db->query("CREATE TABLE ");
+			$db = new mysqli($host, $userdb, $passdb, $nombredb);
+	
             $db->query("CREATE TABLE `audio` (
                             `id_aud` int(11) NOT NULL,
                             `url_aud` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -253,12 +253,14 @@
             
 
             $db->query("CREATE TABLE `pisos` (
-                            `piso` int(1) NOT NULL,
-                            `url_img` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-                            `punto_inicial` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-                            `titulo_piso` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-                            `escena_inicial` varchar(30) COLLATE utf8_spanish_ci NOT NULL
-                            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
+				`piso` int(1) NOT NULL,
+				`url_img` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+				`punto_inicial` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+				`titulo_piso` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+				`escena_inicial` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+				`top_zona` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+				`left_zona` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
+			  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
             $db->query("ALTER TABLE `pisos`
                         ADD PRIMARY KEY (`piso`),
                         ADD KEY `piso` (`piso`);");

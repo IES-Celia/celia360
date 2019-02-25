@@ -87,12 +87,12 @@ function borrarscene(cod) {
 			  
 			  if($salida){
 				echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos tienePanoramas' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-				<span class='tooltipi'>".$punto['id_punto_mapa']." - ".$nombre_punto."</span>
+				<span class='tooltipi'>Punto: ".$punto['id_punto_mapa']." - Escena: ".$nombre_punto."</span>
 				</div>";
 			  }else{
 
 				echo "<div id='punto".$punto['id_punto_mapa']."' class='puntos' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'>
-				<span class='tooltipi'>".$punto['id_punto_mapa']." - ".$nombre_punto."</span>
+				<span class='tooltipi'>Punto: ".$punto['id_punto_mapa']." - Escena: ".$nombre_punto."</span>
 				</div>";
 			  }
 			
