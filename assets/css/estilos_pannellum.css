@@ -1130,3 +1130,10 @@ audio#audio_guiada {
   position: absolute;
   z-index: 1;
 }
+
+/* Col para maquetar */
+
+.col-md-7{
+  width: 58.33%;
+  margin: auto;
+}
