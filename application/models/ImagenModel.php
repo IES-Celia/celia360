@@ -87,6 +87,7 @@ class ImagenModel extends CI_Model {
                 $config['maintain_ratio'] = TRUE;
                 $config['new_image'] = 'assets/imagenes/imagenes-hotspots/';  
                 $config['width'] = 1200;
+               
                 $this->load->library('image_lib', $config);
 
                 if (!$this->image_lib->resize()) {
@@ -101,7 +102,8 @@ class ImagenModel extends CI_Model {
                 $config['image_library'] = 'gd2';
                 $config['source_image'] = $upload_path;
                 $config['maintain_ratio'] = TRUE;
-                $config['width'] = 200;
+                $config['width'] = 350;
+                
                 $this->load->library('image_lib', $config);
                 $config['new_image'] = 'assets/imagenes/imagenes-hotspots/'. $nombre_miniatura;
                 $this->image_lib->initialize($config);
