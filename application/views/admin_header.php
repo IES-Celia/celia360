@@ -11,23 +11,19 @@
     <!-- Css de pannellum framework -->
     <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
-    <!-- CSS PARA MAQUETAR TODO EL MUNDO UTILIZAR ESTOS STILOS DESDE AHORA -->
+    <!-- CSS propio -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>">
-
+    <!-- Script -->
     <script>
         base_url = '<?php echo base_url() ?>';
 	</script>
-	
- 
+	<!-- CSS mapa escenas -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
-    
+    <!-- Jquery -->
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
- 
-
+    <!-- Jquery table -->
     <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
-
-
 	<!-- QUILL Library -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.core.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.bubble.css'); ?>">
@@ -35,36 +31,30 @@
 	<script src="<?php echo base_url('assets/js/quill/js/quill.core.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
-	<!-- ./FIN QUILL Library -->
-
-	<!-- style.css -->
-	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
-
+	<!-- FIN QUILL Library -->
+    <!-- CSS Botstrap -->
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
 
 	<?php 
-            if(isset($mapa)){
-                echo "<script>";
-                echo "piso_maximo = ".count($mapa).";";
-                echo "piso_maximo--";
-                echo "</script>";
-                echo "<script src='".base_url('assets/js/mapa_escena.js')."' defer></script>";
-            }
-        ?>
+        if(isset($mapa)){
+            echo "<script>";
+            echo "piso_maximo = ".count($mapa).";";
+            echo "piso_maximo--";
+            echo "</script>";
+            echo "<script src='".base_url('assets/js/mapa_escena.js')."' defer></script>";
+        }
+    ?>
+
+    <!-- Fuentes externas -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
     <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-
-		<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />-->
     
-	<style>
-
-	</style>
 </head>
     
     <body>
     
-   
     <?php 
         error_reporting(7);
             if (!ini_get('display_errors')) {

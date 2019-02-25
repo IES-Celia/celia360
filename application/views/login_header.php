@@ -6,23 +6,23 @@
 <title>Celia Tour Login</title>
 
 <!-- CSS SLICK -->
-<link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">
-<link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">
-<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
-<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
-<script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
+<!--<link href="<?php base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">-->
+<!--<link rel="shortcut icon" href="<?php base_url("assets/imagenes/portada/icono.ico"); ?>">-->
+<!--<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">-->
+<!--<script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>-->
+<!--<script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>-->
 
 <!-- Fuentes externas -->
-<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<!--<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">-->
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
     
-<!-- Bootstrap JS -->
+<!-- Bootstrap JS 
 <script src="<?php echo base_url('assets/js/bootstrap/js/bootstrap.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap/js/popper.min.js'); ?>"></script>
 <script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
- 
+-->
 <?php 
     error_reporting(7);
     if (!ini_get('display_errors')) {

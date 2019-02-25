@@ -10,16 +10,16 @@
 <title>Celia Tour</title>
 
 <script>
-        // Prepara las varibales JS para el mapa (si están presentes)
+// Prepara las varibales JS para el mapa (si están presentes)
 <?php
-        if (isset($config_mapa)) {
+    if (isset($config_mapa)) {
 ?>
-            var piso = <?php echo $config_mapa["piso_inicial"]?>;
-            var piso_maximo = <?php echo count($mapa)?>;
-            piso_maximo--;
-  <?php
-        }
-  ?>
+        var piso = <?php echo $config_mapa["piso_inicial"]?>;
+        var piso_maximo = <?php echo count($mapa)?>;
+        piso_maximo--;
+<?php
+    }
+?>
 
     // Prepara el título de la portada (extraído de la BD)
     var base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
@@ -48,7 +48,6 @@
     <!-- Css y JS de la portada -->
 
     <!--<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>-->
-	<link rel="stylesheet" href="<?php echo base_url("assets/css/cssDavidMora.css"); ?>"/>
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
 
     <!-- Fuentes externas -->
@@ -62,12 +61,10 @@
 
 	<!-- Efectos CSS y JS de la portada -->
 	
-	<!-- QUILL Library CSS -->
+	<!-- QUILL Library CSS y JS -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.snow.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.core.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.bubble.css'); ?>">
-
-	<!-- QUILL Library JS -->
 	<script src="<?php echo base_url('assets/js/quill/js/quill.core.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/quill/js/quill.min.js'); ?>"></script>
@@ -90,14 +87,6 @@
             //Texto oculto por defecto en la descripcion de la portada
             $("#descripcion_portada").text("Mangel").css({"visibility" : "hidden"});
 
-            // para que cambie el background a INICIO al hacer hover
-            /*
-            $('#header_portada img').mouseenter(function(){
-                $("#titulito").text(base_titulo);
-                $("#descripcion_portada").text("");
-                $("#descripcion_portada").siblings().fadeIn(800000);
-            });
-            */
             // para que cambie el background a LIBRE al hacer hover
 
             $('#opcionlibre_portada').mouseenter(function(){

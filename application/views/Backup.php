@@ -59,7 +59,7 @@
                                 <label for=""></label>
                                 <input type="file" class="form-control-file" name="sqlZip" id="sqlZip" accept=".sql" aria-describedby="fileHelpId">
                             </div>
-                            <input name="" id="restaurarSql" class="btn btn-primary" type="button" value="Restaurar bd">
+                            <input name="" id="restaurarSql" class="btn btn-primary" type="button" value="Restaurar base de datos">
                         </form>
                     </div>
                 </div>

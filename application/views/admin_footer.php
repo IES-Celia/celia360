@@ -5,7 +5,6 @@
 	<script src="<?php echo base_url('assets/js/bootstrap/js/popper.min.js'); ?>"></script>
 	<script src="<?php echo base_url("assets/js/jquery.dataTables.min.js"); ?>"></script>
 	
-
     <div class="container-fluid mt-3">
         <div class="row">
             <div class="col-md-12">
