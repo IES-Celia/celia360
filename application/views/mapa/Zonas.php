@@ -76,7 +76,6 @@ $(document).ready(function(){
 
     //Insertar punto en el mapa mediante ajax
     $("#aceptar_insertar_punto").click(function(){
-        
         //Value del select option
         var piso = $("#select_pisos").val();
         //Texto del select option seleccionado
@@ -96,7 +95,7 @@ $(document).ready(function(){
                     $("#select_pisos option[value="+ piso +"]").css({
                         "display" : "none"
                     });
-                    $("#select_pisos option[value=nada]").prop("disabled", true);
+                    $("#select_pisos option[value='288']").prop("selected", true);
                     console.log("Punto insertado correctamente");
                 }else{
                     console.log("Error al insertar punto");
@@ -134,7 +133,6 @@ $(document).ready(function(){
             <?php
             /* Coloca los puntos en la imagen del mapa */ 
             foreach ($pisos as $piso) {
-                if($piso["top_zona"] == null) echo "<div id='".$piso['piso']."' class='puntos' style='displaye: none; left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;' data-toggle='tooltip' data-placement='top' title='".$piso["piso"]."-".$piso["titulo_piso"]."'></div>";
                 if($piso["top_zona"] != "null") echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;' data-toggle='tooltip' data-placement='top' title='".$piso["piso"]."-".$piso["titulo_piso"]."'></div>";
             }
             ?>
@@ -156,7 +154,7 @@ $(document).ready(function(){
       <div class="modal-body">
             <div class="form-group">
                 <select name="piso" class="form-control" id="select_pisos">
-                    <option value="nada" selected="true" disabled="disabled"> - Selecciona Zona - </option>
+                    <option value="288"> - Selecciona Zona - </option>
                     <?php  
                         foreach ($pisos as $piso) {
                             if($piso["top_zona"] == "null") echo "<option style='display : block' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
