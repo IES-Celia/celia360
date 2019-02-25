@@ -18,22 +18,15 @@
         base_url = '<?php echo base_url() ?>';
 	</script>
 	
-    <!-- <link href="<?php // base_url("assets/css/admin_style.css"); ?>" rel="stylesheet">-->
-     
-    <!-- <link rel="shortcut_icon" href="<?php //base_url("assets/imagenes/portada/icono.ico"); ?>">-->
-    
+ 
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_escenas.css");?>">
-    <!--<link rel="stylesheet" href="<?php //echo base_url("assets/css/cssDavidMora.css");?>">-->
+    
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
-    
-    <!--ATENCIÓN LOLI  PARA PAGINACIÓN (varias funcionalidades)-->
-   <!-- <link rel="stylesheet" href="<?php //echo base_url("assets/css/jquery.dataTables.min.css"); ?>"> -->
+ 
+
     <link rel="stylesheet" href="<?php echo base_url("assets/css/dataTables.bootstrap.min.css"); ?>">
-    
-    
-   <!-- <script src="<?php //echo base_url("assets/js/dataTables.bootstrap.min.js"); ?>"></script>-->
-	<!--FIN LOLI-->
+
 
 	<!-- QUILL Library -->
 	<link rel="stylesheet" href="<?php echo base_url('assets/js/quill/css/quill.core.css'); ?>">
@@ -63,10 +56,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 
 		<link rel="stylesheet" href="<?php echo base_url('assets/css/BOOTSTRAP_FINAL.min.css'); ?>">
-       
-    <!-- CSS CMS -->
     
-    <!-- <link rel="stylesheet" type="text/css" href="<?php //echo base_url("assets/css/admin_style.css"); ?>"/> -->
 	<style>
 
 	</style>
