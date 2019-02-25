@@ -95,7 +95,7 @@ $(document).ready(function(){
                     $("#select_pisos option[value="+ piso +"]").css({
                         "display" : "none"
                     });
-                    $("#select_pisos option[value='288']").prop("selected", true);
+                    $("#select_pisos option[value='nada']").prop("selected", true);
                     let color = $("#color_punto").val();
                     $(".puntos").css({
                         "background-color" : color
@@ -136,7 +136,7 @@ $(document).ready(function(){
             <p>Utiliza el doble click derecho para insertar un punto en el mapa.</p>
             <p>En caso de que los puntos no se visualicen correctamente, cambie el color de los puntos.</p>
             <div class="form-group">
-              <input type='color' id="color_punto" name='color_fuente'>
+              <input type='color' id="color_punto" name='color_fuente' value="#ffffff">
             </div>
         </div>
     </div>
@@ -169,7 +169,7 @@ $(document).ready(function(){
       <div class="modal-body">
             <div class="form-group">
                 <select name="piso" class="form-control" id="select_pisos">
-                    <option value="288"> - Selecciona Zona - </option>
+                    <option value="nada"> - Selecciona Zona - </option>
                     <?php  
                         foreach ($pisos as $piso) {
                             if($piso["top_zona"] == "null") echo "<option style='display : block' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
