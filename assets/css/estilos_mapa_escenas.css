@@ -60,3 +60,12 @@
     position: absolute;
     z-index: 1;
 }
+
+.puntosAscensor{
+	cursor: pointer;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+}

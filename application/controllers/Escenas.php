@@ -33,7 +33,8 @@ class escenas extends CI_Controller {
     
     public function showescenas() {   
         $datos["tablaEscenas"] = $this->EscenasModel->getAll();
-        $datos["mapa"] = $this->mapa->cargar_mapa();
+		$datos["mapa"] = $this->mapa->cargar_mapa();
+		$datos['config_ascensor'] = $this->mapa->cargar_ascensor();
 		$datos["puntos"] = $this->mapa->cargar_puntos();
 		$datos['escenas_secundarias'] = $this->Pansec->getPanoramasAsociados();
         $datos["vista"]="escenas/Escenastable";

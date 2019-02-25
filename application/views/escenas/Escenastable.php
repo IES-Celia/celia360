@@ -142,6 +142,11 @@ function borrarscene(cod) {
                 <button class="botonmapa btn btn-primary m-3 w-75 text-center" id="btn-show-pan-sec">Ver panoramas asociados</button>
             </div>
         </div>
+		<div class="row">
+            <div class="col-md-12">
+                <button class="botonmapa btn btn-primary m-3 w-75 text-center" data-toggle="modal" data-target="#ascensorAdmin" id="btn-show-admin-ascensor">Admin Ascensor</button>
+            </div>
+        </div>
 
      <?php
  }
@@ -222,6 +227,71 @@ if(count($mapa)!=0){
         </div><!-- Final de col-->
     </div><!-- Final de row -->
 </div><!-- Final de container -->
+
+<div class="modal fade mt-5" id="ascensorAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Administrar Ascensor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+<div id="modalConfig">
+    <div id="caja">
+        <form action='<?php echo site_url("mapa/update_config"); ?>' method="post" enctype='multipart/form-data'>
+            <?php
+            if($configuracion!=null){
+                
+				?>
+				
+				<label for="piso">Piso inicial</label>
+				<input type="number" class="form-control mb-1" name="piso_inicial" value="<?php echo $configuracion["piso_inicial"]; ?>" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+				
+                <input type="hidden" name="punto_inicial" value="<?php echo $configuracion["punto_inicial"]; ?>">
+                <input type="hidden" name="escena_inicial" value="<?php echo $configuracion["escena_inicial"]; ?>">
+                <div id="mapa_config_mapa" >
+            <?php
+            }else{
+				?>    
+				<label for="piso_inicial1">Piso inicial</label>            
+                <input type="number" class="form-control" name="piso_inicial" value="0" min="0" max="<?php $maxZonas=count($mapa); echo $maxZonas-1; ?>">
+                <input type="hidden" name="punto_inicial">
+                <input type="hidden" name="escena_inicial">
+                <div id="mapa_config_mapa" >
+                <?php
+            }
+                 $indice = 0;
+
+                 foreach ($mapa as $imagen) {
+                        echo "<div id='zona".$indice."' class='pisos pisos_config' style='display: none'>";
+                    
+                    echo "<img src='".base_url($imagen['url_img'])."' style='width:100%;'>";
+                    foreach ($puntos as $punto) {
+                        if($punto['piso']==$indice){
+                            if($punto['id_escena'] == $config_ascensor[$indice]['escena_inicial']){
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='punto_inicial' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }else{
+                                echo "<div id='punto".$punto['id_punto_mapa']."' class='puntosAscensor' style='left: ".$punto['left_mapa']."%; top: ".$punto['top_mapa']."%;' escena='".$punto['id_escena']."'></div>";
+                            }
+                        }
+                    }
+                    echo "</div>";
+                    $indice++;
+                }
+                
+            ?>
+            </div>
+            <input type="submit" class="btn btn-success mt-2 float-right" value="Modificar">
+        </form>
+    </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 
 $(document).ready(function() {
@@ -274,8 +344,39 @@ $(document).ready(function() {
             });
             $('#panorama-'+id).toggleClass('oculto');
         });
+
+		$(document.body).on('click','.puntosAscensor', function(){
+			id = $(this).attr('id');
+			escena = $(this).attr('escena');
+			zona = $(this).parent().attr('id');
+			piso = $('input[name="piso_inicial"]').val();
+			$('#'+zona+' .punto_inicial').removeClass('punto_inicial').addClass('puntosAscensor');
+			$(this).removeClass('puntosAscensor').addClass('punto_inicial');
+
+			base_url = "<?php echo base_url('mapa/updateAscensor'); ?>";
+
+			$.ajax({
+				type: "post",
+				url: base_url,
+				data: { piso: piso , escena: escena , punto: id },
+				success:function(result){
+					if(result == 1){
+						$('#error_cabecera').html('');
+						$("#mensaje_cabecera").html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Punto de entrada de ascensor modificado con éxito</h7><i class='far fa-check-circle'></i></div>");
+					}else{
+						$('#mensaje_cabecera').html('');
+						$("#error_cabecera").html("<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al modificar el punto de entrada del ascensor</h7><i class='fas fa-exclamation-circle'></i></div>");
+					}
+				}
+			});
+
+		});
+
+
     });
 
 
 </script>
+
+
       

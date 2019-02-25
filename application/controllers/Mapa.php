@@ -74,5 +74,13 @@ class Mapa extends CI_Controller {
         }else{
            echo "2";
         }
-    }
+	}
+	
+	public function updateAscensor(){
+		$idPunto = $this->input->get_post('punto');
+		$idEscena = $this->input->get_post('escena');
+		$piso = $this->input->get_post('piso');
+
+		echo $this->mapa->updateAscensor($idPunto,$idEscena,$piso);
+	}
 }

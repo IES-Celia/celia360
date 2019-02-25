@@ -226,11 +226,8 @@
 				$sql = "INSERT INTO config_mapa(piso_inicial, punto_inicial, escena_inicial) VALUES ($piso,'$punto','$escena')";
 			}
 
-			$this->db->query("UPDATE pisos SET punto_inicial = '$punto', escena_inicial = '$escena' WHERE piso = '$piso';");
-			$resultado = $this->db->affected_rows();
-
 			$this->db->query($sql);
-			$resultado += $this->db->affected_rows();
+			$resultado = $this->db->affected_rows();
 			
 			return $resultado;
 		}
@@ -261,5 +258,17 @@
 			$resultado = $this->db->affected_rows();
 			
 			return $resultado;
+		}
+
+		public function cargar_ascensor(){
+			$res=$this->db->query("SELECT escena_inicial FROM pisos");
+			return $res->result_array();
+		}
+
+		public function updateAscensor($punto,$escena,$piso){
+
+			$this->db->query("UPDATE pisos SET punto_inicial = '$punto', escena_inicial = '$escena' WHERE piso = '$piso';");
+			return $this->db->affected_rows();
+
 		}
 	}
