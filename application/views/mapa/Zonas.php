@@ -7,6 +7,9 @@
         position: relative;
         display: inline-grid;
     }
+    .puntos{
+        border: 2px solid black;
+    }
 </style>
 <script>
 $(document).ready(function(){
