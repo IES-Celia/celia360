@@ -100,7 +100,7 @@
 				
 				</div></div></td>
 				<td><img class='svg' src='". site_url('assets/imagenes/svg/edit.svg')."' data-toggle='modal' data-target='#exampleModal' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></td>
-				<td><img class='svg' src='". site_url('assets/imagenes/svg/trash.svg')."' id='".$info['id_panorama_secundario']."'></td>
+				<td><img class='svg delete' src='". site_url('assets/imagenes/svg/trash.svg')."' id='".$info['id_panorama_secundario']."'></td>
 			</tr>";
 		}
 	}
