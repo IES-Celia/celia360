@@ -284,7 +284,6 @@ if(count($mapa)!=0){
                 
             ?>
             </div>
-            <input type="submit" class="btn btn-success mt-2 float-right" value="Modificar">
         </form>
     </div>
 </div>
