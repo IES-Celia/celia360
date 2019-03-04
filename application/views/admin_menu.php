@@ -19,7 +19,7 @@
     <a href="<?php echo site_url("audio");?>" class="enlacesidenav"> Audios</a>
     <a href="<?php echo site_url("video");?>" class="enlacesidenav"> Vídeos</a>
     <a href="<?php echo site_url("usuario/usuarios");?>" class="enlacesidenav"> Usuarios</a>
-    <a href="<?php echo site_url("tour/formulario_portada");?>" class="enlacesidenav"> Portada</a>
+    <a href="<?php echo site_url("tour/formulario_portada");?>" class="enlacesidenav"> Opciones portada</a>
     <a href="<?php echo site_url("backup");?>" class="enlacesidenav">Backup</a>
     <br><br>
     <p><a href='<?php echo site_url("usuario/cerrarSesion");?>' class="cerrarsesionbtn">Cerrar Sesión</a></p>

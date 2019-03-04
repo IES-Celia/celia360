@@ -95,12 +95,7 @@
     </div>
   </div>
 
-
-
             <!-- VENTANA BIBLIOTECA  AJAX -->
-
-
-
 
   <!-- VENTANA MODAL PARA SACAR LIBRO -->
       <div class="modalita2" style="display: none;" >
@@ -117,10 +112,3 @@
         </div>
     </div>
   </div>
-
-
-  <!--FINALIZA BIBLIOTECA -->
-  
-        <footer>
-            <div id="elamo_portada">Celia Tour 360</div>
-        </footer>

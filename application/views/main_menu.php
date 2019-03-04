@@ -34,7 +34,12 @@
         background-attachment: fixed;
         background-position: center;
     }
-
+    @media (min-width: 992px) {   
+        /* Centrar nav */
+        ul.navbar-nav.mx-auto {
+            padding-right: 50px!important;
+        }
+    } 
 </style>
 <?php
     $color = $portada[9]['opcion_valor'];
@@ -72,7 +77,7 @@
         </div>
     </nav> 
       
-</div>
+</div><!-- Final de container-fluid -->
 
 
 

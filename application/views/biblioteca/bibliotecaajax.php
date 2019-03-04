@@ -120,10 +120,7 @@
 
 	#contenedorbiblioteca{
 	    background: url('<?php echo base_url();?>assets/bibliocss/marc.jpeg');
-	    /*background-size: cover;*/
 	    width:100%;
-		/*height:100%;*/
-		margin-top: -11px;
  	} 
 
 	.cerrarBook{
