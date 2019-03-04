@@ -44,13 +44,6 @@
             echo "<script src='".base_url('assets/js/mapa_escena.js')."' defer></script>";
         }
     ?>
-
-    <!-- Fuentes externas -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />-->
-    <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css>
-    <!--<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />-->
-    
 </head>
     
     <body>
@@ -62,11 +55,11 @@
             }
     ?>
         <div id="menu" class="navbar navbar-expand-lg bg-dark">
-
+<?php  ?>
 			<div class="navbar-brand">
-			<div id="hamburguesa">    
-				<span class="sidenavmenu" onclick="openNav()"><i class="fas fa-bars"></i> Menú </span>
-				
+			<div id="hamburguesa">  
+			  
+				<span class="sidenavmenu" onclick="openNav()"><img class="svg" src="<?php echo base_url('assets/imagenes/svg/menu.svg'); ?>"/> Menú </span>
 			</div>
 			</div>
 			

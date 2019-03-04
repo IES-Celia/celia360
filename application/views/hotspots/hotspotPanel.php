@@ -120,7 +120,7 @@ echo "</a>";
        var imagen_buscar =$(this).find("img").attr("src");
        var cortado_enlace = imagen_buscar.split("/");
        var enlace_final = cortado_enlace[cortado_enlace.length-1];
-       console.log(enlace_final);
+       //console.log(enlace_final);
        $(".seleccionado").each(function(){
          if(enlace_final==$(this).find("span").text()){
            $(this).remove();
@@ -157,7 +157,7 @@ echo "</a>";
     var seleccionadas = "<?php echo $seleccionadas; ?>";
     
     seleccionadas = seleccionadas.split(" ");
-    console.log(seleccionadas);
+    //console.log(seleccionadas);
     seleccionadas.forEach(element => {
       var imagen = $('.enlace_img .imgHS[data-id='+element+']');
       var attr_idimg = imagen.attr("data-id");
@@ -212,7 +212,7 @@ echo "</a>";
 
 
         //http://localhost/celia360/escenas/cargar_escena/p0p8f3/show_insert_hotspot/null
-				console.log(resultado);
+				//console.log(resultado);
 				window.location = resultado;
       });
     }

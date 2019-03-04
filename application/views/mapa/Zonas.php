@@ -36,9 +36,9 @@ $(document).ready(function(){
                                 "display" : "block"
                             });
                             $("#select_pisos option[value=nada]").prop("disabled", true);
-                            console.log("Punto eliminado correctamente");
+                            //console.log("Punto eliminado correctamente");
                         }else{
-                            console.log("Error al eliminar punto");
+                            //console.log("Error al eliminar punto");
                         }
                     }
             });
@@ -103,9 +103,9 @@ $(document).ready(function(){
                     $(".puntos").css({
                         "background-color" : color
                     });
-                    console.log("Punto insertado correctamente");
+                    //console.log("Punto insertado correctamente");
                 }else{
-                    console.log("Error al insertar punto");
+                    //console.log("Error al insertar punto");
                 }
             }
         });

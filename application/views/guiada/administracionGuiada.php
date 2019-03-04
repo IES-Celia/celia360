@@ -105,15 +105,15 @@ echo "<tr class='filaEscena'>
             <a name='' id='boton_guiada' class='btn btn-primary change_img' href='#' role='button' data-toggle='modal' data-target='#modalGuiadaImagen'>Cambiar</a>
         </td>
         <td class='text-center align-middle'>
-            <a data-id='$idEscena' onclick='borrarGuiada(this)' class='text-primary'><i class='fa fa-trash fa-2x'></i></a>
+            <a data-id='$idEscena' onclick='borrarGuiada(this)' class='text-primary'><img class='svg' src='".base_url('assets/imagenes/svg/trash.svg')."'></a>
         </td>
         <td class='text-center align-middle'>
             <a data-id='$idEscena' onclick='modificarGuiada(this)' class='text-primary'>
-                <i class='fa fa-edit fa-2x'></i>
+			<img class='svg' src='".base_url('assets/imagenes/svg/edit.svg')."'>
             </a>
         </td>
         <td class='orden align-middle text-center'>
-		<i class='fas fa-arrows-alt lead guiada-move'></i>
+		<img class='svg' src='".base_url('assets/imagenes/svg/move.svg')."'>
         <td class='posicion text-midle align-middle text-center' style='display:none;'>".$escena['orden']."</td>";
     }
 } // else
@@ -379,7 +379,7 @@ echo "<tr class='filaEscena'>
                     titulo_escena + "</td><td><img class='img_preview' style='height:100px; width:auto;' src='" + img_preview + "'></td><td><button class='change_img'>Cambiar</button></td><td><a data-id='" + id_visita + "' onclick='borrarGuiada(this);'><span class='fa fa-trash'></span></a></td><td><a data-id='" + id_visita + "' onclick='modificarGuiada(this);'><span class='fa fa-edit'></span></a></td></tr>";
                 var htmlTabla = $("#cont").append(filaTabla);
 
-                console.log(htmlTabla);
+                //console.log(htmlTabla);
 
             });
 
@@ -400,7 +400,7 @@ echo "<tr class='filaEscena'>
                ordenArray[index] = index;
         	});
 
-			console.log(ordenArray);
+			//console.log(ordenArray);
 
 		
 			$( "table tbody" ).sortable({
