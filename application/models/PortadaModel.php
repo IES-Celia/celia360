@@ -83,7 +83,9 @@
             if ($this->db->affected_rows() != 0){
                 $contador_update++;
             }
-            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$text_historia."' WHERE id_opcion = 13");
+            $this->db->query("DELETE FROM opciones_portada WHERE id_opcion = 13");
+            $this->db->query("INSERT INTO opciones_portada ('id_opcion', 'opcion', 'opcion_valor') VALUES (13,'text_historia','".$text_historia."')");
+            /*$this->db->query("UPDATE opciones_portada SET opcion_valor = '".$text_historia."' WHERE id_opcion = 13");*/
             if ($this->db->affected_rows() != 0){
                 $contador_update++;
             }               

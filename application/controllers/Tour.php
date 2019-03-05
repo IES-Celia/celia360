@@ -145,10 +145,22 @@ class Tour extends CI_Controller {
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
     $datos["vista"]="portada/updatePortada";
-    if ($resultado == 0-0-0-0){
-        $datos["mensaje"] = "Opciones de portada modificadas correctamente";
-    }else{
+    switch ($resultado) {
+      case '1-0-0-0':
+        $datos["mensaje"] = "No has modificado nada";
+        break;
+      case '0-1-0-0':
         $datos["error"] = "Error al modificar la portada";
+        break;
+      case '0-0-1-0':
+        $datos["error"] = "Error al modificar el logo";
+        break;
+      case '0-0-0-1':
+        $datos["error"] = "Error al modificar el mapa";
+        break;
+      default:
+        $datos["mensaje"] = "Exito en la actualizacion";
+        break;
     }
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template", $datos);
