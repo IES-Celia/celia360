@@ -86,12 +86,12 @@
 <div class="container-fluid" id="footer">
 
     <p class="text-center">
-        <span><a style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;" href="<?php echo site_url("tour/creditos");?>">Créditos |</a></span>                    
-        <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Política de Privacidad |</span>
-        <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Cookies</span>
+        <span><a style="color:<?php echo $color?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/creditos");?>">Créditos |</a></span>                    
+        <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/politicaPrivacidad");?>">Política de Privacidad |</a></span>
+        <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/politicaPrivacidad");?>">Cookies</a></span>
     </p>
     <p class="text-center">
-        <span style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Powered by Celia Viñas 2ºDAW 17/19&nbsp;&nbsp;</span>
+        <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo base_url("");?>">Powered by Celia Viñas 2ºDAW 17/19&nbsp;&nbsp;</a></span>
         <img src="<?php echo base_url("assets/imagenes/portada/logo.png");?>" width="20px"/>
     </p>
 

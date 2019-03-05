@@ -1,12 +1,5 @@
-
-
 <?php
-
 /*
-
-<!--
-
-
     Este archivo es parte de la aplicación web Celia360. 
 
     Celia 360 es software libre: usted puede redistribuirlo y/o modificarlo
@@ -17,11 +10,8 @@
     Véase la GNU General Public License para más detalles.
 
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
--->
-
 */
 defined('BASEPATH') OR exit('No se permite el acceso directo al script');
-
 
 class Guiada extends CI_Controller {
 

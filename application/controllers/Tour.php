@@ -119,7 +119,13 @@ class Tour extends CI_Controller {
       $this->load->view("main_template", $datos);
   }
 
-  
+  /* Muestra la vista con la politica de privacidad de la aplicacion */
+  public function politicaPrivacidad(){
+    $this->load->model('PortadaModel');
+    $datos["portada"]=$this->PortadaModel->get_info_portada();
+    $datos["vista"] = "portada/politicaPrivacidad";
+    $this->load->view("main_template", $datos);
+  }
     /**
      * Muestra la vista del formulario de modificación de datos de la portada en el panel de administración.
      */

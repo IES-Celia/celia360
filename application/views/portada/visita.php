@@ -7,15 +7,13 @@
     overflow: visible;
     position: relative;
   }
-  /*.superSalto{
-    position: absolute;
-    text-align: center;
-    border-radius: 3px;
-    background-color: #fff;
-    top: -20px;
-  
-  }*/
- 
+  /* Medium devices (tablets, less than 992px) */
+  @media (max-width: 991.98px) {
+    #mensaje_guiada{
+      width: 90%!important;
+      margin: auto;
+    }
+  }
 </style>
 <!-- Script para el mapa de zona -->
 <script>
@@ -73,12 +71,13 @@
           <!-- Fin vídeo visita libre -->
           
           <!-- Inicio visita guiada -->
+
+          <!-- Modal de visita guiada -->
           <div id="mensaje_guiada">
           <h3 style="text-align: center;">Visita guiada</h3>
           <div class='mensaje_guiada_inicio_recomendacion'>
             <hr class="mensaje_separador"> 
-            <p>Consejos antes de empezar 👵🏻</p>
-            
+            <p>Consejos antes de empezar</p>
             <ol>
               <li>Revise y/o ponga en funcionamiento su sistema de audio.</li>
               <li>Cuando termine la descripción de una estancia, pasaremos automáticamente a la siguiente.</li>
@@ -90,7 +89,7 @@
           <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el botón.</h4>
           <div id="boton_aceptar_guiada"></div>
         </div>
-
+        <!-- Final de modal de visita guiada -->
 
 				<div id="error_guiada">
           <h3 style="text-align: center;">Visita guiada</h3>
