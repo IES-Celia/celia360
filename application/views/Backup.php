@@ -18,7 +18,7 @@
                 alert("Selecciona un archivo para poder restaurar la base de datos");
             }else{
                 if(confirm("Estas seguro de restaurar la base de datos") == false){
-                event.preventDefault();
+                    event.preventDefault();
                 }
             }
         });        
@@ -46,7 +46,7 @@
                                 <label for=""></label>
                                 <input type="file" class="form-control-file" name="assetsZip" id="assetsZip" accept=".sql" aria-describedby="fileHelpId">
                             </div>
-                            <input name="" id="restaurarAssets" class="btn btn-primary" type="button" value="Restaurar imagenes">
+                            <input name="" id="restaurarAssets" class="btn btn-primary" type="submit" value="Restaurar imagenes">
                         </form>
                     </div>
                 </div>
@@ -54,12 +54,12 @@
                     <div class="col-md-8 mx-auto text-center">
                         <h2>Restaurar base datos</h2>
                         <p class="text-left">Puede tardar algunos minutos, una vez iniciado el proceso de restauración debe dejar que finalice, en ningún momento cambie de viste mientras el proceso se está ejecutando.</p>
-                        <?php echo form_open_multipart('Backup/restoreSql'); ?>
+                        <?php echo form_open_multipart('backup/restoreSql'); ?>
                             <div class="form-group">
                                 <label for=""></label>
                                 <input type="file" class="form-control-file" name="sqlZip" id="sqlZip" accept=".sql" aria-describedby="fileHelpId">
                             </div>
-                            <input name="" id="restaurarSql" class="btn btn-primary" type="button" value="Restaurar base de datos">
+                            <input  id="restaurarSql" class="btn btn-primary" type="submit" value="Restaurar base de datos">
                         </form>
                     </div>
                 </div>

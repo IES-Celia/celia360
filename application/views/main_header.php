@@ -21,37 +21,24 @@
     }
 ?>
 
-    // Prepara el título de la portada (extraído de la BD)
-    var base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
+// Prepara el título de la portada (extraído de la BD)
+var base_titulo = '<?php if (isset($portada)) echo $portada[0]["opcion_valor"]; else echo "''";  ?>';
 
 </script>
 
     <!-- CSS SLICK -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick.css"); ?>"/>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/js/slick/slick/slick-theme.css"); ?>"/>
-    <!-- Javascript de pannellum framework
-    <script src="<?php echo base_url("assets/js/pannellum/src/js/pannellum.js"); ?>"></script>
-	<script src="<?php echo base_url("assets/js/pannellum/src/js/libpannellum.js"); ?>"></script>
-     -->
-    <!-- Css de pannellum framework
-    <link rel="stylesheet" href="<?php echo base_url("assets/js/pannellum/src/css/pannellum.css");?>"/>
-     -->
-    <!-- Css de pannellum
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_pannellum.css");?>">
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_panellum.css");?>">
-     -->
+
     <!--librerias JQuery & JQuery ui-->
     <script src="<?php echo base_url("assets/js/jquery.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/jqueryui/jquery-ui.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/js/mapa.js"); ?>"></script>
 
     <!-- Css y JS de la portada -->
-
-    <!--<link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_portada.css"); ?>"/>-->
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>"/>
 
     <!-- Fuentes externas -->
-    <!--<link rel="shortcut icon" href="<?php echo base_url("assets/imagenes/portada/icono.ico"); ?>">-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">	
 
     <!-- CSS Biblioteca -->
@@ -125,11 +112,10 @@
                 })
             })
 
-            ////// PRUEBA PARA MOSTRAR BIBLIO AYAX
+            // PRUEBA PARA MOSTRAR BIBLIO AYAX
             $('#clickbiblio').on("click",function(){
                 $('#bibliotecaajax').css("display","block");
             });
-
 
         });
 
