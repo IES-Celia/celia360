@@ -39,6 +39,7 @@
             $color_fuente = $this->input->get_post("color_fuente");
             $nombre_fuente = $this->input->get_post("nombre_fuente");
             $ascensor_mapa = $this->input->get_post("ascensor_mapa");
+            $text_historia = $this->input->post_get("texto_panel_historia",FALSE);
 
             $contador_update = 0; //Contador del total de Update que se han realizado correctamente
 
@@ -81,7 +82,11 @@
             $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$ascensor_mapa."' WHERE id_opcion = 11");
             if ($this->db->affected_rows() != 0){
                 $contador_update++;
-            }             
+            }
+            $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$text_historia."' WHERE id_opcion = 13");
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }               
 
             //Comprobamos que el numero de update sea correcto
             if ($contador_update > 0){

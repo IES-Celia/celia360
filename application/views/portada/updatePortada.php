@@ -1,5 +1,10 @@
 <script>
     $(document).ready(function(){
+
+          /*********************/
+         /*     ASCENSOR      */
+        /*********************/
+
         //Comprobamos si el select ascensor_mapa tiene seleccionado el mapa
         if($("#ascensor_mapa").val() == "mapa"){
             $(".ascensor_mapa").show();//Si esta seleccionado el mapa lo mostramos
@@ -15,6 +20,26 @@
                 $(".ascensor_mapa").hide();//Si no esta seleccionado el mapa lo ocultamos 
             }
         });
+
+          /*********************/
+         /*     HISTORIA      */
+        /*********************/
+
+        //Comprobamos si el select show_historia tiene seleccionado el mostrar
+        if($("#show_historia").val() == "1"){
+            $(".show_historia").show();//Si esta seleccionado el mostrar historia mostramos el editor  
+        }else{
+            $(".show_historia").hide();//Si no esta seleccionado el ocultar historia ocultamos el editor 
+        }
+        //Comprobamos si se a producido algun cambio en el select show_historia
+        $("#show_historia").change(function(){
+            let show_historia = $("#show_historia").val();
+            if($("#show_historia").val() == "1"){
+                $(".show_historia").show();//Si esta seleccionado el mostrar historia mostramos el editor                
+            }else{
+                $(".show_historia").hide();//Si no esta seleccionado el ocultar historia ocultamos el editor 
+            }
+        });
     });
 </script>
 <style>
@@ -27,7 +52,6 @@
         width: auto!important;
     }
 </style>
-
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
@@ -101,6 +125,13 @@
                     <option value='1'>Mostrar</option>
                     <option value='0' <?php if ($opcionesPortada[7]['opcion_valor'] == 0) echo "selected";?> >Ocultar</option>
               </select>
+            </div>
+            <div class='form-group show_historia'>
+	            <label for='text'><h4>Texto panel historia</h4></label>
+	            <input type='hidden' id='texto_panel_historia' value='' name='texto_panel_historia'>
+	            <div id='editor'>
+                <?php echo $opcionesPortada[13]['opcion_valor']; ?>
+		          </div>
             </div> 
 
                 <!--    Dora la exploradora
@@ -135,3 +166,39 @@
         </div>
     </div>
 </div>
+<script>
+        var quill = new Quill('#editor', {
+            modules: {
+        toolbar: [
+           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+           ['blockquote', 'code-block', 'link'],
+
+           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+           [{ 'direction': 'rtl' }],                         // text direction
+
+           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+           [{ 'font': [] }],
+           [{ 'align': [] }],
+
+           ['clean']                                         // remove formatting button
+       ]
+    },
+  theme: 'snow'
+});
+
+        Quill.prototype.getHtml = function() {
+            return this.container.firstChild.innerHTML;
+        };
+
+		window.addEventListener("load", function(event) {
+    		document.getElementById('texto_panel_historia').value = quill.getHtml();
+  		});
+
+        quill.on('text-change',function(a,b,c){
+            document.getElementById('texto_panel_historia').value = quill.getHtml();
+        });
+
+	  </script>

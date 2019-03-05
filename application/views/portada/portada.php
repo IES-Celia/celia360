@@ -13,7 +13,6 @@
     Puede obtener una copia de la licencia en <http://www.gnu.org/licenses/>.
 */
 ?>
-
 <style>
     /* Eliminar el scroll de la portada */
     body{
@@ -29,12 +28,8 @@
         transform: translate(-50%, -50%);
         -webkit-transform: translate(-50%, -50%);
         width: 90%;
-        /*
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.4);
-        border-radius: 10px;
-        */
     }
+    /*Estilos del titulo principal*/
     h1{
         font-size: 6vw; 
         width: 100%;
@@ -52,29 +47,57 @@
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.5); 
     }
+    /*Aplicar una sombra al texto de la descripcion*/
     #descripcion_portada{
         text-shadow: 3px 3px 0px rgba(0,0,0,0.5);
     }
+
+    /*Estilos de la ventana modal*/
+    #styleModal{
+        background-color: rgba(0,0,0,0.7)!important;
+    }
 </style>
+<script>
+    $(document).ready(function(){
+        /*Ocultar el titulo y el boton historia al abrir la modal*/ 
+        $("#echenique").click(function(){
+            $("#titulito").fadeOut("fast");
+            $(this).fadeOut("fast");
+        })
+        /* Mostrar el titulo y el boton historia al cerrar la modal*/
+        $("#cerrarModal").click(function(){
+            $("#titulito").fadeIn("fast");
+            $("#echenique").fadeIn("fast");
+        });
+        /* Mostrar el titulo y el boton historia al cerrar la modal cuando haces click fuera de esta*/
+        $("#modalHistoria").on('hidden.bs.modal', function () {
+            $("#titulito").fadeIn("fast");
+            $("#echenique").fadeIn("fast");
+        });
+    });
+</script>
 <?php
     $color = $portada[9]['opcion_valor'];
     $fuente = $portada[8]['opcion_valor'];
+    $text_historia = $portada[13]['opcion_valor'];
+    $titulo_web = $portada[0]['opcion_valor'];
+    $show_historia = $portada[7]['opcion_valor'];
 ?>
 <div id="slider1_portada" class="container-fluid">
 
     <div class="centrado-porcentual">
 
-        <h1 style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;" id="titulito"><?php echo  $portada[0]["opcion_valor"] ?></h1>
+        <h1 style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" id="titulito"><?php echo $titulo_web ?></h1>
 
         <div id="parrafito">
-            <p style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif; font-size: 3vw;" id="descripcion_portada"></p>
+            <p style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif; font-size: 3vw;" id="descripcion_portada"></p>
         </div>
 
         <div>
         <?php 
-            if ($portada[7]["opcion_valor"] == "1") {
+            if ($show_historia == "1") {
                 // El botón "Historia" solo se muestra si está configurado así en las opciones de portada
-                echo "<a style='border-color:$color; color:$color; font-family: $fuente, sans-serif' class='btn echenique mb-3' id='echenique' href='".site_url("biblioteca/abrir_phistoria")."' role='button'>HISTORIA</a>";
+                echo "<a style='border-color:$color; color:$color; font-family: $fuente, sans-serif' class='btn echenique mb-3' id='echenique' role='button' data-toggle='modal' data-target='#modalHistoria'>HISTORIA</a>";
             }
         ?>
         </div>
@@ -95,4 +118,21 @@
         <img src="<?php echo base_url("assets/imagenes/portada/logo.png");?>" width="20px"/>
     </p>
 
+</div>
+
+<!-- Modal Historia -->
+<div class="modal fade" id="modalHistoria" tabindex="-1" role="dialog" width="auto" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="styleModal">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Historia</h5>
+        <button type="button" class="close" data-dismiss="modal" id="cerrarModal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo $text_historia; ?>
+      </div>
+    </div>
+  </div>
 </div>

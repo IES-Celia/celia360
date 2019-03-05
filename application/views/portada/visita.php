@@ -1,4 +1,3 @@
-<!-- Estilos para el mapa de zona -->
 <style>
   /* Posicion relativa de los puntos en el mapa de zona */
   .mapa_zona{
@@ -6,13 +5,29 @@
     z-index: 2;
     overflow: visible;
     position: relative;
+    margin: auto;
+  }
+  /* Color del punto en el mapa de zona*/
+  .punto_mapa_zona{
+    background-color: black!important; 
   }
   /* Medium devices (tablets, less than 992px) */
   @media (max-width: 991.98px) {
+    /* La ventana modal de visita guiada */
     #mensaje_guiada{
       width: 90%!important;
       margin: auto;
     }
+  }
+  /* Row para maquetar*/
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
   }
 </style>
 <!-- Script para el mapa de zona -->
@@ -195,13 +210,16 @@
 
           if($portada[11]["opcion_valor"] == "mapa"){
             //Como diria Dora la exploradora, soy un MAPA!!
-            echo '<div class="mapa_zona col-md-7 mx-auto" style="height: 400px;">';
-            echo "<img src='".base_url("assets/imagenes/mapa/".$portada[12]['opcion_valor'])."' alt='imagen del mapa de zona' style='width:100%; height:100%'>";
-            /* Coloca los puntos en la imagen del mapa */ 
-            foreach ($mapa as $piso) {
-              echo '<div id="'.$piso["piso"].'" class="puntos punto_mapa_zona" style="left: '.$piso["left_zona"].'%; top: '.$piso["top_zona"].'%;" escena="'.$piso["piso"].'" onclick="viewer.loadScene(&#039;'.$piso["escena_inicial"].'&#039;); piso_escalera(&#039;'.$piso["piso"].'&#039;); puntosMapa(&#039;'.$piso["punto_inicial"].'&#039;);"></div>';                
-            }
-            echo '</div>';
+            echo "<div class='row'>";
+              echo '<div class="mapa_zona">';
+              echo "<img src='".base_url("assets/imagenes/mapa/".$portada[12]['opcion_valor'])."' alt='imagen del mapa de zona' style='width:auto'>";
+              /* Coloca los puntos en la imagen del mapa */ 
+              foreach ($mapa as $piso) {
+                $top_zona = doubleval($piso['top_zona'])-1;
+                if($piso['top_zona'] != "null") echo '<div id="'.$piso["piso"].'" class="puntos punto_mapa_zona" style="left: '.$piso["left_zona"].'%; top: '.$top_zona.'%;" escena="'.$piso["piso"].'" onclick="viewer.loadScene(&#039;'.$piso["escena_inicial"].'&#039;); piso_escalera(&#039;'.$piso["piso"].'&#039;); puntosMapa(&#039;'.$piso["punto_inicial"].'&#039;);"></div>';                
+              }
+              echo '</div>';
+            echo "</div>";
           }else{
             //Ascensor
             foreach ($mapa as $imagen) {

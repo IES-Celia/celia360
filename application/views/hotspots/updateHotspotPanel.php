@@ -34,7 +34,7 @@ echo "
 	  <input type='hidden' id='texto_panel' value='' name='texto_panel'>
 	  <div id='editor'>
 		".$tabla['texto_panel']."
-	</div>
+		</div>
   </div>
 
      

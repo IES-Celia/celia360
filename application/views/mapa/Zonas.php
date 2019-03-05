@@ -8,7 +8,7 @@
         display: inline-grid;
     }
     .puntos{
-        border: 2px solid black;
+        background-color: black;
     }
 </style>
 <script>
@@ -66,11 +66,12 @@ $(document).ready(function(){
             }
             let anchura = $(this).width();
             let altura = $(this).height();
-            left = (100*left)/anchura;
-            top = (100*top)/altura;
+            left = ((100*left)/anchura)-1;
+            top = ((100*top)/altura)-1;
+            /*
             left = left.toFixed(2);
             top = top.toFixed(2);
-
+            */
             //Mostrar ventana modal del select option
             $("#zona_modal").modal();
         }
@@ -139,19 +140,21 @@ $(document).ready(function(){
             <p>Utiliza el doble click derecho para insertar un punto en el mapa.</p>
             <p>En caso de que los puntos no se visualicen correctamente, cambie el color de los puntos.</p>
             <div class="form-group">
-              <input type='color' id="color_punto" name='color_fuente' value="#ffffff">
+              <input type='color' id="color_punto" name='color_fuente' value="black">
             </div>
         </div>
     </div>
 
     <div class="row">
         <!-- Imagen del mapa de la zona -->
-        <div class="mapa_zona col-md-7 mx-auto" style="height: 400px;">
-            <img src="<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor']?>" style="width:100%; height:100%" alt="mapa de zona">
+        <div class="mapa_zona mx-auto">
+            <img src="<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor']?>" style="width:auto" alt="mapa de zona">
             <?php
             /* Coloca los puntos en la imagen del mapa */ 
             foreach ($pisos as $piso) {
-                if($piso["top_zona"] != "null") echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;' data-toggle='tooltip' data-placement='top' title='".$piso["piso"]."-".$piso["titulo_piso"]."'></div>";
+                if($piso['top_zona'] != "null"){
+                    echo "<div id='".$piso['piso']."' class='puntos' style='left: ".$piso['left_zona']."%; top: ".$piso['top_zona']."%;' data-toggle='tooltip' data-placement='top' title='".$piso["piso"]."-".$piso["titulo_piso"]."'></div>";
+                }
             }
             ?>
         </div>
@@ -175,7 +178,7 @@ $(document).ready(function(){
                     <option value="nada"> - Selecciona Zona - </option>
                     <?php  
                         foreach ($pisos as $piso) {
-                            if($piso["top_zona"] == "null") echo "<option style='display : block' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
+                            if($piso["top_zona"] === "null") echo "<option style='display : block' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
                             if($piso["top_zona"] != "null") echo "<option style='display : none' value='".$piso["piso"]."'>".$piso["piso"]." - ".$piso["titulo_piso"]."</option>";
                         }
                         ?>
