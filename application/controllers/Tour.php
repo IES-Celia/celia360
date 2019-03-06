@@ -145,21 +145,59 @@ class Tour extends CI_Controller {
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
     $datos["vista"]="portada/updatePortada";
+    /* Compruebo todos los posibles errores al actualizar la portada */
+    /* Yo no quería comprobar todos los posibles casos, pero Alfredo me ha obligado, dice que soy un vago */
     switch ($resultado) {
       case '1-0-0-0':
         $datos["mensaje"] = "No has modificado nada";
         break;
+      case '1-0-0-1':
+        $datos["error"] = "Error al modificar la informacion y el mapa";
+        break;
+      case '1-0-1-0':
+        $datos["error"] = "Error al modificar la informacion y el logo";
+        break;
+      case '1-1-0-0':
+        $datos["error"] = "Error al modificar la informacion y la portada";
+        break;
+      case '1-1-0-1':
+        $datos["error"] = "Error al modificar la informacion, la portada y el mapa";
+        break;
+      case '1-1-1-0':
+        $datos["error"] = "Error al modificar la informacion, la portada y el logo";
+        break;
+      case '1-1-1-1':
+        $datos["error"] = "Error al modificar la informacion, la portada, el logo y el mapa";
+        break;
       case '0-1-0-0':
         $datos["error"] = "Error al modificar la portada";
+        break;
+      case '0-1-0-1':
+        $datos["error"] = "Error al modificar la portada y el mapa";
+        break;
+      case '0-1-1-0':
+        $datos["error"] = "Error al modificar la portada y el logo";
+        break;
+      case '0-1-1-1':
+        $datos["error"] = "Error al modificar la portada, el logo y el mapa";
         break;
       case '0-0-1-0':
         $datos["error"] = "Error al modificar el logo";
         break;
+      case '0-0-1-1':
+        $datos["error"] = "Error al modificar el logo y el mapa";
+        break;
+      case '1-1-1-1':
+        $datos["error"] = "Error al modificar todos los campos";
+        break;
       case '0-0-0-1':
         $datos["error"] = "Error al modificar el mapa";
         break;
+      case '0-0-0-0':
+        $datos["mensaje"] = "Exito al modificar";
+        break;
       default:
-        $datos["mensaje"] = "Exito en la actualizacion";
+        $datos["mensaje"] = "Error desconocido, contacte con el webmaster";
         break;
     }
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);

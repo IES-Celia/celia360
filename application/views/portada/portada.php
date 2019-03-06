@@ -62,16 +62,19 @@
         /*Ocultar el titulo y el boton historia al abrir la modal*/ 
         $("#echenique").click(function(){
             $("#titulito").fadeOut("fast");
+            $("#footer").fadeOut("fast");
             $(this).fadeOut("fast");
         })
         /* Mostrar el titulo y el boton historia al cerrar la modal*/
         $("#cerrarModal").click(function(){
             $("#titulito").fadeIn("fast");
+            $("#footer").fadeIn("fast");
             $("#echenique").fadeIn("fast");
         });
         /* Mostrar el titulo y el boton historia al cerrar la modal cuando haces click fuera de esta*/
         $("#modalHistoria").on('hidden.bs.modal', function () {
             $("#titulito").fadeIn("fast");
+            $("#footer").fadeIn("fast");
             $("#echenique").fadeIn("fast");
         });
     });
