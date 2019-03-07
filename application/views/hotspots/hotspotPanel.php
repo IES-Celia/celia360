@@ -1,5 +1,6 @@
 <?php 
 
+
 $id_escena = $_POST["id_scene"];
 $yaw = $this->input->post_get("yaw");
 $pitch = $this->input->post_get("pitch");
@@ -183,7 +184,13 @@ echo "</a>";
       alert("Debes seleccionar alguna imagen!");
     } else {
 
-      var escena = "<?php echo $id_escena;?>";
+			<?php
+				if(isset($escena)){
+					echo "var escena = '$escena'";
+				}else{
+					echo "var escena = '$id_escena'";
+				}
+				?>
     
       var prueba = [];
       var orden = [];
@@ -229,7 +236,7 @@ echo "</a>";
         </button>
       </div>
       <div class="modal-body">
-			<form enctype="multipart/form-data" action='<?php echo site_url("hotspots/insertar_imagen"); ?>' method="post">
+			<form enctype="multipart/form-data" action='<?php echo site_url("hotspots/insertar_imagen/".$tipo."/".$idhs."/".$id_escena); ?>' method="post">
 									 <input type='hidden' name='accion' value='insertar_imagen'>
 									 <input id= "id_imagen" name='id_imagen' type ="hidden">
 
