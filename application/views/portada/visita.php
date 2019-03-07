@@ -545,10 +545,12 @@ peticion.done(function(datos){
   var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[0].id_imagen+"_miniatura.jpg";
   $("#gallery").find("img").attr("src",enlace_img);
   //Por cada indice del array creamos la imagen de la galeria
+	$(".Gmodal-content img.GmySlides, div.GmyDescr").remove();
   for(var i=0;i<resultado.length;i++){
+		console.log(resultado[i].texto_imagen);
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
-    $(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' textoImagen='"+resultado[i].texto_imagen+"'>");
+		$(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' textoImagen='"+resultado[i].texto_imagen+"'>");
     $(".Gmodal-content").append("<div class='GmyDescr' id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'>"+resultado[i].texto_imagen+"</div>");
   }
    // $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'>"+resultado[i].texto_imagen+"</div>");

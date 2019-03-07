@@ -420,7 +420,8 @@ class Hotspots extends CI_Controller {
             $this->load->model("ImagenModel");
             
             //acciones para ver el listado de imagenes
-            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+			$datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+			$datos['tipo'] = $tabla;
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('admin_template', $datos);
     }
@@ -457,7 +458,7 @@ class Hotspots extends CI_Controller {
      * 
      * @author: María Dolores Salmeron Sierra    
      */
-    public function insertar_imagen() {
+    public function insertar_imagen($tabla, $idhs, $escena) {
 
         //cargar el modelo
         $this->load->model("ImagenModel");
@@ -475,7 +476,10 @@ class Hotspots extends CI_Controller {
             $datos["error"] = $total." imágenes subidas: $correctas correctas - $incorrectas fallidas";
         else
             $datos["mensaje"] = $total." imágenes subidas correctamente";
-            $datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+			$datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
+			$datos['tipo'] = $tabla;
+			$datos['idhs'] = $idhs;
+			$datos['escena'] = $escena;
             $datos["vista"] = "hotspots/hotspotPanel";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view('admin_template', $datos);
@@ -490,12 +494,11 @@ class Hotspots extends CI_Controller {
     //Añade las imagenes a la base de datos
 	$resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
 	$id = $this->input->post_get('idescena');
-	if($this->input->post_get('escena_pr')){
+	if(strpos($id,'pan_sec_') !== false){
 		echo base_url("Panoramas_Secundarios/cargar_escena/".$id."/show_insert_hotspot");
 	}else{
 		echo base_url("escenas/cargar_escena/".$id."/show_insert_hotspot");
 	}
-   
   }
   
    /**
