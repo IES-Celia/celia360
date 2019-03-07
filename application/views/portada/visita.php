@@ -9,7 +9,8 @@
   }
   /* Color del punto en el mapa de zona*/
   .punto_mapa_zona{
-    background-color: black!important; 
+    background-color: #F4FA58;
+    border: 2px solid #FE2E2E;
   }
   /* Medium devices (tablets, less than 992px) */
   @media (max-width: 991.98px) {
@@ -19,27 +20,26 @@
       margin: auto;
     }
   }
-  /* Row para maquetar*/
-  .row {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+  /*Ocultar ventana Modal del ascensor-mapa*/
+  #ocultarModal{
+    display: none;
   }
 </style>
-<!-- Script para el mapa de zona -->
 <script>
   $(document).ready(function(){
+    //Al pulsar fuera del mapa en el ascensor, oculta la ventana modal
+    $("#myModal").click(function() {
+      $("#ocultarModal").fadeOut("slow");
+    });
+    //Metodo que evita que se oculte el mapa de zona al pulsar dentro de el
+    $('#img_mapa_zona').click(function (e) {
+      e.stopPropagation();
+    });
     //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
     $(".punto_mapa_zona").click(function(){
-      $("#myModal").hide();
-      
+      $("#ocultarModal").fadeOut("slow");
     })
   });
-  
 </script>
 
 <div class="contenedor">
@@ -197,43 +197,49 @@
               <div class="icono_audio" title="Mostrar Audio"></div>
             </div>
           <!-- Fin Audio punto sensible LIBRE y GUIADA -->
-        
-          <!-- Inicio mapa -->
-        <?php
-          $mapa = array_reverse($mapa);
-          echo "<div id='myModal' class='modalEscaleras mx-auto'>";
 
-          /*
-              Si en la portada tienes seleccionado el mapa, aparece un mapa, si tienes seleccionado el ascensor, aparece un ascensor.
-              Si no entiendes esto eres mas tonto que Echenique         
-          */
+<!-- 
 
-          if($portada[11]["opcion_valor"] == "mapa"){
-            //Como diria Dora la exploradora, soy un MAPA!!
-            echo "<div class='row'>";
-              echo '<div class="mapa_zona">';
-              echo "<img src='".base_url("assets/imagenes/mapa/".$portada[12]['opcion_valor'])."' alt='imagen del mapa de zona' style='width:auto'>";
-              /* Coloca los puntos en la imagen del mapa */ 
-              foreach ($mapa as $piso) {
-                $top_zona = doubleval($piso['top_zona'])-1;
-                if($piso['top_zona'] != "null") echo '<div id="'.$piso["piso"].'" class="puntos punto_mapa_zona" style="left: '.$piso["left_zona"].'%; top: '.$top_zona.'%;" escena="'.$piso["piso"].'" onclick="viewer.loadScene(&#039;'.$piso["escena_inicial"].'&#039;); piso_escalera(&#039;'.$piso["piso"].'&#039;); puntosMapa(&#039;'.$piso["punto_inicial"].'&#039;);"></div>';                
-              }
-              echo '</div>';
-            echo "</div>";
-          }else{
-            //Ascensor
-            foreach ($mapa as $imagen) {
-              $piso = $imagen["piso"];
-              $escena_inicial = $imagen["escena_inicial"];
-              $punto_inicial = $imagen["punto_inicial"];
-              $titulo_piso = $imagen["titulo_piso"];
-              echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
-            }
+    Ascensor - Mapa
+
+-->
+
+<?php
+  $mapa = array_reverse($mapa);
+  echo "<div id='ocultarModal'>";
+    echo "<div id='myModal' class='modalEscaleras mx-auto'>";
+      if($portada[11]["opcion_valor"] == "mapa"){
+        //Mapa
+        echo '<div class="mapa_zona">';
+          echo "<img id='img_mapa_zona' src='".base_url("assets/imagenes/mapa/".$portada[12]['opcion_valor'])."' alt='imagen del mapa de zona' style='width:auto'>";
+          foreach ($mapa as $piso) {
+            $top_zona = doubleval($piso['top_zona'])-1;
+            if($piso['top_zona'] != "null") echo '<div id="'.$piso["piso"].'" class="puntos punto_mapa_zona" style="left: '.$piso["left_zona"].'%; top: '.$top_zona.'%;" escena="'.$piso["piso"].'" onclick="viewer.loadScene(&#039;'.$piso["escena_inicial"].'&#039;); piso_escalera(&#039;'.$piso["piso"].'&#039;); puntosMapa(&#039;'.$piso["punto_inicial"].'&#039;);"></div>';                
           }
-          echo "</div>";//div final de myModal
-        ?>
-        
-        <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
+        echo '</div>';
+      }else{
+        echo "<div>";
+          //Ascensor
+          foreach ($mapa as $imagen) {
+            $piso = $imagen["piso"];
+            $escena_inicial = $imagen["escena_inicial"];
+            $punto_inicial = $imagen["punto_inicial"];
+            $titulo_piso = $imagen["titulo_piso"];
+            echo '<button id="p'.$piso.'" class="plantas" onclick="viewer.loadScene(&#039;'.$escena_inicial.'&#039;); piso_escalera(&#039;'.$piso.'&#039;); puntosMapa(&#039;'.$punto_inicial.'&#039;);">'.$titulo_piso.'</button>';
+          }
+        echo "</div>";
+      }
+    echo "</div>";//div final de myModal
+  echo "</div>";//Final de ocultar modal
+?>
+
+<!-- 
+
+    Final de Ascensor - Mapa
+
+-->
+
+    <div id="mapa" style="width: 614px; height: 350px;" class="cerrado">
     <?php
       $mapa = array_reverse($mapa);
       $indice = 0;
@@ -589,17 +595,19 @@ function escaleras(){
   nombreBuscado = $("#"+pisoActual).addClass("plantaElegida");
    
      
-  $("#myModal").css("display","block");
+  $("#ocultarModal").css("display","block");
   $(window).click(function(event){
     if($(event.target).hasClass("plantas")){ 
-      $('#myModal').css('display','none');
+      //$('#myModal').css('display','none');
+      $('#ocultarModal').css('display','none');
     }
   });     
-  } // fin function escaleras()
+} // fin function escaleras()
     
   window.onclick = function(event) {
     if ($(event.target).hasClass("modalEscaleras")) {
-      $("#myModal").css("display","none");
+      //$("#myModal").css("display","none");
+      $("#ocultar").css("display","none");
     }
   } 
   

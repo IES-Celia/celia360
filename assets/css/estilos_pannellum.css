@@ -888,23 +888,20 @@ display: block;
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-
 /* ESCALERAS */
 
 .modalEscaleras {
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
     display: none; 
     position: fixed; 
     z-index: 100; 
-    padding-top: 100px; 
-    left: 0;
-    top: 0;
     width: 100%; 
     height: 100%; 
     overflow: auto; 
     background-color: rgba(0,0,0,0.6); 
 }
-
-
 
 .plantas {
     display: block;
@@ -912,7 +909,7 @@ display: block;
     font-size: 1.2em;
     padding: 22px 16px;
     color:white;
-    width: 30%;
+    width: 100%;
     border: none;
     background-color: #3b3b3b;
     outline: none;
