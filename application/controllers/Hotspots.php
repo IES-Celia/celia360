@@ -494,12 +494,11 @@ class Hotspots extends CI_Controller {
     //Añade las imagenes a la base de datos
 	$resultado = $this->hotspotsModel->insertar_imagenes_hotspot();
 	$id = $this->input->post_get('idescena');
-	if($this->input->post_get('escena_pr')){
+	if(strpos($id,'pan_sec_') !== false){
 		echo base_url("Panoramas_Secundarios/cargar_escena/".$id."/show_insert_hotspot");
 	}else{
 		echo base_url("escenas/cargar_escena/".$id."/show_insert_hotspot");
 	}
-   
   }
   
    /**
