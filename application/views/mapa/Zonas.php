@@ -8,7 +8,8 @@
         display: inline-grid;
     }
     .puntos{
-        background-color: black;
+        background-color: #F4FA58;
+        border: 2px solid #FE2E2E;
     }
 </style>
 <script>
