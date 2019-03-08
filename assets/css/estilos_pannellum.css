@@ -456,7 +456,50 @@ display: block;
         opacity: 0.6;
     }
 
-.custom-hotspot-info {background-image: url("svg/eyeblanco.svg");}
+.custom-hotspot-info {
+	background-image: url("svg/eyeblanco.svg");
+	box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+  animation: custom-hotspot-info 2s infinite;
+}
+
+
+
+@-webkit-keyframes custom-hotspot-info {
+  0% {
+		-webkit-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+		border-radius: 100%;
+  }
+  70% {
+			-webkit-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			border-radius: 100%;
+  }
+  100% {
+			-webkit-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			border-radius: 100%;
+  }
+}
+@keyframes custom-hotspot-info {
+	
+  0% {
+    -moz-box-shadow: 0 0 10px 5px rgba(238,242,38, 0);
+		box-shadow: 0 0 10px 5px rgba(238,242,38, 0);
+		border-radius: 100%;
+	}
+
+  70% {
+      -moz-box-shadow: 0px 0px 15px 10px rgba(238,242,38, 0.6);
+			box-shadow: 0px 0px 15px 10px rgba(238,242,38, 0.6);
+			border-radius: 100%;
+  }
+  100% {
+      -moz-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			border-radius: 100%;
+  }
+}
+
+
+
 .custom-hotspot-info2 {background-image: url("svg/info3.svg");}
 .custom-hotspot-salto {background-image: url("svg/saltoblanco.svg");}
 .custom-hotspot-atras {background-image: url("svg/puertablanco.svg");}
@@ -1051,7 +1094,7 @@ display: block;
 
 .custom-hotspot-salto, .custom-hotspot-info, .custom-hotspot-video, 
 .custom-hotspot-audio, .custom-hotspot-escaleras,.custom-hotspot-saltoEspec, #boton_mapa, #fullscreen {
-  transition: width 0.5s, height 0.5s, opacity 0.5s ease;
+  transition: width 0.5s, height 0.5s, opacity 0.8s ease;
 }
 
 .version-icono {
