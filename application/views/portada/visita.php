@@ -342,6 +342,10 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         //Event listener del pannellum, ejecuta codigo dentro del bloque cada vez que cambia de escena.
         viewer.on('load',function(){
 					var idEscena = viewer.getScene();
+          
+          if(!idEscena.includes('pan_sec')){
+            $('.btnVolver').hide();
+          }
 
 					audio = document.getElementById('audio_libre');
 					if(audio.paused == false){
