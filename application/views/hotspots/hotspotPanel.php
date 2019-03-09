@@ -236,7 +236,16 @@ echo "</a>";
         </button>
       </div>
       <div class="modal-body">
-			<form enctype="multipart/form-data" action='<?php echo site_url("hotspots/insertar_imagen/".$tipo."/".$idhs."/".$id_escena); ?>' method="post">
+
+				<?php
+					if(isset($id_escena)){
+						$url = site_url("hotspots/insertar_imagen/".$tipo."/".$idhs."/".$id_escena);
+					}else{
+						$url = site_url("hotspots/insertar_imagen/".$tipo."/".$idhs."/".$escena);
+					}
+				?>
+
+			<form enctype="multipart/form-data" action='<?php echo $url; ?>' method="post">
 									 <input type='hidden' name='accion' value='insertar_imagen'>
 									 <input id= "id_imagen" name='id_imagen' type ="hidden">
 

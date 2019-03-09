@@ -184,7 +184,7 @@ class HotspotsModel extends CI_Model {
     public function borrarHotspot($id) {
 			$this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
 			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
-
+			$this->db->query("DELETE FROM panel_imagenes WHERE id_hotspot = '$id'");
         return $this->db->affected_rows();
     }
     /**
@@ -280,7 +280,7 @@ class HotspotsModel extends CI_Model {
         // insercción del punto en la tabla hotspot
         $nombreArchivo = $_FILES["documento"]["name"];
         if($nombreArchivo==""){
-            $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','ninguno')";
+            $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$idhotspot','$tipo','$titulo','$texto','ninguno')";
             $this->db->query($sql);
         } else {
             $filePath = 'assets/documentos-panel/';
@@ -305,7 +305,7 @@ class HotspotsModel extends CI_Model {
                 $imgFile = $this->upload->data('client_name');
                 //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
                 $tmp_dir = $this->upload->data('file_name');
-                $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$clickHandlerArgs','$tipo','$titulo','$texto','$tmp_dir')";
+                $sql = "INSERT INTO hotspots (id_hotspot,pitch,yaw,cssClass,clickHandlerFunc,clickHandlerArgs,tipo,titulo_panel,texto_panel,documento_url) VALUES(' $idhotspot','$pitch' ,'$yaw','$cssClass', '$clickHandlerFunc','$idhotspot','$tipo','$titulo','$texto','$tmp_dir')";
                 $this->db->query($sql);
                 $resultado = 1;
             }

@@ -211,7 +211,7 @@ class Hotspots extends CI_Controller {
     public function delete_hotspot($id, $tabla){
         $codigo_escena=$this->hotspotsModel->cargar_codigo_escena($id,$tabla);    // Sacamos el código de escena a la que pertenece este hotspot
 		$resultado = $this->hotspotsModel->borrarHotspot($id);
-		if($resultado == 1){
+		if($resultado > 0){
 			if($tabla == 0){
 				redirect('escenas/cargar_escena/' . $codigo_escena. '/show_insert_hotspot/');
 			}else{
@@ -463,7 +463,7 @@ class Hotspots extends CI_Controller {
         //cargar el modelo
         $this->load->model("ImagenModel");
         //acciones para insertar la imagen
-        $resultado = $this->ImagenModel->insertar_imagen();
+		$resultado = $this->ImagenModel->insertar_imagen();
 
         // Comprobamos cuantas imágenes se han subido correctamente
         $correctas = 0;
@@ -479,6 +479,7 @@ class Hotspots extends CI_Controller {
 			$datos["lista_imagenes"] = $this->ImagenModel->buscar_todo();
 			$datos['tipo'] = $tabla;
 			$datos['idhs'] = $idhs;
+			$datos["imagenes_seleccionadas"]=$this->hotspotsModel->get_imgs_asociadas_al_hotspot($idhs);
 			$datos['escena'] = $escena;
             $datos["vista"] = "hotspots/hotspotPanel";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -507,9 +508,10 @@ class Hotspots extends CI_Controller {
 	* @param string $escena_principal recibe la escena inicial
 	*/
 	
-  public function modify_panel_info($idhs, $escena_principal){
+  public function modify_panel_info($idhs, $tabla, $escena_principal){
 	$datos['escena_principal'] = $escena_principal;
-    $datos["idhs"] = $idhs;
+	$datos["idhs"] = $idhs;
+	$datos['tipo'] = $tabla;
     $datos["imagenes_seleccionadas"]=$this->hotspotsModel->get_imgs_asociadas_al_hotspot($idhs);
     //cargar el modelo
     $this->load->model("ImagenModel");
