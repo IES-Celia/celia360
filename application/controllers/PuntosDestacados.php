@@ -45,7 +45,7 @@ class PuntosDestacados extends CI_Controller {
      * sin especificar otro método.
      */
     public function index(){
-        $datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
+		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
         $this->load->view("puntosdestacados/puntosDestacados", $datos);	
     }
     
@@ -178,7 +178,6 @@ class PuntosDestacados extends CI_Controller {
      */
     
     public function processinsertdestacado(){
-		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 		$datos['vista'] = "puntosdestacados/adminDestacados";
         $resultado = $this->PuntosDestacadosModel->crear_celda();
         $datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
@@ -189,6 +188,7 @@ class PuntosDestacados extends CI_Controller {
             }else{
 				$datos['error'] = "Error al insertar el punto destacado";
 			}
+			$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 			$this->load->view("admin_template", $datos);
 		}else {
                 redirect(base_url("usuario"));

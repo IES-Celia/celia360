@@ -273,7 +273,6 @@
         
         <?php 
             $contador = 0 ;
-            
             foreach($puntos_d as $fila){
                 
                 $longitud = count($fila);

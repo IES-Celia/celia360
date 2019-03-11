@@ -52,9 +52,18 @@ class PuntosDestacadosModel extends CI_Model {
     public function crear_celda(){
         $resultado = array();
 
-        $fila_asociada= $this->input->post_get("fila_asociada");
-        $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1")->result_array()[0]["id_celda"];
-        $id_celda = $res+1;
+		$fila_asociada= $this->input->post_get("fila_asociada");
+		
+        $res = $this->db->query("SELECT id_celda FROM celda_pd ORDER BY id_celda DESC LIMIT 1");
+		
+		$id = $res->result_array();
+		
+		if(count($id) == 0){
+			$id_celda = 1;
+		}else{
+			$id_celda = $res->result_array()[0]['id_celda']+1;
+		}
+		
         $escena_celda= $this->input->post_get("escena_celda");
         $titulo_celda = $this->input->post_get("titulo_celda");
 
