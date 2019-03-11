@@ -182,10 +182,15 @@ class HotspotsModel extends CI_Model {
      * @return Retorna si se ha efectuado el cambio en las tablas.
      */ 
     public function borrarHotspot($id) {
+			$res = 0;
 			$this->db->query("DELETE FROM hotspots WHERE id_hotspot = '$id'");
+			$res += $this->db->affected_rows();
 			$this->db->query("DELETE FROM escenas_hotspots WHERE id_hotspot = '$id'");
+			$res += $this->db->affected_rows();
 			$this->db->query("DELETE FROM panel_imagenes WHERE id_hotspot = '$id'");
-        return $this->db->affected_rows();
+			$res += $this->db->affected_rows();
+
+		return $res;
     }
     /**
      * Saca un hotspot concreto para modificarlo o borrarlo
