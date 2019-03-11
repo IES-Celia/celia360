@@ -156,7 +156,6 @@ class PuntosDestacados extends CI_Controller {
     
     public function processupdatedestacado(){
         $resultado = $this->PuntosDestacadosModel->editar_celda();
-		$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
 		$datos['vista'] = "puntosdestacados/adminDestacados";
         $datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos['vista']);
         if ($datos['permiso']) {
@@ -165,6 +164,7 @@ class PuntosDestacados extends CI_Controller {
 			}else{
 				$datos['error'] = "Error al actualizar el punto destacado";
 			}
+			$datos["puntos_d"] = $this->PuntosDestacadosModel->getAll();
             $this->load->view("admin_template", $datos);
         }
         else {
