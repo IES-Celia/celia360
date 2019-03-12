@@ -93,6 +93,10 @@
             h4{
                 font-size: 1.5rem;
             }
+
+            .text-white {
+                color: white;
+            }
         </style>         
     </head>
     <body>
@@ -472,8 +476,8 @@
                 mkdir('assets/php');
 			}
 			
-            echo "<br><br>La instalación ha finalizado. <strong>IMPORTANTE: elimine ahora el archivo de instalación (install.php) del servidor para evitar posibles ataques a su base de datos.</strong>.<br>"
-            . "Visite <a href='$baseurl/usuario'>$baseurl/usuario</a> para comenzar a introducir los datos de su visita virtual.<br>";
+            echo "<br><br><span class='text-white'>La instalación ha finalizado. <strong>IMPORTANTE: elimine ahora el archivo de instalación (install.php) del servidor para evitar posibles ataques a su base de datos.</strong>.<br>"
+            . "Visite <a href='$baseurl/usuario'>$baseurl/usuario</a> para comenzar a introducir los datos de su visita virtual.</span><br>";
          }
      }
          // fin del if
