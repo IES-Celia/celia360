@@ -64,6 +64,7 @@ class TourModel extends CI_Model {
 			}
 			$flagHot= true;
 			if($hotspot['tipo']=="info"){ // si es de info pues te mete to esto
+				
 				if($hotspot['cssClass']=="custom-hotspot-escaleras"){
 					$json = $json . '{"pitch": '.$hotspot['pitch'].','; 
 					$json = $json . '"yaw": '.$hotspot['yaw'].',';  
@@ -74,7 +75,8 @@ class TourModel extends CI_Model {
 				}else{
 					$json = $json . '{"pitch": '.$hotspot['pitch'].','; 
 					$json = $json . '"yaw": '.$hotspot['yaw'].',';  
-					$json = $json . '"type": "'.$hotspot['tipo'].'",'; 
+					$json = $json . '"type": "'.$hotspot['tipo'].'",';
+					$json = $json . '"text": "'.$hotspot['titulo_panel'].'",';
 					$json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';  
 					$json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
 					$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
@@ -161,7 +163,7 @@ class TourModel extends CI_Model {
         foreach ($res2->result_array() as $hotspot) {
             
             
-            if($hotspot['clickHandlerFunc']== "panelInformacion"){
+            if($hotspot['tipo']== "info"){
                 if($flagHot){
                 $json = $json . ',';
                 }
@@ -174,23 +176,7 @@ class TourModel extends CI_Model {
 					$json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
 					$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
                     $json = $json . '} ';  
-            }else if($hotspot['clickHandlerFunc']== "video"){
-				if($flagHot){
-					$json = $json . ',';
-				}
-				$flagHot = true;
-
-				$json = $json . '{"pitch": '.$hotspot['pitch'].','; 
-                    $json = $json . '"yaw": '.$hotspot['yaw'].',';  
-                    $json = $json . '"type": "'.$hotspot['tipo'].'",'; 
-                    $json = $json . '"cssClass": "'.$hotspot['cssClass'].'",';
-					$json = $json . '"text": "'.$hotspot['titulo_panel'].'",';
-					$json = $json . '"clickHandlerFunc": "'.$hotspot['clickHandlerFunc'].'",';  
-					$json = $json . '"clickHandlerArgs": "'.$hotspot['clickHandlerArgs'].'"';
-                    $json = $json . '} ';
-
-
-			}
+            }
         }
         $flagHot=false;
         $json = $json . ']}';  
