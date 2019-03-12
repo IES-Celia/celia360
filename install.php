@@ -353,7 +353,8 @@
 			(9, 'color_fuente', '#ffffff'),
 			(10, 'logo_web', 'logo.png'),
 			(11, 'ascensor_mapa', 'ascensor'),
-			(12, 'url_mapa', 'mapa.jpg');");
+			(12, 'url_mapa', 'mapa.jpg'),
+			(13,'text_historia','');");
         
 
 
