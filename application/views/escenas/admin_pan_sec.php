@@ -83,9 +83,9 @@
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
 				<td class='text-center'>
-				<div class='custom-hotspot-info mx-auto' id='".$info['id_panorama_secundario']."'> 
+				<i class='ojoPanel far fa-eye mx-auto' id='".$info['id_panorama_secundario']."'> 
 					<span class='oculto'>".base_url($info['panorama'])."</span>
-				</div>
+				</i>
 
 				<div id='panorama-".$info['id_panorama_secundario']."' class='panoramas oculto'>
 				</div>
@@ -430,7 +430,7 @@
 
 <script>
 	$(document).ready(function(){
-		$("#cont").on("click", ".custom-hotspot-info", function(){
+		$("#cont").on("click", ".ojoPanel", function(){
             id = $(this).attr('id');
             img = $(this).find('span').text();
 
