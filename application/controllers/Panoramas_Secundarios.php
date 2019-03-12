@@ -1,6 +1,13 @@
 <?php 
 class Panoramas_Secundarios extends CI_Controller {
 
+	/* 
+
+	Controlador que gestiona las imagenes secundarias asociadas a una escena principal
+	
+	*/
+
+
 public function __construct() {
     parent::__construct();
     $this->load->model("EscenasModel");
@@ -11,6 +18,7 @@ public function __construct() {
 	public function index(){ // Redirige al index del controlador Escenas
 		redirect('Escenas/');
 	}
+
 
 public function show_panoramas_secundarios($codigo_escena, $datos = null){ //cargo la vista para insertar panoramas secundarios
 	$datos['datos_escena'] = $this->EscenasModel->getOne($codigo_escena);
@@ -27,7 +35,7 @@ public function show_panoramas_secundarios($codigo_escena, $datos = null){ //car
 	
 }
 
-
+//Insercion de imagenes secundarias
 public function insertSecondaryPanorama($id){
     $res = $this->PanoramasSecundariosModel->insertSecondaryPanoramas($id);
     $incorrectas = 0;
@@ -38,12 +46,12 @@ public function insertSecondaryPanorama($id){
         }
         echo $incorrectas; //devuelvo incorrectas y gestiono con ajax si es 0 o no       
 	}
-	
+	// borrar imagen secundaria por ajax
 	public function deletePanorama($id){
 		$res = $this->PanoramasSecundariosModel->delete($id);
 		echo $res; //capturo por ajax
 	}
-
+	
 	public function updatePanorama(){ //actualización de imagenes
 		$id = $this->input->get_post('id_imagen');
 		$tituloImagen = $this->input->get_post('titulo_imagen');
@@ -59,6 +67,10 @@ public function insertSecondaryPanorama($id){
 		$this->show_panoramas_secundarios($codigo_escena,$datos);
 	}
 
+	//Cargar escena es una función que a diferencia de la que hay en el controlador
+	//Escenas, esta recibe $datos['panorama_secundario'] = 1
+	//Al recibir este 1, quiere decir que el tipo de escena que carga es
+	//secundaria
 	public function cargar_escena($escenaInicial, $redireccion, $piso = null){
         $this->load->library('session');
         if(isset($piso) && is_numeric($piso)){
