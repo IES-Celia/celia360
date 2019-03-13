@@ -43,7 +43,6 @@
 			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarAudio">Punto audiodescrito</button>
 			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarVideo">Punto video</button>
 			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnInsertarEscaleras">Ascensor</button>
-			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnModificarPitchYaw">Pitch Yaw</button>
 			<button class="botondentromapa btn btn-primary ml-1 mr-1" id="btnHibrido">Super salto</button>
 			';
 			
@@ -585,11 +584,11 @@
             $("#puntoEscaleras").show();
         });
           
-        $("#btnModificarPitchYaw").click(function(){
+        /*$("#btnModificarPitchYaw").click(function(){
           var resp = confirm("¿Desea que al entrar en esta escena se mire hacia esta dirección?")
             if(resp)
                 location.href= '<?php echo site_url("hotspots/") ?>' + "update_escena_pitchyaw/" + <?php echo $pitch ?> + "/" + <?php echo $yaw ?> + "/" + "<?php echo $id_scene ?>"; 
-		});
+		});*/
 		
 		$("#btnHibrido").click(function() {
             

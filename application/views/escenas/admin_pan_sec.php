@@ -1,5 +1,4 @@
 <style>
-
     .cerrar{
         position: relative;
         top:15px;
@@ -34,9 +33,6 @@
     .activo {
         display: block;
     }
-
-    
-
 </style>
 
 <!-- NUEVOOOOOOO -->
@@ -83,9 +79,9 @@
 				<td class='titulo-img'>".$info['titulo']."</td>
 				<td class='fecha-img'>".$info['fecha_acontecimiento']."</td>
 				<td class='text-center'>
-				<div class='custom-hotspot-info mx-auto' id='".$info['id_panorama_secundario']."'> 
+				<i class='ojoPanel far fa-eye mx-auto' id='".$info['id_panorama_secundario']."'> 
 					<span class='oculto'>".base_url($info['panorama'])."</span>
-				</div>
+				</i>
 
 				<div id='panorama-".$info['id_panorama_secundario']."' class='panoramas oculto'>
 				</div>
@@ -114,29 +110,6 @@
 
 
 <script>
-	 function borrar_imagen(id_imagen) {
-        if (confirm("¿Estás seguro?")) {
-            $.get("<?php echo site_url('imagen/borrar_imagen/'); ?>" + id_imagen, null, respuesta);
-        }
-    }
-
-    function respuesta(r) {
-        if (r.trim() == "0") {
-			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar la imagen.</span>";
-		} else if (r.trim() == "-1") {
-			document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ésta imagen está en uso en un hotspot y no se puede borrar.</span>";
-            
-        } else {
-            
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Imagen borrada con éxito.</span>";
-			
-			selector = "#imagen-"+parseInt(r);
-			
-            $(selector).remove();
-			
-        }
-    }
-  
     function mostrar(capa,id){
         if (capa == "insertar") {
             $("#insertar").show();     
@@ -167,7 +140,6 @@
  
 //PAGINACIÓN CON JQUERY LOLI
     $(document).ready(function() {
-
         $('#cont').dataTable({
     	"language": {
             "lengthMenu": "Mostrar _MENU_ registros por página",
@@ -188,17 +160,22 @@
     });
 
 
-	    var fileobj = [];
+			// funciones para la inserción de imagenes secundarias
+	    var fileobj = []; //array que contendrá imágenes e inputs del formulario
+
+
+		//función que sube el archivo por ajax
     function upload_file(e) {
         e.preventDefault();
           for(i=0;i<e.dataTransfer.files.length;i++){
             fileobj.push(e.dataTransfer.files[i]);
           }
 		  previewfile(fileobj);
-          ajax_file_upload(fileobj);
+      ajax_file_upload(fileobj);
 		}
 
- 
+		//función que carga imagenes a través del explorador 
+		// y comprueba si el fichero es jpg.
     function file_explorer() {
 		salir = false;
 		document.getElementById('selectfile').click();
@@ -226,6 +203,7 @@
     var contador = 1;
     var acumulable = 0;
 
+		//función que previsualiza la imagen y los inputs de fecha y nombre.
     function previewfile(file) {
       for(i = 0;i<file.length;i++){
         if(file[i].name.includes("JPG") || file[i].name.includes('jpg')){
@@ -271,6 +249,7 @@
       }
 	}
 
+	//comprueba que todos los campos tengan contenido
 	function compruebaCampo(){
 		for(i=0;i<$("input.inputsClass").length/2;i++){
 			longitudNombre = document.getElementById('nombre'+(i+1)).value.length;
@@ -294,6 +273,7 @@
 	}
 
  
+ //subida del array de files por ajax
     function ajax_file_upload(file_obj) {
 
       document.getElementById("btnEnvio").addEventListener('click',function(){
@@ -429,11 +409,11 @@
 </div>
 
 <script>
+	// muestra la imagen secundaria para tener una pequeña previsualización
 	$(document).ready(function(){
-		$("#cont").on("click", ".custom-hotspot-info", function(){
+		$("#cont").on("click", ".ojoPanel", function(){
             id = $(this).attr('id');
             img = $(this).find('span').text();
-
 
             pannellum.viewer('panorama-'+id, {
                 "type": "equirectangular",

@@ -84,19 +84,37 @@ class Usuario extends CI_Controller {
 
     public function processregisterform() {
         //Formulario de registro de usuarios
+		$resultado = $this->UsuarioModel->inserusu();
+		if($this->input->get_post('tipo') != NULL){
+			if ($resultado) {
+				// Usuario creado correctamente
+				$datos["mensaje"] = "Usuario creado correctamente";
+				$datos["vista"] = "usuario/usuarios";
+				$datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
+				$datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
+				$this->load->view('admin_template', $datos); 
+			} else {
+				$datos["error"] = "Error al crear el usuario";
+				$datos["tablaUsuarios"] = $this->UsuarioModel->buscartodousu();
+				$datos["vista"] = "usuario/usuarios";
+				$datos['permiso'] = $this->UsuarioModel->comprueba_permisos($datos["vista"]);
+				$this->load->view("admin_template", $datos);
+				}
+		}else{
+			if ($resultado) {
+				// Usuario creado correctamente
+				$datos["mensaje"] = "Usuario creado correctamente";
+				$datos["vista"] = "usuario/formLogin";
+				$this->load->view('login_template', $datos); 
+			} else {
+				$datos["error"] = "Error al crear el usuario";
+				// No hay usuario logueado: volvemos a la pantalla de registro
+				$datos["vista"] = "usuario/registerForm";
+				$this->load->view("login_template", $datos);
+				}
+		}
 
-        $resultado = $this->UsuarioModel->inserusu();
-        if ($resultado) {
-            // Usuario creado correctamente
-            $datos["mensaje"] = "Usuario creado correctamente";
-            $datos["vista"] = "usuario/formLogin";
-            $this->load->view('login_template', $datos); 
-        } else {
-            $datos["error"] = "Error al crear el usuario";
-            // No hay usuario logueado: volvemos a la pantalla de registro
-            $datos["vista"] = "usuario/registerForm";
-            $this->load->view("login_template", $datos);
-            }
+        
         }
         
 

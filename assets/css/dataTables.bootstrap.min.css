@@ -44,6 +44,7 @@ div.dataTables_wrapper div.dataTables_processing {
 	text-align: center;
 	padding: 1em 0;
 }
+
 table.dataTable thead > tr > th.sorting_asc,
 table.dataTable thead > tr > th.sorting_desc,
 table.dataTable thead > tr > th.sorting,
@@ -72,7 +73,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 	position: absolute;
 	bottom: 8px;
 	right: 8px;
-	display: block;
+	display: none;
 	font-family: "Glyphicons Halflings";
 	opacity: 0.5;
 }
@@ -128,6 +129,37 @@ table.dataTable.table-condensed .sorting_desc:after {
 	top: 6px;
 	right: 6px;
 }
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc {
+	cursor: pointer;
+	*cursor: hand;
+}
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+table.dataTable thead .sorting {
+	background-image: url("../imagenes/iconos/sort_both.png");
+}
+table.dataTable thead .sorting_asc {
+	background-image: url("../imagenes/iconos/sort_asc.png");
+}
+table.dataTable thead .sorting_desc {
+	background-image: url("../imagenes/iconos/sort_desc.png");
+}
+table.dataTable thead .sorting_asc_disabled {
+	background-image: url("../imagenes/iconos/sort_asc_disabled.png");
+}
+table.dataTable thead .sorting_desc_disabled {
+	background-image: url("../imagenes/iconos/sort_desc_disabled.png");
+}
+
 table.table-bordered.dataTable th,
 table.table-bordered.dataTable td {
 	border-left-width: 0;

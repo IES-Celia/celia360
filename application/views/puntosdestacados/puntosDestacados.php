@@ -31,12 +31,22 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/css/estilos_mapa_panellum.css");?>">
 </head>
     <body>
-        <div id="contenedor" style="z-index:1000">
+        <div id="contenedor" style="z-index:1000; background: white;">
             <div class="boton_menu" id="botoncico"></div> <!--boton menu --> 
         <?php 
-            // este for saca las celdas y las va colocando según su fila
-            $contador = 0 ;
-            foreach($puntos_d as $fila){ 
+            
+						$contador = 0 ;
+							$cuenta = 0; //comprueba que haya puntos destacados
+							for($i=0;$i<5;$i++){
+								if(count($puntos_d[$i]) > 0){
+									$cuenta++;
+								}
+							}
+
+							if($cuenta > 0){
+						
+						// este for saca las celdas y las va colocando según su fila
+						foreach($puntos_d as $fila){ 
                 $longitud = count($fila);
                 if($longitud!=0){
                     echo '<div class="slider">';
@@ -51,7 +61,28 @@
                           }
                    echo '</div>';
                 }
-            }
+						}
+
+						?>
+						<?php
+
+					}else{
+						echo '<div id="error_guiada" style="display:block;">
+						<h3 style="text-align: center;">Puntos destacados</h3>
+						<div class="mensaje_guiada_inicio_recomendacion">
+							<hr class="mensaje_separador"> 
+							
+							<h1 style="text-align: center">Pendiente de introducción de datos para el desarrollo del mismo</h1>
+							
+							<hr class="mensaje_separador">
+						</div>
+	
+						<a href="'. base_url() .'" id="hrefVolver">
+							<div id="volverPrincipal"></div>
+						</a>
+					</div>';
+					}
+					
         ?>    
         </div>
         
@@ -80,7 +111,8 @@
                 $(".contenedor").fadeOut();         
             });
             
-            $.ajax({
+            
+						$.ajax({
                 url: "<?php echo base_url("tour/get_json_destacados"); ?>",
                 type: 'GET',
                 dataType: 'json'
@@ -93,7 +125,6 @@
                   });
                   viewer = pannellum.viewer("panorama", data);
             });
-
             
 
             

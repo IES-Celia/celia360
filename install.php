@@ -388,7 +388,12 @@
 
             fclose($archivo);
 
-            //creación de directorios 
+			//creación de directorios 
+			
+			if (!file_exists('assets/audio')) {
+                mkdir('assets/audio');
+            }
+
             if (!file_exists('assets/biblio')) {
                 mkdir('assets/biblio');
             }

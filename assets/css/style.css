@@ -259,11 +259,11 @@ button.pan_sec_button {
     z-index: 200;
 }
 
+.ojoPanel{
+	font-size: 2em;
+	cursor: pointer;
+}
 
-
-
-
-
-
-
-	  
+.ojoPanel:hover{
+	color: #df691a;
+}
