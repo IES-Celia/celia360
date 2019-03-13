@@ -29,10 +29,14 @@
     }
 
     function respuestaBorrado(r) {
-        if (r == 0) {
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Ha ocurrido un error en la eliminación</span>";
-        }
-        else {
+        if (r == 0) {        
+					$("#mensaje_cabecera").html('');
+          $("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar el usuario</h7><i class='fas fa-exclamation-circle'></i></div>");
+      
+        }else {
+					$("#error_cabecera").html('');
+					$("#mensaje_cabecera").html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Usuario eliminado con éxito</h7><i class='far fa-check-circle'></i></div>");
+        
             selector = "#usu" + parseInt(r);
             $(selector).remove();
         }
@@ -49,10 +53,12 @@
 
     function respuestaModtipo(r) {
         if (r == "0") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Usuario no modificado</span>";
+					$("#mensaje_cabecera").html('');
+           $("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al modificar el rol</h7><i class='fas fa-exclamation-circle'></i></div>");
         }
         else {
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Usuario modificado con éxito</span>";
+					$("#error_cabecera").html('');
+					$("#mensaje_cabecera").html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Rol modificado con éxito</h7><i class='far fa-check-circle'></i></div>");
         }
     }
 
