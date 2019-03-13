@@ -186,7 +186,7 @@
 
             </div>
             <input type='hidden' name='MAX_FILE_SIZE' value='5000000000000'>
-            <button type="submit" class="btn btn-primary float-right" id='enviar'>Modificar</button>
+            <button type="submit" class="btn btn-primary float-right" id='enviar'>Insertar vídeo</button>
         </form>
       </div>
     </div>
