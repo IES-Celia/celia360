@@ -687,7 +687,12 @@ document.getElementById('fullscreen').addEventListener('click', function(e) {
 function openModal() {
     $("#GmyModal").show();
     currentSlide(1);
-    //Seleccionamos las imagenes en las que queremos poder hacer zoom 
+    // Eliminamos el zoom de las imagnes
+    var imgs = document.querySelectorAll(".GmySlides");
+			for (var i = 0; i < imgs.length; i++) {
+        document.querySelectorAll('.GmySlides')[i].dispatchEvent(new CustomEvent('wheelzoom.destroy'));
+    }
+    // Seleccionamos las imagenes en las que queremos poder hacer zoom 
     wheelzoom(document.querySelectorAll('.GmySlides'));
 }
 
@@ -697,12 +702,12 @@ function closeModal() {
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
+  // Eliminamos el zoom de las imagnes
   var imgs = document.querySelectorAll(".GmySlides");
 			for (var i = 0; i < imgs.length; i++) {
-				// Eliminamos el zoom de las imagnes
         document.querySelectorAll('.GmySlides')[i].dispatchEvent(new CustomEvent('wheelzoom.destroy'));
   }
-  //Seleccionamos las imagenes en las que queremos poder hacer zoom 
+  // Seleccionamos las imagenes en las que queremos poder hacer zoom 
   wheelzoom(document.querySelectorAll('.GmySlides'));
 }
 
