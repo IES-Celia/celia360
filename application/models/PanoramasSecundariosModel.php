@@ -69,12 +69,13 @@
             
 		}
 		
+		//obtener a traves de su id
 		public function getById($id){
-			
 			$query = $this->db->query("SELECT cod_escena, id_panorama_secundario, titulo, fecha_acontecimiento, panorama FROM panoramas_secundarios WHERE cod_escena = '".$id."'");
 			return $query->result_array();
 		}
 
+		//borrar imagenes secundarias, hotspots asociados, etc
 		public function delete($id){
 			$devuelve = 0;
 			
@@ -103,14 +104,15 @@
 			return $devuelve;
 		}
 
+		// actualizar imagen secundaria, titulo y fecha
 		public function updatePanorama($id,$titulo,$fecha){
-
 
 			$this->db->query("UPDATE panoramas_secundarios SET titulo = '$titulo', fecha_acontecimiento = '$fecha' WHERE id_panorama_secundario = '$id' ");
 			
 			return $this->db->affected_rows();
 		}
 
+		//consultar si una escena contiene escenas secundarias
 		public function consultaPanoramas($cod_escena){
 
 			$devuelve = '';
@@ -129,6 +131,7 @@
 			return $devuelve;
 		}
 
+		//obtener a traves del cod_escena
 		public function getCodEscena($id){
 			$query = $this->db->query('SELECT cod_escena FROM panoramas_secundarios WHERE id_panorama_secundario = "'.$id.'"');
 			
