@@ -165,7 +165,7 @@ class Hotspots extends CI_Controller {
         $res = $this->hotspotsModel->modificarTargetsHotspot($pitch, $yaw, $codescena, $idhotspot);
 		
 		if($res > 0){
-			redirect('hotspots/show_update_hotspot/'.$idhotspot.'/' . $codescena . '/0');
+			redirect('escenas/cargar_escena/'.$codescena.'/show_insert_hotspot/0');
 		}
 		
     /*
