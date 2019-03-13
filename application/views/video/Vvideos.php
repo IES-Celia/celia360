@@ -215,13 +215,13 @@
 
     function respuesta(r) {
         if (r.trim() == "-1") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Error al borrar el video</span>";
+            $("#error_cabecera").html("<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Error al borrar el vídeo</h7><i class='fas fa-exclamation-circle'></i></div>");
         } else if (r.trim() == "-2") {
-            document.getElementById("mensajemenu").innerHTML = "<span id='error_cabecera'>Ese video está en uso en un hotspot y no se puede borrar</span>";
+            $("#error_cabecera").html("<div class='alert alert-danger ' role='alert' ><h7 class='mr-2'>Ese video está en uso en un hotspot y no se puede borrar</h7><i class='fas fa-exclamation-circle'></i></div>");
 
         } else {
 
-            document.getElementById("mensajemenu").innerHTML = "<span id='mensaje_cabecera'>Borrado con éxito</span>";
+            $("#mensaje_cabecera").html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Vídeo eliminado con éxito</h7><i class='far fa-check-circle'></i></div>");
 
             selector = "#contenidovideo" + parseInt(r);
 
