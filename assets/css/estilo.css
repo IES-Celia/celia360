@@ -1,4 +1,4 @@
-
+/*
 body{
 	overflow:hidden;	
 }
@@ -8,7 +8,7 @@ body{
 	width:990px;
 	height:700px;
 	margin:0 auto;
-	/*transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+	transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
 	z-index: 1003;
 	display: none;
 	opacity: 0;
@@ -16,7 +16,7 @@ body{
 	-moz-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
 	-ms-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
 	-o-transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
-	transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);*/
+	transition: all 350ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
 		    
 }
 #flipbook{
@@ -69,7 +69,7 @@ body{
 	font-size:43px;
 	margin-top:-40px;
 }
-/*.estanteria{
+.estanteria{
 	background: url(wall-bookshelf.png);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -80,7 +80,7 @@ body{
     content: "";
 	
 }
-*/
+
 .estanteria img{
 	width: 75px;
     height: 90px;
@@ -105,9 +105,6 @@ body{
     transform: translate(0, 0);
 }
 
-
-/*AQUIIIII*/
-/* Float Shadow */
 .efectBook {
   display: inline-block;
   vertical-align: middle;
@@ -132,7 +129,6 @@ body{
   opacity: 0;
   background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 80%);
-  /* W3C */
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   -webkit-transition-property: transform, opacity;
@@ -141,15 +137,12 @@ body{
 .efectBook:hover, .efectBook:focus, .efectBook:active {
   -webkit-transform: translateY(-10px);
   transform: translateY(-10px);
-  /* move the element up by 5px */
 }
 .efectBook:hover:before, .efectBook:focus:before, .efectBook:active:before {
   opacity: 1;
   -webkit-transform: translateY(10px);
   transform: translateY(10px);
-  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
-
 
 .fondo{
 	background: url(estanteria-2.jpg);
@@ -167,5 +160,4 @@ body{
     margin: 0 auto !important;
     text-align: center !important;
 }	
-
-		
+*/

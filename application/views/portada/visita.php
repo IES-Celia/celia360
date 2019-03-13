@@ -1,5 +1,12 @@
+<!-- Libreria Zoom imagenes -->
+<script src='<?php echo site_url("/assets/js/wheelzoom-master/wheelzoom.js")?>'></script>
 <style>
-  /* Posicion relativa de los puntos en el mapa de zona */
+/* Eliminar margenes y padding por defecto*/
+  html, body{
+      padding: 0!important;
+      margin: 0!important;
+  }
+/* Posicion relativa de los puntos en el mapa de zona */
   .mapa_zona{
     float: none;
     z-index: 2;
@@ -7,12 +14,7 @@
     position: relative;
     margin: auto;
   }
-  /* Color del punto en el mapa de zona*/
-  .punto_mapa_zona{
-    background-color: #F4FA58;
-    border: 2px solid #FE2E2E;
-  }
-  /* Medium devices (tablets, less than 992px) */
+/* Medium devices (tablets, less than 992px) */
   @media (max-width: 991.98px) {
     /* La ventana modal de visita guiada */
     #mensaje_guiada{
@@ -20,10 +22,63 @@
       margin: auto;
     }
   }
-  /*Ocultar ventana Modal del ascensor-mapa*/
+/*Ocultar ventana Modal del ascensor-mapa*/
   #ocultarModal{
     display: none;
   }
+/* Color del punto en el mapa de zona*/
+  .punto_mapa_zona{
+    background-color: #F4FA58;
+    border: 2px solid #FE2E2E;
+    box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+    animation: punto_mapa_zona 2s infinite; /* Efecto del keyframes */
+  }
+@-webkit-keyframes punto_mapa_zona {
+  0% {
+		-webkit-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+		border-radius: 100%;
+  }
+  70% { 
+			-webkit-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			border-radius: 100%;
+  }
+  100% {
+			-webkit-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			border-radius: 100%;
+  }
+}
+@keyframes punto_mapa_zona {
+	
+  0% {
+    -moz-box-shadow: 0 0 10px 5px rgba(238,242,38, 0);
+		box-shadow: 0 0 10px 5px rgba(238,242,38, 0);
+		border-radius: 100%;
+	}
+
+  70% {
+      -moz-box-shadow: 0px 0px 15px 10px rgba(238,242,38, 0.6);
+			box-shadow: 0px 0px 15px 10px rgba(238,242,38, 0.6);
+			border-radius: 100%;
+  }
+  100% {
+      -moz-box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			box-shadow: 0 0 20px 15px rgba(238,242,38,0 );
+			border-radius: 100%;
+  }
+}
+figure{
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  margin: auto;
+}
+figcaption{
+  max-width:90%!important;
+  height:10%;
+  margin: auto;
+  text-align: center;
+  color: #444444'
+}
 </style>
 <script>
   $(document).ready(function(){
@@ -142,17 +197,21 @@
           </div>
           <!-- Fin visita guiada -->
           
-          <!-- Inicio Galería -->
-            <div id="GmyModal" class="Gmodal">
-              <span class="Gclose cursor" onclick="closeModal()">&times;</span>
-              <div class="Gmodal-content">
-                <a class="Gprev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="Gnext" onclick="plusSlides(1)">&#10095;</a>
-                
-              </div>
-              <p id=descripcion></p>
-          </div>
-          <!-- Fin galería -->
+<!-- Inicio Galería -->
+<div id="GmyModal">
+  <div class="Gmodal">
+    <div class="Gmodal-content">
+      <span class="Gclose cursor" onclick="closeModal()">&times;</span>
+      <a class="Gprev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="Gnext" onclick="plusSlides(1)">&#10095;</a>
+      <figure id="figure_modal_img">
+
+      </figure>  
+    </div>
+  </div>
+</div>
+
+<!-- Fin galería -->
             
           <!-- Ventana Modal Galería -->
               <div class="modal-visita">
@@ -541,6 +600,9 @@ function panelInformacion(hotspotDiv,args){
   });
     
 peticion.done(function(datos){
+
+  
+
   var resultado = JSON.parse(datos);
   //Cargamos una vez los datos basicos
   $("#titulo").html(resultado[0].titulo_panel);
@@ -549,15 +611,15 @@ peticion.done(function(datos){
   var enlace_img =  "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[0].id_imagen+"_miniatura.jpg";
   $("#gallery").find("img").attr("src",enlace_img);
   //Por cada indice del array creamos la imagen de la galeria
-	$(".Gmodal-content img.GmySlides, div.GmyDescr").remove();
+  $(".Gmodal-content img.GmySlides, div.GmyDescr").remove();
+  $("#figure_modal_img").empty();
   for(var i=0;i<resultado.length;i++){
 		console.log(resultado[i].texto_imagen);
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
-		$(".Gmodal-content").append("<img class='GmySlides' src='"+enlace+"' style='width:100%' textoImagen='"+resultado[i].texto_imagen+"'>");
-    $(".Gmodal-content").append("<div class='GmyDescr' id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'>"+resultado[i].texto_imagen+"</div>");
+    $("#figure_modal_img").append("<img class='GmySlides' src='"+enlace+"' textoImagen='"+resultado[i].texto_imagen+"'>");
+    $("#figure_modal_img").append("<figcaption class='GmyDescr' id='textoImagenGaleria'>"+resultado[i].texto_imagen+"</figcaption>");
   }
-   // $(".Gmodal-content").append("<div id='textoImagenGaleria' style='text-align: center; color: #444444; padding: 15px'>"+resultado[i].texto_imagen+"</div>");
 
   //Si tiene un pdf asociado, mostramos el boton "ver mas"
   if(resultado[0].documento_url!="ninguno"){
@@ -573,6 +635,7 @@ peticion.done(function(datos){
   //Poner el indice
   var slideIndex = 1;
   showSlides(slideIndex);  
+  
 });
     
   $('.modal-visita').css('display','block');
@@ -586,7 +649,7 @@ peticion.done(function(datos){
     $('.modal-visita').css('display','none');
   });
 } //fin function panelInformacion()
-  
+
 /*
  * Metodo que activa la ventana modal de las escaleras al clickar en un hotspot de tipo escalera. 
  */
@@ -612,7 +675,6 @@ function escaleras(){
     
   window.onclick = function(event) {
     if ($(event.target).hasClass("modalEscaleras")) {
-      //$("#myModal").css("display","none");
       $("#ocultar").css("display","none");
     }
   } 
@@ -625,6 +687,8 @@ document.getElementById('fullscreen').addEventListener('click', function(e) {
 function openModal() {
     $("#GmyModal").show();
     currentSlide(1);
+    //Seleccionamos las imagenes en las que queremos poder hacer zoom 
+    wheelzoom(document.querySelectorAll('.GmySlides'));
 }
 
 function closeModal() {
@@ -633,6 +697,13 @@ function closeModal() {
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
+  var imgs = document.querySelectorAll(".GmySlides");
+			for (var i = 0; i < imgs.length; i++) {
+				// Eliminamos el zoom de las imagnes
+        document.querySelectorAll('.GmySlides')[i].dispatchEvent(new CustomEvent('wheelzoom.destroy'));
+  }
+  //Seleccionamos las imagenes en las que queremos poder hacer zoom 
+  wheelzoom(document.querySelectorAll('.GmySlides'));
 }
 
 function currentSlide(n) {
@@ -656,8 +727,7 @@ function showSlides(n) {
       descr[i].style.display = "none";
   }
   descr[slideIndex-1].style.display = "block";
-  
-  
+
 
 }
   //Si le das click fuera de la ventana quitarlo.
