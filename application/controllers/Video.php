@@ -56,9 +56,9 @@ class Video extends CI_Controller {
         $res = $this->Vidm->insertarvideo($desc, $url);
 
         if($res){
-            echo"<script>alert('insercion correcta');</script>";
+           $datos['mensaje'] = "Vídeo insertado con éxito";
         }else{
-            echo"<script>alert('insercion incorrecta');</script>";
+			$datos['error'] = "Error al insertar vídeos";
          }
         }
 		//preparamos un array con los datos que contiene esa tabla de videos y se los mandamos ala vida para ser visualizados en pantalla
