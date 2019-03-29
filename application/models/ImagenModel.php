@@ -48,7 +48,7 @@ class ImagenModel extends CI_Model {
         // Extraemos la info. de la imagen del POST del formulario
         $id_imagen = $this->input->post_get('id_imagen');
         $titulo_imagen = $this->input->post_get('titulo_imagen');
-        $texto_imagen = $this->input->post_get('texto_imagen');
+        $texto_imagen = $this->input->post_get('texto_imagen', FALSE);
         $fecha = $this->input->post_get('fecha');
 
         // Ahora vamos a subir el archivo de imagen. Como puede haber varios, lo hacemos en un bucle.

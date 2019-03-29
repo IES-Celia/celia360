@@ -292,6 +292,10 @@ var quillMod = new Quill('#editor-modificar', {
             return this.container.firstChild.innerHTML;
         };
 
+		Quill.prototype.setHtml = function(data) {
+            return this.container.firstChild.innerHTML =  data;
+        };
+
         quill.on('text-change',function(a,b,c){
             document.getElementById('texto_imagen').value = quill.getHtml();
         });
@@ -332,7 +336,7 @@ var quillMod = new Quill('#editor-modificar', {
      
 
             titulo = $("#imagen-" + id).find(".titulo-img").text();
-            texto = $("#imagen-" + id).find(".texto-img").text();
+            texto = $("#imagen-" + id).find(".texto-img").html();
             fecha = $("#imagen-" + id).find(".fecha-img").text();
             url = $("#imagen-" + id).find(".url-img").text();
             nombre = $("#imagen-" + id).find(".nombre-img").text();
@@ -340,7 +344,7 @@ var quillMod = new Quill('#editor-modificar', {
            
 
             $("#titulo_modificar").val(titulo);
-            quillMod.setText(texto);
+            quillMod.setHtml(texto);
             $("#fecha_modificar").val(fecha);
             $("#url_modificar").val(url);
             $("#foto_modificar").attr("src", imagen); //la imagen
