@@ -25,6 +25,10 @@
         width: 20px;
         height: 20px;
     }
+
+	#editor-modificar {
+		color: black;
+	}
     
 </style>
 <div class="container">
@@ -144,7 +148,11 @@ $du = $lista_imagenes[0];
         </div>
         <div class='form-group'>
         <label for='descripcion'> Descripción: </label>
-        <input type='text' class='form-control' id='texto_imagen_modificar' name='descripcion' value=''>
+		<input type='hidden' id='texto_modificar' value='' name='texto_imagen'>
+		<div id="editor-modificar">
+
+		</div>
+
         </div>
         <div class='form-group'>
         <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
@@ -163,7 +171,7 @@ $du = $lista_imagenes[0];
                     <div id='nombre-archivo-imagen' class='text-center'></div>
                 </div>
             </div>
-            <input type='submit' name='actualizar' class='btn-success float-right' value='Aceptar'>
+            <input type='submit' name='actualizar' class='btn - btn-success float-right' value='Aceptar'>
         
       </div>
       </form>
@@ -204,8 +212,10 @@ $du = $lista_imagenes[0];
             <input type="text" class='form-control' name='titulo_imagen' placeholder="Introduzca el t&iacute;tulo" required><br />
             <label for="texto_imagen">Descripción:</label>
            
-            <textarea id="texto_imagen" name='texto_imagen'  class='form-control'
-                placeholder="Introduzca la descripci&oacute;n de la imagen"></textarea>
+            <input type='hidden' id='texto_imagen' value='' name='texto_imagen'>
+			<div id='editor'>
+				
+				</div>
             <label for="fecha">Fecha:</label>
             <input type="date" class='form-control' id="fecha" name='fecha' placeholder="Introduzca la fecha"
                 value="<?php //echo date("Y-m-d"); ?>" required><br /> 
@@ -230,6 +240,68 @@ $du = $lista_imagenes[0];
 
             
 <script>
+
+
+var quill = new Quill('#editor', {
+            modules: {
+        toolbar: [
+           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+           ['blockquote', 'code-block', 'link'],
+
+           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+           [{ 'direction': 'rtl' }],                         // text direction
+
+           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+           [{ 'font': [] }],
+           [{ 'align': [] }],
+
+           ['clean']                                         // remove formatting button
+       ]
+    },
+  theme: 'snow'
+});
+
+
+
+var quillMod = new Quill('#editor-modificar', {
+            modules: {
+        toolbar: [
+           ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+           ['blockquote', 'code-block', 'link'],
+
+           [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+           [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+           [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+           [{ 'direction': 'rtl' }],                         // text direction
+
+           [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+           [{ 'font': [] }],
+           [{ 'align': [] }],
+
+           ['clean']                                         // remove formatting button
+       ]
+    },
+  theme: 'snow'
+});
+
+        Quill.prototype.getHtml = function() {
+            return this.container.firstChild.innerHTML;
+        };
+
+        quill.on('text-change',function(a,b,c){
+            document.getElementById('texto_imagen').value = quill.getHtml();
+        });
+
+		quillMod.on('text-change',function(a,b,c){
+            document.getElementById('texto_modificar').value = quillMod.getHtml();
+        });
+
+
+
     function borrar_imagen(id_imagen) {
         if (confirm("¿Estás seguro?")) {
             $.get("<?php echo site_url('imagen/borrar_imagen/'); ?>" + id_imagen, null, respuesta);
@@ -268,7 +340,7 @@ $du = $lista_imagenes[0];
            
 
             $("#titulo_modificar").val(titulo);
-            $("#texto_imagen_modificar").val(texto);
+            quillMod.setText(texto);
             $("#fecha_modificar").val(fecha);
             $("#url_modificar").val(url);
             $("#foto_modificar").attr("src", imagen); //la imagen
@@ -304,4 +376,9 @@ $du = $lista_imagenes[0];
 
     
 </script>
+
+<script>
+
+
+	  </script>
 </div>
