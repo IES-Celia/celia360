@@ -82,7 +82,6 @@
 <?php
     $color = $portada[9]['opcion_valor'];
     $fuente = $portada[8]['opcion_valor'];
-    $text_historia = $portada[13]['opcion_valor'];
     $titulo_web = $portada[0]['opcion_valor'];
     $show_historia = $portada[7]['opcion_valor'];
 ?>
@@ -134,7 +133,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <?php echo $text_historia; ?>
+        <?php if(isset($portada[13]['opcion_valor'])) echo $portada[13]['opcion_valor']; ?>
       </div>
     </div>
   </div>
