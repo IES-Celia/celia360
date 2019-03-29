@@ -171,10 +171,19 @@
               <input type="file" class="form-control-file" name="nueva_imagen_mapa" aria-describedby="fileHelpId">
             </div>
             <button type="submit" class="btn btn-primary mb-3">Enviar</button>
-            </form>  
+            </form>
+
+            <!-- PERSONA DE DOCUMENTACION --> 
+            <div class="form-group">
+              <label for=""><h4>Persona de la Documentación</h4></label>
+              <textarea rows="4" cols="50"> </textarea> 
+            </div>  
         </div>
+       
     </div>
+    
 </div>
+
 <script>
         var quill = new Quill('#editor', {
             modules: {

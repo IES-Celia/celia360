@@ -14,7 +14,7 @@ class Mapa extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template',$datos);
     } 
-  
+    // Permite editar las zonas del mapa
     public function editar_zona(){
         $this->mapa->editar_zona();
         $datos["mapa"] = $this->mapa->cargar_mapa();
@@ -23,7 +23,7 @@ class Mapa extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template',$datos);
     }
-
+    //Creación de zonas 
     public function crear_zona(){
         $this->mapa->crear_zona();
         $datos["mapa"] = $this->mapa->cargar_mapa();
@@ -47,7 +47,7 @@ class Mapa extends CI_Controller {
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view('admin_template',$datos);
     }
-
+        // mensaje de configuración 
     public function update_config(){
         if($this->mapa->update_config()==0)
             $datos["error"] = "No se ha modificado la configuración";
@@ -62,6 +62,7 @@ class Mapa extends CI_Controller {
         $this->load->view('admin_template',$datos);
         
     }
+    //actulización de puntos en el mapa 
     public function update_punto(){
         $id = $this->input->post("id_punto");
         $left =  $this->input->post("left");
@@ -75,7 +76,7 @@ class Mapa extends CI_Controller {
            echo "2";
         }
 	}
-	
+	//actulización de ascensor
 	public function updateAscensor(){
 		$idPunto = $this->input->get_post('punto');
 		$idEscena = $this->input->get_post('escena');

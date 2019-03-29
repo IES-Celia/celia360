@@ -28,6 +28,15 @@ $(document).ready(function(){
         background-image:none !important;
     }
     .list-group-item{border: 1px solid black !important ;}
+
+    a[href=""] img{
+       opacity: 0.2   
+        }
+        a[href=""]{
+            pointer-events: none;
+        cursor: default;        
+        }
+
 </style>
 
 <div class='container'>
@@ -147,6 +156,8 @@ $(document).ready(function(){
             </ul>
         </div>
     </div>
+
+    <!-- COLABORADORES -->
     <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
             <h2 class="text-center">Colaboradores</h2>
@@ -165,6 +176,7 @@ $(document).ready(function(){
             </ul>
         </div>
     </div>
+       <!-- FIN COLABORADORES -->
 </div><!-- FINAL DE CONTAINER -->
 
 <!-- 	
