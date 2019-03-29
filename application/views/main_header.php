@@ -7,8 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="<?php echo $portada[14]["opcion_valor"];?>"/> 
-<title><?php echo $portada[15]["opcion_valor"];?> - Celia Tour</title>
+<meta name='description' content='<?php $variable = (isset($portada[14]["opcion_valor"])) ? "echo $portada[14]['opcion_valor'];" : "Celia Tour" ?>' /> 
+<title>
+    <?php $variable = (isset($portada[15]["opcion_valor"])) ? "echo $portada[15]['opcion_valor'];" : "Celia Tour" ?>
+</title>
 
 <script>
 // Prepara las varibales JS para el mapa (si están presentes)
