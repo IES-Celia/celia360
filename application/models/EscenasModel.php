@@ -225,7 +225,7 @@ class EscenasModel extends CI_Model {
         $this->load->library('upload', $config);
 
         $res_upload = $this->upload->do_upload('panorama');
-        
+
         if ($res_upload) {
             // Nueva imagen subida con éxito. Vamos a redimensionarla a 4000 px para evitar problemas con Mozilla
             if ($this->upload->data()["image_width"] > 4000) {
@@ -244,6 +244,7 @@ class EscenasModel extends CI_Model {
         } else {
             // Ha fallado el upload de la imagen
             $resultado = 1;  // Marca de error en upload
+            echo $this->upload->display_errors();
         }
 
 
@@ -261,12 +262,17 @@ class EscenasModel extends CI_Model {
         if ($res_upload) {
             $update = $update . ", panorama = 'assets/imagenes/escenas/$nombre_fichero'";
         }
-        $update = $update . "WHERE id_escena = '$id'";
+        $update = $update . " WHERE id_escena = '$id'";
+
+        echo $update;
+
+
 
         // Lanzamos el update de la base de datos
         $this->db->query($update);
         if ($this->db->affected_rows() == 0 && !$res_upload) {
             $resultado = 2;     // Marca de error en actualización de la BD
+            echo $this->upload->display_errors();
         }
 
         return $resultado;

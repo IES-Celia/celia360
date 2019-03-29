@@ -64,6 +64,15 @@
             echo"<form action='".site_url("tour/modificar_portada")."' method='post' enctype='multipart/form-data'>";
             ?>
             <div class="form-group">
+              <label for=""><h4>Meta titulo:</h4></label>
+              <input type='text' class='form-control' name='meta_titulo' value='<?php echo $opcionesPortada[15]['opcion_valor'];?>'>
+            </div>
+            <div class="form-group">
+              <label for=""><h4>Meta descripción :</h4></label>
+              <textarea maxlength="120" class="form-control" name="meta_descripcion" id="" rows="3"><?php echo $opcionesPortada[14]['opcion_valor'];?></textarea>
+            </div>
+            <hr>
+            <div class="form-group">
               <label for=""><h4>Imagen de icono</h4></label>
               <div class="m-3">
                 <img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[10]['opcion_valor'];?>' width='100'>

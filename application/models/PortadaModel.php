@@ -40,6 +40,8 @@
             $nombre_fuente = $this->input->get_post("nombre_fuente");
             $ascensor_mapa = $this->input->get_post("ascensor_mapa");
             $text_historia = $this->input->post_get("texto_panel_historia",FALSE);
+            $meta_descripcion = $this->input->post_get("meta_descripcion");
+            $meta_titulo = $this->input->post_get("meta_titulo");
 
             $contador_update = 0; //Contador del total de Update que se han realizado correctamente
 
@@ -92,6 +94,30 @@
                 'id_opcion' => '13',
                 'opcion' => 'text_historia',
                 'opcion_valor' => $text_historia
+            );
+        
+            $this->db->insert('opciones_portada', $data);
+
+            /*Por cuestiones de compatibilidad con antiguas versiones, realizamos un delete y despues un insert*/
+            $this->db->where('id_opcion', '14');
+            $this->db->delete('opciones_portada');
+
+            $data = array(
+                'id_opcion' => '14',
+                'opcion' => 'meta_descripcion',
+                'opcion_valor' => $meta_descripcion
+            );
+        
+            $this->db->insert('opciones_portada', $data);
+
+            /*Por cuestiones de compatibilidad con antiguas versiones, realizamos un delete y despues un insert*/
+            $this->db->where('id_opcion', '15');
+            $this->db->delete('opciones_portada');
+
+            $data = array(
+                'id_opcion' => '15',
+                'opcion' => 'meta_titulo',
+                'opcion_valor' => $meta_titulo
             );
         
             $this->db->insert('opciones_portada', $data);
