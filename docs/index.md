@@ -14,17 +14,20 @@ Este documento constituye la guía del usuario de la aplicación web Celia 360. 
 
 # Qué es Celia 360
 
-Celia360, también conocido como CeliaTour, es una aplicación web creada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web del IES Celia Viñas de Almería durante el año académico 2017/2018 bajo la dirección de los profesores D. Félix Expósito, D. Alfredo Moreno y D. José Barranquero. El alumnado autor del proyecto es, por orden alfabético:
+Celia360, también conocido como CeliaTour, es una aplicación web creada por el alumnado de 2º curso del Ciclo Formativo de Desarrollo de Aplicaciones Web del IES Celia Viñas de Almería durante los años académicos 2017/2018 y 2018/2019 bajo la dirección de los profesores D. Félix Expósito, D. Alfredo Moreno, D. José Barranquero, D. Alejandro Ramallo y D. Manuel Piñero. El alumnado autor del proyecto es, por orden alfabético:
 - Benhachmi, Hamza
-- Expósito, Marc
-- González, Manuel
-- Linares, Francisco Miguel
-- López, Alejandro
+- Expósito Miras, Marc
+- González Mesa, Manuel
+- Linares González, Francisco Miguel
+- López López, Alejandro
 - López Rodríguez, Miguel Ángel
 - Lopez Segura, Miguel Ángel
-- Ramírez, José Luis
-- Salmerón, María Dolores
-- Sánchez, Álvaro
+- Mora Cáceres, David
+- Ramírez Jiménez, José Luis
+- Ramón Casanova, David
+- Salmerón Sierra, María Dolores
+- Sánchez Casares, Álvaro
+- Sánchez Gil, Daniel
 - Sniurevicius, Zygimantas
 
 Celia360/CeliaTour es una aplicación diseñada para crear recorridos virtuales a partir de fotografías panorámicas de 360º. 
@@ -36,7 +39,7 @@ Podemos crear puntos de interés (hotspots) dentro de las fotografías panorámi
 * Audios: audiodescripciones de ese lugar.
 * Vídeos: vídeos relativos a ese lugar.
 * Enlaces: puntos de salto de una escena a otra para crear el recorrido virtual.
-* Escalera: puntos de selección de los distintos planos, para saltar de una planta a otra del mismo edificio, por ejemplo.
+* Escalera o ascensor: puntos de selección de los distintos planos, para saltar de una planta a otra del mismo edificio, por ejemplo.
 
 La aplicación no se limita a eso, sino que además permite crear una visita guiada que traslade al visitante automáticamente a través de los lugares más destacados del tour virtual, acompañado de una audiodescripción. Existe un tercer tipo de visita, la de puntos destacados, donde usted podrá seleccionar algunos lugares importantes de su visita que se mostrarán en una sola pantalla mediante un mosaico para que el usuario pueda elegir a dónde quiere ir.
 
@@ -51,9 +54,9 @@ La instalación de Celia360 implica el despliegue de la aplicación web en un se
 
 Los requerimientos de la aplicación son:
 
-* Un servidor web son soporte para PHP 5.5 o superior.
+* Un servidor web son soporte para PHP 5.5 o superior. Se recomienda PHP 7.x
 * Un servidor MySQL 5.5 o MariaDB 10 o superior.
-* Una conexión FTP con su servidor.
+* Una conexión FTP con su servidor o alguna otra forma para acceder remotamente a los archivos de su servidor.
 
 Los pasos generales para la instalación son los siguientes:
 
@@ -62,7 +65,7 @@ Los pasos generales para la instalación son los siguientes:
 3. Ejecute el script `install.php` ubicado en el directorio raíz de su instalación. Si, por ejemplo, ha desplegado el código en un directorio llamado mi-tour dentro de un servidor llamado mi-servidor.com, puede lanzar el script escribiendo en su navegador web: `http://mi-servidor.com/mi-tour/install.php`
 4. Siga las instrucciones de la instalación. El programa de instalación creará las tablas necesarias en la base de datos y las dotará del contenido mínimo imprescindible para que la aplicación funcione. En particular, creará un usuario superadministrador para el panel de administración de la aplicación. Se le pedirá que introduzca un nombre de usuario y una contraseña para ese usuario. Ni que decir tiene que si ese usuario y contraseña caen en malas manos, la integridad completa de su aplicación podría verse comprometida.
 5. El programa de instalación tratará de crear un archivo de configuración, pero este paso podría fallar por un gran número de razones que dependen de la configuración de su servidor. Si es así, el programa de instalación le informará de ello y le explicará qué archivo de configuración debe crear, dónde debe crearlo y cuál debe ser su contenido. Puede usar su conexión FTP para lograrlo. Si todo va bien, el programa de instalación se encargará de este paso y usted no tendrá que hacer nada.
-6. Por último, y por motivos de seguridad, debería eliminar el script de instalación (`install.php`) de su servidor. Puede usar su conexión FTP para ello. Este paso no es imprescindible para que la aplicación funcione, pero sí muy recomendable.
+6. Por último, y por motivos de seguridad, debería eliminar el script de instalación (`install.php`) de su servidor. Puede usar su conexión FTP para ello o la utilidad de administración de archivos que le proporcione su servidor. Este paso no es imprescindible para que la aplicación funcione, pero sí muy recomendable.
 
 Cuando la instalación haya terminado, su tour virtual estará listo para usarse en su servidor. Ahora ha llegado el momento de cargar todos los datos necesarios en la aplicación para construir su tour virtual. En las siguientes secciones de este manual le daremos las orientaciones necesarias para lograrlo.
 
@@ -86,7 +89,7 @@ Las cuatro opciones de la visita virtual son:
 
 ![](imgs/03-01.jpg)
 
-Además, observe que en el centro de la pantalla aparece un botón etiquetado como "Historia". Esto da acceso directo a un subconjunto de los libros de su biblioteca. Está pensado para que incluya aquí los libros o documentos que se refieran a la historia del edificio o lugar cuya visita está virtualizando. No obstante, si usted no desea hacer uso de esta posibilidad, podrá ocultar tanto el botón "Historia" como la opción "Biblioteca" del menú principal.
+Además, en el centro de la pantalla puede aparecer un botón etiquetado como "Acerca de este tour virtual". Esto da acceso a un texto explicativo del contenido y propósito del tour virtual para que los visitantes sepan de qué trata. Si usted no desea hacer uso de esta posibilidad, podrá ocultar tanto el botón "Acerca de" como la opción "Biblioteca" del menú principal.
 
 En cuanto al **panel de administración**, es la parte de la aplicación proporciona todas las funcionalidades para crear los mapas, subir las imágenes 360º, así como otras imágenes, audios y vídeos, y relacionarlos todos entre sí para componer nuestra visita virtual. También podemos crear la biblioteca online y personalizar el homepage de la aplicación.
 
@@ -102,12 +105,12 @@ La operativa general para comenzar a trabajar con una instalación limpia, una v
 
 1. Entre en el panel de administración escribiendo en su navegador la dirección http://mi-servidor.com/mi-aplicacion/usuario, donde "mi-servidor.com" es el host donde tiene usted instalada su aplicación y "mi-aplicacion" es el directorio donde ha efectuado el despliegue del código. Si desconoce estos datos, póngase en contacto con su administrador de sistemas.
 2. Teclee su nombre de usuario y contraseña de administrador. Un usuario administrador se habrá creado durante el proceso de instalación. Si la instalación la realizó su administrador de sistemas, consúltele a él su nombre de usuario y contraseña.
-3. El panel de administración se abrirá en el administrador de escenas. En primer lugar, tiene que crear sus mapas. Haga clic en "Admin. Mapa" y cree al menos una zona del mapa. Si no sabe hacer esto, consulte [la sección 4](#mapa) de este manual.
-4. Cuando haya finalizado con la administración del mapa, pulse "Volver atrás" para regresar a la administración de escenas.
-5. Haga clic en la zona del mapa donde quiera asignar una fotografía panorámica 360º para crearla. Si tiene problemas con esto, consulte [la sección 5](#escenas) de este manual.
-6. Cuando haya subido todas las fotografías panorámicas, debe conectarlas unas con otras para crear el contenido. Debe entrar en cada escena y crear al menos un hotspot de tipo "enlace" en cada uno de ellos. Para más detalles sobre cómo hacer esto, consulte [la sección 7.1](#enlace) de este manual.
+3. El panel de administración se abrirá en el administrador de escenas. En primer lugar, tiene que crear sus mapas. Haga clic en "Añadir Mapa", que será, de momento, la única opción disponible en esta sección, y cree al menos una zona del mapa. Si no sabe hacer esto, consulte [la sección 4](#mapa) de este manual. Cuando haya finalizado con la administración del mapa, pulse "Volver atrás" para regresar a la administración de escenas.
+4. Haga clic en la zona del mapa donde quiera asignar una fotografía panorámica 360º, que nosotros denominaremos "escena". Si tiene problemas con esto, consulte [la sección 5](#escenas) de este manual.
+5. Cuando haya subido todas las fotografías panorámicas (escenas), debe conectarlas unas con otras para crear el contenido. Entre en cada escena y cree al menos un hotspot de tipo "enlace" en cada una de ellas. Para más detalles sobre cómo hacer esto, consulte [la sección 7.1](#enlace) de este manual.
+6. No olvide indicar a la aplicación cuál debe ser la escena inicial por la que debe comenzar su recorrido. Para aprender a hacer esto, consulte [la sección 4](#mapa) de este manual.
 
-Cuando haya terminado este proceso ya tendrá una primera versión funcional de su tour virtual. Podrá realizar con ella una visita libre por las escenas que haya subido. Su plataforma está ahora lista para crear hotspots (puntos de interés) dentro de sus escenas, así como para subir audiodescripciones y crear una visita guiada o una visita de puntos destacados. Su visita virtual podrá crecer tanto como usted desee, utilizando como base las escenas 360º entrelazadas que usted acaba de crear. Le explicaremos cómo lograr todo esto en las siguientes secciones.
+Cuando haya terminado este proceso ya tendrá una primera versión funcional de su tour virtual. Podrá realizar con ella una visita libre por las escenas que haya subido. Su plataforma está ahora lista para crear hotspots (puntos de interés) dentro de sus escenas, así como para subir audiodescripciones y crear una visita guiada o una visita de puntos destacados. Su visita virtual podrá crecer tanto como usted desee, utilizando como base las escenas 360º entrelazadas que usted acaba de crear, o añadiendo escenas adicionales en cualquier momento. Le explicaremos cómo lograr todo esto en las siguientes secciones.
 
 # Crear el mapa
 <a name="mapa"></a>
@@ -128,17 +131,27 @@ Deberá teclear un nombre de usuario y una contraseña válidos para acceder a l
 
 ![](imgs/04-02.jpg)
 
-Haga clic en el botón "Admin. Mapa" para acceder a las siguientes opciones de administración del mapa:
+Si está trabajando con una instalación nueva, al hacer clic en "Añadir mapa" encontrará una pantalla como esta:
 
 ![](imgs/04-03.jpg)
 
+En cambio, si ya ha dado de alta al menos una zona en su mapa, al hacer clic en "Admin. Mapa" podrá acceder a las opciones completas de administración del mapa:
+
+![](imgs/04-03d.jpg)
+
 Las opciones de administración del mapa son las siguientes:
 
-* **Añadir zona**: permite añadir un plano sobre el que posteriormente podrá desplazarse para diseñar su recorrido virtual. Por ejemplo, si quiere crear un recorrido virtual para un edificio, una zona podría ser cada una de las plantas del mismo, y deberá proporcionar al sistema un plano de cada una de las plantas por separado. Si, en cambio, está creando una visita virtual a, por ejemplo, el casco histórico de una ciudad, cada zona puede ser una parte diferente del callejero del mismo. Organice sus zonas antes de entrar en esta opción de la aplicación y asígneles un número de orden: eso le ayudará a no perderse si su tour virtual tiene muchas zonas. Necesitará, como mínimo, una zona (y, por lo tanto, un plano) para poder diseñar el tour virtual. No hay límite máximo en cuanto al número de zonas que puede utilizar.
-* **Editar zona**: permite cambiar una zona que ya existe. Podrá tanto cambiar su posición dentro del recorrido como modificar la imagen del plano.
+* **Subir zona / Bajar zona**: cambia la zona que actualmente se está visualizando en la pantalla. Por ejemplo, si su recorrido virtual se centra en las diferentes plantas de un edificio, puede asignar la zona 0 a la planta baja y la zona 1 a la primera planta, y, con estas opciones, puede cambiar la zona activa sobre la que actuarán el resto de opciones de este menú.
+* **Editar zona**: permite modificar la zona activa. Podrá cambiar tanto su posición dentro del recorrido como modificar la imagen del plano.
+* **Añadir zona**: permite añadir un plano al que posteriormente podrá añadir escenas panorámicas. Por ejemplo, si quiere crear un recorrido virtual para un edificio, una zona podría ser cada una de las plantas del mismo, y deberá proporcionar al sistema un plano de cada una de las plantas por separado. Si, en cambio, está creando una visita virtual a, por ejemplo, el casco histórico de una ciudad, cada zona puede ser una parte diferente del callejero del mismo. Organice sus zonas antes de entrar en esta opción de la aplicación y asígneles un número de orden: eso le ayudará a no perderse si su tour virtual tiene muchas zonas. Necesitará, como mínimo, una zona (y, por lo tanto, un plano) para poder diseñar el tour virtual. No hay límite máximo en cuanto al número de zonas que puede utilizar.
+
+![](imgs/04-03c.jpg)
+
 * **Eliminar zona**: borra la zona que actualmente se esté visualizando en la pantalla.
-* **Subir zona / Bajar zona**: cambia la zona que actualmente se está visualizando en la pantalla.
-* **Config. general**: le permite seleccionar cuál será su primera zona, es decir, por dónde desea que comience la visita libre. Si su tour virtual solo tiene una zona, deberá seleccionarla aquí. Si tiene varias, podrá elegir la que quiere marcar como inicial.
+* **Mover escenas**: le permite desplazar las escenas de esa zona arrastrando y soltando con el ratón.
+* **Config. general**: le permite seleccionar cuál será su primera zona, es decir, por dónde desea que comience la visita libre. Si su tour virtual solo tiene una zona, deberá seleccionarla aquí. Si tiene varias, podrá elegir la que quiere marcar como inicial. Y, dentro de la zona elegida, es imprescindible que indique cuál será la escena de entrada de su visita libre (véase siguiente imagen). Esa escena aparecerá marcada con un círculo rojo. Si desea cambiarla, haga clic en el punto correspondiente a otra escena. Se coloreará en amarillo. Haga clic en "Modificar" para guardar los cambios.
+
+![](imgs/04-03b.jpg)
 
 En una instalación nueva de la aplicación no existirá ningún mapa. Lo primero que debe hacer, por lo tanto, es crear uno haciendo clic en el botón "Añadir zona". Asigne un nombre a la zona (por ejemplo, "Planta baja" si se trata de un edificio y ha empezado por esa planta). Asígnele un número de orden (típicamente "0" o "1") y seleccione el archivo de imagen donde tiene el plano de esa planta almacenado. Le aconsejamos que el fondo del plano sea de color negro y las líneas blancas, pero esto es una cuestión estética que no afecta a la funcionalidad de la aplicación. Necesitará conocer los rudimentos de la edición de imágenes con programas como Photoshop o Gimp para cambiar los colores de las imágenes.
 
@@ -173,21 +186,50 @@ La imagen se subirá y quedará asignada al punto del mapa donde usted haya hech
 
 Repita el proceso con el resto de fotografías 360 que haya realizado para su recorrido virtual. Sea cuidadoso en este proceso, porque constituye el esqueleto de su visita virtual y, si dispone de muchas fotografías, es fácil confundirlas unas con otras. En ese sentido, volvemos a insistir en la importancia de haberlas organizado previamente mediante nombres significativos que usted pueda reconocer bien.
 
-Si comete algún error al subir una fotografía (por ejemplo, si se confunde con el nombre de la zona o si hace clic en el lugar equivocado del mapa), no se preocupe. Puede modificar cualquier escena existente haciendo clic *con el botón derecho* encima de un punto blanco que la representa en el mapa. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición. Para cambiar el lugar del mapa donde la escena se posiciona, debe eliminarla por completo y volver a crearla en el lugar correcto. 
-
-Esto también es necesario para cambiar el punto de vista por defecto asignado a cada escena. Las fotografías panorámicas 360 se crearán con un punto de vista por defecto, pero puede que usted desee cambiarlo. Este punto de vista es el lugar hacia donde "mira la cámara" al visualizar esa escena y se describe mediante dos coordenadas denominadas "Pitch" y "Yaw". Si necesita cambiarlas, puede hacerlo también desde la pantalla de modificación de escenas, haciendo clic en el botón "Modificar pitch y yaw". Eso le mostrará una previsualización de la escena en la que podrá señeccionar el nuevo pitch y yaw haciendo clic con el botón derecho del ratón sobre la escena cuando haya conseguido el punto de vista que deseaba.
+Puede modificar cualquier escena existente haciendo clic *con el botón derecho* encima de un punto blanco que la representa en el mapa. Accederá así a una pantalla como la siguiente en la que podrá modificar cualquier aspecto de la escena, excepto su posición (para cambiar el lugar del mapa donde la escena se posiciona, puede entrar en la opción "Admin. mapa", subopción "Mover escenas". Así podrá arrastrar y soltar las escenas y posicionarlas en otro lugar). 
 
 ![](imgs/05-03.jpg)
 
-Observe, además, que desde este mismo formulario puede eliminar la escena si necesita hacerlo. Esto eliminará también el archivo subido al servidor, así como cualquier hotspot que exista asociado a la misma. Como es una opción destructiva cuyo efecto no se puede deshacer, debería estar seguro de que desea eliminar esa escena antes de proceder a ello.
+Las opciones disponibles en esta pantalla de modificación de escenas son:
+* **Nombre de la escena**: permite asignar un nombre descriptivo a la escena.
+* **Panorama**: aquí puede cambiar la imagen 360 asociada a esta escena.
+* **Imágenes secundarias**: le permite asignar una o varias imágenes 360 adicionales a la misma escena. Esta funcionalidad se describe en [esta seccion](#imagenessecundarias).
+* **Modificar pitch y yaw**: sirve para cambiar el punto de vista por defecto asignado a cada escena. Las fotografías panorámicas 360 se crearán con un punto de vista por defecto, pero puede que usted desee cambiarlo. Este punto de vista es el lugar hacia donde "mira la cámara" al visualizar esa escena y se describe mediante dos coordenadas denominadas "Pitch" y "Yaw". Si necesita cambiarlas, haga clic en este botón. Eso le mostrará una previsualización de la escena en la que podrá señeccionar el nuevo pitch y yaw haciendo clic *con el botón derecho* del ratón sobre la escena cuando haya conseguido el punto de vista que deseaba.
+* **Eliminar escena**: eliminará la escena actual. Esto borrará también el archivo subido al servidor, así como cualquier hotspot que exista asociado a esta escena. Como es una opción destructiva cuyo efecto no se puede deshacer, debería estar seguro de que desea eliminar esa escena antes de proceder a ello.
 
-Si su visita virtual dispone de varias zonas (varios planos), puede cambiar de uno a otro con los botones "Subir zona" y "Bajar zona" para crear las escenas en el plano adecuado.
+Si su visita virtual dispone de varias zonas (varios planos), desde la administración de escenas puede cambiar de uno a otro con los botones "Subir zona" y "Bajar zona" para crear las escenas en el plano adecuado.
 
-Repita el proceso hasta que haya subido todas las fotografías. Si hace clic con el boton izquierdo en cualquiera de las escenas creadas (es decir, en cualquiera de los puntos blancos del mapa) podrá ver una previsualización de cada escena tal y como la verán sus visitantes cuando el tour virtual esté listo. Haga clic en el icono superior izquierdo para regresar a la administración de escenas.
+Repita el proceso hasta que haya subido todas las fotografías. Si hace clic con el botón izquierdo en cualquiera de las escenas creadas (es decir, en cualquiera de los puntos blancos del mapa) podrá ver una previsualización de cada escena tal y como la verán sus visitantes cuando el tour virtual esté listo. Haga clic en el icono superior izquierdo para regresar a la administración de escenas.
 
 No es imprescindible que suba todas sus fotografías de una vez. Puede crear una parte del recorrido y más adelante volver a esta sección para crear el resto.
 
-Cuando haya terminado de subir sus fotografías 360, llega el momento de conectarlas entre sí para poder navegar de una a otra y crear así el recorrido virtual para sus visitantes. También puede crear puntos de interés (hotspots) dentro de cada una de las fotografías panorámicas. De todo ello hablaremos en las siguientes secciones.
+Cuando haya terminado de subir sus fotografías 360, ha llegado el momento de conectarlas entre sí para poder navegar de una a otra y crear así el recorrido virtual para sus visitantes. También puede crear puntos de interés (hotspots) dentro de cada una de las fotografías panorámicas. De todo ello hablaremos en las siguientes secciones. Pero, antes, expondremos qué son y cómo se crean las escenas con imágenes secundarias.
+
+## Escenas con imágenes secundarias
+<a name="imagenessecundarias"></a>
+Las escenas con imágenes secundarias permiten tener fotografías 360 adicionales asociadas a las escenas que usted desee.
+
+Por ejemplo, si su visita virtual está ubicada en un edificio y un día se celebra en una de sus estancias una exposición, puede tomar fotografías 360 de esa exposición. Si tiene la precaución de tomar estas nuevas fotografías en los mismos puntos y con la misma orientación que la fotografías previas de esa estancia, podrá ofrecer a sus visitantes el panorama 360 de la estancia con su aspecto habitual, pero también con el aspecto que tenía durante la exposición.
+
+A estos panoramas alternativos los denominamos "panoramas secundarios" o "escenas con imágenes secundarias". Cada escena de su tour virtual puede tener tantos panoramas secunarios como usted desee.
+
+Para asociar panoramas secundarios a una escena existente, solo tiene que hacer clic *con el botón derecho* sobre el punto que simboliza la escena en su mapa. Eso le dará acceso al formulario de modificación de escenas:
+
+![](imgs/05-03.jpg)
+
+Haga clic en "Imágenes secundarias" para acceder al panel de administración de imágenes secundarias, que tiene este aspecto cuando no existe ninguna imagen secundaria asociada a esta escena:
+
+![](imgs/05-04.jpg)
+
+Si hace clic en el botón "Nueva imagen", puede subir su panorama 360 secundario a través de este formulario (observe que puede subir varios panoramas de una sola vez):
+
+![](imgs/05-05.jpg)
+
+Una vez subida la imagen secundaria, se reflejará en su panel de administración, que pasará a tener este aspecto:
+
+![](imgs/05-06.jpg)
+
+Desde este panel puede modificar o eliminar los panoramas secundarios asociados a la escena, así como previsualizarlos, modificar su pitch y yaw (es decir, el lugar al que "mira la cámara" al entrar en la escena) o asignarles sus propios hotspots. Tenga en cuenta que los hotspots de la escena principal no estarán disponibles en la imagen secundaria, y lo mismo es cierto a la inversa. Para aprender a crear hotspots, consulte [esta sección](#hotspots).
 
 # Subir imágenes, audios y vídeos
 <a name="subirimagenes"></a>
@@ -211,12 +253,12 @@ La operativa con esa pantalla es muy sencilla. Usted puede:
 * Ordenar la tabla por cualquier campo haciendo clic en el encabezado del mismo. Por ejemplo, si hace clic en "Título", la tabla se ordenará alfabéticamente según los títulos de las imágenes/audios/vídeos. Si hace clic por segunda vez en "Título", obtendrá una ordenación alfabética inversa por ese campo.
 * Insertar una nueva imagen/audio/vídeo. Para ello, haga clic en "Insertar" y rellene los campos que la aplicación le pida. En el caso de la imagen y el audio, tendrá que subir el archivo desde el disco duro de su ordenador. Solo se admiten imágenes en formato JPG y audios en formato MP3, en cualquier calidad. En cuanto a los vídeos, de momento la aplicación solo soporta vídeos subidos a Vimeo. Puede usted abrirse una cuenta gratuita en esa plataforma de streaming y subir los vídeos allí. Tendrá que indicarle a Celia360 la dirección web de los vídeos, que será lo único que necesite la aplicación para reproducir esos vídeos a partir de los servidores de Vimeo.
 * Modificar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Modificar" de cada fila de la tabla.
-* Eliminar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Eliminar" de cada fila de la tabla. La aplicación le pedirá que confirme el borrado. Tenga en cuenta que no podrá eliminar una imagen/audio/vídeo si está siendo usada en algún hotspot. Primero deberá eliminar el hotspot. Consulte la [sección 7](#hotspots) para más información sobre hotspots.
+* Eliminar una imagen/audio/vídeo ya existente, haciendo clic en el icono de "Eliminar" de cada fila de la tabla. La aplicación le pedirá que confirme el borrado. Tenga en cuenta que no podrá eliminar una imagen/audio/vídeo si está siendo usada en algún hotspot. Primero deberá eliminar el hotspot. Consulte [esta sección](#hotspots) para más información sobre hotspots.
 
 # Definir hotspots (puntos de interés) en las escenas
 <a name="hotspots"></a>
 
-Los hotspots o puntos sensibles son los lugares de su tour virtual con los que el usuario podrá interactuar para acceder a galerías de imágenes (que en adelante denominaremos "paneles informativos"), audiodescripciones (o, en general, sonidos) y vídeos. También son hotspots los enlaces entre una escena y la siguiente que aparecen en las escenas como flechas que le permiten desplazarse por su tour virtual. Finalmente, un tipo de hotspot especial es que hemos denominado "escalera", que permite al visitante saltar de una zona a otra dentro de la visita virtual.
+Los hotspots o puntos sensibles son los lugares de su tour virtual con los que el usuario podrá interactuar para acceder a galerías de imágenes (que en adelante denominaremos "paneles informativos"), audiodescripciones (o, en general, sonidos) y vídeos. También son hotspots los enlaces entre una escena y la siguiente que aparecen en las escenas como flechas que le permiten desplazarse por su tour virtual. Finalmente, un tipo de hotspot especial es que hemos denominado indistintamente "escalera" o "ascensor", que permite al visitante saltar de una zona a otra dentro de la visita virtual.
 
 En esta sección le mostraremos cómo puede crear los hotspots dentro de sus escenas y cómo puede asociarles imágenes, audios y vídeos de los que ya haya subido a la plataforma.
 
@@ -238,7 +280,8 @@ En las siguientes secciones, le indicaremos qué información debe proporcionar 
 * [Hotspots de tipo panel informativo (galerías de imágenes)](#panel)</a>
 * [Hotspots de tipo audio](#audio)
 * [Hotspots de tipo vídeo](#video)
-* [Hotspots de tipo escalera](#escalera)
+* [Hotspots de tipo escalera/ascensor](#escalera)
+* [Hotspots de tipo supersalto](#escalera)
 * [Cambiar el punto de vista inicial de una escena](vistainicial)
 
 En esta captura de pantalla puede observar cómo verá su visitante cada uno de los tipos de hotspot dentro de una escena:
@@ -269,6 +312,8 @@ Otro aspecto de estos enlaces que probablemente necesitará afinar es el punto d
 Usted puede sobreescribir el punto de vista por defecto de cada escena en cada uno de los hotspot de tipo salto que enacen con ella. Simplemente, haga clic en el punto del mapa que representa a esa escena de origen, localice el hotspot de tipo salto que conduce a la escena de destino y haga clic en él. Aparecerá una previsualización de la escena de destino donde podrá seleccionar (haciendo clic con el botón derecho, como es habitual) el punto de vista con el que se verá esa escena *solo si se accede a ella desde ese hotspot de dicho salto*. El punto de vista predeterminado permanecerá inalterado y será el que se use para esa escena en cualquier otra circunstancia.
 
 Le recomendamos que planifique los posibles recorridos que sus visitantes podrán hacer en su tour virtual, dibujándolos (tal vez con colores diferentes) sobre un plano impreso, y que luego vaya recorriendo esos puntos en ese mismo orden para ir orientando correctamente los puntos de vista iniciales de cada escena en ese recorrido en concreto.
+
+Tenga en cuenta que estos saltos solo le permitirán enlazar escenas situadas en la misma zona de su recorrido virtual. Si desea enlazar sus escenas con otras zonas, debe recurrir al [ascensor](#escalera) o al [supersalto](#supersalto).
 
 ## Hotspots de tipo panel (galería de imágenes)
 <a name="panel"></a>
@@ -331,7 +376,7 @@ En ese formulario deberá seleccionar uno de los vídeos dados de alta en la pla
 
 Cuando haya terminado, pulse "Enviar" o "Aceptar". Su hotspot de tipo vídeo estará listo. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena donde haya creado el hotspot mediante el mapa.
 
-## Hotspots de tipo escalera
+## Hotspots de tipo escalera o ascensor
 <a name="escalera"></a>
 
 Los hotspots de tipo escalera se utilizan para que los visitantes de su tour virtual puedan cambiar de zona, es decir, puedan acceder a otro de sus mapas. Una vez creado, el hotspot tendrá este aspecto:
@@ -340,11 +385,26 @@ Los hotspots de tipo escalera se utilizan para que los visitantes de su tour vir
 
 Le recomendamos que planifique dónde va a crear sus hotspots de tipo escalera. Suelen quedar bien haciéndolos coincidir con las escaleras y/o ascensores de sus fotografías 360, o bien con los saltos entre zonas si su recorrido es plano.
 
-Para crear un hotspot de tipo escalera, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Conector entre planos (escaleras)". Verá en su navegador una pantalla como esta:
+Para crear un hotspot de tipo escalera, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Ascensor" o "Escalera". Verá en su navegador una pantalla como esta:
 
 ![](imgs/07-12.jpg)
 
 Este hotspot no requiere de ninguna información adicional, por lo que solo deberá pulsar "Enviar" o "Aceptar" para confirmar la creación del hotspot. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena donde haya creado el hotspot mediante el mapa.
+
+Tenga en cuenta que el ascensor o escalera puede ser sustituido por un mapa de la zona en la configuración de la aplicación. Para ver cómo hacer esto, consulte [esta sección](#opciones).
+
+## Hotspots tipo supersalto
+<a name="supersalto"></a>
+
+Los supersaltos son como los [saltos](#enlace) convencionales, pero permiten saltar desde una escena hasta otra escena perteneciente a otra zona, mientras que los saltos convencionales solo conectan escenas de la misma zona.
+
+Así, los supersaltos constituyen un modo alternativo para moverse entre zonas sin recurrir a las [escaleras o ascensor](#escalera).
+
+Para crear un hotspot de tipo supersalto, siga el procedimiento genérico expuesto en la [sección 7](#hotspots). Cuando tenga que elegir el tipo de hotspot, haga clic en "Supersalto".
+
+Aparecerá una vista de su ascensor o escalera para que seleccione la zona a la que desea saltar. Una vez seleccionada, verá un mapa de esa zona y podrá seleccionar la escena concreta a la que quiere que le conduzca el supersalto. Basta con seleccionar el punto de la escena y hacer clic en "Enviar consulta".
+
+Los supersaltos se visualizarán en la visita libre con un grafismo diferente de los saltos convencionales, para distinguirlos claramente. Además, mostrarán un letrero con el identificador de la zona a la que conducen.
 
 ## Cambiar el punto de vista inicial de una escena
 <a name="vistainicial"></a>
@@ -352,8 +412,6 @@ Este hotspot no requiere de ninguna información adicional, por lo que solo debe
 Por último, desde la misma pantalla de creación de hotspots puede modificar el punto de vista inicial de una escena. Esto se refiere a que, cada vez que entre en esta escena, la cámara mirará hacia el punto en el que acabe de hacer clic durante la previsualización de la escena.
 
 Para asignar las coordenadas sobre las que hizo clic como punto de vista inicial de una escena, simplemente siga el mismo procedimiento genérico de creación de hotspots descrito en la [sección 7](#hotspots) y luego haga clic en el botón "Punto hacia donde estará dirigida la cámara".
-
-![](imgs/07-13.jpg)
 
 Confirme la operación y las nuevas coordenadas iniciales de la escena se grabarán. Puede comprobar cómo ha quedado lanzando en su navegador una visita libre y saltando hasta la escena en cuestión. Al entrar en ella, el punto de vista debería ser el que usted seleccionó.
 
@@ -412,9 +470,7 @@ A partir de esa plantilla vacía, puede usted crear su propio diseño de celdas.
 
 ![](imgs/09-02.jpg)
 
-Al pulsar el botón de "Enviar" o "Aceptar" se creará la celda en la fila seleccionada. La aplicación regresará a la pantalla de diseño de celdas, donde le mostrará la previsualización de su diseño de celdas:
-
-![](imgs/09-03.jpg)
+Al pulsar el botón de "Enviar" o "Aceptar" se creará la celda en la fila seleccionada. La aplicación regresará a la pantalla de diseño de celdas, donde le mostrará la previsualización de su diseño de celdas.
 
 Una aspecto importante en el diseño de los puntos destacados es que es necesario limitar el movimiento del visitante dentro de la zona del mapa a la que nos conduzcan los puntos destacados. Para ello, necesitará deshabilitar los hotspots de enlace entre escenas que permiten salir de esa zona del tour. Esto se hace en la configuración de los propios hotspots, y debe acudir allí para hacerlo. En los hotspots tipo enlace podrá seleccionar si desea que cada hotspot aparezca en la vista de puntos destacados o no. Revise el [seccion 7.1](#enlace) para más información.
 
@@ -428,27 +484,30 @@ Puede modificar cualquier aspecto de los puntos destacados que ya ha creado haci
 
 Por último, también puede eliminar cualquier celda en cualquier momento haciendo clic en el boton "Eliminar" de cada una de ellas.
 
-# Configurar la portada (homepage)
+# Configuración de la aplicación
 <a name="portada"></a>
 
-Muchos aspectos de la portada (homepage) de su visita virtual son configurables, para que usted pueda decidir el aspecto que quiere ofrecer a sus visitantes. En esta sección le mostraremos qué cosas puede configurar en su portada y cómo puede hacerlo.
+Algunos aspectos de la aplicación son configurables, en particular muchos que tienen que ver con la portada (homepage) de su visita virtual. Así, usted puede decidir el aspecto que quiere ofrecer a sus visitantes. En esta sección le mostraremos qué cosas puede configurar en su aplicación y cómo puede hacerlo.
 
-Para acceder a la configuración de la portada, debe entrar al panel de administración con un usuario que tenga los privilegios adecuados. Una vez hecho esto, seleccione "Portada" en el menú principal. Accederá a una pantalla como esta:
+Para acceder a las opciones de configuración, debe entrar al panel de administración con un usuario que tenga los privilegios adecuados. Una vez hecho esto, seleccione "Opciones" en el menú principal. Accederá a una pantalla como esta:
 
 ![](imgs/10-01.jpg)
 
-En esa pantalla puede modificar los siguientes aspectos de su portada:
+En esa pantalla puede modificar los siguientes aspectos de su aplicación:
 
+* **Icono**: es el icono que aparece de forma destacada en su homepage. Aquí puede colocar usted la imagen corporativa de su organización o, si lo prefiere, dejarlo en blanco.
+* **Imagen de portada**: se refiere a la imagen de fondo de la portada (homepage). Le recomendamos que elija una imagen atractiva y no excesivamente contrastada, de manera que no dificulte la lectura del texto.
 * **Título de la web**: es el título principal de su web, que aparece en posición central y destacada en el homepage.
-* **Imagen de portada**: se refiere a la imagen de fondo de la portada. Le recomendamos que elija una imagen atractiva y no excesivamente contrastada, de manera que no dificulte la lectura del texto.
 * **Texto visita libre**: al pasar el ratón sobre cada una de las opciones del menú principal (Visita libre, Visita Guiada, Puntos destacados, Biblioteca y Créditos) aparece, en sustitución del título de la web, un breve texto descriptivo de qué puede encontrar el visitante en esa opción. Puede especificar aquí el texto que desea que aparezca al pasar el ratón sobre la opción de "Visita libre".
 * **Texto visita guiada**: indique aquí el texto explicativo que desea que aparezca en pantalla al poner el ratón sobre la opción "Visita guiada".
 * **Texto puntos destacados**: indique aquí el texto explicativo que desea que aparezca en pantalla al poner el ratón sobre la opción "Puntos destacados".
 * **Texto biblioteca**: indique aquí el texto explicativo que desea que aparezca en pantalla al poner el ratón sobre la opción "Biblioteca".
-* **Fuente**: indique una fuente tipográfica diferente de la fuente por defecto. Se admite cualquier fuente instalada en su servidor, o bien fuentes disponibles en Google Fonts.
+* **Fuente**: indique, si lo desea, una fuente tipográfica diferente de la fuente por defecto de entre las posibilidades que se le ofrecen en la lista desplegable.
 * **Color fuente**: cambie aquí el color por defecto de sus textos para adaptarlos a imágenes de fondo diferentes. Por ejemplo, si su imagen de fondo es muy clara, tal vez prefiera seleccionar un color oscuro para su fuente, y viceversa.
 * **Mostrar biblioteca**: puede ocultar la opción de menú "Biblioteca" si no tiene pensado digitalizar libros o documentos relativos a su visita virtual para ofrecerlos a sus visitantes. Consulte la [sección 12](#biblioteca) para más información sobre la biblioteca.
-* **Mostrar historia**: puede ocultar el botón "Historia" si no tiene pensado destacar algunos de sus libros digitalizados para mostrar la historia del lugar para el que está diseñando una visita virtual. Consulte la [sección 12](#biblioteca) para más información sobre los libros históricos.
+* **Mostrar Acerca de**: puede ocultar el botón "Acerca de" del home page si lo desea.
+* **Ascensor o mapa**: por defecto, los hotspots de tipo [ascensor](#escalera) muestran un panel con todas las zonas de su recorrido virtual para que los visitantes puedan saltar de una zona a otra libremente. Si lo desea, puede sustituir ese ascensor por un mapa. Esto es especialmente útil si su recorrido virtual no se centra en un edificio, sino en un espacio geográfico más amplio. Lógicamente, si selecciona la opción "mapa", tendrá que subir la imagen del mapa, de la que deberá disponer previamente.
+* **Créditos adicionales**: puede indicar aquí los nombres de la persona o personas que han construido o contribuido a su tour virtual con imágenes, documentación, audiodescripciones o cualquier otro elemento. Estos nombres aparecerán entre los créditos de la aplicación.
 
 Cuando haya terminado de configurar su portada, pulse el botón "Enviar" para guardar los cambios. Si ahora accede a su homepage, podrá comprobar qué efecto han tenido sus cambios.
 
@@ -481,6 +540,8 @@ El **registro de usuarios** se puede hacer desde el panel de administración (op
 
 # Administrar la biblioteca
 <a name="biblioteca"></a>
+
+> **ATENCIÓN:** el módulo de biblioteca carece actualmente de mantenimiento y se está planteando la posibilidad de separarlo del resto de la aplicación. No obstante, si desea hacer uso de él, sigue estando plenamente operativo aunque su estética puede presentar pequeños defectos. Tenga en cuenta que, en todo caso, puede ocultar este módulo en las [opciones de configuración](#portada) de la aplicación. 
 
 El módulo de biblioteca es un añadido que enriquece la experiencia de los visitantes a su tour virtual ofreciéndole, en formato digitalizado, publicaciones que tengan relación con el lugar que están visitando. No es un módulo obligatorio, es decir, usted puede desactivarlo si decide no ofrecerlo a sus visitantes. En cambio, si prefiere utilizarlo, asegúrese de no infringir los derechos de propiedad intelectual de las obras que ofrezca en formato digital. Los desarrolladores de la aplicación Celia360, como es natural, declinan toda responsabilidad sobre el uso indebido que los usuarios finales pudieran hacer de esta funcionalidad.
 
@@ -543,11 +604,7 @@ Y el visor de libros tiene esta forma:
 
 ![](imgs/13-06.jpg)
 
-Por último, el botón **Historia** (que también es opcional y puede ocultarse desde [la administración de la portada](#portada)) le dará acceso a un subconjunto de la biblioteca donde solo figurarán los libros o documentos que relaten la historia de su edificio o instalación. El catálogo, en este caso, tiene este aspecto:
-
-![](imgs/13-07.jpg)
-
-El visor de libros digitales es igual que el que se emplea en la biblioteca general.
+Por último, el botón **Acerca de** (que también es opcional y puede ocultarse desde [la configuración de la aplicación](#portada)) le dará acceso a una descripción del contenido y el propósito del tour virtual.
 
 # Anexo. Guía de inicio rápida
 <a name="anexo"></a>
@@ -558,10 +615,10 @@ Los pasos generales para crear un **tour virtual mínimo** son los siguientes:
 
 1. Desplegar una instalación limpia de la aplicación en un servidor web adecuadamente configurado (más informacion en la [sección 2](#instalacion)).
 2. Preparar los archivos con los planos (de su edificio, instalación, etc.) y crear el mapa (más información en la [sección 4](#mapa)).
-3. Preparar y organizar los archivos con sus imágenes panorámicas 360 y subirlas a la plataforma (más información en la [sección 5](#escenas)).
+3. Preparar y organizar los archivos con sus imágenes panorámicas 360 y subirlas a la plataforma (más información en la [sección 5](#escenas)). No olvide indicar cuál desea que sea la escena inicial en la visita libre (más información en la [sección 4](#mapa).
 4. Crear los hotspots de tipo salto para enlazar unas escenas con otras (más información en la [sección 7.1](#enlace)).
-5. Crear al menos un hotspot tipo escalera si su visita consta de más de un mapa (más información en la [sección 7.5](#)).
-6. Configurar su portada con una imagen de fondo personalizada y ocultando, si lo desea, los enlaces de "Biblioteca" e "Historia" (más información en la [sección 10](#portada)).
+5. Crear al menos un hotspot tipo escalera/ascensor si su visita consta de más de un mapa (más información en la [sección 7.5](#)).
+6. Configurar su aplicación con una imagen de fondo personalizada y ocultando, si lo desea, los enlaces de "Biblioteca" y "Acerca de" (más información en la [sección 10](#portada)).
 
 Si lo que quiere, en cambio, es ofrecerle a sus visitantes un **tour virtual completo** y repleto de información, explotando todas las posibilidades de nuestra plataforma, tendrá que realizar algunas tareas adicionales:
 
@@ -569,4 +626,4 @@ Si lo que quiere, en cambio, es ofrecerle a sus visitantes un **tour virtual com
 2. Grabar las audiodescripciones para la visita guiada y crear la visita guiada. Puede que necesite alguna fotografía adicional de cada una de las escenas (más informacion en la [sección 8](#guiada)).
 3. Crear la visita de puntos destacados. Puede que necesite alguna imagen adicional de cada una de las escenas (más información en la [sección 9](#destacados)).
 4. Subir imágenes (convencionales), audios y vídeos sobre los puntos más importantes de su edificio o instalación, y luego asociarlos a hotspots de tipo panel, audio o vídeo incrustados dentro de sus escenas panorámicas (más información en las secciones [6](#subirimagenes), [7.2](#panel), [7.3](#audio), y [7.4](#video)).
-5. Digitalizar libros y documentos de dominio público o de los que posea los derechos y subirlos a la biblioteca, distinguiendo los que constituyen la bibliografía general de los de bibliografía histórica (más información en la [sección 12](biblioteca)). No olvide volver a hacer visibles los enlaces "Biblioteca" y/o "Historia" en la configuración de la portada ([sección 10](#portada)) para poder acceder a la biblioteca.
+5. Digitalizar libros y documentos de dominio público o de los que posea los derechos y subirlos a la biblioteca, distinguiendo los que constituyen la bibliografía general de los de bibliografía histórica (más información en la [sección 12](biblioteca)). No olvide volver a hacer visible el enlace "Biblioteca" en la opciones de configuración de la aplicación ([sección 10](#portada)) para poder acceder a la biblioteca.
