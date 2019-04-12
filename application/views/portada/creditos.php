@@ -158,27 +158,18 @@ $(document).ready(function(){
     <!-- COLABORADORES -->
     <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
-            <h2 class="text-center">Documentación</h2>
+            <h2 class="text-center">Documentación y colaboradores</h2>
             <ul class="list-group">
 		<?php
                 	if (isset($portada[16]["opcion_valor"])) {	// Colaboradores adicionales (guardados en la BD)
-				echo '<li class="list-group-item">';
-				echo $portada[16]["opcion_valor"];
-				echo '</li>';
+				$lista = explode(",", $portada[16]["opcion_valor"]);
+				foreach($lista as $item) {
+					echo '<li class="list-group-item">';
+					echo $item;
+					echo '</li>';
+				}
 			}
 		?>
-		</li>
-                <li class="list-group-item">Antonio Barrera Funes</li>
-                <li class="list-group-item">María del Carmen Cuadrado Sánchez</li>
-                <li class="list-group-item">María Belén Garzón</li>
-                <li class="list-group-item">Trinidad Gómez Ruiz</li>
-                <li class="list-group-item">María José Hernández Meca</li>
-                <li class="list-group-item">José Luis Hurtado</li>
-                <li class="list-group-item">Carmen Menéndez Suárez</li>
-                <li class="list-group-item">Juan González Parra</li>
-                <li class="list-group-item">Salvador Prieto Pérez</li>
-                <li class="list-group-item">Luis Serrano Cortés</li>
-                <li class="list-group-item">Manuela Soriano Sánchez</li>
             </ul>
         </div>
     </div>
