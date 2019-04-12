@@ -113,7 +113,7 @@
     <p class="text-center">
         <span><a style="color:<?php echo $color?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/creditos");?>">Créditos |</a></span>                    
         <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/politicaPrivacidad");?>">Política de Privacidad |</a></span>
-        <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/politicaPrivacidad");?>">Cookies</a></span>
+        <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo site_url("tour/avisoLegal");?>">Aviso legal</a></span>
     </p>
     <p class="text-center">
         <span><a style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif;" href="<?php echo base_url("");?>">Powered by Celia Viñas 2ºDAW 17/19&nbsp;&nbsp;</a></span>

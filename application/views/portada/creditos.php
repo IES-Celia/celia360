@@ -49,34 +49,16 @@ $(document).ready(function(){
     </div>
 
     <div class="row">
-        <div class="col-md-8 mx-auto mb-3 mt-3">
-            <h2 class="text-center">Equipo de desarrollo</h2>
-        </div>
-    </div>
- 
-    <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
-            <h2 class="text-center">Desarrolladores</h2>
+            <h2 class="text-center">Equipo de desarrollo</h2>
+	    <h5 class="text-center">(en orden alfabético)</h5>
             <ul class="list-group">
                 <li class="list-group-item">
-                <p class="d-inline" >Miguel Ángel Lopéz Segura </p>
-                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" target="_blank" href="mailto:migueldevelopez@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" target="_blank" href="https://github.com/miguelille" ><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
-                </li>
-                <li class="list-group-item">
-                <p class="d-inline" >Francisco Linares González</p>
+                <p class="d-inline" >Hamza Benhachmi</p>
                     <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" target="_blank" href="mailto:franlg.alm@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" target="_blank" href="https://github.com/FrankLG"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
-                 </li>
-                <li class="list-group-item">
-                <p class="d-inline" >Zygimantas Sniurevicius</p>
-                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" target="_blank" href= "mailto:zygis.1415@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a  class="d-inline"  target="_blank" href= "https://github.com/heremias22"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/jamudi"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
-
                 <li class="list-group-item">
                 <p class="d-inline" >Marc Expósito Miras</p>
                     <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
@@ -90,16 +72,16 @@ $(document).ready(function(){
                     <a class="d-inline" target="_blank" href="https://github.com/MarcWotofok"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
+                <p class="d-inline" >Francisco Linares González</p>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:franlg.alm@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/FrankLG"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                 </li>
+                <li class="list-group-item">
                 <p class="d-inline" >Alejandro López López</p>
                     <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
                     <a class="d-inline" target="_blank" href="mailto:f.alejandrolopez92@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
                     <a class="d-inline" target="_blank" href="https://github.com/Alfrik"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
-                </li>
-                <li class="list-group-item">
-                <p class="d-inline" >Hamza Benhachmi</p>
-                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" target="_blank" href="https://github.com/jamudi"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >Miguel Ángel López Rodríguez</p>
@@ -108,17 +90,15 @@ $(document).ready(function(){
                     <a class="d-inline" target="_blank"  href="https://github.com/MickeyLopez091"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
-                <p class="d-inline" >María Dolores Salmerón Sierra</p>
-                <a class="d-inline" target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><img class="float-right mr-2 mt-3"  style="width:15px;"src=<?php echo base_url('assets/css/svg/file-pdf-regular.svg'); ?>></a>
-                <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                <a class="d-inline" target="_blank" href="mailto:salmeron.loli@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                <a class="d-inline" target="_blank" href="https://github.com/lolisalmeron"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                <p class="d-inline" >Miguel Ángel López Segura </p>
+                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/miguel-ángel-lópez-segura-ba1809114/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:migueldevelopez@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/miguelille" ><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
-                <li class="list-group-item">
-                <p class="d-inline" >Álvaro Sánchez Casares</p>
-                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" target="_blank" href="https://github.com/Dansberg"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                <li class="list-group-item">David Mora Cáceres
+                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/david-mora-/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href="mailto:davidmoracaceres2@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/dmc21"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
                 <p class="d-inline" >José Luis Ramírez Jiménez</p>
@@ -133,26 +113,44 @@ $(document).ready(function(){
                     <a class="d-inline" target="_blank" href="https://github.com/DavidRamon15"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
                 <li class="list-group-item">
-                    <p class="d-inline">Daniel Sanchez Gil</p>
+                <p class="d-inline" >María Dolores Salmerón Sierra</p>
+                <a class="d-inline" target="_blank" href="https://drive.google.com/file/d/1J_y25TEknArM3Q6nNnbq78cy57zi0FzD/view?usp=sharing"><img class="float-right mr-2 mt-3"  style="width:15px;"src=<?php echo base_url('assets/css/svg/file-pdf-regular.svg'); ?>></a>
+                <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                <a class="d-inline" target="_blank" href="mailto:salmeron.loli@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                <a class="d-inline" target="_blank" href="https://github.com/lolisalmeron"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                </li>
+
+                <li class="list-group-item">
+                <p class="d-inline" >Álvaro Sánchez Casares</p>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a class="d-inline" target="_blank" href="https://github.com/Dansberg"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                </li>
+                <li class="list-group-item">
+                    <p class="d-inline">Daniel Sánchez Gil</p>
                     <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/daniel-sanchez-gil"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
                     <a class="d-inline" target="_blank" href="mailto:danielsanchezgil95@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
                     <a class="d-inline" target="_blank" href="https://github.com/vampy95"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
-                <li class="list-group-item">David Mora Cáceres
-                    <a class="d-inline" target="_blank" href="https://www.linkedin.com/in/david-mora-/"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
-                    <a class="d-inline" target="_blank" href="mailto:davidmoracaceres2@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
-                    <a class="d-inline" target="_blank" href="https://github.com/dmc21"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
+                <li class="list-group-item">
+                <p class="d-inline" >Zygimantas Sniurevicius</p>
+                    <a class="d-inline" target="_blank" href=><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/linkedin-in-brands.svg'); ?>></a> 
+                    <a class="d-inline" target="_blank" href= "mailto:zygis.1415@gmail.com"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/envelope-regular.svg'); ?>></a>
+                    <a  class="d-inline"  target="_blank" href= "https://github.com/heremias22"><img class="float-right mr-2 mt-3"  style="width:20px;"src=<?php echo base_url('assets/css/svg/github-brands.svg'); ?>></a>
                 </li>
+
             </ul>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
-            <h2 class="text-center">Profesores</h2>
+            <h2 class="text-center">Profesorado</h2>
             <ul class="list-group">
-                <li class="list-group-item">Alfredo Moreno Vozmediano</li>
-                <li class="list-group-item">Félix Expósito López</li>
                 <li class="list-group-item">José Barranquero Infantes</li>
+                <li class="list-group-item">Félix Expósito López</li>
+                <li class="list-group-item">Manuel Piñero Mendoza</li>
+                <li class="list-group-item">Alfredo Moreno Vozmediano</li>
+                <li class="list-group-item">Alejandro Ramallo Martínez</li>
             </ul>
         </div>
     </div>
@@ -160,8 +158,16 @@ $(document).ready(function(){
     <!-- COLABORADORES -->
     <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
-            <h2 class="text-center">Colaboradores</h2>
+            <h2 class="text-center">Documentación</h2>
             <ul class="list-group">
+		<?php
+                	if (isset($portada[16]["opcion_valor"])) {	// Colaboradores adicionales (guardados en la BD)
+				echo '<li class="list-group-item">';
+				echo $portada[16]["opcion_valor"];
+				echo '</li>';
+			}
+		?>
+		</li>
                 <li class="list-group-item">Antonio Barrera Funes</li>
                 <li class="list-group-item">María del Carmen Cuadrado Sánchez</li>
                 <li class="list-group-item">María Belén Garzón</li>
