@@ -64,23 +64,27 @@
             echo"<form action='".site_url("tour/modificar_portada")."' method='post' enctype='multipart/form-data'>";
             ?>
             <div class="form-group">
-              <label for=""><h4>Meta titulo:</h4></label>
+              <label for=""><h4>Meta título:</h4></label>
               <input type='text' class='form-control' name='meta_titulo' value='<?php echo $opcionesPortada[15]['opcion_valor'];?>'>
             </div>
             <div class="form-group">
-              <label for=""><h4>Meta descripción :</h4></label>
+              <label for=""><h4>Meta descripción:</h4></label>
               <textarea maxlength="120" class="form-control" name="meta_descripcion" id="" rows="3"><?php echo $opcionesPortada[14]['opcion_valor'];?></textarea>
+            </div>
+            <div class="form-group">
+              <label for=""><h4>Propietario legal de la web:</h4></label>
+              <textarea maxlength="250" class="form-control" name="propietario_web" id="" rows="3"><?php echo $opcionesPortada[17]['opcion_valor'];?></textarea>
             </div>
             <hr>
             <div class="form-group">
-              <label for=""><h4>Imagen de icono</h4></label>
+              <label for=""><h4>Imagen de icono:</h4></label>
               <div class="m-3">
                 <img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[10]['opcion_valor'];?>' width='100'>
               </div>
               <input type="file" class="form-control-file" name="nuevo_logo_web" id="" placeholder="" aria-describedby="fileHelpId">
             </div>
             <div class="form-group">
-              <label for=""><h4>Imagen de portada</h4></label>
+              <label for=""><h4>Imagen de portada:</h4></label>
               <div class="m-3">
                 <img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[1]['opcion_valor'];?>' width='200'>
               </div>
@@ -107,7 +111,7 @@
               <input type='text' class='form-control' name='subtitulo_biblioteca' value='<?php echo $opcionesPortada[5]['opcion_valor'];?>'>
             </div>
             <div class="form-group">
-              <label for=""><h4>Cambiar tipo de Fuente:</h4></label>
+              <label for=""><h4>Tipografía base:</h4></label>
               <select class="form-control" name="nombre_fuente" id="">
                     <option value='Oswald' <?php if ($opcionesPortada[8]['opcion_valor'] == "Oswald") echo "selected";?> style="font-family:Oswald">Oswald</option>
                     <option value='Ubuntu' <?php if ($opcionesPortada[8]['opcion_valor'] == "Ubuntu") echo "selected";?> style="font-family:Ubuntu">Ubuntu</option>
@@ -170,21 +174,14 @@
               </div>
               <input type="file" class="form-control-file" name="nueva_imagen_mapa" aria-describedby="fileHelpId">
             </div>
-            
-            <!-- PERSONA DE DOCUMENTACION --> 
-          
-            <div class="personasDocumentacion form-group ">
-              <label for="personas_creditos"><h4>Persona de la Documentación</h4></label>
-              <h6> Escribir la lista separando a los colaboradores por comas </h6>
-              
-              <textarea rows="4" cols="50" name="personas_creditos"><?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
+            <!-- CRÉDITOS DE DOCUMENTACION --> 
+            <div class="form-group">
+              <label for=""><h4>Créditos adicionales de la documentación<br/>(separar por comas)</h4></label>
+              <textarea rows="4" cols="50" name="creditos_adicionales"> <?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
             </div>  
-
-           
             <button type="submit" class="btn btn-primary mb-3">Enviar</button>
             </form>
 
-            
         </div>
        
     </div>

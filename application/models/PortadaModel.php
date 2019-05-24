@@ -18,7 +18,7 @@
     class PortadaModel extends CI_Model {
 
         public function get_info_portada(){
-            $res = $this->db->query("SELECT * FROM opciones_portada");
+            $res = $this->db->query("SELECT * FROM opciones_portada ORDER BY id_opcion");
             return $res->result_array();
         }
         
@@ -43,6 +43,9 @@
             $meta_descripcion = $this->input->post_get("meta_descripcion");
             $meta_titulo = $this->input->post_get("meta_titulo");
             $personas_creditos = $this->input->post_get("personas_creditos");
+            $creditos_adicionales = $this->input->post_get("creditos_adicionales");
+            $propietario_web = $this->input->post_get("propietario_web");
+
 
             $contador_update = 0; //Contador del total de Update que se han realizado correctamente
 
@@ -134,6 +137,39 @@
             if ($this->db->affected_rows() != 0){
                 $contador_update++;
             }               
+
+            /*Por cuestiones de compatibilidad con antiguas versiones, realizamos un delete y despues un insert*/
+            $this->db->where('id_opcion', '16');
+            $this->db->delete('opciones_portada');
+
+            $data = array(
+                'id_opcion' => '16',
+                'opcion' => 'creditos_adicionales',
+                'opcion_valor' => $creditos_adicionales
+            );
+        
+            $this->db->insert('opciones_portada', $data);
+
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }               
+
+            /*Por cuestiones de compatibilidad con antiguas versiones, realizamos un delete y despues un insert*/
+            $this->db->where('id_opcion', '17');
+            $this->db->delete('opciones_portada');
+
+            $data = array(
+                'id_opcion' => '17',
+                'opcion' => 'propietario_web',
+                'opcion_valor' => $propietario_web
+            );
+        
+            $this->db->insert('opciones_portada', $data);
+
+            if ($this->db->affected_rows() != 0){
+                $contador_update++;
+            }               
+
 
             //Comprobamos que el numero de update sea correcto
             if ($contador_update > 0){
