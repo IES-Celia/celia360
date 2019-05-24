@@ -176,6 +176,7 @@
             <div class="personasDocumentacion form-group ">
               <label for="personas_creditos"><h4>Persona de la Documentación</h4></label>
               <h6> Escribir la lista separando a los colaboradores por comas </h6>
+              
               <textarea rows="4" cols="50" name="personas_creditos"><?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
             </div>  
 
