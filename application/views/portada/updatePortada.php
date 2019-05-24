@@ -166,18 +166,24 @@
             <div class="ascensor_mapa form-group">
               <label for=""><h4>Imagen de mapa</h4></label>
               <div class="m-3">
-                <img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor'];?>' width='200'>
+              <img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor'];?>' width='200'> 
               </div>
               <input type="file" class="form-control-file" name="nueva_imagen_mapa" aria-describedby="fileHelpId">
             </div>
+            
+            <!-- PERSONA DE DOCUMENTACION --> 
+          
+            <div class="personasDocumentacion form-group ">
+              <label for="personas_creditos"><h4>Persona de la Documentación</h4></label>
+              <h6> Escribir la lista separando a los colaboradores por comas </h6>
+              <textarea rows="4" cols="50" name="personas_creditos"><?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
+            </div>  
+
+           
             <button type="submit" class="btn btn-primary mb-3">Enviar</button>
             </form>
 
-            <!-- PERSONA DE DOCUMENTACION --> 
-            <div class="form-group">
-              <label for=""><h4>Persona de la Documentación</h4></label>
-              <textarea rows="4" cols="50"> </textarea> 
-            </div>  
+            
         </div>
        
     </div>

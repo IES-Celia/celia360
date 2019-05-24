@@ -19,7 +19,26 @@ $(document).ready(function(){
    $('html, body').css({
         overflow: 'auto',
     });
+
+colaboradores = "<?php echo $portada[15]['opcion_valor'] ?>";
+
+ items = colaboradores.split(",");
+   
+    for(i=0;i< items.length ; i++ )
+    {
+        var para= document.createElement("li");
+        var node = document.createTextNode(items[i]);
+        para.appendChild(node);
+        para.setAttribute("class", "list-group-item");
+        var element = document.getElementById("colaboradores");
+        
+        element.appendChild(para);
+    }
 });
+
+
+
+
 </script>
 <style>
     body{
@@ -156,23 +175,15 @@ $(document).ready(function(){
             </ul>
         </div>
     </div>
-
+        
     <!-- COLABORADORES -->
     <div class="row">
         <div class="col-md-6 mx-auto mb-3 mt-3">
             <h2 class="text-center">Colaboradores</h2>
-            <ul class="list-group">
-                <li class="list-group-item">Antonio Barrera Funes</li>
-                <li class="list-group-item">María del Carmen Cuadrado Sánchez</li>
-                <li class="list-group-item">María Belén Garzón</li>
-                <li class="list-group-item">Trinidad Gómez Ruiz</li>
-                <li class="list-group-item">María José Hernández Meca</li>
-                <li class="list-group-item">José Luis Hurtado</li>
-                <li class="list-group-item">Carmen Menéndez Suárez</li>
-                <li class="list-group-item">Juan González Parra</li>
-                <li class="list-group-item">Salvador Prieto Pérez</li>
-                <li class="list-group-item">Luis Serrano Cortés</li>
-                <li class="list-group-item">Manuela Soriano Sánchez</li>
+            <ul class="list-group" id="colaboradores">
+           
+            
+                
             </ul>
         </div>
     </div>
@@ -186,3 +197,15 @@ $(document).ready(function(){
     Es lo que nos diferencia de uno de la calle  
 -->
 
+<!-- <li class="list-group-item" >Antonio Barrera Funes</li>
+                <li class="list-group-item">María del Carmen Cuadrado Sánchez</li>
+                <li class="list-group-item">María Belén Garzón</li>
+                <li class="list-group-item">Trinidad Gómez Ruiz</li>
+                <li class="list-group-item">María José Hernández Meca</li>
+                <li class="list-group-item">José Luis Hurtado</li>
+                <li class="list-group-item">Carmen Menéndez Suárez</li>
+                <li class="list-group-item">Juan González Parra</li>
+                <li class="list-group-item">Salvador Prieto Pérez</li>
+                <li class="list-group-item">Luis Serrano Cortés</li>
+                <li class="list-group-item">Manuela Soriano Sánchez</li>
+                -->

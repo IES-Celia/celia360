@@ -42,6 +42,7 @@
             $text_historia = $this->input->post_get("texto_panel_historia",FALSE);
             $meta_descripcion = $this->input->post_get("meta_descripcion");
             $meta_titulo = $this->input->post_get("meta_titulo");
+            $personas_creditos = $this->input->post_get("personas_creditos");
 
             $contador_update = 0; //Contador del total de Update que se han realizado correctamente
 
@@ -118,6 +119,14 @@
                 'id_opcion' => '15',
                 'opcion' => 'meta_titulo',
                 'opcion_valor' => $meta_titulo
+            );
+            $this->db->where('id_opcion', '16');
+            $this->db->delete('opciones_portada');
+
+            $data = array(
+                'id_opcion' => '16',
+                'opcion' => 'personas_creditos',
+                'opcion_valor' => $personas_creditos
             );
         
             $this->db->insert('opciones_portada', $data);
