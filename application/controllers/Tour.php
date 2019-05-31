@@ -119,6 +119,10 @@ class Tour extends CI_Controller {
       $this->load->view("main_template", $datos);
   }
 
+  public function persDocumentacion(){
+    
+  }
+
   /* Muestra la vista con la politica de privacidad de la aplicacion */
   public function politicaPrivacidad(){
     $this->load->model('PortadaModel');
@@ -153,6 +157,7 @@ class Tour extends CI_Controller {
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
+    console.log($datos["opcionesPortada"]);
     $datos["vista"]="portada/updatePortada";
     /* Compruebo todos los posibles errores al actualizar la portada */
     /* Yo no quería comprobar todos los posibles casos, pero Alfredo me ha obligado, dice que soy un vago */
@@ -212,5 +217,8 @@ class Tour extends CI_Controller {
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template", $datos);
   }
+
+
+  
 
 }
