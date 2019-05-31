@@ -1,10 +1,8 @@
 <?php 
 class Panoramas_Secundarios extends CI_Controller {
 
-	/* 
-
+	/*
 	Controlador que gestiona las imagenes secundarias asociadas a una escena principal
-	
 	*/
 
 
@@ -93,9 +91,18 @@ public function insertSecondaryPanorama($id){
 	}
 
 	public function getCodEscena($cod){
-
 		echo json_encode($this->PanoramasSecundariosModel->getCodEscena($cod));
+	}
 
+	public function updatePreview() {
+		$res = $this->PanoramasSecundariosModel->updatePreview();
+
+		echo $res;
+	}
+
+	public function deletePreview($id) {
+		$res = $this->PanoramasSecundariosModel->deletePreview($id);
+		echo $res;
 	}
 }
 

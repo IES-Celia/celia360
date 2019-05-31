@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
     <h1 class="text-center">Insertar escena guiada</h1>
     <div class="row">
         <div class="col-md-8 mx-auto bg-secondary">
-            <form action='<?php echo site_url("guiada/insertarEscenaGuiada"); ?>' method="post">
+            <form action='<?php echo site_url("guiada/insertarEscenaGuiada/").$id_visita_guiada; ?>' method="post">
                 <div class="form-group">
                   <label for="titulo_escena"><h4>Nombre escena</h4></label>
                   <input type="text"

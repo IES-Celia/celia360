@@ -39,12 +39,13 @@ class Guiada extends CI_Controller {
 * Carga todas las escenas disponibles en la plataforma con getAll()
 * Por ultimo le paso la vista y la comprobacion de permisos
 */
-    public function mostrarFormularioGuiada() {
+    public function mostrarFormularioGuiada($id_visita_guiada) {
         $this->load->model("MapaModel","mapa");
         $datos["mapa"]=$this->mapa->cargar_mapa();
         $datos["puntos"]=$this->mapa->cargar_puntos();
         $datos["audios"]=$this->AudioModel->allAudios();
-        $datos["escenas"]=$this->EscenasModel->getAll();
+		$datos["escenas"]=$this->EscenasModel->getAll();
+		$datos['id_visita_guiada'] = $id_visita_guiada;
         $datos["vista"]="guiada/insertarGuiada";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("admin_template", $datos);
@@ -59,21 +60,16 @@ class Guiada extends CI_Controller {
 *
 */
 
-    public function insertarEscenaGuiada(){
-        $resultado = $this->GuiadaModel->crearEscenaGuiada();
+    public function insertarEscenaGuiada($id_visita_guiada){
+		$resultado = $this->GuiadaModel->crearEscenaGuiada($id_visita_guiada);
+		echo $resultado;
         if($resultado > 0){
+			$datos['id_visita_guiada'] = $id_visita_guiada;
             $datos["vista"]="guiada/asociarImagen";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("admin_template", $datos);
-
         } else {
-			//Todos los audios existentes.
-			$datos["audios"]=$this->AudioModel->allAudios();
-			//Todas las escenas existentes.
-			$datos["escenasGuiada"]=$this->EscenasModel->getAll();
-			$datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
-			$datos["mapa"] = $this->mapa->cargar_mapa();
-			$datos["puntos"] = $this->mapa->cargar_puntos();
+			$datos["tablaEstanciasGuiada"] = $this->GuiadaModel->getAllEstanciasGuiada($id_visita_guiada);
             $datos['error'] = "Error al insertar la escena guiada";
             $datos["vista"]="guiada/administracionGuiada";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
@@ -92,14 +88,35 @@ class Guiada extends CI_Controller {
         //Todos los audios existentes.
         $datos["audios"]=$this->AudioModel->allAudios();
         //Todas las escenas existentes.
-        $datos["escenasGuiada"]=$this->EscenasModel->getAll();
-        $datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
+        //$datos["escenasGuiada"]=$this->EscenasModel->getAll();
+        $datos["escenas"] = $this->GuiadaModel->getAllPrincipalGuiada();
         $datos["mapa"] = $this->mapa->cargar_mapa();
         $datos["puntos"] = $this->mapa->cargar_puntos();
-        $datos["vista"]="guiada/administracionGuiada";
+        $datos["vista"]="guiada/principalGuiada";
         $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
         $this->load->view("admin_template", $datos);
-    }
+	}
+	
+	/* Metodo para crear una visita_guiada (nombre, descripción) */
+
+	public function insertarVisitaGuiada() {
+	
+		$res = $this->GuiadaModel->insertarVisitaGuiada();
+
+		if($res > 0) {
+			$datos["escenas"] = $this->GuiadaModel->getAllPrincipalGuiada();
+			$datos['mensaje'] = 'Visita insertada con éxito';
+			$datos["vista"]="guiada/principalGuiada";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view("admin_template", $datos);
+		}else {
+			$datos["escenas"] = $this->GuiadaModel->getAllPrincipalGuiada();
+			$datos['error'] = 'Error al insertar la visita';
+			$datos["vista"]="guiada/principalGuiada";
+			$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+			$this->load->view("admin_template", $datos);
+		}
+	}
 
 /**
 * Método para asociar un thumbnail a la escena guiada.
@@ -109,7 +126,7 @@ class Guiada extends CI_Controller {
 *
 */
 
-    public function asociarImagenPreview(){
+    public function asociarImagenPreview($id_visita_guiada){
         //Si es una modificacion de imagen existente
           if($this->input->get_post('id_visita') !== null){ //MODIFICAR ESTO
             $idEscena=$this->input->get_post('id_visita');
@@ -138,7 +155,8 @@ class Guiada extends CI_Controller {
 	$datos["audios"]=$this->AudioModel->allAudios();
 	//Todas las escenas existentes.
 	$datos["escenasGuiada"]=$this->EscenasModel->getAll();
-	$datos["escenas"] = $this->GuiadaModel->allEscenasGuiada();
+	$datos["id_visita_guiada"] = $id_visita_guiada;
+	$datos["tablaEstanciasGuiada"] = $this->GuiadaModel->getAllEstanciasGuiada($id_visita_guiada);
 	$datos["mapa"] = $this->mapa->cargar_mapa();
 	$datos["puntos"] = $this->mapa->cargar_puntos();
 	$datos["vista"]="guiada/administracionGuiada";
@@ -218,15 +236,47 @@ class Guiada extends CI_Controller {
     public function cambiarFilas(){
        $arrayId = $this->input->post('idArray');
 	   $arrayOrden = $this->input->post('orden');
+	   $id_visita_guiada = $this->input->post('id_visita_guiada');
 
-	   $res = $this->GuiadaModel->updateTable($arrayId, $arrayOrden);
-
+	   $res = $this->GuiadaModel->updateTable($arrayId, $arrayOrden, $id_visita_guiada);
 	   echo $res;
+	}
+	
+	public function borrarVisitaGuiada() {
+		$res = $this->GuiadaModel->borrarVisitaGuiada();
+		echo $res;
+	}
 
-    }
+	public function showUpdateStayGuiada($id) {
+		$datos['allVisitaGuiada'] = $this->GuiadaModel->getAllPrincipalGuiadaPerId($id);
+		$datos['tablaEstanciasGuiada'] = $this->GuiadaModel->getAllEstanciasGuiada($id);
+		$datos['vista'] = 'guiada/administracionGuiada';
+		$datos["mapa"]=$this->mapa->cargar_mapa();
+        $datos["puntos"]=$this->mapa->cargar_puntos();
+        $datos["audios"]=$this->AudioModel->allAudios();
+		$datos['id_visita_guiada'] = $id;
+		$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+		$this->load->view('admin_template',$datos);
+	}
 
+	public function proccessUpdateVisitaGuiada() {
+		$res = $this->GuiadaModel->proccessUpdateVisitaGuiada();
 
-
+		if($res > 0) {
+			 $datos['mensaje'] = "Visita actualizada con éxito";
+		}else {
+			$datos['error'] = 'Error al actualizar la visita';
+		}
+		$datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
+		$datos["escenas"] = $this->GuiadaModel->getAllPrincipalGuiada();
+		$datos["vista"]="guiada/principalGuiada";
+		$datos["mapa"]=$this->mapa->cargar_mapa();
+        $datos["puntos"]=$this->mapa->cargar_puntos();
+        $datos["audios"]=$this->AudioModel->allAudios();
+		$datos["escenas"]=$this->EscenasModel->getAll();
+		$this->load->view("admin_template", $datos);
+		
+	}
 
 }
 

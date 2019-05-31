@@ -228,8 +228,8 @@ img.svg {
 	width: 35px;
 }
 
-button.pan_sec_button {
-    background-color: rgba(76, 173, 79,0.6);
+button.styleButtonView {
+	background-color: rgba(245,208,169,1);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -237,10 +237,23 @@ button.pan_sec_button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 15px 2px;
     cursor: pointer;
-    width: 30%;
+    width: 65%;
 }
+
+.imageView {
+	width: 90%;
+}
+
+button.pan_sec_button {
+    margin: 15px 2px;
+}
+
+button.btnWithImage {
+	margin: -5px 2px 15px 2px;
+}
+
+
 
 .nav .contentNav {
     text-align: center;

@@ -13,22 +13,24 @@ class GuiadaModel extends CI_Model {
      * 
     */
 
-    public function crearEscenaGuiada() {
+    public function crearEscenaGuiada ($id_visita_guiada) {
 
         $cod_escena = $this->input->post_get('escenaGuiada');
         $audio_escena = $this->input->post_get('audioGuiada');
-        $titulo_escena = $this->input->post_get('tituloGuiada');
+		$titulo_escena = $this->input->post_get('tituloGuiada');
+
         if(empty($cod_escena) || empty($audio_escena)){
             return -1;    
         }
 
         //El orden se hace automaticamente despues ordenas como te de la gana.
-        $total = $this->db->count_all('visita_guiada');
+		$total = $this->db->count_all('estancias_guiada');
+
         //$total = $total+1; 
 
-        $sql = "INSERT INTO visita_guiada (id_visita,cod_escena,audio_escena,titulo_escena,orden) VALUES(NULL,'$cod_escena','$audio_escena','$titulo_escena','$total');";
+        $sql = "INSERT INTO estancias_guiada (id_estancia,cod_escena,audio_escena,titulo_escena,orden, id_visita_guiada) VALUES(NULL,'$cod_escena','$audio_escena','$titulo_escena','$total', '$id_visita_guiada');";
         //print_r($sql);
-        $this->db->query($sql);
+		$this->db->query($sql);
 
         return $this->db->affected_rows();
     }
@@ -38,8 +40,8 @@ class GuiadaModel extends CI_Model {
      *
     */
 
-    public function allEscenasGuiada(){
-        $sql = "SELECT * FROM visita_guiada ORDER BY orden ASC;";
+    public function allEscenasGuiada($id){
+        $sql = "SELECT * FROM estancias_guiada WHERE id_visita_guiada = $id ORDER BY orden ASC;";
         $resultado = $this->db->query($sql);
         $array = array();
         foreach ($resultado->result_array() as $fila) {
@@ -53,8 +55,9 @@ class GuiadaModel extends CI_Model {
      * 
     */
 
+	//lastEstanciaGuiada
     public function lastEscenaGuiada() {
-            $resultado = $this->db->query("SELECT id_visita FROM visita_guiada ORDER BY id_visita DESC LIMIT 1")->result_array()[0]["id_visita"];
+            $resultado = $this->db->query("SELECT id_estancia FROM estancias_guiada ORDER BY id_estancia DESC LIMIT 1")->result_array()[0]["id_estancia"];
             return $resultado;
     }
 
@@ -83,7 +86,7 @@ class GuiadaModel extends CI_Model {
             $imgFile = $this->upload->data('client_name');
             //Nombre del archivo que se cargó, incluida la extensión de nombre de archivo
             $tmp_dir = $this->upload->data('file_name');
-            $sql="UPDATE visita_guiada SET img_preview='$tmp_dir' WHERE id_visita='$idEscena'";
+            $sql="UPDATE estancias_guiada SET img_preview='$tmp_dir' WHERE id_estancia='$idEscena'";
             $this->db->query($sql);
             $resultado = 1;
         }else{
@@ -98,7 +101,7 @@ class GuiadaModel extends CI_Model {
     */
     
     public function borrarEscenaGuiada($idEscena) {
-        $sql="DELETE FROM visita_guiada WHERE id_visita='$idEscena'";
+        $sql="DELETE FROM estancias_guiada WHERE id_estancia='$idEscena'";
         $resultado = $this->db->query($sql);
         return $this->db->affected_rows();
     }
@@ -109,7 +112,7 @@ class GuiadaModel extends CI_Model {
     */
 
     public function borrarImagen($idEscena){
-        $sql ="SELECT img_preview  FROM visita_guiada WHERE id_visita='$idEscena'";
+        $sql ="SELECT img_preview  FROM estancias_guiada WHERE id_estancia='$idEscena'";
         $resultado = $this->db->query($sql)->result_array()[0]["img_preview"];
 		$enlace ="assets/imagenes/previews-guiada/" . $resultado;
 		$retorno;
@@ -132,12 +135,12 @@ class GuiadaModel extends CI_Model {
         $audio_escena = $this->input->post_get("audio");
         $titulo_escena = $this->input->post_get("titulo");
 
-        $this->db->query("UPDATE visita_guiada
+        $this->db->query("UPDATE estancias_guiada
 				SET 
 				    cod_escena='$cod_escena',
 	                titulo_escena='$titulo_escena',
 					audio_escena='$audio_escena' 
-				WHERE id_visita='$idEscena'");
+				WHERE id_estancia='$idEscena'");
 		
         return $this->db->affected_rows();
     }
@@ -182,13 +185,53 @@ class GuiadaModel extends CI_Model {
 
 	}
 	
-	public function updateTable($arrayId, $orden){
+	public function updateTable($arrayId, $orden, $id_visita_guiada){
 		$devuelve = 0;
 		for($i=0;$i<count($arrayId);$i++){
-			$this->db->query("UPDATE visita_guiada SET orden = '".$orden[$i]."' WHERE id_visita = '".$arrayId[$i]."'");
+			$this->db->query("UPDATE estancias_guiada SET orden = '".$orden[$i]."' WHERE id_estancia = '".$arrayId[$i]."' AND id_visita_guiada = '$id_visita_guiada'");
 			$devuelve += $this->db->affected_rows();
 		}
 		return $devuelve;
+	}
+
+	public function getAllPrincipalGuiada() {
+		$query = $this->db->query("SELECT * FROM visitas_guiadas");
+		return $query->result_array();
+	}
+
+	public function getAllPrincipalGuiadaPerId($id) {
+		$query = $this->db->query("SELECT * FROM visitas_guiadas WHERE id = $id");
+		return $query->result_array();
+	}
+
+	public function insertarVisitaGuiada() {
+		$name = $this->input->get_post('nombre');
+		$descr = $this->input->get_post('descripcion');
+		
+		$this->db->query("INSERT INTO visitas_guiadas VALUES (null, '$name', '$descr')");
+
+		return $this->db->affected_rows();
+	}
+
+	public function borrarVisitaGuiada() {
+		$id = $this->input->get_post('id');
+		$this->db->query("DELETE FROM visitas_guiadas WHERE id = $id");
+		return $this->db->affected_rows();	
+	}
+
+	public function getAllEstanciasGuiada($id) {
+		$res = $this->db->query("SELECT * FROM estancias_guiada WHERE id_visita_guiada = $id ORDER BY orden");
+		return $res->result_array();
+	}
+
+	public function proccessUpdateVisitaGuiada() {
+		$id = $this->input->get_post('id');
+		$name = $this->input->get_post('nombre');
+		$descr = $this->input->get_post('descripcion');
+
+		$this->db->query("UPDATE visitas_guiadas SET nombre = '$name', descripcion = '$descr' WHERE id = '$id'");
+
+		return $this->db->affected_rows();
 	}
 
 }

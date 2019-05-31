@@ -448,6 +448,7 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 
 						if(data.length > 0){ //si tiene...
 							$('#btnVolver').addClass('oculto');
+							site_url = '<?php echo site_url(); ?>'
 							divBtn = $('#addBoton');
 							navContent = $('.nav');
 							divBtn.removeClass('oculto');
@@ -458,8 +459,13 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 									loc_imagen = data[i].panorama;
 									id_pan_sec = data[i].id_panorama_secundario;
 									titulo = data[i].titulo;
-									
-									navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><button class='pan_sec_button'>"+titulo+"</button></div>");
+									preview = data[i].preview;
+
+									if(typeof preview === 'string'){
+										navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><img class='imageView' src=\""+site_url+preview+"\"/><button class='styleButtonView btnWithImage'>"+titulo+"</button></div>");
+									}else{
+										navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><button class='styleButtonView pan_sec_button'>"+titulo+"</button></div>");
+									}
 								}	
 								
 								$('.spanImgs').click(function(){

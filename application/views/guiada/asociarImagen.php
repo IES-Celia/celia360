@@ -24,7 +24,7 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-body">
-				<form class="for" enctype="multipart/form-data" action='<?php echo site_url("guiada/asociarImagenPreview"); ?>' method="post">
+				<form class="for" enctype="multipart/form-data" action='<?php echo site_url("guiada/asociarImagenPreview/").$id_visita_guiada; ?>' method="post">
 					
 				<div class="form-group">
 					<label for="previ">Imagen preview</label>

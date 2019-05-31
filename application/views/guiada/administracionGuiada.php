@@ -33,7 +33,7 @@ $urlFormulario = site_url('guiada/modificarEscena');
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-md-12">
-            <form action='<?php echo site_url("guiada/mostrarFormularioGuiada"); ?>' method="post">
+            <form action='<?php echo site_url("guiada/mostrarFormularioGuiada/").$allVisitaGuiada[0]['id'] ?>' method="post">
 				<input id='orden' type='hidden' value='asc' name='orden'>
                 <button type="submit" class="btn btn-primary float-right"><i class='fa fa-plus-circle'></i> Crear nuevo</button>
 			</form>
@@ -70,11 +70,11 @@ $urlFormulario = site_url('guiada/modificarEscena');
                 </thead>
                 <tbody>
 <?php
-if (count($escenas) == 0) {
+if (count($tablaEstanciasGuiada) == 0) {
     echo "<tr><td colspan='10'>No hay registros para mostrar.</td></tr>";
 }
 else {
-    foreach ($escenas as $escena) {
+    foreach ($tablaEstanciasGuiada as $escena) {
         if(empty($escena["img_preview"])){
             //Quitarlo en un futuro no muy lejano
             $imagen="vacio";
@@ -83,10 +83,10 @@ else {
             $imagen = base_url('assets/imagenes/previews-guiada/').$imagen;
         }
         
-        $idEscena =$escena['id_visita'];
+        $idEscena =$escena['id_estancia'];
 
 echo "<tr class='filaEscena'>
-        <td class='id_visita align-middle'>".$escena['id_visita']."</td>
+        <td class='id_visita align-middle'>".$escena['id_estancia']."</td>
         <td class='cod_escena align-middle'>"
             .$escena['cod_escena']."
         </td> 
@@ -241,7 +241,7 @@ echo "<tr class='filaEscena'>
         <form id='guiadaImagen' id='caja' enctype="multipart/form-data" action='' method="post">
             <div class="form-group">
                 <label for=""><h4>Selecciona una imagen</h4></label>
-                <input type="file" class="form-control-file" name="imagenPreview" aria-describedby="fileHelpId" required>
+                <input type="file" required class="form-control-file" name="imagenPreview" aria-describedby="fileHelpId" required>
             </div>
 			<input type="hidden" name="id_visita" value="">
             <input type="hidden" name="MAX_FILE_SIZE" value="20000000" />
@@ -261,7 +261,7 @@ echo "<tr class='filaEscena'>
             $("#modalGuiadaImagen").modal("hide");
         });
         $("input[name='id_visita']").val(codigo);
-        var urlCodeIgniter = "<?php echo site_url('guiada/asociarImagenPreview'); ?>";
+        var urlCodeIgniter = "<?php echo site_url('guiada/asociarImagenPreview/').$id_visita_guiada; ?>";
         $("#guiadaImagen").attr("action", urlCodeIgniter);
     });
 
@@ -325,6 +325,7 @@ echo "<tr class='filaEscena'>
         if (confirmar) {
             var idEscena = $(elemento).attr("data-id");
             var urlPeticion = "<?php echo base_url("guiada/borrarEscena");?>";
+			console.log(idEscena, urlPeticion)
             var peticion = $.ajax({
                 type: "post",
                 url: urlPeticion,
@@ -344,7 +345,6 @@ echo "<tr class='filaEscena'>
                 
             });
         }
-
     }
 
     function ordenarTabla(elemento) {
@@ -430,13 +430,16 @@ echo "<tr class='filaEscena'>
 
                 $('td.posicion').each(function(index) {
                     $(this).text(ordenArray[index]);
-                });
+				});
+				
+				console.log(ordenArray);
 
 
 				url = "<?php echo base_url('guiada/cambiarFilas'); ?>";
 				
-				$.post(url, {idArray: arrayDatos, orden: ordenArray},function(data){
+				$.post(url, {idArray: arrayDatos, orden: ordenArray, id_visita_guiada: "<?php echo $id_visita_guiada ?>"},function(data){
 					if (data > 0){
+						console.log(data);
 						$('#error_cabecera').html('');
 						$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Orden modificado</h7><i class='far fa-check-circle'></i></div>");
 						$('.btnEnviar').css('display','none');
@@ -448,8 +451,6 @@ echo "<tr class='filaEscena'>
 					}
 				});
         	});
-
-
 		});
 
 
