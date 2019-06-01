@@ -182,10 +182,11 @@ class Guiada extends CI_Controller {
 *
 */
 
-    public function getGuiada(){
-        $resultado = $this->GuiadaModel->allEscenasGuiada();
+    public function getGuiada($id){
+        $resultado = $this->GuiadaModel->getAllEstanciasGuiada($id);
         echo json_encode($resultado);
-    }
+	}
+
 
 /**
 * Método para borrar una escena en el panel de administracion.
