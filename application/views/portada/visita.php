@@ -1,6 +1,9 @@
 <!-- Libreria Zoom imagenes -->
 <script src='<?php echo site_url("/assets/js/wheelzoom-master/wheelzoom.js")?>'></script>
 <style>
+  .slick-slide{
+    float: none!important;
+  }
 /* Eliminar margenes y padding por defecto*/
   html, body{
       padding: 0!important;
@@ -66,11 +69,9 @@
 			border-radius: 100%;
   }
 }
-figure{
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-  margin: auto;
+figure {
+  margin: 0px;
+  padding: 0px;
 }
 figcaption{
   max-width:90%!important;
@@ -79,48 +80,27 @@ figcaption{
   text-align: center;
   color: #444444'
 }
+#mapa_central{
+  z-index: 9999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
 </style>
-<script>
-  $(document).ready(function(){
-    //Al pulsar fuera del mapa en el ascensor, oculta la ventana modal
-    $("#myModal").click(function() {
-      $("#ocultarModal").fadeOut("slow");
-    });
-    //Metodo que evita que se oculte el mapa de zona al pulsar dentro de el
-    $('#img_mapa_zona').click(function (e) {
-      e.stopPropagation();
-    });
-    //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
-    $(".punto_mapa_zona").click(function(){
-      $("#ocultarModal").fadeOut("slow");
-    })
-  });
-</script>
-
 <div class="contenedor">
-    <!--div donde se carga pannellum --> 
-
+  <!--div donde se carga pannellum --> 
   <div id="panorama">
-
 	<!-- carga de panoramas secundarios -->
-	<div id="addBoton">
-		
-		</div>
-
-		<div id="btnVolver">
-		</div>
-			<div class='nav oculto'>
-
-			</div>
-
-
-<!-- </fin carga panorama secundarios -->
-
-
-    <!-- Botón menú --> 
-    <div class="boton_menu">
-        
-    </div>
+	<div id="addBoton"></div>
+  <div id="btnVolver"></div>
+	<div class='nav oculto'></div>
+  
+  <!-- fin carga panorama secundarios -->
+  
+  <!-- Botón menú --> 
+    <div class="boton_menu"></div>
           <!-- Boton Versiones -->
           <div class='version-icono'></div>
           <ul class='version-lista'></ul>
@@ -181,6 +161,7 @@ figcaption{
           <h4 style='text-align: center; color:white;'>Para iniciar la visita, pulse el botón.</h4>
           <div id="boton_aceptar_guiada"></div>
         </div>
+
         <!-- Final de modal de visita guiada -->
 
 				<div id="error_guiada">
@@ -198,15 +179,20 @@ figcaption{
 					</a>
         </div>
 
+        <div id="menu_guiada_show">
 
-          <div id="menu_guiada_show">
           <div class="titulo_guiada"></div>
              
-            <div class="main">
-              <div class="slider-nav">
-              </div>
+          <!-- Miniatura de las imagenes -->
+
+          <div class="main">
+            <div class="slider-nav">
+
             </div>
+          </div>
        
+          <!-- Menu de la visita guiada -->
+
           <div class="menu_vguiada">
             <ul>
               <li><div class='icono_left' onclick="anterior();"></div></li>
@@ -216,9 +202,17 @@ figcaption{
             </ul>
           </div>
 
-          </div>
+        </div>
+
           <!-- Fin visita guiada -->
-          
+
+<!-- Mapa central -->
+<div id="mapa_central" style="display: none">
+  <figure>
+    <img id="imagen_central_guiada" src="" alt="">
+  </figure>
+</div>
+
 <!-- Inicio Galería -->
 <div id="GmyModal">
   <div class="Gmodal">
@@ -453,9 +447,6 @@ function visita_opcion(nombre, id){
 			});
 		
 			viewer = pannellum.viewer("panorama", data);
-
-			//console.log(data);
-
 
 if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         $("#boton_mapa").hide();        // Esta visita no tiene mapa.
@@ -861,6 +852,8 @@ function iniciar_visita_guiada(id){
 peticion.done(function(datos){
   var largo = datos.length;
 
+  //Anadir imagenes de las miniaturas
+
   for(var i=0;i<largo;i++){
 
     var enlace_audio_correcto = "<?php echo base_url();?>"+datos[i].audio_escena;
@@ -869,7 +862,7 @@ peticion.done(function(datos){
     array_audios.push(enlace_audio_correcto);
     array_previews.push(datos[i].img_preview);
     var urlPreview ="<?php echo base_url("assets/imagenes/previews-guiada/") ?>"+array_previews[i];
-		var crearSliderPreview = "<div class='titulo_slider'><img src='"+urlPreview+"' style='height:130px; width:130px;'></div>";
+		var crearSliderPreview = "<div class='titulo_slider'><img class='miniatura_guiada' src='"+urlPreview+"' style='height:90px; width:90px;'></div>";
     $(".slider-nav").append(crearSliderPreview);
 }
 
@@ -1015,14 +1008,10 @@ function versiones(){
 <script type="text/javascript" src="<?php echo base_url("assets/js/slick/slick/slick.min.js");?>"></script>
 
 <script>
-var baseurl = '<?php echo base_url("");?>';
-//alert(baseurl);
+  var baseurl = '<?php echo base_url("");?>';
 </script>
 
 <script src="<?php echo base_url("assets/js/metodosHotspots.js");?>"></script>
-
-
-
 
 <script>
 // SCRIPT PRINCIPAL DE LA VISTA. Se ejecutará lo primero al entrar.
@@ -1036,7 +1025,7 @@ $(document).ready(function(){
 				echo '$("#opcionguiada_portada").click()';
     }
     else {
-        echo site_url();    // Si no es libre ni guiada, volvemos la homepage
+        echo site_url(); // Si no es libre ni guiada, volvemos la homepage
     }
 ?>
     });
@@ -1044,7 +1033,30 @@ $(document).ready(function(){
 
 </script>
 <script>
-$(".custos-hotspot-saltoEspec").hover(function(){
-    $(".tooltipi").show();
-});
+  $(document).ready(function(){
+    $(".custos-hotspot-saltoEspec").hover(function(){
+      $(".tooltipi").show();
+    });
+    //Al pulsar fuera del mapa en el ascensor, oculta la ventana modal
+    $("#myModal").click(function() {
+      $("#ocultarModal").fadeOut("slow");
+    });
+    //Metodo que evita que se oculte el mapa de zona al pulsar dentro de el
+    $('#img_mapa_zona').click(function (e) {
+      e.stopPropagation();
+    });
+    //Al seleccionar un punto en el mapa de zona, nos lleva a esa zona y oculta el mapa. PD: Lo siento Dora, adios mapa.
+    $(".punto_mapa_zona").click(function(){
+      $("#ocultarModal").fadeOut("slow");
+    })
+  });
+  //Ampliar miniaturas de la visita guiada al pulsar sobre ellas
+  $(document).on('mouseenter', '.miniatura_guiada', function(){
+    let src = $(this).attr("src");
+    $("#imagen_central_guiada").attr("src", src);
+    $("#mapa_central").show();
+  });
+  $(document).on('mouseleave', '.miniatura_guiada', function(){
+    $("#mapa_central").hide();
+  });
 </script>

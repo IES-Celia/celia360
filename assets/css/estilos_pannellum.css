@@ -53,8 +53,8 @@
        .icono_pp,
        .icono_left{
         z-index: 2;
-        height: 65px;
-        width: 65px;
+        height: 40px;
+        width: 40px;
         background-image: url("svg/fullscreenblanco.svg");
         cursor: pointer;
         background-size:cover;
@@ -970,32 +970,24 @@ display: block;
 /* menu slider temporal */
 
 .main {
+  overflow-x: hidden;
+  height: 100%!important;
   z-index: 3 !important;
   position: absolute;
-  bottom: 120px;
-  font-family:Arial;
-  width:815px;
-  display:none;
-  left: 0;
+  font-family: Arial;
+  display: none;
+  left: 5px;
   right: 0;
-  margin: auto
-}
-      
-.titulo_slider {
-  width: 130px;
-  height: 130px;
-  margin: 1px;
+  width: 110px;
+  overflow-y: scroll;
 }
 
-.highlight_slider {
-  border-top: solid 4px crimson;
-  padding-top: 3px;
+img#imagen_central_guiada {
+  width: 500px;
 }
 
-.titulo_slider img{
-  background-image: contain;
-
-  
+img.miniatura_guiada {
+  margin: 4px 0px;
 }
 
 /* menu slider temporal */
