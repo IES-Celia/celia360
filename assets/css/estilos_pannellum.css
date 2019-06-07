@@ -118,7 +118,7 @@ display: block;
   border-radius: 2%;
 }
 
-#error_guiada{ 
+#error_guiada, #mensajeEleccion{ 
 	display: none;
   position:absolute;
   width: auto;
@@ -130,6 +130,11 @@ display: block;
   z-index: 2;
   border-radius: 2%;
 }
+
+#mensajeEleccion {
+	color: white;
+}
+
 
 #mensaje_guiada, #error_guiada h3 {
   color: white;
@@ -332,6 +337,12 @@ display: block;
 
 #menu_guiada_show {
   display: none;
+}
+
+.liVisitas {
+	color: white !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
 }
 
 .menu_vguiada ul {

@@ -43,4 +43,4 @@
 </head>
 <body>
     <a class="nav-link" style='display:none;' id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre");?>" onclick="visita_opcion('get_json_libre')">Visita libre</a>
-    <a class="nav-link" style='display:none;' id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada");?>" onclick="visita_opcion('get_json_guiada')">Visita Guiada</a>
+    <a class="nav-link" style='display:none;' id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada");?>" onclick="/*visita_opcion('get_json_guiada')*/ getAllVisita();">Visita Guiada</a>

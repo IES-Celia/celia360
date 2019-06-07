@@ -170,7 +170,7 @@
             <div class="ascensor_mapa form-group">
               <label for=""><h4>Imagen de mapa</h4></label>
               <div class="m-3">
-                <img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor'];?>' width='200'>
+              <img src='<?php echo base_url("assets/imagenes/mapa/").$opcionesPortada[12]['opcion_valor'];?>' width='200'> 
               </div>
               <input type="file" class="form-control-file" name="nueva_imagen_mapa" aria-describedby="fileHelpId">
             </div>

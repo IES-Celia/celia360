@@ -49,6 +49,7 @@ assets/imagenes/panoramasSecundarios/*
 !assets/css/*
 !assets/js/*
 sesiones/*
+assets/imagenes/previewSecundarias
 
 
 # Archivos con las variables de configuración

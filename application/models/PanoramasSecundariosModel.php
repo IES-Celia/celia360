@@ -35,7 +35,7 @@
                 $upload_path = 'assets/imagenes/panoramasSecundarios/'.$userpic;
                 
             if(move_uploaded_file($arrayImagenes['tmp_name'][$i],$upload_path)){
-                $this->db->query("INSERT INTO panoramas_secundarios VALUES ('$id_string','$id','$titulo_pan_sec','$fechatop','$upload_path',120,-3,-84);"); //Insertamos la nueva imagen
+                $this->db->query("INSERT INTO panoramas_secundarios VALUES ('$id_string','$id','$titulo_pan_sec','$fechatop','$upload_path',120,-3,-84, null);"); //Insertamos la nueva imagen
                 
             
                 // Redimensionamos la imagen con la libreria imagen_lib de CodeIgniter
@@ -71,7 +71,7 @@
 		
 		//obtener a traves de su id
 		public function getById($id){
-			$query = $this->db->query("SELECT cod_escena, id_panorama_secundario, titulo, fecha_acontecimiento, panorama FROM panoramas_secundarios WHERE cod_escena = '".$id."'");
+			$query = $this->db->query("SELECT cod_escena, id_panorama_secundario, titulo, fecha_acontecimiento, panorama, preview FROM panoramas_secundarios WHERE cod_escena = '".$id."'");
 			return $query->result_array();
 		}
 
@@ -117,7 +117,7 @@
 
 			$devuelve = '';
 
-			$panoramas_secundarios = $this->db->query("SELECT panoramas_secundarios.id_panorama_secundario, panoramas_secundarios.titulo, panoramas_secundarios.panorama, panoramas_secundarios.pitch, panoramas_secundarios.yaw, panoramas_secundarios.hfov 
+			$panoramas_secundarios = $this->db->query("SELECT panoramas_secundarios.id_panorama_secundario, panoramas_secundarios.titulo, panoramas_secundarios.panorama, panoramas_secundarios.pitch, panoramas_secundarios.yaw, panoramas_secundarios.hfov, panoramas_secundarios.preview 
 			FROM panoramas_secundarios INNER JOIN escenas
 			ON escenas.cod_escena = panoramas_secundarios.cod_escena WHERE panoramas_secundarios.cod_escena = '$cod_escena'
 			ORDER BY panoramas_secundarios.fecha_acontecimiento DESC;");
@@ -147,5 +147,74 @@
 			return $consulta->result_array();
 		}
 
-    }
+		public function updatePreview(){
+			$id = $this->input->get_post('id');
+			$imagenFile = $_FILES['file']['tmp_name'];
+
+			$salida = 0;
+
+			$numero_id = substr($id,8); //numero
+			$imagen = 'pan_sec_'.$numero_id.".jpg";
+
+			$upload_path = "assets/imagenes/previewSecundarias/";
+			$image_path = "assets/imagenes/previewSecundarias/".$imagen;
+
+			if (!is_dir(getcwd().$upload_path)){
+				mkdir(getcwd().$upload_path);
+			}
+
+			if(file_exists(getcwd()."/".$image_path)){
+				unlink(getcwd()."/".$image_path);
+			}
+
+			$config['upload_path']          = $upload_path;
+			$config['allowed_types']        = 'jpg';
+			$config['width']            = 500;
+			$config['file_name'] = $imagen;
+
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload('file'))
+			{
+
+					//$salida = array('error' => $this->upload->display_errors());
+
+					$salida = -1;
+			}
+			else
+			{
+				$this->db->query("UPDATE panoramas_secundarios SET preview = '$image_path' WHERE id_panorama_secundario ='$id'");
+				$config['image_library'] = 'gd2';
+                $config['source_image'] = $image_path;
+                $config['create_thumb'] = TRUE;
+				$config['maintain_ratio'] = TRUE;
+				$config['new_image'] = $upload_path;
+				$config['width'] = 300;
+				$this->load->library('image_lib', $config);
+
+				$salida = $this->db->affected_rows(); // return 1
+
+				if(!$this->image_lib->resize()){
+					//$salida = $this->image_lib->display_errors();
+
+					$salida = -2;
+				}
+			}
+				
+		return $salida;
+	}
+
+	public function deletePreview($id) {
+		$image_path = "assets/imagenes/previewSecundarias/".$id.".jpg";
+		$salida = 0;
+
+		if(unlink($image_path)){
+			$this->db->query("UPDATE panoramas_secundarios SET preview = NULL WHERE id_panorama_secundario = '$id'");
+			$salida = $this->db->affected_rows();
+		}
+
+		return $salida;
+	}
+}
+
 ?>

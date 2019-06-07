@@ -128,10 +128,10 @@ class TourModel extends CI_Model {
   * @param array $datos Array que trae información relativa al tour. En este caso nos interesa el campo inicio > escena inicial para generar el json correctamente
   * @return el json de la visita guiada
   */
-   public function get_datos_guiada($datos) {
+   public function get_datos_guiada($datos, $id_visita) {
 	$this->load->database();
 	
-	$res = $this->db->query('SELECT * FROM visita_guiada')->result_array();
+	$res = $this->db->query("SELECT * FROM estancias_guiada WHERE id_visita_guiada = '$id_visita'")->result_array();
 	$json = '';
 	if(count($res)== 0){
 		$json = false;
@@ -385,7 +385,11 @@ public function get_datos_destacado($datos) {
 			$devuelve = $json;
 	}
 	return $devuelve;   
-	}
-  
+    }
+    
+    public function getAllVisitas() {
+        $res = $this->db->query("SELECT * FROM visitas_guiadas");
+        return json_encode($res->result_array());
+    }
 }
 ?>

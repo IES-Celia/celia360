@@ -60,7 +60,7 @@
                     <a class="nav-link" id="opcionlibre_portada" href="<?php echo site_url("tour/visita/libre");?>" onclick="visita_opcion('get_json_libre')" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Visita libre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada");?>" onclick="visita_opcion('get_json_guiada')" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Visita Guiada</a>
+                    <a class="nav-link" id="opcionguiada_portada" href="<?php echo site_url("tour/visita/guiada");?>" onclick="/*visita_opcion('get_json_guiada')*/ getAllVisita()" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Visita Guiada</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="opciondestacada_portada" href="<?php echo site_url("PuntosDestacados");?>" style="color:<?php echo $portada[9]['opcion_valor'];?>; font-family: <?php echo $portada[8]['opcion_valor'] ;?>, sans-serif;">Destacados</a>

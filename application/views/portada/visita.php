@@ -119,6 +119,28 @@ figcaption{
             </div>
           </div>
           <!-- Fin vídeo visita libre -->
+
+
+          <!-- Elección visita_guiada -->
+          <div id="mensajeEleccion">
+          <h3 style="text-align: center;">Visita guiada</h3>
+          <div class='mensaje_guiada_inicio_recomendacion'>
+            <hr class="mensaje_separador"> 
+            
+						<h1 style="text-align: center; padding: 10px;">Elija la visita guiada</h1>
+						
+						<ol id="listaVisitas" style="text-align: center;">
+							
+						</ol>
+
+            <hr class="mensaje_separador">
+          </div>
+
+          <a href="" id="hrefVolver">
+						<div id="volverPrincipal"></div>
+					</a>
+        </div>
+
           
           <!-- Inicio visita guiada -->
 
@@ -350,9 +372,49 @@ panorama_html = $("#panorama").html();  // HTML que hay dentro de la capa reserv
  * Pide por Ajax el JSON necesario para la visita (libre, guiada o de puntos destacados)
  * @param String nombre Tipo de visita. Los valores válidos son "get_json_libre" y "get_json_guiada"
  */
-function visita_opcion(nombre){
-  $.ajax({
-    url: "<?php echo site_url("tour/"); ?>"+nombre,
+
+function getAllVisita() {
+	$.ajax({
+		url: "<?php echo site_url("tour/getAllVisitas"); ?>",
+		type: 'GET',
+		dataType: 'json',
+		beforeSend: function() {
+			if (typeof viewer !== 'undefined') {
+        viewer.destroy();
+        $("#panorama").append(panorama_html);          
+      }
+			cargarPannellum();
+		}
+	}).done(function (allVisita) {
+
+		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/previews-guiada/background-visita-guiada.jpg';
+
+		console.log(urlImage);
+
+		$('body').attr('style','background: url('+urlImage+') fixed; background-size: cover');
+
+		$('#mensajeEleccion').show();
+
+		olVisita = $('#listaVisitas');
+
+		url = "<?php echo base_url(); ?>";
+		get_json_guiada = 'get_json_guiada';
+
+    allVisita.forEach(function(element){
+     olVisita.append("<li><a class='liVisitas' onclick='visita_opcion(\""+get_json_guiada+"\", "+element.id+");'>"+element.nombre+"</a></li>");
+    });
+	});
+}
+
+
+function visita_opcion(nombre, id){
+	$('#mensajeEleccion').hide();
+	url = (nombre == 'get_json_guiada') ? "<?php echo site_url("tour/");?>"+nombre+"/"+id : "<?php echo site_url("tour/"); ?>"+nombre;
+  
+	console.log(url);
+	
+	$.ajax({
+    url: url,
     type: 'GET',
     dataType: 'json',
     beforeSend: function(){
@@ -386,7 +448,7 @@ function visita_opcion(nombre){
 
 if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
         $("#boton_mapa").hide();        // Esta visita no tiene mapa.
-        iniciar_visita_guiada();
+        iniciar_visita_guiada(id);
         $("#panel_audio_libre").hide(); 
         $('#audio_libre').attr("src","");
 			} else {// Arrancar visita libre.
@@ -426,8 +488,6 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 
 						arrowId.append(arrow);
 
-
-
 					});
 				}
 
@@ -439,6 +499,7 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 
 						if(data.length > 0){ //si tiene...
 							$('#btnVolver').addClass('oculto');
+							site_url = '<?php echo site_url(); ?>'
 							divBtn = $('#addBoton');
 							navContent = $('.nav');
 							divBtn.removeClass('oculto');
@@ -449,8 +510,13 @@ if(nombre=="get_json_guiada"){          // Arrancar la visita guiada
 									loc_imagen = data[i].panorama;
 									id_pan_sec = data[i].id_panorama_secundario;
 									titulo = data[i].titulo;
-									
-									navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><button class='pan_sec_button'>"+titulo+"</button></div>");
+									preview = data[i].preview;
+
+									if(typeof preview === 'string'){
+										navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><img class='imageView' src=\""+site_url+preview+"\"/><button class='styleButtonView btnWithImage'>"+titulo+"</button></div>");
+									}else{
+										navContent.append("<div class='contentNav' onclick='viewer.loadScene(\""+id_pan_sec+"\")'><button class='styleButtonView pan_sec_button'>"+titulo+"</button></div>");
+									}
 								}	
 								
 								$('.spanImgs').click(function(){
@@ -775,10 +841,10 @@ function estado_audio(){
 /*
  * Inicia la carga de los elementos necesarios para la visita guiada
  */
-function iniciar_visita_guiada(){
+function iniciar_visita_guiada(id){
   var peticion = $.ajax({
   type: "get",
-  url: "<?php echo site_url('guiada/getGuiada');?>",
+  url: "<?php echo site_url('guiada/getGuiada/');?>"+id,
   dataType: "json",
 });
 
@@ -955,7 +1021,7 @@ $(document).ready(function(){
         echo '$("#opcionlibre_portada").click()';
     }
     else if ($tipo_visita == "guiada") {
-        echo '$("#opcionguiada_portada").click()';
+				echo '$("#opcionguiada_portada").click()';
     }
     else {
         echo site_url(); // Si no es libre ni guiada, volvemos la homepage

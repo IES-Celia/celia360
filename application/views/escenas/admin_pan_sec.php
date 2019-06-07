@@ -57,6 +57,7 @@
 		<th>Título</th>
 		<th>Fecha</th>
 		<th>Imagen</th>
+		<th>Imagen Preview</th>
 		<th>Modificar</th>
 		<th>Eliminar</th>
 	</tr>
@@ -66,6 +67,7 @@
 			<th>Título</th>
 			<th>Fecha</th>
 			<th>Imagen</th>
+			<th>Imagen Preview</th>
 			<th>Modificar</th>
 			<th>Eliminar</th>
 		</tr>
@@ -82,18 +84,29 @@
 				<i class='ojoPanel far fa-eye mx-auto' id='".$info['id_panorama_secundario']."'> 
 					<span class='oculto'>".base_url($info['panorama'])."</span>
 				</i>
-
 				<div id='panorama-".$info['id_panorama_secundario']."' class='panoramas oculto'>
 				</div>
 				<div class='form-group mt-3'>
 				<a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/update_escena_pitchyaw'<button class='admin btn btn-primary mr-3 col-xs-12'>Pitch-Yaw</button></a>
 				<a href='".base_url('Panoramas_Secundarios/cargar_escena/'.$info['id_panorama_secundario'])."/show_insert_hotspot/'><button class='admin btn btn-primary col-xs-12'>Hotspots</button></a>
 				</div>
-			
-				</td>
+				</td>";
+
+				if($info['preview'] != null){
+					echo "<td><img src='".site_url($info['preview'])."' alt='no disponible'/>
+					<button class='btn btn-danger mt-2 deletePreview d-block' id='".$info['id_panorama_secundario']."'>Eliminar preview</button>
+					</td>";
+				}else{
+					echo "<td>
+				<input type='file' name='file' class='d-block form-control-file imagen_preview'>
+				<button class='btn btn-success mt-2 updatePreview' id='".$info['id_panorama_secundario']."'>Actualizar preview</button>
+				</td>";
+				}
+
 				
 				
-				
+
+				echo "
 				</div></div></td>
 				<td><img class='svg' src='". site_url('assets/imagenes/svg/edit.svg')."' data-toggle='modal' data-target='#exampleModal' onclick='mostrar(\"modificar\", \"".$info['id_panorama_secundario']."\");'></td>
 				<td><img class='svg delete' src='". site_url('assets/imagenes/svg/trash.svg')."' id='".$info['id_panorama_secundario']."'></td>
@@ -422,6 +435,72 @@
             });
             $('#panorama-'+id).toggleClass('oculto');
         });
-    });
+
+				$('.updatePreview').click(function(){
+
+					idImagen = $(this).attr('id');
+				
+					var fd = new FormData();
+					var file = $(this).prev()[0].files[0];
+
+					
+					fd.append('file', file);
+					fd.append('id', idImagen);
+
+
+				url = "<?php echo base_url('Panoramas_Secundarios/updatePreview'); ?>";
+				base_url = "<?php echo base_url('Panoramas_Secundarios/show_panoramas_secundarios/'.$cod_escena); ?>";
+				$.ajax({
+					url: url,
+					type: 'post',
+					data: fd,
+					contentType: false,
+					processData: false,
+					success: function(response){
+						if (response.trim() == 1){
+							$("#error_cabecera").html('');
+              $("#mensaje_cabecera").html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Preview insertada correctamente</h7><i class='far fa-check-circle'></i></div>");
+							setTimeout(() => {
+								window.location = base_url;
+							},2000);
+						}else if (response.trim() == -1){
+							$("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error en la subida de la preview</h7><i class='fas fa-exclamation-circle'></i></div>");
+            	$("#mensaje_cabecera").html("");
+						}else if (response.trim() == -2){
+							$("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al redimensionar la preview</h7><i class='fas fa-exclamation-circle'></i></div>");
+            	$("#mensaje_cabecera").html("");
+						}else {
+							$("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al actualizar la preview</h7><i class='fas fa-exclamation-circle'></i></div>");
+            	$("#mensaje_cabecera").html("");
+						}
+					}
+				})
+			});
+
+			$(".deletePreview").click(function(){
+				idImagen = $(this).attr('id');
+
+				if (confirm('¿Estás seguro de eliminar la imagen?')){
+				url = "<?php echo base_url('Panoramas_Secundarios/deletePreview/'); ?>"+idImagen;
+
+				$(this).parent().find('img').remove();
+
+				$.get(url, function(data){
+					if(data.trim() == 1) {
+						$("#error_cabecera").html('');
+            $("#mensaje_cabecera").html("<div class='alert alert-success ' role='alert' ><h7 class='mr-2'>Preview eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
+						base_url = "<?php echo base_url('Panoramas_Secundarios/show_panoramas_secundarios/'.$cod_escena); ?>";
+						setTimeout(() => {
+							window.location = base_url;
+						}, 2000);
+
+					}else {
+						$("#error_cabecera").html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la preview</h7><i class='fas fa-exclamation-circle'></i></div>");
+            $("#mensaje_cabecera").html("");
+					}
+				});
+			}	
+		});
+  });
 </script>
 

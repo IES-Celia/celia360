@@ -50,7 +50,7 @@ class Tour extends CI_Controller {
     $this->load->model("MapaModel","mapa");
     $this->load->model('PortadaModel');
     $datos["vista"] = "portada/visita";
-    $datos["tipo_visita"] = $tipo_visita;
+		$datos["tipo_visita"] = $tipo_visita;
     $datos["portada"] = $this->PortadaModel->get_info_portada();
     $datos["mapa"] = $this->mapa->cargar_mapa();
     $datos["puntos"] = $this->mapa->cargar_puntos();
@@ -74,17 +74,21 @@ class Tour extends CI_Controller {
    * Genera a partir de la BD el JSON que necesita Pannellum para la visita guiada.
    * Genera ese JSON para ser recibido en el cliente mediante una petición Ajax.
    */
-   public function get_json_guiada() {
+   public function get_json_guiada($id_visita) {
         $this->load->model("MapaModel","mapa");
         $datos["inicio"] = $this->mapa->cargar_config();
-				$json = $this->TourModel->get_datos_guiada($datos);
+				$json = $this->TourModel->get_datos_guiada($datos, $id_visita);
 				if($json == false){
 					echo 1;
 				}else{
 					echo $json;
-				}
-        
-  }
+				}    
+	}
+	
+	public function getAllVisitas() {
+		$res = $this->TourModel->getAllVisitas();
+		echo $res;
+	}
   
   /**
    * Genera a partir de la BD el JSON que necesita Pannellum para la visita de puntos destacados.
@@ -117,6 +121,10 @@ class Tour extends CI_Controller {
       $datos["portada"]=$this->PortadaModel->get_info_portada();
       $datos["vista"] = "portada/creditos";
       $this->load->view("main_template", $datos);
+  }
+
+  public function persDocumentacion(){
+    
   }
 
   /* Muestra la vista con la politica de privacidad de la aplicacion */
@@ -153,6 +161,7 @@ class Tour extends CI_Controller {
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
+    console.log($datos["opcionesPortada"]);
     $datos["vista"]="portada/updatePortada";
     /* Compruebo todos los posibles errores al actualizar la portada */
     /* Yo no quería comprobar todos los posibles casos, pero Alfredo me ha obligado, dice que soy un vago */
@@ -212,5 +221,8 @@ class Tour extends CI_Controller {
     $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
     $this->load->view("admin_template", $datos);
   }
+
+
+  
 
 }
