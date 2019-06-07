@@ -375,9 +375,8 @@ json_contenido=''; // JSON con el contenido para Pannellum
 panorama_html = $("#panorama").html();  // HTML que hay dentro de la capa reservada para el panorama
 
 /*
- * Pide por Ajax el JSON necesario para la visita (libre, guiada o de puntos destacados)
- * @param String nombre Tipo de visita. Los valores válidos son "get_json_libre" y "get_json_guiada"
- */
+ * Función que muestra un panel para que el cliente eliga la visita a realizar
+*/
 
 function getAllVisita() {
 	$.ajax({
@@ -392,10 +391,9 @@ function getAllVisita() {
 			cargarPannellum();
 		}
 	}).done(function (allVisita) {
+    $('#boton_mapa, #fullscreen').hide();
 
 		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/previews-guiada/background-visita-guiada.jpg';
-
-		console.log(urlImage);
 
 		$('body').attr('style','background: url('+urlImage+') fixed; background-size: cover');
 
@@ -412,12 +410,16 @@ function getAllVisita() {
 	});
 }
 
+/*
+ * Pide por Ajax el JSON necesario para la visita (libre, guiada o de puntos destacados)
+ * @param String nombre Tipo de visita. Los valores válidos son "get_json_libre" y "get_json_guiada"
+ * @param Number id identificador de la visita a realizar.
+ */
 
 function visita_opcion(nombre, id){
+  if ($('#boton_mapa, #fullscreen').hide()) $('#boton_mapa, #fullscreen').show();
 	$('#mensajeEleccion').hide();
 	url = (nombre == 'get_json_guiada') ? "<?php echo site_url("tour/");?>"+nombre+"/"+id : "<?php echo site_url("tour/"); ?>"+nombre;
-  
-	console.log(url);
 	
 	$.ajax({
     url: url,
@@ -680,7 +682,6 @@ peticion.done(function(datos){
   $(".Gmodal-content img.GmySlides, div.GmyDescr").remove();
   $("#figure_modal_img").empty();
   for(var i=0;i<resultado.length;i++){
-		console.log(resultado[i].texto_imagen);
     //Para poner bien el enlace con codeigniter guardamos en la variable la url y luego se la pasamos
     var enlace = "<?php echo base_url("assets/imagenes/imagenes-hotspots/")?>"+resultado[i].url_imagen;
     $("#figure_modal_img").append("<img class='GmySlides' src='"+enlace+"' textoImagen='"+resultado[i].texto_imagen+"'>");
