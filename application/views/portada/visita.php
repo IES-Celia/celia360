@@ -7,7 +7,7 @@
 /* Eliminar margenes y padding por defecto*/
   html, body{
       padding: 0!important;
-      margin: 0!important;
+			margin: 0!important;
   }
 /* Posicion relativa de los puntos en el mapa de zona */
   .mapa_zona{
@@ -136,7 +136,7 @@ figcaption{
             <hr class="mensaje_separador">
           </div>
 
-          <a href="" id="hrefVolver">
+          <a href="" class="hrefVolver">
 						<div id="volverPrincipal"></div>
 					</a>
         </div>
@@ -174,7 +174,7 @@ figcaption{
             <hr class="mensaje_separador">
           </div>
 
-          <a href="" id="hrefVolver">
+          <a href="" class="hrefVolver">
 						<div id="volverPrincipal"></div>
 					</a>
         </div>
@@ -376,7 +376,7 @@ function getAllVisita() {
 	$.ajax({
 		url: "<?php echo site_url("tour/getAllVisitas"); ?>",
 		type: 'GET',
-		dataType: 'json',
+
 		beforeSend: function() {
 			if (typeof viewer !== 'undefined') {
         viewer.destroy();
@@ -385,22 +385,25 @@ function getAllVisita() {
 			cargarPannellum();
 		}
 	}).done(function (allVisita) {
+		allVisitaObj =JSON.parse(allVisita);
+		$('html, body').css('font-family',allVisitaObj.font);
+		if (allVisitaObj.data.length == 0) { // si no hay visitas marco un mensaje
+			$('#error_guiada').show();
+			$(".hrefVolver").attr('href','<?php echo base_url(); ?>');
+		} else {
     $('#boton_mapa, #fullscreen').hide();
-
 		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/previews-guiada/background-visita-guiada.jpg';
-
 		$('body').attr('style','background: url('+urlImage+') fixed; background-size: cover');
-
 		$('#mensajeEleccion').show();
-
 		olVisita = $('#listaVisitas');
 
 		url = "<?php echo base_url(); ?>";
 		get_json_guiada = 'get_json_guiada';
 
-    allVisita.forEach(function(element){
+    allVisitaObj.data.forEach(function(element){
      olVisita.append("<li><a class='liVisitas' onclick='visita_opcion(\""+get_json_guiada+"\", "+element.id+");'>"+element.nombre+"</a></li>");
     });
+		}
 	});
 }
 
@@ -430,7 +433,7 @@ function visita_opcion(nombre, id){
   }).done(function(data) {
     if(data == 1){ //la visita guiada no está definida
 			$('#error_guiada').show();
-			$("#hrefVolver").attr('href','<?php echo base_url(); ?>');
+			$(".hrefVolver").attr('href','<?php echo base_url(); ?>');
 		}else{
 			// ¡Hecho! El JSON completo está en data. Vamos a hacerle un par de transformaciones necesarias para que funcione OK.
 			$.each(data.scenes, function(i){

@@ -310,19 +310,29 @@
 			$db->query("ALTER TABLE `video` MODIFY COLUMN `id_vid` INT(11) AUTO_INCREMENT;");
             
 
-            $db->query("CREATE TABLE `visita_guiada` (
-                            `id_visita` int(11) NOT NULL,
+            $db->query("CREATE TABLE `estancias_guiada` (
+                            `id_estancia` int(11) PRIMARY KEY,
                             `cod_escena` varchar(10) NOT NULL,
                             `titulo_escena` varchar(100) NOT NULL,
                             `audio_escena` varchar(100) NOT NULL,
                             `img_preview` varchar(100) NOT NULL,
-                            `orden` int(11) NOT NULL
-                            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
-            $db->query("ALTER TABLE `visita_guiada`
-						ADD PRIMARY KEY (`id_visita`);");
+                            `orden` int(11) NOT NULL,
+							`id_visita_guiada` INT NOT NULL
+							) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+							
 
-			$db->query("ALTER TABLE `visita_guiada` MODIFY COLUMN `id_visita` INT(11) AUTO_INCREMENT;");
-           
+            $db->query("ALTER TABLE `estancias_guiada`
+						ADD PRIMARY KEY (`id_estancias`);");
+
+			$db->query("ALTER TABLE `estancias_guiada` MODIFY COLUMN `id_estancia` INT(11) AUTO_INCREMENT;");
+		   
+			
+			$db->query("CREATE TABLE visitas_guiadas (
+				id INT PRIMARY KEY AUTO_INCREMENT,
+				nombre VARCHAR(75) NOT NULL,
+				descripcion VARCHAR(1000)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8;");
+
 
   $db->query('CREATE TABLE `panoramas_secundarios` (
 	`id_panorama_secundario` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -332,7 +342,8 @@
 	`panorama` varchar(250) DEFAULT NULL,
 	`hfov` int(11) DEFAULT NULL,
 	`pitch` int(11) DEFAULT NULL,
-	`yaw` int(11) DEFAULT NULL
+	`yaw` int(11) DEFAULT NULL,
+	`preview` VARCHAR(200)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;');
           
 

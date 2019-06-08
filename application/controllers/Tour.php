@@ -48,7 +48,7 @@ class Tour extends CI_Controller {
    */
   public function visita($tipo_visita) {
     $this->load->model("MapaModel","mapa");
-    $this->load->model('PortadaModel');
+		$this->load->model('PortadaModel');
     $datos["vista"] = "portada/visita";
 		$datos["tipo_visita"] = $tipo_visita;
     $datos["portada"] = $this->PortadaModel->get_info_portada();
@@ -87,7 +87,14 @@ class Tour extends CI_Controller {
 	
 	public function getAllVisitas() {
 		$res = $this->TourModel->getAllVisitas();
-		echo $res;
+		$font = $this->TourModel->getUsedFont();
+
+		$object = (object) [
+			'data' => $res,
+			'font' => $font,
+		];
+
+		echo json_encode($object);
 	}
   
   /**

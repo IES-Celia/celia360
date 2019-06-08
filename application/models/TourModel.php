@@ -388,8 +388,15 @@ public function get_datos_destacado($datos) {
     }
     
     public function getAllVisitas() {
-        $res = $this->db->query("SELECT * FROM visitas_guiadas");
-        return json_encode($res->result_array());
-    }
+		$res = $this->db->query("SELECT * FROM visitas_guiadas");
+
+        return $res->result_array();
+	}
+	
+	public function getUsedFont() {
+		$res = $this->db->query("SELECT opcion, opcion_valor FROM opciones_portada WHERE opcion = 'nombre_fuente'");
+		return $res->result_array()[0]['opcion_valor'];
+
+	}
 }
 ?>

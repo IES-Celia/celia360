@@ -63,8 +63,8 @@ class Guiada extends CI_Controller {
     public function insertarEscenaGuiada($id_visita_guiada){
 		$resultado = $this->GuiadaModel->crearEscenaGuiada($id_visita_guiada);
 		echo $resultado;
+		$datos['id_visita_guiada'] = $id_visita_guiada;
         if($resultado > 0){
-			$datos['id_visita_guiada'] = $id_visita_guiada;
             $datos["vista"]="guiada/asociarImagen";
             $datos["permiso"]=$this->UsuarioModel->comprueba_permisos($datos["vista"]);
             $this->load->view("admin_template", $datos);
@@ -127,7 +127,8 @@ class Guiada extends CI_Controller {
 */
 
     public function asociarImagenPreview($id_visita_guiada){
-        //Si es una modificacion de imagen existente
+		//Si es una modificacion de imagen existente
+		$datos["id_visita_guiada"] = $id_visita_guiada;
           if($this->input->get_post('id_visita') !== null){ //MODIFICAR ESTO
             $idEscena=$this->input->get_post('id_visita');
             $borrarImagen = $this->GuiadaModel->borrarImagen($idEscena);
@@ -155,7 +156,6 @@ class Guiada extends CI_Controller {
 	$datos["audios"]=$this->AudioModel->allAudios();
 	//Todas las escenas existentes.
 	$datos["escenasGuiada"]=$this->EscenasModel->getAll();
-	$datos["id_visita_guiada"] = $id_visita_guiada;
 	$datos["tablaEstanciasGuiada"] = $this->GuiadaModel->getAllEstanciasGuiada($id_visita_guiada);
 	$datos["mapa"] = $this->mapa->cargar_mapa();
 	$datos["puntos"] = $this->mapa->cargar_puntos();

@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No se permite el acceso directo al script');
                                 <?php 
                                 foreach ($audios as $audio) {
                                     $nombreAudio=$audio["url_aud"];
-                                    echo "<option value=$nombreAudio>$nombreAudio</option>";
+                                    echo "<option value='$nombreAudio'>$nombreAudio</option>";
                                 }
                                 ?>
                               </select>

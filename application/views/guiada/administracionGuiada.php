@@ -33,7 +33,7 @@ $urlFormulario = site_url('guiada/modificarEscena');
 <div class="container">
     <div class="row mt-4 mb-4">
         <div class="col-md-12">
-            <form action='<?php echo site_url("guiada/mostrarFormularioGuiada/").$allVisitaGuiada[0]['id'] ?>' method="post">
+            <form action='<?php echo site_url("guiada/mostrarFormularioGuiada/").$id_visita_guiada ?>' method="post">
 				<input id='orden' type='hidden' value='asc' name='orden'>
                 <button type="submit" class="btn btn-primary float-right"><i class='fa fa-plus-circle'></i> Crear nuevo</button>
 			</form>
