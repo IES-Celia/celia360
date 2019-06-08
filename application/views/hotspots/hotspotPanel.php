@@ -108,7 +108,6 @@ echo "</a>";
       } else {
         console.log("Error al volver atras");
       }
-
     });
   });
   

@@ -194,24 +194,41 @@ class GuiadaModel extends CI_Model {
 		return $devuelve;
 	}
 
+	/**
+	 * Función que devuelve todas las visitas guiadas.
+	 */
+
 	public function getAllPrincipalGuiada() {
 		$query = $this->db->query("SELECT * FROM visitas_guiadas");
 		return $query->result_array();
 	}
+
+	/**
+	 * Función que se trae todos los datos de una visita guiada concreta
+	 * @param id INT | Identificador de la visita guiada.
+	 */
 
 	public function getAllPrincipalGuiadaPerId($id) {
 		$query = $this->db->query("SELECT * FROM visitas_guiadas WHERE id = $id");
 		return $query->result_array();
 	}
 
+	/**
+	 * Función que inserta una visita guiada con su nombre y descripción.
+	 * Posteriormente se inserta en la base de datos.
+	 */
+
 	public function insertarVisitaGuiada() {
 		$name = $this->input->get_post('nombre');
 		$descr = $this->input->get_post('descripcion');
 		
 		$this->db->query("INSERT INTO visitas_guiadas VALUES (null, '$name', '$descr')");
-
 		return $this->db->affected_rows();
 	}
+
+	/**
+	 * Borrado por AJAX, se envia a través de una petición asíncrona un formulario con el id de la visita guiada
+	 */
 
 	public function borrarVisitaGuiada() {
 		$id = $this->input->get_post('id');
@@ -219,10 +236,19 @@ class GuiadaModel extends CI_Model {
 		return $this->db->affected_rows();	
 	}
 
+	/**
+	 * Se trae de la base de datos todas las estancias ordenadas donde su id_visita_guiada = $id
+	 * @param id INT identificador de la visita_guiada
+	 */
+
 	public function getAllEstanciasGuiada($id) {
 		$res = $this->db->query("SELECT * FROM estancias_guiada WHERE id_visita_guiada = $id ORDER BY orden");
 		return $res->result_array();
 	}
+
+	/**
+	 * Realiza el proceso de actualización
+	 */
 
 	public function proccessUpdateVisitaGuiada() {
 		$id = $this->input->get_post('id');
@@ -232,6 +258,17 @@ class GuiadaModel extends CI_Model {
 		$this->db->query("UPDATE visitas_guiadas SET nombre = '$name', descripcion = '$descr' WHERE id = '$id'");
 
 		return $this->db->affected_rows();
+	}
+
+	/**
+	 * Función que devuelve el número de estancias que pertenece a una visita en concreto.
+	 * Si no contiene ninguna se borrara la visita guiada, si no, no se eliminará.
+	 * @param id INT | identificador de la visita guiada.
+	 */
+
+	public function checkDeleteVisitaGuiada($id){
+		$sql = $this->db->query("SELECT id_estancia FROM estancias_guiada WHERE id_visita_guiada = '$id'");
+		return $sql->num_rows();
 	}
 
 }

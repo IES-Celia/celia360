@@ -390,6 +390,10 @@ function getAllVisita() {
 		if (allVisitaObj.data.length == 0) { // si no hay visitas marco un mensaje
 			$('#error_guiada').show();
 			$(".hrefVolver").attr('href','<?php echo base_url(); ?>');
+			}else if (allVisitaObj.data.length == 1) {
+
+					visita_opcion('get_json_guiada',allVisitaObj.data[0].id);
+			
 		} else {
     $('#boton_mapa, #fullscreen').hide();
 		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/previews-guiada/background-visita-guiada.jpg';

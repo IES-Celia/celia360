@@ -292,15 +292,24 @@ function borrarGuiada(elemento) {
             });
 
         peticion.done(function (resultado) {
-          if(resultado.trim() == 1){
-            
-            $(elemento).closest(".filaEscena").remove();
-            $('#error_cabecera').html('');
-              $('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Escena guiada eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
-          }else{
-            $('#mensaje_cabecera').html('');
-              $('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la escena guiada</h7><i class='far fa-check-circle'></i></div>");
-          }    
+					
+					console.log(resultado.trim());
+
+						switch (resultado.trim()) {
+							case '-1': 
+								$('#mensaje_cabecera').html('');
+								$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>La visita que deseas borrar contiene estancias.</h7><i class='fas fa-exclamation-circle'></i></div>");
+							break;
+							case '1': 
+									$(elemento).closest(".filaEscena").remove();
+									$('#error_cabecera').html('');
+									$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Escena guiada eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
+							break;
+							case '0': 
+									$('#mensaje_cabecera').html('');
+									$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la visita guiada</h7><i class='fas fa-exclamation-circle'></i></div>");
+							break;
+						}  
         });
       }
   }

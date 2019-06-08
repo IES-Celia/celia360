@@ -168,7 +168,6 @@ class Tour extends CI_Controller {
     $this->load->model("PortadaModel");
     $resultado = $this->PortadaModel->update_portada();   
     $datos["opcionesPortada"]= $this->PortadaModel->get_info_portada();
-    console.log($datos["opcionesPortada"]);
     $datos["vista"]="portada/updatePortada";
     /* Compruebo todos los posibles errores al actualizar la portada */
     /* Yo no quería comprobar todos los posibles casos, pero Alfredo me ha obligado, dice que soy un vago */

@@ -325,7 +325,6 @@ echo "<tr class='filaEscena'>
         if (confirmar) {
             var idEscena = $(elemento).attr("data-id");
             var urlPeticion = "<?php echo base_url("guiada/borrarEscena");?>";
-			console.log(idEscena, urlPeticion)
             var peticion = $.ajax({
                 type: "post",
                 url: urlPeticion,
@@ -333,16 +332,19 @@ echo "<tr class='filaEscena'>
             });
 
             peticion.done(function (resultado) {
-				if(resultado.trim() == 1){
-					
-					$(elemento).closest(".filaEscena").remove();
-					$('#error_cabecera').html('');
+
+				switch (resultado.trim()) {
+					case 0:
+						$('#mensaje_cabecera').html('');
+						$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la escena guiada</h7><i class='fas fa-exclamation-circle'></i></div>");
+					break;
+
+					case 1: 
+						$(elemento).closest(".filaEscena").remove();
+						$('#error_cabecera').html('');
 						$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Escena guiada eliminada con éxito</h7><i class='far fa-check-circle'></i></div>");
-				}else{
-					$('#mensaje_cabecera').html('');
-						$('#error_cabecera').html("<div class='alert alert-danger' role='alert' ><h7 class='mr-2'>Error al eliminar la escena guiada</h7><i class='far fa-check-circle'></i></div>");
+					break;
 				}
-                
             });
         }
     }
@@ -431,15 +433,12 @@ echo "<tr class='filaEscena'>
                 $('td.posicion').each(function(index) {
                     $(this).text(ordenArray[index]);
 				});
-				
-				console.log(ordenArray);
 
 
 				url = "<?php echo base_url('guiada/cambiarFilas'); ?>";
 				
 				$.post(url, {idArray: arrayDatos, orden: ordenArray, id_visita_guiada: "<?php echo $id_visita_guiada ?>"},function(data){
 					if (data > 0){
-						console.log(data);
 						$('#error_cabecera').html('');
 						$('#mensaje_cabecera').html("<div class='alert alert-success' role='alert' ><h7 class='mr-2'>Orden modificado</h7><i class='far fa-check-circle'></i></div>");
 						$('.btnEnviar').css('display','none');

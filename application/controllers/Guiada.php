@@ -244,8 +244,19 @@ class Guiada extends CI_Controller {
 	}
 	
 	public function borrarVisitaGuiada() {
-		$res = $this->GuiadaModel->borrarVisitaGuiada();
-		echo $res;
+		$id = $this->input->get_post('id');
+		$result = $this->GuiadaModel->checkDeleteVisitaGuiada($id);
+
+		if ($result == 0) { //si la visita guiada no contiene estancias se borrará.
+			$res = $this->GuiadaModel->borrarVisitaGuiada();
+			echo $res;
+		}else {
+			echo -1;
+		}
+
+
+		
+
 	}
 
 	public function showUpdateStayGuiada($id) {
