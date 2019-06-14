@@ -365,7 +365,11 @@
 			(10, 'logo_web', 'logo.png'),
 			(11, 'ascensor_mapa', 'ascensor'),
 			(12, 'url_mapa', 'mapa.jpg'),
-			(13,'text_historia','');");
+			(13,'text_historia',''),
+			(14, 'meta_descripcion', ''),
+			(16,'creditos_adicionales', ''),
+			(17, 'propietario_web',''),
+			(18, 'fondo_visita_guiada', 'defaultFondo.jpg');");
         
 
 
