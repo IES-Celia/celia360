@@ -124,7 +124,7 @@
 		$passdb = $_POST['pass'];
 		$namedb =$_POST['namedb'];
 
-		$db = new mysqli('localhost', 'root','','celialimpio');
+		$db = new mysqli($host, $userdb,$passdb,$namedb);
 		
 		if ($db->connect_error) {
 			die('Error de conexión: ' . $mysqli->connect_error);
