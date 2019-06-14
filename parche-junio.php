@@ -157,6 +157,14 @@
 			$db->query("INSERT INTO visitas_guiadas VALUES (1, 'Nombre visita', 'defult description')");
 			$db->query("UPDATE estancias_guiada SET id_visita_guiada = 1");
 		}
+
+		$db->query("INSERT INTO opciones_portada VALUES 
+			(13,'text_historia',''),
+			(14, 'meta_descripcion', ''),
+			(16,'creditos_adicionales', ''),
+			(17, 'propietario_web',''),
+			(18, 'fondo_visita_guiada', 'defaultFondo.jpg');"
+		);
 	}
 ?>
 
