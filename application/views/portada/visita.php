@@ -396,7 +396,7 @@ function getAllVisita() {
 			
 		} else {
     $('#boton_mapa, #fullscreen').hide();
-		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/previews-guiada/background-visita-guiada.jpg';
+		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/generales/defaultFondo.jpg';
 		$('body').attr('style','background: url('+urlImage+') fixed; background-size: cover');
 		$('#mensajeEleccion').show();
 		olVisita = $('#listaVisitas');
