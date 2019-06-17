@@ -197,7 +197,7 @@ figcaption{
             <ul>
               <li><div class='icono_left' onclick="anterior();"></div></li>
               <li><div class='icono_pp' onclick="estado_audio();"></div></li>
-              <li><div class='icono_menu menu_slider'></div></li>
+              <li><div id="faro_feo" class='icono_menu menu_slider'></div></li>
               <li><div class='icono_right' onclick="siguiente();"></div></li>
             </ul>
           </div>
@@ -396,7 +396,7 @@ function getAllVisita() {
 			
 		} else {
     $('#boton_mapa, #fullscreen').hide();
-		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/previews-guiada/background-visita-guiada.jpg';
+		urlImage = "<?php echo site_url(); ?>"+'assets/imagenes/generales/defaultFondo.jpg';
 		$('body').attr('style','background: url('+urlImage+') fixed; background-size: cover');
 		$('#mensajeEleccion').show();
 		olVisita = $('#listaVisitas');
@@ -624,21 +624,7 @@ var audio_terminado = document.getElementById("audio_guiada");
     } 
   };
 
-//Cambio de escena al clickear en el "slider" de la visita guiada
-$( ".menu_slider" ).click(function() {
-  if($(".main").css("display")=="none"){
-    $(".main").fadeIn().css("display","block");
-    var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-    $('.slider-nav').slick('setPosition',currentSlide);
-  }else if($(".main").css("display")=="block"){    
-    $(".main").css("display","none");
-    var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
-    $('.slider-nav').slick('setPosition',currentSlide);
-  }
-});     
-  
 } // fin function cargar_panellum()
-
 
 /*
  * Metodo que pone a visible el panel de información de los hotspots de este tipo, cargando además la información correspondiente * al punto pulsado. 
@@ -1066,4 +1052,16 @@ $(document).ready(function(){
   $(document).on('mouseleave', '.miniatura_guiada', function(){
     $("#mapa_central").hide();
   });
+  //Cambio de escena al clickear en el "slider" de la visita guiada 
+  $( "#faro_feo" ).click(function() {
+    if($(".main").css("display")=="none"){
+      $(".main").fadeIn().css("display","block");
+      var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+      $('.slider-nav').slick('setPosition',currentSlide);
+    }else if($(".main").css("display")=="block"){    
+      $(".main").css("display","none");
+      var currentSlide = $('.slider-nav').slick('slickCurrentSlide');
+      $('.slider-nav').slick('setPosition',currentSlide);
+    }
+  });    
 </script>
