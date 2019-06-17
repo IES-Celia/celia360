@@ -186,7 +186,7 @@
             <!-- CRÉDITOS DE DOCUMENTACION --> 
             <div class="form-group">
               <label for=""><h4>Créditos adicionales de la documentación<br/>(separar por comas)</h4></label>
-              <textarea rows="4" cols="50" name="personas _creditos"> <?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
+              <textarea rows="4" cols="50" name="personas _creditos" > <?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
             </div>  
 
 
