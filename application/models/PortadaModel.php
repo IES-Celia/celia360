@@ -265,7 +265,7 @@
                 $nueva_imagen_guiada = $_FILES["nueva_imagen_guiada"]["name"];  // Nombre del archivo de imagen
                 $config['upload_path'] = 'assets/imagenes/generales/';
                 $config['allowed_types'] = 'jpg|png';
-                $config['file_name'] = $nueva_imagen_guiada;
+                $config['file_name'] = 'defaultFondo';
                 $config['overwrite'] = TRUE;
 
                 // Cargar la librería
@@ -286,7 +286,7 @@
                      $data = array(
                          'id_opcion' => '18',
                          'opcion' => 'fondo_visita_guiada',
-                         'opcion_valor' => $nueva_imagen_guiada
+                         'opcion_valor' => 'defaultFondo.jpg'
                      );
         
                     $this->db->insert('opciones_portada', $data);
