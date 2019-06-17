@@ -81,7 +81,7 @@
               <div class="m-3">
                 <img src='<?php echo base_url("assets/imagenes/portada/").$opcionesPortada[10]['opcion_valor'];?>' width='100'>
               </div>
-              <input type="file" class="form-control-file" name="nuevo_logo_web" id="" placeholder="" aria-describedby="fileHelpId">
+              <input type="file" class="form-control-file" name="nuevo_logo_web">
             </div>
             <div class="form-group">
               <label for=""><h4>Imagen de portada:</h4></label>
@@ -90,6 +90,15 @@
               </div>
               <input type='file' class="form-control-file" name='nueva_imagen_web'>
             </div>
+
+            <div class="form-group">
+            <label for=""><h4>Portada de visita guiada :</h4></label>
+              <div class="m-3">
+                <img src='<?php echo base_url("assets/imagenes/generales/").$opcionesPortada[18]['opcion_valor'];?>' width='200'>
+              </div>
+              <input type="file" class="form-control-file" name="nueva_imagen_guiada" id="previews-guiada">
+            </div>
+
             <div class="form-group">
               <label for=""><h4>Titulo de la web:</h4></label>
               <input type='text' class='form-control' name='titulo_web' value='<?php echo $opcionesPortada[0]['opcion_valor'];?>'>
@@ -177,12 +186,14 @@
             <!-- CRÉDITOS DE DOCUMENTACION --> 
             <div class="form-group">
               <label for=""><h4>Créditos adicionales de la documentación<br/>(separar por comas)</h4></label>
-              <textarea rows="4" cols="50" name="creditos_adicionales"> <?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
+              <textarea rows="4" cols="50" name="personas _creditos"> <?php echo $opcionesPortada[16]['opcion_valor'];?></textarea> 
             </div>  
+
+
             <button type="submit" class="btn btn-primary mb-3">Enviar</button>
             </form>
-
-        </div>
+            </div>
+            
        
     </div>
     

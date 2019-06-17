@@ -46,7 +46,6 @@
             $creditos_adicionales = $this->input->post_get("creditos_adicionales");
             $propietario_web = $this->input->post_get("propietario_web");
 
-
             $contador_update = 0; //Contador del total de Update que se han realizado correctamente
 
             $this->db->query("UPDATE opciones_portada SET opcion_valor = '".$titulo_web."' WHERE id_opcion = 0");
@@ -89,6 +88,7 @@
             if ($this->db->affected_rows() != 0){
                 $contador_update++;
             }
+        
 
             /*Por cuestiones de compatibilidad con antiguas versiones, realizamos un delete y despues un insert*/
             $this->db->where('id_opcion', '13');
@@ -123,6 +123,9 @@
                 'opcion' => 'meta_titulo',
                 'opcion_valor' => $meta_titulo
             );
+
+            $this->db->insert('opciones_portada', $data);
+
             $this->db->where('id_opcion', '16');
             $this->db->delete('opciones_portada');
 
@@ -130,22 +133,6 @@
                 'id_opcion' => '16',
                 'opcion' => 'personas_creditos',
                 'opcion_valor' => $personas_creditos
-            );
-        
-            $this->db->insert('opciones_portada', $data);
-
-            if ($this->db->affected_rows() != 0){
-                $contador_update++;
-            }               
-
-            /*Por cuestiones de compatibilidad con antiguas versiones, realizamos un delete y despues un insert*/
-            $this->db->where('id_opcion', '16');
-            $this->db->delete('opciones_portada');
-
-            $data = array(
-                'id_opcion' => '16',
-                'opcion' => 'creditos_adicionales',
-                'opcion_valor' => $creditos_adicionales
             );
         
             $this->db->insert('opciones_portada', $data);
@@ -163,13 +150,12 @@
                 'opcion' => 'propietario_web',
                 'opcion_valor' => $propietario_web
             );
-        
+
             $this->db->insert('opciones_portada', $data);
 
             if ($this->db->affected_rows() != 0){
                 $contador_update++;
             }               
-
 
             //Comprobamos que el numero de update sea correcto
             if ($contador_update > 0){
@@ -274,8 +260,42 @@
                 $resultado_mapa = 0; //No se a subido ninguna imagen de fondo 
             }
 
+            // Actualización de la Portada de visita guiada
+            if($_FILES['nueva_imagen_guiada']['name'] != null) {
+                $nueva_imagen_guiada = $_FILES["nueva_imagen_guiada"]["name"];  // Nombre del archivo de imagen
+                $config['upload_path'] = 'assets/imagenes/generales/';
+                $config['allowed_types'] = 'jpg|png';
+                $config['file_name'] = $nueva_imagen_guiada;
+                $config['overwrite'] = TRUE;
+
+                // Cargar la librería
+                $this->load->library('upload', $config);
+                    
+                $resultado_subida = $this->upload->do_upload('nueva_imagen_guiada');
+
+                if ($resultado_subida == false) {
+                    // ¡¡La subida del fichero ha fallado!!
+                    echo $this->upload->display_errors();
+                    $resultado_imagen = 1;  // Error en subida de imagen
+                } else {
+                    // ¡¡La subida del fichero ha sido un éxito!!
+                    // Modificamos el registro en la base de datos
+                    $this->db->where('id_opcion', '18');
+                    $this->db->delete('opciones_portada');
+         
+                     $data = array(
+                         'id_opcion' => '18',
+                         'opcion' => 'fondo_visita_guiada',
+                         'opcion_valor' => $nueva_imagen_guiada
+                     );
+        
+                    $this->db->insert('opciones_portada', $data);
+                }
+            }
+
+            // Fin de Portada de visita guiada
             return $resultado_update."-".$resultado_imagen."-".$resultado_logo."-".$resultado_mapa;
         }
-        
+
     }
 ?> 

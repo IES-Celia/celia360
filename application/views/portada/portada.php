@@ -84,6 +84,7 @@
     $fuente = $portada[8]['opcion_valor'];
     $titulo_web = $portada[0]['opcion_valor'];
     $show_historia = $portada[7]['opcion_valor'];
+   
 ?>
 <div id="slider1_portada" class="container-fluid">
 
@@ -93,6 +94,7 @@
 
         <div id="parrafito">
             <p style="color:<?php echo $color;?>; font-family: <?php echo $fuente;?>, sans-serif; font-size: 3vw;" id="descripcion_portada"></p>
+         
         </div>
 
         <div>
@@ -135,6 +137,7 @@
       <div class="modal-body">
         <?php if(isset($portada[13]['opcion_valor'])) echo $portada[13]['opcion_valor']; ?>
       </div>
+     
     </div>
   </div>
 </div>

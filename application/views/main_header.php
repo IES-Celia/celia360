@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name='description' content='<?php echo (isset($portada[14]["opcion_valor"])) ? $portada[14]["opcion_valor"] : "Celia Tour"; ?>'/> 
 <title>
-    <?php echo (isset($portada[15]['opcion_valor'])) ? $portada[15]['opcion_valor'] : "Celia Tour" ?>
+    <?php echo (isset($portada[0]['opcion_valor'])) ? $portada[0]['opcion_valor'] : "Celia Tour" ?>
 </title>
 
 <script>
