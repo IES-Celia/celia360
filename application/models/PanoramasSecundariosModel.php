@@ -159,8 +159,8 @@
 			$upload_path = "assets/imagenes/previewSecundarias/";
 			$image_path = "assets/imagenes/previewSecundarias/".$imagen;
 
-			if (!is_dir(getcwd().$upload_path)){
-				mkdir(getcwd().$upload_path);
+			if (!is_dir(getcwd()."/".$upload_path)){
+				mkdir(getcwd()."/".$upload_path);
 			}
 
 			if(file_exists(getcwd()."/".$image_path)){
@@ -174,10 +174,10 @@
 
 			$this->load->library('upload', $config);
 
-			if ( ! $this->upload->do_upload('file'))
+			if (!$this->upload->do_upload('file'))
 			{
 
-					//$salida = array('error' => $this->upload->display_errors());
+					//$salida = $this->upload->display_errors();
 
 					$salida = -1;
 			}
@@ -192,7 +192,7 @@
 				$config['width'] = 300;
 				$this->load->library('image_lib', $config);
 
-				$salida = $this->db->affected_rows(); // return 1
+				//$salida = $this->db->affected_rows(); // return 1
 
 				if(!$this->image_lib->resize()){
 					//$salida = $this->image_lib->display_errors();
