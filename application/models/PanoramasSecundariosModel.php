@@ -174,12 +174,12 @@
 
 			$this->load->library('upload', $config);
 
-			if ( ! $this->upload->do_upload('file'))
+			if (!$this->upload->do_upload('file'))
 			{
 
-					$salida = $this->upload->display_errors();
+					//$salida = $this->upload->display_errors();
 
-					//$salida = -1;
+					$salida = -1;
 			}
 			else
 			{
@@ -192,7 +192,7 @@
 				$config['width'] = 300;
 				$this->load->library('image_lib', $config);
 
-				$salida = $this->db->affected_rows(); // return 1
+				//$salida = $this->db->affected_rows(); // return 1
 
 				if(!$this->image_lib->resize()){
 					//$salida = $this->image_lib->display_errors();
