@@ -159,8 +159,8 @@
 			$upload_path = "assets/imagenes/previewSecundarias/";
 			$image_path = "assets/imagenes/previewSecundarias/".$imagen;
 
-			if (!is_dir(getcwd().$upload_path)){
-				mkdir(getcwd().$upload_path);
+			if (!is_dir(getcwd()."/".$upload_path)){
+				mkdir(getcwd()."/".$upload_path);
 			}
 
 			if(file_exists(getcwd()."/".$image_path)){
@@ -177,9 +177,9 @@
 			if ( ! $this->upload->do_upload('file'))
 			{
 
-					//$salida = array('error' => $this->upload->display_errors());
+					$salida = $this->upload->display_errors();
 
-					$salida = -1;
+					//$salida = -1;
 			}
 			else
 			{
