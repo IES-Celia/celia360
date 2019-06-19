@@ -171,12 +171,13 @@
             
 
             $db->query("CREATE TABLE `escenas_hotspots` (
-                            `id_escena` int(11) NOT NULL,
-                            `id_hotspot` int(11) NOT NULL,
+                            `id_escena` int(11) NULL,
+                            `id_hotspot` int(11) NULL,
 							`id_panorama_secundario` VARCHAR(100)
-                            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
-            $db->query("ALTER TABLE `escenas_hotspots`
-                        ADD PRIMARY KEY (`id_escena`,`id_hotspot`);");
+							) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;");
+							
+            /*$db->query("ALTER TABLE `escenas_hotspots`
+                        ADD PRIMARY KEY (`id_escena`,`id_hotspot`);");*/
 
             $db->query("CREATE TABLE `hotspots` (
 				`id_hotspot` int(11) NOT NULL,
